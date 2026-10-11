@@ -6,6 +6,7 @@
   "/[locale]/(site)/espace-membre/page": "/[locale]/espace-membre",
   "/[locale]/(site)/evenements/page": "/[locale]/evenements",
   "/[locale]/(site)/matchs/page": "/[locale]/matchs",
+  "/[locale]/[...rest]/page": "/[locale]/[...rest]",
   "/[locale]/connexion/mot-de-passe-oublie/page": "/[locale]/connexion/mot-de-passe-oublie",
   "/[locale]/connexion/nouveau-mot-de-passe/page": "/[locale]/connexion/nouveau-mot-de-passe",
   "/[locale]/connexion/page": "/[locale]/connexion",

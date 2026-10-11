@@ -216,6 +216,82 @@
           }
         }
       ]
+    },
+    {
+      "sourcePage": "/[locale]/[...rest]",
+      "page": "/de/[...rest]",
+      "regex": "^/de/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPrest": "nxtPrest"
+      },
+      "namedRegex": "^/de/(?<nxtPrest>.+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/[...rest].segments/$d$locale/$c$rest$segment",
+          "source": "^/de/(?<nxtPrest>.+?)\\.segments/\\$d\\$locale/\\$c\\$rest(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPrest": "nxtPrest"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/[...rest]",
+      "page": "/en/[...rest]",
+      "regex": "^/en/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPrest": "nxtPrest"
+      },
+      "namedRegex": "^/en/(?<nxtPrest>.+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/[...rest].segments/$d$locale/$c$rest$segment",
+          "source": "^/en/(?<nxtPrest>.+?)\\.segments/\\$d\\$locale/\\$c\\$rest(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPrest": "nxtPrest"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/[...rest]",
+      "page": "/fr/[...rest]",
+      "regex": "^/fr/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPrest": "nxtPrest"
+      },
+      "namedRegex": "^/fr/(?<nxtPrest>.+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/[...rest].segments/$d$locale/$c$rest$segment",
+          "source": "^/fr/(?<nxtPrest>.+?)\\.segments/\\$d\\$locale/\\$c\\$rest(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPrest": "nxtPrest"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/[...rest]",
+      "regex": "^/([^/]+?)/(.+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPrest": "nxtPrest"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/(?<nxtPrest>.+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/[...rest].segments/$d$locale/$c$rest$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/(?<nxtPrest>.+?)\\.segments/\\$d\\$locale/\\$c\\$rest(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPrest": "nxtPrest"
+          }
+        }
+      ]
     }
   ],
   "staticRoutes": [

@@ -6,6 +6,7 @@
   "/[locale]/(site)/espace-membre/page": "app/[locale]/(site)/espace-membre/page.js",
   "/[locale]/(site)/evenements/page": "app/[locale]/(site)/evenements/page.js",
   "/[locale]/(site)/matchs/page": "app/[locale]/(site)/matchs/page.js",
+  "/[locale]/[...rest]/page": "app/[locale]/[...rest]/page.js",
   "/[locale]/connexion/mot-de-passe-oublie/page": "app/[locale]/connexion/mot-de-passe-oublie/page.js",
   "/[locale]/connexion/nouveau-mot-de-passe/page": "app/[locale]/connexion/nouveau-mot-de-passe/page.js",
   "/[locale]/connexion/page": "app/[locale]/connexion/page.js",
