@@ -1,0 +1,126 @@
+name: Deploy
+
+# Builds the standalone bundle and publishes it on the `deploy` branch.
+# Infomaniak clones that branch and only runs `node server.js`: nothing is built on the server.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    name: Build and publish the deploy branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      # Oldest MariaDB we want to support: catches incompatibilities before production does.
+      mariadb:
+        image: mariadb:10.6
+        env:
+          MARIADB_DATABASE: psg_zurich
+          MARIADB_USER: psg
+          MARIADB_PASSWORD: psg
+          MARIADB_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    env:
+      BUNDLE_DIR: ${{ runner.temp }}/bundle
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+
+      # GITHUB_SHA is baked into the build and shown by /api/health.
+      - run: npm run build
+
+      # Outside the checkout, so the smoke test cannot resolve modules from the dev node_modules.
+      - name: Assemble the bundle
+        run: scripts/bundle-standalone.sh "$BUNDLE_DIR"
+
+      - name: Smoke test the bundle (migrations at boot, health, pages)
+        working-directory: ${{ runner.temp }}/bundle
+        env:
+          PORT: "3000"
+          HOSTNAME: 127.0.0.1
+          DATABASE_URL: mysql://psg:psg@127.0.0.1:3306/psg_zurich
+          BETTER_AUTH_SECRET: ci-only-secret-used-for-the-smoke-test-0000
+          BETTER_AUTH_URL: http://127.0.0.1:3000
+        run: |
+          node server.js > "$RUNNER_TEMP/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true; echo "--- server log"; cat "$RUNNER_TEMP/server.log"' EXIT
+
+          for _ in $(seq 1 30); do
+            curl -fsS -o /dev/null http://127.0.0.1:3000/api/health && break
+            sleep 1
+          done
+
+          health=$(curl -fsS http://127.0.0.1:3000/api/health)
+          echo "$health"
+          echo "$health" | node -e '
+            const health = JSON.parse(require("fs").readFileSync(0, "utf8"));
+            const expected = process.env.GITHUB_SHA.slice(0, 7);
+            if (health.db !== "ok") throw new Error("database is not reachable");
+            if (health.version !== expected) throw new Error(`version ${health.version} != ${expected}`);
+          '
+          curl -fsS -o /dev/null http://127.0.0.1:3000/fr
+          curl -fsS -o /dev/null http://127.0.0.1:3000/de
+          curl -fsS http://127.0.0.1:3000/api/v1/posts
+
+          # Running the CLI again must be a no-op.
+          node scripts/migrate.mjs
+
+      - name: Publish to the deploy branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          work="$RUNNER_TEMP/deploy-branch"
+
+          # Keep a linear history so that a plain `git pull` on the server always fast-forwards.
+          if git ls-remote --exit-code --heads "$remote" deploy > /dev/null; then
+            git clone --quiet --depth 1 --branch deploy "$remote" "$work"
+          else
+            git init --quiet --initial-branch deploy "$work"
+            git -C "$work" remote add origin "$remote"
+          fi
+
+          find "$work" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -a "$BUNDLE_DIR/." "$work/"
+
+          cd "$work"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+          if git diff --cached --quiet; then
+            echo "Bundle unchanged, nothing to publish."
+            exit 0
+          fi
+          git commit --quiet \
+            -m "deploy: ${GITHUB_SHA::7}" \
+            -m "Built from ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}"
+          git push --quiet origin deploy
+          echo "Published $(git rev-parse --short HEAD) on the deploy branch."
