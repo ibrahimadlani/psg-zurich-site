@@ -1,0 +1,2 @@
+ALTER TABLE `posts` MODIFY COLUMN `locale` enum('fr','de','en') NOT NULL DEFAULT 'fr';--> statement-breakpoint
+ALTER TABLE `subscribers` MODIFY COLUMN `locale` enum('fr','de','en') NOT NULL DEFAULT 'fr';

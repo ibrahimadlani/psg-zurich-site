@@ -55,7 +55,8 @@ const json = <T>(name: string) =>
       (typeof value === "string" ? JSON.parse(value) : value) as T,
   })(name);
 
-export const LOCALES = ["fr", "de"] as const;
+// Content locales. Order = MySQL enum order: only ever append new values.
+export const LOCALES = ["fr", "de", "en"] as const;
 export const ROLES = ["member", "admin", "superadmin"] as const;
 export type Role = (typeof ROLES)[number];
 
