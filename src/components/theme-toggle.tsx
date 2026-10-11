@@ -24,7 +24,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={t("label")}
       title={t("label")}
-      className="inline-flex size-8 cursor-pointer items-center justify-center rounded-[6px] border bg-card text-foreground transition-colors hover:bg-accent"
+      className="inline-flex size-9 cursor-pointer items-center justify-center rounded-[8px] border bg-card text-foreground [transition:background-color_.2s,transform_.15s] hover:bg-accent active:scale-[0.92]"
     >
       {/* Icon follows the <html> class set before paint, so no hydration mismatch. */}
       <Sun className="hidden size-4 dark:block" aria-hidden />
