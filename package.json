@@ -7,6 +7,7 @@
     "node": ">=24 <25"
   },
   "scripts": {
+    "build": "echo \"Already built by CI: nothing to do.\"",
     "start": "node server.js",
     "migrate": "node scripts/migrate.mjs"
   }

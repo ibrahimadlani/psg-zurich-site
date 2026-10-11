@@ -23,7 +23,7 @@ a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[[["
 16:C
 19:X
 19:T6,locale19:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Aktuelles · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Die neuesten Nachrichten aus dem Verein."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.3tqwpkq-_ycps.svg","sizes":"any","type":"image/svg+xml"}],["$","$L14","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@15","v":"$16","s":"$9"}},"a":"$@17","u":"$@18","b":"DXlWFChKKFArs9-ZCw4Mo","r":"$19"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Aktuelles · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Die neuesten Nachrichten aus dem Verein."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.3tqwpkq-_ycps.svg","sizes":"any","type":"image/svg+xml"}],["$","$L14","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@15","v":"$16","s":"$9"}},"a":"$@17","u":"$@18","b":"oSEBYmv2_U6MLek_oM5Gu","r":"$19"}
 d:null
 18:false
 17:null
