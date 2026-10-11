@@ -1,16 +1,16 @@
 {
   "status": 200,
   "headers": {
-    "link": "</_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\"",
+    "link": "</_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_NarrowBoldItalic-s.p.31vtg9dat24di.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_NarrowSemibold-s.p.3a6hd-9t6lqyj.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_NarrowUltraboldItalic-s.p.090cn3_qkdadm.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_Regular-s.p.0j0l7-rfdhpxf.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_Semibold-s.p.2ruawwcc5xyk9.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_WideRegular-s.p.36hfo4tuc9v1s.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_WideSemibold-s.p.0t3j1c9o65mi9.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </brand/psg-crest.svg>; rel=preload; as=\"image\"",
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
-    "x-next-cache-tags": "_N_T_/layout,_N_T_/[locale]/layout,_N_T_/[locale]/contact/layout,_N_T_/[locale]/contact/page,_N_T_/de/contact"
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/[locale]/layout,_N_T_/[locale]/(site)/layout,_N_T_/[locale]/(site)/contact/layout,_N_T_/[locale]/(site)/contact/page,_N_T_/de/contact"
   },
   "segmentPaths": [
     "/_tree",
     "/_full",
     "/$d$locale",
-    "/$d$locale/contact/__PAGE__"
+    "/$d$locale/!KHNpdGUp/contact/__PAGE__"
   ],
   "prefetchHints": {
     "hints": 49216,
@@ -22,8 +22,13 @@
             "hints": 49216,
             "slots": {
               "children": {
-                "hints": 49312,
-                "slots": null
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -32,10 +37,10 @@
     }
   },
   "routeCache": {
-    "key": "/route-cache/APP_PAGE/f4a860a3b3e968569937486ced25d9069a2be2cda4b521da70ae9e6668cbba8e/$/de/contact",
+    "key": "/route-cache/APP_PAGE/1a9d0404c64cb103a604a1266d45b668814f2bc80f28e9a1bb6801ad0b8100b2/$/de/contact",
     "owner": {
       "kind": "APP_PAGE",
-      "sourceRoute": "/[locale]/contact/page"
+      "sourceRoute": "/[locale]/(site)/contact/page"
     },
     "isFallback": false
   }

@@ -32,8 +32,13 @@
             "hints": 49216,
             "slots": {
               "children": {
-                "hints": 49312,
-                "slots": null
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -51,8 +56,13 @@
             "hints": 49216,
             "slots": {
               "children": {
-                "hints": 49312,
-                "slots": null
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -70,8 +80,13 @@
             "hints": 64,
             "slots": {
               "children": {
-                "hints": 160,
-                "slots": null
+                "hints": 96,
+                "slots": {
+                  "children": {
+                    "hints": 160,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -89,8 +104,13 @@
             "hints": 49216,
             "slots": {
               "children": {
-                "hints": 49312,
-                "slots": null
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -108,8 +128,13 @@
             "hints": 64,
             "slots": {
               "children": {
-                "hints": 160,
-                "slots": null
+                "hints": 96,
+                "slots": {
+                  "children": {
+                    "hints": 160,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -127,8 +152,13 @@
             "hints": 49216,
             "slots": {
               "children": {
-                "hints": 49312,
-                "slots": null
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -146,8 +176,13 @@
             "hints": 49216,
             "slots": {
               "children": {
-                "hints": 49312,
-                "slots": null
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
               }
             }
           }

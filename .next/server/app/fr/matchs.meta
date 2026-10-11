@@ -1,16 +1,16 @@
 {
   "status": 200,
   "headers": {
-    "link": "</_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\"",
+    "link": "</_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_NarrowBoldItalic-s.p.31vtg9dat24di.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_NarrowSemibold-s.p.3a6hd-9t6lqyj.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_NarrowUltraboldItalic-s.p.090cn3_qkdadm.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_Regular-s.p.0j0l7-rfdhpxf.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_Semibold-s.p.2ruawwcc5xyk9.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_WideRegular-s.p.36hfo4tuc9v1s.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/Virage_WideSemibold-s.p.0t3j1c9o65mi9.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </brand/psg-crest.svg>; rel=preload; as=\"image\"",
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
-    "x-next-cache-tags": "_N_T_/layout,_N_T_/[locale]/layout,_N_T_/[locale]/matchs/layout,_N_T_/[locale]/matchs/page,_N_T_/fr/matchs"
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/[locale]/layout,_N_T_/[locale]/(site)/layout,_N_T_/[locale]/(site)/matchs/layout,_N_T_/[locale]/(site)/matchs/page,_N_T_/fr/matchs"
   },
   "segmentPaths": [
     "/_tree",
     "/_full",
     "/$d$locale",
-    "/$d$locale/matchs/__PAGE__"
+    "/$d$locale/!KHNpdGUp/matchs/__PAGE__"
   ],
   "prefetchHints": {
     "hints": 49216,
@@ -22,8 +22,13 @@
             "hints": 49216,
             "slots": {
               "children": {
-                "hints": 49312,
-                "slots": null
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
               }
             }
           }
@@ -32,10 +37,10 @@
     }
   },
   "routeCache": {
-    "key": "/route-cache/APP_PAGE/8a55e672cfa50f585d02712ca20ee935998f909b6d67d1b27b58d2a228aa26d2/$/fr/matchs",
+    "key": "/route-cache/APP_PAGE/9de4cf6fd41f7fcdbe79828b7cef243b2d874737c6bdf532993d2f5c514de583/$/fr/matchs",
     "owner": {
       "kind": "APP_PAGE",
-      "sourceRoute": "/[locale]/matchs/page"
+      "sourceRoute": "/[locale]/(site)/matchs/page"
     },
     "isFallback": false
   }

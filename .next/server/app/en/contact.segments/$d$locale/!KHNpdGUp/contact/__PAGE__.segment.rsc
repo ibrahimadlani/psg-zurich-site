@@ -1,0 +1,45 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/3-3jc4cqytds3.js"
+5:"/_next/static/chunks/0er9dc_qscrpf.js"
+6:"/_next/static/chunks/3b3sijb9h8wyy.js"
+7:"/_next/static/chunks/1uhjspzi00a06.js"
+8:I[77105,["$4","$5","$6","$7"],"default"]
+9:I[5500,["$4","$5","$6","$7"],"Image"]
+a:I[71371,["$4","$5","$6","$7"],"LocaleSwitcher"]
+b:I[94013,["$4","$5","$6","$7"],"ThemeToggle"]
+c:I[8895,["$4","$5","$6","$7"],"MainNav"]
+d:"/_next/static/chunks/1tq6ppe__m8m-.js"
+e:I[39756,["$d"],"default"]
+f:I[37457,["$d"],"default"]
+17:I[97367,["$d"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1c:"ViewportBoundary"
+1d:I[97367,["$d"],"$1c"]
+1e:"MetadataBoundary"
+1f:I[97367,["$d"],"$1e"]
+20:I[27201,["$d"],"IconMark"]
+11:X
+11:C
+12:X
+12:300
+12:C
+15:X
+15:C
+1b:X
+1b:C
+16:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[[["$","div",null,{"className":"mb-8 space-y-2","children":[["$","h1",null,{"className":"text-3xl font-bold tracking-tight","children":"Contact"}],["$","p",null,{"className":"text-muted-foreground","children":"A question? Write to us at contact@psg-zurich.ch."}]]}],["$","p",null,{"className":"rounded-lg border border-dashed p-8 text-center text-muted-foreground","children":"This section is coming soon."}]],null,["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]]}],"p":"$@1a","v":"$1b","s":"$12"}}]]
+13:[["children",{"s":"contact","h":49250,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@14","v":"$15","s":"$12"},"c":"$Q16"}]]
+2:[["children",{"s":"(site)","h":49218,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3b3sijb9h8wyy.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/1uhjspzi00a06.js","async":true}]],["$","div",null,{"className":"flex min-h-screen flex-col","children":[["$","header",null,{"className":"border-b","children":[["$","div",null,{"className":"relative mx-auto flex w-full max-w-5xl items-center justify-between gap-3 p-4","children":[["$","$L8",null,{"href":"/en","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"aria-label":"PSG Official Supporters Club Zurich","className":"flex items-center gap-3 text-primary dark:text-foreground","children":[["$","$L9",null,{"src":"/brand/psg-crest.svg","alt":"","width":44,"height":44,"preload":true,"className":"block size-11 drop-shadow-[0_4px_8px_oklch(0.2_0.05_248/0.2)]"}],["$","span",null,{"className":"flex flex-col gap-0.5 leading-none uppercase","children":[["$","span",null,{"className":"font-wide text-[11px] font-normal tracking-[0.04em]","children":"Official"}],["$","span",null,{"className":"font-narrow text-[20px] font-semibold tracking-[0.01em]","children":"Supporters Club Zurich"}]]}]]}],["$","div",null,{"className":"flex items-center gap-2","children":[["$","$La",null,{}],["$","$Lb",null,{}]]}]]}],["$","div",null,{"className":"mx-auto w-full max-w-5xl px-4 pb-2","children":["$","$Lc",null,{}]}]]}],["$","main",null,{"className":"mx-auto w-full max-w-5xl flex-1 px-4 py-10","children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}],["$","footer",null,{"className":"relative border-t","children":["$","p",null,{"className":"mx-auto max-w-5xl px-4 py-6 text-center text-[14px] text-muted-foreground","children":"Official supporters club, certified by Paris Saint-Germain."}]}]]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
+22:X
+22:C
+25:X
+25:T6,locale25:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Contact · PSG Zurich"}],["$","meta","1",{"name":"description","content":"A question? Write to us at contact@psg-zurich.ch."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L20","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@21","v":"$22","s":"$12"}},"a":"$@23","u":"$@24","b":"q8LhCm6Eb0epCmGQ1lcmx","r":"$25"}
+19:null
+24:false
+23:null
+14:"$undefined"
+10:"$undefined"
+21:"$undefined"
+1a:"$undefined"

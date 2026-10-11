@@ -1,0 +1,34 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/3-3jc4cqytds3.js"
+5:"/_next/static/chunks/0er9dc_qscrpf.js"
+6:"/_next/static/chunks/02_pgo5327ljc.js"
+7:"/_next/static/chunks/1uhjspzi00a06.js"
+8:I[77105,["$4","$5","$6","$7"],"default"]
+9:I[5500,["$4","$5","$6","$7"],"Image"]
+a:I[71371,["$4","$5","$6","$7"],"LocaleSwitcher"]
+b:I[94013,["$4","$5","$6","$7"],"ThemeToggle"]
+c:"/_next/static/chunks/1tq6ppe__m8m-.js"
+d:I[97367,["$c"],"OutletBoundary"]
+e:"$Sreact.suspense"
+13:"ViewportBoundary"
+14:I[97367,["$c"],"$13"]
+15:"MetadataBoundary"
+16:I[97367,["$c"],"$15"]
+17:I[27201,["$c"],"IconMark"]
+11:X
+11:C
+12:X
+12:300
+12:C
+2:[["children",{"s":"__PAGE__","h":49282,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"relative flex min-h-screen flex-col overflow-hidden leading-[normal]","children":[["$","div",null,{"aria-hidden":true,"className":"pointer-events-none absolute inset-0 bg-dots"}],["$","header",null,{"className":"relative","children":["$","div",null,{"className":"relative mx-auto flex w-full max-w-5xl items-center justify-between gap-3 p-4","children":[["$","$L8",null,{"href":"/en","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"aria-label":"PSG Official Supporters Club Zurich","className":"flex items-center gap-3 text-primary dark:text-foreground","children":[["$","$L9",null,{"src":"/brand/psg-crest.svg","alt":"","width":44,"height":44,"preload":true,"className":"block size-11 drop-shadow-[0_4px_8px_oklch(0.2_0.05_248/0.2)]"}],["$","span",null,{"className":"flex flex-col gap-0.5 leading-none uppercase","children":[["$","span",null,{"className":"font-wide text-[11px] font-normal tracking-[0.04em]","children":"Official"}],["$","span",null,{"className":"font-narrow text-[20px] font-semibold tracking-[0.01em]","children":"Supporters Club Zurich"}]]}]]}],["$","div",null,{"className":"flex items-center gap-2","children":[["$","$La",null,{}],["$","$Lb",null,{}]]}]]}]}],["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center gap-8 px-4 pt-6 pb-12 text-center","children":["$","div",null,{"className":"flex max-w-[34rem] flex-col items-center gap-3","children":[["$","span",null,{"className":"inline-flex items-center gap-2 font-wide text-[12px] font-semibold tracking-[0.08em] text-muted-foreground uppercase","children":[["$","span",null,{"aria-hidden":true,"className":"size-1.5 rounded-full bg-brand-red"}],"Under construction"]}],["$","h1",null,{"className":"font-narrow text-[length:clamp(48px,9vw,88px)] leading-[0.95] font-extrabold tracking-normal text-balance uppercase italic","children":"Coming soon"}],["$","p",null,{"className":"text-[17px] leading-[1.55] text-pretty text-muted-foreground","children":"The website of the official Paris Saint-Germain supporters club in Zurich is on its way. In the meantime, get in touch:"}],["$","a",null,{"href":"mailto:contact@psg-zurich.ch","className":"mt-3 border-b pb-[3px] font-wide text-[15px] tracking-[0.02em] text-foreground transition-colors hover:border-brand-red","children":"contact@psg-zurich.ch"}]]}]}],["$","footer",null,{"className":"relative border-t","children":["$","p",null,{"className":"mx-auto max-w-5xl px-4 py-6 text-center text-[14px] text-muted-foreground","children":"Official supporters club, certified by Paris Saint-Germain."}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/02_pgo5327ljc.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/1uhjspzi00a06.js","async":true}]],["$","$Ld",null,{"children":["$","$e",null,{"name":"Next.MetadataOutlet","children":"$@f"}]}]]}],"p":"$@10","v":"$11","s":"$12"}}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
+19:X
+19:C
+1c:X
+1c:T6,locale1c:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L14",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L16",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Coming soon · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L17","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@18","v":"$19","s":"$12"}},"a":"$@1a","u":"$@1b","b":"q8LhCm6Eb0epCmGQ1lcmx","r":"$1c"}
+f:null
+1b:false
+1a:null
+18:"$undefined"
+10:"$undefined"

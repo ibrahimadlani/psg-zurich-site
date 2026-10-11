@@ -56,8 +56,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/actualites(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/actualites.segments/$d$locale/actualites$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/actualites\\.segments/\\$d\\$locale/actualites(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/actualites.segments/$d$locale/!KHNpdGUp/actualites$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/actualites\\.segments/\\$d\\$locale/!KHNpdGUp/actualites(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -73,8 +73,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/adhesion(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/adhesion.segments/$d$locale/adhesion$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/adhesion\\.segments/\\$d\\$locale/adhesion(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/adhesion.segments/$d$locale/!KHNpdGUp/adhesion$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/adhesion\\.segments/\\$d\\$locale/!KHNpdGUp/adhesion(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -90,8 +90,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/admin.segments/$d$locale/admin$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/admin\\.segments/\\$d\\$locale/admin(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/admin.segments/$d$locale/!KHNpdGUp/admin$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin\\.segments/\\$d\\$locale/!KHNpdGUp/admin(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -107,8 +107,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/contact(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/contact.segments/$d$locale/contact$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/contact\\.segments/\\$d\\$locale/contact(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/contact.segments/$d$locale/!KHNpdGUp/contact$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/contact\\.segments/\\$d\\$locale/!KHNpdGUp/contact(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -124,8 +124,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/espace-membre.segments/$d$locale/espace-membre$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre\\.segments/\\$d\\$locale/espace\\-membre(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/espace-membre.segments/$d$locale/!KHNpdGUp/espace-membre$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -141,8 +141,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/evenements(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/evenements.segments/$d$locale/evenements$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/evenements\\.segments/\\$d\\$locale/evenements(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/evenements.segments/$d$locale/!KHNpdGUp/evenements$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/evenements\\.segments/\\$d\\$locale/!KHNpdGUp/evenements(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -158,8 +158,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/matchs(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/matchs.segments/$d$locale/matchs$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/matchs\\.segments/\\$d\\$locale/matchs(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/matchs.segments/$d$locale/!KHNpdGUp/matchs$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/matchs\\.segments/\\$d\\$locale/!KHNpdGUp/matchs(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
