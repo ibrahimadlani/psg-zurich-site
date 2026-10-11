@@ -217,6 +217,8 @@ chmod 600 .env
 
 `server.js` le charge au démarrage. Il est ignoré par Git, et la build command ne l'efface pas.
 
+> ⚠️ Next.js remplace `$NOM` par une variable d'environnement dans les valeurs du `.env`, même entre apostrophes : un mot de passe contenant `$` doit l'écrire `\$`, sinon il est tronqué en silence.
+
 Activer ensuite le certificat SSL et **démarrer** l'application.
 
 ### 5. Vérifier
