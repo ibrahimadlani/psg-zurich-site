@@ -1,0 +1,22 @@
+{
+  "/[locale]/actualites/page": "app/[locale]/actualites/page.js",
+  "/[locale]/adhesion/page": "app/[locale]/adhesion/page.js",
+  "/[locale]/admin/page": "app/[locale]/admin/page.js",
+  "/[locale]/contact/page": "app/[locale]/contact/page.js",
+  "/[locale]/espace-membre/page": "app/[locale]/espace-membre/page.js",
+  "/[locale]/evenements/page": "app/[locale]/evenements/page.js",
+  "/[locale]/matchs/page": "app/[locale]/matchs/page.js",
+  "/[locale]/page": "app/[locale]/page.js",
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js",
+  "/api/health/route": "app/api/health/route.js",
+  "/api/v1/documents/route": "app/api/v1/documents/route.js",
+  "/api/v1/events/route": "app/api/v1/events/route.js",
+  "/api/v1/matches/route": "app/api/v1/matches/route.js",
+  "/api/v1/members/route": "app/api/v1/members/route.js",
+  "/api/v1/polls/route": "app/api/v1/polls/route.js",
+  "/api/v1/posts/route": "app/api/v1/posts/route.js",
+  "/api/v1/subscribers/route": "app/api/v1/subscribers/route.js",
+  "/icon.svg/route": "app/icon.svg/route.js"
+}

@@ -1,0 +1,7 @@
+:HL["/_next/static/chunks/3z47nuq_04l_0.css","style"]
+:HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/caa3a2e1cccd8315-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+3:[["children",{"s":"__PAGE__","h":162}]]
+2:[["children",{"s":"admin","h":66,"c":"$Q3"}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":50,"c":"$Q2"}]]
+0:{"b":"DXlWFChKKFArs9-ZCw4Mo","t":{"t":{"s":"","h":82,"c":"$Q1"}}}

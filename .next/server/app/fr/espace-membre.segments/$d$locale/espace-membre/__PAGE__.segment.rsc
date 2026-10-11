@@ -1,0 +1,31 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/1tq6ppe__m8m-.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+b:"$Sreact.suspense"
+d:I[97367,["$4"],"OutletBoundary"]
+11:"ViewportBoundary"
+12:I[97367,["$4"],"$11"]
+13:"MetadataBoundary"
+14:I[97367,["$4"],"$13"]
+15:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+9:300
+9:C
+10:X
+10:C
+a:[["children",{"s":"__PAGE__","h":162,"d":{"r":["$","$3","c",{"children":[[["$","div",null,{"className":"mb-8 space-y-2","children":[["$","h1",null,{"className":"text-3xl font-bold tracking-tight","children":"Espace membre"}],["$","p",null,{"className":"text-muted-foreground","children":"Connectez-vous avec un lien magique envoyé par e-mail."}]]}],["$","$b",null,{"fallback":["$","p",null,{"className":"text-muted-foreground","children":"Chargement…"}],"children":"$Lc"}]],[["$","script","script-0",{"src":"/_next/static/chunks/3z_de_xwzysc0.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3h7px24dma_8d.js","async":true}]],["$","$Ld",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":"$10","s":"$9"}}]]
+2:[["children",{"s":"espace-membre","h":66,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":50,"c":"$Q2"}]]
+17:X
+17:C
+1a:X
+1a:T6,locale1a:C
+0:{"t":{"t":{"s":"","h":82,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Espace membre · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.3tqwpkq-_ycps.svg","sizes":"any","type":"image/svg+xml"}],["$","$L15","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@16","v":"$17","s":"$9"}},"a":"$@18","u":"$@19","b":"DXlWFChKKFArs9-ZCw4Mo","r":"$1a"}
+e:null
+19:true
+18:null
+7:"$undefined"
+16:"$undefined"

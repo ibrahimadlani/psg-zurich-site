@@ -1,0 +1,22 @@
+{
+  "/[locale]/actualites/page": "/[locale]/actualites",
+  "/[locale]/adhesion/page": "/[locale]/adhesion",
+  "/[locale]/admin/page": "/[locale]/admin",
+  "/[locale]/contact/page": "/[locale]/contact",
+  "/[locale]/espace-membre/page": "/[locale]/espace-membre",
+  "/[locale]/evenements/page": "/[locale]/evenements",
+  "/[locale]/matchs/page": "/[locale]/matchs",
+  "/[locale]/page": "/[locale]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/auth/[...all]/route": "/api/auth/[...all]",
+  "/api/health/route": "/api/health",
+  "/api/v1/documents/route": "/api/v1/documents",
+  "/api/v1/events/route": "/api/v1/events",
+  "/api/v1/matches/route": "/api/v1/matches",
+  "/api/v1/members/route": "/api/v1/members",
+  "/api/v1/polls/route": "/api/v1/polls",
+  "/api/v1/posts/route": "/api/v1/posts",
+  "/api/v1/subscribers/route": "/api/v1/subscribers",
+  "/icon.svg/route": "/icon.svg"
+}

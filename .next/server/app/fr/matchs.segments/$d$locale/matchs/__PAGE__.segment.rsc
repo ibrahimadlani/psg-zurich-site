@@ -1,0 +1,32 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/1tq6ppe__m8m-.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+b:I[97367,["$4"],"OutletBoundary"]
+c:"$Sreact.suspense"
+10:"ViewportBoundary"
+11:I[97367,["$4"],"$10"]
+12:"MetadataBoundary"
+13:I[97367,["$4"],"$12"]
+14:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+9:300
+9:C
+f:X
+f:C
+a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[[["$","div",null,{"className":"mb-8 space-y-2","children":[["$","h1",null,{"className":"text-3xl font-bold tracking-tight","children":"Matchs"}],["$","p",null,{"className":"text-muted-foreground","children":"Le calendrier du PSG et nos pronostics."}]]}],["$","p",null,{"className":"rounded-lg border border-dashed p-8 text-center text-muted-foreground","children":"Cette section arrive bientôt."}]],null,["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]]}],"p":"$@e","v":"$f","s":"$9"}}]]
+2:[["children",{"s":"matchs","h":49218,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
+16:X
+16:C
+19:X
+19:T6,locale19:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Matchs · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Le calendrier du PSG et nos pronostics."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.3tqwpkq-_ycps.svg","sizes":"any","type":"image/svg+xml"}],["$","$L14","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@15","v":"$16","s":"$9"}},"a":"$@17","u":"$@18","b":"DXlWFChKKFArs9-ZCw4Mo","r":"$19"}
+d:null
+18:false
+17:null
+7:"$undefined"
+15:"$undefined"
+e:"$undefined"

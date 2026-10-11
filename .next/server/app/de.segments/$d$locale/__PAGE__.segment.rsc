@@ -1,0 +1,32 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/1mve2fev6z6_6.js"
+5:"/_next/static/chunks/0er9dc_qscrpf.js"
+6:"/_next/static/chunks/3xxingzbn6nn2.js"
+7:"/_next/static/chunks/0zhq17xaihf9i.js"
+8:"DeploymentStatus"
+9:I[86934,["$4","$5","$6","$7"],"$8"]
+a:"/_next/static/chunks/1tq6ppe__m8m-.js"
+b:I[97367,["$a"],"OutletBoundary"]
+c:"$Sreact.suspense"
+11:"ViewportBoundary"
+12:I[97367,["$a"],"$11"]
+13:"MetadataBoundary"
+14:I[97367,["$a"],"$13"]
+15:I[27201,["$a"],"IconMark"]
+f:X
+f:C
+10:X
+10:300
+10:C
+2:[["children",{"s":"__PAGE__","h":49282,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"space-y-10","children":[["$","section",null,{"className":"space-y-4 rounded-xl bg-primary px-6 py-12 text-primary-foreground md:px-10","children":[["$","p",null,{"className":"text-5xl font-black tracking-tight md:text-6xl","children":["PSG ",["$","span",null,{"className":"text-brand-red","children":"Zurich"}]]}],["$","h1",null,{"className":"text-xl font-semibold md:text-2xl","children":"Der offizielle Fanclub von Paris Saint-Germain in Zürich"}],["$","p",null,{"className":"max-w-2xl text-primary-foreground/80","children":"Watch Partys, Auswärtsfahrten, Spiele unter Mitgliedern: Bald findest du hier alles rund um den Verein."}]]}],["$","$L9",null,{}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0zhq17xaihf9i.js","async":true}]],["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]]}],"p":"$@e","v":"$f","s":"$10"}}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
+17:X
+17:C
+1a:X
+1a:T6,locale1a:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.3tqwpkq-_ycps.svg","sizes":"any","type":"image/svg+xml"}],["$","$L15","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@16","v":"$17","s":"$10"}},"a":"$@18","u":"$@19","b":"DXlWFChKKFArs9-ZCw4Mo","r":"$1a"}
+d:null
+19:false
+18:null
+16:"$undefined"
+e:"$undefined"
