@@ -38,9 +38,6 @@ jobs:
           --health-timeout=5s
           --health-retries=20
 
-    env:
-      BUNDLE_DIR: ${{ runner.temp }}/bundle
-
     steps:
       - uses: actions/checkout@v7
 
@@ -58,7 +55,7 @@ jobs:
 
       # Outside the checkout, so the smoke test cannot resolve modules from the dev node_modules.
       - name: Assemble the bundle
-        run: scripts/bundle-standalone.sh "$BUNDLE_DIR"
+        run: scripts/bundle-standalone.sh "$RUNNER_TEMP/bundle"
 
       - name: Smoke test the bundle (migrations at boot, health, pages)
         working-directory: ${{ runner.temp }}/bundle
@@ -109,7 +106,7 @@ jobs:
           fi
 
           find "$work" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-          cp -a "$BUNDLE_DIR/." "$work/"
+          cp -a "$RUNNER_TEMP/bundle/." "$work/"
 
           cd "$work"
           git config user.name "github-actions[bot]"
