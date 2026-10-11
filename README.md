@@ -158,22 +158,25 @@ https://ibrahimadlani:<TOKEN>@github.com/ibrahimadlani/psg-zurich-site.git
 
 ### 3. Créer le site Node.js
 
-Manager → Hébergement Web → **Ajouter** → Node.js (version **24**) → domaine `psg-zurich.ch` → installation **Personnalisée** → **Git** :
+Manager → Hébergement Web → **Ajouter** → Node.js (version **24**) → domaine `psg-zurich.ch` → installation **Personnalisée** → **Git**, avec l'URL ci-dessus.
 
-| Champ | Valeur |
+Puis, dans **Manage advanced settings → Node.js** :
+
+| Champ du Manager | Valeur |
 | --- | --- |
-| Dépôt | l'URL HTTPS ci-dessus |
-| Branche | `deploy` |
-| Dossier d'exécution | `./` |
-| Commande de construction | `git fetch origin deploy && git reset --hard FETCH_HEAD` (aucun build : met juste le code à jour) |
-| Commande de lancement | `node server.js` |
-| Port d'écoute | celui proposé par le Manager (transmis à l'app via `PORT`) |
+| Node.js version | `24` |
+| Run command | `node server.js` |
+| Listening port | `3000` (transmis à l'app via `PORT`) |
+| Use a build command | coché |
+| Build command | `git fetch origin deploy && git reset --hard FETCH_HEAD` |
 
-> Si le formulaire ne propose pas de choix de branche, la commande de construction ci-dessus bascule de toute façon le code sur la branche `deploy`.
+La « build command » ne compile rien : elle remplace le code par le dernier bundle de la branche `deploy`. Ça marche quelle que soit la branche clonée à l'installation : le formulaire ne propose pas de choix de branche.
+
+> ⚠️ Ne pas utiliser les valeurs proposées pour un projet Next.js classique (`npm ci && npm run build` et `node .next/standalone/server.js`). Elles compilent sur le serveur, ce que ce projet évite volontairement. Sur la branche `deploy`, `npm ci` échoue faute de lockfile, et `server.js` est à la racine. Un `.npmrc` (`dry-run=true`) empêche aussi qu'un `npm install` accidentel efface les `node_modules` embarqués.
 
 ### 4. Variables d'environnement
 
-Dans les paramètres avancés du site (onglet Node.js), renseigner :
+À renseigner dans le Manager si une interface de variables d'environnement est disponible :
 
 ```
 DATABASE_URL=mysql://UTILISATEUR:MOT_DE_PASSE@HÔTE.myd.infomaniak.com:3306/NOM_BASE
@@ -188,7 +191,15 @@ MAIL_REPLY_TO=contact@psg-zurich.ch
 HOSTNAME=0.0.0.0
 ```
 
-Si l'interface ne propose pas de variables d'environnement, créer un fichier **`.env`** avec ce contenu à la racine du site (SSH/SFTP ou gestionnaire de fichiers) : `server.js` le charge au démarrage, et il est ignoré par Git (la commande de construction ne l'efface pas).
+Sinon (l'onglet Node.js n'en propose pas), créer un fichier **`.env`** avec ce contenu à la racine du site, via **Open the SSH console** :
+
+```bash
+cd /srv/customer/sites/psg-zurich.ch
+nano .env          # coller les variables, enregistrer
+chmod 600 .env
+```
+
+`server.js` le charge au démarrage. Il est ignoré par Git, et la build command ne l'efface pas.
 
 Activer ensuite le certificat SSL et **démarrer** l'application.
 
