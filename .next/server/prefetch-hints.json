@@ -190,6 +190,73 @@
       }
     }
   },
+  "/[locale]/connexion/mot-de-passe-oublie": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/connexion/nouveau-mot-de-passe": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/connexion": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49312,
+                "slots": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]": {
     "hints": 49216,
     "slots": {

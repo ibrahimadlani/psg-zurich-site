@@ -79,7 +79,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 25719,
+      "htmlSize": 27126,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -115,7 +115,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26842,
+      "htmlSize": 28304,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -151,7 +151,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26904,
+      "htmlSize": 28366,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -187,7 +187,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8204,
+      "htmlSize": 8208,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -217,12 +217,120 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/de/connexion": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 30332,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion",
+      "dataRoute": "/de/connexion.rsc",
+      "prefetchDataRoute": "/de/connexion.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/de/connexion/mot-de-passe-oublie": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 29545,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion/mot-de-passe-oublie",
+      "dataRoute": "/de/connexion/mot-de-passe-oublie.rsc",
+      "prefetchDataRoute": "/de/connexion/mot-de-passe-oublie.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/de/connexion/nouveau-mot-de-passe": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "static",
+      "htmlSize": 28377,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion/nouveau-mot-de-passe",
+      "dataRoute": "/de/connexion/nouveau-mot-de-passe.rsc",
+      "prefetchDataRoute": "/de/connexion/nouveau-mot-de-passe.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/de/contact": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26839,
+      "htmlSize": 28301,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -258,7 +366,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8317,
+      "htmlSize": 8297,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -293,7 +401,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26914,
+      "htmlSize": 28376,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -329,7 +437,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26790,
+      "htmlSize": 28252,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -365,7 +473,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 25513,
+      "htmlSize": 26777,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -401,7 +509,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26513,
+      "htmlSize": 27832,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -437,7 +545,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26599,
+      "htmlSize": 27918,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -473,7 +581,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8165,
+      "htmlSize": 8169,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -503,12 +611,120 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/en/connexion": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 29869,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion",
+      "dataRoute": "/en/connexion.rsc",
+      "prefetchDataRoute": "/en/connexion.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/en/connexion/mot-de-passe-oublie": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 29101,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion/mot-de-passe-oublie",
+      "dataRoute": "/en/connexion/mot-de-passe-oublie.rsc",
+      "prefetchDataRoute": "/en/connexion/mot-de-passe-oublie.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/en/connexion/nouveau-mot-de-passe": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "static",
+      "htmlSize": 27974,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion/nouveau-mot-de-passe",
+      "dataRoute": "/en/connexion/nouveau-mot-de-passe.rsc",
+      "prefetchDataRoute": "/en/connexion/nouveau-mot-de-passe.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/en/contact": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26586,
+      "htmlSize": 27905,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -544,7 +760,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8275,
+      "htmlSize": 8259,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -579,7 +795,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26623,
+      "htmlSize": 27942,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -615,7 +831,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26517,
+      "htmlSize": 27836,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -651,7 +867,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 25963,
+      "htmlSize": 27424,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -687,7 +903,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 27045,
+      "htmlSize": 28561,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -723,7 +939,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 27127,
+      "htmlSize": 28643,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -759,7 +975,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8235,
+      "htmlSize": 8239,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -789,12 +1005,120 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/fr/connexion": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 30592,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion",
+      "dataRoute": "/fr/connexion.rsc",
+      "prefetchDataRoute": "/fr/connexion.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/fr/connexion/mot-de-passe-oublie": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 29826,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion/mot-de-passe-oublie",
+      "dataRoute": "/fr/connexion/mot-de-passe-oublie.rsc",
+      "prefetchDataRoute": "/fr/connexion/mot-de-passe-oublie.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/fr/connexion/nouveau-mot-de-passe": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "static",
+      "htmlSize": 28678,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/connexion/nouveau-mot-de-passe",
+      "dataRoute": "/fr/connexion/nouveau-mot-de-passe.rsc",
+      "prefetchDataRoute": "/fr/connexion/nouveau-mot-de-passe.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/fr/contact": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 27052,
+      "htmlSize": 28568,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -830,7 +1154,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8359,
+      "htmlSize": 8338,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -865,7 +1189,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 27099,
+      "htmlSize": 28615,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -901,7 +1225,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 26983,
+      "htmlSize": 28499,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1179,6 +1503,165 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/[locale]/connexion": {
+      "experimentalPPR": true,
+      "remainingPrerenderableParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "throwOnEmptyStaticShell": false,
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/connexion(?:/)?$",
+      "dataRoute": "/[locale]/connexion.rsc",
+      "fallback": null,
+      "fallbackRootParams": [
+        "locale"
+      ],
+      "fallbackSourceRoute": "/[locale]/connexion",
+      "fallbackRouteParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "dataRouteRegex": "^/([^/]+?)/connexion\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/[locale]/connexion/mot-de-passe-oublie": {
+      "experimentalPPR": true,
+      "remainingPrerenderableParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "throwOnEmptyStaticShell": false,
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/connexion/mot\\-de\\-passe\\-oublie(?:/)?$",
+      "dataRoute": "/[locale]/connexion/mot-de-passe-oublie.rsc",
+      "fallback": null,
+      "fallbackRootParams": [
+        "locale"
+      ],
+      "fallbackSourceRoute": "/[locale]/connexion/mot-de-passe-oublie",
+      "fallbackRouteParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "dataRouteRegex": "^/([^/]+?)/connexion/mot\\-de\\-passe\\-oublie\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/[locale]/connexion/nouveau-mot-de-passe": {
+      "experimentalPPR": true,
+      "remainingPrerenderableParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "throwOnEmptyStaticShell": false,
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/connexion/nouveau\\-mot\\-de\\-passe(?:/)?$",
+      "dataRoute": "/[locale]/connexion/nouveau-mot-de-passe.rsc",
+      "fallback": null,
+      "fallbackRootParams": [
+        "locale"
+      ],
+      "fallbackSourceRoute": "/[locale]/connexion/nouveau-mot-de-passe",
+      "fallbackRouteParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "dataRouteRegex": "^/([^/]+?)/connexion/nouveau\\-mot\\-de\\-passe\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/[locale]/contact": {
       "experimentalPPR": true,
       "remainingPrerenderableParams": [
@@ -1394,8 +1877,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "eedaa7a88c13aafb252308d158d8d8f5",
-    "previewModeSigningKey": "b93f9d585f20a56d555e615029abd162619840e6e658301847ba2a8a449eac08",
-    "previewModeEncryptionKey": "28cc7f80ef744de5f538838aa7f0357bc7302b19ff409ddac413116c45c938a0"
+    "previewModeId": "49cddb08de32ff3fa0d5255a9f4fd5d1",
+    "previewModeSigningKey": "fe39470a231efb93adf3d12deb1ebe5653e3014c05f354dac96f1a707056dc51",
+    "previewModeEncryptionKey": "012660883936459b07be44a2439bbb101df03ac8931bd63d988587f057ff4fb7"
   }
 }

@@ -99,6 +99,57 @@
       ]
     },
     {
+      "page": "/[locale]/connexion",
+      "regex": "^/([^/]+?)/connexion(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/connexion(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/connexion.segments/$d$locale/connexion$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/connexion\\.segments/\\$d\\$locale/connexion(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/connexion/mot-de-passe-oublie",
+      "regex": "^/([^/]+?)/connexion/mot\\-de\\-passe\\-oublie(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/connexion/mot\\-de\\-passe\\-oublie(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/connexion/mot-de-passe-oublie.segments/$d$locale/connexion/mot-de-passe-oublie$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/connexion/mot\\-de\\-passe\\-oublie\\.segments/\\$d\\$locale/connexion/mot\\-de\\-passe\\-oublie(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/connexion/nouveau-mot-de-passe",
+      "regex": "^/([^/]+?)/connexion/nouveau\\-mot\\-de\\-passe(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/connexion/nouveau\\-mot\\-de\\-passe(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/connexion/nouveau-mot-de-passe.segments/$d$locale/connexion/nouveau-mot-de-passe$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/connexion/nouveau\\-mot\\-de\\-passe\\.segments/\\$d\\$locale/connexion/nouveau\\-mot\\-de\\-passe(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/contact",
       "regex": "^/([^/]+?)/contact(?:/)?$",
       "routeKeys": {
