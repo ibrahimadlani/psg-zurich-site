@@ -8,7 +8,7 @@ Une seule application Next.js (front, API, back-office) qui tourne dans **un seu
 | --- | --- |
 | Framework | Next.js 16 (App Router, Cache Components), TypeScript strict, `output: "standalone"` |
 | Base de données | MariaDB / MySQL via Drizzle ORM + `mysql2`, migrations `drizzle-kit` |
-| Authentification | Better Auth (adapter Drizzle), lien magique par e-mail, rôles `member` / `admin` / `superadmin` |
+| Authentification | Better Auth (adapter Drizzle), e-mail + mot de passe (réinitialisation par e-mail), rôles `member` / `admin` / `superadmin` |
 | i18n | next-intl, FR (défaut), EN et DE, URL préfixées : `/fr/…`, `/en/…`, `/de/…` |
 | UI | Tailwind CSS v4 + shadcn/ui (Radix), police Virage (PSG), thème clair/sombre |
 | Formulaires | Zod 4 + React Hook Form |
@@ -31,21 +31,25 @@ npm run db:migrate              # crée les tables
 npm run dev                     # http://localhost:3000
 ```
 
-Les e-mails envoyés en local (liens magiques) arrivent dans Mailpit : <http://localhost:8025>.
+Les e-mails envoyés en local (réinitialisation de mot de passe…) arrivent dans Mailpit : <http://localhost:8025>.
 Si `SMTP_HOST` est vide, ils sont simplement affichés dans la console.
 
 ### Devenir administrateur
 
-Les rôles ne sont jamais modifiables depuis le client. Après une première connexion par lien magique :
+L'inscription publique est fermée (les comptes naîtront du parcours d'adhésion) et les rôles ne sont jamais modifiables depuis le client. Pour créer le premier compte :
 
 ```sql
-UPDATE `user` SET role = 'superadmin' WHERE email = 'vous@exemple.ch';
+INSERT INTO `user` (id, name, email, email_verified, role)
+VALUES (UUID(), 'Prénom Nom', 'vous@exemple.ch', 1, 'superadmin');
 ```
+
+Puis ouvrir `/fr/connexion/mot-de-passe-oublie` avec cette adresse : le lien reçu par e-mail permet de choisir le mot de passe. Pour un compte existant : `UPDATE user SET role = 'superadmin' WHERE email = '…';`
 
 (en local : `docker compose exec mariadb mariadb -upsg -ppsg psg_zurich`, en production : phpMyAdmin depuis le Manager.)
 
 ## Site public et identité visuelle
 
+- Connexion : `/fr/connexion` (+ `mot-de-passe-oublie`, `nouveau-mot-de-passe`) ; `/espace-membre` et `/admin` y redirigent sans session.
 - L'accueil (`/fr`, `/en`, `/de`) est la page **« Bientôt ouvert »** (design Claude Design) : écusson + wordmark *Official Supporters Club Zurich*, sélecteur de langue, bascule clair/sombre. Les autres pages restent accessibles par URL (`/fr/espace-membre`, `/fr/admin`…).
 - Police **Virage** (fichiers dans `src/fonts/`, chargés via `next/font/local`) : `font-sans` (texte), `font-wide` et `font-narrow` (titres).
 - Thème : choix mémorisé dans `localStorage` (`psgz-theme`), sinon préférence du système ; appliqué avant le premier rendu par `ThemeScript`, sans flash.
@@ -249,5 +253,5 @@ Pour revenir en arrière : *Revert* du commit sur `main` (nouveau déploiement),
 | --- | --- |
 | 502 / site injoignable | Vérifier que le port du Manager est bien celui transmis via `PORT` et que `HOSTNAME=0.0.0.0` ; consulter la console d'exécution |
 | Encadré « Dégradé », base en erreur | `DATABASE_URL` (hôte `…myd.infomaniak.com`, mot de passe encodé en URL), droits de l'utilisateur sur la base |
-| Lien magique non reçu | Variables `SMTP_*` et `MAIL_FROM` (l'expéditeur doit correspondre au compte SMTP), logs `[mail]` |
+| E-mail de réinitialisation non reçu | Variables `SMTP_*` et `MAIL_FROM` (l'expéditeur doit correspondre au compte SMTP), logs `[mail]` |
 | `Invalid origin` à la connexion | `BETTER_AUTH_URL` doit être exactement l'URL publique (`https://psg-zurich.ch`) |

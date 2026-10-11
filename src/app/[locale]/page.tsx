@@ -13,7 +13,7 @@ export default async function ComingSoonPage() {
 
   return (
     <BrandShell>
-      <div className="flex max-w-[34rem] flex-col items-center gap-3">
+      <div className="flex max-w-[34rem] flex-col items-center gap-3 text-center">
         <span className="inline-flex items-center gap-2 font-wide text-[12px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
           <span aria-hidden className="size-1.5 rounded-full bg-brand-red" />
           {t("eyebrow")}

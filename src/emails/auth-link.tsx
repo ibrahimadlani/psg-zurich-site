@@ -11,7 +11,7 @@ import {
   Text,
 } from "react-email";
 
-export type MagicLinkEmailProps = {
+export type AuthLinkEmailProps = {
   url: string;
   locale: string;
   texts: {
@@ -26,7 +26,7 @@ export type MagicLinkEmailProps = {
 const navy = "#004170";
 const red = "#DA291C";
 
-export function MagicLinkEmail({ url, locale, texts }: MagicLinkEmailProps) {
+export function AuthLinkEmail({ url, locale, texts }: AuthLinkEmailProps) {
   return (
     <Html lang={locale}>
       <Head />

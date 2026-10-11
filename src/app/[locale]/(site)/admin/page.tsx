@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function AdminPanel() {
   const t = await getTranslations("Admin");
   const session = await getSession();
-  if (!session) return redirect({ href: "/espace-membre", locale: await getLocale() });
+  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
   if (!hasRole(session.user.role, "admin")) {
     return <p className="text-destructive">{t("forbidden")}</p>;
   }

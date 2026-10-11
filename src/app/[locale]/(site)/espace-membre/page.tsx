@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import { SignInForm } from "@/components/auth/sign-in-form";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link } from "@/i18n/navigation";
+import { Link, redirect } from "@/i18n/navigation";
 import { getSession } from "@/lib/permissions";
 import { hasRole } from "@/lib/roles";
 
@@ -18,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function MemberPanel() {
   const t = await getTranslations("MemberArea");
   const session = await getSession();
-  if (!session) return <SignInForm />;
+  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
 
   const { user } = session;
   return (

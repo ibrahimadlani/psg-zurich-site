@@ -2,34 +2,33 @@ import "server-only";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { magicLink } from "better-auth/plugins/magic-link";
 import { createTranslator, hasLocale } from "next-intl";
 import { createElement } from "react";
 import { db } from "@/db";
 import { ROLES, account, session, user, verification } from "@/db/schema";
-import { MagicLinkEmail } from "@/emails/magic-link";
+import { AuthLinkEmail } from "@/emails/auth-link";
 import { loadMessages } from "@/i18n/messages";
 import { routing } from "@/i18n/routing";
 import { sendMail } from "@/lib/mail";
 
-const MAGIC_LINK_TTL_SECONDS = 10 * 60;
+const RESET_PASSWORD_TTL_SECONDS = 60 * 60;
 
-// The sign-in form sends a localized callbackURL (/fr/… or /de/…): reuse it for the email.
-function localeFromMagicLink(url: string) {
+// The forms send a localized redirect URL (/fr/…, /en/…, /de/…): reuse it for the email.
+function localeFromAuthUrl(url: string) {
   const callbackURL = new URL(url).searchParams.get("callbackURL") ?? "";
-  const segment = callbackURL.split("/")[1];
+  const segment = decodeURIComponent(callbackURL).split("/")[1];
   return hasLocale(routing.locales, segment) ? segment : routing.defaultLocale;
 }
 
-async function sendMagicLinkEmail(email: string, url: string) {
-  const locale = localeFromMagicLink(url);
+async function sendResetPasswordEmail(email: string, url: string) {
+  const locale = localeFromAuthUrl(url);
   const messages = await loadMessages(locale);
-  const t = createTranslator({ locale, messages, namespace: "Emails.magicLink" });
+  const t = createTranslator({ locale, messages, namespace: "Emails.resetPassword" });
 
   await sendMail({
     to: email,
     subject: t("subject"),
-    react: createElement(MagicLinkEmail, {
+    react: createElement(AuthLinkEmail, {
       url,
       locale,
       texts: {
@@ -65,16 +64,17 @@ function createAuth() {
         },
       },
     },
-    plugins: [
-      magicLink({
-        expiresIn: MAGIC_LINK_TTL_SECONDS,
-        // A leaked database must not yield usable sign-in links.
-        storeToken: "hashed",
-        sendMagicLink: ({ email, url }) => sendMagicLinkEmail(email, url),
-      }),
-      // Must stay last: lets server actions set auth cookies.
-      nextCookies(),
-    ],
+    emailAndPassword: {
+      enabled: true,
+      // Accounts are created through the membership flow, not by public sign-up.
+      disableSignUp: true,
+      resetPasswordTokenExpiresIn: RESET_PASSWORD_TTL_SECONDS,
+      revokeSessionsOnPasswordReset: true,
+      // Also lets accounts without a password yet set one.
+      sendResetPassword: ({ user, url }) => sendResetPasswordEmail(user.email, url),
+    },
+    // Must stay last: lets server actions set auth cookies.
+    plugins: [nextCookies()],
   });
 }
 

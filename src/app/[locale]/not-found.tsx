@@ -7,7 +7,7 @@ export default async function NotFound() {
   const t = await getTranslations("NotFound");
   return (
     <BrandShell>
-      <div className="flex max-w-[34rem] flex-col items-center gap-3">
+      <div className="flex max-w-[34rem] flex-col items-center gap-3 text-center">
         <h1 className="font-narrow text-5xl leading-[0.95] font-extrabold uppercase italic">
           {t("title")}
         </h1>
