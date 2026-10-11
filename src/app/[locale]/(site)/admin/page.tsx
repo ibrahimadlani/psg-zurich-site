@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
+import { AnnouncementsAdmin } from "@/components/announcements/announcements-admin";
 import { DeploymentStatus } from "@/components/deployment-status";
 import { PageHeader } from "@/components/page-header";
 import { redirect } from "@/i18n/navigation";
@@ -26,6 +27,7 @@ async function AdminPanel() {
         <p className="font-medium">{t("welcome", { name: session.user.name || session.user.email })}</p>
         <p className="text-muted-foreground">{t("placeholder")}</p>
       </div>
+      <AnnouncementsAdmin />
       <DeploymentStatus />
     </div>
   );

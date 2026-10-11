@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <header className="border-b">
         <BrandBar />
         <div className="mx-auto w-full max-w-5xl px-4 pb-2">

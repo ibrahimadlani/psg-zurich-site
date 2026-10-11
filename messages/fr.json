@@ -23,6 +23,10 @@
   "ThemeToggle": {
     "label": "Changer de thème"
   },
+  "Banner": {
+    "close": "Masquer l'annonce",
+    "learnMore": "En savoir plus"
+  },
   "ComingSoon": {
     "eyebrow": "Site en construction",
     "title": "Bientôt ouvert",
@@ -128,6 +132,42 @@
     "forbidden": "Accès réservé aux administrateurs.",
     "welcome": "Bienvenue, {name}.",
     "placeholder": "Le back-office arrive bientôt. L'API d'administration est disponible sous /api/v1."
+  },
+  "AdminBanner": {
+    "title": "Bannière d'annonce",
+    "description": "Message affiché en haut de toutes les pages. Une seule annonce est active à la fois ; publier une annonce active remplace la précédente.",
+    "tone": "Type",
+    "tones": {
+      "info": "Information",
+      "maintenance": "Maintenance",
+      "urgent": "Urgent"
+    },
+    "titleFr": "Titre (FR)",
+    "messageFr": "Message (FR)",
+    "titlePlaceholder": "Site en maintenance",
+    "messagePlaceholder": "Une phrase courte, sur une ligne.",
+    "translations": "Traductions (facultatif, sinon le français est affiché)",
+    "titleEn": "Titre (EN)",
+    "messageEn": "Message (EN)",
+    "titleDe": "Titre (DE)",
+    "messageDe": "Message (DE)",
+    "linkUrl": "Lien « En savoir plus » (facultatif)",
+    "endsAt": "Fin d'affichage (facultatif)",
+    "activeNow": "Afficher immédiatement",
+    "publish": "Publier",
+    "saving": "Publication…",
+    "error": "Impossible d'enregistrer l'annonce.",
+    "invalid": "Vérifiez les champs : titre et message français obligatoires, lien valide.",
+    "status": {
+      "live": "En ligne",
+      "off": "Désactivée",
+      "expired": "Expirée"
+    },
+    "activate": "Activer",
+    "deactivate": "Désactiver",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer définitivement cette annonce ?",
+    "empty": "Aucune annonce pour l'instant."
   },
   "NotFound": {
     "title": "Page introuvable.",

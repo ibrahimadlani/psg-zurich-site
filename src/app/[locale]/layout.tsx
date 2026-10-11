@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
+import { Suspense } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
+import { AnnouncementBanner } from "@/components/announcements/announcement-banner";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeSync } from "@/components/theme-sync";
 import { routing } from "@/i18n/routing";
@@ -28,9 +30,14 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
       <head>
         <ThemeScript />
       </head>
-      <body className="min-h-full">
+      <body className="flex min-h-full flex-col">
         <ThemeSync />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Suspense fallback={null}>
+            <AnnouncementBanner />
+          </Suspense>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

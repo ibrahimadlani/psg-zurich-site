@@ -20,10 +20,12 @@ export function fail(status: number, code: string, message: string, details?: un
 }
 
 /** Wraps a route handler so every error ends up as a `{ data: null, error }` JSON response. */
-export function apiHandler(handler: (request: NextRequest) => Promise<Response>) {
-  return async (request: NextRequest) => {
+export function apiHandler<Context = unknown>(
+  handler: (request: NextRequest, context: Context) => Promise<Response>,
+) {
+  return async (request: NextRequest, context: Context) => {
     try {
-      return await handler(request);
+      return await handler(request, context);
     } catch (error) {
       if (error instanceof HttpError) return fail(error.status, error.code, error.message);
       if (error instanceof z.ZodError) {

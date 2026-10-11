@@ -23,6 +23,10 @@
   "ThemeToggle": {
     "label": "Toggle theme"
   },
+  "Banner": {
+    "close": "Hide announcement",
+    "learnMore": "Learn more"
+  },
   "ComingSoon": {
     "eyebrow": "Under construction",
     "title": "Coming soon",
@@ -128,6 +132,42 @@
     "forbidden": "Administrators only.",
     "welcome": "Welcome, {name}.",
     "placeholder": "The back office is coming soon. The admin API is available under /api/v1."
+  },
+  "AdminBanner": {
+    "title": "Announcement banner",
+    "description": "Message shown at the top of every page. Only one announcement is live at a time; publishing an active one replaces the previous.",
+    "tone": "Type",
+    "tones": {
+      "info": "Information",
+      "maintenance": "Maintenance",
+      "urgent": "Urgent"
+    },
+    "titleFr": "Title (FR)",
+    "messageFr": "Message (FR)",
+    "titlePlaceholder": "Site en maintenance",
+    "messagePlaceholder": "One short sentence, on one line.",
+    "translations": "Translations (optional, French is shown otherwise)",
+    "titleEn": "Title (EN)",
+    "messageEn": "Message (EN)",
+    "titleDe": "Title (DE)",
+    "messageDe": "Message (DE)",
+    "linkUrl": "\"Learn more\" link (optional)",
+    "endsAt": "Stop showing at (optional)",
+    "activeNow": "Show immediately",
+    "publish": "Publish",
+    "saving": "Publishing…",
+    "error": "The announcement could not be saved.",
+    "invalid": "Check the fields: French title and message are required, link must be valid.",
+    "status": {
+      "live": "Live",
+      "off": "Off",
+      "expired": "Expired"
+    },
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "delete": "Delete",
+    "confirmDelete": "Permanently delete this announcement?",
+    "empty": "No announcements yet."
   },
   "NotFound": {
     "title": "Page not found.",

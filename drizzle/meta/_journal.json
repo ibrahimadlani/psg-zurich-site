@@ -15,6 +15,13 @@
       "when": 1791750047227,
       "tag": "0001_add_en_locale",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1791762392756,
+      "tag": "0002_announcements",
+      "breakpoints": true
     }
   ]
 }

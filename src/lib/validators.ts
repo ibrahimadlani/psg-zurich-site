@@ -1,5 +1,6 @@
 import { z } from "zod";
 import {
+  ANNOUNCEMENT_TONES,
   DOCUMENT_VISIBILITIES,
   EVENT_TYPES,
   LOCALES,
@@ -115,4 +116,24 @@ export const createPollSchema = z.object({
   closesAt: dateTime.optional(),
   options: z.array(text(255)).min(2).max(20),
 });
+
+/* ------------------------------ Announcements ----------------------------- */
+
+const optionalLocalized = (max: number) =>
+  z.string().trim().max(max).optional().transform((value) => value || null);
+
+export const announcementSchema = z.object({
+  tone: z.enum(ANNOUNCEMENT_TONES).default("info"),
+  titleFr: text(80),
+  titleEn: optionalLocalized(80),
+  titleDe: optionalLocalized(80),
+  messageFr: text(240),
+  messageEn: optionalLocalized(240),
+  messageDe: optionalLocalized(240),
+  linkUrl: z.union([z.url().max(512), z.literal("")]).optional().transform((value) => value || null),
+  active: z.boolean().default(true),
+  endsAt: z.union([dateTime, z.literal("")]).optional().transform((value) => value || null),
+});
+
+export const announcementPatchSchema = z.object({ active: z.boolean() });
 

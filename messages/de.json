@@ -23,6 +23,10 @@
   "ThemeToggle": {
     "label": "Design wechseln"
   },
+  "Banner": {
+    "close": "Hinweis ausblenden",
+    "learnMore": "Mehr erfahren"
+  },
   "ComingSoon": {
     "eyebrow": "Im Aufbau",
     "title": "Bald online",
@@ -128,6 +132,42 @@
     "forbidden": "Zugriff nur für Administratoren.",
     "welcome": "Willkommen, {name}.",
     "placeholder": "Das Backoffice folgt in Kürze. Die Admin-API ist unter /api/v1 verfügbar."
+  },
+  "AdminBanner": {
+    "title": "Hinweisbanner",
+    "description": "Nachricht oben auf allen Seiten. Es ist immer nur ein Hinweis aktiv; ein neuer aktiver Hinweis ersetzt den vorherigen.",
+    "tone": "Typ",
+    "tones": {
+      "info": "Information",
+      "maintenance": "Wartung",
+      "urgent": "Dringend"
+    },
+    "titleFr": "Titel (FR)",
+    "messageFr": "Nachricht (FR)",
+    "titlePlaceholder": "Site en maintenance",
+    "messagePlaceholder": "Ein kurzer Satz, auf einer Zeile.",
+    "translations": "Übersetzungen (optional, sonst wird Französisch angezeigt)",
+    "titleEn": "Titel (EN)",
+    "messageEn": "Nachricht (EN)",
+    "titleDe": "Titel (DE)",
+    "messageDe": "Nachricht (DE)",
+    "linkUrl": "Link „Mehr erfahren“ (optional)",
+    "endsAt": "Anzeigen bis (optional)",
+    "activeNow": "Sofort anzeigen",
+    "publish": "Veröffentlichen",
+    "saving": "Wird veröffentlicht…",
+    "error": "Der Hinweis konnte nicht gespeichert werden.",
+    "invalid": "Bitte Felder prüfen: Französischer Titel und Text sind Pflicht, Link muss gültig sein.",
+    "status": {
+      "live": "Online",
+      "off": "Deaktiviert",
+      "expired": "Abgelaufen"
+    },
+    "activate": "Aktivieren",
+    "deactivate": "Deaktivieren",
+    "delete": "Löschen",
+    "confirmDelete": "Diesen Hinweis endgültig löschen?",
+    "empty": "Noch keine Hinweise."
   },
   "NotFound": {
     "title": "Seite nicht gefunden.",

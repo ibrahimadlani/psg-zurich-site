@@ -395,6 +395,33 @@ export const pollVotes = mysqlTable(
 );
 
 /* -------------------------------------------------------------------------- */
+/*                         Announcements (top banner)                         */
+/* -------------------------------------------------------------------------- */
+
+export const ANNOUNCEMENT_TONES = ["info", "maintenance", "urgent"] as const;
+
+// EN/DE texts are optional and fall back to FR.
+export const announcements = mysqlTable(
+  "announcements",
+  {
+    id: id(),
+    tone: mysqlEnum("tone", ANNOUNCEMENT_TONES).default("info").notNull(),
+    titleFr: varchar("title_fr", { length: 80 }).notNull(),
+    titleEn: varchar("title_en", { length: 80 }),
+    titleDe: varchar("title_de", { length: 80 }),
+    messageFr: varchar("message_fr", { length: 240 }).notNull(),
+    messageEn: varchar("message_en", { length: 240 }),
+    messageDe: varchar("message_de", { length: 240 }),
+    linkUrl: varchar("link_url", { length: 512 }),
+    active: boolean("active").default(false).notNull(),
+    endsAt: datetime("ends_at"),
+    createdById: fk("created_by_id").references(() => user.id, { onDelete: "set null" }),
+    ...timestamps(),
+  },
+  (t) => [index("announcements_active_idx").on(t.active, t.updatedAt)],
+);
+
+/* -------------------------------------------------------------------------- */
 /*                                  Audit log                                 */
 /* -------------------------------------------------------------------------- */
 

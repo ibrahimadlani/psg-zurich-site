@@ -49,6 +49,7 @@ Puis ouvrir `/fr/connexion/mot-de-passe-oublie` avec cette adresse : le lien re�
 
 ## Site public et identité visuelle
 
+- **Bannière d'annonce** en haut de toutes les pages (maintenance, info, urgence), pilotée depuis `/fr/admin` → « Bannière d'annonce » : titre en gras et message sur une ligne (FR obligatoire, EN/DE facultatifs), lien et date de fin facultatifs. Une seule annonce active à la fois ; chaque visiteur peut la masquer (✕), elle réapparaît dès qu'une nouvelle annonce est publiée. API : `/api/v1/announcements` (admin). Au premier déploiement, la migration `0002` active le message « Site en maintenance ».
 - Connexion : `/fr/connexion` (+ `mot-de-passe-oublie`, `nouveau-mot-de-passe`) ; `/espace-membre` et `/admin` y redirigent sans session.
 - L'accueil (`/fr`, `/en`, `/de`) est la page **« Bientôt ouvert »** (design Claude Design) : écusson + wordmark *Official Supporters Club Zurich*, sélecteur de langue, bascule clair/sombre. Les autres pages restent accessibles par URL (`/fr/espace-membre`, `/fr/admin`…).
 - Police **Virage** (fichiers dans `src/fonts/`, chargés via `next/font/local`) : `font-sans` (texte), `font-wide` et `font-narrow` (titres).
@@ -132,6 +133,7 @@ Pagination : `?limit=20&offset=0` (max 100). Les créations sont validées par Z
 | `/api/v1/polls` | membres (brouillons visibles des admins) | admin |
 | `/api/v1/members` | admin (données personnelles) | admin |
 | `/api/v1/subscribers` | admin | admin |
+| `/api/v1/announcements` | admin | admin (+ `PATCH`/`DELETE` sur `/{id}`) |
 
 Codes d'erreur : `400 validation_error | invalid_json`, `401 unauthorized`, `403 forbidden`, `409 conflict`, `500 internal_error`.
 
