@@ -35,7 +35,7 @@ f:I[37457,["$d"],"default"]
 22:C
 25:X
 25:T6,locale25:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mitgliedschaft · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Werde Mitglied im offiziellen PSG-Fanclub in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L20","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@21","v":"$22","s":"$12"}},"a":"$@23","u":"$@24","b":"L275f92rMc1BnKodD4dUj","r":"$25"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mitgliedschaft · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Werde Mitglied im offiziellen PSG-Fanclub in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L20","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@21","v":"$22","s":"$12"}},"a":"$@23","u":"$@24","b":"5InBEd22WnD7RJtLz75vJ","r":"$25"}
 19:null
 24:false
 23:null
