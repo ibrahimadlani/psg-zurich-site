@@ -1,0 +1,14 @@
+import { existsSync } from "node:fs";
+import { defineConfig } from "drizzle-kit";
+
+if (existsSync(".env")) process.loadEnvFile(".env");
+
+export default defineConfig({
+  dialect: "mysql",
+  schema: "./src/db/schema.ts",
+  out: "./drizzle",
+  // Only needed by `drizzle-kit studio` / `push`; `generate` works offline.
+  dbCredentials: { url: process.env.DATABASE_URL ?? "" },
+  strict: true,
+  verbose: true,
+});
