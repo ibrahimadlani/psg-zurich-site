@@ -130,8 +130,7 @@
     "placeholder": "The back office is coming soon. The admin API is available under /api/v1."
   },
   "NotFound": {
-    "title": "Page not found",
-    "description": "This page does not exist or has been moved.",
+    "title": "Page not found.",
     "backHome": "Back to home"
   },
   "Footer": {

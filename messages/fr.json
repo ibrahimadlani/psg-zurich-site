@@ -130,8 +130,7 @@
     "placeholder": "Le back-office arrive bientôt. L'API d'administration est disponible sous /api/v1."
   },
   "NotFound": {
-    "title": "Page introuvable",
-    "description": "Cette page n'existe pas ou a été déplacée.",
+    "title": "Page introuvable.",
     "backHome": "Retour à l'accueil"
   },
   "Footer": {

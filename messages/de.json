@@ -130,8 +130,7 @@
     "placeholder": "Das Backoffice folgt in Kürze. Die Admin-API ist unter /api/v1 verfügbar."
   },
   "NotFound": {
-    "title": "Seite nicht gefunden",
-    "description": "Diese Seite existiert nicht oder wurde verschoben.",
+    "title": "Seite nicht gefunden.",
     "backHome": "Zur Startseite"
   },
   "Footer": {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ThemeScript } from "@/components/theme-script";
+import { ThemeSync } from "@/components/theme-sync";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import "../globals.css";
@@ -28,6 +29,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
         <ThemeScript />
       </head>
       <body className="min-h-full">
+        <ThemeSync />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>
