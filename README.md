@@ -9,8 +9,8 @@ Une seule application Next.js (front, API, back-office) qui tourne dans **un seu
 | Framework | Next.js 16 (App Router, Cache Components), TypeScript strict, `output: "standalone"` |
 | Base de données | MariaDB / MySQL via Drizzle ORM + `mysql2`, migrations `drizzle-kit` |
 | Authentification | Better Auth (adapter Drizzle), lien magique par e-mail, rôles `member` / `admin` / `superadmin` |
-| i18n | next-intl, FR (défaut) et DE, URL préfixées : `/fr/…`, `/de/…` |
-| UI | Tailwind CSS v4 + shadcn/ui (Radix) |
+| i18n | next-intl, FR (défaut), EN et DE, URL préfixées : `/fr/…`, `/en/…`, `/de/…` |
+| UI | Tailwind CSS v4 + shadcn/ui (Radix), police Virage (PSG), thème clair/sombre |
 | Formulaires | Zod 4 + React Hook Form |
 | E-mails | Nodemailer (SMTP Infomaniak) + React Email |
 | Runtime | Node 24 (`.nvmrc`), npm |
@@ -43,6 +43,13 @@ UPDATE `user` SET role = 'superadmin' WHERE email = 'vous@exemple.ch';
 ```
 
 (en local : `docker compose exec mariadb mariadb -upsg -ppsg psg_zurich`, en production : phpMyAdmin depuis le Manager.)
+
+## Site public et identité visuelle
+
+- L'accueil (`/fr`, `/en`, `/de`) est la page **« Bientôt ouvert »** (design Claude Design) : écusson + wordmark *Official Supporters Club Zurich*, sélecteur de langue, bascule clair/sombre. Les autres pages restent accessibles par URL (`/fr/espace-membre`, `/fr/admin`…).
+- Police **Virage** (fichiers dans `src/fonts/`, chargés via `next/font/local`) : `font-sans` (texte), `font-wide` et `font-narrow` (titres).
+- Thème : choix mémorisé dans `localStorage` (`psgz-theme`), sinon préférence du système ; appliqué avant le premier rendu par `ThemeScript`, sans flash.
+- La langue est détectée depuis le navigateur à la première visite (`/` → `/fr`, `/en` ou `/de`).
 
 ## Variables d'environnement
 
@@ -83,21 +90,26 @@ Toutes documentées dans [`.env.example`](.env.example). Aucun secret n'est vers
 ```
 src/
 ├── app/
-│   ├── [locale]/              pages localisées (layout racine, accueil, actualites, matchs,
-│   │                          evenements, adhesion, contact, espace-membre, admin)
+│   ├── [locale]/              layout racine (polices, thème) + accueil « Bientôt ouvert »
+│   │   ├── (site)/            pages avec la navigation : actualites, matchs, evenements,
+│   │   │                      adhesion, contact, espace-membre, admin
+│   │   └── not-found.tsx
 │   ├── api/
 │   │   ├── auth/[...all]/     Better Auth
 │   │   ├── health/            { status, version, db, time } — teste réellement la base (SELECT 1)
 │   │   └── v1/                une route par ressource (GET liste, POST réservé aux admins)
 │   └── global-not-found.tsx   404 des URL hors routes
-├── components/                navigation, sélecteur FR/DE, encadré « Statut du déploiement », ui/ (shadcn)
+├── components/                logo, navigation, sélecteurs de langue et de thème, encadré
+│                              « Statut du déploiement », ui/ (shadcn)
+├── fonts/                     Virage (woff2), chargée par lib/fonts.ts
 ├── db/                        schema.ts (toutes les tables), index.ts (pool mysql2)
 ├── emails/                    templates React Email
 ├── i18n/                      routing, navigation, request (next/root-params)
 ├── lib/                       auth, auth-client, mail, permissions (requireRole), audit, api, validators
 ├── instrumentation.ts         migrations automatiques au démarrage du serveur
 └── proxy.ts                   redirection vers /fr ou /de (next-intl)
-messages/                      fr.json, de.json — tous les textes de l'interface
+messages/                      fr.json, en.json, de.json — tous les textes de l'interface
+public/brand/                  écusson du PSG
 drizzle/                       migrations SQL versionnées
 scripts/                       migrate.mjs, bundle-standalone.sh
 ```
@@ -132,7 +144,7 @@ Codes d'erreur : `400 validation_error | invalid_json`, `401 unauthorized`, `403
 - **`deploy.yml`** — sur chaque push sur `main` (ou à la main via *Run workflow*) :
   1. lint, typecheck, build standalone (le SHA du commit est injecté dans la version) ;
   2. assemble le bundle : `.next/standalone` + `public/` + `.next/static` + `scripts/migrate.mjs` + `drizzle/`, sans `sharp` ni dépendances de dev, avec un `package.json` sans dépendances ;
-  3. **smoke test** du bundle, isolé du dépôt, contre MariaDB 10.6 : démarrage, migrations automatiques, `/api/health` (base `ok` + bon SHA), pages FR/DE ;
+  3. **smoke test** du bundle, isolé du dépôt, contre MariaDB 10.6 : démarrage, migrations automatiques, `/api/health` (base `ok` + bon SHA), pages FR/EN/DE ;
   4. publie le bundle sur la branche **`deploy`** (un commit par déploiement, historique linéaire).
 
 ---
@@ -205,7 +217,11 @@ Activer ensuite le certificat SSL et **démarrer** l'application.
 
 ### 5. Vérifier
 
-Ouvrir <https://psg-zurich.ch> → redirection vers `/fr` → l'encadré **Statut du déploiement** doit afficher *Opérationnel*, le SHA du dernier commit de `main` et *Base de données : Connectée*. Même information en JSON sur <https://psg-zurich.ch/api/health>.
+```bash
+curl -s https://psg-zurich.ch/api/health
+```
+
+Doit renvoyer `"status":"ok"`, `"db":"ok"` et, dans `version`, le SHA du dernier commit de `main`. <https://psg-zurich.ch> affiche la page « Bientôt ouvert » ; une fois connecté en admin, l'encadré **Statut du déploiement** est aussi visible sur `/fr/admin`.
 
 ### Migrations
 
@@ -223,7 +239,7 @@ Ouvrir <https://psg-zurich.ch> → redirection vers `/fr` → l'encadré **Statu
 1. Pousser (ou merger une PR) sur `main`.
 2. Attendre le workflow **Deploy** (onglet *Actions*) : il met à jour la branche `deploy`.
 3. Dans le Manager : relancer la **construction** (qui fait le `git fetch` / `git reset`), puis **redémarrer** l'application.
-4. Vérifier le SHA affiché dans l'encadré « Statut du déploiement ».
+4. Vérifier le SHA renvoyé par `/api/health` (ou l'encadré « Statut du déploiement » de `/fr/admin`).
 
 Pour revenir en arrière : *Revert* du commit sur `main` (nouveau déploiement), ou `git reset --hard <commit-de-deploy>` en SSH puis redémarrage.
 

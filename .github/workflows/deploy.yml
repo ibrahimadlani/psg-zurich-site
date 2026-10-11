@@ -57,7 +57,7 @@ jobs:
       - name: Assemble the bundle
         run: scripts/bundle-standalone.sh "$RUNNER_TEMP/bundle"
 
-      - name: Smoke test the bundle (migrations at boot, health, pages)
+      - name: Smoke test the bundle (migrations at boot, health, FR/EN/DE pages)
         working-directory: ${{ runner.temp }}/bundle
         env:
           PORT: "3000"
@@ -83,8 +83,9 @@ jobs:
             if (health.db !== "ok") throw new Error("database is not reachable");
             if (health.version !== expected) throw new Error(`version ${health.version} != ${expected}`);
           '
-          curl -fsS -o /dev/null http://127.0.0.1:3000/fr
-          curl -fsS -o /dev/null http://127.0.0.1:3000/de
+          for locale in fr en de; do
+            curl -fsS -o /dev/null "http://127.0.0.1:3000/$locale"
+          done
           curl -fsS http://127.0.0.1:3000/api/v1/posts
 
           # Running the CLI again must be a no-op.
