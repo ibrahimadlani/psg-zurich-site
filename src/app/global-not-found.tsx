@@ -17,7 +17,7 @@ export default function GlobalNotFound() {
         <ThemeScript />
       </head>
       <body className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden p-6 text-center leading-[normal]">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-dots" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 bg-diagonal" />
         <Image src="/brand/psg-crest.svg" alt="" width={64} height={64} className="relative" />
         <h1 className="relative font-narrow text-6xl leading-[0.95] font-extrabold uppercase italic">
           404

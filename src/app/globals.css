@@ -11,6 +11,7 @@
     --font-wide: var(--font-virage-wide), ui-sans-serif, system-ui, sans-serif;
     --font-narrow: var(--font-virage-narrow), ui-sans-serif, system-ui, sans-serif;
     --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+    --color-pattern: var(--pattern);
     --shadow-brand: var(--brand-shadow);
     --color-segment: var(--segment);
     --color-segment-foreground: var(--segment-foreground);
@@ -147,9 +148,9 @@
     }
 }
 
-/* Dotted backdrop fading out from the centre of the page. */
-@utility bg-dots {
-  background-image: radial-gradient(var(--pattern) 1.2px, transparent 1.6px);
-  background-size: 22px 22px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 100%);
+/* Diagonal-line backdrop fading out from the centre of the page. */
+@utility bg-diagonal {
+  background-image: repeating-linear-gradient(135deg, var(--pattern) 0 1px, transparent 1px 14px);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 100%);
 }
