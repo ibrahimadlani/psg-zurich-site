@@ -11,7 +11,7 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
 
   return (
-    <div role="group" aria-label={t("label")} className="inline-flex rounded-md border p-0.5">
+    <div role="group" aria-label={t("label")} className="inline-flex rounded-[6px] border bg-card p-0.5">
       {routing.locales.map((locale) => (
         <Link
           key={locale}
@@ -21,7 +21,7 @@ export function LocaleSwitcher() {
           title={t(locale)}
           aria-current={locale === current ? "true" : undefined}
           className={cn(
-            "rounded px-2.5 py-1 text-xs font-semibold uppercase text-muted-foreground transition-colors hover:text-foreground",
+            "rounded-[4px] px-2.5 py-1 font-wide text-[11px] leading-4 font-semibold uppercase text-muted-foreground transition-colors hover:text-foreground",
             locale === current && "bg-primary text-primary-foreground hover:text-primary-foreground",
           )}
         >

@@ -17,11 +17,16 @@
   "LocaleSwitcher": {
     "label": "Langue",
     "fr": "Français",
+    "en": "English",
     "de": "Deutsch"
   },
-  "Home": {
-    "tagline": "Le fan-club officiel du Paris Saint-Germain à Zurich",
-    "intro": "Watch parties, déplacements, matchs entre membres : bientôt toute la vie de l'association ici."
+  "ThemeToggle": {
+    "label": "Changer de thème"
+  },
+  "ComingSoon": {
+    "eyebrow": "Site en construction",
+    "title": "Bientôt ouvert",
+    "body": "Le site du fan-club officiel du Paris Saint-Germain à Zurich arrive bientôt. En attendant, écrivez-nous :"
   },
   "DeploymentStatus": {
     "title": "Statut du déploiement",

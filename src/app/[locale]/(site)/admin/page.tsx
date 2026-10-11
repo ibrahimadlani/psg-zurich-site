@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
+import { DeploymentStatus } from "@/components/deployment-status";
 import { PageHeader } from "@/components/page-header";
 import { redirect } from "@/i18n/navigation";
 import { getSession } from "@/lib/permissions";
@@ -20,9 +21,12 @@ async function AdminPanel() {
   }
 
   return (
-    <div className="space-y-2">
-      <p className="font-medium">{t("welcome", { name: session.user.name || session.user.email })}</p>
-      <p className="text-muted-foreground">{t("placeholder")}</p>
+    <div className="space-y-8">
+      <div className="space-y-2">
+        <p className="font-medium">{t("welcome", { name: session.user.name || session.user.email })}</p>
+        <p className="text-muted-foreground">{t("placeholder")}</p>
+      </div>
+      <DeploymentStatus />
     </div>
   );
 }

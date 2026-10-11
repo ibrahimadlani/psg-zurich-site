@@ -1,19 +1,34 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { DeploymentStatus } from "@/components/deployment-status";
+import { BrandShell } from "@/components/brand-shell";
 
-export default async function HomePage() {
-  const t = await getTranslations("Home");
+export async function generateMetadata(): Promise<Metadata> {
+  const [t, site] = await Promise.all([getTranslations("ComingSoon"), getTranslations("Metadata")]);
+  // The layout's title template only applies to child segments, not to this page.
+  return { title: { absolute: `${t("title")} · ${site("title")}` } };
+}
+
+export default async function ComingSoonPage() {
+  const t = await getTranslations("ComingSoon");
 
   return (
-    <div className="space-y-10">
-      <section className="space-y-4 rounded-xl bg-primary px-6 py-12 text-primary-foreground md:px-10">
-        <p className="text-5xl font-black tracking-tight md:text-6xl">
-          PSG <span className="text-brand-red">Zurich</span>
-        </p>
-        <h1 className="text-xl font-semibold md:text-2xl">{t("tagline")}</h1>
-        <p className="max-w-2xl text-primary-foreground/80">{t("intro")}</p>
-      </section>
-      <DeploymentStatus />
-    </div>
+    <BrandShell>
+      <div className="flex max-w-[34rem] flex-col items-center gap-3">
+        <span className="inline-flex items-center gap-2 font-wide text-[12px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
+          <span aria-hidden className="size-1.5 rounded-full bg-brand-red" />
+          {t("eyebrow")}
+        </span>
+        <h1 className="font-narrow text-[length:clamp(48px,9vw,88px)] leading-[0.95] font-extrabold tracking-normal text-balance uppercase italic">
+          {t("title")}
+        </h1>
+        <p className="text-[17px] leading-[1.55] text-pretty text-muted-foreground">{t("body")}</p>
+        <a
+          href="mailto:contact@psg-zurich.ch"
+          className="mt-3 border-b pb-[3px] font-wide text-[15px] tracking-[0.02em] text-foreground transition-colors hover:border-brand-red"
+        >
+          contact@psg-zurich.ch
+        </a>
+      </div>
+    </BrandShell>
   );
 }

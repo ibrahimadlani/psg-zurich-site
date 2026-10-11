@@ -17,11 +17,16 @@
   "LocaleSwitcher": {
     "label": "Sprache",
     "fr": "Français",
+    "en": "English",
     "de": "Deutsch"
   },
-  "Home": {
-    "tagline": "Der offizielle Fanclub von Paris Saint-Germain in Zürich",
-    "intro": "Watch Partys, Auswärtsfahrten, Spiele unter Mitgliedern: Bald findest du hier alles rund um den Verein."
+  "ThemeToggle": {
+    "label": "Design wechseln"
+  },
+  "ComingSoon": {
+    "eyebrow": "Im Aufbau",
+    "title": "Bald online",
+    "body": "Die Website des offiziellen Fanclubs von Paris Saint-Germain in Zürich ist bald da. Bis dahin schreib uns:"
   },
   "DeploymentStatus": {
     "title": "Deployment-Status",
