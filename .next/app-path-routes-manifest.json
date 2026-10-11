@@ -15,6 +15,8 @@
   "/_not-found/page": "/_not-found",
   "/api/auth/[...all]/route": "/api/auth/[...all]",
   "/api/health/route": "/api/health",
+  "/api/v1/announcements/[id]/route": "/api/v1/announcements/[id]",
+  "/api/v1/announcements/route": "/api/v1/announcements",
   "/api/v1/documents/route": "/api/v1/documents",
   "/api/v1/events/route": "/api/v1/events",
   "/api/v1/matches/route": "/api/v1/matches",

@@ -15,6 +15,8 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js",
   "/api/health/route": "app/api/health/route.js",
+  "/api/v1/announcements/[id]/route": "app/api/v1/announcements/[id]/route.js",
+  "/api/v1/announcements/route": "app/api/v1/announcements/route.js",
   "/api/v1/documents/route": "app/api/v1/documents/route.js",
   "/api/v1/events/route": "app/api/v1/events/route.js",
   "/api/v1/matches/route": "app/api/v1/matches/route.js",

@@ -31,6 +31,14 @@
       "namedRegex": "^/api/auth/(?<nxtPall>.+?)(?:/)?$"
     },
     {
+      "page": "/api/v1/announcements/[id]",
+      "regex": "^/api/v1/announcements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/announcements/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/[locale]",
       "regex": "^/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -312,6 +320,12 @@
       "regex": "^/api/health(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/health(?:/)?$"
+    },
+    {
+      "page": "/api/v1/announcements",
+      "regex": "^/api/v1/announcements(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/announcements(?:/)?$"
     },
     {
       "page": "/api/v1/documents",

@@ -2,7 +2,7 @@
   "version": 1,
   "config": {
     "env": {
-      "BUILD_COMMIT": "5de76ad"
+      "BUILD_COMMIT": "f60e16b"
     },
     "webpack": null,
     "typescript": {

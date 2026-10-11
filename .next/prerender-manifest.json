@@ -77,9 +77,9 @@
     "/de": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 26655,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 7195,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -100,7 +100,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]",
       "dataRoute": "/de.rsc",
-      "prefetchDataRoute": "/de.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -113,9 +112,9 @@
     "/de/actualites": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28092,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8168,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -136,7 +135,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/actualites",
       "dataRoute": "/de/actualites.rsc",
-      "prefetchDataRoute": "/de/actualites.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -149,9 +147,9 @@
     "/de/adhesion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28154,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8198,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -172,7 +170,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/adhesion",
       "dataRoute": "/de/adhesion.rsc",
-      "prefetchDataRoute": "/de/adhesion.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -187,7 +184,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8208,
+      "htmlSize": 8334,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -220,9 +217,9 @@
     "/de/connexion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 30133,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 9581,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -243,7 +240,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion",
       "dataRoute": "/de/connexion.rsc",
-      "prefetchDataRoute": "/de/connexion.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -256,9 +252,9 @@
     "/de/connexion/mot-de-passe-oublie": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 29346,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8263,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -279,7 +275,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion/mot-de-passe-oublie",
       "dataRoute": "/de/connexion/mot-de-passe-oublie.rsc",
-      "prefetchDataRoute": "/de/connexion/mot-de-passe-oublie.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -293,8 +288,8 @@
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
-      "compute": "static",
-      "htmlSize": 28178,
+      "compute": "resuming",
+      "htmlSize": 7158,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -315,7 +310,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion/nouveau-mot-de-passe",
       "dataRoute": "/de/connexion/nouveau-mot-de-passe.rsc",
-      "prefetchDataRoute": "/de/connexion/nouveau-mot-de-passe.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -328,9 +322,9 @@
     "/de/contact": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28089,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8165,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -351,7 +345,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/contact",
       "dataRoute": "/de/contact.rsc",
-      "prefetchDataRoute": "/de/contact.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -366,7 +359,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8297,
+      "htmlSize": 8353,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -399,9 +392,9 @@
     "/de/evenements": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28164,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8204,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -422,7 +415,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/evenements",
       "dataRoute": "/de/evenements.rsc",
-      "prefetchDataRoute": "/de/evenements.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -435,9 +427,9 @@
     "/de/matchs": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28040,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8140,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -458,7 +450,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/matchs",
       "dataRoute": "/de/matchs.rsc",
-      "prefetchDataRoute": "/de/matchs.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -471,9 +462,9 @@
     "/en": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 26320,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 7212,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -494,7 +485,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]",
       "dataRoute": "/en.rsc",
-      "prefetchDataRoute": "/en.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -507,9 +497,9 @@
     "/en/actualites": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 27634,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8116,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -530,7 +520,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/actualites",
       "dataRoute": "/en/actualites.rsc",
-      "prefetchDataRoute": "/en/actualites.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -543,9 +532,9 @@
     "/en/adhesion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 27720,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8158,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -566,7 +555,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/adhesion",
       "dataRoute": "/en/adhesion.rsc",
-      "prefetchDataRoute": "/en/adhesion.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -581,7 +569,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8169,
+      "htmlSize": 8295,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -614,9 +602,9 @@
     "/en/connexion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 29684,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 9531,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -637,7 +625,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion",
       "dataRoute": "/en/connexion.rsc",
-      "prefetchDataRoute": "/en/connexion.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -650,9 +637,9 @@
     "/en/connexion/mot-de-passe-oublie": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28916,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8232,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -673,7 +660,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion/mot-de-passe-oublie",
       "dataRoute": "/en/connexion/mot-de-passe-oublie.rsc",
-      "prefetchDataRoute": "/en/connexion/mot-de-passe-oublie.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -687,8 +673,8 @@
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
-      "compute": "static",
-      "htmlSize": 27789,
+      "compute": "resuming",
+      "htmlSize": 7148,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -709,7 +695,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion/nouveau-mot-de-passe",
       "dataRoute": "/en/connexion/nouveau-mot-de-passe.rsc",
-      "prefetchDataRoute": "/en/connexion/nouveau-mot-de-passe.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -722,9 +707,9 @@
     "/en/contact": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 27707,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8151,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -745,7 +730,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/contact",
       "dataRoute": "/en/contact.rsc",
-      "prefetchDataRoute": "/en/contact.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -760,7 +744,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8259,
+      "htmlSize": 8315,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -793,9 +777,9 @@
     "/en/evenements": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 27744,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8176,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -816,7 +800,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/evenements",
       "dataRoute": "/en/evenements.rsc",
-      "prefetchDataRoute": "/en/evenements.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -829,9 +812,9 @@
     "/en/matchs": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 27638,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8116,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -852,7 +835,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/matchs",
       "dataRoute": "/en/matchs.rsc",
-      "prefetchDataRoute": "/en/matchs.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -865,9 +847,9 @@
     "/fr": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 26961,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 7251,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -888,7 +870,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]",
       "dataRoute": "/fr.rsc",
-      "prefetchDataRoute": "/fr.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -901,9 +882,9 @@
     "/fr/actualites": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28357,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8212,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -924,7 +905,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/actualites",
       "dataRoute": "/fr/actualites.rsc",
-      "prefetchDataRoute": "/fr/actualites.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -937,9 +917,9 @@
     "/fr/adhesion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28439,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8252,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -960,7 +940,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/adhesion",
       "dataRoute": "/fr/adhesion.rsc",
-      "prefetchDataRoute": "/fr/adhesion.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -975,7 +954,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8239,
+      "htmlSize": 8365,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1008,9 +987,9 @@
     "/fr/connexion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 30401,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 9627,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1031,7 +1010,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion",
       "dataRoute": "/fr/connexion.rsc",
-      "prefetchDataRoute": "/fr/connexion.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -1044,9 +1022,9 @@
     "/fr/connexion/mot-de-passe-oublie": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 29635,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8309,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1067,7 +1045,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion/mot-de-passe-oublie",
       "dataRoute": "/fr/connexion/mot-de-passe-oublie.rsc",
-      "prefetchDataRoute": "/fr/connexion/mot-de-passe-oublie.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -1081,8 +1058,8 @@
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
-      "compute": "static",
-      "htmlSize": 28487,
+      "compute": "resuming",
+      "htmlSize": 7218,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1103,7 +1080,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/connexion/nouveau-mot-de-passe",
       "dataRoute": "/fr/connexion/nouveau-mot-de-passe.rsc",
-      "prefetchDataRoute": "/fr/connexion/nouveau-mot-de-passe.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -1116,9 +1092,9 @@
     "/fr/contact": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28364,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8209,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1139,7 +1115,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/contact",
       "dataRoute": "/fr/contact.rsc",
-      "prefetchDataRoute": "/fr/contact.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -1154,7 +1129,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8338,
+      "htmlSize": 8394,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1187,9 +1162,9 @@
     "/fr/evenements": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28411,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8234,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1210,7 +1185,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/evenements",
       "dataRoute": "/fr/evenements.rsc",
-      "prefetchDataRoute": "/fr/evenements.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -1223,9 +1197,9 @@
     "/fr/matchs": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 28295,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8174,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1246,7 +1220,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/matchs",
       "dataRoute": "/fr/matchs.rsc",
-      "prefetchDataRoute": "/fr/matchs.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -1296,9 +1269,9 @@
       "throwOnEmptyStaticShell": true,
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "shell",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 1227,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 899,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -1343,9 +1316,9 @@
       "throwOnEmptyStaticShell": true,
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "shell",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 1227,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 899,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -1390,9 +1363,9 @@
       "throwOnEmptyStaticShell": true,
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "shell",
-      "response": "complete",
-      "compute": "static",
-      "htmlSize": 1227,
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 899,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -2075,8 +2048,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "23d4e2962a761f971b0a17c68f7f452f",
-    "previewModeSigningKey": "5c1f135bb85176f7dc679cf57b41a4d04e40235d8ca76733983d33febe38e9e2",
-    "previewModeEncryptionKey": "9b81d9938245b89faa9bfafba413674223eab51d47bff2b7f7f46a894e8e8f7f"
+    "previewModeId": "311e7153303be835e114e792c5af6cdf",
+    "previewModeSigningKey": "25e335eaf43ff4aec98866e88658d63fee753c701b433a166f470bc38ce45f34",
+    "previewModeEncryptionKey": "49186595410aa74cb1069632edb7a8ca1bd0d98e5695e007e8d37e6dfb8b1144"
   }
 }
