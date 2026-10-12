@@ -36,7 +36,7 @@ Si `SMTP_HOST` est vide, ils sont simplement affichés dans la console.
 
 ### Devenir administrateur
 
-L'inscription publique est fermée (les comptes naîtront du parcours d'adhésion) et les rôles ne sont jamais modifiables depuis le client. Pour créer le premier compte :
+Les comptes se créent uniquement via le parcours d'adhésion (`/fr/adhesion`, l'inscription Better Auth publique est désactivée) et les rôles ne sont jamais modifiables depuis le client. Pour créer le premier compte :
 
 ```sql
 INSERT INTO `user` (id, name, email, email_verified, role)
@@ -126,6 +126,7 @@ Pagination : `?limit=20&offset=0` (max 100). Les créations sont validées par Z
 
 | Ressource | GET | POST |
 | --- | --- | --- |
+| `/api/v1/membership` | — | **public** : adhésion (compte + fiche membre `pending`, connecte le nouveau membre) |
 | `/api/v1/posts` | public — articles publiés (`?locale=fr\|de`) | admin |
 | `/api/v1/matches` | public | admin |
 | `/api/v1/events` | public | admin |

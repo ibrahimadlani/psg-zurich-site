@@ -66,13 +66,15 @@ function createAuth() {
     },
     emailAndPassword: {
       enabled: true,
-      // Accounts are created through the membership flow, not by public sign-up.
-      disableSignUp: true,
+      // Sign-up only happens server-side in the membership flow (/api/v1/membership):
+      // the public HTTP endpoint is disabled below.
+      disableSignUp: false,
       resetPasswordTokenExpiresIn: RESET_PASSWORD_TTL_SECONDS,
       revokeSessionsOnPasswordReset: true,
       // Also lets accounts without a password yet set one.
       sendResetPassword: ({ user, url }) => sendResetPasswordEmail(user.email, url),
     },
+    disabledPaths: ["/sign-up/email"],
     // Must stay last: lets server actions set auth cookies.
     plugins: [nextCookies()],
   });

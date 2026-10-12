@@ -137,3 +137,15 @@ export const announcementSchema = z.object({
 
 export const announcementPatchSchema = z.object({ active: z.boolean() });
 
+/* ------------------------------- Membership ------------------------------- */
+
+export const membershipSignupSchema = z.object({
+  firstName: text(100),
+  lastName: text(100),
+  email: z.email().max(255).transform((email) => email.toLowerCase()),
+  phone: optionalText(32),
+  city: optionalText(100),
+  password: z.string().min(8).max(128),
+  acceptTerms: z.literal(true),
+});
+
