@@ -208,7 +208,12 @@
     "backHome": "Retour à l'accueil"
   },
   "Footer": {
-    "tagline": "Association officielle de supporters, certifiée par le Paris Saint-Germain."
+    "tagline": "Association officielle de supporters, certifiée par le Paris Saint-Germain.",
+    "club": "Le club",
+    "join": "Nous rejoindre",
+    "contact": "Contact",
+    "location": "Zurich, Suisse",
+    "official": "Supporters Club officiel du Paris Saint-Germain"
   },
   "Emails": {
     "resetPassword": {

@@ -208,7 +208,12 @@
     "backHome": "Zur Startseite"
   },
   "Footer": {
-    "tagline": "Offizieller Fanclub, zertifiziert von Paris Saint-Germain."
+    "tagline": "Offizieller Fanclub, zertifiziert von Paris Saint-Germain.",
+    "club": "Der Club",
+    "join": "Mitmachen",
+    "contact": "Kontakt",
+    "location": "Zürich, Schweiz",
+    "official": "Offizieller Supporters Club von Paris Saint-Germain"
   },
   "Emails": {
     "resetPassword": {
