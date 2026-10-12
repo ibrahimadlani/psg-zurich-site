@@ -1,5 +1,5 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/1u5olzoilm1hn.js"
+4:"/_next/static/chunks/131c9cohmrtz-.js"
 5:"/_next/static/chunks/450nfjx_hm5n1.js"
 6:"/_next/static/chunks/3efombu0n08qj.js"
 7:"/_next/static/chunks/0q_p3nw1zw_hg.js"
@@ -39,7 +39,7 @@ f:I[8895,["$4","$5","$6","$7","$8"],"MainNav"]
 26:C
 29:X
 29:T6,locale29:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L21",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L23",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Events · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch parties, away trips and members' get-togethers."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L24","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@25","v":"$26","s":"$16"}},"a":"$@27","u":"$@28","b":"KQ3Ik1ymijqe6zPS5ABQH","r":"$29"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L21",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L23",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Events · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch parties, away trips and members' get-togethers."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L24","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@25","v":"$26","s":"$16"}},"a":"$@27","u":"$@28","b":"PaFZ6uMhDMrlMZoHTDeFp","r":"$29"}
 1d:null
 28:false
 27:null
