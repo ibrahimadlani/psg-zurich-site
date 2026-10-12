@@ -5,7 +5,13 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState, useSyncExternalStore } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { FieldError, FormMessage, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
+import {
+  FieldError,
+  FormMessage,
+  inputClass,
+  labelClass,
+  submitClass,
+} from "@/components/auth/auth-ui";
 import { PasswordInput } from "@/components/auth/password-input";
 import { Link, useRouter } from "@/i18n/navigation";
 import { signIn } from "@/lib/auth-client";
@@ -20,7 +26,14 @@ type Failure = "invalidCredentials" | "notVerified" | "linkInvalid" | "error";
 
 // An expired or invalid confirmation link lands here with ?error=… (set by Better Auth).
 const noop = () => () => {};
-const linkErrorFromUrl = () => new URLSearchParams(window.location.search).has("error");
+const linkErrorFromUrl = () =>
+  new URLSearchParams(window.location.search).has("error");
+
+/** Page to go back to after signing in (`?suite=/matchs/…`), only paths of this site. */
+function returnPath() {
+  const next = new URLSearchParams(window.location.search).get("suite") ?? "";
+  return /^\/(?![/\\])/.test(next) ? next : "/";
+}
 
 export function LoginForm() {
   const t = useTranslations("Login");
@@ -33,12 +46,18 @@ export function LoginForm() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<Values>({ resolver: zodResolver(schema), defaultValues: { email: "", password: "" } });
+  } = useForm<Values>({
+    resolver: zodResolver(schema),
+    defaultValues: { email: "", password: "" },
+  });
 
   async function onSubmit(values: Values) {
     setFailure(null);
     // callbackURL: where a re-sent confirmation link lands (and the email's language).
-    const { error } = await signIn.email({ ...values, callbackURL: `/${locale}/connexion` });
+    const { error } = await signIn.email({
+      ...values,
+      callbackURL: `/${locale}/connexion`,
+    });
     if (error) {
       setFailure(
         error.code === "INVALID_EMAIL_OR_PASSWORD"
@@ -49,12 +68,16 @@ export function LoginForm() {
       );
       return;
     }
-    router.push("/");
+    router.push(returnPath());
     router.refresh();
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-[14px]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+      className="flex flex-col gap-[14px]"
+    >
       {shown ? <FormMessage tone="error">{t(shown)}</FormMessage> : null}
       <label className="flex flex-col gap-2">
         <span className={labelClass}>{t("email")}</span>
@@ -67,14 +90,20 @@ export function LoginForm() {
           className={inputClass}
           {...register("email")}
         />
-        <FieldError id="email-error">{errors.email ? t("invalidEmail") : null}</FieldError>
+        <FieldError id="email-error">
+          {errors.email ? t("invalidEmail") : null}
+        </FieldError>
       </label>
       <div className="flex flex-col gap-2">
         <span className="flex items-baseline justify-between">
           <label htmlFor="password" className={labelClass}>
             {t("password")}
           </label>
-          <Link href="/connexion/mot-de-passe-oublie" prefetch={false} className="text-[13px] text-muted-foreground hover:text-foreground">
+          <Link
+            href="/connexion/mot-de-passe-oublie"
+            prefetch={false}
+            className="text-[13px] text-muted-foreground hover:text-foreground"
+          >
             {t("forgot")}
           </Link>
         </span>
@@ -85,7 +114,9 @@ export function LoginForm() {
           aria-describedby={errors.password ? "password-error" : undefined}
           {...register("password")}
         />
-        <FieldError id="password-error">{errors.password ? t("passwordRequired") : null}</FieldError>
+        <FieldError id="password-error">
+          {errors.password ? t("passwordRequired") : null}
+        </FieldError>
       </div>
       <button type="submit" disabled={isSubmitting} className={submitClass}>
         {isSubmitting ? t("submitting") : t("submit")}
