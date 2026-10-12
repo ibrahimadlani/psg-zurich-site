@@ -35,7 +35,7 @@ function Burger({ label, closing = false }: { label: string; closing?: boolean }
 }
 
 const burgerButton =
-  "-mr-1.5 grid h-11 min-w-11 cursor-pointer place-items-center rounded-[8px] px-1.5 text-psg-blue outline-none transition-colors hover:bg-foreground/5 dark:text-primary focus-visible:ring-2 focus-visible:ring-ring/50";
+  "-mr-1.5 grid h-11 min-w-11 cursor-pointer place-items-center rounded-[8px] px-1.5 text-psg-blue outline-none transition-colors hover:bg-foreground/5 dark:text-white focus-visible:ring-2 focus-visible:ring-ring/50";
 
 export function MobileMenu() {
   const t = useTranslations("Nav");
