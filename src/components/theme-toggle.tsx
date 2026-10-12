@@ -2,6 +2,7 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { headerIconButtonClass } from "@/components/header-icon-button";
 import { THEME_STORAGE_KEY } from "@/components/theme-script";
 
 function toggleTheme() {
@@ -24,7 +25,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={t("label")}
       title={t("label")}
-      className="inline-flex size-8 cursor-pointer items-center justify-center rounded-[7px] border bg-card text-foreground [transition:background-color_.2s,transform_.15s] hover:bg-accent active:scale-[0.92]"
+      className={headerIconButtonClass}
     >
       {/* Icon follows the <html> class set before paint, so no hydration mismatch. */}
       <Sun className="hidden size-3.5 dark:block" aria-hidden />
