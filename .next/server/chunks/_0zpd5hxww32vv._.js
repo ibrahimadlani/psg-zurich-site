@@ -1,3 +1,0 @@
-module.exports=[63661,e=>{e.v(r=>Promise.all(["server/chunks/[root-of-the-server]__0vtigmymsbh3p._.js"].map(r=>e.l(r))).then(()=>r(32511)))},23322,e=>{"use strict";async function r(){if("false"===process.env.MIGRATE_ON_START)return;let{runMigrations:r}=await e.A(63661);try{await r(),console.log("[migrate] database is up to date")}catch(e){console.error("[migrate] failed, starting anyway:",e)}}e.s(["register",0,r])}];
-
-//# sourceMappingURL=_0zpd5hxww32vv._.js.map

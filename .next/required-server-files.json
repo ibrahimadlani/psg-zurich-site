@@ -2,7 +2,7 @@
   "version": 1,
   "config": {
     "env": {
-      "BUILD_COMMIT": "94f9b23"
+      "BUILD_COMMIT": "7df48f4"
     },
     "webpack": null,
     "typescript": {
@@ -192,7 +192,7 @@
       "imgOptMaxInputPixels": 268402689,
       "imgOptSequentialRead": null,
       "imgOptMozjpeg": true,
-      "isrFlushToDisk": true,
+      "isrFlushToDisk": false,
       "workerThreads": false,
       "optimizeCss": false,
       "nextScriptWorkers": false,
