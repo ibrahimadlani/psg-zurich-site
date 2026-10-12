@@ -11,7 +11,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
-const line = "absolute left-0 top-1/2 -mt-px block h-[1.5px] w-full rounded-full bg-current";
+const line = "absolute left-0 top-1/2 -mt-[1.25px] block h-[2.5px] w-full rounded-full bg-current";
 
 /** Three lines + label. `closing` plays the hamburger → cross animation on mount. */
 function Burger({ label, closing = false }: { label: string; closing?: boolean }) {
@@ -35,7 +35,7 @@ function Burger({ label, closing = false }: { label: string; closing?: boolean }
 }
 
 const burgerButton =
-  "-mr-1.5 grid h-11 min-w-11 cursor-pointer place-items-center rounded-[8px] px-1.5 text-foreground outline-none transition-colors hover:bg-foreground/5 focus-visible:ring-2 focus-visible:ring-ring/50";
+  "-mr-1.5 grid h-11 min-w-11 cursor-pointer place-items-center rounded-[8px] px-1.5 text-psg-blue outline-none transition-colors hover:bg-foreground/5 dark:text-primary focus-visible:ring-2 focus-visible:ring-ring/50";
 
 export function MobileMenu() {
   const t = useTranslations("Nav");
