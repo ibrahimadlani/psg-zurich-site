@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 // Guest-only: signed-in members are redirected (proxy + GuestOnly).
 export default function MembershipPage() {
   return (
-    <BrandShell bare>
+    <BrandShell bare homeBar>
       <GuestOnly>
         <MembershipForm />
       </GuestOnly>

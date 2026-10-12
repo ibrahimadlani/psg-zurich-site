@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function LoginPage() {
   const t = await getTranslations("Login");
   return (
-    <BrandShell bare>
+    <BrandShell bare homeBar>
       <GuestOnly>
         <AuthPanel title={t("title")} body={t("body")}>
           <LoginForm />

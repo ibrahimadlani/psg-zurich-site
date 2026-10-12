@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ResetPasswordPage() {
   const t = await getTranslations("ResetPassword");
   return (
-    <BrandShell bare>
+    <BrandShell bare homeBar>
       <AuthPanel title={t("title")} body={t("body")}>
         {/* Reads ?token= from the URL, which is only known at request time. */}
         <Suspense>

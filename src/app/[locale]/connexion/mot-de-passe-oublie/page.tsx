@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function ForgotPasswordPage() {
   return (
-    <BrandShell bare>
+    <BrandShell bare homeBar>
       <GuestOnly>
         <ForgotPasswordPanel />
       </GuestOnly>

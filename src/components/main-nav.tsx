@@ -38,12 +38,12 @@ export function useNavItems(): NavItem[] {
 /** Small cockade in the club colours (PSG blue, white, red), marking the key page of the bar. */
 function Cockade() {
   return (
-    <svg aria-hidden viewBox="0 0 12 12" className="size-2.5 shrink-0">
+    <svg aria-hidden viewBox="-0.8 -0.8 13.6 13.6" className="size-3 shrink-0">
+      {/* Thin white outer ring so the blue edge stays visible on the dark background. */}
+      <circle cx="6" cy="6" r="6.4" fill="none" stroke="#fff" strokeWidth="0.8" className="hidden dark:block" />
       <circle cx="6" cy="6" r="6" fill="var(--color-psg-blue)" />
       <circle cx="6" cy="6" r="4.1" fill="#fff" />
       <circle cx="6" cy="6" r="2.9" fill="var(--color-psg-red)" />
-      {/* Hairline so the blue ring stays visible on the dark background. */}
-      <circle cx="6" cy="6" r="5.75" fill="none" stroke="#fff" strokeOpacity="0.35" strokeWidth="0.5" className="hidden dark:block" />
     </svg>
   );
 }

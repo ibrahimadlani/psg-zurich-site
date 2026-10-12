@@ -68,7 +68,7 @@ async function Content({ searchParams }: { searchParams: Promise<Record<string, 
 /** Confirmation page of the email unsubscribe links (no sign-in needed). */
 export default function UnsubscribePage({ searchParams }: PageProps<"/[locale]/desabonnement">) {
   return (
-    <BrandShell bare>
+    <BrandShell bare homeBar>
       <Suspense>
         <Content searchParams={searchParams} />
       </Suspense>
