@@ -186,16 +186,16 @@
     }
   },
   "/[locale]/adhesion": {
-    "hints": 64,
+    "hints": 49216,
     "slots": {
       "children": {
-        "hints": 32,
+        "hints": 49184,
         "slots": {
           "children": {
-            "hints": 64,
+            "hints": 49216,
             "slots": {
               "children": {
-                "hints": 160,
+                "hints": 49312,
                 "slots": null
               }
             }
