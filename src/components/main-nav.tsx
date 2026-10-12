@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { ViewTransition } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/lib/auth-client";
 import { hasRole } from "@/lib/roles";
@@ -45,14 +46,22 @@ export function MainNav() {
                 href={href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  // The active link is underlined right on the bottom hairline.
-                  "relative -mb-px inline-flex items-center border-b-2 border-transparent font-wide text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors",
+                  "relative inline-flex items-center font-wide text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
                   active
-                    ? "border-psg-blue text-psg-blue dark:border-foreground dark:text-foreground"
+                    ? "text-psg-blue dark:text-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {t(key)}
+                {active ? (
+                  // Same name on every page: the browser slides the underline to the new tab.
+                  <ViewTransition name="nav-underline" share="nav-underline" default="none">
+                    <span
+                      aria-hidden
+                      className="absolute inset-x-0 -bottom-px h-0.5 bg-psg-blue dark:bg-foreground"
+                    />
+                  </ViewTransition>
+                ) : null}
               </Link>
             </li>
           );
