@@ -63,8 +63,7 @@
     "submitting": "Wird gesendet…",
     "backToLogin": "Zurück zur Anmeldung",
     "sentTitle": "E-Mail gesendet",
-    "sentBody": "Falls ein Konto für <strong>{email}</strong> existiert, erhältst du einen Link, um ein neues Passwort zu wählen. Er ist eine Stunde gültig.",
-    "useAnother": "Andere Adresse verwenden"
+    "sentBody": "Falls ein Konto für <strong>{email}</strong> existiert, erhältst du einen Link, um ein neues Passwort zu wählen. Er ist eine Stunde gültig."
   },
   "ResetPassword": {
     "title": "Neues Passwort",

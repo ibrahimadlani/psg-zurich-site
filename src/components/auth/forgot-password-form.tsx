@@ -31,7 +31,6 @@ export function ForgotPasswordPanel() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isSubmitting },
   } = useForm<Values>({ resolver: zodResolver(schema), defaultValues: { email: "" } });
 
@@ -47,11 +46,6 @@ export function ForgotPasswordPanel() {
     }
     // Same answer whether or not the account exists.
     setSentTo(email);
-  }
-
-  function tryAnotherAddress() {
-    reset({ email: "" });
-    setSentTo(null);
   }
 
   const backToLogin = (
@@ -78,13 +72,6 @@ export function ForgotPasswordPanel() {
           })}
         </p>
       </div>
-      <button
-        type="button"
-        onClick={tryAnotherAddress}
-        className={`cursor-pointer text-[14px] text-muted-foreground ${inlineLinkClass} hover:text-foreground`}
-      >
-        {t("useAnother")}
-      </button>
       {backToLogin}
     </div>
   ) : (

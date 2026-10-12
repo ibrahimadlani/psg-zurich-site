@@ -63,8 +63,7 @@
     "submitting": "Envoi…",
     "backToLogin": "Retour à la connexion",
     "sentTitle": "E-mail envoyé",
-    "sentBody": "Si un compte existe pour <strong>{email}</strong>, vous allez recevoir un lien pour choisir un nouveau mot de passe. Il est valable une heure.",
-    "useAnother": "Utiliser une autre adresse"
+    "sentBody": "Si un compte existe pour <strong>{email}</strong>, vous allez recevoir un lien pour choisir un nouveau mot de passe. Il est valable une heure."
   },
   "ResetPassword": {
     "title": "Nouveau mot de passe",
