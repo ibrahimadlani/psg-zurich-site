@@ -2,7 +2,7 @@
 4:"/_next/static/chunks/16z0yqq-u007k.js"
 5:"/_next/static/chunks/1-7cx78xmv60v.js"
 6:"/_next/static/chunks/1c7kbcr4o8xmr.js"
-7:"/_next/static/chunks/179th984ooims.js"
+7:"/_next/static/chunks/1n-r3-bzi0erb.js"
 8:"/_next/static/chunks/0s79l-2-fnand.js"
 9:"/_next/static/chunks/0g_wti63vk00r.js"
 a:"/_next/static/chunks/2v6-9blx-edes.js"
@@ -40,7 +40,7 @@ f:I[68739,["$4","$5","$6","$7","$8","$9","$a"],"UserNav"]
 31:C
 34:X
 34:T6,locale34:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2d",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Confidentialité · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Quelles données nous collectons, pourquoi, combien de temps nous les gardons et comment exercer vos droits, selon la loi fédérale sur la protection des données (LPD)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2f","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$18"}},"a":"$@32","u":"$@33","b":"ipfEjKLQ9hd-ozkSnpPwo","r":"$34"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2d",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Confidentialité · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Quelles données nous collectons, pourquoi, combien de temps nous les gardons et comment exercer vos droits, selon la loi fédérale sur la protection des données (LPD)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2f","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$18"}},"a":"$@32","u":"$@33","b":"aAUn3t0TnkxKWgpO0I64J","r":"$34"}
 41:I[97367,["$12"],"OutletBoundary"]
 1d:["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"01"}]
 1e:["$","li","donnees",{"children":["$","a",null,{"href":"#donnees","className":"-ml-px flex gap-2.5 border-l border-transparent pl-3 text-[13px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground","children":[["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"02"}],"Données collectées"]}]}]

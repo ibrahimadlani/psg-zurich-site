@@ -2,7 +2,7 @@
 4:"/_next/static/chunks/16z0yqq-u007k.js"
 5:"/_next/static/chunks/1-7cx78xmv60v.js"
 6:"/_next/static/chunks/1c7kbcr4o8xmr.js"
-7:"/_next/static/chunks/179th984ooims.js"
+7:"/_next/static/chunks/1n-r3-bzi0erb.js"
 8:"/_next/static/chunks/0s79l-2-fnand.js"
 9:"/_next/static/chunks/0g_wti63vk00r.js"
 a:"/_next/static/chunks/2v6-9blx-edes.js"
@@ -42,7 +42,7 @@ f:I[94013,["$4","$5","$6","$7","$8","$9","$a"],"ThemeToggle"]
 2a:C
 2d:X
 2d:T6,locale2d:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L25",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L27",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Matches · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Paris Saint-Germain's schedule: upcoming matches, results and live scores."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L28","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@29","v":"$2a","s":"$19"}},"a":"$@2b","u":"$@2c","b":"ipfEjKLQ9hd-ozkSnpPwo","r":"$2d"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L25",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L27",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Matches · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Paris Saint-Germain's schedule: upcoming matches, results and live scores."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L28","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@29","v":"$2a","s":"$19"}},"a":"$@2b","u":"$@2c","b":"aAUn3t0TnkxKWgpO0I64J","r":"$2d"}
 21:null
 2c:false
 2b:null

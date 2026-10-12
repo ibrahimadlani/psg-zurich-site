@@ -6,7 +6,7 @@ d:"$Sreact.suspense"
 e:"/_next/static/chunks/16z0yqq-u007k.js"
 f:"/_next/static/chunks/1-7cx78xmv60v.js"
 10:"/_next/static/chunks/1c7kbcr4o8xmr.js"
-11:"/_next/static/chunks/179th984ooims.js"
+11:"/_next/static/chunks/1n-r3-bzi0erb.js"
 12:"/_next/static/chunks/2panja0b07npl.js"
 13:"/_next/static/chunks/454p48zhbvqmf.js"
 14:"/_next/static/chunks/2v6-9blx-edes.js"
@@ -36,7 +36,7 @@ a:[["children",{"s":"nouveau-mot-de-passe","h":49250,"d":{"r":["$","$3","c",{"ch
 24:C
 27:X
 27:T6,locale27:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L21",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L22","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@23","v":"$24","s":"$9"}},"a":"$@25","u":"$@26","b":"ipfEjKLQ9hd-ozkSnpPwo","r":"$27"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L21",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L22","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@23","v":"$24","s":"$9"}},"a":"$@25","u":"$@26","b":"aAUn3t0TnkxKWgpO0I64J","r":"$27"}
 1b:null
 26:false
 25:null

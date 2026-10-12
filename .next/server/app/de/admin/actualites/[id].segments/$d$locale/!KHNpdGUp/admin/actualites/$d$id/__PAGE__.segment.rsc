@@ -2,12 +2,12 @@
 4:"/_next/static/chunks/16z0yqq-u007k.js"
 5:"/_next/static/chunks/1-7cx78xmv60v.js"
 6:"/_next/static/chunks/1c7kbcr4o8xmr.js"
-7:"/_next/static/chunks/179th984ooims.js"
+7:"/_next/static/chunks/1n-r3-bzi0erb.js"
 8:"/_next/static/chunks/0s79l-2-fnand.js"
 9:"/_next/static/chunks/0g_wti63vk00r.js"
 a:"/_next/static/chunks/2v6-9blx-edes.js"
 b:"/_next/static/chunks/0w44amxy5t3no.js"
-c:"/_next/static/chunks/3q4zvw4h-v1sz.js"
+c:"/_next/static/chunks/3av54mbtv8jdq.js"
 d:"/_next/static/chunks/3n_1omlyut2ao.js"
 e:"/_next/static/chunks/0uxrssvri_8rt.js"
 f:I[77105,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d","$e"],"default"]
@@ -38,7 +38,7 @@ f:I[77105,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d","$e"],"default"]
 1f:C
 2b:X
 2b:C
-24:[["children",{"s":"__PAGE__","h":57506,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"space-y-4","children":[["$","$Lf",null,{"href":"/de/admin/actualites","localeCookie":"$2:0:1:d:r:props:children:1:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground","children":[["$","$L25",null,{"icon":{"name":"arrow-left","size":24,"node":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]]},"className":"size-3.5","aria-hidden":true}],"News"]}],["$","$26",null,{"fallback":["$","p",null,{"className":"text-muted-foreground","children":"…"}],"children":"$L27"}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0w44amxy5t3no.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3q4zvw4h-v1sz.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/3n_1omlyut2ao.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0uxrssvri_8rt.js","async":true}]],["$","$L28",null,{"children":["$","$26",null,{"name":"Next.MetadataOutlet","children":"$@29"}]}]]}],"p":"$@2a","v":"$2b","s":"$1c"}}]]
+24:[["children",{"s":"__PAGE__","h":57506,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"space-y-4","children":[["$","$Lf",null,{"href":"/de/admin/actualites","localeCookie":"$2:0:1:d:r:props:children:1:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground","children":[["$","$L25",null,{"icon":{"name":"arrow-left","size":24,"node":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]]},"className":"size-3.5","aria-hidden":true}],"News"]}],["$","$26",null,{"fallback":["$","p",null,{"className":"text-muted-foreground","children":"…"}],"children":"$L27"}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0w44amxy5t3no.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3av54mbtv8jdq.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/3n_1omlyut2ao.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0uxrssvri_8rt.js","async":true}]],["$","$L28",null,{"children":["$","$26",null,{"name":"Next.MetadataOutlet","children":"$@29"}]}]]}],"p":"$@2a","v":"$2b","s":"$1c"}}]]
 22:[["children",{"s":{"n":"id","t":"d","k":null,"s":["nouveau"]},"h":57442,"d":{"r":["$","$3","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}],"p":"$@23","v":"$1f","s":"$1c"},"c":"$Q24"}]]
 20:[["children",{"s":"actualites","h":57442,"d":{"r":["$","$3","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}],"p":"$@21","v":"$1f","s":"$1c"},"c":"$Q22"}]]
 1d:[["children",{"s":"admin","h":57442,"d":{"r":["$","$3","c",{"children":[null,["$","$L17",null,{"parallelRouterKey":"children","template":["$","$L18",null,{}]}]]}],"p":"$@1e","v":"$1f","s":"$1c"},"c":"$Q20"}]]
@@ -48,7 +48,7 @@ f:I[77105,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d","$e"],"default"]
 32:C
 35:X
 35:T6,locale35:C
-0:{"t":{"t":{"s":"","h":57426,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Artikel bearbeiten · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L30","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@31","v":"$32","s":"$1c"}},"a":"$@33","u":"$@34","b":"ipfEjKLQ9hd-ozkSnpPwo","r":"$35"}
+0:{"t":{"t":{"s":"","h":57426,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Artikel bearbeiten · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L30","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@31","v":"$32","s":"$1c"}},"a":"$@33","u":"$@34","b":"aAUn3t0TnkxKWgpO0I64J","r":"$35"}
 29:null
 34:false
 33:null

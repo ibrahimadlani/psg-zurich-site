@@ -2,7 +2,7 @@
 4:"/_next/static/chunks/16z0yqq-u007k.js"
 5:"/_next/static/chunks/1-7cx78xmv60v.js"
 6:"/_next/static/chunks/1c7kbcr4o8xmr.js"
-7:"/_next/static/chunks/179th984ooims.js"
+7:"/_next/static/chunks/1n-r3-bzi0erb.js"
 8:"/_next/static/chunks/0s79l-2-fnand.js"
 9:"/_next/static/chunks/0g_wti63vk00r.js"
 a:"/_next/static/chunks/2v6-9blx-edes.js"
@@ -40,7 +40,7 @@ f:I[68739,["$4","$5","$6","$7","$8","$9","$a"],"UserNav"]
 30:C
 33:X
 33:T6,locale33:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Datenschutz · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Welche Daten wir erheben, wozu, wie lange wir sie aufbewahren und wie du deine Rechte ausübst – nach dem Bundesgesetz über den Datenschutz (DSG)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2e","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2f","v":"$30","s":"$18"}},"a":"$@31","u":"$@32","b":"ipfEjKLQ9hd-ozkSnpPwo","r":"$33"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Datenschutz · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Welche Daten wir erheben, wozu, wie lange wir sie aufbewahren und wie du deine Rechte ausübst – nach dem Bundesgesetz über den Datenschutz (DSG)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2e","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2f","v":"$30","s":"$18"}},"a":"$@31","u":"$@32","b":"aAUn3t0TnkxKWgpO0I64J","r":"$33"}
 40:I[97367,["$12"],"OutletBoundary"]
 1d:["$","li","donnees",{"children":["$","a",null,{"href":"#donnees","className":"-ml-px flex gap-2.5 border-l border-transparent pl-3 text-[13px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground","children":[["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"02"}],"Erhobene Daten"]}]}]
 1e:["$","li","finalites",{"children":["$","a",null,{"href":"#finalites","className":"-ml-px flex gap-2.5 border-l border-transparent pl-3 text-[13px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground","children":[["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"03"}],"Verwendung"]}]}]

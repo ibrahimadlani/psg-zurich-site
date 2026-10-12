@@ -2,7 +2,7 @@
 4:"/_next/static/chunks/16z0yqq-u007k.js"
 5:"/_next/static/chunks/1-7cx78xmv60v.js"
 6:"/_next/static/chunks/1c7kbcr4o8xmr.js"
-7:"/_next/static/chunks/179th984ooims.js"
+7:"/_next/static/chunks/1n-r3-bzi0erb.js"
 8:"/_next/static/chunks/0s79l-2-fnand.js"
 9:"/_next/static/chunks/0g_wti63vk00r.js"
 a:"/_next/static/chunks/2v6-9blx-edes.js"
@@ -43,7 +43,7 @@ f:I[94013,["$4","$5","$6","$7","$8","$9","$a"],"ThemeToggle"]
 30:C
 33:X
 33:T6,locale33:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Paramètres · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2e","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2f","v":"$30","s":"$19"}},"a":"$@31","u":"$@32","b":"ipfEjKLQ9hd-ozkSnpPwo","r":"$33"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2a",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2c",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Paramètres · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2e","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2f","v":"$30","s":"$19"}},"a":"$@31","u":"$@32","b":"aAUn3t0TnkxKWgpO0I64J","r":"$33"}
 34:I[97367,["$13"],"OutletBoundary"]
 20:["$","$L1f",null,{"icon":{"name":"shield-check","size":24,"node":[["path",{"d":"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z","key":"oel41y"}],["path",{"d":"m9 12 2 2 4-4","key":"dzmm74"}]]},"className":"size-4","aria-hidden":true}]
 21:["$","span",null,{"className":"min-w-0 flex-1","children":[["$","span",null,{"className":"block text-[15px] font-semibold","children":"Compte et sécurité"}],["$","span",null,{"className":"block text-sm text-muted-foreground","children":"Adresse e-mail, mot de passe et appareils connectés."}]]}]

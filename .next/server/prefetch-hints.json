@@ -23,22 +23,22 @@
     }
   },
   "/[locale]/actualites/[slug]": {
-    "hints": 16448,
+    "hints": 49216,
     "slots": {
       "children": {
-        "hints": 16416,
+        "hints": 49184,
         "slots": {
           "children": {
-            "hints": 16448,
+            "hints": 49216,
             "slots": {
               "children": {
-                "hints": 16480,
+                "hints": 49248,
                 "slots": {
                   "children": {
-                    "hints": 16480,
+                    "hints": 49248,
                     "slots": {
                       "children": {
-                        "hints": 16544,
+                        "hints": 49312,
                         "slots": null
                       }
                     }

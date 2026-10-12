@@ -5,7 +5,7 @@
 b:"/_next/static/chunks/16z0yqq-u007k.js"
 c:"/_next/static/chunks/1-7cx78xmv60v.js"
 d:"/_next/static/chunks/1c7kbcr4o8xmr.js"
-e:"/_next/static/chunks/179th984ooims.js"
+e:"/_next/static/chunks/1n-r3-bzi0erb.js"
 f:"/_next/static/chunks/2ieeyeu2v57j2.js"
 10:"/_next/static/chunks/3ghd_m1fb-w-8.js"
 11:"/_next/static/chunks/2v6-9blx-edes.js"
@@ -35,7 +35,7 @@ a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$
 22:C
 25:X
 25:T6,locale25:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Join · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Become a member of the official PSG supporters club in Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L20","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@21","v":"$22","s":"$9"}},"a":"$@23","u":"$@24","b":"ipfEjKLQ9hd-ozkSnpPwo","r":"$25"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Join · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Become a member of the official PSG supporters club in Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L20","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@21","v":"$22","s":"$9"}},"a":"$@23","u":"$@24","b":"aAUn3t0TnkxKWgpO0I64J","r":"$25"}
 19:null
 24:false
 23:null
