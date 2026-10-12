@@ -103,10 +103,7 @@ function VisitorFooter() {
       </div>
       <div className="border-t">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-4 text-[12px] text-muted-foreground">
-          <p className="flex items-center gap-2">
-            <span aria-hidden className="size-1.5 rounded-full bg-psg-red" />
-            © PSG Zurich · {t("official")}
-          </p>
+          <p>© PSG Zurich · {t("official")}</p>
           <LegalLinks />
         </div>
       </div>
