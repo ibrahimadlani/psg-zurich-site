@@ -14,8 +14,7 @@ export default async function ComingSoonPage() {
   return (
     <BrandShell>
       <div className="flex max-w-[34rem] flex-col items-center gap-3 text-center">
-        <span className="inline-flex items-center gap-2 font-wide text-[12px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-          <span aria-hidden className="size-1.5 rounded-full bg-brand-red" />
+        <span className="font-wide text-[12px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
           {t("eyebrow")}
         </span>
         <h1 className="font-narrow text-[length:clamp(48px,9vw,88px)] leading-[0.95] font-extrabold tracking-normal text-balance uppercase italic">

@@ -32,6 +32,8 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
       </head>
       <body className="flex min-h-full flex-col">
         <ThemeSync />
+        {/* Diagonal-line backdrop behind every page. */}
+        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-diagonal" />
         <NextIntlClientProvider>
           <Suspense fallback={null}>
             <AnnouncementBanner />

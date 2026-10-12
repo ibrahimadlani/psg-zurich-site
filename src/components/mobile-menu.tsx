@@ -84,17 +84,10 @@ export function MobileMenu() {
                     href={href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "group flex items-center gap-3 py-1.5 font-narrow text-[32px] leading-none font-extrabold uppercase italic transition-colors",
+                      "block py-1.5 font-narrow text-[32px] leading-none font-extrabold uppercase italic transition-colors",
                       active ? "text-primary" : "text-foreground hover:text-primary",
                     )}
                   >
-                    <span
-                      aria-hidden
-                      className={cn(
-                        "size-1.5 shrink-0 rounded-full bg-brand-red transition-opacity",
-                        active ? "opacity-100" : "opacity-0 group-hover:opacity-100",
-                      )}
-                    />
                     {t(key)}
                   </Link>
                 </li>
