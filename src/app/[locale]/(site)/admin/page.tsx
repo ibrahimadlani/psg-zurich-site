@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
+import { AdminsManager } from "@/components/admin/admins-manager";
+import { MembershipRequests } from "@/components/admin/membership-requests";
 import { AnnouncementsAdmin } from "@/components/announcements/announcements-admin";
 import { DeploymentStatus } from "@/components/deployment-status";
 import { PageHeader } from "@/components/page-header";
@@ -23,11 +25,10 @@ async function AdminPanel() {
 
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
-        <p className="font-medium">{t("welcome", { name: session.user.name || session.user.email })}</p>
-        <p className="text-muted-foreground">{t("placeholder")}</p>
-      </div>
+      <p className="font-medium">{t("welcome", { name: session.user.name || session.user.email })}</p>
+      <MembershipRequests />
       <AnnouncementsAdmin />
+      {hasRole(session.user.role, "superadmin") ? <AdminsManager currentUserId={session.user.id} /> : null}
       <DeploymentStatus />
     </div>
   );

@@ -12,13 +12,15 @@ import {
 } from "react-email";
 
 export type AuthLinkEmailProps = {
-  url: string;
+  /** Button target; no button without it. */
+  url?: string;
   locale: string;
   texts: {
     preview: string;
     heading: string;
     body: string;
-    cta: string;
+    cta?: string;
+    /** Small print under the separator. */
     ignore: string;
   };
 };
@@ -42,14 +44,16 @@ export function AuthLinkEmail({ url, locale, texts }: AuthLinkEmailProps) {
           <Text style={{ color: "#374151", fontSize: "15px", lineHeight: "24px" }}>
             {texts.body}
           </Text>
-          <Section style={{ margin: "24px 0" }}>
-            <Button
-              href={url}
-              style={{ backgroundColor: navy, color: "#ffffff", padding: "12px 20px", borderRadius: "6px", fontWeight: 600 }}
-            >
-              {texts.cta}
-            </Button>
-          </Section>
+          {url && texts.cta ? (
+            <Section style={{ margin: "24px 0" }}>
+              <Button
+                href={url}
+                style={{ backgroundColor: navy, color: "#ffffff", padding: "12px 20px", borderRadius: "6px", fontWeight: 600 }}
+              >
+                {texts.cta}
+              </Button>
+            </Section>
+          ) : null}
           <Hr />
           <Text style={{ color: "#6b7280", fontSize: "13px" }}>{texts.ignore}</Text>
         </Container>

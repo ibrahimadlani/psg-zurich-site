@@ -1,0 +1,2 @@
+ALTER TABLE `members` MODIFY COLUMN `status` enum('pending','active','expired','suspended','rejected') NOT NULL DEFAULT 'pending';--> statement-breakpoint
+ALTER TABLE `members` ADD `locale` enum('fr','de','en') DEFAULT 'fr' NOT NULL;

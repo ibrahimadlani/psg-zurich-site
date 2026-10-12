@@ -88,6 +88,17 @@ export const createMemberSchema = z.object({
   expiresOn: z.iso.date().optional(),
 });
 
+/** Committee decision on a membership request (PATCH /api/v1/members/[id]). */
+export const memberDecisionSchema = z.object({
+  decision: z.enum(["approve", "reject"]),
+});
+
+/** Name or remove an admin (superadmin only; superadmin itself is never set here). */
+export const roleChangeSchema = z.object({
+  email: z.email().max(255).transform((email) => email.toLowerCase()),
+  role: z.enum(["member", "admin"]),
+});
+
 /* ------------------------------- Subscribers ------------------------------ */
 
 export const createSubscriberSchema = z.object({

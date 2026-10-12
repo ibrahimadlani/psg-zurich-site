@@ -132,6 +132,8 @@ export const MEMBER_STATUSES = [
   "active",
   "expired",
   "suspended",
+  // Refused by the committee: kept for a possible appeal to the general assembly.
+  "rejected",
 ] as const;
 
 export const members = mysqlTable(
@@ -150,6 +152,8 @@ export const members = mysqlTable(
     status: mysqlEnum("status", MEMBER_STATUSES).default("pending").notNull(),
     joinedOn: date("joined_on", { mode: "string" }),
     expiresOn: date("expires_on", { mode: "string" }),
+    /** Language of the emails sent to the member (the one used to sign up). */
+    locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
     ...timestamps(),
   },
   (t) => [index("members_status_idx").on(t.status)],

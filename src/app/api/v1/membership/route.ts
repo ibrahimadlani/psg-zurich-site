@@ -51,6 +51,7 @@ export const POST = apiHandler(async (request) => {
         phone: input.phone || null,
         city: input.city || null,
         status: "pending",
+        locale: input.locale,
       });
       await writeAuditLog(
         {

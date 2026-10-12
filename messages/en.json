@@ -164,8 +164,7 @@
     "description": "Content and member management.",
     "loading": "Checking permissions…",
     "forbidden": "Administrators only.",
-    "welcome": "Welcome, {name}.",
-    "placeholder": "The back office is coming soon. The admin API is available under /api/v1."
+    "welcome": "Welcome, {name}."
   },
   "AdminBanner": {
     "title": "Announcement banner",
@@ -234,6 +233,29 @@
       "body": "Click the button below to confirm your email address and activate your account. This link is valid for 24 hours.",
       "cta": "Confirm my email",
       "ignore": "If you did not create an account, simply ignore this email."
+    },
+    "membershipRequest": {
+      "subject": "New membership request: {name}",
+      "preview": "{name} wants to join the club",
+      "heading": "New membership request",
+      "body": "{name} ({email}, {city}) has just confirmed their address and wants to join the club. Accept or refuse the request from the administration.",
+      "cta": "View the request",
+      "footer": "You receive this email as a PSG Zurich administrator."
+    },
+    "membershipApproved": {
+      "subject": "Welcome to PSG Zurich!",
+      "preview": "Your membership is accepted",
+      "heading": "Welcome, {firstName}!",
+      "body": "The committee has accepted your membership request. Your member number is {number}. Find your details and the next steps in your member area.",
+      "cta": "Go to my member area",
+      "footer": "A question? Write to us at {email}."
+    },
+    "membershipRejected": {
+      "subject": "Your membership request — PSG Zurich",
+      "preview": "Reply to your membership request",
+      "heading": "Hello {firstName},",
+      "body": "After review, the committee was unable to accept your membership request. In accordance with the statutes, you may appeal to the next general assembly.",
+      "footer": "For any question or to appeal, write to us at {email}."
     }
   },
   "Legal": {
@@ -244,6 +266,42 @@
       "imprint": "A question?",
       "privacy": "A question about your data?",
       "statutes": "A question about the association?"
+    }
+  },
+  "AdminMembers": {
+    "title": "Membership requests",
+    "description": "Accept or refuse new sign-ups. The member is notified by email.",
+    "empty": "No pending requests.",
+    "unverified": "Email not confirmed",
+    "unverifiedHint": "The applicant must confirm their email address first.",
+    "requestedOn": "Requested on {date}",
+    "approve": "Accept",
+    "reject": "Refuse",
+    "confirmReject": "Refuse this membership request? The person will be notified by email.",
+    "error": "Action failed. Reload the page and try again.",
+    "recent": "Latest decisions",
+    "status": {
+      "active": "Accepted",
+      "rejected": "Refused"
+    }
+  },
+  "AdminRoles": {
+    "title": "Administrators",
+    "description": "Administrators approve memberships and manage content. Only a superadmin can name or remove them.",
+    "emailPlaceholder": "Account email address",
+    "add": "Name admin",
+    "remove": "Remove",
+    "confirmRemove": "Remove administrator rights from {email}?",
+    "you": "(you)",
+    "roles": {
+      "admin": "Admin",
+      "superadmin": "Superadmin"
+    },
+    "errors": {
+      "not_found": "No account uses this address.",
+      "self": "You cannot change your own role.",
+      "superadmin": "Superadmins are managed in the database.",
+      "error": "Action failed. Please try again later."
     }
   }
 }

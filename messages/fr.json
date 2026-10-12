@@ -164,8 +164,7 @@
     "description": "Gestion du contenu et des membres.",
     "loading": "Vérification des droits…",
     "forbidden": "Accès réservé aux administrateurs.",
-    "welcome": "Bienvenue, {name}.",
-    "placeholder": "Le back-office arrive bientôt. L'API d'administration est disponible sous /api/v1."
+    "welcome": "Bienvenue, {name}."
   },
   "AdminBanner": {
     "title": "Bannière d'annonce",
@@ -234,6 +233,29 @@
       "body": "Cliquez sur le bouton ci-dessous pour confirmer votre adresse e-mail et activer votre compte. Ce lien est valable 24 heures.",
       "cta": "Confirmer mon adresse",
       "ignore": "Si vous n'avez pas créé de compte, ignorez simplement cet e-mail."
+    },
+    "membershipRequest": {
+      "subject": "Nouvelle demande d'adhésion : {name}",
+      "preview": "{name} souhaite rejoindre l'association",
+      "heading": "Nouvelle demande d'adhésion",
+      "body": "{name} ({email}, {city}) vient de confirmer son adresse et souhaite rejoindre l'association. Acceptez ou refusez sa demande depuis l'administration.",
+      "cta": "Voir la demande",
+      "footer": "Vous recevez cet e-mail en tant qu'administrateur de PSG Zurich."
+    },
+    "membershipApproved": {
+      "subject": "Bienvenue au PSG Zurich !",
+      "preview": "Votre adhésion est acceptée",
+      "heading": "Bienvenue, {firstName} !",
+      "body": "Le comité a accepté votre demande d'adhésion. Votre numéro de membre est {number}. Retrouvez vos informations et la suite des étapes dans votre espace membre.",
+      "cta": "Accéder à mon espace",
+      "footer": "Une question ? Écrivez-nous à {email}."
+    },
+    "membershipRejected": {
+      "subject": "Votre demande d'adhésion — PSG Zurich",
+      "preview": "Réponse à votre demande d'adhésion",
+      "heading": "Bonjour {firstName},",
+      "body": "Après examen, le comité n'a pas pu donner une suite favorable à votre demande d'adhésion. Conformément aux statuts, vous pouvez faire recours devant la prochaine assemblée générale.",
+      "footer": "Pour toute question ou pour faire recours, écrivez-nous à {email}."
     }
   },
   "Legal": {
@@ -244,6 +266,42 @@
       "imprint": "Une question ?",
       "privacy": "Une question sur vos données ?",
       "statutes": "Une question sur l'association ?"
+    }
+  },
+  "AdminMembers": {
+    "title": "Demandes d'adhésion",
+    "description": "Acceptez ou refusez les nouvelles inscriptions. Le membre est prévenu par e-mail.",
+    "empty": "Aucune demande en attente.",
+    "unverified": "E-mail non confirmé",
+    "unverifiedHint": "Le demandeur doit d'abord confirmer son adresse e-mail.",
+    "requestedOn": "Demande du {date}",
+    "approve": "Accepter",
+    "reject": "Refuser",
+    "confirmReject": "Refuser cette demande d'adhésion ? La personne sera prévenue par e-mail.",
+    "error": "Action impossible. Rechargez la page et réessayez.",
+    "recent": "Dernières décisions",
+    "status": {
+      "active": "Acceptée",
+      "rejected": "Refusée"
+    }
+  },
+  "AdminRoles": {
+    "title": "Administrateurs",
+    "description": "Les administrateurs valident les adhésions et gèrent le contenu. Seul un superadmin peut en nommer ou en retirer.",
+    "emailPlaceholder": "Adresse e-mail du compte",
+    "add": "Nommer admin",
+    "remove": "Retirer",
+    "confirmRemove": "Retirer les droits d'administrateur de {email} ?",
+    "you": "(vous)",
+    "roles": {
+      "admin": "Admin",
+      "superadmin": "Superadmin"
+    },
+    "errors": {
+      "not_found": "Aucun compte n'utilise cette adresse.",
+      "self": "Vous ne pouvez pas modifier votre propre rôle.",
+      "superadmin": "Les superadmins se gèrent directement en base.",
+      "error": "Action impossible. Réessayez plus tard."
     }
   }
 }

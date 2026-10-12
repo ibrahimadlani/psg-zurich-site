@@ -10,6 +10,7 @@ import { AuthLinkEmail } from "@/emails/auth-link";
 import { loadMessages } from "@/i18n/messages";
 import { routing } from "@/i18n/routing";
 import { sendMail } from "@/lib/mail";
+import { notifyNewMembershipRequest } from "@/lib/membership-mail";
 
 const RESET_PASSWORD_TTL_SECONDS = 60 * 60;
 const VERIFY_EMAIL_TTL_SECONDS = 60 * 60 * 24;
@@ -22,8 +23,9 @@ function localeFromAuthUrl(url: string) {
 }
 
 async function sendAuthLinkEmail(kind: "resetPassword" | "verifyEmail", email: string, link: string) {
-  // Links built during a direct auth.api call are relative when BETTER_AUTH_URL is empty (local dev).
-  const url = new URL(link, process.env.BETTER_AUTH_URL || "http://localhost:3000").href;
+  // Links built during a direct auth.api call lack the origin and the /api/auth base path
+  // when BETTER_AUTH_URL is empty (local dev).
+  const url = link.startsWith("/") ? new URL(`/api/auth${link}`, "http://localhost:3000").href : link;
   const locale = localeFromAuthUrl(url);
   const messages = await loadMessages(locale);
   const t = createTranslator({ locale, messages, namespace: `Emails.${kind}` });
@@ -86,6 +88,12 @@ function createAuth() {
       autoSignInAfterVerification: true,
       expiresIn: VERIFY_EMAIL_TTL_SECONDS,
       sendVerificationEmail: ({ user, url }) => sendAuthLinkEmail("verifyEmail", user.email, url),
+      // The committee hears about a membership request once the address is confirmed.
+      afterEmailVerification: async (user) => {
+        await notifyNewMembershipRequest(user.id).catch((error) =>
+          console.error("[membership] request notification failed:", error),
+        );
+      },
     },
     disabledPaths: ["/sign-up/email"],
     // Must stay last: lets server actions set auth cookies.
