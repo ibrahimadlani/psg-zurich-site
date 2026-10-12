@@ -1,5 +1,6 @@
 import { CalendarClock, Users } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
+import { CompetitionLogo, hasLocalLogo } from "@/components/matches/competition-logos";
 import { outcome, roundInfo, sides, toDate, type MatchView } from "@/components/matches/match-utils";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
@@ -20,9 +21,11 @@ export function CompetitionLabel({ match, className }: { match: MatchView; class
         : t(round.kind === "matchday" ? "matchday" : "leaguePhase", { number: round.number });
   return (
     <span className={cn("flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground", className)}>
-      {match.competitionLogo ? (
+      {hasLocalLogo(match.competition) ? (
+        <CompetitionLogo competition={match.competition} className="size-4" />
+      ) : match.competitionLogo ? (
         // eslint-disable-next-line @next/next/no-img-element -- remote logo
-        <img src={match.competitionLogo} alt="" width={16} height={16} loading="lazy" className="size-4 shrink-0 object-contain dark:invert-[.1]" />
+        <img src={match.competitionLogo} alt="" width={16} height={16} loading="lazy" className="size-4 shrink-0 object-contain" />
       ) : null}
       <span className="truncate">
         {match.competition}
