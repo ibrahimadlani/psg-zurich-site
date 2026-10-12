@@ -7,11 +7,12 @@ import { Suspense } from "react";
 import { LiveMatches } from "@/components/matches/live-matches";
 import { MatchRow, type PredictionView } from "@/components/matches/match-row";
 import { MatchTabs } from "@/components/matches/match-tabs";
+import { Scoreboard } from "@/components/matches/scoreboard";
 import { PageHeader } from "@/components/page-header";
 import { db } from "@/db";
 import { events, predictions } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
-import { getSeasonMatches } from "@/lib/matches";
+import { closestMatch, getSeasonMatches } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -40,6 +41,8 @@ async function MatchesContent() {
   const predictionByMatch = new Map<string, PredictionView>(myPredictions.map((row) => [row.matchId, row]));
 
   const live = season.filter((match) => match.status === "live");
+  // Nothing on right now: the next or the last match, whichever is closer in time.
+  const featured = live.length === 0 ? closestMatch(season) : null;
   const upcoming = season.filter((match) => match.status === "scheduled" || match.status === "postponed");
   const results = season.filter((match) => match.status === "finished" || match.status === "cancelled").reverse();
 
@@ -62,6 +65,16 @@ async function MatchesContent() {
   return (
     <div className="space-y-8">
       <LiveMatches initial={live} />
+      {featured ? (
+        <section className="space-y-2">
+          <h2 className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
+            {t(featured.kind === "next" ? "nextMatch" : "lastMatch")}
+          </h2>
+          <Link href={`/matchs/${featured.match.id}`} className="block transition-opacity hover:opacity-90">
+            <Scoreboard match={featured.match} />
+          </Link>
+        </section>
+      ) : null}
       <MatchTabs
         labels={{ upcoming: t("upcoming"), results: t("results") }}
         upcoming={list(upcoming, t("noUpcoming"))}

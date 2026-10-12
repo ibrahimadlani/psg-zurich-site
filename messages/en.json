@@ -433,7 +433,9 @@
       "LEAGUE_STAGE": "League phase",
       "REGULAR_SEASON": "Regular season"
     },
-    "live": "Live"
+    "live": "Live",
+    "nextMatch": "Next match",
+    "lastMatch": "Last match"
   },
   "Predictions": {
     "title": "Prediction",

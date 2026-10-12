@@ -21,6 +21,22 @@ export function matchScore(match: Pick<Match, "venue" | "psgScore" | "opponentSc
   return match.venue === "away" ? `${match.opponentScore}-${match.psgScore}` : `${match.psgScore}-${match.opponentScore}`;
 }
 
+/**
+ * Match to put forward when none is being played: the next one or the last one,
+ * whichever kick-off is closer to now.
+ */
+export function closestMatch(list: Match[]): { match: Match; kind: "next" | "previous" } | null {
+  const now = Date.now();
+  const next = list.find((match) => match.status === "scheduled" && match.kickoffAt.getTime() >= now);
+  const previous = list.findLast((match) => match.status === "finished" && match.kickoffAt.getTime() <= now);
+  if (!next && !previous) return null;
+  if (!next) return { match: previous!, kind: "previous" };
+  if (!previous) return { match: next, kind: "next" };
+  return next.kickoffAt.getTime() - now <= now - previous.kickoffAt.getTime()
+    ? { match: next, kind: "next" }
+    : { match: previous, kind: "previous" };
+}
+
 /** Predictions stay open until kick-off. */
 export const isPredictionOpen = (match: Pick<Match, "status" | "kickoffAt">) =>
   match.status === "scheduled" && match.kickoffAt.getTime() > Date.now();

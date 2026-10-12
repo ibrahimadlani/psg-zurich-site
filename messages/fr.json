@@ -433,7 +433,9 @@
       "LEAGUE_STAGE": "Phase de ligue",
       "REGULAR_SEASON": "Saison régulière"
     },
-    "live": "En direct"
+    "live": "En direct",
+    "nextMatch": "Prochain match",
+    "lastMatch": "Dernier match"
   },
   "Predictions": {
     "title": "Pronostic",
