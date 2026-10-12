@@ -78,7 +78,8 @@ export function roundInfo(
   if (number && stage === "REGULAR_SEASON") return { kind: "matchday", number: Number(number) };
   if (number) return { kind: "leaguePhase", number: Number(number) };
   if ((KNOWN_STAGES as readonly string[]).includes(round)) return { kind: "stage", stage: round as KnownStage };
-  // Unknown stage: "PLAYOFF_ROUND_1" → "Playoff round 1".
+  // Unknown API stage: "PLAYOFF_ROUND_1" → "Playoff round 1". Rounds typed by hand stay as they are.
+  if (!/^[A-Z0-9_]+$/.test(round)) return { kind: "other", label: round };
   const label = round.toLowerCase().replace(/_/g, " ");
   return { kind: "other", label: label.charAt(0).toUpperCase() + label.slice(1) };
 }

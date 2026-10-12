@@ -532,5 +532,49 @@
     "attendees": "Voir les inscrits",
     "onWaitlist": "en attente",
     "empty": "Aucun événement pour l'instant."
+  },
+  "AdminMatches": {
+    "new": "Ajouter un match à la main",
+    "newHint": "Pour les matchs que l'import automatique ne couvre pas : Coupe de France, Trophée des Champions, amicaux… Les membres peuvent les pronostiquer comme les autres.",
+    "listTitle": "Matchs saisis à la main",
+    "competition": "Compétition",
+    "round": "Tour (facultatif)",
+    "roundPlaceholder": "Quart de finale",
+    "opponent": "Adversaire",
+    "opponentLogo": "Logo de l'adversaire (URL, facultatif)",
+    "kickoffAt": "Coup d'envoi",
+    "venue": "Lieu",
+    "venues": {
+      "home": "Domicile",
+      "away": "Extérieur",
+      "neutral": "Terrain neutre"
+    },
+    "stadium": "Stade (facultatif)",
+    "city": "Ville (facultatif)",
+    "status": "Statut",
+    "statuses": {
+      "scheduled": "À venir",
+      "live": "En cours",
+      "finished": "Terminé",
+      "postponed": "Reporté",
+      "cancelled": "Annulé"
+    },
+    "score": "Score",
+    "opponentShort": "Adversaire",
+    "extraTime": "Prolongation ou tirs au but ?",
+    "extraTimeHint": "Le score ci-dessus est le score final (prolongation comprise). Indiquez ici le score à 90 minutes, qui sert aux pronostics, et les tirs au but.",
+    "regulationPsg": "PSG à 90'",
+    "regulationOpponent": "Adv. à 90'",
+    "penaltiesPsg": "TAB PSG",
+    "penaltiesOpponent": "TAB adv.",
+    "create": "Ajouter le match",
+    "save": "Enregistrer",
+    "saving": "Enregistrement…",
+    "error": "L'enregistrement a échoué.",
+    "invalid": "Vérifiez les champs : compétition, adversaire et coup d'envoi sont obligatoires ; un match terminé doit avoir son score.",
+    "edit": "Modifier",
+    "close": "Fermer",
+    "delete": "Supprimer",
+    "confirmDelete": "Supprimer ce match et ses pronostics ?"
   }
 }

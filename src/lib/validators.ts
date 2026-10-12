@@ -43,16 +43,33 @@ export const createPostSchema = z.object({
 
 /* --------------------------------- Matches -------------------------------- */
 
-export const createMatchSchema = z.object({
-  opponent: text(120),
-  competition: text(120),
-  kickoffAt: dateTime,
-  venue: z.enum(MATCH_VENUES),
-  stadium: optionalText(160),
-  psgScore: score,
-  opponentScore: score,
-  status: z.enum(MATCH_STATUSES).default("scheduled"),
-});
+/**
+ * Match entered by hand (competitions the football-data.org plan doesn't cover: Coupe de France,
+ * Trophée des champions, friendlies). psgScore / opponentScore = final score (extra time included);
+ * regulation* = score after 90 minutes when the match went to extra time (otherwise the final score).
+ */
+export const createMatchSchema = z
+  .object({
+    opponent: text(120),
+    opponentLogo: z.url().max(255).optional(),
+    competition: text(120),
+    round: optionalText(80),
+    kickoffAt: dateTime,
+    venue: z.enum(MATCH_VENUES),
+    stadium: optionalText(160),
+    city: optionalText(120),
+    status: z.enum(MATCH_STATUSES).default("scheduled"),
+    psgScore: score,
+    opponentScore: score,
+    regulationPsgScore: score,
+    regulationOpponentScore: score,
+    penaltyPsgScore: score,
+    penaltyOpponentScore: score,
+  })
+  .refine((match) => match.status !== "finished" || (match.psgScore !== undefined && match.opponentScore !== undefined), {
+    message: "A finished match needs its score.",
+    path: ["psgScore"],
+  });
 
 /** A member's prediction: score after 90 minutes. */
 export const predictionSchema = z.object({

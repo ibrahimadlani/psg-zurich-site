@@ -2,6 +2,9 @@ import "server-only";
 import { asc, eq, inArray, max } from "drizzle-orm";
 import { db } from "@/db";
 import { events, matches } from "@/db/schema";
+import { currentSeason } from "@/lib/football/sync";
+import type { createMatchSchema } from "@/lib/validators";
+import type { z } from "zod";
 
 export type Match = typeof matches.$inferSelect;
 
@@ -47,4 +50,30 @@ export async function getEventsForMatches(matchIds: string[]) {
     .from(events)
     .where(inArray(events.matchId, matchIds))
     .orderBy(asc(events.startsAt));
+}
+
+/** Row values of a match entered by hand (see createMatchSchema). */
+export function manualMatchValues(input: z.infer<typeof createMatchSchema>) {
+  const played = input.status === "finished" || input.status === "live";
+  const finished = input.status === "finished";
+  return {
+    opponent: input.opponent,
+    opponentLogo: input.opponentLogo ?? null,
+    competition: input.competition,
+    round: input.round ?? null,
+    kickoffAt: input.kickoffAt,
+    season: currentSeason(input.kickoffAt),
+    venue: input.venue,
+    stadium: input.stadium ?? null,
+    city: input.city ?? null,
+    status: input.status,
+    statusDetail: finished ? "FT" : input.status === "live" ? "LIVE" : null,
+    psgScore: played ? (input.psgScore ?? 0) : null,
+    opponentScore: played ? (input.opponentScore ?? 0) : null,
+    // Without extra time, the score after 90 minutes is the final score.
+    regulationPsgScore: finished ? (input.regulationPsgScore ?? input.psgScore ?? null) : null,
+    regulationOpponentScore: finished ? (input.regulationOpponentScore ?? input.opponentScore ?? null) : null,
+    penaltyPsgScore: finished ? (input.penaltyPsgScore ?? null) : null,
+    penaltyOpponentScore: finished ? (input.penaltyOpponentScore ?? null) : null,
+  };
 }

@@ -532,5 +532,49 @@
     "attendees": "Teilnehmende anzeigen",
     "onWaitlist": "Warteliste",
     "empty": "Noch keine Events."
+  },
+  "AdminMatches": {
+    "new": "Spiel von Hand hinzufügen",
+    "newHint": "Für Spiele, die der automatische Import nicht abdeckt: Coupe de France, Trophée des Champions, Testspiele… Mitglieder können sie wie alle anderen tippen.",
+    "listTitle": "Von Hand erfasste Spiele",
+    "competition": "Wettbewerb",
+    "round": "Runde (optional)",
+    "roundPlaceholder": "Viertelfinal",
+    "opponent": "Gegner",
+    "opponentLogo": "Logo des Gegners (URL, optional)",
+    "kickoffAt": "Anpfiff",
+    "venue": "Spielort",
+    "venues": {
+      "home": "Heim",
+      "away": "Auswärts",
+      "neutral": "Neutraler Platz"
+    },
+    "stadium": "Stadion (optional)",
+    "city": "Stadt (optional)",
+    "status": "Status",
+    "statuses": {
+      "scheduled": "Kommend",
+      "live": "Läuft",
+      "finished": "Beendet",
+      "postponed": "Verschoben",
+      "cancelled": "Abgesagt"
+    },
+    "score": "Resultat",
+    "opponentShort": "Gegner",
+    "extraTime": "Verlängerung oder Penaltyschiessen?",
+    "extraTimeHint": "Das Resultat oben ist das Endresultat (inkl. Verlängerung). Gib hier das Resultat nach 90 Minuten ein, das für die Tipps zählt, sowie das Penaltyschiessen.",
+    "regulationPsg": "PSG nach 90'",
+    "regulationOpponent": "Gegner nach 90'",
+    "penaltiesPsg": "Penaltys PSG",
+    "penaltiesOpponent": "Penaltys Gegner",
+    "create": "Spiel hinzufügen",
+    "save": "Speichern",
+    "saving": "Speichern…",
+    "error": "Speichern fehlgeschlagen.",
+    "invalid": "Felder prüfen: Wettbewerb, Gegner und Anpfiff sind Pflicht; ein beendetes Spiel braucht ein Resultat.",
+    "edit": "Bearbeiten",
+    "close": "Schliessen",
+    "delete": "Löschen",
+    "confirmDelete": "Dieses Spiel und seine Tipps löschen?"
   }
 }

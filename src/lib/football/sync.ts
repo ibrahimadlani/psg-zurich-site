@@ -153,14 +153,20 @@ export async function syncMatch(externalId: number) {
 
 /** Points of every prediction on a finished match (idempotent). */
 export async function scoreMatchPredictions(externalId: number) {
+  const [match] = await db.select({ id: matches.id }).from(matches).where(eq(matches.externalId, externalId));
+  if (match) await scorePredictionsForMatch(match.id);
+}
+
+/** Same, by our match id (matches entered by hand have no external id). */
+export async function scorePredictionsForMatch(matchId: string) {
   const [match] = await db
-    .select({ id: matches.id, psg: matches.regulationPsgScore, opponent: matches.regulationOpponentScore })
+    .select({ psg: matches.regulationPsgScore, opponent: matches.regulationOpponentScore })
     .from(matches)
-    .where(and(eq(matches.externalId, externalId), isNotNull(matches.regulationPsgScore)));
+    .where(and(eq(matches.id, matchId), isNotNull(matches.regulationPsgScore)));
   if (!match || match.psg === null || match.opponent === null) return;
   const result = { psg: match.psg, opponent: match.opponent };
 
-  const rows = await db.select().from(predictions).where(eq(predictions.matchId, match.id));
+  const rows = await db.select().from(predictions).where(eq(predictions.matchId, matchId));
   for (const row of rows) {
     const points = scorePrediction({ psg: row.psgScore, opponent: row.opponentScore }, result);
     if (row.points !== points) await db.update(predictions).set({ points }).where(eq(predictions.id, row.id));

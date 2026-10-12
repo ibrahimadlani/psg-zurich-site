@@ -532,5 +532,49 @@
     "attendees": "See who's coming",
     "onWaitlist": "waiting",
     "empty": "No events yet."
+  },
+  "AdminMatches": {
+    "new": "Add a match by hand",
+    "newHint": "For matches the automatic import doesn't cover: Coupe de France, Trophée des Champions, friendlies… Members can predict them like any other.",
+    "listTitle": "Matches entered by hand",
+    "competition": "Competition",
+    "round": "Round (optional)",
+    "roundPlaceholder": "Quarter-final",
+    "opponent": "Opponent",
+    "opponentLogo": "Opponent logo (URL, optional)",
+    "kickoffAt": "Kick-off",
+    "venue": "Venue",
+    "venues": {
+      "home": "Home",
+      "away": "Away",
+      "neutral": "Neutral ground"
+    },
+    "stadium": "Stadium (optional)",
+    "city": "City (optional)",
+    "status": "Status",
+    "statuses": {
+      "scheduled": "Upcoming",
+      "live": "In progress",
+      "finished": "Finished",
+      "postponed": "Postponed",
+      "cancelled": "Cancelled"
+    },
+    "score": "Score",
+    "opponentShort": "Opponent",
+    "extraTime": "Extra time or penalties?",
+    "extraTimeHint": "The score above is the final score (extra time included). Enter here the score after 90 minutes, used for predictions, and the shoot-out.",
+    "regulationPsg": "PSG at 90'",
+    "regulationOpponent": "Opp. at 90'",
+    "penaltiesPsg": "PSG pens",
+    "penaltiesOpponent": "Opp. pens",
+    "create": "Add the match",
+    "save": "Save",
+    "saving": "Saving…",
+    "error": "Saving failed.",
+    "invalid": "Check the fields: competition, opponent and kick-off are required; a finished match needs its score.",
+    "edit": "Edit",
+    "close": "Close",
+    "delete": "Delete",
+    "confirmDelete": "Delete this match and its predictions?"
   }
 }
