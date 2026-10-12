@@ -6,7 +6,7 @@ d:"/_next/static/chunks/1u5olzoilm1hn.js"
 e:"/_next/static/chunks/450nfjx_hm5n1.js"
 f:"/_next/static/chunks/0mrurt_kg1ixr.js"
 10:"/_next/static/chunks/0cc7fgy1vig40.js"
-11:"/_next/static/chunks/438hbj-tgtlc1.js"
+11:"/_next/static/chunks/0f4lyphka4frn.js"
 12:"/_next/static/chunks/0cm378vxxfnat.js"
 13:I[77105,["$d","$e","$f","$10","$11","$12"],"default"]
 14:I[5500,["$d","$e","$f","$10","$11","$12"],"Image"]
@@ -14,35 +14,36 @@ f:"/_next/static/chunks/0mrurt_kg1ixr.js"
 16:I[94013,["$d","$e","$f","$10","$11","$12"],"ThemeToggle"]
 17:I[68739,["$d","$e","$f","$10","$11","$12"],"UserNav"]
 18:I[90036,["$d","$e","$f","$10","$11","$12"],"MobileMenu"]
-19:"ForgotPasswordForm"
-1a:I[92841,["$d","$e","$f","$10","$11","$12"],"$19"]
-1b:I[97367,["$4"],"OutletBoundary"]
-1c:"$Sreact.suspense"
-20:"ViewportBoundary"
-21:I[97367,["$4"],"$20"]
-22:"MetadataBoundary"
-23:I[97367,["$4"],"$22"]
-24:I[27201,["$4"],"IconMark"]
+19:I[8895,["$d","$e","$f","$10","$11","$12"],"MainNav"]
+1a:"ForgotPasswordForm"
+1b:I[92841,["$d","$e","$f","$10","$11","$12"],"$1a"]
+1c:I[97367,["$4"],"OutletBoundary"]
+1d:"$Sreact.suspense"
+21:"ViewportBoundary"
+22:I[97367,["$4"],"$21"]
+23:"MetadataBoundary"
+24:I[97367,["$4"],"$23"]
+25:I[27201,["$4"],"IconMark"]
 8:X
 8:C
 9:X
 9:300
 9:C
-1f:X
-1f:C
-c:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"relative flex flex-1 flex-col overflow-hidden leading-[normal]","children":[["$","header",null,{"className":"relative","children":["$","div",null,{"className":"relative mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]","children":[["$","$L13",null,{"href":"/fr","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"aria-label":"PSG Supporters Club Zurich","className":"flex min-w-0 items-center gap-[clamp(8px,2.5vw,12px)] text-primary dark:text-foreground","children":[["$","$L14",null,{"src":"/brand/psg-crest.svg","alt":"","width":36,"height":36,"preload":true,"className":"block h-auto w-[clamp(30px,8.5vw,36px)] shrink-0 drop-shadow-[0_4px_8px_oklch(0.2_0.05_248/0.2)]"}],["$","span",null,{"className":"inline-flex flex-col items-stretch gap-1 leading-none uppercase","children":[["$","span",null,{"aria-hidden":true,"className":"flex justify-between text-[length:clamp(19px,5.4vw,23px)] leading-none font-semibold [text-box:trim-both_cap_alphabetic]","children":[["$","span","0",{"children":"Z"}],["$","span","1",{"children":"U"}],["$","span","2",{"children":"R"}],["$","span","3",{"children":"I"}],["$","span","4",{"children":"C"}],["$","span","5",{"children":"H"}]]}],["$","span",null,{"className":"-mr-[0.08em] font-wide text-[length:clamp(6px,1.75vw,7.4px)] leading-none font-semibold tracking-[0.08em] whitespace-nowrap [text-box:trim-both_cap_alphabetic]","children":"Supporters Club"}]]}]]}],[["$","div",null,{"className":"hidden shrink-0 items-center gap-1 md:flex","children":[["$","$L15",null,{}],["$","$L16",null,{}],["$","$L17",null,{}]]}],["$","div",null,{"className":"md:hidden","children":["$","$L18",null,{}]}]]]}]}],["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12","children":["$","div",null,{"className":"flex w-full max-w-[360px] flex-col gap-[22px]","children":[["$","div",null,{"className":"flex flex-col gap-2 text-center","children":[["$","h1",null,{"className":"font-narrow text-[length:clamp(32px,6vw,44px)] leading-[0.95] font-extrabold uppercase italic","children":"Mot de passe oublié"}],["$","p",null,{"className":"text-[15px] leading-normal text-pretty text-muted-foreground","children":"Saisissez votre adresse e-mail : nous vous enverrons un lien pour choisir un nouveau mot de passe."}]]}],[["$","$L1a",null,{}],["$","p",null,{"className":"text-center text-[14px]","children":["$","$L13",null,{"href":"/fr/connexion","localeCookie":"$c:0:1:d:r:props:children:0:props:children:0:props:children:props:children:0:props:localeCookie","className":"border-b pb-0.5 text-foreground transition-colors hover:border-brand-red","children":"Retour à la connexion"}]}]]]}]}],["$","footer",null,{"className":"relative border-t","children":["$","p",null,{"className":"mx-auto max-w-5xl px-4 py-6 text-center text-[14px] text-muted-foreground","children":"Association officielle de supporters, certifiée par le Paris Saint-Germain."}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0mrurt_kg1ixr.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0cc7fgy1vig40.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/438hbj-tgtlc1.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0cm378vxxfnat.js","async":true}]],["$","$L1b",null,{"children":["$","$1c",null,{"name":"Next.MetadataOutlet","children":"$@1d"}]}]]}],"p":"$@1e","v":"$1f","s":"$9"}}]]
+20:X
+20:C
+c:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"relative flex flex-1 flex-col overflow-hidden leading-[normal]","children":[["$","header",null,{"className":"relative","children":[["$","div",null,{"className":"relative mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]","children":[["$","$L13",null,{"href":"/fr","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"aria-label":"PSG Supporters Club Zurich","className":"flex min-w-0 items-center gap-[clamp(8px,2.5vw,12px)] text-primary dark:text-foreground","children":[["$","$L14",null,{"src":"/brand/psg-crest.svg","alt":"","width":36,"height":36,"preload":true,"className":"block h-auto w-[clamp(30px,8.5vw,36px)] shrink-0 drop-shadow-[0_4px_8px_oklch(0.2_0.05_248/0.2)]"}],["$","span",null,{"className":"inline-flex flex-col items-stretch gap-1 leading-none uppercase","children":[["$","span",null,{"aria-hidden":true,"className":"flex justify-between text-[length:clamp(19px,5.4vw,23px)] leading-none font-semibold [text-box:trim-both_cap_alphabetic]","children":[["$","span","0",{"children":"Z"}],["$","span","1",{"children":"U"}],["$","span","2",{"children":"R"}],["$","span","3",{"children":"I"}],["$","span","4",{"children":"C"}],["$","span","5",{"children":"H"}]]}],["$","span",null,{"className":"-mr-[0.08em] font-wide text-[length:clamp(6px,1.75vw,7.4px)] leading-none font-semibold tracking-[0.08em] whitespace-nowrap [text-box:trim-both_cap_alphabetic]","children":"Supporters Club"}]]}]]}],[["$","div",null,{"className":"hidden shrink-0 items-center gap-1 md:flex","children":[["$","$L15",null,{}],["$","$L16",null,{}],["$","$L17",null,{}]]}],["$","div",null,{"className":"md:hidden","children":["$","$L18",null,{}]}]]]}],["$","$L19",null,{}]]}],["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12","children":["$","div",null,{"className":"flex w-full max-w-[360px] flex-col gap-[22px]","children":[["$","div",null,{"className":"flex flex-col gap-2 text-center","children":[["$","h1",null,{"className":"font-narrow text-[length:clamp(32px,6vw,44px)] leading-[0.95] font-extrabold uppercase italic","children":"Mot de passe oublié"}],["$","p",null,{"className":"text-[15px] leading-normal text-pretty text-muted-foreground","children":"Saisissez votre adresse e-mail : nous vous enverrons un lien pour choisir un nouveau mot de passe."}]]}],[["$","$L1b",null,{}],["$","p",null,{"className":"text-center text-[14px]","children":["$","$L13",null,{"href":"/fr/connexion","localeCookie":"$c:0:1:d:r:props:children:0:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"border-b pb-0.5 text-foreground transition-colors hover:border-brand-red","children":"Retour à la connexion"}]}]]]}]}],["$","footer",null,{"className":"relative border-t","children":["$","p",null,{"className":"mx-auto max-w-5xl px-4 py-6 text-center text-[14px] text-muted-foreground","children":"Association officielle de supporters, certifiée par le Paris Saint-Germain."}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/0mrurt_kg1ixr.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0cc7fgy1vig40.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0f4lyphka4frn.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0cm378vxxfnat.js","async":true}]],["$","$L1c",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@1e"}]}]]}],"p":"$@1f","v":"$20","s":"$9"}}]]
 a:[["children",{"s":"mot-de-passe-oublie","h":49250,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@b","v":"$8","s":"$9"},"c":"$Qc"}]]
 2:[["children",{"s":"connexion","h":49218,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
-26:X
-26:C
-29:X
-29:T6,locale29:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L21",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L23",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mot de passe oublié · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L24","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@25","v":"$26","s":"$9"}},"a":"$@27","u":"$@28","b":"wJ4dbehQPaI1tNZB60rb5","r":"$29"}
-1d:null
-28:false
-27:null
+27:X
+27:C
+2a:X
+2a:T6,locale2a:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mot de passe oublié · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$9"}},"a":"$@28","u":"$@29","b":"o-sbA0MhTXj2cYXD2Hs3o","r":"$2a"}
+1e:null
+29:false
+28:null
 b:"$undefined"
 7:"$undefined"
-25:"$undefined"
-1e:"$undefined"
+26:"$undefined"
+1f:"$undefined"
