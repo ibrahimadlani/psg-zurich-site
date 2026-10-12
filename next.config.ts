@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     globalNotFound: true,
+    // Keep regenerated pages in memory only. On disk they land in .next/server/route-cache,
+    // which the deploy (git reset) never removes: the next version would then serve pages
+    // from the previous build, pointing to JS/CSS files that no longer exist.
+    isrFlushToDisk: false,
   },
   turbopack: {
     rules: {
