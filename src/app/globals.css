@@ -13,6 +13,9 @@
     --font-mono: var(--font-geist-mono), ui-monospace, monospace;
     --color-pattern: var(--pattern);
     --shadow-brand: var(--brand-shadow);
+    /* Exact crest colours, identical in light and dark mode */
+    --color-psg-blue: #004170;
+    --color-psg-red: #da291c;
     --color-segment: var(--segment);
     --color-segment-foreground: var(--segment-foreground);
     --color-sidebar-ring: var(--sidebar-ring);

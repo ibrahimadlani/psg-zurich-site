@@ -12,8 +12,8 @@ type Tone = (typeof announcements.$inferSelect)["tone"];
 
 const TONES: Record<Tone, string> = {
   info: "bg-primary text-primary-foreground",
-  maintenance: "bg-foreground text-background",
-  urgent: "bg-brand-red text-white",
+  maintenance: "bg-psg-blue text-white dark:bg-foreground dark:text-background",
+  urgent: "bg-psg-red text-white",
 };
 
 function subscribe(onChange: () => void) {
