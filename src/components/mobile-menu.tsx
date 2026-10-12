@@ -13,29 +13,20 @@ import { cn } from "@/lib/utils";
 
 const line = "absolute left-0 top-1/2 -mt-[1.25px] block h-[2.5px] w-full rounded-full bg-current";
 
-/** Three lines + label. `closing` plays the hamburger → cross animation on mount. */
-function Burger({ label, closing = false }: { label: string; closing?: boolean }) {
+/** Three lines in a square. `closing` plays the hamburger → cross animation on mount. */
+function Burger({ closing = false }: { closing?: boolean }) {
   return (
-    <span className="flex flex-col items-center gap-[7px]">
-      <span aria-hidden className="relative block h-3.5 w-6">
-        <span
-          className={cn(line, closing ? "animate-burger-top" : "-translate-y-1.5")}
-        />
-        <span className={cn(line, closing && "animate-burger-middle")} />
-        <span
-          className={cn(line, closing ? "animate-burger-bottom" : "translate-y-1.5")}
-        />
-      </span>
-      {/* Same type as the logo's "Supporters Club" line. */}
-      <span className="-mr-[0.08em] font-wide text-[length:clamp(6px,1.75vw,7.4px)] leading-none font-semibold tracking-[0.08em] whitespace-nowrap uppercase">
-        {label}
-      </span>
+    <span aria-hidden className="relative block h-3.5 w-[22px]">
+      <span className={cn(line, closing ? "animate-burger-top" : "-translate-y-1.5")} />
+      <span className={cn(line, closing && "animate-burger-middle")} />
+      <span className={cn(line, closing ? "animate-burger-bottom" : "translate-y-1.5")} />
     </span>
   );
 }
 
+// Square, as tall as the crest at its largest (36px), so it sits centred on the logo.
 const burgerButton =
-  "-mr-1.5 grid h-11 min-w-11 cursor-pointer place-items-center rounded-[8px] px-1.5 text-psg-blue outline-none transition-colors hover:bg-foreground/5 dark:text-white focus-visible:ring-2 focus-visible:ring-ring/50";
+  "grid size-9 shrink-0 cursor-pointer place-items-center rounded-[8px] text-psg-blue outline-none transition-colors hover:bg-foreground/5 focus-visible:ring-2 focus-visible:ring-ring/50 dark:text-white";
 
 export function MobileMenu() {
   const t = useTranslations("Nav");
@@ -49,7 +40,7 @@ export function MobileMenu() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger className={burgerButton} aria-label={t("menu")}>
-        <Burger label={t("menu")} />
+        <Burger />
       </SheetTrigger>
       <SheetContent
         side="right"
@@ -66,7 +57,7 @@ export function MobileMenu() {
         <div className="flex items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]">
           <BrandLogo />
           <SheetClose className={burgerButton} aria-label={t("close")}>
-            <Burger label={t("close")} closing />
+            <Burger closing />
           </SheetClose>
         </div>
 
