@@ -95,12 +95,28 @@
       "namedRegex": "^/api/v1/matches/(?<nxtPid>[^/]+?)/prediction(?:/)?$"
     },
     {
+      "page": "/api/v1/media/[id]",
+      "regex": "^/api/v1/media/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/media/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/v1/members/[id]",
       "regex": "^/api/v1/members/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/api/v1/members/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/posts/[id]",
+      "regex": "^/api/v1/posts/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/posts/(?<nxtPid>[^/]+?)(?:/)?$"
     },
     {
       "page": "/[locale]",
@@ -137,6 +153,82 @@
       ]
     },
     {
+      "sourcePage": "/[locale]/actualites/[slug]",
+      "page": "/de/actualites/[slug]",
+      "regex": "^/de/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/de/actualites/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/actualites/[slug].segments/$d$locale/!KHNpdGUp/actualites/$d$slug$segment",
+          "source": "^/de/actualites/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/actualites/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/actualites/[slug]",
+      "page": "/en/actualites/[slug]",
+      "regex": "^/en/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/en/actualites/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/actualites/[slug].segments/$d$locale/!KHNpdGUp/actualites/$d$slug$segment",
+          "source": "^/en/actualites/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/actualites/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/actualites/[slug]",
+      "page": "/fr/actualites/[slug]",
+      "regex": "^/fr/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/fr/actualites/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/actualites/[slug].segments/$d$locale/!KHNpdGUp/actualites/$d$slug$segment",
+          "source": "^/fr/actualites/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/actualites/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/actualites/[slug]",
+      "regex": "^/([^/]+?)/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/actualites/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/actualites/[slug].segments/$d$locale/!KHNpdGUp/actualites/$d$slug$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/actualites/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/actualites/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/adhesion",
       "regex": "^/([^/]+?)/adhesion(?:/)?$",
       "routeKeys": {
@@ -166,6 +258,116 @@
           "source": "^/(?<nxtPlocale>[^/]+?)/admin\\.segments/\\$d\\$locale/!KHNpdGUp/admin(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/actualites",
+      "regex": "^/([^/]+?)/admin/actualites(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/actualites(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/actualites.segments/$d$locale/!KHNpdGUp/admin/actualites$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/actualites\\.segments/\\$d\\$locale/!KHNpdGUp/admin/actualites(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/actualites/nouveau",
+      "regex": "^/([^/]+?)/admin/actualites/nouveau(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/actualites/nouveau(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/actualites/nouveau.segments/$d$locale/!KHNpdGUp/admin/actualites/nouveau$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/actualites/nouveau\\.segments/\\$d\\$locale/!KHNpdGUp/admin/actualites/nouveau(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/actualites/[id]",
+      "page": "/de/admin/actualites/[id]",
+      "regex": "^/de/admin/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/de/admin/actualites/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/admin/actualites/[id].segments/$d$locale/!KHNpdGUp/admin/actualites/$d$id$segment",
+          "source": "^/de/admin/actualites/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/actualites/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/actualites/[id]",
+      "page": "/en/admin/actualites/[id]",
+      "regex": "^/en/admin/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/en/admin/actualites/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/admin/actualites/[id].segments/$d$locale/!KHNpdGUp/admin/actualites/$d$id$segment",
+          "source": "^/en/admin/actualites/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/actualites/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/actualites/[id]",
+      "page": "/fr/admin/actualites/[id]",
+      "regex": "^/fr/admin/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/fr/admin/actualites/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/admin/actualites/[id].segments/$d$locale/!KHNpdGUp/admin/actualites/$d$id$segment",
+          "source": "^/fr/admin/actualites/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/actualites/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/actualites/[id]",
+      "regex": "^/([^/]+?)/admin/actualites/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/actualites/(?<nxtPid>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/actualites/[id].segments/$d$locale/!KHNpdGUp/admin/actualites/$d$id$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/actualites/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/actualites/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPid": "nxtPid"
           }
         }
       ]
@@ -795,6 +997,12 @@
       "regex": "^/api/v1/me/settings(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/me/settings(?:/)?$"
+    },
+    {
+      "page": "/api/v1/media",
+      "regex": "^/api/v1/media(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/media(?:/)?$"
     },
     {
       "page": "/api/v1/members",

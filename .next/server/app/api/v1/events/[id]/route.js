@@ -1,6 +1,6 @@
 var R=require("../../../../../chunks/[turbopack]_runtime.js")("server/app/api/v1/events/[id]/route.js")
-R.c("server/chunks/[root-of-the-server]__1okxwh8en2cv6._.js")
-R.c("server/chunks/_0d04i_6q32udp._.js")
+R.c("server/chunks/[root-of-the-server]__1rf0e04bfa7t6._.js")
+R.c("server/chunks/_0qwgg1lhxksbc._.js")
 R.c("server/chunks/[root-of-the-server]__14z8-yb_ke02n._.js")
 R.c("server/chunks/node_modules_@better-auth_1iqndebu-57re._.js")
 R.c("server/chunks/src_db_1r6opro2hkl2d._.js")
