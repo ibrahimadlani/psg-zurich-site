@@ -1,5 +1,6 @@
 import { BrandLogo } from "@/components/brand-logo";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { SignInButton } from "@/components/sign-in-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function HeaderActions() {
@@ -7,6 +8,7 @@ export function HeaderActions() {
     <div className="flex shrink-0 items-center gap-2">
       <LocaleSwitcher />
       <ThemeToggle />
+      <SignInButton />
     </div>
   );
 }
