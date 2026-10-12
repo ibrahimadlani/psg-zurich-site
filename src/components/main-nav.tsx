@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 type NavItem = {
   href: string;
   key: "home" | "news" | "matches" | "events" | "membership" | "contact" | "memberArea" | "admin";
+  /** Key page (membership / member area): last, pushed to the right of the desktop bar. */
+  featured?: boolean;
 };
 
 const home: NavItem = { href: "/", key: "home" };
@@ -24,12 +26,13 @@ const contact: NavItem = { href: "/contact", key: "contact" };
 export function useNavItems(): NavItem[] {
   const { data } = useSession();
   // Visitors (and the first instant while the session loads) see the public menu.
-  if (!data) return [home, ...content, { href: "/adhesion", key: "membership" }, contact];
-  const member: NavItem[] = [home, ...content, { href: "/espace-membre", key: "memberArea" }, contact];
-  return hasRole(data.user.role, "admin") ? [...member, { href: "/admin", key: "admin" }] : member;
+  if (!data) return [home, ...content, contact, { href: "/adhesion", key: "membership", featured: true }];
+  const memberArea: NavItem = { href: "/espace-membre", key: "memberArea", featured: true };
+  return hasRole(data.user.role, "admin")
+    ? [home, ...content, contact, { href: "/admin", key: "admin" }, memberArea]
+    : [home, ...content, contact, memberArea];
 }
 
-/** Desktop navigation bar: same width as the content, hairlines above and below. */
 /** Desktop navigation bar: same width as the content, hairlines above and below. */
 export function MainNav() {
   const t = useTranslations("Nav");
@@ -72,22 +75,25 @@ export function MainNav() {
   return (
     <nav aria-label={t("label")} className="mx-auto hidden w-full max-w-5xl px-4 md:block">
       <ul ref={listRef} className="relative flex h-10 items-stretch gap-7 border-y">
-        {items.map(({ href, key }) => {
+        {items.map(({ href, key, featured }) => {
           const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
           return (
-            <li key={key} className="flex">
+            <li key={key} className={cn("flex", featured && "ml-auto")}>
               <Link
                 href={href}
                 aria-current={active ? "page" : undefined}
                 // Slide right away, without waiting for the new page.
                 onClick={(event) => moveBar(event.currentTarget)}
                 className={cn(
-                  "relative inline-flex items-center font-wide text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
+                  "relative inline-flex items-center gap-2 font-wide text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
                   active
                     ? "text-psg-blue dark:text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
+                    : featured
+                      ? "text-foreground hover:text-psg-blue dark:hover:text-foreground/80"
+                      : "text-muted-foreground hover:text-foreground",
                 )}
               >
+                {featured ? <span aria-hidden className="size-1.5 rounded-full bg-psg-red" /> : null}
                 {t(key)}
               </Link>
             </li>
