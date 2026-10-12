@@ -29,6 +29,7 @@
   "/api/v1/events/[id]/route": "app/api/v1/events/[id]/route.js",
   "/api/v1/events/route": "app/api/v1/events/route.js",
   "/api/v1/matches/[id]/prediction/route": "app/api/v1/matches/[id]/prediction/route.js",
+  "/api/v1/matches/[id]/route": "app/api/v1/matches/[id]/route.js",
   "/api/v1/matches/live/route": "app/api/v1/matches/live/route.js",
   "/api/v1/matches/route": "app/api/v1/matches/route.js",
   "/api/v1/matches/sync/route": "app/api/v1/matches/sync/route.js",

@@ -63,6 +63,14 @@
       "namedRegex": "^/api/v1/events/(?<nxtPid>[^/]+?)/attendance(?:/)?$"
     },
     {
+      "page": "/api/v1/matches/[id]",
+      "regex": "^/api/v1/matches/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/matches/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/v1/matches/[id]/prediction",
       "regex": "^/api/v1/matches/([^/]+?)/prediction(?:/)?$",
       "routeKeys": {
