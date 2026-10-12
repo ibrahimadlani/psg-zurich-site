@@ -14,7 +14,8 @@
     "memberArea": "Mitgliederbereich",
     "admin": "Administration",
     "menu": "Menü",
-    "close": "Schließen"
+    "close": "Schließen",
+    "settings": "Einstellungen"
   },
   "LocaleSwitcher": {
     "label": "Sprache",
@@ -148,7 +149,7 @@
   },
   "MemberArea": {
     "title": "Mitgliederbereich",
-    "description": "Dein Mitgliederprofil.",
+    "description": "Deine Mitgliederkarte, Anmeldungen und Tipps.",
     "loading": "Wird geladen…",
     "signOut": "Abmelden",
     "adminLink": "Zur Administration",
@@ -178,7 +179,7 @@
       "title": "Meine Angaben",
       "description": "Nur der Vorstand sieht diese Angaben.",
       "email": "E-Mail-Adresse",
-      "emailHint": "Um deine Adresse zu ändern, schreib uns an {email}.",
+      "emailHint": "Adresse ändern: Einstellungen › Konto und Sicherheit.",
       "save": "Speichern",
       "saving": "Speichern…",
       "saved": "Angaben gespeichert.",
@@ -214,6 +215,27 @@
       "wrongPassword": "Falsches Passwort.",
       "superadmin": "Ein Superadmin-Konto kann nicht über die Website gelöscht werden.",
       "error": "Löschen fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "card": {
+      "season": "Saison"
+    },
+    "registrations": {
+      "title": "Meine Anmeldungen",
+      "empty": "Keine kommenden Anmeldungen.",
+      "browse": "Events ansehen"
+    },
+    "predictions": {
+      "title": "Meine Tipps",
+      "leaderboard": "Ganze Rangliste",
+      "rankSeason": "Rang · Saison",
+      "rankMonth": "Rang · dieser Monat",
+      "notRanked": "Noch nicht klassiert",
+      "points": "{count, plural, =0 {0 Pkt.} one {# Pkt.} other {# Pkt.}}",
+      "mine": "Mein Tipp: PSG {psg} – {opponent}",
+      "result": "Resultat {psg} – {opponent}",
+      "pending": "ausstehend",
+      "empty": "Du hast noch nicht getippt.",
+      "browse": "Spiele ansehen"
     }
   },
   "Admin": {
@@ -328,6 +350,30 @@
       "body": "Für «{event}» ist ein Platz frei geworden: Du rückst von der Warteliste nach. Falls du nicht mehr kommen kannst, melde dich ab, damit jemand anderes den Platz bekommt.",
       "cta": "Event ansehen",
       "footer": "Fragen? Schreib uns an {email}."
+    },
+    "newEvent": {
+      "subject": "Neues Event: {event}",
+      "preview": "{event} — {date}",
+      "heading": "{event}",
+      "body": "Hallo {firstName}, der Club organisiert «{event}» am {date} ({place}). Melde dich schnell an, die Plätze sind begrenzt.",
+      "cta": "Event ansehen und anmelden",
+      "footer": "Du erhältst diese E-Mail, weil Event-Ankündigungen in deinen Einstellungen aktiviert sind. Abmelden: {unsubscribe}"
+    },
+    "predictionReminder": {
+      "subject": "Noch 24 Stunden, um {match} zu tippen",
+      "preview": "Anpfiff {time}",
+      "heading": "Dein Tipp, {firstName}?",
+      "body": "{match} ({competition}) wird {time} angepfiffen und du hast noch nicht getippt. Die Tipps schliessen beim Anpfiff.",
+      "cta": "Jetzt tippen",
+      "footer": "Du erhältst diese Erinnerung, weil sie in deinen Einstellungen aktiviert ist. Abmelden: {unsubscribe}"
+    },
+    "changeEmail": {
+      "subject": "Änderung der E-Mail-Adresse bestätigen — PSG Zurich",
+      "preview": "Neue Adresse: {newEmail}",
+      "heading": "Änderung der E-Mail-Adresse",
+      "body": "Du möchtest die Adresse deines Kontos durch {newEmail} ersetzen. Bestätige mit der Schaltfläche unten: Danach senden wir einen Bestätigungslink an die neue Adresse.",
+      "cta": "Änderung bestätigen",
+      "ignore": "Falls du das nicht warst, ignoriere diese E-Mail und ändere dein Passwort: Deine aktuelle Adresse bleibt unverändert."
     }
   },
   "Legal": {
@@ -477,7 +523,8 @@
     "points": "Punkte",
     "you": "(du)",
     "empty": "Noch keine bewerteten Tipps.",
-    "backToMatches": "Alle Spiele"
+    "backToMatches": "Alle Spiele",
+    "youHidden": "(du · für andere ausgeblendet)"
   },
   "Events": {
     "title": "Events",
@@ -556,7 +603,8 @@
     "signups": "{registered} / {capacity} angemeldet · {waitlisted} auf der Warteliste",
     "attendees": "Teilnehmende anzeigen",
     "onWaitlist": "Warteliste",
-    "empty": "Noch keine Events."
+    "empty": "Noch keine Events.",
+    "notifyMembers": "Mitglieder per E-Mail informieren (wer es aktiviert hat)"
   },
   "AdminMatches": {
     "new": "Spiel von Hand hinzufügen",
@@ -601,5 +649,119 @@
     "close": "Schliessen",
     "delete": "Löschen",
     "confirmDelete": "Dieses Spiel und seine Tipps löschen?"
+  },
+  "Unsubscribe": {
+    "title": "Abmelden",
+    "submit": "Bestätigen",
+    "confirm": {
+      "events": "Keine E-Mails zu neuen Club-Events mehr erhalten?",
+      "reminders": "Keine Tipp-Erinnerungen vor den Spielen mehr erhalten?"
+    },
+    "doneTitle": "Erledigt",
+    "done": {
+      "events": "Du erhältst keine Event-Ankündigungen per E-Mail mehr.",
+      "reminders": "Du erhältst keine Tipp-Erinnerungen mehr."
+    },
+    "manage": "Benachrichtigungen verwalten",
+    "invalidTitle": "Ungültiger Link",
+    "invalid": "Dieser Abmeldelink ist ungültig. Du kannst deine Benachrichtigungen in deinen Einstellungen verwalten."
+  },
+  "Settings": {
+    "title": "Einstellungen",
+    "saveError": "Speichern fehlgeschlagen. Bitte erneut versuchen.",
+    "sections": {
+      "label": "Bereiche der Einstellungen",
+      "profile": {
+        "title": "Profil",
+        "description": "Foto, Name und Spitzname in der Rangliste."
+      },
+      "account": {
+        "title": "Konto und Sicherheit",
+        "description": "E-Mail-Adresse, Passwort und angemeldete Geräte."
+      },
+      "preferences": {
+        "title": "Präferenzen",
+        "description": "Sprache der Website und der E-Mails, Design."
+      },
+      "notifications": {
+        "title": "Benachrichtigungen",
+        "description": "Die E-Mails, die du vom Club erhältst."
+      },
+      "privacy": {
+        "title": "Datenschutz und Daten",
+        "description": "Rangliste, Export und Löschung deiner Daten."
+      }
+    },
+    "profile": {
+      "photo": "Profilfoto",
+      "photoDescription": "In deinem Menü und für die Admins sichtbar.",
+      "addPhoto": "Foto hinzufügen",
+      "changePhoto": "Foto ändern",
+      "removePhoto": "Entfernen",
+      "photoHint": "JPG, PNG oder HEIC: wird automatisch quadratisch zugeschnitten.",
+      "photoError": "Dieses Bild kann nicht verwendet werden. Versuch ein anderes.",
+      "details": "Meine Angaben",
+      "detailsDescription": "Nur für den Vorstand sichtbar.",
+      "nickname": "Spitzname",
+      "nicknameDescription": "Dein Name in der Tipp-Rangliste. Leer: Vorname und Initiale.",
+      "nicknamePreview": "Du erscheinst als «{name}».",
+      "save": "Speichern",
+      "nicknameMessages": {
+        "saved": "Spitzname gespeichert.",
+        "taken": "Dieser Spitzname ist schon vergeben.",
+        "invalid": "3 bis 32 Zeichen: Buchstaben, Ziffern, Leerzeichen, Punkte, Bindestriche.",
+        "error": "Speichern fehlgeschlagen. Bitte erneut versuchen."
+      }
+    },
+    "account": {
+      "email": "E-Mail-Adresse",
+      "emailDescription": "Zum Anmelden und für die E-Mails des Clubs.",
+      "emailCurrent": "Aktuelle Adresse: {email}",
+      "newEmail": "Neue Adresse",
+      "changeEmail": "Ändern",
+      "emailInvalid": "Ungültige E-Mail-Adresse.",
+      "emailSame": "Das ist bereits deine Adresse.",
+      "emailError": "Die Anfrage ist fehlgeschlagen. Bitte später erneut versuchen.",
+      "emailSent": "Bestätige die Änderung über den Link an {current}; danach geht ein Bestätigungslink an die neue Adresse.",
+      "password": "Passwort",
+      "passwordDescription": "Eine Passwortänderung meldet deine anderen Geräte ab.",
+      "devices": "Angemeldete Geräte",
+      "devicesDescription": "Melde ein Gerät ab, das du nicht kennst.",
+      "devicesLoading": "Wird geladen…",
+      "thisDevice": "Dieses Gerät",
+      "unknownDevice": "Unbekanntes Gerät",
+      "lastActive": "aktiv {date}",
+      "signOutDevice": "Abmelden",
+      "signOutOthers": "Alle anderen Geräte abmelden"
+    },
+    "preferences": {
+      "language": "Sprache",
+      "languageDescription": "Sprache der Website und der E-Mails, die wir dir senden.",
+      "error": "Sprachwechsel fehlgeschlagen.",
+      "theme": "Design",
+      "themeDescription": "Gilt nur für dieses Gerät.",
+      "themes": {
+        "light": "Hell",
+        "dark": "Dunkel",
+        "system": "System"
+      }
+    },
+    "notifications": {
+      "emails": "E-Mails",
+      "emailsDescription": "Jede E-Mail enthält auch einen Abmeldelink.",
+      "events": "Neue Events",
+      "eventsDescription": "Watch-Partys, Auswärtsfahrten und Treffen, sobald sie veröffentlicht sind.",
+      "reminders": "Tipp-Erinnerungen",
+      "remindersDescription": "Eine E-Mail 24 Stunden vor einem Spiel, wenn du noch nicht getippt hast.",
+      "noMember": "Benachrichtigungen sind Mitgliedern vorbehalten."
+    },
+    "privacy": {
+      "leaderboard": "Rangliste",
+      "leaderboardDescription": "Deine Punkte zählen weiterhin; nur die Anzeige ändert sich.",
+      "hide": "Meinen Namen in der Rangliste ausblenden",
+      "hideDescription": "Andere Mitglieder sehen dich nicht mehr; du siehst deinen Rang weiterhin.",
+      "data": "Meine Daten",
+      "dataDescription": "Eine Kopie deiner Daten oder die endgültige Löschung des Kontos."
+    }
   }
 }

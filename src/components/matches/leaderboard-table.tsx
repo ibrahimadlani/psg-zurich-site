@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
-type Row = { memberId: string; rank: number; name: string; points: number; exact: number; played: number };
+type Row = { memberId: string; rank: number; name: string; points: number; exact: number; played: number; hidden: boolean };
 
 const medal = ["🥇", "🥈", "🥉"];
 
@@ -28,7 +28,9 @@ export function LeaderboardTable({ rows, me }: { rows: Row[]; me: string | null 
               <td className="px-4 py-2.5 tabular-nums">{row.rank <= 3 ? medal[row.rank - 1] : row.rank}</td>
               <td className="px-2 py-2.5">
                 {row.name}
-                {row.memberId === me ? <span className="ml-1.5 text-xs font-normal text-muted-foreground">{t("you")}</span> : null}
+                {row.memberId === me ? (
+                  <span className="ml-1.5 text-xs font-normal text-muted-foreground">{row.hidden ? t("youHidden") : t("you")}</span>
+                ) : null}
               </td>
               <td className="px-2 py-2.5 text-right tabular-nums">{row.exact}</td>
               <td className="hidden px-2 py-2.5 text-right tabular-nums sm:table-cell">{row.played}</td>

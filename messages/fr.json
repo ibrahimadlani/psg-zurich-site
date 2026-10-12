@@ -14,7 +14,8 @@
     "memberArea": "Espace membre",
     "admin": "Administration",
     "menu": "Menu",
-    "close": "Fermer"
+    "close": "Fermer",
+    "settings": "Paramètres"
   },
   "LocaleSwitcher": {
     "label": "Langue",
@@ -148,7 +149,7 @@
   },
   "MemberArea": {
     "title": "Espace membre",
-    "description": "Votre profil d'adhérent.",
+    "description": "Votre carte de membre, vos inscriptions et vos pronostics.",
     "loading": "Chargement…",
     "signOut": "Se déconnecter",
     "adminLink": "Accéder à l'administration",
@@ -178,7 +179,7 @@
       "title": "Mes informations",
       "description": "Ces informations sont visibles uniquement par le comité.",
       "email": "Adresse e-mail",
-      "emailHint": "Pour changer d'adresse, écrivez-nous à {email}.",
+      "emailHint": "Pour changer d'adresse : Paramètres › Compte et sécurité.",
       "save": "Enregistrer",
       "saving": "Enregistrement…",
       "saved": "Informations enregistrées.",
@@ -214,6 +215,27 @@
       "wrongPassword": "Mot de passe incorrect.",
       "superadmin": "Un compte superadmin ne peut pas être supprimé depuis le site.",
       "error": "La suppression a échoué. Réessayez."
+    },
+    "card": {
+      "season": "Saison"
+    },
+    "registrations": {
+      "title": "Mes inscriptions",
+      "empty": "Aucune inscription à venir.",
+      "browse": "Voir les événements"
+    },
+    "predictions": {
+      "title": "Mes pronostics",
+      "leaderboard": "Classement complet",
+      "rankSeason": "Rang · saison",
+      "rankMonth": "Rang · ce mois-ci",
+      "notRanked": "Pas encore classé",
+      "points": "{count, plural, =0 {0 pt} one {# pt} other {# pts}}",
+      "mine": "Mon prono : PSG {psg} – {opponent}",
+      "result": "résultat {psg} – {opponent}",
+      "pending": "en attente",
+      "empty": "Vous n'avez pas encore pronostiqué.",
+      "browse": "Voir les matchs"
     }
   },
   "Admin": {
@@ -328,6 +350,30 @@
       "body": "Une place s'est libérée pour « {event} » : vous passez de la liste d'attente aux inscrits. Si vous ne pouvez plus venir, désinscrivez-vous pour laisser la place à quelqu'un d'autre.",
       "cta": "Voir l'événement",
       "footer": "Une question ? Écrivez-nous à {email}."
+    },
+    "newEvent": {
+      "subject": "Nouvel événement : {event}",
+      "preview": "{event} — {date}",
+      "heading": "{event}",
+      "body": "Bonjour {firstName}, le club organise « {event} » le {date} ({place}). Inscrivez-vous vite, les places sont limitées.",
+      "cta": "Voir l'événement et s'inscrire",
+      "footer": "Vous recevez cet e-mail car les annonces d'événements sont activées dans vos paramètres. Se désabonner : {unsubscribe}"
+    },
+    "predictionReminder": {
+      "subject": "Plus que 24 h pour pronostiquer {match}",
+      "preview": "Coup d'envoi {time}",
+      "heading": "Votre pronostic, {firstName} ?",
+      "body": "{match} ({competition}) se joue {time} et vous n'avez pas encore pronostiqué. Les pronostics ferment au coup d'envoi.",
+      "cta": "Pronostiquer maintenant",
+      "footer": "Vous recevez ce rappel car il est activé dans vos paramètres. Se désabonner : {unsubscribe}"
+    },
+    "changeEmail": {
+      "subject": "Confirmez le changement d'adresse — PSG Zurich",
+      "preview": "Nouvelle adresse : {newEmail}",
+      "heading": "Changement d'adresse e-mail",
+      "body": "Vous avez demandé à remplacer l'adresse de votre compte par {newEmail}. Confirmez avec le bouton ci-dessous : nous enverrons ensuite un lien de vérification à la nouvelle adresse.",
+      "cta": "Confirmer le changement",
+      "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail et changez votre mot de passe : votre adresse actuelle reste inchangée."
     }
   },
   "Legal": {
@@ -477,7 +523,8 @@
     "points": "Points",
     "you": "(vous)",
     "empty": "Aucun pronostic noté pour l'instant.",
-    "backToMatches": "Tous les matchs"
+    "backToMatches": "Tous les matchs",
+    "youHidden": "(vous · masqué pour les autres)"
   },
   "Events": {
     "title": "Événements",
@@ -556,7 +603,8 @@
     "signups": "{registered} / {capacity} inscrits · {waitlisted} en attente",
     "attendees": "Voir les inscrits",
     "onWaitlist": "en attente",
-    "empty": "Aucun événement pour l'instant."
+    "empty": "Aucun événement pour l'instant.",
+    "notifyMembers": "Prévenir les membres par e-mail (ceux qui l'ont activé)"
   },
   "AdminMatches": {
     "new": "Ajouter un match à la main",
@@ -601,5 +649,119 @@
     "close": "Fermer",
     "delete": "Supprimer",
     "confirmDelete": "Supprimer ce match et ses pronostics ?"
+  },
+  "Unsubscribe": {
+    "title": "Se désabonner",
+    "submit": "Confirmer",
+    "confirm": {
+      "events": "Ne plus recevoir les e-mails annonçant les nouveaux événements du club ?",
+      "reminders": "Ne plus recevoir les rappels pour pronostiquer avant les matchs ?"
+    },
+    "doneTitle": "C'est noté",
+    "done": {
+      "events": "Vous ne recevrez plus les annonces d'événements par e-mail.",
+      "reminders": "Vous ne recevrez plus les rappels de pronostic."
+    },
+    "manage": "Gérer mes notifications",
+    "invalidTitle": "Lien invalide",
+    "invalid": "Ce lien de désinscription n'est pas valable. Vous pouvez gérer vos notifications depuis vos paramètres."
+  },
+  "Settings": {
+    "title": "Paramètres",
+    "saveError": "L'enregistrement a échoué. Réessayez.",
+    "sections": {
+      "label": "Sections des paramètres",
+      "profile": {
+        "title": "Profil",
+        "description": "Photo, nom et pseudo du classement."
+      },
+      "account": {
+        "title": "Compte et sécurité",
+        "description": "Adresse e-mail, mot de passe et appareils connectés."
+      },
+      "preferences": {
+        "title": "Préférences",
+        "description": "Langue du site et des e-mails, thème."
+      },
+      "notifications": {
+        "title": "Notifications",
+        "description": "Les e-mails que vous recevez du club."
+      },
+      "privacy": {
+        "title": "Confidentialité et données",
+        "description": "Classement, export et suppression de vos données."
+      }
+    },
+    "profile": {
+      "photo": "Photo de profil",
+      "photoDescription": "Visible dans votre menu et par les admins.",
+      "addPhoto": "Ajouter une photo",
+      "changePhoto": "Changer la photo",
+      "removePhoto": "Retirer",
+      "photoHint": "JPG, PNG ou HEIC : recadrée en carré automatiquement.",
+      "photoError": "Impossible d'utiliser cette image. Essayez-en une autre.",
+      "details": "Mes informations",
+      "detailsDescription": "Visibles uniquement par le comité.",
+      "nickname": "Pseudo",
+      "nicknameDescription": "Votre nom dans le classement des pronostics. Vide : prénom et initiale.",
+      "nicknamePreview": "Vous apparaîtrez comme « {name} ».",
+      "save": "Enregistrer",
+      "nicknameMessages": {
+        "saved": "Pseudo enregistré.",
+        "taken": "Ce pseudo est déjà pris.",
+        "invalid": "3 à 32 caractères : lettres, chiffres, espaces, points, tirets.",
+        "error": "L'enregistrement a échoué. Réessayez."
+      }
+    },
+    "account": {
+      "email": "Adresse e-mail",
+      "emailDescription": "Pour vous connecter et recevoir les e-mails du club.",
+      "emailCurrent": "Adresse actuelle : {email}",
+      "newEmail": "Nouvelle adresse",
+      "changeEmail": "Changer",
+      "emailInvalid": "Adresse e-mail invalide.",
+      "emailSame": "C'est déjà votre adresse.",
+      "emailError": "La demande a échoué. Réessayez plus tard.",
+      "emailSent": "Confirmez le changement depuis le lien envoyé à {current} ; un lien de vérification partira ensuite vers la nouvelle adresse.",
+      "password": "Mot de passe",
+      "passwordDescription": "Changer de mot de passe déconnecte vos autres appareils.",
+      "devices": "Appareils connectés",
+      "devicesDescription": "Déconnectez un appareil que vous ne reconnaissez pas.",
+      "devicesLoading": "Chargement…",
+      "thisDevice": "Cet appareil",
+      "unknownDevice": "Appareil inconnu",
+      "lastActive": "actif {date}",
+      "signOutDevice": "Déconnecter",
+      "signOutOthers": "Déconnecter tous les autres appareils"
+    },
+    "preferences": {
+      "language": "Langue",
+      "languageDescription": "Langue du site et des e-mails que nous vous envoyons.",
+      "error": "Le changement de langue a échoué.",
+      "theme": "Thème",
+      "themeDescription": "Propre à cet appareil.",
+      "themes": {
+        "light": "Clair",
+        "dark": "Sombre",
+        "system": "Système"
+      }
+    },
+    "notifications": {
+      "emails": "E-mails",
+      "emailsDescription": "Chaque e-mail contient aussi un lien pour se désabonner.",
+      "events": "Nouveaux événements",
+      "eventsDescription": "Watch parties, déplacements et soirées dès qu'ils sont publiés.",
+      "reminders": "Rappels de pronostic",
+      "remindersDescription": "Un e-mail 24 h avant un match si vous n'avez pas encore pronostiqué.",
+      "noMember": "Les notifications sont réservées aux membres."
+    },
+    "privacy": {
+      "leaderboard": "Classement",
+      "leaderboardDescription": "Vos points comptent toujours ; seul l'affichage change.",
+      "hide": "Masquer mon nom du classement",
+      "hideDescription": "Les autres membres ne vous voient plus ; vous voyez toujours votre rang.",
+      "data": "Mes données",
+      "dataDescription": "Copie de vos données ou suppression définitive du compte."
+    }
   }
 }

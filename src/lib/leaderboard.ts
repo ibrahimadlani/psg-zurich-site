@@ -29,12 +29,15 @@ export function currentMonthBounds(now = new Date()) {
   return { start: at(year, month), end: month === 12 ? at(year + 1, 1) : at(year, month + 1) };
 }
 
-/** "Jonas P." */
-export const displayName = (firstName: string, lastName: string) =>
-  `${firstName} ${lastName.trim().charAt(0).toUpperCase()}${lastName.trim() ? "." : ""}`;
+/** The member's nickname, else "Jonas P." */
+export const displayName = (firstName: string, lastName: string, nickname?: string | null) =>
+  nickname || `${firstName} ${lastName.trim().charAt(0).toUpperCase()}${lastName.trim() ? "." : ""}`;
 
-/** Ranking of active members on scored predictions: points, then exact scores. */
-export async function getLeaderboard(period: "season" | "month") {
+/**
+ * Ranking of active members on scored predictions: points, then exact scores.
+ * Members who hide themselves are left out, except for their own row (`viewerId`).
+ */
+export async function getLeaderboard(period: "season" | "month", viewerId: string | null = null) {
   const [latest] = await db.select({ season: max(matches.season) }).from(matches);
   const { start, end } = currentMonthBounds();
   const periodFilter =
@@ -49,6 +52,8 @@ export async function getLeaderboard(period: "season" | "month") {
       memberId: members.id,
       firstName: members.firstName,
       lastName: members.lastName,
+      nickname: members.nickname,
+      hidden: members.hideFromLeaderboard,
       points: sql<number>`SUM(${predictions.points})`.mapWith(Number),
       exact: sql<number>`SUM(${predictions.points} = 3)`.mapWith(Number),
       played: sql<number>`COUNT(*)`.mapWith(Number),
@@ -57,14 +62,16 @@ export async function getLeaderboard(period: "season" | "month") {
     .innerJoin(members, eq(members.id, predictions.memberId))
     .innerJoin(matches, eq(matches.id, predictions.matchId))
     .where(and(eq(members.status, "active"), isNotNull(predictions.points), periodFilter))
-    .groupBy(members.id, members.firstName, members.lastName)
+    .groupBy(members.id, members.firstName, members.lastName, members.nickname, members.hideFromLeaderboard)
     .orderBy(desc(sql`SUM(${predictions.points})`), desc(sql`SUM(${predictions.points} = 3)`));
 
-  // Same points and exact scores = same rank.
+  // Same points and exact scores = same rank. Hidden members still count for the ranks.
   let rank = 0;
-  return rows.map((row, index) => {
-    const previous = rows[index - 1];
-    if (!previous || previous.points !== row.points || previous.exact !== row.exact) rank = index + 1;
-    return { ...row, rank, name: displayName(row.firstName, row.lastName) };
-  });
+  return rows
+    .map((row, index) => {
+      const previous = rows[index - 1];
+      if (!previous || previous.points !== row.points || previous.exact !== row.exact) rank = index + 1;
+      return { ...row, rank, name: displayName(row.firstName, row.lastName, row.nickname) };
+    })
+    .filter((row) => !row.hidden || row.memberId === viewerId);
 }

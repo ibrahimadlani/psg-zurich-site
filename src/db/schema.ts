@@ -157,6 +157,12 @@ export const members = mysqlTable(
     expiresOn: date("expires_on", { mode: "string" }),
     /** Language of the emails sent to the member (the one used to sign up). */
     locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
+    /** Shown in the predictions leaderboard instead of "First L." when set. */
+    nickname: varchar("nickname", { length: 32 }).unique(),
+    /** Still ranked, but only visible to themselves in the leaderboard. */
+    hideFromLeaderboard: boolean("hide_from_leaderboard").default(false).notNull(),
+    notifyEvents: boolean("notify_events").default(true).notNull(),
+    notifyPredictionReminders: boolean("notify_prediction_reminders").default(true).notNull(),
     ...timestamps(),
   },
   (t) => [index("members_status_idx").on(t.status)],
@@ -247,6 +253,8 @@ export const matches = mysqlTable(
     elapsed: int("elapsed"),
     timeline: json<MatchTimelineEntry[]>("timeline"),
     syncedAt: dateTime3("synced_at"),
+    /** When the "24 h left to predict" email went out (once per match). */
+    reminderSentAt: dateTime3("reminder_sent_at"),
     ...timestamps(),
   },
   (t) => [index("matches_kickoff_idx").on(t.kickoffAt), index("matches_season_idx").on(t.season)],
@@ -490,3 +498,18 @@ export const auditLog = mysqlTable(
     index("audit_log_created_at_idx").on(t.createdAt),
   ],
 );
+
+/* -------------------------------------------------------------------------- */
+/*                                   Avatars                                  */
+/* -------------------------------------------------------------------------- */
+
+const blob = customType<{ data: Buffer; driverData: Buffer }>({ dataType: () => "mediumblob" });
+
+/** Profile photos, already resized to a 256 px WebP by the browser. */
+export const avatars = mysqlTable("avatars", {
+  userId: fk("user_id")
+    .primaryKey()
+    .references(() => user.id, { onDelete: "cascade" }),
+  data: blob("data").notNull(),
+  updatedAt: dateTime3("updated_at").notNull(),
+});

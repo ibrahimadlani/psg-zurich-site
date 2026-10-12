@@ -8,6 +8,9 @@ import { createEventSchema } from "@/lib/validators";
 
 type Context = RouteContext<"/api/v1/events/[id]">;
 
+// The "email the members" choice only applies when an event is created.
+const withoutNotify = <T extends { notifyMembers?: boolean }>({ notifyMembers, ...rest }: T) => rest;
+
 async function findOrThrow(id: string) {
   const [row] = await db.select().from(events).where(eq(events.id, id));
   if (!row) throw new HttpError(404, "not_found", "Event not found.");
@@ -25,7 +28,7 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
     await tx
       .update(events)
       .set({
-        ...input,
+        ...withoutNotify(input),
         description: input.description ?? null,
         matchId: input.matchId ?? null,
         location: input.location ?? null,

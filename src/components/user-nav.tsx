@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, LayoutDashboard, LogOut, UserRound } from "lucide-react";
+import { ChevronDown, LayoutDashboard, LogOut, Settings, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { SignInButton } from "@/components/sign-in-button";
 import {
@@ -59,6 +59,12 @@ export function UserNav() {
           <Link href="/espace-membre" prefetch={false}>
             <UserRound aria-hidden />
             {t("memberArea")}
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild>
+          <Link href="/parametres" prefetch={false}>
+            <Settings aria-hidden />
+            {t("settings")}
           </Link>
         </DropdownMenuItem>
         {hasRole(user.role, "admin") ? (

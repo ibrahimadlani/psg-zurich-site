@@ -26,7 +26,13 @@ export function ThemeSync() {
     applyStoredTheme();
     const observer = new MutationObserver(applyStoredTheme);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "style"] });
-    return () => observer.disconnect();
+    // "System" theme: follow the OS when it switches (no stored choice).
+    const scheme = matchMedia("(prefers-color-scheme: dark)");
+    scheme.addEventListener("change", applyStoredTheme);
+    return () => {
+      observer.disconnect();
+      scheme.removeEventListener("change", applyStoredTheme);
+    };
   }, []);
   return null;
 }

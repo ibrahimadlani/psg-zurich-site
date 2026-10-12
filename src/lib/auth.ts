@@ -29,7 +29,12 @@ function localeFromAuthUrl(url: string) {
   return hasLocale(routing.locales, segment) ? segment : routing.defaultLocale;
 }
 
-async function sendAuthLinkEmail(kind: "resetPassword" | "verifyEmail", email: string, link: string) {
+async function sendAuthLinkEmail(
+  kind: "resetPassword" | "verifyEmail" | "changeEmail",
+  email: string,
+  link: string,
+  values: Record<string, string> = {},
+) {
   // Links built during a direct auth.api call lack the origin and the /api/auth base path
   // when BETTER_AUTH_URL is empty (local dev).
   const url = link.startsWith("/") ? new URL(`/api/auth${link}`, "http://localhost:3000").href : link;
@@ -39,16 +44,16 @@ async function sendAuthLinkEmail(kind: "resetPassword" | "verifyEmail", email: s
 
   await sendMail({
     to: email,
-    subject: t("subject"),
+    subject: t("subject", values),
     react: createElement(AuthLinkEmail, {
       url,
       locale,
       texts: {
-        preview: t("preview"),
-        heading: t("heading"),
-        body: t("body"),
-        cta: t("cta"),
-        ignore: t("ignore"),
+        preview: t("preview", values),
+        heading: t("heading", values),
+        body: t("body", values),
+        cta: t("cta", values),
+        ignore: t("ignore", values),
       },
     }),
   });
@@ -69,6 +74,12 @@ function createAuth() {
       database: { generateId: "uuid" },
     },
     user: {
+      // New address: confirmed from the current one first, then verified on the new one.
+      changeEmail: {
+        enabled: true,
+        sendChangeEmailConfirmation: ({ user, newEmail, url }) =>
+          sendAuthLinkEmail("changeEmail", user.email, url, { newEmail }),
+      },
       deleteUser: {
         enabled: true,
         beforeDelete: async (deleted) => {

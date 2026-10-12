@@ -129,6 +129,7 @@ export async function EventsAdmin() {
                 endsAt: toLocalInput(event.endsAt),
                 capacity: event.capacity?.toString() ?? "",
                 membersOnly: event.membersOnly,
+                notifyMembers: false,
               };
               return (
                 <li key={event.id} className="space-y-2 p-3">

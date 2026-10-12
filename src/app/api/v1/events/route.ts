@@ -1,8 +1,10 @@
 import { asc, eq } from "drizzle-orm";
+import { after } from "next/server";
 import { db } from "@/db";
 import { events } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
+import { notifyNewEvent } from "@/lib/notifications";
 import { requireRole } from "@/lib/permissions";
 import { createEventSchema, pagination } from "@/lib/validators";
 
@@ -23,7 +25,8 @@ export const POST = apiHandler(async (request) => {
 
   const created = await db.transaction(async (tx) => {
     const id = crypto.randomUUID();
-    await tx.insert(events).values({ ...input, id });
+    const { notifyMembers, ...values } = input;
+    await tx.insert(events).values({ ...values, id });
     await writeAuditLog(
       {
         actorId: session.user.id,
@@ -38,6 +41,9 @@ export const POST = apiHandler(async (request) => {
     const [row] = await tx.select().from(events).where(eq(events.id, id));
     return row;
   });
+
+  // After the response: the admin doesn't wait for every email.
+  if (input.notifyMembers && created) after(() => notifyNewEvent(created.id));
 
   return ok(created, { status: 201 });
 });

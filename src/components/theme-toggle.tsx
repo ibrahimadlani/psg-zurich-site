@@ -17,6 +17,32 @@ export function toggleTheme() {
   }
 }
 
+export type ThemePreference = "light" | "dark" | "system";
+
+/** Stored choice of this device; "system" when none (follows the OS). */
+export function readThemePreference(): ThemePreference {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    return stored === "light" || stored === "dark" ? stored : "system";
+  } catch {
+    return "system";
+  }
+}
+
+/** Settings page: light, dark, or follow the OS (the header toggle sets light or dark). */
+export function setThemePreference(preference: ThemePreference) {
+  const dark = preference === "system" ? matchMedia("(prefers-color-scheme: dark)").matches : preference === "dark";
+  const root = document.documentElement;
+  root.classList.toggle("dark", dark);
+  root.style.colorScheme = dark ? "dark" : "light";
+  try {
+    if (preference === "system") localStorage.removeItem(THEME_STORAGE_KEY);
+    else localStorage.setItem(THEME_STORAGE_KEY, preference);
+  } catch {
+    // Private mode: the choice simply isn't remembered.
+  }
+}
+
 export function ThemeToggle() {
   const t = useTranslations("ThemeToggle");
   return (

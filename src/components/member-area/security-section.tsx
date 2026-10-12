@@ -7,12 +7,12 @@ import { PasswordInput } from "@/components/auth/password-input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { changePassword, revokeOtherSessions } from "@/lib/auth-client";
+import { changePassword } from "@/lib/auth-client";
 
 type Message = { tone: "success" | "error"; key: "changed" | "wrongPassword" | "tooShort" | "error" | "revoked" };
 
-/** Change password (other devices signed out) and sign out other devices. */
-export function SecuritySection() {
+/** Change password (other devices are signed out). */
+export function SecuritySection({ bare = false }: { bare?: boolean }) {
   const t = useTranslations("MemberArea.security");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -37,19 +37,9 @@ export function SecuritySection() {
     });
   };
 
-  const revoke = () =>
-    startTransition(async () => {
-      const { error } = await revokeOtherSessions();
-      setMessage(error ? { tone: "error", key: "error" } : { tone: "success", key: "revoked" });
-    });
 
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("title")}</CardTitle>
-        <CardDescription>{t("description")}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
+  const content = (
+      <div className="space-y-6">
         {message ? <FormMessage tone={message.tone}>{t(message.key)}</FormMessage> : null}
         <form onSubmit={submit} className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
@@ -80,13 +70,16 @@ export function SecuritySection() {
             {pending ? t("changing") : t("change")}
           </Button>
         </form>
-        <div className="flex flex-col gap-2 border-t pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-muted-foreground">{t("revokeOthersHint")}</p>
-          <Button variant="outline" disabled={pending} onClick={revoke} className="shrink-0">
-            {t("revokeOthers")}
-          </Button>
-        </div>
-      </CardContent>
+      </div>
+  );
+  if (bare) return content;
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
+      </CardHeader>
+      <CardContent>{content}</CardContent>
     </Card>
   );
 }

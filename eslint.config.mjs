@@ -5,6 +5,12 @@ import nextTs from "eslint-config-next/typescript";
 export default defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    rules: {
+      // `const { secret, ...rest } = input` is the idiomatic way to drop a field.
+      "@typescript-eslint/no-unused-vars": ["warn", { ignoreRestSiblings: true }],
+    },
+  },
   globalIgnores([
     ".next/**",
     "out/**",

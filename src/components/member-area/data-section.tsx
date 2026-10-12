@@ -12,7 +12,7 @@ import { useRouter } from "@/i18n/navigation";
 import { deleteUser } from "@/lib/auth-client";
 
 /** Data export (JSON) and account deletion (password + explicit confirmation). */
-export function DataSection({ canDelete }: { canDelete: boolean }) {
+export function DataSection({ canDelete, bare = false }: { canDelete: boolean; bare?: boolean }) {
   const t = useTranslations("MemberArea.data");
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -35,13 +35,8 @@ export function DataSection({ canDelete }: { canDelete: boolean }) {
     });
   };
 
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("title")}</CardTitle>
-        <CardDescription>{t("description")}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-5">
+  const content = (
+      <div className="space-y-5">
         <Button variant="outline" asChild>
           {/* A plain link: the browser downloads the attachment. */}
           <a href="/api/v1/me/export" download>
@@ -90,7 +85,16 @@ export function DataSection({ canDelete }: { canDelete: boolean }) {
             </Button>
           )}
         </div>
-      </CardContent>
+      </div>
+  );
+  if (bare) return content;
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
+      </CardHeader>
+      <CardContent>{content}</CardContent>
     </Card>
   );
 }

@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "@/i18n/navigation";
 import { useSession } from "@/lib/auth-client";
-import { LEGAL } from "@/lib/legal";
 
 const schema = z.object({
   firstName: z.string().trim().min(1).max(100),
@@ -23,7 +22,7 @@ const schema = z.object({
 type Values = z.infer<typeof schema>;
 
 /** The member edits their own details; the email stays read-only. */
-export function ProfileForm({ email, defaults }: { email: string; defaults: Values }) {
+export function ProfileForm({ email, defaults, bare = false }: { email: string; defaults: Values; bare?: boolean }) {
   const t = useTranslations("MemberArea.profile");
   const tMembership = useTranslations("Membership");
   const router = useRouter();
@@ -67,13 +66,8 @@ export function ProfileForm({ email, defaults }: { email: string; defaults: Valu
     </div>
   );
 
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("title")}</CardTitle>
-        <CardDescription>{t("description")}</CardDescription>
-      </CardHeader>
-      <CardContent>
+  const content = (
+      <div className="space-y-4">
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
           {result ? <FormMessage tone={result === "saved" ? "success" : "error"}>{t(result)}</FormMessage> : null}
           <div className="grid gap-4 sm:grid-cols-2">
@@ -85,13 +79,22 @@ export function ProfileForm({ email, defaults }: { email: string; defaults: Valu
           <div className="space-y-1.5">
             <Label htmlFor="profile-email">{t("email")}</Label>
             <Input id="profile-email" value={email} readOnly disabled />
-            <p className="text-xs text-muted-foreground">{t("emailHint", { email: LEGAL.email })}</p>
+            <p className="text-xs text-muted-foreground">{t("emailHint")}</p>
           </div>
           <Button type="submit" disabled={isSubmitting || !isDirty}>
             {isSubmitting ? t("saving") : t("save")}
           </Button>
         </form>
-      </CardContent>
+      </div>
+  );
+  if (bare) return content;
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
+      </CardHeader>
+      <CardContent>{content}</CardContent>
     </Card>
   );
 }

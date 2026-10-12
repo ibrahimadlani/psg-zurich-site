@@ -20,8 +20,9 @@ async function LeaderboardContent() {
   const session = await getSession();
   if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
   const t = await getTranslations("Leaderboard");
-  const [member, season, month] = await Promise.all([getCurrentMember(), getLeaderboard("season"), getLeaderboard("month")]);
+  const member = await getCurrentMember();
   const me = member?.id ?? null;
+  const [season, month] = await Promise.all([getLeaderboard("season", me), getLeaderboard("month", me)]);
 
   return (
     <MatchTabs

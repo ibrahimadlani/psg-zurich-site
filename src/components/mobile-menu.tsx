@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, LayoutDashboard, LogOut, Moon, Sun, UserRound } from "lucide-react";
+import { ArrowRight, LayoutDashboard, LogOut, Moon, Settings, Sun, UserRound } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
@@ -172,6 +172,10 @@ function MobileAccount() {
       <Link href="/espace-membre" prefetch={false} className={accountLink}>
         <UserRound aria-hidden />
         {t("memberArea")}
+      </Link>
+      <Link href="/parametres" prefetch={false} className={accountLink}>
+        <Settings aria-hidden />
+        {t("settings")}
       </Link>
       {hasRole(user.role, "admin") ? (
         <Link href="/admin" prefetch={false} className={accountLink}>

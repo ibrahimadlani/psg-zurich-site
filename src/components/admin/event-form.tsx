@@ -22,6 +22,7 @@ const schema = z
     endsAt: z.string(),
     capacity: z.string().regex(/^\d*$/),
     membersOnly: z.boolean(),
+    notifyMembers: z.boolean(),
   })
   .refine((v) => !v.endsAt || v.endsAt >= v.startsAt, { path: ["endsAt"] });
 export type EventFormValues = z.infer<typeof schema>;
@@ -36,6 +37,7 @@ export const emptyEvent: EventFormValues = {
   endsAt: "",
   capacity: "",
   membersOnly: false,
+  notifyMembers: true,
 };
 
 const selectClass =
@@ -79,6 +81,7 @@ export function EventForm({
         endsAt: values.endsAt ? new Date(values.endsAt).toISOString() : undefined,
         capacity: values.capacity ? Number(values.capacity) : undefined,
         membersOnly: values.membersOnly,
+        notifyMembers: !eventId && values.notifyMembers,
       }),
     });
     if (!response.ok) {
@@ -142,6 +145,12 @@ export function EventForm({
         <input type="checkbox" className="size-4 accent-primary" {...register("membersOnly")} />
         {t("membersOnly")}
       </label>
+      {eventId ? null : (
+        <label className="flex items-center gap-2 text-sm">
+          <input type="checkbox" className="size-4 accent-primary" {...register("notifyMembers")} />
+          {t("notifyMembers")}
+        </label>
+      )}
       {failed || Object.keys(errors).length > 0 ? (
         <p role="alert" className="text-sm text-destructive">
           {failed ? t("error") : t("invalid")}

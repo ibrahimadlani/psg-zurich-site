@@ -21,4 +21,8 @@ export async function onServerStart() {
   // PSG matches from football-data.org (no-op without FOOTBALL_DATA_KEY).
   const { startFootballSync } = await import("@/lib/football/scheduler");
   startFootballSync();
+
+  // "24 h left to predict" emails.
+  const { startReminderScheduler } = await import("@/lib/notifications");
+  startReminderScheduler();
 }

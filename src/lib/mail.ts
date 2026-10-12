@@ -26,9 +26,11 @@ type SendMailOptions = {
   to: string;
   subject: string;
   react: ReactElement;
+  /** One-click unsubscribe link (RFC 8058): mail clients show their own "Unsubscribe" button. */
+  unsubscribeUrl?: string;
 };
 
-export async function sendMail({ to, subject, react }: SendMailOptions) {
+export async function sendMail({ to, subject, react, unsubscribeUrl }: SendMailOptions) {
   const [html, text] = await Promise.all([
     render(react),
     render(react, { plainText: true }),
@@ -50,5 +52,8 @@ export async function sendMail({ to, subject, react }: SendMailOptions) {
     subject,
     html,
     text,
+    ...(unsubscribeUrl
+      ? { headers: { "List-Unsubscribe": `<${unsubscribeUrl}>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click" } }
+      : {}),
   });
 }

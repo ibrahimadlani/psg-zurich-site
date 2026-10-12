@@ -91,6 +91,8 @@ export const createEventSchema = z
     capacity: z.number().int().positive().optional(),
     priceCents: z.number().int().min(0).default(0),
     membersOnly: z.boolean().default(false),
+    /** Email the members about it (creation only). */
+    notifyMembers: z.boolean().default(false),
   })
   .refine((event) => !event.endsAt || event.endsAt >= event.startsAt, {
     message: "endsAt must be after startsAt.",
@@ -118,6 +120,26 @@ export const profileUpdateSchema = z.object({
   phone: z.string().trim().max(32),
   city: z.string().trim().max(100),
 });
+
+/** Member settings (PATCH /api/v1/me/settings): any subset of the fields. */
+export const memberSettingsSchema = z
+  .object({
+    // Letters, digits, spaces, dots, dashes and underscores; empty string clears it.
+    nickname: z.union([
+      z
+        .string()
+        .trim()
+        .min(3)
+        .max(32)
+        .regex(/^[\p{L}\p{N} ._-]+$/u),
+      z.literal(""),
+    ]),
+    locale: z.enum(LOCALES),
+    hideFromLeaderboard: z.boolean(),
+    notifyEvents: z.boolean(),
+    notifyPredictionReminders: z.boolean(),
+  })
+  .partial();
 
 /** Committee decision on a membership request (PATCH /api/v1/members/[id]). */
 export const memberDecisionSchema = z.object({
