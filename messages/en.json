@@ -435,20 +435,18 @@
     },
     "live": "Live",
     "nextMatch": "Next match",
-    "lastMatch": "Last match"
+    "lastMatch": "Last match",
+    "kickoff": "Kick-off"
   },
   "Predictions": {
     "title": "Prediction",
-    "openHint": "Guess the score at the end of normal time. You can change it until kick-off.",
+    "openHint": "Score at the end of regular time. Editable until kick-off.",
     "closedHint": "Predictions closed at kick-off.",
     "yourPoints": "You scored {count, plural, =0 {0 points} one {# point} other {# points}} on this match.",
     "yourPrediction": "Your prediction: PSG {psg} – {opponent}",
-    "submit": "Submit my prediction",
     "update": "Update",
-    "saved": "Prediction saved.",
     "closed": "Predictions are closed for this match.",
     "error": "Saving failed. Please try again.",
-    "rules": "Exact score: 3 pts · right winner and goal difference: 2 pts · right winner: 1 pt.",
     "signIn": "Sign in to make a prediction.",
     "membersOnly": "Predictions are for accepted members only.",
     "community": "Community predictions ({count})",
@@ -456,7 +454,15 @@
     "draw": "Draw {percent}%",
     "loss": "PSG loss {percent}%",
     "less": "One goal less for {team}",
-    "more": "One goal more for {team}"
+    "more": "One goal more for {team}",
+    "savedBadge": "Saved",
+    "saveButton": "Save my prediction",
+    "savedButton": "Prediction saved",
+    "yourPredictionLabel": "Your prediction",
+    "ruleExact": "Exact score",
+    "ruleDifference": "Right winner and margin",
+    "ruleOutcome": "Right winner",
+    "pts": "{count, plural, one {# pt} other {# pts}}"
   },
   "Leaderboard": {
     "title": "Predictions leaderboard",
@@ -508,7 +514,13 @@
     "over": "This event is over.",
     "about": "What's planned",
     "theMatch": "The match",
-    "started": "The event has started: sign-ups are closed."
+    "started": "The event has started: sign-ups are closed.",
+    "register": "Register",
+    "registeredBanner": "You're registered",
+    "waitlistedBanner": "You're on the waitlist",
+    "leaveWaitlist": "Leave the waitlist",
+    "waitlistHint": "It's full: you'll get an email if a place frees up.",
+    "countOf": "{count} registered / {capacity}"
   },
   "AdminEvents": {
     "cardTitle": "Matches and events",

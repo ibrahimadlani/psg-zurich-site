@@ -85,3 +85,6 @@ export function roundInfo(
 }
 
 export const toDate = (value: Date | string) => (value instanceof Date ? value : new Date(value));
+
+/** Card style of the aside panels (match mini-card, prediction). */
+export const asideCard = "flex flex-col gap-5 rounded-[14px] border bg-card p-6 shadow-brand";

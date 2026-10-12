@@ -1,11 +1,12 @@
 import { and, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
+import { asideCard } from "@/components/matches/match-utils";
 import { PredictionForm } from "@/components/matches/prediction-form";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { PredictionRules } from "@/components/matches/prediction-rules";
 import { db } from "@/db";
 import { predictions } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
-import { isPredictionOpen, matchTitle, type Match } from "@/lib/matches";
+import { isPredictionOpen, type Match } from "@/lib/matches";
 
 export type Access = "member" | "guest" | "inactive";
 
@@ -21,20 +22,10 @@ async function communityStats(matchId: string) {
 }
 
 /**
- * Prediction card of a match: form until kick-off (active members), then the member's
- * prediction, points and the community split. `withMatch` names the match (event page).
+ * Prediction card of a match: the form until kick-off (active members), then the member's
+ * prediction, their points and the community split.
  */
-export async function PredictionCard({
-  match,
-  access,
-  memberId,
-  withMatch = false,
-}: {
-  match: Match;
-  access: Access;
-  memberId: string | null;
-  withMatch?: boolean;
-}) {
+export async function PredictionCard({ match, access, memberId }: { match: Match; access: Access; memberId: string | null }) {
   const tp = await getTranslations("Predictions");
   const open = isPredictionOpen(match);
   const [[mine], stats] = await Promise.all([
@@ -44,51 +35,62 @@ export async function PredictionCard({
     open ? null : communityStats(match.id),
   ]);
 
+  if (open && access === "member") {
+    return (
+      <div className={asideCard}>
+        <PredictionForm
+          matchId={match.id}
+          psgHome={match.venue !== "away"}
+          opponent={match.opponent}
+          initial={mine ? { psgScore: mine.psgScore, opponentScore: mine.opponentScore } : null}
+          rules={<PredictionRules />}
+        />
+      </div>
+    );
+  }
+
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{tp("title")}</CardTitle>
-        {withMatch ? (
-          <Link href={`/matchs/${match.id}`} className="text-sm font-medium underline-offset-2 hover:underline">
-            {matchTitle(match, "PSG")} · {match.competition}
-          </Link>
-        ) : null}
-        <CardDescription>
+    <div className={asideCard}>
+      <div className="flex flex-col gap-1.5">
+        <h2 className="font-wide text-xs font-semibold tracking-[0.08em] uppercase">{tp("title")}</h2>
+        <p className="text-sm leading-normal text-pretty text-muted-foreground">
           {open ? tp("openHint") : mine?.points != null ? tp("yourPoints", { count: mine.points }) : tp("closedHint")}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-5">
-        {open && access === "member" ? (
-          <PredictionForm
-            matchId={match.id}
-            psgHome={match.venue !== "away"}
-            opponent={match.opponent}
-            initial={mine ? { psgScore: mine.psgScore, opponentScore: mine.opponentScore } : null}
-          />
-        ) : null}
-        {open && access === "guest" ? (
-          <Link href="/connexion" prefetch={false} className="text-sm underline underline-offset-2">
-            {tp("signIn")}
-          </Link>
-        ) : null}
-        {open && access === "inactive" ? <p className="text-sm text-muted-foreground">{tp("membersOnly")}</p> : null}
-        {!open && mine ? <p className="text-sm">{tp("yourPrediction", { psg: mine.psgScore, opponent: mine.opponentScore })}</p> : null}
-        {stats && stats.total > 0 ? (
-          <div className="space-y-2">
-            <p className="text-sm font-medium">{tp("community", { count: stats.total })}</p>
-            <div className="flex h-2.5 overflow-hidden rounded-full bg-foreground/10">
-              <span className="bg-emerald-600" style={{ width: `${(stats.win / stats.total) * 100}%` }} />
-              <span className="bg-foreground/40" style={{ width: `${(stats.draw / stats.total) * 100}%` }} />
-              <span className="bg-psg-red" style={{ width: `${(stats.loss / stats.total) * 100}%` }} />
-            </div>
-            <p className="flex justify-between text-xs text-muted-foreground">
-              <span>{tp("win", { percent: Math.round((stats.win / stats.total) * 100) })}</span>
-              <span>{tp("draw", { percent: Math.round((stats.draw / stats.total) * 100) })}</span>
-              <span>{tp("loss", { percent: Math.round((stats.loss / stats.total) * 100) })}</span>
-            </p>
+        </p>
+      </div>
+      {open && access === "guest" ? (
+        <Link
+          href="/connexion"
+          prefetch={false}
+          className="inline-flex h-11 items-center justify-center rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
+        >
+          {tp("signIn")}
+        </Link>
+      ) : null}
+      {open && access === "inactive" ? <p className="text-sm text-muted-foreground">{tp("membersOnly")}</p> : null}
+      {!open && mine ? (
+        <p className="border-y py-4 text-center">
+          <span className="block text-xs text-muted-foreground">{tp("yourPredictionLabel")}</span>
+          <span className="font-narrow text-4xl font-extrabold tabular-nums italic">
+            PSG {mine.psgScore} – {mine.opponentScore}
+          </span>
+        </p>
+      ) : null}
+      {stats && stats.total > 0 ? (
+        <div className="space-y-2">
+          <p className="text-sm font-medium">{tp("community", { count: stats.total })}</p>
+          <div className="flex h-2.5 overflow-hidden rounded-full bg-foreground/10">
+            <span className="bg-ok" style={{ width: `${(stats.win / stats.total) * 100}%` }} />
+            <span className="bg-foreground/40" style={{ width: `${(stats.draw / stats.total) * 100}%` }} />
+            <span className="bg-psg-red" style={{ width: `${(stats.loss / stats.total) * 100}%` }} />
           </div>
-        ) : null}
-      </CardContent>
-    </Card>
+          <p className="flex justify-between text-xs text-muted-foreground">
+            <span>{tp("win", { percent: Math.round((stats.win / stats.total) * 100) })}</span>
+            <span>{tp("draw", { percent: Math.round((stats.draw / stats.total) * 100) })}</span>
+            <span>{tp("loss", { percent: Math.round((stats.loss / stats.total) * 100) })}</span>
+          </p>
+        </div>
+      ) : null}
+      <PredictionRules />
+    </div>
   );
 }

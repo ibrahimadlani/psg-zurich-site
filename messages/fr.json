@@ -435,20 +435,18 @@
     },
     "live": "En direct",
     "nextMatch": "Prochain match",
-    "lastMatch": "Dernier match"
+    "lastMatch": "Dernier match",
+    "kickoff": "Coup d'envoi"
   },
   "Predictions": {
     "title": "Pronostic",
-    "openHint": "Devinez le score à la fin du temps réglementaire. Modifiable jusqu'au coup d'envoi.",
+    "openHint": "Score à la fin du temps réglementaire. Modifiable jusqu'au coup d'envoi.",
     "closedHint": "Les pronostics sont fermés depuis le coup d'envoi.",
     "yourPoints": "Vous avez marqué {count, plural, =0 {0 point} one {# point} other {# points}} sur ce match.",
     "yourPrediction": "Votre pronostic : PSG {psg} – {opponent}",
-    "submit": "Valider mon pronostic",
     "update": "Mettre à jour",
-    "saved": "Pronostic enregistré.",
     "closed": "Les pronostics sont fermés pour ce match.",
     "error": "L'enregistrement a échoué. Réessayez.",
-    "rules": "Score exact : 3 pts · bon vainqueur et bon écart : 2 pts · bon vainqueur : 1 pt.",
     "signIn": "Connectez-vous pour pronostiquer.",
     "membersOnly": "Les pronostics sont réservés aux membres dont l'adhésion est acceptée.",
     "community": "Pronostics de la communauté ({count})",
@@ -456,7 +454,15 @@
     "draw": "Nul {percent} %",
     "loss": "Défaite {percent} %",
     "less": "Un but de moins pour {team}",
-    "more": "Un but de plus pour {team}"
+    "more": "Un but de plus pour {team}",
+    "savedBadge": "Enregistré",
+    "saveButton": "Enregistrer mon pronostic",
+    "savedButton": "Pronostic enregistré",
+    "yourPredictionLabel": "Votre pronostic",
+    "ruleExact": "Score exact",
+    "ruleDifference": "Bon vainqueur et bon écart",
+    "ruleOutcome": "Bon vainqueur",
+    "pts": "{count, plural, one {# pt} other {# pts}}"
   },
   "Leaderboard": {
     "title": "Classement des pronostics",
@@ -508,7 +514,13 @@
     "over": "Cet événement est terminé.",
     "about": "Le programme",
     "theMatch": "Le match",
-    "started": "L'événement a commencé : les inscriptions sont closes."
+    "started": "L'événement a commencé : les inscriptions sont closes.",
+    "register": "M'inscrire",
+    "registeredBanner": "Vous êtes inscrit",
+    "waitlistedBanner": "Vous êtes sur la liste d'attente",
+    "leaveWaitlist": "Quitter la liste d'attente",
+    "waitlistHint": "C'est complet : vous serez prévenu par e-mail si une place se libère.",
+    "countOf": "{count, plural, =0 {0 inscrit} one {# inscrit} other {# inscrits}} / {capacity}"
   },
   "AdminEvents": {
     "cardTitle": "Matchs et événements",

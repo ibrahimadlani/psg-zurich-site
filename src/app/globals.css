@@ -18,6 +18,8 @@
     --color-psg-red: #da291c;
     --color-segment: var(--segment);
     --color-segment-foreground: var(--segment-foreground);
+    /* Positive state (registered, saved). */
+    --color-ok: var(--ok);
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -84,6 +86,7 @@
     --segment: oklch(0.366 0.098 248);
     --segment-foreground: oklch(0.985 0 0);
     --brand-shadow: 0 1px 2px oklch(0.366 0.098 248 / 0.06), 0 12px 32px -12px oklch(0.366 0.098 248 / 0.18);
+    --ok: oklch(0.6 0.15 150);
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);
@@ -124,6 +127,7 @@
     --segment: oklch(0.985 0 0);
     --segment-foreground: oklch(0.145 0 0);
     --brand-shadow: 0 1px 2px oklch(0 0 0 / 0.3), 0 16px 40px -12px oklch(0 0 0 / 0.6);
+    --ok: oklch(0.72 0.15 150);
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);

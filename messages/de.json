@@ -435,20 +435,18 @@
     },
     "live": "Live",
     "nextMatch": "Nächstes Spiel",
-    "lastMatch": "Letztes Spiel"
+    "lastMatch": "Letztes Spiel",
+    "kickoff": "Anpfiff"
   },
   "Predictions": {
     "title": "Tipp",
-    "openHint": "Tippe das Resultat nach der regulären Spielzeit. Änderbar bis zum Anpfiff.",
+    "openHint": "Ergebnis nach regulärer Spielzeit. Änderbar bis zum Anpfiff.",
     "closedHint": "Die Tipps sind seit dem Anpfiff geschlossen.",
     "yourPoints": "Du hast in diesem Spiel {count, plural, =0 {0 Punkte} one {# Punkt} other {# Punkte}} geholt.",
     "yourPrediction": "Dein Tipp: PSG {psg} – {opponent}",
-    "submit": "Tipp abgeben",
     "update": "Aktualisieren",
-    "saved": "Tipp gespeichert.",
     "closed": "Für dieses Spiel sind die Tipps geschlossen.",
     "error": "Speichern fehlgeschlagen. Bitte erneut versuchen.",
-    "rules": "Exaktes Resultat: 3 Pkt. · richtiger Sieger und Tordifferenz: 2 Pkt. · richtiger Sieger: 1 Pkt.",
     "signIn": "Melde dich an, um zu tippen.",
     "membersOnly": "Tipps sind aufgenommenen Mitgliedern vorbehalten.",
     "community": "Tipps der Community ({count})",
@@ -456,7 +454,15 @@
     "draw": "Unentschieden {percent} %",
     "loss": "PSG-Niederlage {percent} %",
     "less": "Ein Tor weniger für {team}",
-    "more": "Ein Tor mehr für {team}"
+    "more": "Ein Tor mehr für {team}",
+    "savedBadge": "Gespeichert",
+    "saveButton": "Tipp speichern",
+    "savedButton": "Tipp gespeichert",
+    "yourPredictionLabel": "Dein Tipp",
+    "ruleExact": "Exaktes Ergebnis",
+    "ruleDifference": "Richtiger Sieger und Abstand",
+    "ruleOutcome": "Richtiger Sieger",
+    "pts": "{count, plural, one {# Pkt.} other {# Pkt.}}"
   },
   "Leaderboard": {
     "title": "Tipp-Rangliste",
@@ -508,7 +514,13 @@
     "over": "Dieses Event ist vorbei.",
     "about": "Das Programm",
     "theMatch": "Das Spiel",
-    "started": "Das Event hat begonnen: Die Anmeldung ist geschlossen."
+    "started": "Das Event hat begonnen: Die Anmeldung ist geschlossen.",
+    "register": "Anmelden",
+    "registeredBanner": "Du bist angemeldet",
+    "waitlistedBanner": "Du bist auf der Warteliste",
+    "leaveWaitlist": "Warteliste verlassen",
+    "waitlistHint": "Ausgebucht: Du erhältst eine E-Mail, falls ein Platz frei wird.",
+    "countOf": "{count} angemeldet / {capacity}"
   },
   "AdminEvents": {
     "cardTitle": "Spiele und Events",
