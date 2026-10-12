@@ -81,8 +81,8 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/adhesion(?:/)?$",
       "prefetchSegmentDataRoutes": [
         {
-          "destination": "/[locale]/adhesion.segments/$d$locale/!KHNpdGUp/adhesion$segment",
-          "source": "^/(?<nxtPlocale>[^/]+?)/adhesion\\.segments/\\$d\\$locale/!KHNpdGUp/adhesion(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "destination": "/[locale]/adhesion.segments/$d$locale/adhesion$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/adhesion\\.segments/\\$d\\$locale/adhesion(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -350,6 +350,12 @@
       "regex": "^/api/v1/members(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/members(?:/)?$"
+    },
+    {
+      "page": "/api/v1/membership",
+      "regex": "^/api/v1/membership(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/membership(?:/)?$"
     },
     {
       "page": "/api/v1/polls",
