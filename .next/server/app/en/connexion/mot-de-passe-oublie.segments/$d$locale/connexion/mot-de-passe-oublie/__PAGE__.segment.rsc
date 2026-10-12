@@ -2,7 +2,7 @@
 4:"/_next/static/chunks/1tq6ppe__m8m-.js"
 5:I[39756,["$4"],"default"]
 6:I[37457,["$4"],"default"]
-d:"/_next/static/chunks/3xb6fj-4c-hlx.js"
+d:"/_next/static/chunks/1ih7u5ib0lt25.js"
 e:"/_next/static/chunks/450nfjx_hm5n1.js"
 f:"/_next/static/chunks/07vumsbwm3jbw.js"
 10:"/_next/static/chunks/3ux6lqyip0f5a.js"
@@ -36,7 +36,7 @@ a:[["children",{"s":"mot-de-passe-oublie","h":49250,"d":{"r":["$","$3","c",{"chi
 24:C
 27:X
 27:T6,locale27:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L21",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Forgot password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L22","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@23","v":"$24","s":"$9"}},"a":"$@25","u":"$@26","b":"3i6aUrTJrNN3Pb3Q8e9yb","r":"$27"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L21",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Forgot password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L22","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@23","v":"$24","s":"$9"}},"a":"$@25","u":"$@26","b":"7TutDl9PLHdmfl5ruYnu_","r":"$27"}
 1b:null
 26:false
 25:null

@@ -1,5 +1,5 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/3xb6fj-4c-hlx.js"
+4:"/_next/static/chunks/1ih7u5ib0lt25.js"
 5:"/_next/static/chunks/450nfjx_hm5n1.js"
 6:"/_next/static/chunks/01al_ydzgup8a.js"
 7:"/_next/static/chunks/3ux6lqyip0f5a.js"
@@ -35,7 +35,7 @@ f:I[37457,["$d"],"default"]
 22:C
 25:X
 25:T6,locale25:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Kontakt · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Fragen? Schreib uns an contact@psg-zurich.ch."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L20","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@21","v":"$22","s":"$12"}},"a":"$@23","u":"$@24","b":"3i6aUrTJrNN3Pb3Q8e9yb","r":"$25"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$18",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Kontakt · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Fragen? Schreib uns an contact@psg-zurich.ch."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L20","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@21","v":"$22","s":"$12"}},"a":"$@23","u":"$@24","b":"7TutDl9PLHdmfl5ruYnu_","r":"$25"}
 19:null
 24:false
 23:null

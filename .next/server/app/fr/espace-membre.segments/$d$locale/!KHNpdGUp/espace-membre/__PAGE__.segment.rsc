@@ -1,5 +1,5 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/3xb6fj-4c-hlx.js"
+4:"/_next/static/chunks/1ih7u5ib0lt25.js"
 5:"/_next/static/chunks/450nfjx_hm5n1.js"
 6:"/_next/static/chunks/01al_ydzgup8a.js"
 7:"/_next/static/chunks/3ux6lqyip0f5a.js"
@@ -37,7 +37,7 @@ f:"/_next/static/chunks/1tq6ppe__m8m-.js"
 25:C
 28:X
 28:T6,locale28:C
-0:{"t":{"t":{"s":"","h":82,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L22",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Espace membre · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L23","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@24","v":"$25","s":"$14"}},"a":"$@26","u":"$@27","b":"3i6aUrTJrNN3Pb3Q8e9yb","r":"$28"}
+0:{"t":{"t":{"s":"","h":82,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L22",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Espace membre · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L23","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@24","v":"$25","s":"$14"}},"a":"$@26","u":"$@27","b":"7TutDl9PLHdmfl5ruYnu_","r":"$28"}
 1c:null
 27:true
 26:null
