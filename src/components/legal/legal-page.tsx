@@ -75,9 +75,8 @@ export async function LegalPage({ document: key }: { document: LegalDocumentKey 
 
   return (
     <article>
-      <header className="flex flex-col gap-4 border-b pb-10">
-        <p className="flex items-center gap-2 font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-          <span aria-hidden className="size-1.5 rounded-full bg-psg-red" />
+      <header className="flex flex-col items-center gap-4 border-b pb-10 text-center">
+        <p className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
           {t("eyebrow")}
         </p>
         <h1 className="font-narrow text-[length:clamp(40px,8vw,64px)] leading-[0.9] font-extrabold uppercase italic">
