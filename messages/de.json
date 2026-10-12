@@ -58,8 +58,10 @@
     "body": "Gib deine E-Mail-Adresse ein: Wir senden dir einen Link, um ein neues Passwort zu wählen.",
     "submit": "Link senden",
     "submitting": "Wird gesendet…",
-    "sent": "Falls ein Konto mit dieser Adresse existiert, ist eine E-Mail unterwegs. Der Link ist eine Stunde gültig.",
-    "backToLogin": "Zurück zur Anmeldung"
+    "backToLogin": "Zurück zur Anmeldung",
+    "sentTitle": "E-Mail gesendet",
+    "sentBody": "Falls ein Konto für <strong>{email}</strong> existiert, erhältst du einen Link, um ein neues Passwort zu wählen. Er ist eine Stunde gültig.",
+    "useAnother": "Andere Adresse verwenden"
   },
   "ResetPassword": {
     "title": "Neues Passwort",

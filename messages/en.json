@@ -58,8 +58,10 @@
     "body": "Enter your email address and we'll send you a link to choose a new password.",
     "submit": "Send the link",
     "submitting": "Sending…",
-    "sent": "If an account exists for this address, an email is on its way. The link is valid for one hour.",
-    "backToLogin": "Back to sign in"
+    "backToLogin": "Back to sign in",
+    "sentTitle": "Email sent",
+    "sentBody": "If an account exists for <strong>{email}</strong>, you will receive a link to choose a new password. It is valid for one hour.",
+    "useAnother": "Use another address"
   },
   "ResetPassword": {
     "title": "New password",
