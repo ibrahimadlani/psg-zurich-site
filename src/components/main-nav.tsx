@@ -35,6 +35,19 @@ export function useNavItems(): NavItem[] {
     : [home, ...content, contact, memberArea];
 }
 
+/** Small cockade in the club colours (PSG blue, white, red), marking the key page of the bar. */
+function Cockade() {
+  return (
+    <svg aria-hidden viewBox="0 0 12 12" className="size-2.5 shrink-0">
+      <circle cx="6" cy="6" r="6" fill="var(--color-psg-blue)" />
+      <circle cx="6" cy="6" r="4.1" fill="#fff" />
+      <circle cx="6" cy="6" r="2.9" fill="var(--color-psg-red)" />
+      {/* Hairline so the blue ring stays visible on the dark background. */}
+      <circle cx="6" cy="6" r="5.75" fill="none" stroke="#fff" strokeOpacity="0.35" strokeWidth="0.5" className="hidden dark:block" />
+    </svg>
+  );
+}
+
 /** Desktop navigation bar: same width as the content, hairlines above and below. */
 export function MainNav() {
   const t = useTranslations("Nav");
@@ -97,7 +110,7 @@ export function MainNav() {
                       : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                {featured ? <span aria-hidden className="size-1.5 rounded-full bg-psg-red" /> : null}
+                {featured ? <Cockade /> : null}
                 {t(key)}
               </Link>
             </li>
