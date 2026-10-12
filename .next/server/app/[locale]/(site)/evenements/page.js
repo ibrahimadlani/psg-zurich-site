@@ -1,6 +1,6 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/[locale]/(site)/evenements/page.js")
 R.c("server/chunks/ssr/[root-of-the-server]__1hzc6fx4sp6tf._.js")
-R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_136xfh49s9t9u.js")
+R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_15bcdo91d-f0w.js")
 R.c("server/chunks/ssr/[root-of-the-server]__01pprqwppej2f._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0janj0i6dqko7._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__1a91ucu_h_7kg._.js")
@@ -20,6 +20,7 @@ R.c("server/chunks/ssr/src_1dm4vmxmyns1m._.js")
 R.c("server/chunks/ssr/_1yolicjb_3ise._.js")
 R.c("server/chunks/ssr/_1q04ba1_6jkse._.js")
 R.c("server/chunks/ssr/src_app_[locale]_(site)_layout_tsx_1pelq0cnbs603._.js")
+R.c("server/chunks/ssr/src_app_[locale]_(site)_template_tsx_09_s-o7v0-qjv._.js")
 R.c("server/chunks/ssr/_next-internal_server_app_[locale]_(site)_evenements_page_actions_12nxssghs1ac4.js")
-R.m(32749)
-module.exports=R.m(32749).exports
+R.m(22609)
+module.exports=R.m(22609).exports

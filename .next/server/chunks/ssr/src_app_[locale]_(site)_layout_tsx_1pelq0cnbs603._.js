@@ -1,3 +1,3 @@
-module.exports=[94312,a=>{"use strict";var b=a.i(7997),c=a.i(717),d=a.i(55255),e=a.i(81764);a.s(["default",0,function({children:a}){return(0,b.jsxs)("div",{className:"flex flex-1 flex-col",children:[(0,b.jsx)(d.f,{}),(0,b.jsx)("main",{className:"mx-auto w-full max-w-5xl flex-1 px-4 py-10",children:(0,b.jsx)(c.ViewTransition,{default:"page",children:a})}),(0,b.jsx)(e.f,{})]})}])},66767,function(a){a.n(a.i(94312))}];
+module.exports=[94312,a=>{"use strict";var b=a.i(7997),c=a.i(55255),d=a.i(81764);a.s(["default",0,function({children:a}){return(0,b.jsxs)("div",{className:"flex flex-1 flex-col",children:[(0,b.jsx)(c.f,{}),(0,b.jsx)("main",{className:"mx-auto w-full max-w-5xl flex-1 px-4 py-10",children:a}),(0,b.jsx)(d.f,{})]})}])},66767,function(a){a.n(a.i(94312))}];
 
 //# sourceMappingURL=src_app_%5Blocale%5D_%28site%29_layout_tsx_1pelq0cnbs603._.js.map
