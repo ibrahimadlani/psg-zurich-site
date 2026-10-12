@@ -4,7 +4,7 @@
 6:"/_next/static/chunks/3o0c-j8sdtutq.js"
 7:"/_next/static/chunks/3buzbjt7xard6.js"
 8:"/_next/static/chunks/05tou6pqq64ze.js"
-9:"/_next/static/chunks/0q_q9vgnh1kdv.js"
+9:"/_next/static/chunks/36wkdx4olnmvj.js"
 a:I[77105,["$4","$5","$6","$7","$8","$9"],"default"]
 b:I[5500,["$4","$5","$6","$7","$8"],"Image"]
 c:I[71371,["$4","$5","$6","$7","$8"],"LocaleSwitcher"]
@@ -40,10 +40,10 @@ f:I[90036,["$4","$5","$6","$7","$8"],"MobileMenu"]
 29:C
 2c:X
 2c:T6,locale2c:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Matches · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Paris Saint-Germain's schedule: upcoming matches, results and live scores."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L27","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@28","v":"$29","s":"$17"}},"a":"$@2a","u":"$@2b","b":"oO-tP7yDy9TxJpqdUNcQi","r":"$2c"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Matches · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Paris Saint-Germain's schedule: upcoming matches, results and live scores."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L27","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@28","v":"$29","s":"$17"}},"a":"$@2a","u":"$@2b","b":"AzsGZqPv2QkBCvfzizrXm","r":"$2c"}
 2e:I[97367,["$11"],"OutletBoundary"]
 1d:["$","$26",null,{"fallback":["$","p",null,{"className":"text-muted-foreground","children":"Loading matches…"}],"children":"$L2d"}]
-1e:["$","script","script-0",{"src":"/_next/static/chunks/0q_q9vgnh1kdv.js","async":true}]
+1e:["$","script","script-0",{"src":"/_next/static/chunks/36wkdx4olnmvj.js","async":true}]
 1f:["$","$L2e",null,{"children":["$","$26",null,{"name":"Next.MetadataOutlet","children":"$@2f"}]}]
 2b:false
 2f:null
