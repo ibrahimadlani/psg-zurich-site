@@ -88,6 +88,14 @@ export const createMemberSchema = z.object({
   expiresOn: z.iso.date().optional(),
 });
 
+/** Member editing their own profile (PATCH /api/v1/me). */
+export const profileUpdateSchema = z.object({
+  firstName: text(100),
+  lastName: text(100),
+  phone: z.string().trim().max(32),
+  city: z.string().trim().max(100),
+});
+
 /** Committee decision on a membership request (PATCH /api/v1/members/[id]). */
 export const memberDecisionSchema = z.object({
   decision: z.enum(["approve", "reject"]),
@@ -160,5 +168,7 @@ export const membershipSignupSchema = z.object({
   acceptTerms: z.literal(true),
   // Language of the confirmation email and of the page its link leads to.
   locale: z.enum(LOCALES).default("fr"),
+  // Honeypot: hidden from people, filled in by robots.
+  website: z.string().max(200).optional(),
 });
 

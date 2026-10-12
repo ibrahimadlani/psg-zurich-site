@@ -105,7 +105,8 @@
     "sentTitle": "Confirm your email",
     "sentBody": "We sent a confirmation link to <strong>{email}</strong>. Click it to activate your account: it is valid for 24 hours.",
     "sentHint": "Nothing received? Check your spam folder, or sign in to get a new link.",
-    "backToLogin": "Back to sign in"
+    "backToLogin": "Back to sign in",
+    "tooManyRequests": "Too many sign-ups from this network. Please try again in an hour."
   },
   "DeploymentStatus": {
     "title": "Deployment status",
@@ -149,15 +150,71 @@
     "title": "Member area",
     "description": "Your member profile.",
     "loading": "Loading…",
-    "signedInAs": "Signed in as {email}",
-    "role": "Role: {role}",
-    "roles": {
-      "member": "Member",
-      "admin": "Administrator",
-      "superadmin": "Super administrator"
-    },
     "signOut": "Sign out",
-    "adminLink": "Go to administration"
+    "adminLink": "Go to administration",
+    "membership": {
+      "title": "My membership",
+      "number": "Member number",
+      "joined": "Member since",
+      "fee": "Membership fee",
+      "feeSoon": "Online payment is coming soon.",
+      "status": {
+        "pending": "Pending",
+        "active": "Active",
+        "expired": "Expired",
+        "suspended": "Suspended",
+        "rejected": "Refused"
+      },
+      "help": {
+        "pending": "The committee is reviewing your request. You will receive an email as soon as it is accepted.",
+        "active": "Your membership is active. Welcome to the club!",
+        "expired": "Your membership has expired. Renew your fee to reactivate it.",
+        "suspended": "Your membership is suspended. Contact the committee for more information.",
+        "rejected": "Your request was not accepted. You may appeal to the next general assembly: write to us at {email}."
+      },
+      "noProfile": "No member profile is linked to this account."
+    },
+    "profile": {
+      "title": "My details",
+      "description": "Only the committee can see this information.",
+      "email": "Email address",
+      "emailHint": "To change your address, write to us at {email}.",
+      "save": "Save",
+      "saving": "Saving…",
+      "saved": "Details saved.",
+      "error": "Saving failed. Please try again."
+    },
+    "security": {
+      "title": "Security",
+      "description": "Your password and signed-in devices.",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "newPasswordHint": "At least 8 characters.",
+      "change": "Change password",
+      "changing": "Changing…",
+      "changed": "Password changed. Your other devices have been signed out.",
+      "wrongPassword": "The current password is incorrect.",
+      "tooShort": "At least 8 characters.",
+      "error": "The change failed. Please try again.",
+      "revokeOthers": "Sign out my other devices",
+      "revokeOthersHint": "Useful if you signed in on a device that isn't yours.",
+      "revoked": "Your other devices have been signed out."
+    },
+    "data": {
+      "title": "My data",
+      "description": "Under data protection law, you can get a copy of your data or delete your account.",
+      "export": "Download my data (JSON)",
+      "delete": "Delete my account",
+      "deleteWarning": "Deletion is permanent: your account, member profile and membership will be erased.",
+      "deletePassword": "Confirm with your password",
+      "deleteConfirm": "I understand this action cannot be undone.",
+      "deleteSubmit": "Delete permanently",
+      "deleting": "Deleting…",
+      "cancel": "Cancel",
+      "wrongPassword": "Incorrect password.",
+      "superadmin": "A superadmin account cannot be deleted from the website.",
+      "error": "Deletion failed. Please try again."
+    }
   },
   "Admin": {
     "title": "Administration",
@@ -256,6 +313,13 @@
       "heading": "Hello {firstName},",
       "body": "After review, the committee was unable to accept your membership request. In accordance with the statutes, you may appeal to the next general assembly.",
       "footer": "For any question or to appeal, write to us at {email}."
+    },
+    "accountDeleted": {
+      "subject": "Your account has been deleted — PSG Zurich",
+      "preview": "Confirmation that your account was deleted",
+      "heading": "Account deleted",
+      "body": "As requested, your PSG Zurich account and member data have been permanently deleted. You are welcome to join again at any time from the website.",
+      "footer": "If you did not request this, write to us immediately at {email}."
     }
   },
   "Legal": {

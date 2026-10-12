@@ -105,7 +105,8 @@
     "sentTitle": "E-Mail bestätigen",
     "sentBody": "Wir haben einen Bestätigungslink an <strong>{email}</strong> gesendet. Klicke darauf, um dein Konto zu aktivieren: Er ist 24 Stunden gültig.",
     "sentHint": "Nichts erhalten? Prüfe deinen Spam-Ordner oder melde dich an, um einen neuen Link zu erhalten.",
-    "backToLogin": "Zurück zur Anmeldung"
+    "backToLogin": "Zurück zur Anmeldung",
+    "tooManyRequests": "Zu viele Anmeldungen aus diesem Netzwerk. Bitte versuche es in einer Stunde erneut."
   },
   "DeploymentStatus": {
     "title": "Deployment-Status",
@@ -149,15 +150,71 @@
     "title": "Mitgliederbereich",
     "description": "Dein Mitgliederprofil.",
     "loading": "Wird geladen…",
-    "signedInAs": "Angemeldet als {email}",
-    "role": "Rolle: {role}",
-    "roles": {
-      "member": "Mitglied",
-      "admin": "Administrator",
-      "superadmin": "Super-Administrator"
-    },
     "signOut": "Abmelden",
-    "adminLink": "Zur Administration"
+    "adminLink": "Zur Administration",
+    "membership": {
+      "title": "Meine Mitgliedschaft",
+      "number": "Mitgliedernummer",
+      "joined": "Mitglied seit",
+      "fee": "Mitgliederbeitrag",
+      "feeSoon": "Die Online-Zahlung folgt in Kürze.",
+      "status": {
+        "pending": "Ausstehend",
+        "active": "Aktiv",
+        "expired": "Abgelaufen",
+        "suspended": "Gesperrt",
+        "rejected": "Abgelehnt"
+      },
+      "help": {
+        "pending": "Der Vorstand prüft deinen Antrag. Du erhältst eine E-Mail, sobald er angenommen ist.",
+        "active": "Deine Mitgliedschaft ist aktiv. Willkommen im Club!",
+        "expired": "Deine Mitgliedschaft ist abgelaufen. Erneuere deinen Beitrag, um sie wieder zu aktivieren.",
+        "suspended": "Deine Mitgliedschaft ist gesperrt. Kontaktiere den Vorstand für weitere Informationen.",
+        "rejected": "Dein Antrag wurde nicht angenommen. Du kannst an der nächsten Generalversammlung Rekurs einlegen: Schreib uns an {email}."
+      },
+      "noProfile": "Mit diesem Konto ist kein Mitgliederprofil verknüpft."
+    },
+    "profile": {
+      "title": "Meine Angaben",
+      "description": "Nur der Vorstand sieht diese Angaben.",
+      "email": "E-Mail-Adresse",
+      "emailHint": "Um deine Adresse zu ändern, schreib uns an {email}.",
+      "save": "Speichern",
+      "saving": "Speichern…",
+      "saved": "Angaben gespeichert.",
+      "error": "Speichern fehlgeschlagen. Bitte erneut versuchen."
+    },
+    "security": {
+      "title": "Sicherheit",
+      "description": "Dein Passwort und deine angemeldeten Geräte.",
+      "currentPassword": "Aktuelles Passwort",
+      "newPassword": "Neues Passwort",
+      "newPasswordHint": "Mindestens 8 Zeichen.",
+      "change": "Passwort ändern",
+      "changing": "Ändern…",
+      "changed": "Passwort geändert. Deine anderen Geräte wurden abgemeldet.",
+      "wrongPassword": "Das aktuelle Passwort ist falsch.",
+      "tooShort": "Mindestens 8 Zeichen.",
+      "error": "Änderung fehlgeschlagen. Bitte erneut versuchen.",
+      "revokeOthers": "Andere Geräte abmelden",
+      "revokeOthersHint": "Nützlich, wenn du dich auf einem fremden Gerät angemeldet hast.",
+      "revoked": "Deine anderen Geräte wurden abgemeldet."
+    },
+    "data": {
+      "title": "Meine Daten",
+      "description": "Gemäss Datenschutzgesetz kannst du eine Kopie deiner Daten erhalten oder dein Konto löschen.",
+      "export": "Meine Daten herunterladen (JSON)",
+      "delete": "Mein Konto löschen",
+      "deleteWarning": "Die Löschung ist endgültig: Konto, Mitgliederprofil und Mitgliedschaft werden gelöscht.",
+      "deletePassword": "Mit deinem Passwort bestätigen",
+      "deleteConfirm": "Ich verstehe, dass dies nicht rückgängig gemacht werden kann.",
+      "deleteSubmit": "Endgültig löschen",
+      "deleting": "Löschen…",
+      "cancel": "Abbrechen",
+      "wrongPassword": "Falsches Passwort.",
+      "superadmin": "Ein Superadmin-Konto kann nicht über die Website gelöscht werden.",
+      "error": "Löschen fehlgeschlagen. Bitte erneut versuchen."
+    }
   },
   "Admin": {
     "title": "Administration",
@@ -256,6 +313,13 @@
       "heading": "Hallo {firstName}",
       "body": "Nach Prüfung konnte der Vorstand deinen Mitgliedschaftsantrag leider nicht annehmen. Gemäss den Statuten kannst du an der nächsten Generalversammlung Rekurs einlegen.",
       "footer": "Für Fragen oder einen Rekurs schreib uns an {email}."
+    },
+    "accountDeleted": {
+      "subject": "Dein Konto wurde gelöscht — PSG Zurich",
+      "preview": "Bestätigung der Kontolöschung",
+      "heading": "Konto gelöscht",
+      "body": "Wie gewünscht wurden dein PSG-Zurich-Konto und deine Mitgliederdaten endgültig gelöscht. Du kannst jederzeit über die Website wieder beitreten.",
+      "footer": "Falls du das nicht veranlasst hast, schreib uns sofort an {email}."
     }
   },
   "Legal": {

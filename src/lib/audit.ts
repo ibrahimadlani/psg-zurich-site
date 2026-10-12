@@ -28,3 +28,12 @@ export function getClientIp(headers: Headers): string | null {
   const forwarded = headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   return forwarded || headers.get("x-real-ip");
 }
+
+/**
+ * Client IP for rate limiting: the last x-forwarded-for entry, the one appended by the
+ * hosting proxy. Earlier entries come from the client and can be forged at will.
+ */
+export function getProxiedClientIp(headers: Headers): string | null {
+  const forwarded = headers.get("x-forwarded-for")?.split(",").at(-1)?.trim();
+  return forwarded || headers.get("x-real-ip");
+}

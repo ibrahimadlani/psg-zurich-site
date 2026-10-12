@@ -3,7 +3,7 @@ import { eq, inArray, type SQL } from "drizzle-orm";
 import { createTranslator } from "next-intl";
 import { createElement } from "react";
 import { db } from "@/db";
-import { members, user } from "@/db/schema";
+import { members, user, type Locale } from "@/db/schema";
 import { AuthLinkEmail } from "@/emails/auth-link";
 import { loadMessages } from "@/i18n/messages";
 import { LEGAL } from "@/lib/legal";
@@ -96,5 +96,37 @@ export async function sendMembershipDecision(memberId: string, decision: "approv
   } catch (error) {
     // The decision is saved either way.
     console.error("[membership] decision email failed:", error);
+  }
+}
+
+export type DeletedAccountInfo = { locale: Locale; memberNumber: string | null };
+
+export async function findDeletedAccountInfo(userId: string): Promise<DeletedAccountInfo | undefined> {
+  const [row] = await db
+    .select({ locale: members.locale, memberNumber: members.memberNumber })
+    .from(members)
+    .where(eq(members.userId, userId));
+  return row;
+}
+
+/** Confirms to a former member that their account and data are gone. */
+export async function sendAccountDeletedEmail(email: string, locale: Locale) {
+  const t = createTranslator({ locale, messages: await loadMessages(locale), namespace: "Emails.accountDeleted" });
+  try {
+    await sendMail({
+      to: email,
+      subject: t("subject"),
+      react: createElement(AuthLinkEmail, {
+        locale,
+        texts: {
+          preview: t("preview"),
+          heading: t("heading"),
+          body: t("body"),
+          ignore: t("footer", { email: LEGAL.email }),
+        },
+      }),
+    });
+  } catch (error) {
+    console.error("[account] deletion email failed:", error);
   }
 }

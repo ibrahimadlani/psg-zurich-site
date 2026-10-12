@@ -1,5 +1,6 @@
 import "server-only";
 import { betterAuth } from "better-auth";
+import { APIError, createAuthMiddleware } from "better-auth/api";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { createTranslator, hasLocale } from "next-intl";
@@ -10,7 +11,13 @@ import { AuthLinkEmail } from "@/emails/auth-link";
 import { loadMessages } from "@/i18n/messages";
 import { routing } from "@/i18n/routing";
 import { sendMail } from "@/lib/mail";
-import { notifyNewMembershipRequest } from "@/lib/membership-mail";
+import { getClientIp, writeAuditLog } from "@/lib/audit";
+import {
+  findDeletedAccountInfo,
+  notifyNewMembershipRequest,
+  sendAccountDeletedEmail,
+  type DeletedAccountInfo,
+} from "@/lib/membership-mail";
 
 const RESET_PASSWORD_TTL_SECONDS = 60 * 60;
 const VERIFY_EMAIL_TTL_SECONDS = 60 * 60 * 24;
@@ -47,6 +54,9 @@ async function sendAuthLinkEmail(kind: "resetPassword" | "verifyEmail", email: s
   });
 }
 
+// Read before the cascade deletes the member row, used once the account is gone.
+const deletedAccounts = new Map<string, DeletedAccountInfo>();
+
 function createAuth() {
   return betterAuth({
     appName: "PSG Zurich",
@@ -59,6 +69,30 @@ function createAuth() {
       database: { generateId: "uuid" },
     },
     user: {
+      deleteUser: {
+        enabled: true,
+        beforeDelete: async (deleted) => {
+          if ((deleted as { role?: string }).role === "superadmin") {
+            throw new APIError("FORBIDDEN", { message: "Superadmin accounts are removed in the database." });
+          }
+          const info = await findDeletedAccountInfo(deleted.id);
+          if (info) deletedAccounts.set(deleted.id, info);
+        },
+        afterDelete: async (deleted, request) => {
+          const info = deletedAccounts.get(deleted.id);
+          deletedAccounts.delete(deleted.id);
+          // No personal data in the log: the account no longer exists.
+          await writeAuditLog({
+            actorId: null,
+            action: "user.delete",
+            entityType: "user",
+            entityId: deleted.id,
+            metadata: { memberNumber: info?.memberNumber ?? null },
+            ipAddress: request ? getClientIp(request.headers) : null,
+          });
+          await sendAccountDeletedEmail(deleted.email, info?.locale ?? "fr");
+        },
+      },
       additionalFields: {
         role: {
           type: [...ROLES],
@@ -96,6 +130,14 @@ function createAuth() {
       },
     },
     disabledPaths: ["/sign-up/email"],
+    hooks: {
+      // Deleting an account always requires the password (Better Auth would accept a recent session).
+      before: createAuthMiddleware(async (ctx) => {
+        if (ctx.path === "/delete-user" && !(ctx.body as { password?: string } | undefined)?.password) {
+          throw new APIError("BAD_REQUEST", { message: "Password required.", code: "PASSWORD_REQUIRED" });
+        }
+      }),
+    },
     // Must stay last: lets server actions set auth cookies.
     plugins: [nextCookies()],
   });

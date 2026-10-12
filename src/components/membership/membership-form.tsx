@@ -32,7 +32,7 @@ export function MembershipForm() {
   const t = useTranslations("Membership");
   const locale = useLocale();
   const [sentTo, setSentTo] = useState<string | null>(null);
-  const [failure, setFailure] = useState<"emailTaken" | "error" | null>(null);
+  const [failure, setFailure] = useState<"emailTaken" | "tooManyRequests" | "error" | null>(null);
   const {
     register,
     handleSubmit,
@@ -42,15 +42,17 @@ export function MembershipForm() {
     defaultValues: { firstName: "", lastName: "", email: "", phone: "", city: "", password: "", acceptTerms: false },
   });
 
-  async function onSubmit(values: Values) {
+  async function onSubmit(values: Values, event?: React.BaseSyntheticEvent) {
+    const form = event?.target instanceof HTMLFormElement ? event.target : null;
     setFailure(null);
     const response = await fetch("/api/v1/membership", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ ...values, locale }),
+      // Honeypot: only robots fill the hidden "website" field.
+      body: JSON.stringify({ ...values, locale, website: form ? new FormData(form).get("website") : "" }),
     });
     if (!response.ok) {
-      setFailure(response.status === 409 ? "emailTaken" : "error");
+      setFailure(response.status === 409 ? "emailTaken" : response.status === 429 ? "tooManyRequests" : "error");
       return;
     }
     setSentTo(values.email);
@@ -124,6 +126,14 @@ export function MembershipForm() {
                 ) : null}
               </FormMessage>
             ) : null}
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+              className="pointer-events-none absolute -left-[9999px] size-px opacity-0"
+            />
             <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-[14px]">
               {field("firstName", { autoComplete: "given-name", maxLength: 100 })}
               {field("lastName", { autoComplete: "family-name", maxLength: 100 })}

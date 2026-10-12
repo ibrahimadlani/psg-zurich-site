@@ -105,7 +105,8 @@
     "sentTitle": "Confirmez votre adresse",
     "sentBody": "Nous avons envoyé un lien de confirmation à <strong>{email}</strong>. Cliquez dessus pour activer votre compte : il est valable 24 heures.",
     "sentHint": "Rien reçu ? Vérifiez vos courriers indésirables, ou connectez-vous pour recevoir un nouveau lien.",
-    "backToLogin": "Retour à la connexion"
+    "backToLogin": "Retour à la connexion",
+    "tooManyRequests": "Trop d'inscriptions depuis ce réseau. Réessayez dans une heure."
   },
   "DeploymentStatus": {
     "title": "Statut du déploiement",
@@ -149,15 +150,71 @@
     "title": "Espace membre",
     "description": "Votre profil d'adhérent.",
     "loading": "Chargement…",
-    "signedInAs": "Connecté en tant que {email}",
-    "role": "Rôle : {role}",
-    "roles": {
-      "member": "Membre",
-      "admin": "Administrateur",
-      "superadmin": "Super-administrateur"
-    },
     "signOut": "Se déconnecter",
-    "adminLink": "Accéder à l'administration"
+    "adminLink": "Accéder à l'administration",
+    "membership": {
+      "title": "Mon adhésion",
+      "number": "Numéro de membre",
+      "joined": "Membre depuis",
+      "fee": "Cotisation",
+      "feeSoon": "Le paiement en ligne arrive bientôt.",
+      "status": {
+        "pending": "En attente",
+        "active": "Active",
+        "expired": "Expirée",
+        "suspended": "Suspendue",
+        "rejected": "Refusée"
+      },
+      "help": {
+        "pending": "Le comité examine votre demande. Vous recevrez un e-mail dès qu'elle sera acceptée.",
+        "active": "Votre adhésion est active. Bienvenue dans le club !",
+        "expired": "Votre adhésion a expiré. Renouvelez votre cotisation pour la réactiver.",
+        "suspended": "Votre adhésion est suspendue. Contactez le comité pour plus d'informations.",
+        "rejected": "Votre demande n'a pas été acceptée. Vous pouvez faire recours devant la prochaine assemblée générale : écrivez-nous à {email}."
+      },
+      "noProfile": "Aucun profil d'adhérent n'est lié à ce compte."
+    },
+    "profile": {
+      "title": "Mes informations",
+      "description": "Ces informations sont visibles uniquement par le comité.",
+      "email": "Adresse e-mail",
+      "emailHint": "Pour changer d'adresse, écrivez-nous à {email}.",
+      "save": "Enregistrer",
+      "saving": "Enregistrement…",
+      "saved": "Informations enregistrées.",
+      "error": "L'enregistrement a échoué. Réessayez."
+    },
+    "security": {
+      "title": "Sécurité",
+      "description": "Votre mot de passe et vos appareils connectés.",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "newPasswordHint": "8 caractères minimum.",
+      "change": "Changer le mot de passe",
+      "changing": "Modification…",
+      "changed": "Mot de passe modifié. Vos autres appareils ont été déconnectés.",
+      "wrongPassword": "Le mot de passe actuel est incorrect.",
+      "tooShort": "8 caractères minimum.",
+      "error": "La modification a échoué. Réessayez.",
+      "revokeOthers": "Déconnecter mes autres appareils",
+      "revokeOthersHint": "Utile si vous vous êtes connecté sur un appareil qui n'est pas le vôtre.",
+      "revoked": "Vos autres appareils ont été déconnectés."
+    },
+    "data": {
+      "title": "Mes données",
+      "description": "Conformément à la loi sur la protection des données, vous pouvez obtenir une copie de vos données ou supprimer votre compte.",
+      "export": "Télécharger mes données (JSON)",
+      "delete": "Supprimer mon compte",
+      "deleteWarning": "La suppression est définitive : votre compte, votre profil d'adhérent et votre adhésion seront effacés.",
+      "deletePassword": "Confirmez avec votre mot de passe",
+      "deleteConfirm": "Je comprends que cette action est irréversible.",
+      "deleteSubmit": "Supprimer définitivement",
+      "deleting": "Suppression…",
+      "cancel": "Annuler",
+      "wrongPassword": "Mot de passe incorrect.",
+      "superadmin": "Un compte superadmin ne peut pas être supprimé depuis le site.",
+      "error": "La suppression a échoué. Réessayez."
+    }
   },
   "Admin": {
     "title": "Administration",
@@ -256,6 +313,13 @@
       "heading": "Bonjour {firstName},",
       "body": "Après examen, le comité n'a pas pu donner une suite favorable à votre demande d'adhésion. Conformément aux statuts, vous pouvez faire recours devant la prochaine assemblée générale.",
       "footer": "Pour toute question ou pour faire recours, écrivez-nous à {email}."
+    },
+    "accountDeleted": {
+      "subject": "Votre compte a été supprimé — PSG Zurich",
+      "preview": "Confirmation de suppression de votre compte",
+      "heading": "Compte supprimé",
+      "body": "Comme demandé, votre compte PSG Zurich et vos données d'adhérent ont été définitivement supprimés. Vous pouvez nous rejoindre à nouveau à tout moment depuis le site.",
+      "footer": "Si vous n'êtes pas à l'origine de cette suppression, écrivez-nous immédiatement à {email}."
     }
   },
   "Legal": {

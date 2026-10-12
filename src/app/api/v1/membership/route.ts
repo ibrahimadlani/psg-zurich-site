@@ -3,8 +3,9 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { members, user } from "@/db/schema";
 import { apiHandler, fail, ok, parseBody } from "@/lib/api";
-import { getClientIp, writeAuditLog } from "@/lib/audit";
+import { getClientIp, getProxiedClientIp, writeAuditLog } from "@/lib/audit";
 import { getAuth } from "@/lib/auth";
+import { rateLimit } from "@/lib/rate-limit";
 import { membershipSignupSchema } from "@/lib/validators";
 
 /**
@@ -12,8 +13,18 @@ import { membershipSignupSchema } from "@/lib/validators";
  * emails a confirmation link (the account can sign in once confirmed). This is the only
  * way to create an account.
  */
+const SIGNUPS_PER_HOUR = 5;
+
 export const POST = apiHandler(async (request) => {
   const input = await parseBody(request, membershipSignupSchema);
+
+  // Robot filled the hidden field: same answer as a real sign-up, nothing created or sent.
+  if (input.website) return ok({ status: "pending" }, { status: 201 });
+
+  const ip = getProxiedClientIp(request.headers) ?? "unknown";
+  if (!rateLimit(`signup:${ip}`, SIGNUPS_PER_HOUR, 60 * 60 * 1000)) {
+    return fail(429, "too_many_requests", "Too many sign-ups from this network. Please try again later.");
+  }
 
   // With email verification on, Better Auth answers a duplicate with a fake user rather
   // than an error: detect it first.

@@ -1,11 +1,15 @@
+import { eq } from "drizzle-orm";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import { SignOutButton } from "@/components/auth/sign-out-button";
+import { DataSection } from "@/components/member-area/data-section";
+import { MembershipCard } from "@/components/member-area/membership-card";
+import { ProfileForm } from "@/components/member-area/profile-form";
+import { SecuritySection } from "@/components/member-area/security-section";
 import { PageHeader } from "@/components/page-header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Link, redirect } from "@/i18n/navigation";
+import { db } from "@/db";
+import { members } from "@/db/schema";
+import { redirect } from "@/i18n/navigation";
 import { getSession } from "@/lib/permissions";
 import { hasRole } from "@/lib/roles";
 
@@ -15,29 +19,32 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function MemberPanel() {
-  const t = await getTranslations("MemberArea");
   const session = await getSession();
   if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
 
   const { user } = session;
+  const [profile] = await db
+    .select({ firstName: members.firstName, lastName: members.lastName, phone: members.phone, city: members.city })
+    .from(members)
+    .where(eq(members.userId, user.id));
+
   return (
-    <Card className="max-w-md">
-      <CardHeader>
-        <CardTitle>{user.name || user.email}</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-1 text-sm text-muted-foreground">
-        <p>{t("signedInAs", { email: user.email })}</p>
-        <p>{t("role", { role: t(`roles.${user.role}`) })}</p>
-      </CardContent>
-      <CardFooter className="flex gap-2">
-        {hasRole(user.role, "admin") ? (
-          <Button asChild>
-            <Link href="/admin">{t("adminLink")}</Link>
-          </Button>
-        ) : null}
-        <SignOutButton />
-      </CardFooter>
-    </Card>
+    <div className="space-y-6">
+      <MembershipCard userId={user.id} isAdmin={hasRole(user.role, "admin")} />
+      {profile ? (
+        <ProfileForm
+          email={user.email}
+          defaults={{
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            phone: profile.phone ?? "",
+            city: profile.city ?? "",
+          }}
+        />
+      ) : null}
+      <SecuritySection />
+      <DataSection canDelete={user.role !== "superadmin"} />
+    </div>
   );
 }
 

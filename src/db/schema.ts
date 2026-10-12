@@ -57,6 +57,7 @@ const json = <T>(name: string) =>
 
 // Content locales. Order = MySQL enum order: only ever append new values.
 export const LOCALES = ["fr", "de", "en"] as const;
+export type Locale = (typeof LOCALES)[number];
 export const ROLES = ["member", "admin", "superadmin"] as const;
 export type Role = (typeof ROLES)[number];
 
@@ -135,6 +136,8 @@ export const MEMBER_STATUSES = [
   // Refused by the committee: kept for a possible appeal to the general assembly.
   "rejected",
 ] as const;
+
+export type MemberStatus = (typeof MEMBER_STATUSES)[number];
 
 export const members = mysqlTable(
   "members",

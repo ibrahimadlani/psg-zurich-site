@@ -7,7 +7,15 @@ export const authClient = createAuthClient({
   plugins: [inferAdditionalFields<Auth>()],
 });
 
-export const { signIn, signOut, requestPasswordReset, resetPassword } = authClient;
+export const {
+  signIn,
+  signOut,
+  requestPasswordReset,
+  resetPassword,
+  changePassword,
+  revokeOtherSessions,
+  deleteUser,
+} = authClient;
 
 // Set once the first session request has answered (browser only: the server always renders "loading").
 let settled = false;
