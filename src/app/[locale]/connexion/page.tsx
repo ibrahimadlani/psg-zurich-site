@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function LoginPage() {
   const t = await getTranslations("Login");
   return (
-    <BrandShell>
+    <BrandShell bare>
       <AuthPanel title={t("title")} body={t("body")}>
         <LoginForm />
         <p className="text-center text-[14px] text-muted-foreground">

@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ForgotPasswordPage() {
   const t = await getTranslations("ForgotPassword");
   return (
-    <BrandShell>
+    <BrandShell bare>
       <AuthPanel title={t("title")} body={t("body")}>
         <ForgotPasswordForm />
         <p className="text-center text-[14px]">

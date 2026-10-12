@@ -6,7 +6,7 @@ import { Link } from "@/i18n/navigation";
 export default async function NotFound() {
   const t = await getTranslations("NotFound");
   return (
-    <BrandShell>
+    <BrandShell bare>
       <NotFoundHero title={t("title")}>
         <Link href="/" className={backLinkClass}>
           <BackArrow />

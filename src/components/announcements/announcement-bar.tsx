@@ -62,7 +62,8 @@ export function AnnouncementBar({ storageKey, tone, title, message, linkUrl, clo
     <div
       inert={!open}
       className={cn(
-        "grid [transition:grid-template-rows_.3s_ease,opacity_.25s_ease]",
+        // Hidden on bare pages (sign-in screens, 404): see BrandShell.
+        "grid [transition:grid-template-rows_.3s_ease,opacity_.25s_ease] [body:has([data-bare-page])_&]:hidden",
         open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
       )}
     >
