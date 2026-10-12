@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // Rendered for URLs that match no route at all (outside the [locale] layout): trilingual.
 export default function GlobalNotFound() {
   return (
-    <html lang="fr" className={`${fontVariables} h-full antialiased`} suppressHydrationWarning>
+    <html lang="fr" className={`${fontVariables} h-full antialiased motion-safe:scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>

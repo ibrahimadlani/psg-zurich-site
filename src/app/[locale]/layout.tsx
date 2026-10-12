@@ -27,7 +27,8 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
 
   return (
     // The theme script may add the "dark" class before React hydrates.
-    <html lang={locale} className={`${fontVariables} h-full antialiased`} suppressHydrationWarning>
+    // scroll-smooth: in-page anchors glide; data-scroll-behavior keeps page navigations instant.
+    <html lang={locale} className={`${fontVariables} h-full antialiased motion-safe:scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <ThemeScript />
       </head>
