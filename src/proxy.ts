@@ -1,7 +1,25 @@
+import { getSessionCookie } from "better-auth/cookies";
 import createMiddleware from "next-intl/middleware";
+import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/i18n/routing";
+import { getAuth } from "@/lib/auth";
 
-export default createMiddleware(routing);
+const intl = createMiddleware(routing);
+
+// Sign-in screens that make no sense once signed in (the new-password page stays reachable).
+const GUEST_ONLY = new RegExp(`^/(${routing.locales.join("|")})/connexion(/mot-de-passe-oublie)?/?$`);
+
+export default async function proxy(request: NextRequest) {
+  const match = GUEST_ONLY.exec(request.nextUrl.pathname);
+  // Cookie check first: guests never hit the database here.
+  if (match && getSessionCookie(request)) {
+    const session = await getAuth()
+      .api.getSession({ headers: request.headers })
+      .catch(() => null);
+    if (session) return NextResponse.redirect(new URL(`/${match[1]}`, request.url));
+  }
+  return intl(request);
+}
 
 export const config = {
   // Everything except API routes, Next internals and the real static files of public/ and app/.

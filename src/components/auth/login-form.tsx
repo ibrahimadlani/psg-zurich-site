@@ -33,7 +33,8 @@ export function LoginForm() {
       setFailure(error.code === "INVALID_EMAIL_OR_PASSWORD" ? "invalidCredentials" : "error");
       return;
     }
-    router.push("/espace-membre");
+    router.push("/");
+    router.refresh();
   }
 
   return (
