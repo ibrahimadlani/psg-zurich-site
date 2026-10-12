@@ -5,10 +5,10 @@
 b:"$Sreact.view_transition"
 c:"/_next/static/chunks/131c9cohmrtz-.js"
 d:"/_next/static/chunks/450nfjx_hm5n1.js"
-e:"/_next/static/chunks/056jal06y0z76.js"
+e:"/_next/static/chunks/0wp23052om062.js"
 f:"/_next/static/chunks/0cc7fgy1vig40.js"
 10:"/_next/static/chunks/0cm378vxxfnat.js"
-11:"/_next/static/chunks/0q_p3nw1zw_hg.js"
+11:"/_next/static/chunks/36jjch2fb0dlj.js"
 12:I[23693,["$c","$d","$e","$f","$10","$11"],"MembershipForm"]
 13:I[97367,["$4"],"OutletBoundary"]
 14:"$Sreact.suspense"
@@ -24,14 +24,14 @@ f:"/_next/static/chunks/0cc7fgy1vig40.js"
 9:C
 17:X
 17:C
-a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"data-bare-page":"","className":"relative flex flex-1 flex-col overflow-hidden leading-[normal]","children":[null,["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12","children":["$","$b",null,{"default":"page","children":["$","$L12",null,{}]}]}],null]}],[["$","script","script-0",{"src":"/_next/static/chunks/056jal06y0z76.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0cc7fgy1vig40.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0cm378vxxfnat.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0q_p3nw1zw_hg.js","async":true}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":"$@16","v":"$17","s":"$9"}}]]
+a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"data-bare-page":"","className":"relative flex flex-1 flex-col overflow-hidden leading-[normal]","children":[null,["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12","children":["$","$b",null,{"default":"page","children":["$","$L12",null,{}]}]}],null]}],[["$","script","script-0",{"src":"/_next/static/chunks/0wp23052om062.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0cc7fgy1vig40.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0cm378vxxfnat.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/36jjch2fb0dlj.js","async":true}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":"$@16","v":"$17","s":"$9"}}]]
 2:[["children",{"s":"adhesion","h":49218,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
 1e:X
 1e:C
 21:X
 21:T6,locale21:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mitgliedschaft · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Werde Mitglied im offiziellen PSG-Fanclub in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L1c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1d","v":"$1e","s":"$9"}},"a":"$@1f","u":"$@20","b":"wv73hWt3_fISnLZ1bpHTk","r":"$21"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mitgliedschaft · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Werde Mitglied im offiziellen PSG-Fanclub in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L1c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1d","v":"$1e","s":"$9"}},"a":"$@1f","u":"$@20","b":"zhy6mPxSJHHBHHt0fY9AP","r":"$21"}
 15:null
 20:false
 1f:null
