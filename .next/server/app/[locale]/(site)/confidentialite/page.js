@@ -1,6 +1,6 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/[locale]/(site)/confidentialite/page.js")
 R.c("server/chunks/ssr/[root-of-the-server]__1cfe_ih9w6pht._.js")
-R.c("server/chunks/ssr/node_modules_cn_dist_index_166wukavr11of.js")
+R.c("server/chunks/ssr/_1bawxe_w-w8zc._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_112m5-23k0gcb.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0janj0i6dqko7._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__01pprqwppej2f._.js")

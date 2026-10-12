@@ -29,6 +29,13 @@
       "when": 1791800000000,
       "tag": "0003_verify_existing_emails",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1791808937011,
+      "tag": "0004_members_decisions",
+      "breakpoints": true
     }
   ]
 }
