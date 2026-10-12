@@ -78,57 +78,62 @@ async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
         </a>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>{tp("title")}</CardTitle>
-          <CardDescription>
-            {open ? tp("openHint") : mine?.points != null ? tp("yourPoints", { count: mine.points }) : tp("closedHint")}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-5">
-          {open && access === "member" ? (
-            <PredictionForm
-              matchId={match.id}
-              psgHome={match.venue !== "away"}
-              opponent={match.opponent}
-              initial={mine ? { psgScore: mine.psgScore, opponentScore: mine.opponentScore } : null}
-            />
-          ) : null}
-          {open && access === "guest" ? (
-            <Link href="/connexion" prefetch={false} className="text-sm underline underline-offset-2">
-              {tp("signIn")}
-            </Link>
-          ) : null}
-          {open && access === "inactive" ? <p className="text-sm text-muted-foreground">{tp("membersOnly")}</p> : null}
-          {!open && mine ? (
-            <p className="text-sm">{tp("yourPrediction", { psg: mine.psgScore, opponent: mine.opponentScore })}</p>
-          ) : null}
-          {stats && stats.total > 0 ? (
-            <div className="space-y-2">
-              <p className="text-sm font-medium">{tp("community", { count: stats.total })}</p>
-              <div className="flex h-2.5 overflow-hidden rounded-full bg-foreground/10">
-                <span className="bg-emerald-600" style={{ width: `${(stats.win / stats.total) * 100}%` }} />
-                <span className="bg-foreground/40" style={{ width: `${(stats.draw / stats.total) * 100}%` }} />
-                <span className="bg-psg-red" style={{ width: `${(stats.loss / stats.total) * 100}%` }} />
-              </div>
-              <p className="flex justify-between text-xs text-muted-foreground">
-                <span>{tp("win", { percent: Math.round((stats.win / stats.total) * 100) })}</span>
-                <span>{tp("draw", { percent: Math.round((stats.draw / stats.total) * 100) })}</span>
-                <span>{tp("loss", { percent: Math.round((stats.loss / stats.total) * 100) })}</span>
-              </p>
-            </div>
-          ) : null}
-        </CardContent>
-      </Card>
 
-      <section className="space-y-3">
-        <h2 className="text-lg font-semibold">{t("clubEventsTitle")}</h2>
-        {visibleEvents.length > 0 ? (
-          visibleEvents.map((event) => <EventCard key={event.id} event={event} access={access} showMatch={false} />)
-        ) : (
-          <p className="text-sm text-muted-foreground">{t("noClubEvents")}</p>
-        )}
-      </section>
+      {/* Club events in the main column, the prediction card alongside (above them on mobile). */}
+      <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_21rem]">
+        <section className="order-2 space-y-3 lg:order-1">
+          <h2 className="text-lg font-semibold">{t("clubEventsTitle")}</h2>
+          {visibleEvents.length > 0 ? (
+            visibleEvents.map((event) => <EventCard key={event.id} event={event} access={access} showMatch={false} />)
+          ) : (
+            <p className="text-sm text-muted-foreground">{t("noClubEvents")}</p>
+          )}
+        </section>
+        <aside className="order-1 lg:sticky lg:top-6 lg:order-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>{tp("title")}</CardTitle>
+              <CardDescription>
+                {open ? tp("openHint") : mine?.points != null ? tp("yourPoints", { count: mine.points }) : tp("closedHint")}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-5">
+              {open && access === "member" ? (
+                <PredictionForm
+                  matchId={match.id}
+                  psgHome={match.venue !== "away"}
+                  opponent={match.opponent}
+                  initial={mine ? { psgScore: mine.psgScore, opponentScore: mine.opponentScore } : null}
+                />
+              ) : null}
+              {open && access === "guest" ? (
+                <Link href="/connexion" prefetch={false} className="text-sm underline underline-offset-2">
+                  {tp("signIn")}
+                </Link>
+              ) : null}
+              {open && access === "inactive" ? <p className="text-sm text-muted-foreground">{tp("membersOnly")}</p> : null}
+              {!open && mine ? (
+                <p className="text-sm">{tp("yourPrediction", { psg: mine.psgScore, opponent: mine.opponentScore })}</p>
+              ) : null}
+              {stats && stats.total > 0 ? (
+                <div className="space-y-2">
+                  <p className="text-sm font-medium">{tp("community", { count: stats.total })}</p>
+                  <div className="flex h-2.5 overflow-hidden rounded-full bg-foreground/10">
+                    <span className="bg-emerald-600" style={{ width: `${(stats.win / stats.total) * 100}%` }} />
+                    <span className="bg-foreground/40" style={{ width: `${(stats.draw / stats.total) * 100}%` }} />
+                    <span className="bg-psg-red" style={{ width: `${(stats.loss / stats.total) * 100}%` }} />
+                  </div>
+                  <p className="flex justify-between text-xs text-muted-foreground">
+                    <span>{tp("win", { percent: Math.round((stats.win / stats.total) * 100) })}</span>
+                    <span>{tp("draw", { percent: Math.round((stats.draw / stats.total) * 100) })}</span>
+                    <span>{tp("loss", { percent: Math.round((stats.loss / stats.total) * 100) })}</span>
+                  </p>
+                </div>
+              ) : null}
+            </CardContent>
+          </Card>
+        </aside>
+      </div>
     </div>
   );
 }
