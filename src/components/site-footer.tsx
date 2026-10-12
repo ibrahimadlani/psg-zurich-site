@@ -43,12 +43,7 @@ function MemberFooter() {
     <footer className="relative border-t">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-4 text-[12px] text-muted-foreground">
         <p>© PSG Zurich · {t("official")}</p>
-        <span className="flex flex-wrap items-center gap-x-4">
-          <LegalLinks />
-          <a href={`mailto:${EMAIL}`} className="transition-colors hover:text-foreground">
-            {EMAIL}
-          </a>
-        </span>
+        <LegalLinks />
       </div>
     </footer>
   );
