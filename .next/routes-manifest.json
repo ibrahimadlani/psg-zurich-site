@@ -31,6 +31,14 @@
       "namedRegex": "^/api/auth/(?<nxtPall>.+?)(?:/)?$"
     },
     {
+      "page": "/api/calendar/event/[id]",
+      "regex": "^/api/calendar/event/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/calendar/event/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/calendar/match/[id]",
       "regex": "^/api/calendar/match/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -269,6 +277,82 @@
           "source": "^/(?<nxtPlocale>[^/]+?)/evenements\\.segments/\\$d\\$locale/!KHNpdGUp/evenements(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/evenements/[id]",
+      "page": "/de/evenements/[id]",
+      "regex": "^/de/evenements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/de/evenements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/evenements/[id].segments/$d$locale/!KHNpdGUp/evenements/$d$id$segment",
+          "source": "^/de/evenements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/evenements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/evenements/[id]",
+      "page": "/en/evenements/[id]",
+      "regex": "^/en/evenements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/en/evenements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/evenements/[id].segments/$d$locale/!KHNpdGUp/evenements/$d$id$segment",
+          "source": "^/en/evenements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/evenements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/evenements/[id]",
+      "page": "/fr/evenements/[id]",
+      "regex": "^/fr/evenements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/fr/evenements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/evenements/[id].segments/$d$locale/!KHNpdGUp/evenements/$d$id$segment",
+          "source": "^/fr/evenements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/evenements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/evenements/[id]",
+      "regex": "^/([^/]+?)/evenements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/evenements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/evenements/[id].segments/$d$locale/!KHNpdGUp/evenements/$d$id$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/evenements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/evenements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPid": "nxtPid"
           }
         }
       ]

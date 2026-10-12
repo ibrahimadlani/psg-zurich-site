@@ -7,9 +7,9 @@
     "static/chunks/0cz1d0mv5g_q7.js"
   ],
   "lowPriorityFiles": [
-    "static/fFaN4EAwuwsbQJsrH0M73/_buildManifest.js",
-    "static/fFaN4EAwuwsbQJsrH0M73/_ssgManifest.js",
-    "static/fFaN4EAwuwsbQJsrH0M73/_clientMiddlewareManifest.js"
+    "static/oO-tP7yDy9TxJpqdUNcQi/_buildManifest.js",
+    "static/oO-tP7yDy9TxJpqdUNcQi/_ssgManifest.js",
+    "static/oO-tP7yDy9TxJpqdUNcQi/_clientMiddlewareManifest.js"
   ],
   "rootMainFiles": [
     "static/chunks/1ckvzn7sfprko.js",
@@ -109,6 +109,17 @@
       ]
     },
     "/[locale]/(site)/evenements/page": {
+      "otherChunks": [
+        "static/chunks/1ckvzn7sfprko.js",
+        "static/chunks/06bs-nf19b2js.js",
+        "static/chunks/1av3aike4zj3k.js",
+        "static/chunks/1x03-4zz8khs4.js"
+      ],
+      "runtimeModuleIds": [
+        94553
+      ]
+    },
+    "/[locale]/(site)/evenements/[id]/page": {
       "otherChunks": [
         "static/chunks/1ckvzn7sfprko.js",
         "static/chunks/06bs-nf19b2js.js",
