@@ -23,6 +23,8 @@
   "/api/v1/documents/route": "app/api/v1/documents/route.js",
   "/api/v1/events/route": "app/api/v1/events/route.js",
   "/api/v1/matches/route": "app/api/v1/matches/route.js",
+  "/api/v1/me/export/route": "app/api/v1/me/export/route.js",
+  "/api/v1/me/route": "app/api/v1/me/route.js",
   "/api/v1/members/[id]/route": "app/api/v1/members/[id]/route.js",
   "/api/v1/members/route": "app/api/v1/members/route.js",
   "/api/v1/membership/route": "app/api/v1/membership/route.js",

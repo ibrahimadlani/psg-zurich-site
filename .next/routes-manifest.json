@@ -405,6 +405,18 @@
       "namedRegex": "^/api/v1/matches(?:/)?$"
     },
     {
+      "page": "/api/v1/me",
+      "regex": "^/api/v1/me(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/me(?:/)?$"
+    },
+    {
+      "page": "/api/v1/me/export",
+      "regex": "^/api/v1/me/export(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/me/export(?:/)?$"
+    },
+    {
       "page": "/api/v1/members",
       "regex": "^/api/v1/members(?:/)?$",
       "routeKeys": {},

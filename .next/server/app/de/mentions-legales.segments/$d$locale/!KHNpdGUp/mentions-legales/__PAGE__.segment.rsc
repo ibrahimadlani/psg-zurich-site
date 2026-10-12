@@ -1,7 +1,7 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/0mx69iot7hozv.js"
-5:"/_next/static/chunks/02nn81jc_fkjn.js"
-6:"/_next/static/chunks/2p4du1af-73lv.js"
+4:"/_next/static/chunks/2zdc1f8x75q18.js"
+5:"/_next/static/chunks/31fs0z21z-lbp.js"
+6:"/_next/static/chunks/3o0c-j8sdtutq.js"
 7:"/_next/static/chunks/3buzbjt7xard6.js"
 8:"/_next/static/chunks/1bkh3bw98ejni.js"
 9:I[77105,["$4","$5","$6","$7","$8"],"default"]
@@ -38,7 +38,7 @@ f:I[8895,["$4","$5","$6","$7","$8"],"MainNav"]
 2a:C
 2d:X
 2d:T6,locale2d:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L24",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L26",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$27",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Impressum · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Angaben zum Herausgeber von psg-zurich.ch nach Schweizer Recht."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L28","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@29","v":"$2a","s":"$16"}},"a":"$@2b","u":"$@2c","b":"-9RAG3IdfH_3DkzibpatP","r":"$2d"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L24",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L26",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$27",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Impressum · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Angaben zum Herausgeber von psg-zurich.ch nach Schweizer Recht."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L28","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@29","v":"$2a","s":"$16"}},"a":"$@2b","u":"$@2c","b":"WmoyzbGwKiWvedZ28dskZ","r":"$2d"}
 33:I[97367,["$10"],"OutletBoundary"]
 1b:["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"02"}]
 1c:["$","li","propriete-intellectuelle",{"children":["$","a",null,{"href":"#propriete-intellectuelle","className":"-ml-px flex gap-2.5 border-l border-transparent pl-3 text-[13px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground","children":[["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"03"}],"Geistiges Eigentum"]}]}]

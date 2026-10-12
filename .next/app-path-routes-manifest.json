@@ -23,6 +23,8 @@
   "/api/v1/documents/route": "/api/v1/documents",
   "/api/v1/events/route": "/api/v1/events",
   "/api/v1/matches/route": "/api/v1/matches",
+  "/api/v1/me/export/route": "/api/v1/me/export",
+  "/api/v1/me/route": "/api/v1/me",
   "/api/v1/members/[id]/route": "/api/v1/members/[id]",
   "/api/v1/members/route": "/api/v1/members",
   "/api/v1/membership/route": "/api/v1/membership",
