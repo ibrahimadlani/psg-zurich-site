@@ -993,6 +993,12 @@
       "namedRegex": "^/api/v1/me/export(?:/)?$"
     },
     {
+      "page": "/api/v1/me/notifications",
+      "regex": "^/api/v1/me/notifications(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/me/notifications(?:/)?$"
+    },
+    {
       "page": "/api/v1/me/settings",
       "regex": "^/api/v1/me/settings(?:/)?$",
       "routeKeys": {},

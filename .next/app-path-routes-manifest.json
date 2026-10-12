@@ -50,6 +50,7 @@
   "/api/v1/matches/sync/route": "/api/v1/matches/sync",
   "/api/v1/me/avatar/route": "/api/v1/me/avatar",
   "/api/v1/me/export/route": "/api/v1/me/export",
+  "/api/v1/me/notifications/route": "/api/v1/me/notifications",
   "/api/v1/me/route": "/api/v1/me",
   "/api/v1/me/settings/route": "/api/v1/me/settings",
   "/api/v1/media/[id]/route": "/api/v1/media/[id]",
