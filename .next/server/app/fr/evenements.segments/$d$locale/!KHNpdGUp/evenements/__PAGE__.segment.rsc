@@ -40,7 +40,7 @@ f:I[90036,["$4","$5","$6","$7","$8","$9"],"MobileMenu"]
 27:C
 2a:X
 2a:T6,locale2a:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Événements · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch parties, déplacements et rencontres entre membres."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$17"}},"a":"$@28","u":"$@29","b":"ThWuHPEZb79ZNHcsVZDEV","r":"$2a"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Événements · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch parties, déplacements et rencontres entre membres."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$17"}},"a":"$@28","u":"$@29","b":"bw9DPKGB7QCL_H-2z6S6P","r":"$2a"}
 1e:null
 29:false
 28:null
