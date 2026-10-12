@@ -77,8 +77,6 @@
     "error": "The password could not be saved. Please try again later."
   },
   "Membership": {
-    "step1": "Sign up",
-    "step2": "Membership fee",
     "title": "Join",
     "body": "Become a member of the official PSG supporters club in Zurich.",
     "firstName": "First name",
@@ -94,19 +92,6 @@
     "submitting": "Creating…",
     "haveAccount": "Already a member?",
     "signIn": "Sign in",
-    "doneTitle": "Account created",
-    "doneBody": "One last step: pay your annual membership fee to activate your membership.",
-    "statusLabel": "Membership",
-    "season": "Season {season}",
-    "status": {
-      "pending": "Pending",
-      "active": "Active",
-      "expired": "Expired",
-      "suspended": "Suspended"
-    },
-    "pay": "Pay membership fee",
-    "paySoon": "Online payment is coming soon.",
-    "later": "Later",
     "required": "Required.",
     "invalidEmail": "Invalid email address.",
     "passwordTooShort": "At least 8 characters.",

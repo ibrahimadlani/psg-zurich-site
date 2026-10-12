@@ -6,8 +6,11 @@ import { getAuth } from "@/lib/auth";
 
 const intl = createMiddleware(routing);
 
-// Sign-in screens that make no sense once signed in (the new-password page stays reachable).
-const GUEST_ONLY = new RegExp(`^/(${routing.locales.join("|")})/connexion(/mot-de-passe-oublie)?/?$`);
+// Pages for visitors only: sign-in, forgot password, membership sign-up.
+// (The new-password page stays reachable: it is opened from an email.)
+const GUEST_ONLY = new RegExp(
+  `^/(${routing.locales.join("|")})/(connexion(/mot-de-passe-oublie)?|adhesion)/?$`,
+);
 
 export default async function proxy(request: NextRequest) {
   const match = GUEST_ONLY.exec(request.nextUrl.pathname);

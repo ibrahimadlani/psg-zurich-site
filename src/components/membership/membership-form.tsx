@@ -7,11 +7,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FieldError, FormMessage, inlineLinkClass, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
 import { PasswordInput } from "@/components/auth/password-input";
-import { Link } from "@/i18n/navigation";
-import { useSession } from "@/lib/auth-client";
+import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-
-export type MemberStatus = "pending" | "active" | "expired" | "suspended";
 
 const schema = z.object({
   firstName: z.string().trim().min(1).max(100),
@@ -24,85 +21,12 @@ const schema = z.object({
 });
 type Values = z.infer<typeof schema>;
 
-function Steps({ step }: { step: 1 | 2 }) {
-  const t = useTranslations("Membership");
-  const item = (n: 1 | 2, label: string) => (
-    <span
-      aria-current={step === n ? "step" : undefined}
-      className={cn(
-        "flex items-center gap-2 font-wide text-[10px] font-semibold tracking-[0.06em] uppercase transition-colors duration-300",
-        step === n ? "text-foreground" : "text-muted-foreground",
-      )}
-    >
-      <span className="inline-flex size-5 items-center justify-center rounded-full border border-current text-[10px]">
-        {n}
-      </span>
-      {label}
-    </span>
-  );
-  return (
-    <div className="flex items-center justify-center gap-2.5">
-      {item(1, t("step1"))}
-      <span aria-hidden className="h-px w-7 bg-border" />
-      {item(2, t("step2"))}
-    </div>
-  );
-}
-
 const heading = "font-narrow text-[length:clamp(32px,6vw,44px)] leading-[0.95] font-extrabold uppercase italic";
 
-/** Step 2: account exists, membership fee still to pay. */
-function StatusStep({ status, season, justCreated }: { status: MemberStatus; season: string; justCreated: boolean }) {
+/** Membership sign-up form. The membership fee is paid later, from the member area. */
+export function MembershipForm() {
   const t = useTranslations("Membership");
-  return (
-    <div className="flex flex-col gap-5 text-center">
-      <div className="flex flex-col gap-2">
-        <h1 className={heading}>{justCreated ? t("doneTitle") : t("title")}</h1>
-        {status === "pending" ? (
-          <p className="text-[15px] leading-normal text-pretty text-muted-foreground">{t("doneBody")}</p>
-        ) : null}
-      </div>
-      <div className="flex items-center justify-between gap-3 rounded-[10px] border bg-card px-4 py-3.5 text-left shadow-brand">
-        <span className="flex flex-col gap-1">
-          <span className={labelClass}>{t("statusLabel")}</span>
-          <span className="text-[14px] font-semibold">{t("season", { season })}</span>
-        </span>
-        <span
-          className={cn(
-            "text-[12px] font-semibold",
-            status === "active" ? "text-psg-blue dark:text-foreground" : "text-muted-foreground",
-          )}
-        >
-          {t(`status.${status}`)}
-        </span>
-      </div>
-      {status === "pending" ? (
-        <>
-          <button type="button" disabled title={t("paySoon")} className={submitClass}>
-            {t("pay")}
-          </button>
-          <p className="-mt-2 text-[12px] text-muted-foreground">{t("paySoon")}</p>
-          <Link href="/" className={`self-center text-[14px] ${inlineLinkClass} text-muted-foreground`}>
-            {t("later")}
-          </Link>
-        </>
-      ) : null}
-    </div>
-  );
-}
-
-export function MembershipFlow({
-  initialStatus,
-  season,
-}: {
-  /** Set when a signed-in member opens the page: go straight to step 2. */
-  initialStatus: MemberStatus | null;
-  season: string;
-}) {
-  const t = useTranslations("Membership");
-  const { refetch } = useSession();
-  const [status, setStatus] = useState<MemberStatus | null>(initialStatus);
-  const [justCreated, setJustCreated] = useState(false);
+  const router = useRouter();
   const [failure, setFailure] = useState<"emailTaken" | "error" | null>(null);
   const {
     register,
@@ -124,10 +48,9 @@ export function MembershipFlow({
       setFailure(response.status === 409 ? "emailTaken" : "error");
       return;
     }
-    // The new member is now signed in: let the header pick up the session.
-    await refetch();
-    setJustCreated(true);
-    setStatus("pending");
+    // The new member is now signed in: same landing as after a sign-in.
+    router.push("/");
+    router.refresh();
   }
 
   const field = (
@@ -157,11 +80,7 @@ export function MembershipFlow({
 
   return (
     <div className="flex w-full max-w-[420px] flex-col gap-[22px]">
-      <Steps step={status ? 2 : 1} />
-      {status ? (
-        <StatusStep status={status} season={season} justCreated={justCreated} />
-      ) : (
-        <div className="flex flex-col gap-[22px]">
+      <div className="flex flex-col gap-[22px]">
           <div className="flex flex-col gap-2 text-center">
             <h1 className={heading}>{t("title")}</h1>
             <p className="text-[15px] leading-normal text-pretty text-muted-foreground">{t("body")}</p>
@@ -225,8 +144,7 @@ export function MembershipFlow({
               {t("signIn")}
             </Link>
           </p>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

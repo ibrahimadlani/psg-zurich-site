@@ -77,8 +77,6 @@
     "error": "Impossible d'enregistrer le mot de passe. Réessayez plus tard."
   },
   "Membership": {
-    "step1": "Inscription",
-    "step2": "Cotisation",
     "title": "Adhésion",
     "body": "Rejoignez l'association officielle des supporters du PSG à Zurich.",
     "firstName": "Prénom",
@@ -94,19 +92,6 @@
     "submitting": "Création…",
     "haveAccount": "Déjà membre ?",
     "signIn": "Se connecter",
-    "doneTitle": "Compte créé",
-    "doneBody": "Dernière étape : réglez votre cotisation annuelle pour activer votre adhésion.",
-    "statusLabel": "Adhésion",
-    "season": "Saison {season}",
-    "status": {
-      "pending": "En attente",
-      "active": "Active",
-      "expired": "Expirée",
-      "suspended": "Suspendue"
-    },
-    "pay": "Payer la cotisation",
-    "paySoon": "Le paiement en ligne arrive bientôt.",
-    "later": "Plus tard",
     "required": "Champ obligatoire.",
     "invalidEmail": "Adresse e-mail invalide.",
     "passwordTooShort": "8 caractères minimum.",

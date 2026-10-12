@@ -126,7 +126,7 @@ Pagination : `?limit=20&offset=0` (max 100). Les créations sont validées par Z
 
 | Ressource | GET | POST |
 | --- | --- | --- |
-| `/api/v1/membership` | — | **public** : adhésion (compte + fiche membre `pending`, connecte le nouveau membre) |
+| `/api/v1/membership` | — | **public** : inscription (compte + fiche membre `pending`, connecte le nouveau membre ; cotisation réglée plus tard) |
 | `/api/v1/posts` | public — articles publiés (`?locale=fr\|de`) | admin |
 | `/api/v1/matches` | public | admin |
 | `/api/v1/events` | public | admin |
