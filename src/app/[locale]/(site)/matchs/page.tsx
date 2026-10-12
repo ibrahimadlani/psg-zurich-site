@@ -73,7 +73,8 @@ async function MatchesContent() {
           ) : (
             <span />
           )}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
+          {/* Hidden on phones to keep the top of the page to the match. */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground max-sm:hidden">
             <Link href="/matchs/classement" prefetch={false} className={quietLink}>
               <Trophy className="size-3.5" aria-hidden />
               {t("leaderboard")}
