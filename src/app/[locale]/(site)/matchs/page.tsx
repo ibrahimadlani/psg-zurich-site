@@ -8,7 +8,6 @@ import { LiveMatches } from "@/components/matches/live-matches";
 import { MatchRow, type PredictionView } from "@/components/matches/match-row";
 import { MatchTabs } from "@/components/matches/match-tabs";
 import { Scoreboard } from "@/components/matches/scoreboard";
-import { PageHeader } from "@/components/page-header";
 import { db } from "@/db";
 import { events, predictions } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
@@ -62,19 +61,37 @@ async function MatchesContent() {
       <p className="rounded-[10px] border border-dashed p-8 text-center text-sm text-muted-foreground">{empty}</p>
     );
 
+  // A discreet label instead of a page header: what the big scoreboard shows.
+  const heading = live.length > 0 ? t("live") : featured ? t(featured.kind === "next" ? "nextMatch" : "lastMatch") : null;
+
   return (
     <div className="space-y-8">
-      <LiveMatches initial={live} />
-      {featured ? (
-        <section className="space-y-2">
-          <h2 className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-            {t(featured.kind === "next" ? "nextMatch" : "lastMatch")}
-          </h2>
+      <section className="space-y-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+          {heading ? (
+            <h2 className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">{heading}</h2>
+          ) : (
+            <span />
+          )}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
+            <Link href="/matchs/classement" prefetch={false} className={quietLink}>
+              <Trophy className="size-3.5" aria-hidden />
+              {t("leaderboard")}
+            </Link>
+            {/* webcal:// opens the calendar app's "subscribe" dialog. */}
+            <a href="webcal://psg-zurich.ch/api/calendar/psg-zurich.ics" className={quietLink}>
+              <CalendarPlus className="size-3.5" aria-hidden />
+              {t("subscribe")}
+            </a>
+          </div>
+        </div>
+        <LiveMatches initial={live} />
+        {featured ? (
           <Link href={`/matchs/${featured.match.id}`} className="block transition-opacity hover:opacity-90">
             <Scoreboard match={featured.match} />
           </Link>
-        </section>
-      ) : null}
+        ) : null}
+      </section>
       <MatchTabs
         labels={{ upcoming: t("upcoming"), results: t("results") }}
         upcoming={list(upcoming, t("noUpcoming"))}
@@ -84,31 +101,14 @@ async function MatchesContent() {
   );
 }
 
+const quietLink = "inline-flex items-center gap-1.5 transition-colors hover:text-foreground";
+
 export default async function MatchesPage() {
   const t = await getTranslations("Matches");
   return (
     <>
-      <div className="mb-8 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 [&>div:first-child]:mb-0">
-        <PageHeader title={t("title")} description={t("description")} />
-        <div className="flex flex-wrap gap-2">
-          <Link
-            href="/matchs/classement"
-            prefetch={false}
-            className="inline-flex h-9 items-center gap-2 rounded-[8px] border bg-card/60 px-3 text-sm transition-colors hover:border-foreground/30"
-          >
-            <Trophy className="size-4" aria-hidden />
-            {t("leaderboard")}
-          </Link>
-          {/* webcal:// opens the calendar app's "subscribe" dialog. */}
-          <a
-            href="webcal://psg-zurich.ch/api/calendar/psg-zurich.ics"
-            className="inline-flex h-9 items-center gap-2 rounded-[8px] border bg-card/60 px-3 text-sm transition-colors hover:border-foreground/30"
-          >
-            <CalendarPlus className="size-4" aria-hidden />
-            {t("subscribe")}
-          </a>
-        </div>
-      </div>
+      {/* The page title stays for screen readers and the browser tab; the screen shows the match. */}
+      <h1 className="sr-only">{t("title")}</h1>
       <Suspense fallback={<p className="text-muted-foreground">{t("loading")}</p>}>
         <MatchesContent />
       </Suspense>
