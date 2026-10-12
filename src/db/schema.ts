@@ -201,21 +201,55 @@ export const MATCH_STATUSES = [
   "cancelled",
 ] as const;
 
+/** One entry of a match timeline (goals, cards, substitutions), from API-Football. */
+export type MatchTimelineEntry = {
+  minute: number;
+  extra: number | null;
+  /** PSG or the opponent. */
+  side: "psg" | "opponent";
+  type: "goal" | "own_goal" | "penalty" | "missed_penalty" | "yellow" | "red" | "substitution" | "var";
+  player: string | null;
+  /** Assist for a goal, player coming on for a substitution. */
+  related: string | null;
+};
+
 export const matches = mysqlTable(
   "matches",
   {
     id: id(),
+    /** Fixture id at API-Football; null for matches entered by hand. */
+    externalId: int("external_id").unique(),
+    /** Season start year (2026 = 2026/27). */
+    season: int("season"),
     opponent: varchar("opponent", { length: 120 }).notNull(),
+    opponentLogo: varchar("opponent_logo", { length: 255 }),
     competition: varchar("competition", { length: 120 }).notNull(),
+    competitionLogo: varchar("competition_logo", { length: 255 }),
+    /** "Regular Season - 9", "Round of 16"… as given by the API. */
+    round: varchar("round", { length: 80 }),
     kickoffAt: datetime("kickoff_at").notNull(),
     venue: mysqlEnum("venue", MATCH_VENUES).notNull(),
     stadium: varchar("stadium", { length: 160 }),
+    city: varchar("city", { length: 120 }),
+    referee: varchar("referee", { length: 120 }),
+    /** Final score, extra time included. */
     psgScore: int("psg_score"),
     opponentScore: int("opponent_score"),
+    /** Score after 90 minutes: the one predictions are scored against. */
+    regulationPsgScore: int("regulation_psg_score"),
+    regulationOpponentScore: int("regulation_opponent_score"),
+    penaltyPsgScore: int("penalty_psg_score"),
+    penaltyOpponentScore: int("penalty_opponent_score"),
     status: mysqlEnum("status", MATCH_STATUSES).default("scheduled").notNull(),
+    /** API status code: NS, 1H, HT, 2H, ET, BT, P, FT, AET, PEN, PST, CANC… */
+    statusDetail: varchar("status_detail", { length: 8 }),
+    /** Minute of play while live. */
+    elapsed: int("elapsed"),
+    timeline: json<MatchTimelineEntry[]>("timeline"),
+    syncedAt: dateTime3("synced_at"),
     ...timestamps(),
   },
-  (t) => [index("matches_kickoff_idx").on(t.kickoffAt)],
+  (t) => [index("matches_kickoff_idx").on(t.kickoffAt), index("matches_season_idx").on(t.season)],
 );
 
 /* -------------------------------------------------------------------------- */
@@ -307,7 +341,10 @@ export const predictions = mysqlTable(
     points: int("points"),
     ...timestamps(),
   },
-  (t) => [uniqueIndex("predictions_match_member_uq").on(t.matchId, t.memberId)],
+  (t) => [
+    uniqueIndex("predictions_match_member_uq").on(t.matchId, t.memberId),
+    index("predictions_member_idx").on(t.memberId),
+  ],
 );
 
 /* -------------------------------------------------------------------------- */

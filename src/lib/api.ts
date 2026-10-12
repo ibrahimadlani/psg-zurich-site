@@ -1,4 +1,5 @@
 import "server-only";
+import { unstable_rethrow } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
 import { HttpError } from "@/lib/permissions";
@@ -27,6 +28,8 @@ export function apiHandler<Context = unknown>(
     try {
       return await handler(request, context);
     } catch (error) {
+      // Next.js control flow (prerender bail-out, redirect, notFound) is not an API error.
+      unstable_rethrow(error);
       if (error instanceof HttpError) return fail(error.status, error.code, error.message);
       if (error instanceof z.ZodError) {
         return fail(400, "validation_error", "Invalid request.", z.flattenError(error));

@@ -3,7 +3,7 @@ import { eq, inArray, type SQL } from "drizzle-orm";
 import { createTranslator } from "next-intl";
 import { createElement } from "react";
 import { db } from "@/db";
-import { members, user, type Locale } from "@/db/schema";
+import { events, members, user, type Locale } from "@/db/schema";
 import { AuthLinkEmail } from "@/emails/auth-link";
 import { loadMessages } from "@/i18n/messages";
 import { LEGAL } from "@/lib/legal";
@@ -128,5 +128,35 @@ export async function sendAccountDeletedEmail(email: string, locale: Locale) {
     });
   } catch (error) {
     console.error("[account] deletion email failed:", error);
+  }
+}
+
+/** A place freed up: the waitlisted member is now registered. */
+export async function sendWaitlistPromotion(memberId: string, eventId: string) {
+  const member = await findMemberWithEmail(eq(members.id, memberId));
+  const [event] = await db.select({ title: events.title }).from(events).where(eq(events.id, eventId));
+  if (!member || !event) return;
+
+  const { locale } = member;
+  const t = createTranslator({ locale, messages: await loadMessages(locale), namespace: "Emails.waitlistPromoted" });
+  const values = { firstName: member.firstName, event: event.title, email: LEGAL.email };
+  try {
+    await sendMail({
+      to: member.email,
+      subject: t("subject", values),
+      react: createElement(AuthLinkEmail, {
+        url: `${siteUrl()}/${locale}/evenements`,
+        locale,
+        texts: {
+          preview: t("preview", values),
+          heading: t("heading", values),
+          body: t("body", values),
+          cta: t("cta"),
+          ignore: t("footer", values),
+        },
+      }),
+    });
+  } catch (error) {
+    console.error("[events] waitlist email failed:", error);
   }
 }

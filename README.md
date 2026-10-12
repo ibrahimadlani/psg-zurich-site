@@ -73,6 +73,7 @@ Toutes documentées dans [`.env.example`](.env.example). Aucun secret n'est vers
 | `MAIL_REPLY_TO` | non | `contact@psg-zurich.ch` par défaut |
 | `APP_VERSION` | non | Version affichée par `/api/health`. Laisser vide : le SHA du commit est injecté au build par la CI |
 | `MIGRATE_ON_START` | non | `false` pour désactiver les migrations automatiques au démarrage (actives par défaut en production) |
+| `API_FOOTBALL_KEY` | non | Clé [API-Football](https://dashboard.api-football.com/) (offre gratuite) : import automatique des matchs du PSG, score en direct. Sans clé, aucun import |
 | `HOSTNAME` | conseillé en prod | `0.0.0.0` : interface d'écoute du serveur standalone |
 | `PORT` | fourni par l'hébergeur | Port d'écoute (Infomaniak l'injecte automatiquement) |
 
@@ -208,6 +209,7 @@ SMTP_PASSWORD=<mot de passe de la boîte>
 MAIL_FROM=PSG Zurich <noreply@psg-zurich.ch>
 MAIL_REPLY_TO=contact@psg-zurich.ch
 HOSTNAME=0.0.0.0
+API_FOOTBALL_KEY=<clé du tableau de bord API-Football>
 ```
 
 Sinon (l'onglet Node.js n'en propose pas), créer un fichier **`.env`** avec ce contenu à la racine du site, via **Open the SSH console** :
@@ -231,6 +233,10 @@ curl -s https://psg-zurich.ch/api/health
 ```
 
 Doit renvoyer `"status":"ok"`, `"db":"ok"` et, dans `version`, le SHA du dernier commit de `main`. <https://psg-zurich.ch> affiche la page « Bientôt ouvert » ; une fois connecté en admin, l'encadré **Statut du déploiement** est aussi visible sur `/fr/admin`.
+
+### Matchs (API-Football)
+
+Avec `API_FOOTBALL_KEY` défini, le serveur importe la saison du PSG (équipe 85) toutes les 6 h et suit chaque match en direct (une requête toutes les 3 min, de 15 min avant le coup d'envoi jusqu'à la fin), soit bien moins que les 100 requêtes/jour de l'offre gratuite ; un plafond de sécurité bloque à 90. Le bouton **Synchroniser les matchs** de `/admin` force un import. Les pronostics sont notés automatiquement à la fin du match (score à 90 minutes).
 
 ### Migrations
 

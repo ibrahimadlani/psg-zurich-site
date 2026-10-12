@@ -54,6 +54,12 @@ export const createMatchSchema = z.object({
   status: z.enum(MATCH_STATUSES).default("scheduled"),
 });
 
+/** A member's prediction: score after 90 minutes. */
+export const predictionSchema = z.object({
+  psgScore: z.number().int().min(0).max(20),
+  opponentScore: z.number().int().min(0).max(20),
+});
+
 /* --------------------------------- Events --------------------------------- */
 
 export const createEventSchema = z
