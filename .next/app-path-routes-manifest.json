@@ -7,6 +7,7 @@
   "/[locale]/(site)/evenements/page": "/[locale]/evenements",
   "/[locale]/(site)/matchs/page": "/[locale]/matchs",
   "/[locale]/(site)/mentions-legales/page": "/[locale]/mentions-legales",
+  "/[locale]/(site)/statuts/page": "/[locale]/statuts",
   "/[locale]/[...rest]/page": "/[locale]/[...rest]",
   "/[locale]/adhesion/page": "/[locale]/adhesion",
   "/[locale]/connexion/mot-de-passe-oublie/page": "/[locale]/connexion/mot-de-passe-oublie",

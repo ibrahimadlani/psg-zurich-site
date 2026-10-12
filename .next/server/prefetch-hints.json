@@ -214,6 +214,30 @@
       }
     }
   },
+  "/[locale]/statuts": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]/[...rest]": {
     "hints": 49216,
     "slots": {

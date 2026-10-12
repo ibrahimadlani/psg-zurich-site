@@ -260,6 +260,23 @@
       ]
     },
     {
+      "page": "/[locale]/statuts",
+      "regex": "^/([^/]+?)/statuts(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/statuts(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/statuts.segments/$d$locale/!KHNpdGUp/statuts$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/statuts\\.segments/\\$d\\$locale/!KHNpdGUp/statuts(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
       "sourcePage": "/[locale]/[...rest]",
       "page": "/de/[...rest]",
       "regex": "^/de/(.+?)(?:/)?$",

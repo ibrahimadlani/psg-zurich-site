@@ -79,7 +79,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12821,
+      "htmlSize": 12903,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -114,7 +114,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12298,
+      "htmlSize": 12380,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -149,7 +149,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8809,
+      "htmlSize": 8904,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -184,7 +184,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12493,
+      "htmlSize": 12575,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -219,7 +219,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 25020,
+      "htmlSize": 25329,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -359,7 +359,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12304,
+      "htmlSize": 12386,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -394,7 +394,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12393,
+      "htmlSize": 12475,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -429,7 +429,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12334,
+      "htmlSize": 12416,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -464,7 +464,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12282,
+      "htmlSize": 12364,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -499,7 +499,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 20793,
+      "htmlSize": 21030,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -529,12 +529,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/de/statuts": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 49554,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/statuts",
+      "dataRoute": "/de/statuts.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/en": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12797,
+      "htmlSize": 12879,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -569,7 +604,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12220,
+      "htmlSize": 12302,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -604,7 +639,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8797,
+      "htmlSize": 8892,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -639,7 +674,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12428,
+      "htmlSize": 12510,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -674,7 +709,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 24553,
+      "htmlSize": 24862,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -814,7 +849,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12264,
+      "htmlSize": 12346,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -849,7 +884,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12329,
+      "htmlSize": 12411,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -884,7 +919,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12280,
+      "htmlSize": 12362,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -919,7 +954,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12232,
+      "htmlSize": 12314,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -954,7 +989,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 20774,
+      "htmlSize": 21011,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -984,12 +1019,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/en/statuts": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 49487,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/statuts",
+      "dataRoute": "/en/statuts.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/fr": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12907,
+      "htmlSize": 12988,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1024,7 +1094,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12365,
+      "htmlSize": 12446,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1059,7 +1129,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8887,
+      "htmlSize": 8982,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1094,7 +1164,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12547,
+      "htmlSize": 12628,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1129,7 +1199,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 25388,
+      "htmlSize": 25696,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1269,7 +1339,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12371,
+      "htmlSize": 12452,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1304,7 +1374,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12457,
+      "htmlSize": 12538,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1339,7 +1409,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12387,
+      "htmlSize": 12468,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1374,7 +1444,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12339,
+      "htmlSize": 12420,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1409,7 +1479,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 21003,
+      "htmlSize": 21239,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1430,6 +1500,41 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/mentions-legales",
       "dataRoute": "/fr/mentions-legales.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/fr/statuts": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 49362,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/statuts",
+      "dataRoute": "/fr/statuts.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -2304,6 +2409,59 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/[locale]/statuts": {
+      "experimentalPPR": true,
+      "remainingPrerenderableParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "throwOnEmptyStaticShell": false,
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/statuts(?:/)?$",
+      "dataRoute": "/[locale]/statuts.rsc",
+      "fallback": null,
+      "fallbackRootParams": [
+        "locale"
+      ],
+      "fallbackSourceRoute": "/[locale]/statuts",
+      "fallbackRouteParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "dataRouteRegex": "^/([^/]+?)/statuts\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/[locale]/[...rest]": {
       "experimentalPPR": true,
       "remainingPrerenderableParams": [
@@ -2364,8 +2522,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "0a6f369274b4033ed67edd2db1e0f614",
-    "previewModeSigningKey": "5656a0d852d45cf6d9de020e2518cc6b30fd917f01e9c73c8dcd2cdb74345404",
-    "previewModeEncryptionKey": "6f26dfb26dc367fd1d5f16bb998911b3dd44d7c7e5205d7bec11a08142143bfb"
+    "previewModeId": "73b1626b683f90289f5a36ccdfc73584",
+    "previewModeSigningKey": "117200fee8b0da72d163a6b00693d69d54a358e3b4c3125831acb5e945ea455e",
+    "previewModeEncryptionKey": "e9e64c9ad8b93c2f4c81ebfe757429cda7bb0edc20985f910d991d9a0bd3dedb"
   }
 }
