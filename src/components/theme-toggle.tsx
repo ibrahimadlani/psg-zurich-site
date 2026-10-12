@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { headerIconButtonClass } from "@/components/header-icon-button";
 import { THEME_STORAGE_KEY } from "@/components/theme-script";
 
-function toggleTheme() {
+export function toggleTheme() {
   const root = document.documentElement;
   const dark = !root.classList.contains("dark");
   root.classList.toggle("dark", dark);

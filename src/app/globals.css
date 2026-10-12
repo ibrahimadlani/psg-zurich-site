@@ -151,6 +151,26 @@
     }
 }
 
+/* Hamburger → cross, played when the mobile menu opens (animate-burger-*). */
+@theme {
+  --animate-burger-top: burger-top 0.35s ease 0.12s both;
+  --animate-burger-middle: burger-middle 0.2s ease 0.12s both;
+  --animate-burger-bottom: burger-bottom 0.35s ease 0.12s both;
+
+  @keyframes burger-top {
+    from { transform: translateY(-6px); }
+    to { transform: rotate(45deg); }
+  }
+  @keyframes burger-middle {
+    from { opacity: 1; transform: scaleX(1); }
+    to { opacity: 0; transform: scaleX(0); }
+  }
+  @keyframes burger-bottom {
+    from { transform: translateY(6px); }
+    to { transform: rotate(-45deg); }
+  }
+}
+
 /* Diagonal-line backdrop fading out from the centre of the page. */
 @utility bg-diagonal {
   background-image: repeating-linear-gradient(135deg, var(--pattern) 0 1px, transparent 1px 14px);

@@ -12,7 +12,9 @@
     "membership": "Adhésion",
     "contact": "Contact",
     "memberArea": "Espace membre",
-    "admin": "Administration"
+    "admin": "Administration",
+    "menu": "Menu",
+    "close": "Fermer"
   },
   "LocaleSwitcher": {
     "label": "Langue",
@@ -21,7 +23,8 @@
     "de": "Deutsch"
   },
   "ThemeToggle": {
-    "label": "Changer de thème"
+    "label": "Changer de thème",
+    "short": "Thème"
   },
   "Banner": {
     "close": "Masquer l'annonce",

@@ -1,15 +1,22 @@
 import { BrandLogo } from "@/components/brand-logo";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { MobileMenu } from "@/components/mobile-menu";
 import { SignInButton } from "@/components/sign-in-button";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function HeaderActions() {
   return (
-    <div className="flex shrink-0 items-center gap-1">
-      <LocaleSwitcher />
-      <ThemeToggle />
-      <SignInButton />
-    </div>
+    <>
+      <div className="hidden shrink-0 items-center gap-1 md:flex">
+        <LocaleSwitcher />
+        <ThemeToggle />
+        <SignInButton />
+      </div>
+      {/* Below md: everything moves into the side menu. */}
+      <div className="md:hidden">
+        <MobileMenu />
+      </div>
+    </>
   );
 }
 

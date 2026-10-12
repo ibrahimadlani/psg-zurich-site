@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-const ITEMS = [
+export const NAV_ITEMS = [
   { href: "/", key: "home" },
   { href: "/actualites", key: "news" },
   { href: "/matchs", key: "matches" },
@@ -21,7 +21,7 @@ export function MainNav() {
   return (
     <nav aria-label={t("label")} className="-mx-4 overflow-x-auto px-4 [scrollbar-width:none] md:mx-0 md:px-0 [&::-webkit-scrollbar]:hidden">
       <ul className="flex gap-1 whitespace-nowrap">
-        {ITEMS.map(({ href, key }) => {
+        {NAV_ITEMS.map(({ href, key }) => {
           const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
           return (
             <li key={key}>
