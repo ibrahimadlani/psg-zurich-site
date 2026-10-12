@@ -3,6 +3,7 @@ import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { Fragment } from "react";
 import { LEGAL_DOCUMENTS, type LegalBlock, type LegalDocumentKey } from "@/content/legal";
 import { LEGAL } from "@/lib/legal";
+import { cn } from "@/lib/utils";
 
 export async function legalMetadata(key: LegalDocumentKey): Promise<Metadata> {
   const document = LEGAL_DOCUMENTS[key][await getLocale()];
@@ -65,13 +66,14 @@ function Block({ block }: { block: LegalBlock }) {
   );
 }
 
-/** Legal document (imprint or privacy policy): title, table of contents, numbered sections. */
+/** Legal document (imprint, privacy policy, statutes): title, table of contents, numbered sections. */
 export async function LegalPage({ document: key }: { document: LegalDocumentKey }) {
   const locale = await getLocale();
   const t = await getTranslations("Legal");
   const format = await getFormatter();
   const document = LEGAL_DOCUMENTS[key][locale];
-  const number = (index: number) => String(index + 1).padStart(2, "0");
+  const number = (index: number) =>
+    document.articles ? `Art. ${index + 1}` : String(index + 1).padStart(2, "0");
 
   return (
     <article>
@@ -84,13 +86,19 @@ export async function LegalPage({ document: key }: { document: LegalDocumentKey 
         </h1>
         <p className="max-w-[60ch] text-[16px] leading-relaxed text-pretty text-muted-foreground">{document.intro}</p>
         <p className="text-[13px] text-muted-foreground">
-          {t("updated", { date: format.dateTime(new Date(`${LEGAL.updatedAt}T12:00:00Z`), { dateStyle: "long" }) })}
+          {document.meta ??
+            t("updated", { date: format.dateTime(new Date(`${LEGAL.updatedAt}T12:00:00Z`), { dateStyle: "long" }) })}
         </p>
+        {document.notice ? (
+          <p className="max-w-[60ch] rounded-[8px] border bg-card/60 px-4 py-2.5 text-[13px] text-pretty text-muted-foreground">
+            {document.notice}
+          </p>
+        ) : null}
       </header>
 
       <div className="grid gap-10 pt-10 md:grid-cols-[13rem_1fr] md:gap-14">
-        <nav aria-label={t("onThisPage")} className="hidden md:block">
-          <div className="sticky top-8 flex flex-col gap-3">
+        <nav aria-label={t("onThisPage")} lang={document.lang} className="hidden md:block">
+          <div className="sticky top-8 flex max-h-[calc(100dvh-4rem)] flex-col gap-3 overflow-y-auto [scrollbar-width:none]">
             <p className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
               {t("onThisPage")}
             </p>
@@ -101,7 +109,9 @@ export async function LegalPage({ document: key }: { document: LegalDocumentKey 
                     href={`#${section.id}`}
                     className="-ml-px flex gap-2.5 border-l border-transparent pl-3 text-[13px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
                   >
-                    <span className="font-mono text-[11px] leading-[1.7] opacity-60">{number(index)}</span>
+                    <span className={cn("shrink-0 font-mono text-[11px] leading-[1.7] opacity-60", document.articles && "w-12")}>
+                      {number(index)}
+                    </span>
                     {section.title}
                   </a>
                 </li>
@@ -110,7 +120,7 @@ export async function LegalPage({ document: key }: { document: LegalDocumentKey 
           </div>
         </nav>
 
-        <div className="flex min-w-0 flex-col">
+        <div lang={document.lang} className="flex min-w-0 flex-col">
           {document.sections.map((section, index) => (
             <section
               key={section.id}
@@ -119,7 +129,7 @@ export async function LegalPage({ document: key }: { document: LegalDocumentKey 
               className="scroll-mt-8 border-b py-8 first:pt-0 last:border-b-0"
             >
               <h2 id={`${section.id}-title`} className="mb-4 flex items-baseline gap-3 text-[20px] font-semibold tracking-tight">
-                <span className="font-mono text-[12px] font-normal text-psg-red">{number(index)}</span>
+                <span className="shrink-0 font-mono text-[12px] font-normal text-psg-red">{number(index)}</span>
                 {section.title}
               </h2>
               <div className="flex flex-col gap-4 text-[15px] leading-relaxed text-muted-foreground">

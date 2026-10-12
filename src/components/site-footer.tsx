@@ -19,11 +19,14 @@ export function SiteFooter() {
   return data ? <MemberFooter /> : <VisitorFooter />;
 }
 
-/** "Mentions légales · Confidentialité" */
+/** "Statuts · Mentions légales · Confidentialité" */
 function LegalLinks() {
   const t = useTranslations("Footer");
   return (
     <span className="flex items-center gap-x-4">
+      <Link href="/statuts" className="transition-colors hover:text-foreground">
+        {t("statutes")}
+      </Link>
       <Link href="/mentions-legales" className="transition-colors hover:text-foreground">
         {t("imprint")}
       </Link>

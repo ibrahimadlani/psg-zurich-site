@@ -1,11 +1,23 @@
 import type { Locale } from "next-intl";
+import { STATUTES_INTRO, STATUTES_META, STATUTES_SECTIONS } from "@/content/statutes";
 import { LEGAL, LEGAL_ADDRESS } from "@/lib/legal";
 
 /** A paragraph, a bullet list, or label/value rows. Emails and https URLs become links. */
 export type LegalBlock = { p: string } | { ul: string[] } | { dl: [label: string, value: string][] };
 export type LegalSection = { id: string; title: string; blocks: LegalBlock[] };
-export type LegalDocument = { title: string; intro: string; sections: LegalSection[] };
-export type LegalDocumentKey = "imprint" | "privacy";
+export type LegalDocument = {
+  title: string;
+  intro: string;
+  sections: LegalSection[];
+  /** Line under the intro; defaults to the update date. */
+  meta?: string;
+  /** Sections numbered "Art. 1", "Art. 2"… instead of 01, 02… */
+  articles?: boolean;
+  /** Language of the sections when they are not translated, plus the note that says so. */
+  lang?: string;
+  notice?: string;
+};
+export type LegalDocumentKey = "imprint" | "privacy" | "statutes";
 
 const { association, email, host } = LEGAL;
 const uid = LEGAL.uid;
@@ -529,4 +541,29 @@ const privacy: Record<Locale, LegalDocument> = {
   },
 };
 
-export const LEGAL_DOCUMENTS: Record<LegalDocumentKey, Record<Locale, LegalDocument>> = { imprint, privacy };
+const statutesFr: LegalDocument = {
+  title: "Statuts",
+  intro: STATUTES_INTRO,
+  meta: STATUTES_META,
+  sections: STATUTES_SECTIONS,
+  articles: true,
+};
+
+// Only the French text is adopted by the general assembly: shown as is, with a note.
+const statutes: Record<Locale, LegalDocument> = {
+  fr: statutesFr,
+  en: {
+    ...statutesFr,
+    title: "Statutes",
+    lang: "fr",
+    notice: "The statutes are adopted in French: the French version below is the only authoritative one.",
+  },
+  de: {
+    ...statutesFr,
+    title: "Statuten",
+    lang: "fr",
+    notice: "Die Statuten werden auf Französisch verabschiedet: Massgebend ist allein die untenstehende französische Fassung.",
+  },
+};
+
+export const LEGAL_DOCUMENTS: Record<LegalDocumentKey, Record<Locale, LegalDocument>> = { imprint, privacy, statutes };

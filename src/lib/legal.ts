@@ -18,6 +18,22 @@ export const LEGAL = {
   retentionAfterMembership: "[2 ans]",
   /** Date of the current version of both documents (YYYY-MM-DD). */
   updatedAt: "2026-10-12",
+  /** Statutes (/statuts). */
+  statutes: {
+    foundedAt: "[JJ mois AAAA]",
+    adoptedAt: "[JJ mois AAAA]",
+    adoptedIn: "[Lieu]",
+    president: "[Prénom Nom]",
+    secretary: "[Prénom Nom]",
+    /** Annual fee, as set by the general assembly. */
+    fee: "[CHF 50.–]",
+    juniorFee: "[CHF 25.–]",
+    committeeMin: "[5]",
+    committeeMax: "[9]",
+    /** Month by which the ordinary general assembly is held. */
+    assemblyBy: "[fin septembre]",
+    fiscalYearEnd: "[30 juin]",
+  },
   host: {
     name: "Infomaniak Network SA",
     address: "Rue Eugène-Marziano 25, 1227 Les Acacias (GE), Suisse",

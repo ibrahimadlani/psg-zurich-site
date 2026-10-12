@@ -158,6 +158,11 @@ export function MembershipForm() {
               <span>
                 {t.rich("terms", {
                   // New tab: the form keeps what was typed.
+                  statutes: (chunks) => (
+                    <a href={`/${locale}/statuts`} target="_blank" className="text-foreground underline underline-offset-2">
+                      {chunks}
+                    </a>
+                  ),
                   privacy: (chunks) => (
                     <a href={`/${locale}/confidentialite`} target="_blank" className="text-foreground underline underline-offset-2">
                       {chunks}
