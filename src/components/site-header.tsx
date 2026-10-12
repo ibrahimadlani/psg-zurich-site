@@ -1,5 +1,6 @@
 import { BrandLogo } from "@/components/brand-logo";
 import { LocaleSwitcher } from "@/components/locale-switcher";
+import { MainNav } from "@/components/main-nav";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { UserNav } from "@/components/user-nav";
@@ -27,5 +28,15 @@ export function BrandBar() {
       <BrandLogo />
       <HeaderActions />
     </div>
+  );
+}
+
+/** Header of every page: brand bar, then (from md) the navigation bar. */
+export function SiteHeader() {
+  return (
+    <header className="relative">
+      <BrandBar />
+      <MainNav />
+    </header>
   );
 }

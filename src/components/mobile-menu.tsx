@@ -4,7 +4,7 @@ import { ArrowRight, LayoutDashboard, LogOut, Moon, Sun, UserRound } from "lucid
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
-import { NAV_ITEMS } from "@/components/main-nav";
+import { useNavItems } from "@/components/main-nav";
 import { toggleTheme } from "@/components/theme-toggle";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { UserAvatar } from "@/components/user-avatar";
@@ -39,6 +39,7 @@ export function MobileMenu() {
   const locale = useLocale();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const navItems = useNavItems();
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -66,7 +67,7 @@ export function MobileMenu() {
 
         <nav aria-label={t("label")} className="flex-1 overflow-y-auto px-6 pt-6">
           <ul className="space-y-1">
-            {NAV_ITEMS.map(({ href, key }, index) => {
+            {navItems.map(({ href, key }, index) => {
               const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
               return (
                 <li
