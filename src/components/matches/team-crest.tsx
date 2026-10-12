@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-/** Club crest (remote logo from API-Football, local PSG crest), with initials as fallback. */
+/** Club crest (remote logo from football-data.org, local PSG crest), with initials as fallback. */
 export function TeamCrest({ name, logo, className }: { name: string; logo: string | null; className?: string }) {
   if (!logo) {
     return (

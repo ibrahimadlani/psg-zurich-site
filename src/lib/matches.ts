@@ -18,12 +18,6 @@ export function matchScore(match: Pick<Match, "venue" | "psgScore" | "opponentSc
   return match.venue === "away" ? `${match.opponentScore}-${match.psgScore}` : `${match.psgScore}-${match.opponentScore}`;
 }
 
-/** Matchday number from API-Football's "Regular Season - 9" style rounds, else null. */
-export function matchday(round: string | null) {
-  const found = round?.match(/Regular Season - (\d+)/);
-  return found ? Number(found[1]) : null;
-}
-
 /** Predictions stay open until kick-off. */
 export const isPredictionOpen = (match: Pick<Match, "status" | "kickoffAt">) =>
   match.status === "scheduled" && match.kickoffAt.getTime() > Date.now();

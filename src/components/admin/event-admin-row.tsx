@@ -51,7 +51,7 @@ export function EventAdminActions({
   );
 }
 
-/** "Sync matches now" (API-Football). */
+/** "Sync matches now" (football-data.org). */
 export function MatchSyncButton() {
   const t = useTranslations("AdminEvents");
   const router = useRouter();

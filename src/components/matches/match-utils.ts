@@ -51,16 +51,36 @@ export function outcome(match: MatchView): "win" | "draw" | "loss" | null {
   return match.psgScore > match.opponentScore ? "win" : "loss";
 }
 
-/** API-Football round names: league matchdays and Champions League phases get a translated label. */
+export const KNOWN_STAGES = [
+  "FINAL",
+  "THIRD_PLACE",
+  "SEMI_FINALS",
+  "QUARTER_FINALS",
+  "LAST_16",
+  "LAST_32",
+  "PLAYOFFS",
+  "QUALIFICATION",
+  "GROUP_STAGE",
+  "LEAGUE_STAGE",
+  "REGULAR_SEASON",
+] as const;
+type KnownStage = (typeof KNOWN_STAGES)[number];
+
+/**
+ * Round stored by the sync: "REGULAR_SEASON:9" (league matchday), "LEAGUE_STAGE:3" /
+ * "GROUP_STAGE:2" (European matchday) or a knockout stage such as "LAST_16".
+ */
 export function roundInfo(
   round: string | null,
-): { kind: "matchday" | "leaguePhase"; number: number } | { kind: "other"; label: string } | null {
+): { kind: "matchday" | "leaguePhase"; number: number } | { kind: "stage"; stage: KnownStage } | { kind: "other"; label: string } | null {
   if (!round) return null;
-  const matchday = round.match(/^Regular Season - (\d+)$/);
-  if (matchday) return { kind: "matchday", number: Number(matchday[1]) };
-  const phase = round.match(/^League Stage - (\d+)$/);
-  if (phase) return { kind: "leaguePhase", number: Number(phase[1]) };
-  return { kind: "other", label: round };
+  const [stage, number] = round.split(":");
+  if (number && stage === "REGULAR_SEASON") return { kind: "matchday", number: Number(number) };
+  if (number) return { kind: "leaguePhase", number: Number(number) };
+  if ((KNOWN_STAGES as readonly string[]).includes(round)) return { kind: "stage", stage: round as KnownStage };
+  // Unknown stage: "PLAYOFF_ROUND_1" → "Playoff round 1".
+  const label = round.toLowerCase().replace(/_/g, " ");
+  return { kind: "other", label: label.charAt(0).toUpperCase() + label.slice(1) };
 }
 
 export const toDate = (value: Date | string) => (value instanceof Date ? value : new Date(value));

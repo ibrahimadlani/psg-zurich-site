@@ -201,7 +201,7 @@ export const MATCH_STATUSES = [
   "cancelled",
 ] as const;
 
-/** One entry of a match timeline (goals, cards, substitutions), from API-Football. */
+/** One entry of a match timeline (goals, cards, substitutions), from football-data.org. */
 export type MatchTimelineEntry = {
   minute: number;
   extra: number | null;
@@ -217,7 +217,7 @@ export const matches = mysqlTable(
   "matches",
   {
     id: id(),
-    /** Fixture id at API-Football; null for matches entered by hand. */
+    /** Match id at football-data.org; null for matches entered by hand. */
     externalId: int("external_id").unique(),
     /** Season start year (2026 = 2026/27). */
     season: int("season"),
@@ -225,7 +225,7 @@ export const matches = mysqlTable(
     opponentLogo: varchar("opponent_logo", { length: 255 }),
     competition: varchar("competition", { length: 120 }).notNull(),
     competitionLogo: varchar("competition_logo", { length: 255 }),
-    /** "Regular Season - 9", "Round of 16"… as given by the API. */
+    /** "REGULAR_SEASON:9", "LEAGUE_STAGE:3", "LAST_16"… (stage and matchday from the API). */
     round: varchar("round", { length: 80 }),
     kickoffAt: datetime("kickoff_at").notNull(),
     venue: mysqlEnum("venue", MATCH_VENUES).notNull(),
@@ -241,7 +241,7 @@ export const matches = mysqlTable(
     penaltyPsgScore: int("penalty_psg_score"),
     penaltyOpponentScore: int("penalty_opponent_score"),
     status: mysqlEnum("status", MATCH_STATUSES).default("scheduled").notNull(),
-    /** API status code: NS, 1H, HT, 2H, ET, BT, P, FT, AET, PEN, PST, CANC… */
+    /** Short status for the UI: NS, LIVE, HT (half-time), ET, P (penalties), FT, PST, CANC… */
     statusDetail: varchar("status_detail", { length: 8 }),
     /** Minute of play while live. */
     elapsed: int("elapsed"),

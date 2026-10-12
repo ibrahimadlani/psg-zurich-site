@@ -419,7 +419,21 @@
       "var": "VAR",
       "assist": "assist {player}",
       "for": "for {player}"
-    }
+    },
+    "stages": {
+      "FINAL": "Final",
+      "THIRD_PLACE": "Third-place match",
+      "SEMI_FINALS": "Semi-final",
+      "QUARTER_FINALS": "Quarter-final",
+      "LAST_16": "Round of 16",
+      "LAST_32": "Round of 32",
+      "PLAYOFFS": "Play-offs",
+      "QUALIFICATION": "Qualifying",
+      "GROUP_STAGE": "Group stage",
+      "LEAGUE_STAGE": "League phase",
+      "REGULAR_SEASON": "Regular season"
+    },
+    "live": "Live"
   },
   "Predictions": {
     "title": "Prediction",
@@ -489,7 +503,7 @@
     "sync": "Sync matches",
     "syncing": "Syncing…",
     "synced": "{count} matches imported.",
-    "syncNotConfigured": "API_FOOTBALL_KEY is missing on the server.",
+    "syncNotConfigured": "FOOTBALL_DATA_KEY is missing on the server.",
     "syncFailed": "Sync failed: {message}",
     "new": "New event",
     "type": "Type",

@@ -2,20 +2,33 @@ import "server-only";
 import { and, eq, isNotNull } from "drizzle-orm";
 import { db } from "@/db";
 import { matches, predictions, type MatchTimelineEntry } from "@/db/schema";
-import { footballApi, PSG_TEAM_ID, type ApiFixture } from "@/lib/football/api";
+import { footballApi, PSG_TEAM_ID, type ApiMatch } from "@/lib/football/api";
 import { scorePrediction } from "@/lib/football/scoring";
 
 type MatchStatus = (typeof matches.$inferSelect)["status"];
 
-const LIVE = new Set(["1H", "HT", "2H", "ET", "BT", "P", "LIVE", "INT", "SUSP"]);
-const FINISHED = new Set(["FT", "AET", "PEN"]);
-
-export function toMatchStatus(code: string): MatchStatus {
-  if (LIVE.has(code)) return "live";
-  if (FINISHED.has(code)) return "finished";
-  if (code === "PST") return "postponed";
-  if (code === "CANC" || code === "ABD" || code === "AWD" || code === "WO") return "cancelled";
-  return "scheduled";
+/** Our status and a short code for the UI ("HT" = half-time, "ET", "P"…). */
+function statusOf(match: ApiMatch): { status: MatchStatus; code: string } {
+  switch (match.status) {
+    case "IN_PLAY":
+      if (match.score.duration === "PENALTY_SHOOTOUT") return { status: "live", code: "P" };
+      if (match.score.duration === "EXTRA_TIME") return { status: "live", code: "ET" };
+      return { status: "live", code: "LIVE" };
+    case "PAUSED":
+      return { status: "live", code: "HT" };
+    case "SUSPENDED":
+      return { status: "live", code: "SUSP" };
+    case "FINISHED":
+    case "AWARDED":
+      return { status: "finished", code: "FT" };
+    case "POSTPONED":
+      return { status: "postponed", code: "PST" };
+    case "CANCELLED":
+      return { status: "cancelled", code: "CANC" };
+    default:
+      // SCHEDULED, TIMED
+      return { status: "scheduled", code: "NS" };
+  }
 }
 
 /** Season start year: a season runs from July to June. */
@@ -23,76 +36,100 @@ export function currentSeason(now = new Date()) {
   return now.getUTCMonth() >= 6 ? now.getUTCFullYear() : now.getUTCFullYear() - 1;
 }
 
-function timelineOf(fixture: ApiFixture): MatchTimelineEntry[] | undefined {
-  if (!fixture.events) return undefined;
-  return fixture.events.flatMap((event): MatchTimelineEntry[] => {
-    const type = ((): MatchTimelineEntry["type"] | null => {
-      if (event.type === "Goal") {
-        if (event.detail === "Own Goal") return "own_goal";
-        if (event.detail === "Penalty") return "penalty";
-        if (event.detail === "Missed Penalty") return "missed_penalty";
-        return "goal";
-      }
-      if (event.type === "Card") return event.detail.startsWith("Yellow") ? "yellow" : "red";
-      if (event.type === "subst") return "substitution";
-      if (event.type === "Var") return "var";
-      return null;
-    })();
-    if (!type) return [];
-    return [
-      {
-        minute: event.time.elapsed,
-        extra: event.time.extra ?? null,
-        side: event.team.id === PSG_TEAM_ID ? "psg" : "opponent",
-        type,
-        player: event.player.name,
-        related: event.assist.name,
-      },
-    ];
-  });
+/** Goals, cards and substitutions (only present with the Deep Data plan). */
+function timelineOf(match: ApiMatch): MatchTimelineEntry[] | undefined {
+  const side = (teamId: number) => (teamId === PSG_TEAM_ID ? ("psg" as const) : ("opponent" as const));
+  const entries: MatchTimelineEntry[] = [
+    ...(match.goals ?? []).map((goal) => ({
+      minute: goal.minute,
+      extra: goal.injuryTime ?? null,
+      side: side(goal.team.id),
+      type: goal.type === "OWN" ? ("own_goal" as const) : goal.type === "PENALTY" ? ("penalty" as const) : ("goal" as const),
+      player: goal.scorer?.name ?? null,
+      related: goal.assist?.name ?? null,
+    })),
+    ...(match.bookings ?? []).map((booking) => ({
+      minute: booking.minute,
+      extra: null,
+      side: side(booking.team.id),
+      type: booking.card === "YELLOW" ? ("yellow" as const) : ("red" as const),
+      player: booking.player?.name ?? null,
+      related: null,
+    })),
+    ...(match.substitutions ?? []).map((substitution) => ({
+      minute: substitution.minute,
+      extra: null,
+      side: side(substitution.team.id),
+      type: "substitution" as const,
+      player: substitution.playerIn?.name ?? null,
+      related: substitution.playerOut?.name ?? null,
+    })),
+  ];
+  if (entries.length === 0) return undefined;
+  return entries.sort((a, b) => a.minute - b.minute || (a.extra ?? 0) - (b.extra ?? 0));
 }
 
-/** Row values for a fixture, seen from PSG's side. */
-function toMatchValues(fixture: ApiFixture) {
-  const psgHome = fixture.teams.home.id === PSG_TEAM_ID;
-  const opponent = psgHome ? fixture.teams.away : fixture.teams.home;
-  const side = <T>(pair: { home: T; away: T }) => (psgHome ? [pair.home, pair.away] : [pair.away, pair.home]);
-  const [psgScore, opponentScore] = side(fixture.goals);
-  const [regulationPsg, regulationOpponent] = side(fixture.score.fulltime);
-  const [penaltyPsg, penaltyOpponent] = side(fixture.score.penalty);
-  const code = fixture.fixture.status.short;
-  const timeline = timelineOf(fixture);
+/** "REGULAR_SEASON:9", "LEAGUE_STAGE:3", "LAST_16"… (read back by roundInfo in the UI). */
+function roundOf(match: ApiMatch) {
+  if (!match.stage) return null;
+  const withMatchday = match.stage === "REGULAR_SEASON" || match.stage === "LEAGUE_STAGE" || match.stage === "GROUP_STAGE";
+  return (withMatchday && match.matchday ? `${match.stage}:${match.matchday}` : match.stage).slice(0, 80);
+}
+
+/** Row values for a match, seen from PSG's side. */
+function toMatchValues(match: ApiMatch) {
+  const psgHome = match.homeTeam.id === PSG_TEAM_ID;
+  const opponent = psgHome ? match.awayTeam : match.homeTeam;
+  const sides = (pair: ApiMatch["score"]["fullTime"] | undefined): [number | null, number | null] => {
+    if (!pair) return [null, null];
+    const home = pair.home ?? pair.homeTeam ?? null;
+    const away = pair.away ?? pair.awayTeam ?? null;
+    return psgHome ? [home, away] : [away, home];
+  };
+  const { status, code } = statusOf(match);
+  const { score } = match;
+
+  // fullTime adds up regular time, extra time AND the shootout: rebuild the score without penalties.
+  const [regularPsg, regularOpponent] = score.regularTime ? sides(score.regularTime) : sides(score.fullTime);
+  const [extraPsg, extraOpponent] = sides(score.extraTime);
+  const [penaltyPsg, penaltyOpponent] = sides(score.penalties);
+  const played = status === "live" || status === "finished";
+  const total = (regular: number | null, extra: number | null) =>
+    played ? (regular ?? 0) + (score.regularTime ? (extra ?? 0) : 0) : null;
+
+  const minute = match.minute === null || match.minute === undefined ? null : Number.parseInt(String(match.minute), 10);
+  const timeline = timelineOf(match);
 
   return {
-    externalId: fixture.fixture.id,
-    season: fixture.league.season,
-    opponent: opponent.name.slice(0, 120),
-    opponentLogo: opponent.logo,
-    competition: fixture.league.name.slice(0, 120),
-    competitionLogo: fixture.league.logo,
-    round: fixture.league.round?.slice(0, 80) ?? null,
-    kickoffAt: new Date(fixture.fixture.date),
+    externalId: match.id,
+    season: Number(match.season.startDate.slice(0, 4)),
+    opponent: (opponent.shortName || opponent.name).slice(0, 120),
+    opponentLogo: opponent.crest,
+    competition: match.competition.name.slice(0, 120),
+    competitionLogo: match.competition.emblem,
+    round: roundOf(match),
+    kickoffAt: new Date(match.utcDate),
     venue: psgHome ? ("home" as const) : ("away" as const),
-    stadium: fixture.fixture.venue.name?.slice(0, 160) ?? null,
-    city: fixture.fixture.venue.city?.slice(0, 120) ?? null,
-    referee: fixture.fixture.referee?.slice(0, 120) ?? null,
-    psgScore,
-    opponentScore,
-    regulationPsgScore: FINISHED.has(code) ? regulationPsg : null,
-    regulationOpponentScore: FINISHED.has(code) ? regulationOpponent : null,
+    stadium: match.venue?.slice(0, 160) ?? null,
+    referee: match.referees?.find((referee) => referee.type === "REFEREE")?.name.slice(0, 120) ?? null,
+    psgScore: total(regularPsg, extraPsg),
+    opponentScore: total(regularOpponent, extraOpponent),
+    // Predictions are scored on the score after 90 minutes.
+    regulationPsgScore: status === "finished" ? regularPsg : null,
+    regulationOpponentScore: status === "finished" ? regularOpponent : null,
     penaltyPsgScore: penaltyPsg,
     penaltyOpponentScore: penaltyOpponent,
-    status: toMatchStatus(code),
-    statusDetail: code.slice(0, 8),
-    elapsed: LIVE.has(code) ? fixture.fixture.status.elapsed : null,
+    status,
+    statusDetail: code,
+    elapsed: status === "live" && Number.isFinite(minute) ? minute : null,
     ...(timeline ? { timeline } : {}),
     syncedAt: new Date(),
   };
 }
 
-async function upsertFixtures(fixtures: ApiFixture[]) {
-  for (const fixture of fixtures) {
-    const values = toMatchValues(fixture);
+async function upsertMatches(list: ApiMatch[]) {
+  for (const match of list) {
+    const values = toMatchValues(match);
     await db
       .insert(matches)
       .values({ id: crypto.randomUUID(), ...values })
@@ -101,17 +138,17 @@ async function upsertFixtures(fixtures: ApiFixture[]) {
   }
 }
 
-/** Whole season of PSG fixtures (one request). */
+/** Whole season of PSG matches (one request). */
 export async function syncSeason(season = currentSeason()) {
-  const fixtures = await footballApi<ApiFixture>("/fixtures", { team: PSG_TEAM_ID, season });
-  await upsertFixtures(fixtures);
-  return fixtures.length;
+  const { matches: list } = await footballApi<{ matches: ApiMatch[] }>(`/teams/${PSG_TEAM_ID}/matches`, { season });
+  await upsertMatches(list);
+  return list.length;
 }
 
-/** One fixture, with its events (live minute, scorers, cards). */
-export async function syncFixture(externalId: number) {
-  const fixtures = await footballApi<ApiFixture>("/fixtures", { id: externalId });
-  await upsertFixtures(fixtures);
+/** One match: score, minute, status (and timeline with Deep Data). */
+export async function syncMatch(externalId: number) {
+  const match = await footballApi<ApiMatch>(`/matches/${externalId}`);
+  await upsertMatches([match]);
 }
 
 /** Points of every prediction on a finished match (idempotent). */

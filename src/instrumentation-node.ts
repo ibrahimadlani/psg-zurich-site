@@ -18,7 +18,7 @@ export async function onServerStart() {
     }
   }
 
-  // PSG fixtures from API-Football (no-op without API_FOOTBALL_KEY).
+  // PSG matches from football-data.org (no-op without FOOTBALL_DATA_KEY).
   const { startFootballSync } = await import("@/lib/football/scheduler");
   startFootballSync();
 }

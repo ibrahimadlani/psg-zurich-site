@@ -15,7 +15,9 @@ export function CompetitionLabel({ match, className }: { match: MatchView; class
     ? null
     : round.kind === "other"
       ? round.label
-      : t(round.kind === "matchday" ? "matchday" : "leaguePhase", { number: round.number });
+      : round.kind === "stage"
+        ? t(`stages.${round.stage}`)
+        : t(round.kind === "matchday" ? "matchday" : "leaguePhase", { number: round.number });
   return (
     <span className={cn("flex min-w-0 items-center gap-1.5 text-xs text-muted-foreground", className)}>
       {match.competitionLogo ? (
@@ -28,6 +30,12 @@ export function CompetitionLabel({ match, className }: { match: MatchView; class
       </span>
     </span>
   );
+}
+
+/** "Half-time", "Live · 63'", or just "Live" when the minute is unknown (free plan). */
+export function liveLabel(match: MatchView, t: ReturnType<typeof useTranslations<"Matches">>) {
+  if (match.statusDetail === "HT") return t("halftime");
+  return match.elapsed ? t("liveMinute", { minute: match.elapsed }) : t("live");
 }
 
 const resultStyles = {
@@ -94,7 +102,7 @@ export function MatchRow({
         {match.status === "live" ? (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-psg-red px-2 py-0.5 text-[11px] font-semibold text-white uppercase">
             <span className="size-1.5 animate-pulse rounded-full bg-white" aria-hidden />
-            {match.statusDetail === "HT" ? t("halftime") : t("liveMinute", { minute: match.elapsed ?? 0 })}
+            {liveLabel(match, t)}
           </span>
         ) : result ? (
           <span className={cn("grid size-6 place-items-center rounded-[6px] text-[11px] font-bold", resultStyles[result])}>

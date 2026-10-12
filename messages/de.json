@@ -419,7 +419,21 @@
       "var": "VAR",
       "assist": "Vorlage {player}",
       "for": "für {player}"
-    }
+    },
+    "stages": {
+      "FINAL": "Final",
+      "THIRD_PLACE": "Spiel um Platz 3",
+      "SEMI_FINALS": "Halbfinal",
+      "QUARTER_FINALS": "Viertelfinal",
+      "LAST_16": "Achtelfinal",
+      "LAST_32": "Sechzehntelfinal",
+      "PLAYOFFS": "Playoffs",
+      "QUALIFICATION": "Qualifikation",
+      "GROUP_STAGE": "Gruppenphase",
+      "LEAGUE_STAGE": "Ligaphase",
+      "REGULAR_SEASON": "Reguläre Saison"
+    },
+    "live": "Live"
   },
   "Predictions": {
     "title": "Tipp",
@@ -489,7 +503,7 @@
     "sync": "Spiele synchronisieren",
     "syncing": "Synchronisieren…",
     "synced": "{count} Spiele importiert.",
-    "syncNotConfigured": "API_FOOTBALL_KEY fehlt auf dem Server.",
+    "syncNotConfigured": "FOOTBALL_DATA_KEY fehlt auf dem Server.",
     "syncFailed": "Synchronisierung fehlgeschlagen: {message}",
     "new": "Neues Event",
     "type": "Typ",

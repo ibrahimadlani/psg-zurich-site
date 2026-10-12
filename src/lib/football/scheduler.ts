@@ -3,11 +3,12 @@ import { and, between, inArray, isNotNull } from "drizzle-orm";
 import { db } from "@/db";
 import { matches } from "@/db/schema";
 import { isFootballApiConfigured } from "@/lib/football/api";
-import { syncFixture, syncSeason } from "@/lib/football/sync";
+import { syncMatch, syncSeason } from "@/lib/football/sync";
 
 const MINUTE = 60_000;
-const SEASON_EVERY = 6 * 60 * MINUTE;
-const LIVE_EVERY = 3 * MINUTE;
+// No daily quota (10 requests a minute): hourly schedule refresh, every minute while live.
+const SEASON_EVERY = 60 * MINUTE;
+const LIVE_EVERY = MINUTE;
 // Poll from 15 min before kick-off to 3 h after (extra time, penalties, delays).
 const WINDOW_BEFORE = 15 * MINUTE;
 const WINDOW_AFTER = 3 * 60 * MINUTE;
@@ -15,7 +16,7 @@ const WINDOW_AFTER = 3 * 60 * MINUTE;
 let started = false;
 let running = false;
 let lastSeasonSync = 0;
-const lastFixtureSync = new Map<number, number>();
+const lastMatchSync = new Map<number, number>();
 
 async function tick() {
   if (running) return;
@@ -25,7 +26,7 @@ async function tick() {
     if (now - lastSeasonSync >= SEASON_EVERY) {
       lastSeasonSync = now;
       const count = await syncSeason();
-      console.log(`[football] season synced (${count} fixtures)`);
+      console.log(`[football] season synced (${count} matches)`);
     }
 
     // Matches around now that are not over yet: follow them live.
@@ -40,9 +41,9 @@ async function tick() {
         ),
       );
     for (const { externalId } of current) {
-      if (externalId === null || now - (lastFixtureSync.get(externalId) ?? 0) < LIVE_EVERY) continue;
-      lastFixtureSync.set(externalId, now);
-      await syncFixture(externalId);
+      if (externalId === null || now - (lastMatchSync.get(externalId) ?? 0) < LIVE_EVERY) continue;
+      lastMatchSync.set(externalId, now);
+      await syncMatch(externalId);
     }
   } catch (error) {
     console.error("[football] sync failed:", error);

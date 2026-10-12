@@ -1,5 +1,5 @@
 import { useFormatter, useTranslations } from "next-intl";
-import { CompetitionLabel } from "@/components/matches/match-row";
+import { CompetitionLabel, liveLabel } from "@/components/matches/match-row";
 import { MatchTimeline } from "@/components/matches/match-timeline";
 import { sides, toDate, type MatchView } from "@/components/matches/match-utils";
 import { TeamCrest } from "@/components/matches/team-crest";
@@ -32,7 +32,7 @@ export function Scoreboard({ match, className }: { match: MatchView; className?:
         {live ? (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-psg-red px-2.5 py-1 text-[11px] font-semibold text-white uppercase">
             <span className="size-1.5 animate-pulse rounded-full bg-white" aria-hidden />
-            {match.statusDetail === "HT" ? t("halftime") : t("liveMinute", { minute: match.elapsed ?? 0 })}
+            {liveLabel(match, t)}
           </span>
         ) : (
           <span className="text-xs text-muted-foreground">
