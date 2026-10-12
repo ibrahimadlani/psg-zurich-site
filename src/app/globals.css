@@ -178,41 +178,13 @@
   mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 100%);
 }
 
-/* -------------------------------------------------------------------------- */
-/*            Page transitions (React <ViewTransition>, View Transitions API)  */
-/* -------------------------------------------------------------------------- */
+/* Page content enters with a short fade-up. Replays whenever a page is shown again too
+   (cached routes come back from display: none, which restarts CSS animations). */
+@theme {
+  --animate-page-in: page-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
 
-/* Content: quick fade-out upwards, then a softer fade-in from slightly below. */
-::view-transition-old(.page) {
-  animation: 140ms cubic-bezier(0.4, 0, 1, 1) both page-out;
-}
-::view-transition-new(.page) {
-  animation: 260ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both page-in;
-}
-@keyframes page-out {
-  to { opacity: 0; transform: translateY(-6px); }
-}
-@keyframes page-in {
-  from { opacity: 0; transform: translateY(10px); }
-}
-
-/* Nav underline: glides from the old tab to the new one. */
-::view-transition-group(.nav-underline) {
-  animation-duration: 380ms;
-  animation-timing-function: cubic-bezier(0.34, 1.2, 0.5, 1);
-}
-
-/* Header, banner and nav don't move: no root cross-fade behind the content. */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation: none !important;
+  @keyframes page-in {
+    from { opacity: 0; transform: translateY(8px); }
   }
 }
 

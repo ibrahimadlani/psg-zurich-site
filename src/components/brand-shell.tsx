@@ -1,4 +1,3 @@
-import { ViewTransition } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 
@@ -14,7 +13,9 @@ export function BrandShell({ children, bare = false }: { children: React.ReactNo
     >
       {bare ? null : <SiteHeader />}
       <main className="relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12">
-        <ViewTransition default="page">{children}</ViewTransition>
+        <div className="flex w-full animate-page-in flex-col items-center motion-reduce:animate-none">
+          {children}
+        </div>
       </main>
       {bare ? null : <SiteFooter />}
     </div>

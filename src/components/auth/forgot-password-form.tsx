@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Check } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { startTransition, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import {
@@ -21,7 +21,7 @@ import { requestPasswordReset } from "@/lib/auth-client";
 const schema = z.object({ email: z.email() });
 type Values = z.infer<typeof schema>;
 
-/** Forgot-password panel: the form cross-fades into a quiet "email sent" state. */
+/** Forgot-password panel: the form gives way to a quiet "email sent" state (fade-up). */
 export function ForgotPasswordPanel() {
   const t = useTranslations("ForgotPassword");
   const tLogin = useTranslations("Login");
@@ -45,16 +45,13 @@ export function ForgotPasswordPanel() {
       setFailed(true);
       return;
     }
-    // In a transition so the page <ViewTransition> (BrandShell) cross-fades the swap.
     // Same answer whether or not the account exists.
-    startTransition(() => setSentTo(email));
+    setSentTo(email);
   }
 
   function tryAnotherAddress() {
-    startTransition(() => {
-      reset({ email: "" });
-      setSentTo(null);
-    });
+    reset({ email: "" });
+    setSentTo(null);
   }
 
   const backToLogin = (
@@ -66,7 +63,7 @@ export function ForgotPasswordPanel() {
   );
 
   return sentTo ? (
-    <div key="sent" className="flex w-full max-w-[360px] flex-col items-center gap-5 text-center">
+    <div key="sent" className="flex w-full max-w-[360px] animate-page-in flex-col items-center gap-5 text-center motion-reduce:animate-none">
       <span className="grid size-12 animate-in place-items-center rounded-full border border-psg-blue/25 text-psg-blue zoom-in-75 fade-in-0 duration-500 dark:border-foreground/25 dark:text-foreground">
         <Check className="size-5" strokeWidth={1.75} aria-hidden />
       </span>
@@ -91,7 +88,7 @@ export function ForgotPasswordPanel() {
       {backToLogin}
     </div>
   ) : (
-    <div key="form" className="w-full max-w-[360px]">
+    <div key="form" className="w-full max-w-[360px] animate-page-in motion-reduce:animate-none">
       <AuthPanel title={t("title")} body={t("body")}>
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-[14px]">
           {failed ? <FormMessage tone="error">{tLogin("error")}</FormMessage> : null}

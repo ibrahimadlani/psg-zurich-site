@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ViewTransition } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/lib/auth-client";
 import { hasRole } from "@/lib/roles";
@@ -30,14 +30,48 @@ export function useNavItems(): NavItem[] {
 }
 
 /** Desktop navigation bar: same width as the content, hairlines above and below. */
+/** Desktop navigation bar: same width as the content, hairlines above and below. */
 export function MainNav() {
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const items = useNavItems();
+  const listRef = useRef<HTMLUListElement>(null);
+  const barRef = useRef<HTMLSpanElement>(null);
+
+  // One underline for the whole bar, slid under the active tab (CSS transition on transform/width).
+  function moveBar(target: HTMLElement | null) {
+    const bar = barRef.current;
+    if (!bar) return;
+    if (!target) {
+      bar.style.opacity = "0";
+      return;
+    }
+    const firstPlacement = bar.dataset.placed !== "true";
+    if (firstPlacement) bar.style.transition = "none";
+    bar.style.opacity = "1";
+    bar.style.width = `${target.offsetWidth}px`;
+    bar.style.transform = `translateX(${target.offsetLeft}px)`;
+    if (firstPlacement) {
+      void bar.offsetWidth; // apply the initial position without animating it
+      bar.style.transition = "";
+      bar.dataset.placed = "true";
+    }
+  }
+
+  useLayoutEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const place = () => moveBar(list.querySelector<HTMLElement>('a[aria-current="page"]'));
+    place();
+    // Fonts loading or the window resizing change the link widths.
+    const observer = new ResizeObserver(place);
+    observer.observe(list);
+    return () => observer.disconnect();
+  }, [pathname, items.length]);
 
   return (
     <nav aria-label={t("label")} className="mx-auto hidden w-full max-w-5xl px-4 md:block">
-      <ul className="flex h-10 items-stretch gap-7 border-y">
+      <ul ref={listRef} className="relative flex h-10 items-stretch gap-7 border-y">
         {items.map(({ href, key }) => {
           const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
           return (
@@ -45,6 +79,8 @@ export function MainNav() {
               <Link
                 href={href}
                 aria-current={active ? "page" : undefined}
+                // Slide right away, without waiting for the new page.
+                onClick={(event) => moveBar(event.currentTarget)}
                 className={cn(
                   "relative inline-flex items-center font-wide text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
                   active
@@ -53,19 +89,15 @@ export function MainNav() {
                 )}
               >
                 {t(key)}
-                {active ? (
-                  // Same name on every page: the browser slides the underline to the new tab.
-                  <ViewTransition name="nav-underline" share="nav-underline" default="none">
-                    <span
-                      aria-hidden
-                      className="absolute inset-x-0 -bottom-px h-0.5 bg-psg-blue dark:bg-foreground"
-                    />
-                  </ViewTransition>
-                ) : null}
               </Link>
             </li>
           );
         })}
+        <span
+          ref={barRef}
+          aria-hidden
+          className="pointer-events-none absolute -bottom-px left-0 h-0.5 bg-psg-blue opacity-0 [transition:transform_.38s_cubic-bezier(.34,1.2,.5,1),width_.38s_cubic-bezier(.34,1.2,.5,1),opacity_.2s] motion-reduce:transition-none dark:bg-foreground"
+        />
       </ul>
     </nav>
   );
