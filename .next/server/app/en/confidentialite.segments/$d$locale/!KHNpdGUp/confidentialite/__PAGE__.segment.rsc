@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/2zdc1f8x75q18.js"
-5:"/_next/static/chunks/31fs0z21z-lbp.js"
+4:"/_next/static/chunks/2o0x57eo-7e8k.js"
+5:"/_next/static/chunks/35dawgxxw5e0e.js"
 6:"/_next/static/chunks/3o0c-j8sdtutq.js"
 7:"/_next/static/chunks/3buzbjt7xard6.js"
 8:"/_next/static/chunks/1bkh3bw98ejni.js"
@@ -38,7 +38,7 @@ f:I[8895,["$4","$5","$6","$7","$8"],"MainNav"]
 2e:C
 31:X
 31:T6,locale31:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L28",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Privacy · PSG Zurich"}],["$","meta","1",{"name":"description","content":"What data we collect, why, how long we keep it and how to exercise your rights, under the Swiss Federal Act on Data Protection (FADP)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2d","v":"$2e","s":"$16"}},"a":"$@2f","u":"$@30","b":"WmoyzbGwKiWvedZ28dskZ","r":"$31"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L28",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Privacy · PSG Zurich"}],["$","meta","1",{"name":"description","content":"What data we collect, why, how long we keep it and how to exercise your rights, under the Swiss Federal Act on Data Protection (FADP)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2d","v":"$2e","s":"$16"}},"a":"$@2f","u":"$@30","b":"4Si7GLtPoqQrniOE2tdDo","r":"$31"}
 3e:I[97367,["$10"],"OutletBoundary"]
 1b:["$","a",null,{"href":"#donnees","className":"-ml-px flex gap-2.5 border-l border-transparent pl-3 text-[13px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground","children":[["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"02"}],"Data we collect"]}]
 1c:["$","li","finalites",{"children":["$","a",null,{"href":"#finalites","className":"-ml-px flex gap-2.5 border-l border-transparent pl-3 text-[13px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground","children":[["$","span",null,{"className":"shrink-0 font-mono text-[11px] leading-[1.7] opacity-60","children":"03"}],"How we use it"]}]}]

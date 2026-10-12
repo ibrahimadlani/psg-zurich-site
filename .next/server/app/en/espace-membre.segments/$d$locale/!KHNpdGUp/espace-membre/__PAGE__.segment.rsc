@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/2zdc1f8x75q18.js"
-5:"/_next/static/chunks/31fs0z21z-lbp.js"
+4:"/_next/static/chunks/2o0x57eo-7e8k.js"
+5:"/_next/static/chunks/35dawgxxw5e0e.js"
 6:"/_next/static/chunks/3o0c-j8sdtutq.js"
 7:"/_next/static/chunks/3buzbjt7xard6.js"
 8:"/_next/static/chunks/1bkh3bw98ejni.js"
@@ -41,7 +41,7 @@ f:I[68739,["$4","$5","$6","$7","$8"],"UserNav"]
 29:C
 2c:X
 2c:T6,locale2c:C
-0:{"t":{"t":{"s":"","h":82,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L24",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L26",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Member area · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L27","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@28","v":"$29","s":"$18"}},"a":"$@2a","u":"$@2b","b":"WmoyzbGwKiWvedZ28dskZ","r":"$2c"}
+0:{"t":{"t":{"s":"","h":82,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L24",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L26",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Member area · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L27","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@28","v":"$29","s":"$18"}},"a":"$@2a","u":"$@2b","b":"4Si7GLtPoqQrniOE2tdDo","r":"$2c"}
 20:null
 2b:true
 2a:null

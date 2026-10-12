@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/2zdc1f8x75q18.js"
-5:"/_next/static/chunks/31fs0z21z-lbp.js"
+4:"/_next/static/chunks/2o0x57eo-7e8k.js"
+5:"/_next/static/chunks/35dawgxxw5e0e.js"
 6:"/_next/static/chunks/3o0c-j8sdtutq.js"
 7:"/_next/static/chunks/3buzbjt7xard6.js"
 8:"/_next/static/chunks/1bkh3bw98ejni.js"
@@ -31,7 +31,7 @@ f:I[8895,["$4","$5","$6","$7","$8"],"MainNav"]
 1e:C
 21:X
 21:T6,locale21:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$13",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L1c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1d","v":"$1e","s":"$17"}},"a":"$@1f","u":"$@20","b":"WmoyzbGwKiWvedZ28dskZ","r":"$21"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$13",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L1c","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@1d","v":"$1e","s":"$17"}},"a":"$@1f","u":"$@20","b":"4Si7GLtPoqQrniOE2tdDo","r":"$21"}
 14:null
 20:false
 1f:null

@@ -1,3 +1,0 @@
-module.exports=[12714,(e,r,s)=>{r.exports=e.x("node:fs/promises",()=>require("node:fs/promises"))},50227,(e,r,s)=>{r.exports=e.x("node:path",()=>require("node:path"))},63661,e=>{e.v(r=>Promise.all(["server/chunks/[root-of-the-server]__0vtigmymsbh3p._.js"].map(r=>e.l(r))).then(()=>r(32511)))},44112,e=>{"use strict";var r=e.i(12714),s=e.i(50227);async function t(){if(await (0,r.rm)((0,s.join)(process.cwd(),".next","server","route-cache"),{recursive:!0,force:!0}),"false"===process.env.MIGRATE_ON_START)return;let{runMigrations:t}=await e.A(63661);try{await t(),console.log("[migrate] database is up to date")}catch(e){console.error("[migrate] failed, starting anyway:",e)}}e.s(["onServerStart",0,t])}];
-
-//# sourceMappingURL=%5Broot-of-the-server%5D__15mmtwwfbrkb8._.js.map

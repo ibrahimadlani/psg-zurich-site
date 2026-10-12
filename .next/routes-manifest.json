@@ -31,12 +31,44 @@
       "namedRegex": "^/api/auth/(?<nxtPall>.+?)(?:/)?$"
     },
     {
+      "page": "/api/calendar/match/[id]",
+      "regex": "^/api/calendar/match/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/calendar/match/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/v1/announcements/[id]",
       "regex": "^/api/v1/announcements/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/api/v1/announcements/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/events/[id]",
+      "regex": "^/api/v1/events/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/events/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/events/[id]/attendance",
+      "regex": "^/api/v1/events/([^/]+?)/attendance(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/events/(?<nxtPid>[^/]+?)/attendance(?:/)?$"
+    },
+    {
+      "page": "/api/v1/matches/[id]/prediction",
+      "regex": "^/api/v1/matches/([^/]+?)/prediction(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/matches/(?<nxtPid>[^/]+?)/prediction(?:/)?$"
     },
     {
       "page": "/api/v1/members/[id]",
@@ -251,6 +283,99 @@
       ]
     },
     {
+      "page": "/[locale]/matchs/classement",
+      "regex": "^/([^/]+?)/matchs/classement(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/matchs/classement(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/matchs/classement.segments/$d$locale/!KHNpdGUp/matchs/classement$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/matchs/classement\\.segments/\\$d\\$locale/!KHNpdGUp/matchs/classement(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/matchs/[id]",
+      "page": "/de/matchs/[id]",
+      "regex": "^/de/matchs/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/de/matchs/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/matchs/[id].segments/$d$locale/!KHNpdGUp/matchs/$d$id$segment",
+          "source": "^/de/matchs/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/matchs/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/matchs/[id]",
+      "page": "/en/matchs/[id]",
+      "regex": "^/en/matchs/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/en/matchs/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/matchs/[id].segments/$d$locale/!KHNpdGUp/matchs/$d$id$segment",
+          "source": "^/en/matchs/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/matchs/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/matchs/[id]",
+      "page": "/fr/matchs/[id]",
+      "regex": "^/fr/matchs/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/fr/matchs/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/matchs/[id].segments/$d$locale/!KHNpdGUp/matchs/$d$id$segment",
+          "source": "^/fr/matchs/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/matchs/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/matchs/[id]",
+      "regex": "^/([^/]+?)/matchs/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/matchs/(?<nxtPid>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/matchs/[id].segments/$d$locale/!KHNpdGUp/matchs/$d$id$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/matchs/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/matchs/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/mentions-legales",
       "regex": "^/([^/]+?)/mentions\\-legales(?:/)?$",
       "routeKeys": {
@@ -375,6 +500,12 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/api/calendar/psg-zurich.ics",
+      "regex": "^/api/calendar/psg\\-zurich\\.ics(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/calendar/psg\\-zurich\\.ics(?:/)?$"
+    },
+    {
       "page": "/api/health",
       "regex": "^/api/health(?:/)?$",
       "routeKeys": {},
@@ -403,6 +534,18 @@
       "regex": "^/api/v1/matches(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/matches(?:/)?$"
+    },
+    {
+      "page": "/api/v1/matches/live",
+      "regex": "^/api/v1/matches/live(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/matches/live(?:/)?$"
+    },
+    {
+      "page": "/api/v1/matches/sync",
+      "regex": "^/api/v1/matches/sync(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/matches/sync(?:/)?$"
     },
     {
       "page": "/api/v1/me",
