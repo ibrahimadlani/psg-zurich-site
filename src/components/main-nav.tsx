@@ -82,8 +82,9 @@ export function MainNav() {
               <Link
                 href={href}
                 aria-current={active ? "page" : undefined}
-                // Slide right away, without waiting for the new page.
-                onClick={(event) => moveBar(event.currentTarget)}
+                // Slide right away, without waiting for the new page — except towards the
+                // sign-up page, which has no navbar (the underline would slide for nothing).
+                onClick={key === "membership" ? undefined : (event) => moveBar(event.currentTarget)}
                 className={cn(
                   "relative inline-flex items-center gap-2 font-wide text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
                   active
