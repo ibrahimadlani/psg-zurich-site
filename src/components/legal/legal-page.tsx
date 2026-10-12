@@ -2,14 +2,7 @@ import type { Metadata } from "next";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { Fragment } from "react";
 import { LEGAL_DOCUMENTS, type LegalBlock, type LegalDocumentKey } from "@/content/legal";
-import { Link } from "@/i18n/navigation";
 import { LEGAL } from "@/lib/legal";
-import { cn } from "@/lib/utils";
-
-export const LEGAL_PATHS: Record<LegalDocumentKey, string> = {
-  imprint: "/mentions-legales",
-  privacy: "/confidentialite",
-};
 
 export async function legalMetadata(key: LegalDocumentKey): Promise<Metadata> {
   const document = LEGAL_DOCUMENTS[key][await getLocale()];
@@ -72,7 +65,7 @@ function Block({ block }: { block: LegalBlock }) {
   );
 }
 
-/** Legal document (imprint or privacy policy): tabs, title, table of contents, numbered sections. */
+/** Legal document (imprint or privacy policy): title, table of contents, numbered sections. */
 export async function LegalPage({ document: key }: { document: LegalDocumentKey }) {
   const locale = await getLocale();
   const t = await getTranslations("Legal");
@@ -82,24 +75,6 @@ export async function LegalPage({ document: key }: { document: LegalDocumentKey 
 
   return (
     <article>
-      <nav aria-label={t("label")} className="mb-10 inline-flex rounded-[9px] border bg-card/60 p-1">
-        {(Object.keys(LEGAL_PATHS) as LegalDocumentKey[]).map((tab) => (
-          <Link
-            key={tab}
-            href={LEGAL_PATHS[tab]}
-            aria-current={tab === key ? "page" : undefined}
-            className={cn(
-              "rounded-[6px] px-3 py-1.5 font-wide text-[10px] font-semibold tracking-[0.06em] uppercase transition-colors",
-              tab === key
-                ? "bg-segment text-segment-foreground shadow-brand"
-                : "text-muted-foreground hover:text-foreground",
-            )}
-          >
-            {LEGAL_DOCUMENTS[tab][locale].title}
-          </Link>
-        ))}
-      </nav>
-
       <header className="flex flex-col gap-4 border-b pb-10">
         <p className="flex items-center gap-2 font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
           <span aria-hidden className="size-1.5 rounded-full bg-psg-red" />

@@ -236,7 +236,6 @@
     }
   },
   "Legal": {
-    "label": "Documents légaux",
     "eyebrow": "Informations légales",
     "updated": "Mis à jour le {date}",
     "onThisPage": "Sur cette page",

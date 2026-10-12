@@ -236,7 +236,6 @@
     }
   },
   "Legal": {
-    "label": "Legal documents",
     "eyebrow": "Legal information",
     "updated": "Updated {date}",
     "onThisPage": "On this page",
