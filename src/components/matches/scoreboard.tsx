@@ -2,6 +2,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { CompetitionLabel, liveLabel } from "@/components/matches/match-row";
 import { MatchTimeline } from "@/components/matches/match-timeline";
 import { sides, toDate, type MatchView } from "@/components/matches/match-utils";
+import { ShortName } from "@/components/matches/short-name";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { cn } from "@/lib/utils";
 
@@ -48,7 +49,7 @@ export function Scoreboard({ match, className }: { match: MatchView; className?:
             className={cn("flex flex-col items-center gap-2 text-center", index === 1 ? "order-3" : "order-1")}
           >
             <TeamCrest name={team.name} logo={team.logo} className="size-14 sm:size-16" />
-            <span className={cn("text-sm leading-tight sm:text-base", team.isPsg && "font-semibold")}>{team.name}</span>
+            <span className={cn("text-sm leading-tight sm:text-base", team.isPsg && "font-semibold")}><ShortName name={team.name} /></span>
           </div>
         ))}
         <div className="order-2 flex flex-col items-center gap-1">

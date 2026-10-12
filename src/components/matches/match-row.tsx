@@ -2,6 +2,7 @@ import { CalendarClock, Users } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { CompetitionLogo, hasLocalLogo } from "@/components/matches/competition-logos";
 import { outcome, roundInfo, sides, toDate, type MatchView } from "@/components/matches/match-utils";
+import { ShortName } from "@/components/matches/short-name";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -28,7 +29,7 @@ export function CompetitionLabel({ match, className }: { match: MatchView; class
         <img src={match.competitionLogo} alt="" width={16} height={16} loading="lazy" className="size-4 shrink-0 object-contain" />
       ) : null}
       <span className="truncate">
-        {match.competition}
+        <ShortName name={match.competition} />
         {roundLabel ? ` · ${roundLabel}` : null}
       </span>
     </span>
@@ -80,7 +81,9 @@ export function MatchRow({
           {[home, away].map((team) => (
             <span key={team.name} className="flex min-w-0 items-center gap-2">
               <TeamCrest name={team.name} logo={team.logo} className="size-5" />
-              <span className={cn("truncate", team.isPsg ? "font-semibold" : "")}>{team.name}</span>
+              <span className={cn("truncate", team.isPsg ? "font-semibold" : "")}>
+                <ShortName name={team.name} />
+              </span>
               {played ? <span className="ml-auto pl-2 font-mono font-semibold tabular-nums">{team.score ?? "–"}</span> : null}
             </span>
           ))}

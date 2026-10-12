@@ -2,6 +2,7 @@ import { CalendarDays } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { CompetitionLabel, liveLabel } from "@/components/matches/match-row";
 import { asideCard, sides, toDate, type MatchView } from "@/components/matches/match-utils";
+import { ShortName } from "@/components/matches/short-name";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -25,7 +26,7 @@ export function MatchMiniCard({ match }: { match: MatchView }) {
         {[home, away].map((team, index) => (
           <span key={team.name} className={cn("flex flex-col items-center gap-2.5 text-center", index === 0 ? "order-1" : "order-3")}>
             <TeamCrest name={team.name} logo={team.logo} className="size-12" />
-            <span className={cn("text-[15px] leading-tight", team.isPsg && "font-semibold")}>{team.name}</span>
+            <span className={cn("text-[15px] leading-tight", team.isPsg && "font-semibold")}><ShortName name={team.name} /></span>
           </span>
         ))}
         <span className="order-2 flex flex-col items-center gap-1">
