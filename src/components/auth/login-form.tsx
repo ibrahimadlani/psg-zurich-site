@@ -1,8 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useState, useSyncExternalStore } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FieldError, FormMessage, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
@@ -16,10 +16,19 @@ const schema = z.object({
 });
 type Values = z.infer<typeof schema>;
 
+type Failure = "invalidCredentials" | "notVerified" | "linkInvalid" | "error";
+
+// An expired or invalid confirmation link lands here with ?error=… (set by Better Auth).
+const noop = () => () => {};
+const linkErrorFromUrl = () => new URLSearchParams(window.location.search).has("error");
+
 export function LoginForm() {
   const t = useTranslations("Login");
+  const locale = useLocale();
   const router = useRouter();
-  const [failure, setFailure] = useState<"invalidCredentials" | "error" | null>(null);
+  const linkError = useSyncExternalStore(noop, linkErrorFromUrl, () => false);
+  const [failure, setFailure] = useState<Failure | null>(null);
+  const shown = failure ?? (linkError ? "linkInvalid" : null);
   const {
     register,
     handleSubmit,
@@ -28,9 +37,16 @@ export function LoginForm() {
 
   async function onSubmit(values: Values) {
     setFailure(null);
-    const { error } = await signIn.email(values);
+    // callbackURL: where a re-sent confirmation link lands (and the email's language).
+    const { error } = await signIn.email({ ...values, callbackURL: `/${locale}/connexion` });
     if (error) {
-      setFailure(error.code === "INVALID_EMAIL_OR_PASSWORD" ? "invalidCredentials" : "error");
+      setFailure(
+        error.code === "INVALID_EMAIL_OR_PASSWORD"
+          ? "invalidCredentials"
+          : error.code === "EMAIL_NOT_VERIFIED"
+            ? "notVerified"
+            : "error",
+      );
       return;
     }
     router.push("/");
@@ -39,7 +55,7 @@ export function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-[14px]">
-      {failure ? <FormMessage tone="error">{t(failure)}</FormMessage> : null}
+      {shown ? <FormMessage tone="error">{t(shown)}</FormMessage> : null}
       <label className="flex flex-col gap-2">
         <span className={labelClass}>{t("email")}</span>
         <input

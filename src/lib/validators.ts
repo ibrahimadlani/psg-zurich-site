@@ -147,5 +147,7 @@ export const membershipSignupSchema = z.object({
   city: optionalText(100),
   password: z.string().min(8).max(128),
   acceptTerms: z.literal(true),
+  // Language of the confirmation email and of the page its link leads to.
+  locale: z.enum(LOCALES).default("fr"),
 });
 

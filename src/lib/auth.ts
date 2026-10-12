@@ -12,6 +12,7 @@ import { routing } from "@/i18n/routing";
 import { sendMail } from "@/lib/mail";
 
 const RESET_PASSWORD_TTL_SECONDS = 60 * 60;
+const VERIFY_EMAIL_TTL_SECONDS = 60 * 60 * 24;
 
 // The forms send a localized redirect URL (/fr/…, /en/…, /de/…): reuse it for the email.
 function localeFromAuthUrl(url: string) {
@@ -20,10 +21,12 @@ function localeFromAuthUrl(url: string) {
   return hasLocale(routing.locales, segment) ? segment : routing.defaultLocale;
 }
 
-async function sendResetPasswordEmail(email: string, url: string) {
+async function sendAuthLinkEmail(kind: "resetPassword" | "verifyEmail", email: string, link: string) {
+  // Links built during a direct auth.api call are relative when BETTER_AUTH_URL is empty (local dev).
+  const url = new URL(link, process.env.BETTER_AUTH_URL || "http://localhost:3000").href;
   const locale = localeFromAuthUrl(url);
   const messages = await loadMessages(locale);
-  const t = createTranslator({ locale, messages, namespace: "Emails.resetPassword" });
+  const t = createTranslator({ locale, messages, namespace: `Emails.${kind}` });
 
   await sendMail({
     to: email,
@@ -69,10 +72,20 @@ function createAuth() {
       // Sign-up only happens server-side in the membership flow (/api/v1/membership):
       // the public HTTP endpoint is disabled below.
       disableSignUp: false,
+      // New accounts sign in only once their address is confirmed (link sent at sign-up).
+      requireEmailVerification: true,
       resetPasswordTokenExpiresIn: RESET_PASSWORD_TTL_SECONDS,
       revokeSessionsOnPasswordReset: true,
       // Also lets accounts without a password yet set one.
-      sendResetPassword: ({ user, url }) => sendResetPasswordEmail(user.email, url),
+      sendResetPassword: ({ user, url }) => sendAuthLinkEmail("resetPassword", user.email, url),
+    },
+    emailVerification: {
+      sendOnSignUp: true,
+      // A sign-in attempt on an unconfirmed account sends a fresh link.
+      sendOnSignIn: true,
+      autoSignInAfterVerification: true,
+      expiresIn: VERIFY_EMAIL_TTL_SECONDS,
+      sendVerificationEmail: ({ user, url }) => sendAuthLinkEmail("verifyEmail", user.email, url),
     },
     disabledPaths: ["/sign-up/email"],
     // Must stay last: lets server actions set auth cookies.

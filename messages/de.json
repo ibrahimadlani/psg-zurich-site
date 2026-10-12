@@ -51,7 +51,9 @@
     "invalidEmail": "Ungültige E-Mail-Adresse.",
     "passwordRequired": "Bitte gib dein Passwort ein.",
     "invalidCredentials": "E-Mail oder Passwort ist falsch.",
-    "error": "Anmeldung zurzeit nicht möglich. Bitte versuche es später erneut."
+    "error": "Anmeldung zurzeit nicht möglich. Bitte versuche es später erneut.",
+    "notVerified": "Bitte bestätige zuerst deine E-Mail-Adresse: Wir haben dir soeben einen neuen Link gesendet.",
+    "linkInvalid": "Dieser Bestätigungslink ist nicht mehr gültig. Melde dich an, um einen neuen zu erhalten."
   },
   "ForgotPassword": {
     "title": "Passwort vergessen",
@@ -99,7 +101,11 @@
     "passwordTooShort": "Mindestens 8 Zeichen.",
     "termsRequired": "Du musst die Statuten akzeptieren.",
     "emailTaken": "Für diese Adresse gibt es bereits ein Konto. Bitte melde dich an.",
-    "error": "Die Registrierung ist fehlgeschlagen. Bitte versuche es später erneut."
+    "error": "Die Registrierung ist fehlgeschlagen. Bitte versuche es später erneut.",
+    "sentTitle": "E-Mail bestätigen",
+    "sentBody": "Wir haben einen Bestätigungslink an <strong>{email}</strong> gesendet. Klicke darauf, um dein Konto zu aktivieren: Er ist 24 Stunden gültig.",
+    "sentHint": "Nichts erhalten? Prüfe deinen Spam-Ordner oder melde dich an, um einen neuen Link zu erhalten.",
+    "backToLogin": "Zurück zur Anmeldung"
   },
   "DeploymentStatus": {
     "title": "Deployment-Status",
@@ -212,6 +218,14 @@
       "body": "Klicke auf die Schaltfläche unten, um dein Passwort zu wählen. Der Link ist eine Stunde gültig.",
       "cta": "Passwort wählen",
       "ignore": "Falls du diese Anfrage nicht gestellt hast, ignoriere diese E-Mail einfach: Dein aktuelles Passwort bleibt unverändert."
+    },
+    "verifyEmail": {
+      "subject": "E-Mail bestätigen — PSG Zurich",
+      "preview": "Nur noch ein Schritt, um dein Konto zu aktivieren",
+      "heading": "Willkommen bei PSG Zurich",
+      "body": "Klicke auf die Schaltfläche unten, um deine E-Mail-Adresse zu bestätigen und dein Konto zu aktivieren. Dieser Link ist 24 Stunden gültig.",
+      "cta": "E-Mail bestätigen",
+      "ignore": "Wenn du kein Konto erstellt hast, ignoriere diese E-Mail einfach."
     }
   }
 }

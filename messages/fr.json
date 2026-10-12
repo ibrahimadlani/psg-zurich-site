@@ -51,7 +51,9 @@
     "invalidEmail": "Adresse e-mail invalide.",
     "passwordRequired": "Saisissez votre mot de passe.",
     "invalidCredentials": "E-mail ou mot de passe incorrect.",
-    "error": "Connexion impossible pour le moment. Réessayez plus tard."
+    "error": "Connexion impossible pour le moment. Réessayez plus tard.",
+    "notVerified": "Confirmez d'abord votre adresse e-mail : nous venons de vous renvoyer un lien.",
+    "linkInvalid": "Ce lien de confirmation n'est plus valable. Connectez-vous pour en recevoir un nouveau."
   },
   "ForgotPassword": {
     "title": "Mot de passe oublié",
@@ -99,7 +101,11 @@
     "passwordTooShort": "8 caractères minimum.",
     "termsRequired": "Vous devez accepter les statuts.",
     "emailTaken": "Un compte existe déjà avec cette adresse. Connectez-vous.",
-    "error": "L'inscription a échoué. Réessayez plus tard."
+    "error": "L'inscription a échoué. Réessayez plus tard.",
+    "sentTitle": "Confirmez votre adresse",
+    "sentBody": "Nous avons envoyé un lien de confirmation à <strong>{email}</strong>. Cliquez dessus pour activer votre compte : il est valable 24 heures.",
+    "sentHint": "Rien reçu ? Vérifiez vos courriers indésirables, ou connectez-vous pour recevoir un nouveau lien.",
+    "backToLogin": "Retour à la connexion"
   },
   "DeploymentStatus": {
     "title": "Statut du déploiement",
@@ -212,6 +218,14 @@
       "body": "Cliquez sur le bouton ci-dessous pour choisir votre mot de passe. Ce lien est valable une heure.",
       "cta": "Choisir mon mot de passe",
       "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez simplement cet e-mail : votre mot de passe actuel reste inchangé."
+    },
+    "verifyEmail": {
+      "subject": "Confirmez votre adresse — PSG Zurich",
+      "preview": "Plus qu'une étape pour activer votre compte",
+      "heading": "Bienvenue au PSG Zurich",
+      "body": "Cliquez sur le bouton ci-dessous pour confirmer votre adresse e-mail et activer votre compte. Ce lien est valable 24 heures.",
+      "cta": "Confirmer mon adresse",
+      "ignore": "Si vous n'avez pas créé de compte, ignorez simplement cet e-mail."
     }
   }
 }

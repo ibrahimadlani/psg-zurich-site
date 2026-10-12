@@ -8,16 +8,28 @@ import { getAuth } from "@/lib/auth";
 import { membershipSignupSchema } from "@/lib/validators";
 
 /**
- * Public membership sign-up: creates the account (and signs the visitor in) plus a
- * pending member profile. This is the only way to create an account.
+ * Public membership sign-up: creates the account plus a pending member profile, and
+ * emails a confirmation link (the account can sign in once confirmed). This is the only
+ * way to create an account.
  */
 export const POST = apiHandler(async (request) => {
   const input = await parseBody(request, membershipSignupSchema);
 
+  // With email verification on, Better Auth answers a duplicate with a fake user rather
+  // than an error: detect it first.
+  const [existing] = await db.select({ id: user.id }).from(user).where(eq(user.email, input.email)).limit(1);
+  if (existing) return fail(409, "email_taken", "An account already exists for this email.");
+
   let userId: string;
   try {
     const { user: created } = await getAuth().api.signUpEmail({
-      body: { name: `${input.firstName} ${input.lastName}`, email: input.email, password: input.password },
+      body: {
+        name: `${input.firstName} ${input.lastName}`,
+        email: input.email,
+        password: input.password,
+        // Where the confirmation link lands; also sets the email's language.
+        callbackURL: `/${input.locale}/connexion`,
+      },
       headers: request.headers,
     });
     userId = created.id;
