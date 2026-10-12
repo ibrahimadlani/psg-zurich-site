@@ -56,7 +56,7 @@ export function ForgotPasswordPanel() {
 
   const backToLogin = (
     <p className="text-center text-[14px]">
-      <Link href="/connexion" className={inlineLinkClass}>
+      <Link href="/connexion" prefetch={false} className={inlineLinkClass}>
         {t("backToLogin")}
       </Link>
     </p>

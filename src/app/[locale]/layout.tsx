@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { Suspense } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { AnnouncementBanner } from "@/components/announcements/announcement-banner";
+import { SessionSync } from "@/components/auth/session-sync";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeSync } from "@/components/theme-sync";
 import { routing } from "@/i18n/routing";
@@ -35,6 +36,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
         {/* Diagonal-line backdrop behind every page. */}
         <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-diagonal" />
         <NextIntlClientProvider>
+          <SessionSync />
           <Suspense fallback={null}>
             <AnnouncementBanner />
           </Suspense>

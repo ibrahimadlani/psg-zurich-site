@@ -7,6 +7,9 @@ import { useSession } from "@/lib/auth-client";
 
 const EMAIL = "contact@psg-zurich.ch";
 
+// Their answer depends on the session (redirect when signed in): never prefetched.
+const guestOnly = new Set(["/adhesion", "/connexion"]);
+
 const heading = "font-wide text-[10px] font-semibold tracking-[0.08em] text-foreground uppercase";
 const link = "text-[14px] text-muted-foreground transition-colors hover:text-foreground";
 
@@ -66,7 +69,7 @@ function VisitorFooter() {
             <ul className="flex flex-col gap-2">
               {links.map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className={link}>
+                  <Link href={href} prefetch={guestOnly.has(href) ? false : undefined} className={link}>
                     {label}
                   </Link>
                 </li>

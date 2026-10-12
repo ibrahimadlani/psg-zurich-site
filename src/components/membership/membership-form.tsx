@@ -98,7 +98,7 @@ export function MembershipForm() {
         </div>
         <p className="text-[13px] leading-[1.45] text-pretty text-muted-foreground">{t("sentHint")}</p>
         <p className="text-center text-[14px]">
-          <Link href="/connexion" className={inlineLinkClass}>
+          <Link href="/connexion" prefetch={false} className={inlineLinkClass}>
             {t("backToLogin")}
           </Link>
         </p>
@@ -118,7 +118,7 @@ export function MembershipForm() {
               <FormMessage tone="error">
                 {t(failure)}{" "}
                 {failure === "emailTaken" ? (
-                  <Link href="/connexion" className="underline underline-offset-2">
+                  <Link href="/connexion" prefetch={false} className="underline underline-offset-2">
                     {t("signIn")}
                   </Link>
                 ) : null}
@@ -168,7 +168,7 @@ export function MembershipForm() {
           </form>
           <p className="text-center text-[14px] text-muted-foreground">
             {t("haveAccount")}{" "}
-            <Link href="/connexion" className={inlineLinkClass}>
+            <Link href="/connexion" prefetch={false} className={inlineLinkClass}>
               {t("signIn")}
             </Link>
           </p>

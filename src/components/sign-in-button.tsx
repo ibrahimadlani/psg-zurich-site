@@ -12,7 +12,7 @@ export function SignInButton() {
 
   return (
     <Link
-      href="/espace-membre"
+      href="/espace-membre" prefetch={false}
       aria-label={t("submit")}
       className="group ml-1.5 inline-flex h-8 items-center gap-1.5 rounded-[7px] bg-segment px-2.5 font-wide text-[10px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand [transition:opacity_.2s,transform_.15s] hover:opacity-90 active:scale-[0.96] sm:px-3"
     >

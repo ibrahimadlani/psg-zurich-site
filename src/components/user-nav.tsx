@@ -56,14 +56,14 @@ export function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href="/espace-membre">
+          <Link href="/espace-membre" prefetch={false}>
             <UserRound aria-hidden />
             {t("memberArea")}
           </Link>
         </DropdownMenuItem>
         {hasRole(user.role, "admin") ? (
           <DropdownMenuItem asChild>
-            <Link href="/admin">
+            <Link href="/admin" prefetch={false}>
               <LayoutDashboard aria-hidden />
               {t("admin")}
             </Link>

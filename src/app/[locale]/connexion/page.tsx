@@ -20,7 +20,7 @@ export default async function LoginPage() {
           <LoginForm />
           <p className="text-center text-[14px] text-muted-foreground">
             {t("noAccount")}{" "}
-            <Link href="/adhesion" className={inlineLinkClass}>
+            <Link href="/adhesion" prefetch={false} className={inlineLinkClass}>
               {t("join")}
             </Link>
           </p>

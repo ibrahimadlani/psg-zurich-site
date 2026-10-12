@@ -12,6 +12,8 @@ type NavItem = {
   key: "home" | "news" | "matches" | "events" | "membership" | "contact" | "memberArea" | "admin";
   /** Key page (membership / member area): last, pushed to the right of the desktop bar. */
   featured?: boolean;
+  /** Page whose answer depends on the session (redirects): never prefetched. */
+  authDependent?: boolean;
 };
 
 const home: NavItem = { href: "/", key: "home" };
@@ -26,10 +28,10 @@ const contact: NavItem = { href: "/contact", key: "contact" };
 export function useNavItems(): NavItem[] {
   const { data } = useSession();
   // Visitors (and the first instant while the session loads) see the public menu.
-  if (!data) return [home, ...content, contact, { href: "/adhesion", key: "membership", featured: true }];
-  const memberArea: NavItem = { href: "/espace-membre", key: "memberArea", featured: true };
+  if (!data) return [home, ...content, contact, { href: "/adhesion", key: "membership", featured: true, authDependent: true }];
+  const memberArea: NavItem = { href: "/espace-membre", key: "memberArea", featured: true, authDependent: true };
   return hasRole(data.user.role, "admin")
-    ? [home, ...content, contact, { href: "/admin", key: "admin" }, memberArea]
+    ? [home, ...content, contact, { href: "/admin", key: "admin", authDependent: true }, memberArea]
     : [home, ...content, contact, memberArea];
 }
 
@@ -75,12 +77,13 @@ export function MainNav() {
   return (
     <nav aria-label={t("label")} className="mx-auto hidden w-full max-w-5xl px-4 md:block">
       <ul ref={listRef} className="relative flex h-10 items-stretch gap-7 border-y">
-        {items.map(({ href, key, featured }) => {
+        {items.map(({ href, key, featured, authDependent }) => {
           const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
           return (
             <li key={key} className={cn("flex", featured && "ml-auto")}>
               <Link
                 href={href}
+                prefetch={authDependent ? false : undefined}
                 aria-current={active ? "page" : undefined}
                 // Slide right away, without waiting for the new page — except towards the
                 // sign-up page, which has no navbar (the underline would slide for nothing).

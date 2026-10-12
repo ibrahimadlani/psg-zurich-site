@@ -67,7 +67,7 @@ export function MobileMenu() {
 
         <nav aria-label={t("label")} className="flex-1 overflow-y-auto px-6 pt-6">
           <ul className="space-y-1">
-            {navItems.map(({ href, key }, index) => {
+            {navItems.map(({ href, key, authDependent }, index) => {
               const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
               return (
                 <li
@@ -77,6 +77,7 @@ export function MobileMenu() {
                 >
                   <Link
                     href={href}
+                    prefetch={authDependent ? false : undefined}
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "block py-1.5 font-narrow text-[32px] leading-none font-extrabold uppercase italic transition-colors",
@@ -149,7 +150,7 @@ function MobileAccount() {
     if (pathname.startsWith("/connexion")) return null;
     return (
       <Link
-        href="/espace-membre"
+        href="/espace-membre" prefetch={false}
         className="group flex h-11 items-center justify-center gap-2 rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
       >
         {tLogin("submit")}
@@ -168,12 +169,12 @@ function MobileAccount() {
           <span className="block truncate text-xs text-muted-foreground">{user.email}</span>
         </span>
       </div>
-      <Link href="/espace-membre" className={accountLink}>
+      <Link href="/espace-membre" prefetch={false} className={accountLink}>
         <UserRound aria-hidden />
         {t("memberArea")}
       </Link>
       {hasRole(user.role, "admin") ? (
-        <Link href="/admin" className={accountLink}>
+        <Link href="/admin" prefetch={false} className={accountLink}>
           <LayoutDashboard aria-hidden />
           {t("admin")}
         </Link>

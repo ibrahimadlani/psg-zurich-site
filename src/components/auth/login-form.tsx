@@ -74,7 +74,7 @@ export function LoginForm() {
           <label htmlFor="password" className={labelClass}>
             {t("password")}
           </label>
-          <Link href="/connexion/mot-de-passe-oublie" className="text-[13px] text-muted-foreground hover:text-foreground">
+          <Link href="/connexion/mot-de-passe-oublie" prefetch={false} className="text-[13px] text-muted-foreground hover:text-foreground">
             {t("forgot")}
           </Link>
         </span>
