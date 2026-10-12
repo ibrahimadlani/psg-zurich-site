@@ -171,7 +171,7 @@
         "active": "Your membership is active. Welcome to the club!",
         "expired": "Your membership has expired. Renew your fee to reactivate it.",
         "suspended": "Your membership is suspended. Contact the committee for more information.",
-        "rejected": "Your request was not accepted. You may appeal to the next general assembly: write to us at {email}."
+        "rejected": "Your request was not accepted. You may appeal to the next general assembly: write to us at <mail></mail>."
       },
       "noProfile": "No member profile is linked to this account."
     },
@@ -287,6 +287,13 @@
     "title": "Page not found.",
     "backHome": "Back to home"
   },
+  "ServerError": {
+    "title": "Something went wrong.",
+    "body": "It's not you, it's us: this page could not be displayed. Try again in a moment. If the problem persists, write to us at <mail></mail>.",
+    "retry": "Try again",
+    "backHome": "Back to home",
+    "reference": "Reference: {digest}"
+  },
   "Footer": {
     "tagline": "Official supporters club, certified by Paris Saint-Germain.",
     "club": "The club",
@@ -329,21 +336,21 @@
       "heading": "Welcome, {firstName}!",
       "body": "The committee has accepted your membership request. Your member number is {number}. Find your details and the next steps in your member area.",
       "cta": "Go to my member area",
-      "footer": "A question? Write to us at {email}."
+      "footer": "A question? Write to us at <mail></mail>."
     },
     "membershipRejected": {
       "subject": "Your membership request — PSG Zurich",
       "preview": "Reply to your membership request",
       "heading": "Hello {firstName},",
       "body": "After review, the committee was unable to accept your membership request. In accordance with the statutes, you may appeal to the next general assembly.",
-      "footer": "For any question or to appeal, write to us at {email}."
+      "footer": "For any question or to appeal, write to us at <mail></mail>."
     },
     "accountDeleted": {
       "subject": "Your account has been deleted — PSG Zurich",
       "preview": "Confirmation that your account was deleted",
       "heading": "Account deleted",
       "body": "As requested, your PSG Zurich account and member data have been permanently deleted. You are welcome to join again at any time from the website.",
-      "footer": "If you did not request this, write to us immediately at {email}."
+      "footer": "If you did not request this, write to us immediately at <mail></mail>."
     },
     "waitlistPromoted": {
       "subject": "A place freed up: {event}",
@@ -351,7 +358,7 @@
       "heading": "Good news, {firstName}!",
       "body": "A place freed up for \"{event}\": you move from the waitlist to the confirmed list. If you can no longer come, cancel to give the place to someone else.",
       "cta": "See the event",
-      "footer": "A question? Write to us at {email}."
+      "footer": "A question? Write to us at <mail></mail>."
     },
     "newEvent": {
       "subject": "New event: {event}",

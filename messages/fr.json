@@ -171,7 +171,7 @@
         "active": "Votre adhésion est active. Bienvenue dans le club !",
         "expired": "Votre adhésion a expiré. Renouvelez votre cotisation pour la réactiver.",
         "suspended": "Votre adhésion est suspendue. Contactez le comité pour plus d'informations.",
-        "rejected": "Votre demande n'a pas été acceptée. Vous pouvez faire recours devant la prochaine assemblée générale : écrivez-nous à {email}."
+        "rejected": "Votre demande n'a pas été acceptée. Vous pouvez faire recours devant la prochaine assemblée générale : écrivez-nous à <mail></mail>."
       },
       "noProfile": "Aucun profil d'adhérent n'est lié à ce compte."
     },
@@ -287,6 +287,13 @@
     "title": "Page introuvable.",
     "backHome": "Retour à l'accueil"
   },
+  "ServerError": {
+    "title": "Une erreur est survenue.",
+    "body": "Ce n'est pas vous, c'est nous : la page n'a pas pu s'afficher. Réessayez dans un instant. Si le problème persiste, écrivez-nous à <mail></mail>.",
+    "retry": "Réessayer",
+    "backHome": "Retour à l'accueil",
+    "reference": "Référence : {digest}"
+  },
   "Footer": {
     "tagline": "Association officielle de supporters, certifiée par le Paris Saint-Germain.",
     "club": "Le club",
@@ -329,21 +336,21 @@
       "heading": "Bienvenue, {firstName} !",
       "body": "Le comité a accepté votre demande d'adhésion. Votre numéro de membre est {number}. Retrouvez vos informations et la suite des étapes dans votre espace membre.",
       "cta": "Accéder à mon espace",
-      "footer": "Une question ? Écrivez-nous à {email}."
+      "footer": "Une question ? Écrivez-nous à <mail></mail>."
     },
     "membershipRejected": {
       "subject": "Votre demande d'adhésion — PSG Zurich",
       "preview": "Réponse à votre demande d'adhésion",
       "heading": "Bonjour {firstName},",
       "body": "Après examen, le comité n'a pas pu donner une suite favorable à votre demande d'adhésion. Conformément aux statuts, vous pouvez faire recours devant la prochaine assemblée générale.",
-      "footer": "Pour toute question ou pour faire recours, écrivez-nous à {email}."
+      "footer": "Pour toute question ou pour faire recours, écrivez-nous à <mail></mail>."
     },
     "accountDeleted": {
       "subject": "Votre compte a été supprimé — PSG Zurich",
       "preview": "Confirmation de suppression de votre compte",
       "heading": "Compte supprimé",
       "body": "Comme demandé, votre compte PSG Zurich et vos données d'adhérent ont été définitivement supprimés. Vous pouvez nous rejoindre à nouveau à tout moment depuis le site.",
-      "footer": "Si vous n'êtes pas à l'origine de cette suppression, écrivez-nous immédiatement à {email}."
+      "footer": "Si vous n'êtes pas à l'origine de cette suppression, écrivez-nous immédiatement à <mail></mail>."
     },
     "waitlistPromoted": {
       "subject": "Une place s'est libérée : {event}",
@@ -351,7 +358,7 @@
       "heading": "Bonne nouvelle, {firstName} !",
       "body": "Une place s'est libérée pour « {event} » : vous passez de la liste d'attente aux inscrits. Si vous ne pouvez plus venir, désinscrivez-vous pour laisser la place à quelqu'un d'autre.",
       "cta": "Voir l'événement",
-      "footer": "Une question ? Écrivez-nous à {email}."
+      "footer": "Une question ? Écrivez-nous à <mail></mail>."
     },
     "newEvent": {
       "subject": "Nouvel événement : {event}",

@@ -171,7 +171,7 @@
         "active": "Deine Mitgliedschaft ist aktiv. Willkommen im Club!",
         "expired": "Deine Mitgliedschaft ist abgelaufen. Erneuere deinen Beitrag, um sie wieder zu aktivieren.",
         "suspended": "Deine Mitgliedschaft ist gesperrt. Kontaktiere den Vorstand für weitere Informationen.",
-        "rejected": "Dein Antrag wurde nicht angenommen. Du kannst an der nächsten Generalversammlung Rekurs einlegen: Schreib uns an {email}."
+        "rejected": "Dein Antrag wurde nicht angenommen. Du kannst an der nächsten Generalversammlung Rekurs einlegen: Schreib uns an <mail></mail>."
       },
       "noProfile": "Mit diesem Konto ist kein Mitgliederprofil verknüpft."
     },
@@ -287,6 +287,13 @@
     "title": "Seite nicht gefunden.",
     "backHome": "Zur Startseite"
   },
+  "ServerError": {
+    "title": "Ein Fehler ist aufgetreten.",
+    "body": "Es liegt nicht an Ihnen, sondern an uns: Die Seite konnte nicht angezeigt werden. Versuchen Sie es gleich noch einmal. Bleibt das Problem bestehen, schreiben Sie uns an <mail></mail>.",
+    "retry": "Erneut versuchen",
+    "backHome": "Zur Startseite",
+    "reference": "Referenz: {digest}"
+  },
   "Footer": {
     "tagline": "Offizieller Fanclub, zertifiziert von Paris Saint-Germain.",
     "club": "Der Club",
@@ -329,21 +336,21 @@
       "heading": "Willkommen, {firstName}!",
       "body": "Der Vorstand hat deinen Mitgliedschaftsantrag angenommen. Deine Mitgliedernummer lautet {number}. Deine Angaben und die nächsten Schritte findest du in deinem Mitgliederbereich.",
       "cta": "Zum Mitgliederbereich",
-      "footer": "Fragen? Schreib uns an {email}."
+      "footer": "Fragen? Schreib uns an <mail></mail>."
     },
     "membershipRejected": {
       "subject": "Dein Mitgliedschaftsantrag — PSG Zurich",
       "preview": "Antwort auf deinen Mitgliedschaftsantrag",
       "heading": "Hallo {firstName}",
       "body": "Nach Prüfung konnte der Vorstand deinen Mitgliedschaftsantrag leider nicht annehmen. Gemäss den Statuten kannst du an der nächsten Generalversammlung Rekurs einlegen.",
-      "footer": "Für Fragen oder einen Rekurs schreib uns an {email}."
+      "footer": "Für Fragen oder einen Rekurs schreib uns an <mail></mail>."
     },
     "accountDeleted": {
       "subject": "Dein Konto wurde gelöscht — PSG Zurich",
       "preview": "Bestätigung der Kontolöschung",
       "heading": "Konto gelöscht",
       "body": "Wie gewünscht wurden dein PSG-Zurich-Konto und deine Mitgliederdaten endgültig gelöscht. Du kannst jederzeit über die Website wieder beitreten.",
-      "footer": "Falls du das nicht veranlasst hast, schreib uns sofort an {email}."
+      "footer": "Falls du das nicht veranlasst hast, schreib uns sofort an <mail></mail>."
     },
     "waitlistPromoted": {
       "subject": "Ein Platz ist frei geworden: {event}",
@@ -351,7 +358,7 @@
       "heading": "Gute Nachricht, {firstName}!",
       "body": "Für «{event}» ist ein Platz frei geworden: Du rückst von der Warteliste nach. Falls du nicht mehr kommen kannst, melde dich ab, damit jemand anderes den Platz bekommt.",
       "cta": "Event ansehen",
-      "footer": "Fragen? Schreib uns an {email}."
+      "footer": "Fragen? Schreib uns an <mail></mail>."
     },
     "newEvent": {
       "subject": "Neues Event: {event}",
