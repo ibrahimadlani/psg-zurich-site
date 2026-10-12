@@ -91,7 +91,7 @@
     "optional": "Facultatif",
     "password": "Mot de passe",
     "passwordHint": "8 caractères minimum.",
-    "terms": "J'accepte les statuts de l'association et le traitement de mes données.",
+    "terms": "J'accepte les statuts de l'association et la <privacy>politique de confidentialité</privacy>.",
     "submit": "Créer mon compte",
     "submitting": "Création…",
     "haveAccount": "Déjà membre ?",
@@ -213,7 +213,9 @@
     "join": "Nous rejoindre",
     "contact": "Contact",
     "location": "Zurich, Suisse",
-    "official": "Supporters Club officiel du Paris Saint-Germain"
+    "official": "Supporters Club officiel du Paris Saint-Germain",
+    "imprint": "Mentions légales",
+    "privacy": "Confidentialité"
   },
   "Emails": {
     "resetPassword": {
@@ -231,6 +233,16 @@
       "body": "Cliquez sur le bouton ci-dessous pour confirmer votre adresse e-mail et activer votre compte. Ce lien est valable 24 heures.",
       "cta": "Confirmer mon adresse",
       "ignore": "Si vous n'avez pas créé de compte, ignorez simplement cet e-mail."
+    }
+  },
+  "Legal": {
+    "label": "Documents légaux",
+    "eyebrow": "Informations légales",
+    "updated": "Mis à jour le {date}",
+    "onThisPage": "Sur cette page",
+    "question": {
+      "imprint": "Une question ?",
+      "privacy": "Une question sur vos données ?"
     }
   }
 }

@@ -156,7 +156,14 @@ export function MembershipForm() {
                 {...register("acceptTerms")}
               />
               <span>
-                {t("terms")}
+                {t.rich("terms", {
+                  // New tab: the form keeps what was typed.
+                  privacy: (chunks) => (
+                    <a href={`/${locale}/confidentialite`} target="_blank" className="text-foreground underline underline-offset-2">
+                      {chunks}
+                    </a>
+                  ),
+                })}
                 {errors.acceptTerms ? (
                   <span className="mt-1 block text-destructive">{t("termsRequired")}</span>
                 ) : null}
