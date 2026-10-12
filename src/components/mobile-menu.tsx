@@ -1,14 +1,18 @@
 "use client";
 
-import { ArrowRight, Moon, Sun } from "lucide-react";
+import { ArrowRight, LayoutDashboard, LogOut, Moon, Sun, UserRound } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
 import { NAV_ITEMS } from "@/components/main-nav";
 import { toggleTheme } from "@/components/theme-toggle";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { UserAvatar } from "@/components/user-avatar";
+import { useSignOut } from "@/components/user-nav";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { useSession } from "@/lib/auth-client";
+import { hasRole } from "@/lib/roles";
 import { cn } from "@/lib/utils";
 
 const line = "absolute left-0 top-1/2 -mt-[1.25px] block h-[2.5px] w-full rounded-full bg-current";
@@ -32,7 +36,6 @@ export function MobileMenu() {
   const t = useTranslations("Nav");
   const tLocale = useTranslations("LocaleSwitcher");
   const tTheme = useTranslations("ThemeToggle");
-  const tLogin = useTranslations("Login");
   const locale = useLocale();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -47,9 +50,9 @@ export function MobileMenu() {
         showCloseButton={false}
         aria-describedby={undefined}
         className="w-[88vw] max-w-sm gap-0 border-l-0 bg-background p-0 duration-300 data-[side=right]:data-closed:slide-out-to-right data-[side=right]:data-open:slide-in-from-right"
-        // Any link inside closes the menu (navigation keeps this component mounted).
+        // Any link (or [data-close-menu] control) inside closes the menu (navigation keeps this component mounted).
         onClick={(event) => {
-          if ((event.target as HTMLElement).closest("a")) setOpen(false);
+          if ((event.target as HTMLElement).closest("a, [data-close-menu]")) setOpen(false);
         }}
       >
         <SheetTitle className="sr-only">{t("label")}</SheetTitle>
@@ -120,17 +123,64 @@ export function MobileMenu() {
               {tTheme("short")}
             </button>
           </div>
-          {pathname.startsWith("/connexion") ? null : (
-            <Link
-              href="/espace-membre"
-              className="group flex h-11 items-center justify-center gap-2 rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
-            >
-              {tLogin("submit")}
-              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
-            </Link>
-          )}
+          <MobileAccount />
         </div>
       </SheetContent>
     </Sheet>
+  );
+}
+
+const accountLink =
+  "flex h-10 items-center gap-2.5 rounded-[7px] px-2.5 text-[14px] text-foreground transition-colors hover:bg-foreground/5 [&_svg]:size-4 [&_svg]:text-muted-foreground";
+
+/** Bottom of the side menu: sign-in button, or the signed-in member with account links. */
+function MobileAccount() {
+  const t = useTranslations("Nav");
+  const tMember = useTranslations("MemberArea");
+  const tLogin = useTranslations("Login");
+  const pathname = usePathname();
+  const { data, isPending } = useSession();
+  const handleSignOut = useSignOut();
+
+  if (isPending) return <span aria-hidden className="block h-11 rounded-[8px] bg-foreground/5" />;
+
+  if (!data) {
+    if (pathname.startsWith("/connexion")) return null;
+    return (
+      <Link
+        href="/espace-membre"
+        className="group flex h-11 items-center justify-center gap-2 rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
+      >
+        {tLogin("submit")}
+        <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
+      </Link>
+    );
+  }
+
+  const { user } = data;
+  return (
+    <div className="space-y-1">
+      <div className="flex items-center gap-3 pb-2">
+        <UserAvatar name={user.name} email={user.email} image={user.image} className="size-10 text-[12px]" />
+        <span className="min-w-0">
+          <span className="block truncate text-[15px] font-semibold">{user.name || user.email}</span>
+          <span className="block truncate text-xs text-muted-foreground">{user.email}</span>
+        </span>
+      </div>
+      <Link href="/espace-membre" className={accountLink}>
+        <UserRound aria-hidden />
+        {t("memberArea")}
+      </Link>
+      {hasRole(user.role, "admin") ? (
+        <Link href="/admin" className={accountLink}>
+          <LayoutDashboard aria-hidden />
+          {t("admin")}
+        </Link>
+      ) : null}
+      <button type="button" data-close-menu onClick={handleSignOut} className={`${accountLink} w-full cursor-pointer`}>
+        <LogOut aria-hidden />
+        {tMember("signOut")}
+      </button>
+    </div>
   );
 }
