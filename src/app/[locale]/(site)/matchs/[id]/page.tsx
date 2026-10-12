@@ -33,8 +33,8 @@ async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
   const t = await getTranslations("Matches");
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
-  const clubEvents = await getEventsWithAttendance(eq(events.matchId, id), member?.id ?? null);
-  const visibleEvents = access === "guest" ? clubEvents.filter((event) => !event.membersOnly) : clubEvents;
+  // Club events are for accepted members only.
+  const visibleEvents = access === "member" ? await getEventsWithAttendance(eq(events.matchId, id), member?.id ?? null) : [];
 
   return (
     <div className="space-y-6">
@@ -63,7 +63,17 @@ async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_21rem]">
         <section className="order-2 space-y-3 lg:order-1">
           <h2 className="text-lg font-semibold">{t("clubEventsTitle")}</h2>
-          {visibleEvents.length > 0 ? (
+          {access !== "member" ? (
+            <p className="text-sm text-muted-foreground">
+              {t.rich("clubEventsMembersOnly", {
+                link: (chunks) => (
+                  <Link href="/evenements" className="underline underline-offset-2 hover:text-foreground">
+                    {chunks}
+                  </Link>
+                ),
+              })}
+            </p>
+          ) : visibleEvents.length > 0 ? (
             visibleEvents.map((event) => <EventCard key={event.id} event={event} access={access} showMatch={false} />)
           ) : (
             <p className="text-sm text-muted-foreground">{t("noClubEvents")}</p>

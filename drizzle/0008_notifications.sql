@@ -1,0 +1,1 @@
+ALTER TABLE `members` ADD `notifications_seen_at` datetime(3);

@@ -4,14 +4,15 @@ import { db } from "@/db";
 import { events } from "@/db/schema";
 import { buildCalendar, icsResponse } from "@/lib/ics";
 import { ESTIMATED_DURATION_MS } from "@/lib/matches";
-import { getSession } from "@/lib/permissions";
+import { getCurrentMember } from "@/lib/members";
 
-/** One club event as a .ics file ("Add to my calendar"); members-only events need a session. */
+/** One club event as a .ics file ("Add to my calendar"), for accepted members. */
 export async function GET(request: Request, { params }: RouteContext<"/api/calendar/event/[id]">) {
   await connection();
   const { id } = await params;
-  const [event] = await db.select().from(events).where(eq(events.id, id));
-  if (!event || (event.membersOnly && !(await getSession()))) return new Response("Not found", { status: 404 });
+  const member = await getCurrentMember();
+  const [event] = member?.status === "active" ? await db.select().from(events).where(eq(events.id, id)) : [];
+  if (!event) return new Response("Not found", { status: 404 });
 
   const origin = new URL(request.url).origin;
   const body = buildCalendar({

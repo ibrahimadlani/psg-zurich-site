@@ -17,6 +17,54 @@
     "close": "Fermer",
     "settings": "Paramètres"
   },
+  "EventsShowcase": {
+    "kinds": {
+      "watch_party": "Les grands matchs sur écran géant, dans un bar de Zurich, entre supporters et en tenue.",
+      "away_trip": "En car ou en train jusqu'au Parc des Princes et sur les routes d'Europe, billets et trajet organisés.",
+      "members_match": "Nos propres matchs entre membres, sur un terrain de la région : tout le monde joue.",
+      "social": "Soirées, assemblée générale, repas de fin de saison : les moments pour se retrouver hors des matchs."
+    },
+    "ctaTitle": "Le programme est réservé aux membres",
+    "ctaBody": "Dates, lieux, places et inscriptions sont visibles une fois membre du club.",
+    "pending": "Votre adhésion est en cours de validation : le programme apparaîtra ici dès qu'elle sera acceptée.",
+    "join": "Adhérer",
+    "signIn": "Déjà membre ? <link>Se connecter</link>"
+  },
+  "Contact": {
+    "title": "Contact",
+    "intro": "Une question sur le club, l'adhésion, un déplacement ou un partenariat ? Écrivez-nous, le comité vous répond.",
+    "writeTitle": "Écrivez-nous",
+    "writeBody": "Le comité répond en général sous 48 heures.",
+    "copy": "Copier l'adresse",
+    "copied": "Adresse copiée",
+    "joinTitle": "Rejoindre le club",
+    "joinBody": "Toutes les infos et le formulaire d'adhésion sont en ligne.",
+    "joinLink": "Adhérer",
+    "partnersTitle": "Partenariats et presse",
+    "partnersBody": "Bars, sponsors, médias : parlons d'un projet ensemble.",
+    "partnersLink": "Nous écrire",
+    "partnersSubject": "Partenariat / presse",
+    "mapLabel": "Carte de Zurich",
+    "location": "Zurich, Suisse",
+    "openMap": "Ouvrir dans Google Maps"
+  },
+  "Notifications": {
+    "label": "Notifications",
+    "labelUnread": "Notifications ({count} non lues)",
+    "loading": "Chargement…",
+    "empty": "Rien de nouveau pour l'instant.",
+    "manage": "Gérer les e-mails de notification",
+    "predictionBody": "PSG – {opponent} : à vous de jouer avant le coup d'envoi.",
+    "pointsBody": "{count, plural, =0 {0 point} one {# point} other {# points}} sur PSG – {opponent}",
+    "membershipBody": "Votre adhésion a été acceptée. Bienvenue au club !",
+    "kinds": {
+      "article": "Nouvel article",
+      "event": "Nouvel événement",
+      "prediction": "Pronostic à faire",
+      "points": "Résultat de votre pronostic",
+      "membership": "Adhésion"
+    }
+  },
   "LocaleSwitcher": {
     "label": "Langue",
     "fr": "Français",
@@ -452,6 +500,7 @@
     "addToCalendar": "Ajouter à mon agenda",
     "clubEventsTitle": "Avec le club",
     "noClubEvents": "Aucun événement du club prévu pour ce match.",
+    "clubEventsMembersOnly": "Les événements du club autour de ce match sont réservés aux membres. <link>Découvrir ce qu'on organise</link>",
     "backToMatches": "Tous les matchs",
     "result": {
       "win": "V",
@@ -542,6 +591,7 @@
     "loading": "Chargement des événements…",
     "empty": "Aucun événement à venir pour le moment.",
     "membersOnly": "Membres",
+    "teaser": "Réservé aux membres du club.",
     "linkedMatch": "Match : PSG – {opponent}",
     "placesLeft": "{count, plural, one {# place restante} other {# places restantes}}",
     "full": "Complet",

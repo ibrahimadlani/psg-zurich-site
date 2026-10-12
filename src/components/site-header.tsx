@@ -1,16 +1,14 @@
 import { BrandLogo } from "@/components/brand-logo";
-import { LocaleSwitcher } from "@/components/locale-switcher";
+import { HeaderTools } from "@/components/header-tools";
 import { MainNav } from "@/components/main-nav";
 import { MobileMenu } from "@/components/mobile-menu";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { UserNav } from "@/components/user-nav";
 
 export function HeaderActions() {
   return (
     <>
       <div className="hidden shrink-0 items-center gap-1 md:flex">
-        <LocaleSwitcher />
-        <ThemeToggle />
+        <HeaderTools />
         <UserNav />
       </div>
       {/* Below md: everything moves into the side menu. */}
@@ -21,7 +19,7 @@ export function HeaderActions() {
   );
 }
 
-/** Logo on the left, language and theme switches on the right. */
+/** Logo on the left; on the right, language and theme (visitors) or notifications and settings (members). */
 export function BrandBar() {
   return (
     <div className="relative mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]">

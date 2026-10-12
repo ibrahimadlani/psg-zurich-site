@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { EventCard } from "@/components/events/event-card";
+import { EventsShowcase } from "@/components/events/events-showcase";
 import { PageHeader } from "@/components/page-header";
 import { getEventsWithAttendance, upcomingEvents } from "@/lib/events";
 import { getCurrentMember } from "@/lib/members";
@@ -18,8 +19,9 @@ async function EventsContent() {
   const t = await getTranslations("Events");
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   const access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
-  const all = await getEventsWithAttendance(upcomingEvents(), member?.id ?? null);
-  const visible = access === "guest" ? all.filter((event) => !event.membersOnly) : all;
+  // The programme is for accepted members; everyone else gets the illustrated showcase.
+  if (access !== "member") return <EventsShowcase pending={access === "inactive"} />;
+  const visible = await getEventsWithAttendance(upcomingEvents(), member?.id ?? null);
 
   return visible.length > 0 ? (
     <div className="space-y-3">

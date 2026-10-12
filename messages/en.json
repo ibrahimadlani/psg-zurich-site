@@ -17,6 +17,54 @@
     "close": "Close",
     "settings": "Settings"
   },
+  "EventsShowcase": {
+    "kinds": {
+      "watch_party": "The big games on a giant screen in a Zurich bar, among supporters, colours on.",
+      "away_trip": "By coach or train to the Parc des Princes and across Europe, tickets and travel organised.",
+      "members_match": "Our own matches between members on a local pitch: everyone plays.",
+      "social": "Evenings, the general assembly, the end-of-season dinner: time together away from the games."
+    },
+    "ctaTitle": "The programme is for members",
+    "ctaBody": "Dates, places, spots and sign-ups are visible once you are a member of the club.",
+    "pending": "Your membership is being reviewed: the programme will appear here as soon as it is accepted.",
+    "join": "Join",
+    "signIn": "Already a member? <link>Sign in</link>"
+  },
+  "Contact": {
+    "title": "Contact",
+    "intro": "A question about the club, membership, an away trip or a partnership? Write to us, the committee will reply.",
+    "writeTitle": "Write to us",
+    "writeBody": "The committee usually replies within 48 hours.",
+    "copy": "Copy address",
+    "copied": "Address copied",
+    "joinTitle": "Join the club",
+    "joinBody": "All the details and the membership form are online.",
+    "joinLink": "Join",
+    "partnersTitle": "Partnerships and press",
+    "partnersBody": "Bars, sponsors, media: let's talk about a project together.",
+    "partnersLink": "Write to us",
+    "partnersSubject": "Partnership / press",
+    "mapLabel": "Map of Zurich",
+    "location": "Zurich, Switzerland",
+    "openMap": "Open in Google Maps"
+  },
+  "Notifications": {
+    "label": "Notifications",
+    "labelUnread": "Notifications ({count} unread)",
+    "loading": "Loading…",
+    "empty": "Nothing new for now.",
+    "manage": "Manage notification emails",
+    "predictionBody": "PSG – {opponent}: make your call before kick-off.",
+    "pointsBody": "{count, plural, =0 {0 points} one {# point} other {# points}} on PSG – {opponent}",
+    "membershipBody": "Your membership has been accepted. Welcome to the club!",
+    "kinds": {
+      "article": "New article",
+      "event": "New event",
+      "prediction": "Prediction to make",
+      "points": "Your prediction result",
+      "membership": "Membership"
+    }
+  },
   "LocaleSwitcher": {
     "label": "Language",
     "fr": "Français",
@@ -452,6 +500,7 @@
     "addToCalendar": "Add to my calendar",
     "clubEventsTitle": "With the club",
     "noClubEvents": "No club event planned for this match.",
+    "clubEventsMembersOnly": "The club's events around this match are for members. <link>See what we organise</link>",
     "backToMatches": "All matches",
     "result": {
       "win": "W",
@@ -542,6 +591,7 @@
     "loading": "Loading events…",
     "empty": "No upcoming events for now.",
     "membersOnly": "Members",
+    "teaser": "For club members only.",
     "linkedMatch": "Match: PSG – {opponent}",
     "placesLeft": "{count, plural, one {# place left} other {# places left}}",
     "full": "Full",

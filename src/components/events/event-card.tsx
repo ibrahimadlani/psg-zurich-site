@@ -1,4 +1,4 @@
-import { Lock, MapPin, Users } from "lucide-react";
+import { MapPin, Users } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { EventSignup } from "@/components/events/event-signup";
 import { Badge } from "@/components/ui/badge";
@@ -25,12 +25,6 @@ export function EventCard({
       <div className="min-w-0 space-y-2">
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="secondary">{t(`types.${event.type}`)}</Badge>
-          {event.membersOnly ? (
-            <Badge variant="outline" className="gap-1">
-              <Lock className="size-3" aria-hidden />
-              {t("membersOnly")}
-            </Badge>
-          ) : null}
         </div>
         <h3 className="text-base font-semibold">
           <Link href={`/evenements/${event.id}`} className="underline-offset-2 hover:underline">

@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
-import { ArrowLeft, Lock } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
@@ -10,7 +10,7 @@ import { MatchMiniCard } from "@/components/matches/match-mini-card";
 import { PredictionCard, type Access } from "@/components/matches/prediction-card";
 import { db } from "@/db";
 import { events } from "@/db/schema";
-import { Link } from "@/i18n/navigation";
+import { Link, redirect } from "@/i18n/navigation";
 import { eventPhase, getEventsWithAttendance } from "@/lib/events";
 import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
@@ -20,17 +20,11 @@ import { getSession } from "@/lib/permissions";
 export const instant = false;
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/evenements/[id]">): Promise<Metadata> {
-  const [event] = await db
-    .select({ title: events.title, description: events.description, membersOnly: events.membersOnly })
-    .from(events)
-    .where(eq(events.id, (await params).id));
-  // Members-only events: no title for visitors (the page itself is a 404 for them), never indexed.
-  if (!event || (event.membersOnly && !(await getSession()))) return {};
-  return {
-    title: event.title,
-    description: event.membersOnly ? undefined : event.description?.slice(0, 160),
-    robots: event.membersOnly ? { index: false } : undefined,
-  };
+  // Events are for members only: no title for anyone else, never indexed.
+  const member = await getCurrentMember();
+  if (member?.status !== "active") return { robots: { index: false } };
+  const [event] = await db.select({ title: events.title }).from(events).where(eq(events.id, (await params).id));
+  return { title: event?.title, robots: { index: false } };
 }
 
 // Phones: label + action on the first line, the value full width below. From sm: three columns.
@@ -49,9 +43,10 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
 
+  // Events are for accepted members: anyone else lands on the showcase.
+  if (access !== "member") redirect({ href: "/evenements", locale: await getLocale() });
   const [event] = await getEventsWithAttendance(eq(events.id, id), member?.id ?? null);
-  // Members-only events don't exist for visitors (they are hidden from every list too).
-  if (!event || (event.membersOnly && access === "guest")) notFound();
+  if (!event) notFound();
   const match = event.matchId ? await getMatch(event.matchId) : null;
 
   const full = event.capacity !== null && event.registered >= event.capacity;
@@ -76,12 +71,6 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
             <span className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
               {format.dateTime(event.startsAt, { weekday: "short", day: "numeric", month: "short" })}
             </span>
-            {event.membersOnly ? (
-              <span className="inline-flex items-center gap-1 font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-                <Lock className="size-3" aria-hidden />
-                {t("membersOnly")}
-              </span>
-            ) : null}
           </div>
           {/* Long titles: smaller on phones, balanced lines, words may wrap rather than overflow. */}
           <h1 className="font-narrow text-[length:clamp(34px,7vw,60px)] leading-[0.92] font-extrabold tracking-[-0.01em] text-balance [overflow-wrap:anywhere] hyphens-auto uppercase italic">

@@ -17,6 +17,54 @@
     "close": "Schließen",
     "settings": "Einstellungen"
   },
+  "EventsShowcase": {
+    "kinds": {
+      "watch_party": "Die grossen Spiele auf Grossleinwand in einer Zürcher Bar, unter Fans und in den Farben.",
+      "away_trip": "Mit Car oder Zug in den Parc des Princes und quer durch Europa, Tickets und Reise organisiert.",
+      "members_match": "Unsere eigenen Spiele unter Mitgliedern auf einem Platz in der Region: Alle spielen mit.",
+      "social": "Abende, Generalversammlung, Saisonabschlussessen: Zeit miteinander abseits der Spiele."
+    },
+    "ctaTitle": "Das Programm ist Mitgliedern vorbehalten",
+    "ctaBody": "Daten, Orte, Plätze und Anmeldungen siehst du, sobald du Mitglied des Clubs bist.",
+    "pending": "Dein Antrag wird geprüft: Das Programm erscheint hier, sobald er angenommen ist.",
+    "join": "Beitreten",
+    "signIn": "Schon Mitglied? <link>Anmelden</link>"
+  },
+  "Contact": {
+    "title": "Kontakt",
+    "intro": "Eine Frage zum Club, zur Mitgliedschaft, zu einer Auswärtsfahrt oder einer Partnerschaft? Schreib uns, der Vorstand antwortet.",
+    "writeTitle": "Schreib uns",
+    "writeBody": "Der Vorstand antwortet in der Regel innerhalb von 48 Stunden.",
+    "copy": "Adresse kopieren",
+    "copied": "Adresse kopiert",
+    "joinTitle": "Mitglied werden",
+    "joinBody": "Alle Infos und das Beitrittsformular findest du online.",
+    "joinLink": "Beitreten",
+    "partnersTitle": "Partnerschaften und Presse",
+    "partnersBody": "Bars, Sponsoren, Medien: Lass uns über ein Projekt sprechen.",
+    "partnersLink": "Schreib uns",
+    "partnersSubject": "Partnerschaft / Presse",
+    "mapLabel": "Karte von Zürich",
+    "location": "Zürich, Schweiz",
+    "openMap": "In Google Maps öffnen"
+  },
+  "Notifications": {
+    "label": "Benachrichtigungen",
+    "labelUnread": "Benachrichtigungen ({count} ungelesen)",
+    "loading": "Wird geladen…",
+    "empty": "Im Moment nichts Neues.",
+    "manage": "Benachrichtigungs-E-Mails verwalten",
+    "predictionBody": "PSG – {opponent}: Tippe vor dem Anpfiff.",
+    "pointsBody": "{count, plural, =0 {0 Punkte} one {# Punkt} other {# Punkte}} bei PSG – {opponent}",
+    "membershipBody": "Deine Mitgliedschaft wurde angenommen. Willkommen im Club!",
+    "kinds": {
+      "article": "Neuer Artikel",
+      "event": "Neue Veranstaltung",
+      "prediction": "Tipp abgeben",
+      "points": "Ergebnis deines Tipps",
+      "membership": "Mitgliedschaft"
+    }
+  },
   "LocaleSwitcher": {
     "label": "Sprache",
     "fr": "Français",
@@ -452,6 +500,7 @@
     "addToCalendar": "Zu meinem Kalender hinzufügen",
     "clubEventsTitle": "Mit dem Club",
     "noClubEvents": "Für dieses Spiel ist kein Club-Event geplant.",
+    "clubEventsMembersOnly": "Die Clubveranstaltungen rund um dieses Spiel sind Mitgliedern vorbehalten. <link>Entdecke, was wir organisieren</link>",
     "backToMatches": "Alle Spiele",
     "result": {
       "win": "S",
@@ -542,6 +591,7 @@
     "loading": "Events werden geladen…",
     "empty": "Im Moment keine kommenden Events.",
     "membersOnly": "Mitglieder",
+    "teaser": "Nur für Clubmitglieder.",
     "linkedMatch": "Spiel: PSG – {opponent}",
     "placesLeft": "{count, plural, one {# Platz frei} other {# Plätze frei}}",
     "full": "Ausgebucht",

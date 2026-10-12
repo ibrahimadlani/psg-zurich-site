@@ -26,7 +26,8 @@ async function MatchesContent() {
   const ids = season.map((match) => match.id);
 
   const [eventCounts, myPredictions] = await Promise.all([
-    ids.length
+    // Club events are for accepted members only.
+    member?.status === "active" && ids.length
       ? db.select({ matchId: events.matchId, value: count() }).from(events).where(inArray(events.matchId, ids)).groupBy(events.matchId)
       : [],
     member?.status === "active" && ids.length

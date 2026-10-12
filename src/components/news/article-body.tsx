@@ -1,4 +1,5 @@
-import { Info, TriangleAlert } from "lucide-react";
+import { ArrowRight, Info, Lock, TriangleAlert } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { Access } from "@/components/matches/prediction-card";
 import { EventCard } from "@/components/events/event-card";
 import { MatchRow } from "@/components/matches/match-row";
@@ -6,12 +7,34 @@ import { RichText } from "@/components/news/rich-text";
 import type { Block } from "@/lib/article-blocks";
 import type { EventView } from "@/lib/events";
 import type { Match } from "@/lib/matches";
+import { Link } from "@/i18n/navigation";
+import type { EVENT_TYPES } from "@/db/schema";
 import { cn } from "@/lib/utils";
 
 export type BlockRefs = { matches: Map<string, Match>; events: Map<string, EventView> };
 
 const mediaUrl = (id: string) => `/api/v1/media/${id}`;
 const caption = "text-center text-[13px] leading-snug text-muted-foreground";
+
+/** Event block for non-members: its kind only, and a way to the events showcase. */
+function EventTeaser({ type }: { type: (typeof EVENT_TYPES)[number] }) {
+  const t = useTranslations("Events");
+  return (
+    <Link
+      href="/evenements"
+      className="group flex items-center gap-3 rounded-[12px] border bg-card/70 p-4 text-sm transition-colors hover:border-foreground/25"
+    >
+      <span className="grid size-9 shrink-0 place-items-center rounded-full bg-foreground/5 text-muted-foreground">
+        <Lock className="size-4" aria-hidden />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block font-semibold">{t(`types.${type}`)}</span>
+        <span className="block text-muted-foreground">{t("teaser")}</span>
+      </span>
+      <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
+    </Link>
+  );
+}
 
 function BlockView({ block, refs, access }: { block: Block; refs: BlockRefs; access: Access }) {
   switch (block.type) {
@@ -127,7 +150,9 @@ function BlockView({ block, refs, access }: { block: Block; refs: BlockRefs; acc
     }
     case "event": {
       const event = refs.events.get(block.eventId);
-      return event && (!event.membersOnly || access !== "guest") ? <EventCard event={event} access={access} /> : null;
+      if (!event) return null;
+      // Events are for accepted members: everyone else sees a pointer to the showcase.
+      return access === "member" ? <EventCard event={event} access={access} /> : <EventTeaser type={event.type} />;
     }
   }
 }

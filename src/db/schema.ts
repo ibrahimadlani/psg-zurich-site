@@ -163,6 +163,8 @@ export const members = mysqlTable(
     hideFromLeaderboard: boolean("hide_from_leaderboard").default(false).notNull(),
     notifyEvents: boolean("notify_events").default(true).notNull(),
     notifyPredictionReminders: boolean("notify_prediction_reminders").default(true).notNull(),
+    /** Last time the member opened the notification bell: newer items count as unread. */
+    notificationsSeenAt: datetime("notifications_seen_at", { fsp: 3 }),
     ...timestamps(),
   },
   (t) => [index("members_status_idx").on(t.status)],
