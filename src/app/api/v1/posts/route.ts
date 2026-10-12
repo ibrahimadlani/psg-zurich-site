@@ -1,9 +1,10 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, lte } from "drizzle-orm";
 import { db } from "@/db";
 import { posts } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { requireRole } from "@/lib/permissions";
+import { postValues } from "@/lib/posts";
 import { createPostSchema, postsQuery } from "@/lib/validators";
 
 export const GET = apiHandler(async (request) => {
@@ -19,7 +20,7 @@ export const GET = apiHandler(async (request) => {
       publishedAt: posts.publishedAt,
     })
     .from(posts)
-    .where(and(eq(posts.status, "published"), locale ? eq(posts.locale, locale) : undefined))
+    .where(and(eq(posts.status, "published"), lte(posts.publishedAt, new Date()), locale ? eq(posts.locale, locale) : undefined))
     .orderBy(desc(posts.publishedAt))
     .limit(limit)
     .offset(offset);
@@ -30,14 +31,10 @@ export const POST = apiHandler(async (request) => {
   const session = await requireRole("admin");
   const input = await parseBody(request, createPostSchema);
 
+  const id = crypto.randomUUID();
+  const values = await postValues(input, id);
   const created = await db.transaction(async (tx) => {
-    const id = crypto.randomUUID();
-    await tx.insert(posts).values({
-      ...input,
-      id,
-      authorId: session.user.id,
-      publishedAt: input.status === "published" ? new Date() : null,
-    });
+    await tx.insert(posts).values({ ...values, id, authorId: session.user.id });
     await writeAuditLog(
       {
         actorId: session.user.id,

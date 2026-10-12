@@ -8,8 +8,10 @@ import {
   MATCH_VENUES,
   MEMBER_STATUSES,
   POLL_STATUSES,
+  POST_CATEGORIES,
   POST_STATUSES,
 } from "@/db/schema";
+import { blocksSchema } from "@/lib/article-blocks";
 
 const text = (max: number) => z.string().trim().min(1).max(max);
 const optionalText = (max: number) => z.string().trim().max(max).optional();
@@ -27,18 +29,31 @@ export const postsQuery = pagination.extend({
   locale: z.enum(LOCALES).optional(),
 });
 
+/** Article from the CMS (create and full update). */
 export const createPostSchema = z.object({
   slug: z
     .string()
     .trim()
+    .min(1)
     .max(191)
     .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, "Lowercase letters, digits and dashes only."),
   locale: z.enum(LOCALES).default("fr"),
   title: text(255),
   excerpt: optionalText(500),
-  content: z.string().min(1),
-  imageUrl: z.url().max(512).optional(),
+  category: z.enum(POST_CATEGORIES).default("club"),
+  byline: optionalText(80),
+  /** Cover: /api/v1/media/<id> (or an absolute https URL). */
+  imageUrl: z
+    .string()
+    .max(512)
+    .regex(/^(\/api\/v1\/media\/[\w-]+|https:\/\/\S+)$/)
+    .optional(),
+  blocks: blocksSchema,
+  /** Post id this one translates (sets the translation group). */
+  translationOf: z.uuid().optional(),
   status: z.enum(POST_STATUSES).default("draft"),
+  /** Publication date; in the future = scheduled. Defaults to now when published. */
+  publishedAt: z.iso.datetime({ offset: true }).transform((value) => new Date(value)).optional(),
 });
 
 /* --------------------------------- Matches -------------------------------- */

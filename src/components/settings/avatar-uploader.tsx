@@ -7,25 +7,7 @@ import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar";
 import { useRouter } from "@/i18n/navigation";
 import { useSession } from "@/lib/auth-client";
-
-const SIZE = 256;
-
-/** Centre square of the picture, resized to 256 px, as WebP (PNG where the browser can't). */
-async function toAvatarBlob(file: File): Promise<Blob> {
-  const bitmap = await createImageBitmap(file);
-  const side = Math.min(bitmap.width, bitmap.height);
-  const canvas = document.createElement("canvas");
-  canvas.width = SIZE;
-  canvas.height = SIZE;
-  const context = canvas.getContext("2d");
-  if (!context) throw new Error("Canvas unavailable");
-  context.imageSmoothingQuality = "high";
-  context.drawImage(bitmap, (bitmap.width - side) / 2, (bitmap.height - side) / 2, side, side, 0, 0, SIZE, SIZE);
-  bitmap.close();
-  return new Promise((resolve, reject) =>
-    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("Encoding failed"))), "image/webp", 0.85),
-  );
-}
+import { resizeImage } from "@/lib/image-resize";
 
 /** Profile photo: pick, crop and shrink in the browser, upload; or remove it. */
 export function AvatarUploader({ name, email, image }: { name: string; email: string; image: string | null }) {
@@ -41,7 +23,7 @@ export function AvatarUploader({ name, email, image }: { name: string; email: st
     startTransition(async () => {
       setFailed(false);
       try {
-        const blob = await toAvatarBlob(file);
+        const { blob } = await resizeImage(file, 256, true);
         const response = await fetch("/api/v1/me/avatar", { method: "PUT", body: blob });
         if (!response.ok) throw new Error(String(response.status));
         const { data } = (await response.json()) as { data: { image: string } };

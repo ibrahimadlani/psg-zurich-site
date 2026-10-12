@@ -243,7 +243,9 @@
     "description": "Verwaltung von Inhalten und Mitgliedern.",
     "loading": "Berechtigungen werden geprüft…",
     "forbidden": "Zugriff nur für Administratoren.",
-    "welcome": "Willkommen, {name}."
+    "welcome": "Willkommen, {name}.",
+    "newsCard": "News",
+    "newsCardDescription": "Artikel der Website schreiben und veröffentlichen."
   },
   "AdminBanner": {
     "title": "Hinweisbanner",
@@ -762,6 +764,171 @@
       "hideDescription": "Andere Mitglieder sehen dich nicht mehr; du siehst deinen Rang weiterhin.",
       "data": "Meine Daten",
       "dataDescription": "Eine Kopie deiner Daten oder die endgültige Löschung des Kontos."
+    }
+  },
+  "News": {
+    "title": "News",
+    "intro": "Das Neueste aus dem Verein.",
+    "all": "Alle",
+    "categoriesLabel": "Kategorien",
+    "categories": {
+      "club": "Vereinsleben",
+      "trips": "Auswärtsfahrten",
+      "events": "Events"
+    },
+    "latest": "Neu",
+    "read": "Artikel lesen",
+    "empty": "Noch keine News in dieser Kategorie.",
+    "back": "Alle News",
+    "readingTime": "{minutes} Min. Lesezeit",
+    "copy": "Link kopieren",
+    "copied": "Link kopiert",
+    "more": "Weiterlesen",
+    "seeAll": "Alle ansehen",
+    "defaultByline": "Der Vorstand"
+  },
+  "Cms": {
+    "title": "News",
+    "description": "Artikel der Website schreiben, planen und veröffentlichen.",
+    "new": "Neuer Artikel",
+    "editTitle": "Artikel bearbeiten",
+    "backToAdmin": "Administration",
+    "forbidden": "Nur für Administratoren.",
+    "empty": "Noch keine Artikel.",
+    "updated": "bearbeitet {date}",
+    "states": {
+      "draft": "Entwurf",
+      "scheduled": "Geplant",
+      "published": "Veröffentlicht"
+    },
+    "scheduledFor": "Geplant · {date}",
+    "edit": "Bearbeiten",
+    "preview": "Vorschau",
+    "unsaved": "Ungespeicherte Änderungen",
+    "upToDate": "Gespeichert",
+    "viewPublic": "Artikel ansehen",
+    "saving": "Speichern…",
+    "saveDraft": "Entwurf speichern",
+    "schedule": "Planen",
+    "publish": "Veröffentlichen",
+    "savedDraft": "Entwurf gespeichert.",
+    "savedScheduled": "Artikel geplant.",
+    "savedPublished": "Artikel veröffentlicht.",
+    "saveError": "Speichern fehlgeschlagen: Titel und Blöcke prüfen.",
+    "slugTaken": "Diese Adresse (Slug) wird bereits von einem anderen Artikel verwendet.",
+    "uploadError": "Das Bild konnte nicht hochgeladen werden.",
+    "confirmDelete": "Diesen Artikel endgültig löschen?",
+    "delete": "Artikel löschen",
+    "untitled": "Ohne Titel",
+    "titlePlaceholder": "Titel des Artikels",
+    "excerptPlaceholder": "Lead: ein oder zwei Sätze, die Lust aufs Lesen machen.",
+    "publication": "Veröffentlichung",
+    "modes": {
+      "draft": "Entwurf",
+      "publish": "Veröffentlichen",
+      "schedule": "Planen"
+    },
+    "publishAt": "Datum und Uhrzeit",
+    "category": "Kategorie",
+    "language": "Sprache",
+    "languages": {
+      "fr": "Français",
+      "en": "English",
+      "de": "Deutsch"
+    },
+    "translationOf": "Übersetzung von",
+    "original": "Originalartikel",
+    "byline": "Autor",
+    "slug": "Adresse (Slug)",
+    "cover": "Titelbild",
+    "noCover": "Kein Titelbild",
+    "chooseCover": "Bild auswählen",
+    "replaceCover": "Ersetzen",
+    "removeCover": "Entfernen",
+    "uploading": "Hochladen…",
+    "editor": {
+      "addBlock": "Block hinzufügen",
+      "empty": "Der Artikel ist leer: Füge einen ersten Block hinzu.",
+      "moveUp": "Nach oben",
+      "moveDown": "Nach unten",
+      "duplicate": "Duplizieren",
+      "remove": "Block löschen",
+      "bold": "Fett",
+      "italic": "Kursiv",
+      "link": "Link",
+      "linkPrompt": "Linkadresse (https://…)",
+      "linkText": "Linktext",
+      "paragraphPlaceholder": "Schreib deinen Text…",
+      "headingPlaceholder": "Zwischentitel",
+      "quotePlaceholder": "Das Zitat",
+      "citePlaceholder": "Autor des Zitats",
+      "numbered": "Nummeriert",
+      "bulleted": "Aufzählung",
+      "addItem": "Element hinzufügen",
+      "removeItem": "Element entfernen",
+      "chooseImage": "Bild auswählen",
+      "replaceImage": "Bild ersetzen",
+      "addImages": "Fotos hinzufügen",
+      "removeImage": "Foto entfernen",
+      "galleryHint": "{count} / 6 Fotos (mindestens 2)",
+      "uploading": "Hochladen…",
+      "uploadFailed": "Hochladen fehlgeschlagen.",
+      "altPlaceholder": "Bildbeschreibung (Barrierefreiheit)",
+      "captionPlaceholder": "Legende (optional)",
+      "calloutPlaceholder": "Text des Hinweises",
+      "tones": {
+        "info": "Info",
+        "important": "Wichtig"
+      },
+      "videoInvalid": "YouTube-Link nicht erkannt.",
+      "chooseMatch": "Spiel auswählen",
+      "chooseEvent": "Event auswählen",
+      "types": {
+        "paragraph": {
+          "label": "Absatz",
+          "hint": "Text mit fett, kursiv, Links"
+        },
+        "heading": {
+          "label": "Zwischentitel",
+          "hint": "Abschnittstitel"
+        },
+        "quote": {
+          "label": "Zitat",
+          "hint": "Grosses Zitat mit Autor"
+        },
+        "list": {
+          "label": "Liste",
+          "hint": "Aufzählung oder nummeriert"
+        },
+        "divider": {
+          "label": "Trenner",
+          "hint": "Pause zwischen zwei Teilen"
+        },
+        "image": {
+          "label": "Bild",
+          "hint": "Foto in voller Breite mit Legende"
+        },
+        "gallery": {
+          "label": "Galerie",
+          "hint": "2 bis 6 Fotos"
+        },
+        "callout": {
+          "label": "Hinweis",
+          "hint": "Information oder wichtiger Punkt"
+        },
+        "video": {
+          "label": "YouTube-Video",
+          "hint": "Link zu einem Video"
+        },
+        "match": {
+          "label": "Spielkarte",
+          "hint": "Resultat und Wappen eines Spiels"
+        },
+        "event": {
+          "label": "Event-Karte",
+          "hint": "Mit Anmeldeknopf"
+        }
+      }
     }
   }
 }

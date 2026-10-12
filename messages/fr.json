@@ -243,7 +243,9 @@
     "description": "Gestion du contenu et des membres.",
     "loading": "Vérification des droits…",
     "forbidden": "Accès réservé aux administrateurs.",
-    "welcome": "Bienvenue, {name}."
+    "welcome": "Bienvenue, {name}.",
+    "newsCard": "Actualités",
+    "newsCardDescription": "Rédiger et publier les articles du site."
   },
   "AdminBanner": {
     "title": "Bannière d'annonce",
@@ -762,6 +764,171 @@
       "hideDescription": "Les autres membres ne vous voient plus ; vous voyez toujours votre rang.",
       "data": "Mes données",
       "dataDescription": "Copie de vos données ou suppression définitive du compte."
+    }
+  },
+  "News": {
+    "title": "Actualités",
+    "intro": "Les dernières nouvelles de l'association.",
+    "all": "Tout",
+    "categoriesLabel": "Catégories",
+    "categories": {
+      "club": "Vie du club",
+      "trips": "Déplacements",
+      "events": "Événements"
+    },
+    "latest": "À la une",
+    "read": "Lire l'article",
+    "empty": "Aucune actualité dans cette catégorie pour le moment.",
+    "back": "Toutes les actualités",
+    "readingTime": "{minutes} min de lecture",
+    "copy": "Copier le lien",
+    "copied": "Lien copié",
+    "more": "À lire aussi",
+    "seeAll": "Tout voir",
+    "defaultByline": "Le comité"
+  },
+  "Cms": {
+    "title": "Actualités",
+    "description": "Rédigez, programmez et publiez les articles du site.",
+    "new": "Nouvel article",
+    "editTitle": "Modifier l'article",
+    "backToAdmin": "Administration",
+    "forbidden": "Réservé aux administrateurs.",
+    "empty": "Aucun article pour l'instant.",
+    "updated": "modifié {date}",
+    "states": {
+      "draft": "Brouillon",
+      "scheduled": "Programmé",
+      "published": "Publié"
+    },
+    "scheduledFor": "Programmé · {date}",
+    "edit": "Édition",
+    "preview": "Aperçu",
+    "unsaved": "Modifications non enregistrées",
+    "upToDate": "Enregistré",
+    "viewPublic": "Voir l'article",
+    "saving": "Enregistrement…",
+    "saveDraft": "Enregistrer le brouillon",
+    "schedule": "Programmer",
+    "publish": "Publier",
+    "savedDraft": "Brouillon enregistré.",
+    "savedScheduled": "Article programmé.",
+    "savedPublished": "Article publié.",
+    "saveError": "L'enregistrement a échoué : vérifiez le titre et les blocs.",
+    "slugTaken": "Cette adresse (slug) est déjà utilisée par un autre article.",
+    "uploadError": "L'image n'a pas pu être envoyée.",
+    "confirmDelete": "Supprimer définitivement cet article ?",
+    "delete": "Supprimer l'article",
+    "untitled": "Sans titre",
+    "titlePlaceholder": "Titre de l'article",
+    "excerptPlaceholder": "Chapô : une ou deux phrases qui donnent envie de lire.",
+    "publication": "Publication",
+    "modes": {
+      "draft": "Brouillon",
+      "publish": "Publier",
+      "schedule": "Programmer"
+    },
+    "publishAt": "Date et heure de publication",
+    "category": "Catégorie",
+    "language": "Langue",
+    "languages": {
+      "fr": "Français",
+      "en": "English",
+      "de": "Deutsch"
+    },
+    "translationOf": "Traduction de",
+    "original": "Article original",
+    "byline": "Signature",
+    "slug": "Adresse (slug)",
+    "cover": "Image de couverture",
+    "noCover": "Pas de couverture",
+    "chooseCover": "Choisir une image",
+    "replaceCover": "Remplacer",
+    "removeCover": "Retirer",
+    "uploading": "Envoi…",
+    "editor": {
+      "addBlock": "Ajouter un bloc",
+      "empty": "L'article est vide : ajoutez un premier bloc.",
+      "moveUp": "Monter",
+      "moveDown": "Descendre",
+      "duplicate": "Dupliquer",
+      "remove": "Supprimer le bloc",
+      "bold": "Gras",
+      "italic": "Italique",
+      "link": "Lien",
+      "linkPrompt": "Adresse du lien (https://…)",
+      "linkText": "texte du lien",
+      "paragraphPlaceholder": "Écrivez votre texte…",
+      "headingPlaceholder": "Intertitre",
+      "quotePlaceholder": "La citation",
+      "citePlaceholder": "Auteur de la citation",
+      "numbered": "Numérotée",
+      "bulleted": "À puces",
+      "addItem": "Ajouter un élément",
+      "removeItem": "Retirer l'élément",
+      "chooseImage": "Choisir une image",
+      "replaceImage": "Remplacer l'image",
+      "addImages": "Ajouter des photos",
+      "removeImage": "Retirer la photo",
+      "galleryHint": "{count} / 6 photos (2 minimum)",
+      "uploading": "Envoi…",
+      "uploadFailed": "Échec de l'envoi.",
+      "altPlaceholder": "Description de l'image (accessibilité)",
+      "captionPlaceholder": "Légende (facultatif)",
+      "calloutPlaceholder": "Texte de l'encadré",
+      "tones": {
+        "info": "Info",
+        "important": "Important"
+      },
+      "videoInvalid": "Lien YouTube non reconnu.",
+      "chooseMatch": "Choisir un match",
+      "chooseEvent": "Choisir un événement",
+      "types": {
+        "paragraph": {
+          "label": "Paragraphe",
+          "hint": "Texte avec gras, italique, liens"
+        },
+        "heading": {
+          "label": "Intertitre",
+          "hint": "Titre de section"
+        },
+        "quote": {
+          "label": "Citation",
+          "hint": "Grande citation avec auteur"
+        },
+        "list": {
+          "label": "Liste",
+          "hint": "À puces ou numérotée"
+        },
+        "divider": {
+          "label": "Séparateur",
+          "hint": "Pause entre deux parties"
+        },
+        "image": {
+          "label": "Image",
+          "hint": "Photo pleine largeur et légende"
+        },
+        "gallery": {
+          "label": "Galerie",
+          "hint": "2 à 6 photos"
+        },
+        "callout": {
+          "label": "Encadré",
+          "hint": "Information ou point important"
+        },
+        "video": {
+          "label": "Vidéo YouTube",
+          "hint": "Lien d'une vidéo"
+        },
+        "match": {
+          "label": "Carte match",
+          "hint": "Score et logos d'un match"
+        },
+        "event": {
+          "label": "Carte événement",
+          "hint": "Avec bouton d'inscription"
+        }
+      }
     }
   }
 }

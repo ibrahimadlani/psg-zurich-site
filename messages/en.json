@@ -243,7 +243,9 @@
     "description": "Content and member management.",
     "loading": "Checking permissions…",
     "forbidden": "Administrators only.",
-    "welcome": "Welcome, {name}."
+    "welcome": "Welcome, {name}.",
+    "newsCard": "News",
+    "newsCardDescription": "Write and publish the website's articles."
   },
   "AdminBanner": {
     "title": "Announcement banner",
@@ -762,6 +764,171 @@
       "hideDescription": "Other members no longer see you; you still see your rank.",
       "data": "My data",
       "dataDescription": "A copy of your data, or permanent deletion of the account."
+    }
+  },
+  "News": {
+    "title": "News",
+    "intro": "The latest from the club.",
+    "all": "All",
+    "categoriesLabel": "Categories",
+    "categories": {
+      "club": "Club life",
+      "trips": "Away trips",
+      "events": "Events"
+    },
+    "latest": "Latest",
+    "read": "Read the article",
+    "empty": "No news in this category yet.",
+    "back": "All news",
+    "readingTime": "{minutes} min read",
+    "copy": "Copy link",
+    "copied": "Link copied",
+    "more": "Read next",
+    "seeAll": "See all",
+    "defaultByline": "The committee"
+  },
+  "Cms": {
+    "title": "News",
+    "description": "Write, schedule and publish the website's articles.",
+    "new": "New article",
+    "editTitle": "Edit article",
+    "backToAdmin": "Administration",
+    "forbidden": "Administrators only.",
+    "empty": "No articles yet.",
+    "updated": "edited {date}",
+    "states": {
+      "draft": "Draft",
+      "scheduled": "Scheduled",
+      "published": "Published"
+    },
+    "scheduledFor": "Scheduled · {date}",
+    "edit": "Edit",
+    "preview": "Preview",
+    "unsaved": "Unsaved changes",
+    "upToDate": "Saved",
+    "viewPublic": "View article",
+    "saving": "Saving…",
+    "saveDraft": "Save draft",
+    "schedule": "Schedule",
+    "publish": "Publish",
+    "savedDraft": "Draft saved.",
+    "savedScheduled": "Article scheduled.",
+    "savedPublished": "Article published.",
+    "saveError": "Saving failed: check the title and the blocks.",
+    "slugTaken": "This address (slug) is already used by another article.",
+    "uploadError": "The image could not be uploaded.",
+    "confirmDelete": "Permanently delete this article?",
+    "delete": "Delete article",
+    "untitled": "Untitled",
+    "titlePlaceholder": "Article title",
+    "excerptPlaceholder": "Standfirst: one or two sentences that make people want to read.",
+    "publication": "Publication",
+    "modes": {
+      "draft": "Draft",
+      "publish": "Publish",
+      "schedule": "Schedule"
+    },
+    "publishAt": "Publication date and time",
+    "category": "Category",
+    "language": "Language",
+    "languages": {
+      "fr": "Français",
+      "en": "English",
+      "de": "Deutsch"
+    },
+    "translationOf": "Translation of",
+    "original": "Original article",
+    "byline": "Byline",
+    "slug": "Address (slug)",
+    "cover": "Cover image",
+    "noCover": "No cover",
+    "chooseCover": "Choose an image",
+    "replaceCover": "Replace",
+    "removeCover": "Remove",
+    "uploading": "Uploading…",
+    "editor": {
+      "addBlock": "Add a block",
+      "empty": "The article is empty: add a first block.",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "duplicate": "Duplicate",
+      "remove": "Delete block",
+      "bold": "Bold",
+      "italic": "Italic",
+      "link": "Link",
+      "linkPrompt": "Link address (https://…)",
+      "linkText": "link text",
+      "paragraphPlaceholder": "Write your text…",
+      "headingPlaceholder": "Subheading",
+      "quotePlaceholder": "The quote",
+      "citePlaceholder": "Quote author",
+      "numbered": "Numbered",
+      "bulleted": "Bulleted",
+      "addItem": "Add an item",
+      "removeItem": "Remove item",
+      "chooseImage": "Choose an image",
+      "replaceImage": "Replace image",
+      "addImages": "Add photos",
+      "removeImage": "Remove photo",
+      "galleryHint": "{count} / 6 photos (at least 2)",
+      "uploading": "Uploading…",
+      "uploadFailed": "Upload failed.",
+      "altPlaceholder": "Image description (accessibility)",
+      "captionPlaceholder": "Caption (optional)",
+      "calloutPlaceholder": "Callout text",
+      "tones": {
+        "info": "Info",
+        "important": "Important"
+      },
+      "videoInvalid": "YouTube link not recognised.",
+      "chooseMatch": "Choose a match",
+      "chooseEvent": "Choose an event",
+      "types": {
+        "paragraph": {
+          "label": "Paragraph",
+          "hint": "Text with bold, italic, links"
+        },
+        "heading": {
+          "label": "Subheading",
+          "hint": "Section title"
+        },
+        "quote": {
+          "label": "Quote",
+          "hint": "Large quote with author"
+        },
+        "list": {
+          "label": "List",
+          "hint": "Bulleted or numbered"
+        },
+        "divider": {
+          "label": "Divider",
+          "hint": "Break between two parts"
+        },
+        "image": {
+          "label": "Image",
+          "hint": "Full-width photo and caption"
+        },
+        "gallery": {
+          "label": "Gallery",
+          "hint": "2 to 6 photos"
+        },
+        "callout": {
+          "label": "Callout",
+          "hint": "Information or key point"
+        },
+        "video": {
+          "label": "YouTube video",
+          "hint": "Link to a video"
+        },
+        "match": {
+          "label": "Match card",
+          "hint": "Score and crests of a match"
+        },
+        "event": {
+          "label": "Event card",
+          "hint": "With sign-up button"
+        }
+      }
     }
   }
 }

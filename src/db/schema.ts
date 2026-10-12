@@ -173,6 +173,9 @@ export const members = mysqlTable(
 /* -------------------------------------------------------------------------- */
 
 export const POST_STATUSES = ["draft", "published"] as const;
+/** Fixed news categories (tabs of /actualites). Order = MySQL enum order: append only. */
+export const POST_CATEGORIES = ["club", "trips", "events"] as const;
+export type PostCategory = (typeof POST_CATEGORIES)[number];
 
 export const posts = mysqlTable(
   "posts",
@@ -182,8 +185,14 @@ export const posts = mysqlTable(
     locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
     title: varchar("title", { length: 255 }).notNull(),
     excerpt: varchar("excerpt", { length: 500 }),
+    /** JSON list of article blocks (see src/lib/article-blocks.ts). */
     content: mediumtext("content").notNull(),
     imageUrl: varchar("image_url", { length: 512 }),
+    category: mysqlEnum("category", POST_CATEGORIES).default("club").notNull(),
+    /** Same value on an article and its translations. */
+    translationGroup: varchar("translation_group", { length: 36 }),
+    /** Signature shown on the article ("Le comité", "Pôle déplacements"…). */
+    byline: varchar("byline", { length: 80 }),
     status: mysqlEnum("status", POST_STATUSES).default("draft").notNull(),
     publishedAt: datetime("published_at"),
     authorId: fk("author_id").references(() => user.id, {
@@ -191,7 +200,10 @@ export const posts = mysqlTable(
     }),
     ...timestamps(),
   },
-  (t) => [index("posts_listing_idx").on(t.status, t.locale, t.publishedAt)],
+  (t) => [
+    index("posts_listing_idx").on(t.status, t.locale, t.publishedAt),
+    index("posts_translation_idx").on(t.translationGroup),
+  ],
 );
 
 /* -------------------------------------------------------------------------- */
@@ -512,4 +524,15 @@ export const avatars = mysqlTable("avatars", {
     .references(() => user.id, { onDelete: "cascade" }),
   data: blob("data").notNull(),
   updatedAt: dateTime3("updated_at").notNull(),
+});
+
+/** Images of the news articles, already resized to WebP by the browser. */
+export const media = mysqlTable("media", {
+  id: id(),
+  data: blob("data").notNull(),
+  contentType: varchar("content_type", { length: 32 }).notNull(),
+  width: int("width").notNull(),
+  height: int("height").notNull(),
+  uploadedBy: fk("uploaded_by").references(() => user.id, { onDelete: "set null" }),
+  createdAt: createdAt(),
 });
