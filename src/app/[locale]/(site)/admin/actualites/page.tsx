@@ -1,7 +1,7 @@
 import { desc } from "drizzle-orm";
 import { ArrowLeft, Plus } from "lucide-react";
 import type { Metadata } from "next";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getNow, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +21,7 @@ async function PostList() {
   const t = await getTranslations("Cms");
   const tNews = await getTranslations("News");
   const format = await getFormatter();
+  const now = await getNow();
   if (!(await requireCmsAccess())) return <p className="text-destructive">{t("forbidden")}</p>;
 
   const rows = await db.select().from(posts).orderBy(desc(posts.updatedAt));
@@ -35,7 +36,7 @@ async function PostList() {
               <span className="min-w-0 flex-1">
                 <span className="block truncate font-medium">{post.title}</span>
                 <span className="block truncate text-xs text-muted-foreground">
-                  {tNews(`categories.${post.category}`)} · {post.locale.toUpperCase()} · {t("updated", { date: format.relativeTime(post.updatedAt) })}
+                  {tNews(`categories.${post.category}`)} · {post.locale.toUpperCase()} · {t("updated", { date: format.relativeTime(post.updatedAt, now) })}
                 </span>
               </span>
               <Badge variant={state === "published" ? "default" : state === "scheduled" ? "secondary" : "outline"}>

@@ -19,6 +19,8 @@ import { getSession } from "@/lib/permissions";
 export const instant = false;
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/actualites/[slug]">): Promise<Metadata> {
+  // Visibility depends on the current time (scheduled articles): request time only.
+  await connection();
   const found = await getArticle((await params).slug, (await getLocale()) as Locale);
   if (!found) return {};
   const { post } = found;

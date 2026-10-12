@@ -1,7 +1,7 @@
 "use client";
 
 import { Laptop, Smartphone } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useFormatter, useNow, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { authClient, useSession } from "@/lib/auth-client";
@@ -43,6 +43,8 @@ const maskIp = (ip: string | null | undefined) => (ip ? ip.replace(/^(\d+\.\d+)\
 export function DevicesSection() {
   const t = useTranslations("Settings.account");
   const format = useFormatter();
+  // Refreshed every minute: "active 3 minutes ago" stays right.
+  const now = useNow({ updateInterval: 60_000 });
   const { data } = useSession();
   const currentToken = data?.session.token;
   const [devices, setDevices] = useState<Device[] | null>(null);
@@ -100,7 +102,7 @@ export function DevicesSection() {
                   {current ? <span className="ml-2 text-xs font-normal text-ok">{t("thisDevice")}</span> : null}
                 </p>
                 <p className="truncate text-xs text-muted-foreground">
-                  {[maskIp(device.ipAddress), t("lastActive", { date: format.relativeTime(device.updatedAt) })]
+                  {[maskIp(device.ipAddress), t("lastActive", { date: format.relativeTime(device.updatedAt, now) })]
                     .filter(Boolean)
                     .join(" · ")}
                 </p>

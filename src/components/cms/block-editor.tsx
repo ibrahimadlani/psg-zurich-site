@@ -111,7 +111,7 @@ function RichTextArea({
         value={value}
         placeholder={placeholder}
         onChange={(event) => onChange(event.target.value)}
-        className={cn("block w-full resize-none bg-transparent px-3 py-2 outline-none [field-sizing:content]", large ? "min-h-24 text-[15px] leading-relaxed" : "min-h-16 text-sm")}
+        className={cn("block w-full resize-none overflow-hidden bg-transparent px-3 py-2 outline-none [field-sizing:content]", large ? "min-h-24 text-[15px] leading-relaxed" : "min-h-16 text-sm")}
       />
     </div>
   );

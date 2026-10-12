@@ -149,7 +149,7 @@ export function PostEditor({
   return (
     <div className="space-y-6">
       {/* Sticky action bar: edit / preview, save state, save. */}
-      <div className="sticky top-0 z-20 -mx-4 flex flex-wrap items-center gap-3 border-b bg-background/85 px-4 py-3 backdrop-blur">
+      <div className="sticky top-0 z-20 -mx-4 flex items-center gap-3 border-b bg-background/85 px-4 py-3 backdrop-blur">
         <div className="inline-flex rounded-lg border p-0.5 text-sm">
           {[
             { value: false, icon: PenLine, label: t("edit") },
@@ -169,10 +169,13 @@ export function PostEditor({
             </button>
           ))}
         </div>
-        <span className={cn("text-xs", dirty ? "text-psg-red" : "text-muted-foreground")}>{dirty ? t("unsaved") : t("upToDate")}</span>
+        <span className={cn("flex items-center gap-1.5 text-xs", dirty ? "text-psg-red" : "text-muted-foreground")}>
+          <span aria-hidden className={cn("size-1.5 rounded-full sm:hidden", dirty ? "bg-psg-red" : "bg-ok")} />
+          <span className="max-sm:sr-only">{dirty ? t("unsaved") : t("upToDate")}</span>
+        </span>
         <div className="ml-auto flex items-center gap-2">
           {publicUrl ? (
-            <a href={publicUrl} target="_blank" rel="noreferrer" className="text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline">
+            <a href={publicUrl} target="_blank" rel="noreferrer" className="hidden text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline sm:inline">
               {t("viewPublic")}
             </a>
           ) : null}
@@ -216,7 +219,8 @@ export function PostEditor({
               }}
               placeholder={t("titlePlaceholder")}
               rows={1}
-              className="w-full resize-none bg-transparent font-narrow text-[length:clamp(30px,5vw,48px)] leading-[0.95] font-extrabold uppercase italic outline-none [field-sizing:content] placeholder:text-muted-foreground/50"
+              // Accents of the first line need room above the capitals.
+              className="w-full resize-none overflow-hidden bg-transparent pt-[0.2em] font-narrow text-[length:clamp(30px,5vw,48px)] leading-[1.02] font-extrabold uppercase italic outline-none [field-sizing:content] placeholder:text-muted-foreground/50"
             />
             <textarea
               value={current.excerpt}

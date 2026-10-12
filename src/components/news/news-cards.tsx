@@ -5,7 +5,7 @@ import { Link } from "@/i18n/navigation";
 import type { Post } from "@/lib/news";
 import { cn } from "@/lib/utils";
 
-/** Cover, or the site's diagonal lines with the crest when the article has none. */
+/** Cover, or the crest on PSG blue with the site's diagonal lines when the article has none. */
 export function NewsCover({ post, className, priority = false }: { post: Post; className?: string; priority?: boolean }) {
   return (
     <div className={cn("relative overflow-hidden bg-card", className)}>
@@ -18,8 +18,14 @@ export function NewsCover({ post, className, priority = false }: { post: Post; c
           className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       ) : (
-        <div className="grid size-full place-items-center bg-diagonal">
-          <Image src="/brand/psg-crest.svg" alt="" width={56} height={56} className="size-14 opacity-25" />
+        <div className="grid size-full place-items-center bg-psg-blue [background-image:repeating-linear-gradient(135deg,rgb(255_255_255/0.08)_0_1px,transparent_1px_14px)]">
+          <Image
+            src="/brand/psg-crest.svg"
+            alt=""
+            width={64}
+            height={64}
+            className="size-[clamp(40px,22%,72px)] opacity-90 drop-shadow-[0_6px_16px_rgb(0_0_0/0.35)] transition-transform duration-500 group-hover:scale-105"
+          />
         </div>
       )}
     </div>
