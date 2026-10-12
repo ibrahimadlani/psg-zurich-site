@@ -6,7 +6,7 @@ b:"/_next/static/chunks/1u5olzoilm1hn.js"
 c:"/_next/static/chunks/450nfjx_hm5n1.js"
 d:"/_next/static/chunks/2lnxihaqcrv_0.js"
 e:"/_next/static/chunks/0cc7fgy1vig40.js"
-f:"/_next/static/chunks/0f4lyphka4frn.js"
+f:"/_next/static/chunks/0q_p3nw1zw_hg.js"
 10:"/_next/static/chunks/0cm378vxxfnat.js"
 11:I[77105,["$b","$c","$d","$e","$f","$10"],"default"]
 12:I[5500,["$b","$c","$d","$e","$f","$10"],"Image"]
@@ -15,32 +15,33 @@ f:"/_next/static/chunks/0f4lyphka4frn.js"
 15:I[68739,["$b","$c","$d","$e","$f","$10"],"UserNav"]
 16:I[90036,["$b","$c","$d","$e","$f","$10"],"MobileMenu"]
 17:I[8895,["$b","$c","$d","$e","$f","$10"],"MainNav"]
-18:I[28420,["$b","$c","$d","$e","$f","$10"],"LoginForm"]
-19:I[97367,["$4"],"OutletBoundary"]
-1a:"$Sreact.suspense"
-1e:"ViewportBoundary"
-1f:I[97367,["$4"],"$1e"]
-20:"MetadataBoundary"
-21:I[97367,["$4"],"$20"]
-22:I[27201,["$4"],"IconMark"]
+18:"$Sreact.view_transition"
+19:I[28420,["$b","$c","$d","$e","$f","$10"],"LoginForm"]
+1a:I[97367,["$4"],"OutletBoundary"]
+1b:"$Sreact.suspense"
+1f:"ViewportBoundary"
+20:I[97367,["$4"],"$1f"]
+21:"MetadataBoundary"
+22:I[97367,["$4"],"$21"]
+23:I[27201,["$4"],"IconMark"]
 8:X
 8:C
 9:X
 9:300
 9:C
-1d:X
-1d:C
-a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"relative flex flex-1 flex-col overflow-hidden leading-[normal]","children":[["$","header",null,{"className":"relative","children":[["$","div",null,{"className":"relative mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]","children":[["$","$L11",null,{"href":"/de","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"aria-label":"PSG Supporters Club Zurich","className":"flex min-w-0 items-center gap-[clamp(8px,2.5vw,12px)] text-primary dark:text-foreground","children":[["$","$L12",null,{"src":"/brand/psg-crest.svg","alt":"","width":36,"height":36,"preload":true,"className":"block h-auto w-[clamp(30px,8.5vw,36px)] shrink-0 drop-shadow-[0_4px_8px_oklch(0.2_0.05_248/0.2)]"}],["$","span",null,{"className":"inline-flex flex-col items-stretch gap-1 leading-none uppercase","children":[["$","span",null,{"aria-hidden":true,"className":"flex justify-between text-[length:clamp(19px,5.4vw,23px)] leading-none font-semibold [text-box:trim-both_cap_alphabetic]","children":[["$","span","0",{"children":"Z"}],["$","span","1",{"children":"U"}],["$","span","2",{"children":"R"}],["$","span","3",{"children":"I"}],["$","span","4",{"children":"C"}],["$","span","5",{"children":"H"}]]}],["$","span",null,{"className":"-mr-[0.08em] font-wide text-[length:clamp(6px,1.75vw,7.4px)] leading-none font-semibold tracking-[0.08em] whitespace-nowrap [text-box:trim-both_cap_alphabetic]","children":"Supporters Club"}]]}]]}],[["$","div",null,{"className":"hidden shrink-0 items-center gap-1 md:flex","children":[["$","$L13",null,{}],["$","$L14",null,{}],["$","$L15",null,{}]]}],["$","div",null,{"className":"md:hidden","children":["$","$L16",null,{}]}]]]}],["$","$L17",null,{}]]}],["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12","children":["$","div",null,{"className":"flex w-full max-w-[360px] flex-col gap-[22px]","children":[["$","div",null,{"className":"flex flex-col gap-2 text-center","children":[["$","h1",null,{"className":"font-narrow text-[length:clamp(32px,6vw,44px)] leading-[0.95] font-extrabold uppercase italic","children":"Anmelden"}],["$","p",null,{"className":"text-[15px] leading-normal text-pretty text-muted-foreground","children":"Zugang zu deinem Mitgliederbereich."}]]}],[["$","$L18",null,{}],["$","p",null,{"className":"text-center text-[14px] text-muted-foreground","children":["Noch kein Mitglied?"," ",["$","$L11",null,{"href":"/de/adhesion","localeCookie":"$a:0:1:d:r:props:children:0:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"border-b pb-0.5 text-foreground transition-colors hover:border-brand-red","children":"Mitglied werden"}]]}]]]}]}],["$","footer",null,{"className":"relative border-t","children":["$","p",null,{"className":"mx-auto max-w-5xl px-4 py-6 text-center text-[14px] text-muted-foreground","children":"Offizieller Fanclub, zertifiziert von Paris Saint-Germain."}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/2lnxihaqcrv_0.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0cc7fgy1vig40.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0f4lyphka4frn.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0cm378vxxfnat.js","async":true}]],["$","$L19",null,{"children":["$","$1a",null,{"name":"Next.MetadataOutlet","children":"$@1b"}]}]]}],"p":"$@1c","v":"$1d","s":"$9"}}]]
+1e:X
+1e:C
+a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"relative flex flex-1 flex-col overflow-hidden leading-[normal]","children":[["$","header",null,{"className":"relative","children":[["$","div",null,{"className":"relative mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]","children":[["$","$L11",null,{"href":"/de","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"aria-label":"PSG Supporters Club Zurich","className":"flex min-w-0 items-center gap-[clamp(8px,2.5vw,12px)] text-primary dark:text-foreground","children":[["$","$L12",null,{"src":"/brand/psg-crest.svg","alt":"","width":36,"height":36,"preload":true,"className":"block h-auto w-[clamp(30px,8.5vw,36px)] shrink-0 drop-shadow-[0_4px_8px_oklch(0.2_0.05_248/0.2)]"}],["$","span",null,{"className":"inline-flex flex-col items-stretch gap-1 leading-none uppercase","children":[["$","span",null,{"aria-hidden":true,"className":"flex justify-between text-[length:clamp(19px,5.4vw,23px)] leading-none font-semibold [text-box:trim-both_cap_alphabetic]","children":[["$","span","0",{"children":"Z"}],["$","span","1",{"children":"U"}],["$","span","2",{"children":"R"}],["$","span","3",{"children":"I"}],["$","span","4",{"children":"C"}],["$","span","5",{"children":"H"}]]}],["$","span",null,{"className":"-mr-[0.08em] font-wide text-[length:clamp(6px,1.75vw,7.4px)] leading-none font-semibold tracking-[0.08em] whitespace-nowrap [text-box:trim-both_cap_alphabetic]","children":"Supporters Club"}]]}]]}],[["$","div",null,{"className":"hidden shrink-0 items-center gap-1 md:flex","children":[["$","$L13",null,{}],["$","$L14",null,{}],["$","$L15",null,{}]]}],["$","div",null,{"className":"md:hidden","children":["$","$L16",null,{}]}]]]}],["$","$L17",null,{}]]}],["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12","children":["$","$18",null,{"default":"page","children":["$","div",null,{"className":"flex w-full max-w-[360px] flex-col gap-[22px]","children":[["$","div",null,{"className":"flex flex-col gap-2 text-center","children":[["$","h1",null,{"className":"font-narrow text-[length:clamp(32px,6vw,44px)] leading-[0.95] font-extrabold uppercase italic","children":"Anmelden"}],["$","p",null,{"className":"text-[15px] leading-normal text-pretty text-muted-foreground","children":"Zugang zu deinem Mitgliederbereich."}]]}],[["$","$L19",null,{}],["$","p",null,{"className":"text-center text-[14px] text-muted-foreground","children":["Noch kein Mitglied?"," ",["$","$L11",null,{"href":"/de/adhesion","localeCookie":"$a:0:1:d:r:props:children:0:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"border-b pb-0.5 text-foreground transition-colors hover:border-brand-red","children":"Mitglied werden"}]]}]]]}]}]}],["$","footer",null,{"className":"relative border-t","children":["$","p",null,{"className":"mx-auto max-w-5xl px-4 py-6 text-center text-[14px] text-muted-foreground","children":"Offizieller Fanclub, zertifiziert von Paris Saint-Germain."}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/2lnxihaqcrv_0.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0cc7fgy1vig40.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0q_p3nw1zw_hg.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/0cm378vxxfnat.js","async":true}]],["$","$L1a",null,{"children":["$","$1b",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]]}],"p":"$@1d","v":"$1e","s":"$9"}}]]
 2:[["children",{"s":"connexion","h":49218,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
-24:X
-24:C
-27:X
-27:T6,locale27:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L21",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Anmelden · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L22","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@23","v":"$24","s":"$9"}},"a":"$@25","u":"$@26","b":"o-sbA0MhTXj2cYXD2Hs3o","r":"$27"}
-1b:null
-26:false
-25:null
+25:X
+25:C
+28:X
+28:T6,locale28:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L22",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Anmelden · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L23","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@24","v":"$25","s":"$9"}},"a":"$@26","u":"$@27","b":"KQ3Ik1ymijqe6zPS5ABQH","r":"$28"}
+1c:null
+27:false
+26:null
 7:"$undefined"
-23:"$undefined"
-1c:"$undefined"
+24:"$undefined"
+1d:"$undefined"
