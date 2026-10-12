@@ -32,7 +32,7 @@ export async function GET(request: Request) {
       summary: `PSG Zurich · ${event.title}`,
       description: event.description,
       location: event.location,
-      url: `${origin}/fr/evenements`,
+      url: `${origin}/fr/evenements/${event.id}`,
       updatedAt: event.updatedAt,
     })),
   ];

@@ -145,7 +145,7 @@ export async function sendWaitlistPromotion(memberId: string, eventId: string) {
       to: member.email,
       subject: t("subject", values),
       react: createElement(AuthLinkEmail, {
-        url: `${siteUrl()}/${locale}/evenements`,
+        url: `${siteUrl()}/${locale}/evenements/${eventId}`,
         locale,
         texts: {
           preview: t("preview", values),

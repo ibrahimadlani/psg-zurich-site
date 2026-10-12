@@ -1,4 +1,4 @@
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { ArrowLeft, CalendarPlus, MapPin, Whistle } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
@@ -6,14 +6,12 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { EventCard } from "@/components/events/event-card";
-import { PredictionForm } from "@/components/matches/prediction-form";
+import { PredictionCard, type Access } from "@/components/matches/prediction-card";
 import { Scoreboard } from "@/components/matches/scoreboard";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { db } from "@/db";
-import { events, predictions } from "@/db/schema";
+import { events } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { getEventsWithAttendance } from "@/lib/events";
-import { getMatch, isPredictionOpen, matchTitle } from "@/lib/matches";
+import { getMatch, matchTitle } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 
@@ -26,14 +24,6 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/matchs/[
   return { title: match ? `${matchTitle(match, "PSG")} · ${match.competition}` : undefined };
 }
 
-/** Distribution of the community's predictions (shown once predictions are closed). */
-async function communityStats(matchId: string) {
-  const rows = await db.select({ psg: predictions.psgScore, other: predictions.opponentScore }).from(predictions).where(eq(predictions.matchId, matchId));
-  const win = rows.filter((row) => row.psg > row.other).length;
-  const draw = rows.filter((row) => row.psg === row.other).length;
-  return { total: rows.length, win, draw, loss: rows.length - win - draw };
-}
-
 async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
   await connection();
   const { id } = await params;
@@ -41,18 +31,9 @@ async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
   if (!match) notFound();
 
   const t = await getTranslations("Matches");
-  const tp = await getTranslations("Predictions");
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
-  const access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
-  const open = isPredictionOpen(match);
-
-  const [clubEvents, [mine], stats] = await Promise.all([
-    getEventsWithAttendance(eq(events.matchId, id), member?.id ?? null),
-    access === "member" && member
-      ? db.select().from(predictions).where(and(eq(predictions.matchId, id), eq(predictions.memberId, member.id)))
-      : Promise.resolve([]),
-    open ? null : communityStats(id),
-  ]);
+  const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
+  const clubEvents = await getEventsWithAttendance(eq(events.matchId, id), member?.id ?? null);
   const visibleEvents = access === "guest" ? clubEvents.filter((event) => !event.membersOnly) : clubEvents;
 
   return (
@@ -78,7 +59,6 @@ async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
         </a>
       </div>
 
-
       {/* Club events in the main column, the prediction card alongside (above them on mobile). */}
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_21rem]">
         <section className="order-2 space-y-3 lg:order-1">
@@ -90,48 +70,7 @@ async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
           )}
         </section>
         <aside className="order-1 lg:sticky lg:top-6 lg:order-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>{tp("title")}</CardTitle>
-              <CardDescription>
-                {open ? tp("openHint") : mine?.points != null ? tp("yourPoints", { count: mine.points }) : tp("closedHint")}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-5">
-              {open && access === "member" ? (
-                <PredictionForm
-                  matchId={match.id}
-                  psgHome={match.venue !== "away"}
-                  opponent={match.opponent}
-                  initial={mine ? { psgScore: mine.psgScore, opponentScore: mine.opponentScore } : null}
-                />
-              ) : null}
-              {open && access === "guest" ? (
-                <Link href="/connexion" prefetch={false} className="text-sm underline underline-offset-2">
-                  {tp("signIn")}
-                </Link>
-              ) : null}
-              {open && access === "inactive" ? <p className="text-sm text-muted-foreground">{tp("membersOnly")}</p> : null}
-              {!open && mine ? (
-                <p className="text-sm">{tp("yourPrediction", { psg: mine.psgScore, opponent: mine.opponentScore })}</p>
-              ) : null}
-              {stats && stats.total > 0 ? (
-                <div className="space-y-2">
-                  <p className="text-sm font-medium">{tp("community", { count: stats.total })}</p>
-                  <div className="flex h-2.5 overflow-hidden rounded-full bg-foreground/10">
-                    <span className="bg-emerald-600" style={{ width: `${(stats.win / stats.total) * 100}%` }} />
-                    <span className="bg-foreground/40" style={{ width: `${(stats.draw / stats.total) * 100}%` }} />
-                    <span className="bg-psg-red" style={{ width: `${(stats.loss / stats.total) * 100}%` }} />
-                  </div>
-                  <p className="flex justify-between text-xs text-muted-foreground">
-                    <span>{tp("win", { percent: Math.round((stats.win / stats.total) * 100) })}</span>
-                    <span>{tp("draw", { percent: Math.round((stats.draw / stats.total) * 100) })}</span>
-                    <span>{tp("loss", { percent: Math.round((stats.loss / stats.total) * 100) })}</span>
-                  </p>
-                </div>
-              ) : null}
-            </CardContent>
-          </Card>
+          <PredictionCard match={match} access={access} memberId={member?.id ?? null} />
         </aside>
       </div>
     </div>

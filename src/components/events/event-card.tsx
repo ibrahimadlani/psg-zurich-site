@@ -32,7 +32,11 @@ export function EventCard({
             </Badge>
           ) : null}
         </div>
-        <h3 className="text-base font-semibold">{event.title}</h3>
+        <h3 className="text-base font-semibold">
+          <Link href={`/evenements/${event.id}`} className="underline-offset-2 hover:underline">
+            {event.title}
+          </Link>
+        </h3>
         <p className="text-sm text-muted-foreground">
           {format.dateTimeRange(event.startsAt, event.endsAt ?? event.startsAt, {
             weekday: "long",

@@ -497,7 +497,18 @@
       "members_match": "Members' match",
       "social": "Social",
       "other": "Event"
-    }
+    },
+    "backToEvents": "All events",
+    "addToCalendar": "Add to my calendar",
+    "openMap": "See on the map",
+    "when": "When",
+    "where": "Where",
+    "places": "Places",
+    "capacity": "{registered} signed up out of {capacity} places",
+    "over": "This event is over.",
+    "about": "What's planned",
+    "theMatch": "The match",
+    "started": "The event has started: sign-ups are closed."
   },
   "AdminEvents": {
     "cardTitle": "Matches and events",

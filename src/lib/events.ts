@@ -72,5 +72,12 @@ export async function getEventsWithAttendance(where: SQL | undefined, memberId: 
   }));
 }
 
+/** "open" until it starts (sign-ups close then), "started" while it runs, "over" after. */
+export function eventPhase(event: { startsAt: Date; endsAt: Date | null }) {
+  const now = Date.now();
+  if (event.startsAt.getTime() > now) return "open" as const;
+  return (event.endsAt ?? event.startsAt).getTime() > now ? ("started" as const) : ("over" as const);
+}
+
 /** Upcoming events (not started yet). */
 export const upcomingEvents = () => gte(events.startsAt, new Date());

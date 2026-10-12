@@ -497,7 +497,18 @@
       "members_match": "Mitgliederspiel",
       "social": "Treffen",
       "other": "Event"
-    }
+    },
+    "backToEvents": "Alle Events",
+    "addToCalendar": "Zu meinem Kalender hinzufügen",
+    "openMap": "Auf der Karte ansehen",
+    "when": "Wann",
+    "where": "Wo",
+    "places": "Plätze",
+    "capacity": "{registered} von {capacity} Plätzen belegt",
+    "over": "Dieses Event ist vorbei.",
+    "about": "Das Programm",
+    "theMatch": "Das Spiel",
+    "started": "Das Event hat begonnen: Die Anmeldung ist geschlossen."
   },
   "AdminEvents": {
     "cardTitle": "Spiele und Events",

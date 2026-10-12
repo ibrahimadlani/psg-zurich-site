@@ -497,7 +497,18 @@
       "members_match": "Match entre membres",
       "social": "Soirée",
       "other": "Événement"
-    }
+    },
+    "backToEvents": "Tous les événements",
+    "addToCalendar": "Ajouter à mon agenda",
+    "openMap": "Voir sur la carte",
+    "when": "Quand",
+    "where": "Où",
+    "places": "Places",
+    "capacity": "{registered} inscrits sur {capacity} places",
+    "over": "Cet événement est terminé.",
+    "about": "Le programme",
+    "theMatch": "Le match",
+    "started": "L'événement a commencé : les inscriptions sont closes."
   },
   "AdminEvents": {
     "cardTitle": "Matchs et événements",
