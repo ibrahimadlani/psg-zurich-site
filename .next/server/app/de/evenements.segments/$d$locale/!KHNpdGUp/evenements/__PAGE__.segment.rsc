@@ -40,7 +40,7 @@ f:I[90036,["$4","$5","$6","$7","$8"],"MobileMenu"]
 28:C
 2b:X
 2b:T6,locale2b:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Events · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch-Partys, Auswärtsfahrten und Treffen der Mitglieder."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L26","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@27","v":"$28","s":"$17"}},"a":"$@29","u":"$@2a","b":"tR1G7sqKxXSn3jbYzygQ-","r":"$2b"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Events · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch-Partys, Auswärtsfahrten und Treffen der Mitglieder."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L26","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@27","v":"$28","s":"$17"}},"a":"$@29","u":"$@2a","b":"v2WM-3Be5-RGnRR47ZhRE","r":"$2b"}
 1f:null
 2a:false
 29:null
