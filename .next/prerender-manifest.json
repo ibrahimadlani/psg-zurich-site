@@ -79,7 +79,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12544,
+      "htmlSize": 12835,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -114,7 +114,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12021,
+      "htmlSize": 12312,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -149,7 +149,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8654,
+      "htmlSize": 8823,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -184,7 +184,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12216,
+      "htmlSize": 12507,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -214,12 +214,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/de/confidentialite": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 25646,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/confidentialite",
+      "dataRoute": "/de/confidentialite.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/de/connexion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 5803,
+      "htmlSize": 5873,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -254,7 +289,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 4508,
+      "htmlSize": 4578,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -289,7 +324,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 3317,
+      "htmlSize": 3387,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -324,7 +359,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12027,
+      "htmlSize": 12318,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -359,7 +394,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12116,
+      "htmlSize": 12407,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -394,7 +429,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12057,
+      "htmlSize": 12348,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -429,7 +464,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12005,
+      "htmlSize": 12296,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -459,12 +494,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/de/mentions-legales": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 21419,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/mentions-legales",
+      "dataRoute": "/de/mentions-legales.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/en": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12521,
+      "htmlSize": 12811,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -499,7 +569,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11944,
+      "htmlSize": 12234,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -534,7 +604,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8645,
+      "htmlSize": 8811,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -569,7 +639,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12152,
+      "htmlSize": 12442,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -599,12 +669,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/en/confidentialite": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 25173,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/confidentialite",
+      "dataRoute": "/en/confidentialite.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/en/connexion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 5757,
+      "htmlSize": 5827,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -639,7 +744,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 4481,
+      "htmlSize": 4551,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -674,7 +779,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 3311,
+      "htmlSize": 3381,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -709,7 +814,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11988,
+      "htmlSize": 12278,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -744,7 +849,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12053,
+      "htmlSize": 12343,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -779,7 +884,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12004,
+      "htmlSize": 12294,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -814,7 +919,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11956,
+      "htmlSize": 12246,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -844,12 +949,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/en/mentions-legales": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 21394,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/mentions-legales",
+      "dataRoute": "/en/mentions-legales.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/fr": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12617,
+      "htmlSize": 12921,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -884,7 +1024,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12075,
+      "htmlSize": 12379,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -919,7 +1059,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8725,
+      "htmlSize": 8901,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -954,7 +1094,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12257,
+      "htmlSize": 12561,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -984,12 +1124,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/fr/confidentialite": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 26024,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/confidentialite",
+      "dataRoute": "/fr/confidentialite.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/fr/connexion": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 5829,
+      "htmlSize": 5899,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1024,7 +1199,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 4534,
+      "htmlSize": 4604,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1059,7 +1234,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 3357,
+      "htmlSize": 3427,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1094,7 +1269,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12081,
+      "htmlSize": 12385,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1129,7 +1304,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12167,
+      "htmlSize": 12471,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1164,7 +1339,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12097,
+      "htmlSize": 12401,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1199,7 +1374,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12049,
+      "htmlSize": 12353,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1220,6 +1395,41 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/[locale]/matchs",
       "dataRoute": "/fr/matchs.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/fr/mentions-legales": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 21639,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/mentions-legales",
+      "dataRoute": "/fr/mentions-legales.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -1617,6 +1827,59 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/[locale]/confidentialite": {
+      "experimentalPPR": true,
+      "remainingPrerenderableParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "throwOnEmptyStaticShell": false,
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/confidentialite(?:/)?$",
+      "dataRoute": "/[locale]/confidentialite.rsc",
+      "fallback": null,
+      "fallbackRootParams": [
+        "locale"
+      ],
+      "fallbackSourceRoute": "/[locale]/confidentialite",
+      "fallbackRouteParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "dataRouteRegex": "^/([^/]+?)/confidentialite\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/[locale]/connexion": {
       "experimentalPPR": true,
       "remainingPrerenderableParams": [
@@ -1988,6 +2251,59 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/[locale]/mentions-legales": {
+      "experimentalPPR": true,
+      "remainingPrerenderableParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "throwOnEmptyStaticShell": false,
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/mentions\\-legales(?:/)?$",
+      "dataRoute": "/[locale]/mentions-legales.rsc",
+      "fallback": null,
+      "fallbackRootParams": [
+        "locale"
+      ],
+      "fallbackSourceRoute": "/[locale]/mentions-legales",
+      "fallbackRouteParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "dataRouteRegex": "^/([^/]+?)/mentions\\-legales\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/[locale]/[...rest]": {
       "experimentalPPR": true,
       "remainingPrerenderableParams": [
@@ -2048,8 +2364,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "713b85e913f42d8adc0efc28c9f5233e",
-    "previewModeSigningKey": "e32f35b01fce76eccf390efffa5bfca843f223cae4129a76088381eb99911879",
-    "previewModeEncryptionKey": "09f26195f132cb02983e641028b5f9cdeeba3e94bad0f69875a85af3bc4da1dd"
+    "previewModeId": "48713774e978f38e4a55e133125e173c",
+    "previewModeSigningKey": "a73d7e8cd197c23f35d14bcc6106240b4e592f53ab530a3d3f8e6d30cae933a0",
+    "previewModeEncryptionKey": "dfde13fc560dcc66cf533f609b5fbaf2f3172d083e93a55126feaebac60cf894"
   }
 }

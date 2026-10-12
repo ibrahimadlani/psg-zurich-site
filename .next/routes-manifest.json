@@ -107,6 +107,23 @@
       ]
     },
     {
+      "page": "/[locale]/confidentialite",
+      "regex": "^/([^/]+?)/confidentialite(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/confidentialite(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/confidentialite.segments/$d$locale/!KHNpdGUp/confidentialite$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/confidentialite\\.segments/\\$d\\$locale/!KHNpdGUp/confidentialite(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/connexion",
       "regex": "^/([^/]+?)/connexion(?:/)?$",
       "routeKeys": {
@@ -219,6 +236,23 @@
         {
           "destination": "/[locale]/matchs.segments/$d$locale/!KHNpdGUp/matchs$segment",
           "source": "^/(?<nxtPlocale>[^/]+?)/matchs\\.segments/\\$d\\$locale/!KHNpdGUp/matchs(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/mentions-legales",
+      "regex": "^/([^/]+?)/mentions\\-legales(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/mentions\\-legales(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/mentions-legales.segments/$d$locale/!KHNpdGUp/mentions-legales$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/mentions\\-legales\\.segments/\\$d\\$locale/!KHNpdGUp/mentions\\-legales(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
