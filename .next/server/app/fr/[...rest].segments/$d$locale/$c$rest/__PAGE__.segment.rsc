@@ -17,13 +17,13 @@ d:"$Sreact.suspense"
 10:X
 10:C
 a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":["$Lb",null,["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":"$10","s":"$9"}}]]
-2:[["children",{"s":{"n":"rest","t":"c","k":null,"s":["actualites","adhesion","admin","confidentialite","connexion","contact","espace-membre","evenements","matchs","mentions-legales","statuts"]},"h":49218,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+2:[["children",{"s":{"n":"rest","t":"c","k":null,"s":["actualites","adhesion","admin","confidentialite","connexion","contact","desabonnement","espace-membre","evenements","matchs","mentions-legales","parametres","statuts"]},"h":49218,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
 17:X
 17:C
 1a:X
 1a:T6,locale1a:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Page introuvable · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L15","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@16","v":"$17","s":"$9"}},"a":"$@18","u":"$@19","b":"oQE6OsXotxuNyDorMz_IK","r":"$1a"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Page introuvable · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L15","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@16","v":"$17","s":"$9"}},"a":"$@18","u":"$@19","b":"quxm4Jqnt5Ca8p9l5zu2J","r":"$1a"}
 b:E{"digest":"NEXT_HTTP_ERROR_FALLBACK;404"}
 e:null
 19:false

@@ -1,0 +1,31 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/1tq6ppe__m8m-.js"
+5:I[39756,["$4"],"default"]
+6:I[37457,["$4"],"default"]
+b:"$Sreact.suspense"
+d:I[97367,["$4"],"OutletBoundary"]
+11:"ViewportBoundary"
+12:I[97367,["$4"],"$11"]
+13:"MetadataBoundary"
+14:I[97367,["$4"],"$13"]
+15:I[27201,["$4"],"IconMark"]
+8:X
+8:C
+9:X
+9:300
+10:X
+a:[["children",{"s":"__PAGE__","h":16546,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"data-bare-page":"","className":"relative flex flex-1 flex-col overflow-hidden leading-[normal]","children":[null,["$","main",null,{"className":"relative flex flex-1 flex-col items-center justify-center px-4 pt-6 pb-12","children":["$","div",null,{"className":"flex w-full animate-page-in flex-col items-center motion-reduce:animate-none","children":["$","$b",null,{"children":"$Lc"}]}]}],null]}],[["$","script","script-0",{"src":"/_next/static/chunks/0s79l-2-fnand.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3z7jszpjorwx1.js","async":true}]],["$","$Ld",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":"$10","s":"$9"}}]]
+2:[["children",{"s":"desabonnement","h":16450,"d":{"r":["$","$3","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":16434,"c":"$Q2"}]]
+17:X
+1a:X
+1a:T6,locale0:{"t":{"t":{"s":"","h":16466,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L12",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L14",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$b",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Abmelden · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L15","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@16","v":"$17","s":"$9"}},"a":"$@18","u":"$@19","b":"quxm4Jqnt5Ca8p9l5zu2J","r":"$1a"}
+e:null
+9:C
+17:C
+1a:C
+10:C
+19:true
+18:2326
+7:"$undefined"
+16:"$undefined"

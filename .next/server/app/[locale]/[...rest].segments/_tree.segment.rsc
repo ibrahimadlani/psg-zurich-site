@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/3_8wgbgdr5qka.css","style"]
+:HL["/_next/static/chunks/2nnj0rs4bqc23.css","style"]
 :HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/Virage_NarrowBoldItalic-s.p.31vtg9dat24di.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/Virage_NarrowSemibold-s.p.3a6hd-9t6lqyj.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -8,6 +8,6 @@
 :HL["/_next/static/media/Virage_WideRegular-s.p.36hfo4tuc9v1s.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/Virage_WideSemibold-s.p.0t3j1c9o65mi9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 3:[["children",{"s":"__PAGE__","h":49314}]]
-2:[["children",{"s":{"n":"rest","t":"c","k":null,"s":["actualites","adhesion","admin","confidentialite","connexion","contact","espace-membre","evenements","matchs","mentions-legales","statuts"]},"h":49250,"c":"$Q3"}]]
+2:[["children",{"s":{"n":"rest","t":"c","k":null,"s":["actualites","adhesion","admin","confidentialite","connexion","contact","desabonnement","espace-membre","evenements","matchs","mentions-legales","parametres","statuts"]},"h":49250,"c":"$Q3"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49266,"c":"$Q2"}]]
-0:{"b":"oQE6OsXotxuNyDorMz_IK","t":{"t":{"s":"","h":49234,"c":"$Q1"}}}
+0:{"b":"quxm4Jqnt5Ca8p9l5zu2J","t":{"t":{"s":"","h":49234,"c":"$Q1"}}}

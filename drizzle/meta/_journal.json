@@ -43,6 +43,13 @@
       "when": 1791812180022,
       "tag": "0005_matches_sync",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1791827782642,
+      "tag": "0006_settings",
+      "breakpoints": true
     }
   ]
 }
