@@ -1,0 +1,3 @@
+{
+  "/[locale]/(site)/admin/scan/[token]/page": "app/[locale]/(site)/admin/scan/[token]/page.js"
+}

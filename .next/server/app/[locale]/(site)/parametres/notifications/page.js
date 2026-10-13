@@ -1,6 +1,6 @@
 var R=require("../../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/[locale]/(site)/parametres/notifications/page.js")
-R.c("server/chunks/ssr/_0l-bz1unun6n-._.js")
 R.c("server/chunks/ssr/src_08f_4zjt81_no._.js")
+R.c("server/chunks/ssr/_0l-bz1unun6n-._.js")
 R.c("server/chunks/ssr/node_modules_@better-auth_core_dist_0ey00qj12_vxj._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0janj0i6dqko7._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_13ndcv9j631g6.js")

@@ -1,0 +1,3 @@
+(()=>{"use strict";module.exports=[769544,403512,a=>{var b=a.i(164831);let c={name:"minus",size:24,node:[["path",{d:"M5 12h14",key:"1ays0h"}]]};c.node;let d=(0,b.f)(c);a.s(["f",0,d],769544);let e={name:"plus",size:24,node:[["path",{d:"M5 12h14",key:"1ays0h"}],["path",{d:"M12 5v14",key:"s699le"}]]};e.node;let f=(0,b.f)(e);a.s(["f",0,f],403512)},257442,a=>{var b=a.i(823292);async function c(a,c,d){let e=await fetch(`/api/v1/events/${a}/attendance`,{method:c});if(!e.ok)return void b.c.error(d("error"));let{data:f}=await e.json();b.c.success(d("waitlisted"===f.status?"toastWaitlisted":"cancelled"===f.status?"toastCancelled":"toastRegistered"))}a.s(["f",0,c])}]})();
+
+//# sourceMappingURL=_1egylr22k5os_._.js.map
