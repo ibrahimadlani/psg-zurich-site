@@ -5,9 +5,11 @@ import { members } from "@/db/schema";
 import { routing } from "@/i18n/routing";
 import { verifyUnsubscribe, type NotificationType } from "@/lib/unsubscribe";
 
-const COLUMN: Record<NotificationType, "notifyEvents" | "notifyPredictionReminders"> = {
+const COLUMN: Record<NotificationType, "notifyEvents" | "notifyPredictionReminders" | "notifyResults" | "notifyNews"> = {
   events: "notifyEvents",
   reminders: "notifyPredictionReminders",
+  results: "notifyResults",
+  news: "notifyNews",
 };
 
 const localeOf = (value: string | null) =>

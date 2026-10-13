@@ -1,7 +1,8 @@
 import "server-only";
 import { createHmac, timingSafeEqual } from "node:crypto";
 
-export const NOTIFICATION_TYPES = ["events", "reminders"] as const;
+/** Email categories a member can turn off (transactional emails can't be). */
+export const NOTIFICATION_TYPES = ["events", "reminders", "results", "news"] as const;
 export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
 
 const sign = (memberId: string, type: NotificationType) =>

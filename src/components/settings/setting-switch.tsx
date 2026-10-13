@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-type Field = "notifyEvents" | "notifyPredictionReminders" | "hideFromLeaderboard";
+type Field = "notifyEvents" | "notifyPredictionReminders" | "notifyResults" | "notifyNews" | "hideFromLeaderboard";
 
 /** One on/off setting, saved as soon as it is flipped (rolled back if saving fails). */
 export function SettingSwitch({

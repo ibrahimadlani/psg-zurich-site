@@ -239,7 +239,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Gérer votre adhésion et votre espace membre.",
               "Vous connecter de façon sécurisée et protéger les comptes contre les abus.",
-              "Vous envoyer les e-mails nécessaires : confirmation d'adresse, mot de passe oublié, informations de l'association.",
+              "Vous envoyer les e-mails nécessaires (confirmation d'adresse, mot de passe, adhésion, cotisation, événements auxquels vous êtes inscrit) et, si vous les gardez activés dans vos paramètres, les annonces d'événements, les rappels et résultats de pronostics et les actualités du club. Chacun de ces e-mails optionnels contient un lien pour s'en désabonner.",
             ],
           },
           { p: "Vos données ne sont jamais vendues, ni utilisées à des fins publicitaires." },
@@ -265,6 +265,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               `Données de membre : pendant toute la durée de l'adhésion, puis ${LEGAL.retentionAfterMembership} au plus.`,
               "Sessions de connexion : 7 jours après la dernière activité.",
+              "Historique des e-mails envoyés (destinataire, type, date) : 90 jours.",
               "Liens envoyés par e-mail : 24 heures pour la confirmation d'adresse, 1 heure pour le mot de passe.",
             ],
           },
@@ -356,7 +357,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Manage your membership and your member area.",
               "Sign you in securely and protect accounts against abuse.",
-              "Send you the necessary emails: address confirmation, forgotten password, club information.",
+              "Send you the necessary emails (address confirmation, password, membership, fee, events you signed up for) and, if you keep them on in your settings, event announcements, prediction reminders and results, and club news. Each of these optional emails has a link to unsubscribe.",
             ],
           },
           { p: "Your data is never sold or used for advertising." },
@@ -382,6 +383,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               `Member data: for the duration of the membership, then ${LEGAL.retentionAfterMembership} at most.`,
               "Sign-in sessions: 7 days after the last activity.",
+              "History of the emails sent (recipient, type, date): 90 days.",
               "Links sent by email: 24 hours for address confirmation, 1 hour for passwords.",
             ],
           },
@@ -473,7 +475,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Deine Mitgliedschaft und deinen Mitgliederbereich verwalten.",
               "Dich sicher anmelden und Konten vor Missbrauch schützen.",
-              "Dir die nötigen E-Mails senden: Adressbestätigung, vergessenes Passwort, Informationen des Vereins.",
+              "Dir die nötigen E-Mails senden (Adressbestätigung, Passwort, Mitgliedschaft, Beitrag, Veranstaltungen, für die du angemeldet bist) und, wenn du sie in deinen Einstellungen aktiviert lässt, Veranstaltungsankündigungen, Tipp-Erinnerungen und -Resultate sowie Clubneuigkeiten. Jede dieser freiwilligen E-Mails enthält einen Abmeldelink.",
             ],
           },
           { p: "Deine Daten werden nie verkauft oder für Werbung verwendet." },
@@ -499,6 +501,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               `Mitgliederdaten: für die Dauer der Mitgliedschaft, danach höchstens ${LEGAL.retentionAfterMembership}.`,
               "Anmeldesitzungen: 7 Tage nach der letzten Aktivität.",
+              "Verlauf der gesendeten E-Mails (Empfänger, Art, Datum): 90 Tage.",
               "Per E-Mail gesendete Links: 24 Stunden für die Adressbestätigung, 1 Stunde für das Passwort.",
             ],
           },

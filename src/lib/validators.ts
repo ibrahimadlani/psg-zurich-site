@@ -10,6 +10,7 @@ import {
   POLL_STATUSES,
   POST_CATEGORIES,
   POST_STATUSES,
+  EMAIL_OWNER_TYPES,
 } from "@/db/schema";
 import { blocksSchema } from "@/lib/article-blocks";
 import { mapsEnabled } from "@/lib/google-maps";
@@ -185,6 +186,8 @@ export const memberSettingsSchema = z
     hideFromLeaderboard: z.boolean(),
     notifyEvents: z.boolean(),
     notifyPredictionReminders: z.boolean(),
+    notifyResults: z.boolean(),
+    notifyNews: z.boolean(),
   })
   .partial();
 
@@ -266,3 +269,21 @@ export const membershipSignupSchema = z.object({
   website: z.string().max(200).optional(),
 });
 
+
+/* --------------------------------- Mailing -------------------------------- */
+
+/** Preview or test send of an email being edited in the admin. */
+export const mailPreviewSchema = z.object({
+  ownerType: z.enum(EMAIL_OWNER_TYPES),
+  ownerId: z.string().min(1).max(64),
+  locale: z.enum(LOCALES),
+  draft: z
+    .object({
+      subject: z.string().max(200),
+      preview: z.string().max(200),
+      heading: z.string().max(200),
+      body: z.string().max(10_000),
+      ctaLabel: z.string().max(80).optional(),
+    })
+    .optional(),
+});

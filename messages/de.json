@@ -311,7 +311,9 @@
     "forbidden": "Zugriff nur für Administratoren.",
     "welcome": "Willkommen, {name}.",
     "newsCard": "News",
-    "newsCardDescription": "Artikel der Website schreiben und veröffentlichen."
+    "newsCardDescription": "Artikel der Website schreiben und veröffentlichen.",
+    "mailingCard": "Mailing",
+    "mailingCardDescription": "Automatische E-Mails, Kampagnen und Versandprotokoll"
   },
   "AdminBanner": {
     "published": "Mitteilung veröffentlicht.",
@@ -401,7 +403,7 @@
       "subject": "Willkommen bei PSG Zurich!",
       "preview": "Deine Mitgliedschaft wurde angenommen",
       "heading": "Willkommen, {firstName}!",
-      "body": "Der Vorstand hat deinen Mitgliedschaftsantrag angenommen. Deine Mitgliedernummer lautet {number}. Deine Angaben und die nächsten Schritte findest du in deinem Mitgliederbereich.",
+      "body": "Der Vorstand hat deinen Mitgliedsantrag angenommen. Deine Mitgliedsnummer ist **{number}**. Nächster Schritt: Bezahle den Saisonbeitrag in deinem Mitgliederbereich, um Zugang zu den Veranstaltungen zu erhalten.",
       "cta": "Zum Mitgliederbereich",
       "footer": "Fragen? Schreib uns an <mail></mail>."
     },
@@ -433,7 +435,7 @@
       "heading": "{event}",
       "body": "Hallo {firstName}, der Club organisiert «{event}» am {date} ({place}). Melde dich schnell an, die Plätze sind begrenzt.",
       "cta": "Event ansehen und anmelden",
-      "footer": "Du erhältst diese E-Mail, weil Event-Ankündigungen in deinen Einstellungen aktiviert sind. Abmelden: {unsubscribe}"
+      "footer": "Du erhältst diese E-Mail, weil Event-Ankündigungen in deinen Einstellungen aktiviert sind."
     },
     "predictionReminder": {
       "subject": "Noch 24 Stunden, um {match} zu tippen",
@@ -441,7 +443,7 @@
       "heading": "Dein Tipp, {firstName}?",
       "body": "{match} ({competition}) wird {time} angepfiffen und du hast noch nicht getippt. Die Tipps schliessen beim Anpfiff.",
       "cta": "Jetzt tippen",
-      "footer": "Du erhältst diese Erinnerung, weil sie in deinen Einstellungen aktiviert ist. Abmelden: {unsubscribe}"
+      "footer": "Du erhältst diese Erinnerung, weil sie in deinen Einstellungen aktiviert ist."
     },
     "changeEmail": {
       "subject": "Änderung der E-Mail-Adresse bestätigen — PSG Zurich",
@@ -450,6 +452,122 @@
       "body": "Du möchtest die Adresse deines Kontos durch {newEmail} ersetzen. Bestätige mit der Schaltfläche unten: Danach senden wir einen Bestätigungslink an die neue Adresse.",
       "cta": "Änderung bestätigen",
       "ignore": "Falls du das nicht warst, ignoriere diese E-Mail und ändere dein Passwort: Deine aktuelle Adresse bleibt unverändert."
+    },
+    "common": {
+      "unsubscribe": "Von diesen E-Mails abmelden"
+    },
+    "membershipReceived": {
+      "subject": "Mitgliedsantrag erhalten — PSG Zurich",
+      "preview": "Der Vorstand prüft deinen Antrag",
+      "heading": "Danke, {firstName}!",
+      "body": "Deine Adresse ist bestätigt und dein Mitgliedsantrag ist beim Vorstand angekommen. Du erhältst eine E-Mail, sobald er geprüft ist, meist innert weniger Tage.\n\nIn der Zwischenzeit kannst du die Clubneuigkeiten lesen.",
+      "cta": "Zur Website",
+      "footer": "Fragen? Schreib uns an <mail></mail>."
+    },
+    "verifyReminder": {
+      "subject": "Bestätige deine Adresse, um den Beitritt abzuschliessen",
+      "preview": "Dein Antrag wartet auf die Bestätigung deiner E-Mail",
+      "heading": "Noch ein Schritt, {firstName}",
+      "body": "Dein Mitgliedsantrag geht erst an den Vorstand, wenn deine E-Mail-Adresse bestätigt ist. Der erste Link ist vielleicht abgelaufen: **melde dich an**, ein neuer Link wird sofort gesendet.",
+      "cta": "Anmelden",
+      "footer": "Falls du das nicht beantragt hast, ignoriere diese E-Mail."
+    },
+    "committeeDigest": {
+      "subject": "{count, plural, one {# Mitgliedsantrag wartet} other {# Mitgliedsanträge warten}} seit über 3 Tagen",
+      "preview": "{names}",
+      "heading": "Offene Anträge",
+      "body": "{count, plural, one {Dieser Antrag wartet} other {Diese Anträge warten}} seit über 3 Tagen auf einen Entscheid des Vorstands: **{names}**.",
+      "cta": "Anträge ansehen",
+      "footer": "Tägliche Übersicht an die Admins, solange Anträge offen sind."
+    },
+    "completeProfile": {
+      "subject": "Vervollständige dein Profil, {firstName}",
+      "preview": "Telefon und Adresse: damit dich der Vorstand erreicht",
+      "heading": "Ein vollständiges Profil ist besser",
+      "body": "Füge in deinen Einstellungen Telefon und Adresse hinzu: So kann dich der Vorstand für Fahrten, Tickets und Veranstaltungen erreichen.",
+      "cta": "Profil vervollständigen"
+    },
+    "feeReminder": {
+      "subject": "Dein Saisonbeitrag — PSG Zurich",
+      "preview": "Bezahle den Beitrag für den Zugang zu den Veranstaltungen",
+      "heading": "Hallo {firstName},",
+      "body": "Deine Mitgliedschaft ist angenommen, es fehlt nur noch der Saisonbeitrag (**{fee}**), um das Veranstaltungsprogramm zu sehen und dich anzumelden.",
+      "cta": "Beitrag bezahlen",
+      "footer": "Schon bezahlt? Der Vorstand bestätigt Zahlungen innert weniger Tage. Fragen: <mail></mail>."
+    },
+    "feeReceipt": {
+      "subject": "Beitrag erhalten — danke!",
+      "preview": "Du bist bis {until} dabei",
+      "heading": "Danke, {firstName}!",
+      "body": "Der Vorstand hat deinen Beitrag erhalten. Du bist bis **{until}** dabei: Veranstaltungsprogramm und Anmeldungen sind offen.",
+      "cta": "Veranstaltungen ansehen",
+      "footer": "Bewahre diese E-Mail als Beleg auf."
+    },
+    "feeRenewal": {
+      "subject": "Erneuerung deines Beitrags — PSG Zurich",
+      "preview": "Dein Beitrag endet am {until}",
+      "heading": "Die Saison geht zu Ende, {firstName}",
+      "body": "Dein Beitrag deckt die Saison bis **{until}**. Denk daran, ihn zu erneuern ({fee}), um ab 1. Juli Zugang zu den Veranstaltungen zu behalten.",
+      "cta": "Beitrag erneuern"
+    },
+    "feeExpired": {
+      "subject": "Dein Mitgliederbeitrag ist abgelaufen",
+      "preview": "Erneuere ihn für den Zugang zu den Veranstaltungen",
+      "heading": "Hallo {firstName},",
+      "body": "Dein Beitrag der letzten Saison ist abgelaufen. Erneuere ihn ({fee}), um das Veranstaltungsprogramm und die Anmeldungen wieder zu öffnen.",
+      "cta": "Beitrag erneuern",
+      "footer": "Fragen? Schreib uns an <mail></mail>."
+    },
+    "eventAlmostFull": {
+      "subject": "Nur noch {left, plural, one {# Platz} other {# Plätze}}: {event}",
+      "preview": "{event} — {date}",
+      "heading": "Es wird voll!",
+      "body": "Für «{event}» ({date}) gibt es nur noch **{left, plural, one {# Platz} other {# Plätze}}**. Melde dich schnell an.",
+      "cta": "Anmelden"
+    },
+    "eventReminder": {
+      "subject": "Morgen: {event}",
+      "preview": "{date} · {place}",
+      "heading": "Bis morgen, {firstName}!",
+      "body": "Kleine Erinnerung: Du bist für «{event}» angemeldet. Denk an deine **Mitgliederkarte** (QR-Code im Mitgliederbereich): Sie wird beim Eingang gescannt.\n\nDu kannst nicht mehr kommen? Melde dich ab, um den Platz freizugeben.",
+      "cta": "Veranstaltung ansehen",
+      "footer": "Fragen? Schreib uns an <mail></mail>."
+    },
+    "eventCancelled": {
+      "subject": "Veranstaltung abgesagt: {event}",
+      "preview": "{event} — {date}",
+      "heading": "Veranstaltung abgesagt",
+      "body": "Hallo {firstName}, die Veranstaltung «{event}» vom {date} ist abgesagt. Tut uns leid! Die nächsten Termine des Clubs findest du auf der Website.",
+      "cta": "Veranstaltungen ansehen",
+      "footer": "Fragen? Schreib uns an <mail></mail>."
+    },
+    "eventThanks": {
+      "subject": "Danke fürs Kommen: {event}",
+      "preview": "Schön, dass du da warst",
+      "heading": "Danke, {firstName}!",
+      "body": "Danke, dass du bei «{event}» dabei warst. Fotos und Bericht folgen bald in den Clubneuigkeiten.",
+      "cta": "Neuigkeiten ansehen"
+    },
+    "predictionResult": {
+      "subject": "{points, plural, =0 {0 Punkte} one {# Punkt} other {# Punkte}} bei {match}",
+      "preview": "Resultat {score} · dein Tipp {prediction}",
+      "heading": "{points, plural, =0 {Diesmal keine Punkte} one {+# Punkt} other {+# Punkte}}, {firstName}",
+      "body": "**{match}** endete **{score}** (reguläre Spielzeit). Dein Tipp: {prediction}.",
+      "cta": "Rangliste ansehen"
+    },
+    "leaderboardMonthly": {
+      "subject": "Dein {month}: Platz {rank} von {total}",
+      "preview": "{points} Punkte in der Tipp-Rangliste",
+      "heading": "Rückblick {month}",
+      "body": "Du beendest die Tipp-Rangliste im {month} auf **Platz {rank} von {total}** mit **{points, plural, =0 {0 Punkten} one {# Punkt} other {# Punkten}}**. Neuer Monat, neue Chance!",
+      "cta": "Rangliste ansehen"
+    },
+    "inactive": {
+      "subject": "Der Club vermisst dich, {firstName}",
+      "preview": "Tipps, Veranstaltungen, Neuigkeiten",
+      "heading": "Lange nicht gesehen!",
+      "body": "Die Tipps laufen weiter, neue Veranstaltungen stehen an und der Club hat Neuigkeiten. Schau wieder vorbei!",
+      "cta": "Zurück zur Website"
     }
   },
   "Legal": {
@@ -833,12 +951,16 @@
     "submit": "Bestätigen",
     "confirm": {
       "events": "Keine E-Mails zu neuen Club-Events mehr erhalten?",
-      "reminders": "Keine Tipp-Erinnerungen vor den Spielen mehr erhalten?"
+      "reminders": "Keine Tipp-Erinnerungen vor den Spielen mehr erhalten?",
+      "results": "Keine Punkte nach den Spielen und keinen monatlichen Ranglisten-Rückblick mehr erhalten?",
+      "news": "Keine Clubneuigkeiten mehr per E-Mail erhalten?"
     },
     "doneTitle": "Erledigt",
     "done": {
       "events": "Du erhältst keine Event-Ankündigungen per E-Mail mehr.",
-      "reminders": "Du erhältst keine Tipp-Erinnerungen mehr."
+      "reminders": "Du erhältst keine Tipp-Erinnerungen mehr.",
+      "results": "Du erhältst deine Tipp-Resultate nicht mehr per E-Mail.",
+      "news": "Du erhältst keine Clubneuigkeiten mehr per E-Mail."
     },
     "manage": "Benachrichtigungen verwalten",
     "invalidTitle": "Ungültiger Link",
@@ -938,7 +1060,12 @@
       "eventsDescription": "Watch-Partys, Auswärtsfahrten und Treffen, sobald sie veröffentlicht sind.",
       "reminders": "Tipp-Erinnerungen",
       "remindersDescription": "Eine E-Mail 24 Stunden vor einem Spiel, wenn du noch nicht getippt hast.",
-      "noMember": "Benachrichtigungen sind Mitgliedern vorbehalten."
+      "noMember": "Benachrichtigungen sind Mitgliedern vorbehalten.",
+      "results": "Resultate & Rangliste",
+      "resultsDescription": "Deine Punkte nach jedem Spiel und der Ranglisten-Rückblick am 1. des Monats.",
+      "news": "Clubneuigkeiten",
+      "newsDescription": "Kampagnen des Vorstands und ein paar Erinnerungen (Profil vervollständigen, zurück auf die Website).",
+      "essential": "Unerlässliche E-Mails (Mitgliedschaft, Beitrag, Erinnerung am Vortag einer Veranstaltung, für die du angemeldet bist, Absage) werden immer gesendet."
     },
     "privacy": {
       "leaderboard": "Rangliste",
@@ -1113,6 +1240,218 @@
           "label": "Event-Karte",
           "hint": "Mit Anmeldeknopf"
         }
+      }
+    }
+  },
+  "Mailing": {
+    "title": "Mailing",
+    "description": "Die automatischen E-Mails der Website, Kampagnen und der Versandverlauf.",
+    "back": "Mailing",
+    "tabs": {
+      "automations": "Automationen",
+      "campaigns": "Kampagnen",
+      "journal": "Protokoll",
+      "settings": "Einstellungen"
+    },
+    "groups": {
+      "membership": "Mitgliedschaft",
+      "fee": "Beitrag",
+      "events": "Veranstaltungen",
+      "predictions": "Tipps & Engagement"
+    },
+    "categories": {
+      "transactional": "Unerlässlich",
+      "events": "Veranstaltungen",
+      "reminders": "Erinnerungen",
+      "results": "Resultate",
+      "news": "Neuigkeiten"
+    },
+    "categoryHint": "«Unerlässliche» E-Mails können Mitglieder nicht abbestellen; die anderen folgen den Einstellungen jedes Mitglieds.",
+    "enabled": "Aktiv",
+    "delay": "Verzögerung",
+    "delayNone": "Sofort",
+    "minutes": "Min.",
+    "hours": "Std.",
+    "days": "T",
+    "sent30": "{count, plural, =0 {kein Versand} one {# Versand} other {# Versände}} in 30 Tagen",
+    "editTexts": "Texte",
+    "saved": "Gespeichert.",
+    "error": "Speichern fehlgeschlagen. Versuche es erneut.",
+    "editor": {
+      "locale": "Sprache",
+      "subject": "Betreff",
+      "preview": "Vorschau (Posteingang)",
+      "heading": "Titel",
+      "body": "Text",
+      "bodyHint": "**fett**, *kursiv*, [Link](https://…) · Leerzeile = neuer Absatz.",
+      "cta": "Schaltfläche",
+      "variables": "Variablen",
+      "defaultHint": "Leer = Standardtext",
+      "save": "Speichern",
+      "reset": "Standardtext wiederherstellen",
+      "resetDone": "Standardtext wiederhergestellt.",
+      "preview_action": "Vorschau",
+      "test": "Test an mich senden",
+      "testSent": "Test an {email} gesendet.",
+      "previewTitle": "Vorschau mit Beispielwerten"
+    },
+    "campaigns": {
+      "new": "Neue Kampagne",
+      "namePrompt": "Name der Kampagne (intern)",
+      "empty": "Noch keine Kampagnen.",
+      "status": {
+        "draft": "Entwurf",
+        "scheduled": "Geplant",
+        "sending": "Wird gesendet",
+        "sent": "Gesendet"
+      },
+      "sentCount": "{count, plural, one {# Versand} other {# Versände}}",
+      "name": "Name (intern)",
+      "audience": "Empfänger",
+      "audiences": {
+        "members": "Alle angenommenen Mitglieder",
+        "paid": "Mitglieder mit bezahltem Beitrag",
+        "unpaid": "Angenommen, Beitrag offen",
+        "pending": "Offene Anträge",
+        "event": "Für eine Veranstaltung angemeldet"
+      },
+      "event": "Veranstaltung",
+      "ctaUrl": "Link der Schaltfläche",
+      "ctaUrlHint": "Eine Seite der Website (/evenements) oder eine Webadresse; leer = keine Schaltfläche.",
+      "count": "{count, plural, =0 {Niemand} one {# Mitglied} other {# Mitglieder}} (mit aktivierten «Clubneuigkeiten»)",
+      "saveSettings": "Einstellungen speichern",
+      "sendNow": "Jetzt senden",
+      "confirmSend": "Diese Kampagne an {count, plural, one {# Mitglied} other {# Mitglieder}} senden?",
+      "sendAt": "Planen für",
+      "schedule": "Planen",
+      "unschedule": "Planung aufheben",
+      "scheduledFor": "Geplant für {date}",
+      "delete": "Löschen",
+      "confirmDelete": "Diese Kampagne löschen?",
+      "queued": "{count, plural, =0 {Keine Empfänger.} one {# E-Mail in der Warteschlange.} other {# E-Mails in der Warteschlange.}}",
+      "scheduled": "Kampagne geplant.",
+      "noTexts": "Schreib zuerst die E-Mail (mindestens auf Französisch).",
+      "locked": "Diese Kampagne ist gesendet und kann nicht mehr geändert werden.",
+      "textsTitle": "Die E-Mail"
+    },
+    "journal": {
+      "empty": "Nichts gesendet.",
+      "filter": "Status",
+      "all": "Alle",
+      "to": "Empfänger",
+      "what": "E-Mail",
+      "when": "Wann",
+      "status": {
+        "pending": "Wartet",
+        "sending": "Wird gesendet",
+        "sent": "Gesendet",
+        "failed": "Fehlgeschlagen",
+        "skipped": "Übersprungen",
+        "cancelled": "Abgebrochen"
+      },
+      "retry": "Erneut versuchen",
+      "cancel": "Abbrechen",
+      "done": "Erledigt.",
+      "campaign": "Kampagne: {name}"
+    },
+    "settings": {
+      "paused": "Alle Versände pausieren",
+      "pausedHint": "E-Mails bleiben in der Warteschlange und gehen bei der Wiederaufnahme raus.",
+      "pausedBanner": "Der Versand ist pausiert.",
+      "dailyCap": "Obergrenze pro 24 Std.",
+      "perMinute": "E-Mails pro Minute",
+      "run": "Jetzt ausführen",
+      "runHint": "Sucht fällige geplante E-Mails und sendet, was wartet, ohne auf die nächste Minute zu warten.",
+      "runDone": "Versandrunde abgeschlossen."
+    },
+    "automations": {
+      "membership_received": {
+        "name": "Antrag erhalten",
+        "when": "Wenn die E-Mail bestätigt wird"
+      },
+      "membership_toCommittee": {
+        "name": "Neuer Antrag (Vorstand)",
+        "when": "Wenn die E-Mail bestätigt wird, an die Admins"
+      },
+      "membership_verifyReminder": {
+        "name": "Erinnerung E-Mail-Bestätigung",
+        "when": "E-Mail 2 Tage nach der Anmeldung noch nicht bestätigt"
+      },
+      "membership_committeeDigest": {
+        "name": "Offene Anträge (Vorstand)",
+        "when": "Täglich um 8 Uhr, wenn Anträge älter als 3 Tage sind"
+      },
+      "membership_approved": {
+        "name": "Mitgliedschaft angenommen",
+        "when": "Beim Annehmen durch den Vorstand"
+      },
+      "membership_rejected": {
+        "name": "Mitgliedschaft abgelehnt",
+        "when": "Beim Ablehnen durch den Vorstand"
+      },
+      "membership_completeProfile": {
+        "name": "Profil vervollständigen",
+        "when": "3 Tage nach der Annahme, ohne Telefon und Adresse"
+      },
+      "account_deleted": {
+        "name": "Konto gelöscht",
+        "when": "Beim Löschen des Kontos"
+      },
+      "fee_reminder": {
+        "name": "Beitragserinnerung",
+        "when": "7 und 21 Tage nach der Annahme, Beitrag offen"
+      },
+      "fee_receipt": {
+        "name": "Beitrag erhalten",
+        "when": "Wenn ein Admin den Beitrag erfasst"
+      },
+      "fee_renewal": {
+        "name": "Erneuerung",
+        "when": "Im Juni, an Mitglieder bezahlt bis 30. Juni"
+      },
+      "fee_expired": {
+        "name": "Beitrag abgelaufen",
+        "when": "Im Juli, an Mitglieder ohne Erneuerung"
+      },
+      "event_new": {
+        "name": "Neue Veranstaltung",
+        "when": "Beim Erstellen, wenn «Mitglieder benachrichtigen» aktiv ist"
+      },
+      "event_almostFull": {
+        "name": "Fast voll",
+        "when": "Wenn 20 % der Plätze übrig sind, an nicht Angemeldete"
+      },
+      "event_reminder": {
+        "name": "Erinnerung am Vortag",
+        "when": "Am Vortag, an die Angemeldeten (Mitgliederkarte)"
+      },
+      "event_waitlistPromoted": {
+        "name": "Platz frei",
+        "when": "Von der Warteliste zu den Angemeldeten"
+      },
+      "event_cancelled": {
+        "name": "Veranstaltung abgesagt",
+        "when": "Beim Löschen einer Veranstaltung, an die Angemeldeten"
+      },
+      "event_thanks": {
+        "name": "Danke fürs Kommen",
+        "when": "Am Tag danach, an die Anwesenden"
+      },
+      "prediction_reminder": {
+        "name": "Tipp-Erinnerung",
+        "when": "24 Std. vor dem Spiel, an Mitglieder ohne Tipp"
+      },
+      "prediction_result": {
+        "name": "Tipp-Resultat",
+        "when": "Wenn das Spiel gewertet ist"
+      },
+      "leaderboard_monthly": {
+        "name": "Monatsrückblick",
+        "when": "Am 1. um 9 Uhr, Platz des Vormonats"
+      },
+      "engagement_inactive": {
+        "name": "Inaktivitäts-Erinnerung",
+        "when": "60 Tage ohne Besuch, höchstens alle 90 Tage"
       }
     }
   }

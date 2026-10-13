@@ -311,7 +311,9 @@
     "forbidden": "Administrators only.",
     "welcome": "Welcome, {name}.",
     "newsCard": "News",
-    "newsCardDescription": "Write and publish the website's articles."
+    "newsCardDescription": "Write and publish the website's articles.",
+    "mailingCard": "Mailing",
+    "mailingCardDescription": "Automated emails, campaigns and sending log"
   },
   "AdminBanner": {
     "published": "Announcement published.",
@@ -401,7 +403,7 @@
       "subject": "Welcome to PSG Zurich!",
       "preview": "Your membership is accepted",
       "heading": "Welcome, {firstName}!",
-      "body": "The committee has accepted your membership request. Your member number is {number}. Find your details and the next steps in your member area.",
+      "body": "The committee has accepted your membership request. Your member number is **{number}**. Next step: pay this season's fee to access events, from your member area.",
       "cta": "Go to my member area",
       "footer": "A question? Write to us at <mail></mail>."
     },
@@ -433,7 +435,7 @@
       "heading": "{event}",
       "body": "Hello {firstName}, the club is organising \"{event}\" on {date} ({place}). Sign up soon, places are limited.",
       "cta": "See the event and sign up",
-      "footer": "You receive this email because event announcements are on in your settings. Unsubscribe: {unsubscribe}"
+      "footer": "You receive this email because event announcements are on in your settings."
     },
     "predictionReminder": {
       "subject": "24 hours left to predict {match}",
@@ -441,7 +443,7 @@
       "heading": "Your prediction, {firstName}?",
       "body": "{match} ({competition}) kicks off {time} and you haven't predicted yet. Predictions close at kick-off.",
       "cta": "Predict now",
-      "footer": "You receive this reminder because it is on in your settings. Unsubscribe: {unsubscribe}"
+      "footer": "You receive this reminder because it is on in your settings."
     },
     "changeEmail": {
       "subject": "Confirm your email change — PSG Zurich",
@@ -450,6 +452,122 @@
       "body": "You asked to replace your account's address with {newEmail}. Confirm with the button below: we will then send a verification link to the new address.",
       "cta": "Confirm the change",
       "ignore": "If you did not request this, ignore this email and change your password: your current address stays unchanged."
+    },
+    "common": {
+      "unsubscribe": "Unsubscribe from these emails"
+    },
+    "membershipReceived": {
+      "subject": "Membership request received — PSG Zurich",
+      "preview": "The committee is reviewing your request",
+      "heading": "Thank you, {firstName}!",
+      "body": "Your address is confirmed and your membership request has reached the committee. You'll get an email as soon as it has been reviewed, usually within a few days.\n\nMeanwhile, have a look at the club's news.",
+      "cta": "Visit the site",
+      "footer": "A question? Write to us at <mail></mail>."
+    },
+    "verifyReminder": {
+      "subject": "Confirm your address to complete your membership",
+      "preview": "Your request is waiting for your email confirmation",
+      "heading": "One more step, {firstName}",
+      "body": "Your membership request only reaches the committee once your email address is confirmed. The first link may have expired: **sign in** and a new link is sent right away.",
+      "cta": "Sign in",
+      "footer": "If you did not request this, ignore this email."
+    },
+    "committeeDigest": {
+      "subject": "{count, plural, one {# membership request has} other {# membership requests have}} been waiting over 3 days",
+      "preview": "{names}",
+      "heading": "Requests waiting",
+      "body": "{count, plural, one {This request has} other {These requests have}} been waiting for a committee decision for over 3 days: **{names}**.",
+      "cta": "See the requests",
+      "footer": "Daily summary sent to admins while requests are waiting."
+    },
+    "completeProfile": {
+      "subject": "Complete your profile, {firstName}",
+      "preview": "Phone and address: so the committee can reach you",
+      "heading": "A complete profile is better",
+      "body": "Add your phone and address in your settings: the committee can then reach you about trips, tickets and events.",
+      "cta": "Complete my profile"
+    },
+    "feeReminder": {
+      "subject": "Your membership fee for the season — PSG Zurich",
+      "preview": "Pay the fee to access events",
+      "heading": "Hello {firstName},",
+      "body": "Your membership is accepted; all that's left is this season's fee (**{fee}**) to see the events programme and sign up.",
+      "cta": "Pay my fee",
+      "footer": "Already paid? The committee records payments within a few days. A question: <mail></mail>."
+    },
+    "feeReceipt": {
+      "subject": "Fee received — thank you!",
+      "preview": "You're covered until {until}",
+      "heading": "Thank you, {firstName}!",
+      "body": "The committee has received your fee. You're covered until **{until}**: the events programme and sign-ups are open.",
+      "cta": "See the events",
+      "footer": "Keep this email as your receipt."
+    },
+    "feeRenewal": {
+      "subject": "Renewing your membership fee — PSG Zurich",
+      "preview": "Your fee ends on {until}",
+      "heading": "The season is ending, {firstName}",
+      "body": "Your fee covers the season until **{until}**. Remember to renew it ({fee}) to keep access to events from 1 July.",
+      "cta": "Renew my fee"
+    },
+    "feeExpired": {
+      "subject": "Your membership fee has expired",
+      "preview": "Renew it to keep access to events",
+      "heading": "Hello {firstName},",
+      "body": "Last season's fee has expired. Renew it ({fee}) to get the events programme and sign-ups back.",
+      "cta": "Renew my fee",
+      "footer": "A question? Write to us at <mail></mail>."
+    },
+    "eventAlmostFull": {
+      "subject": "Only {left, plural, one {# spot} other {# spots}} left: {event}",
+      "preview": "{event} — {date}",
+      "heading": "Filling up!",
+      "body": "Only **{left, plural, one {# spot} other {# spots}}** left for “{event}” ({date}). Sign up soon.",
+      "cta": "Sign me up"
+    },
+    "eventReminder": {
+      "subject": "Tomorrow: {event}",
+      "preview": "{date} · {place}",
+      "heading": "See you tomorrow, {firstName}!",
+      "body": "A quick reminder: you're signed up for “{event}”. Bring your **member card** (QR code in your member area): it is scanned at the entrance.\n\nCan't come anymore? Cancel your sign-up to free the spot.",
+      "cta": "See the event",
+      "footer": "A question? Write to us at <mail></mail>."
+    },
+    "eventCancelled": {
+      "subject": "Event cancelled: {event}",
+      "preview": "{event} — {date}",
+      "heading": "Event cancelled",
+      "body": "Hello {firstName}, the event “{event}” planned on {date} is cancelled. Sorry! The club's next events are on the site.",
+      "cta": "See the events",
+      "footer": "A question? Write to us at <mail></mail>."
+    },
+    "eventThanks": {
+      "subject": "Thanks for coming: {event}",
+      "preview": "It was great to see you",
+      "heading": "Thank you, {firstName}!",
+      "body": "Thanks for being there for “{event}”. Photos and the story are coming soon in the club news.",
+      "cta": "See the news"
+    },
+    "predictionResult": {
+      "subject": "{points, plural, =0 {0 points} one {# point} other {# points}} on {match}",
+      "preview": "Score {score} · your prediction {prediction}",
+      "heading": "{points, plural, =0 {No points this time} one {+# point} other {+# points}}, {firstName}",
+      "body": "**{match}** ended **{score}** (regulation time). Your prediction: {prediction}.",
+      "cta": "See the leaderboard"
+    },
+    "leaderboardMonthly": {
+      "subject": "Your {month}: #{rank} of {total}",
+      "preview": "{points} points in the predictions leaderboard",
+      "heading": "{month} recap",
+      "body": "You finished **#{rank} of {total}** in the {month} predictions leaderboard, with **{points, plural, =0 {0 points} one {# point} other {# points}}**. New month, new chance!",
+      "cta": "See the leaderboard"
+    },
+    "inactive": {
+      "subject": "The club misses you, {firstName}",
+      "preview": "Predictions, events, news",
+      "heading": "It's been a while!",
+      "body": "Predictions go on, new events are coming and the club has news to share. Come and see us again!",
+      "cta": "Back to the site"
     }
   },
   "Legal": {
@@ -833,12 +951,16 @@
     "submit": "Confirm",
     "confirm": {
       "events": "Stop receiving emails about new club events?",
-      "reminders": "Stop receiving prediction reminders before matches?"
+      "reminders": "Stop receiving prediction reminders before matches?",
+      "results": "Stop receiving your points after matches and the monthly leaderboard recap?",
+      "news": "Stop receiving club news by email?"
     },
     "doneTitle": "Done",
     "done": {
       "events": "You won't receive event announcements by email any more.",
-      "reminders": "You won't receive prediction reminders any more."
+      "reminders": "You won't receive prediction reminders any more.",
+      "results": "You will no longer receive your prediction results by email.",
+      "news": "You will no longer receive club news by email."
     },
     "manage": "Manage my notifications",
     "invalidTitle": "Invalid link",
@@ -938,7 +1060,12 @@
       "eventsDescription": "Watch parties, away trips and get-togethers as soon as they are published.",
       "reminders": "Prediction reminders",
       "remindersDescription": "An email 24 hours before a match if you haven't predicted yet.",
-      "noMember": "Notifications are for members."
+      "noMember": "Notifications are for members.",
+      "results": "Results & leaderboard",
+      "resultsDescription": "Your points after each match and the leaderboard recap on the 1st of the month.",
+      "news": "Club news",
+      "newsDescription": "The committee's campaigns and a few nudges (profile to complete, coming back to the site).",
+      "essential": "Essential emails (membership, fee, reminder the day before an event you signed up for, cancellation) are always sent."
     },
     "privacy": {
       "leaderboard": "Leaderboard",
@@ -1113,6 +1240,218 @@
           "label": "Event card",
           "hint": "With sign-up button"
         }
+      }
+    }
+  },
+  "Mailing": {
+    "title": "Mailing",
+    "description": "The site's automated emails, campaigns and sending history.",
+    "back": "Mailing",
+    "tabs": {
+      "automations": "Automations",
+      "campaigns": "Campaigns",
+      "journal": "Log",
+      "settings": "Settings"
+    },
+    "groups": {
+      "membership": "Membership",
+      "fee": "Membership fee",
+      "events": "Events",
+      "predictions": "Predictions & engagement"
+    },
+    "categories": {
+      "transactional": "Essential",
+      "events": "Events",
+      "reminders": "Reminders",
+      "results": "Results",
+      "news": "News"
+    },
+    "categoryHint": "“Essential” emails can't be turned off by members; the others follow each member's preferences.",
+    "enabled": "On",
+    "delay": "Delay",
+    "delayNone": "Immediate",
+    "minutes": "min",
+    "hours": "h",
+    "days": "d",
+    "sent30": "{count, plural, =0 {no sends} one {# send} other {# sends}} in 30 days",
+    "editTexts": "Texts",
+    "saved": "Saved.",
+    "error": "Saving failed. Try again.",
+    "editor": {
+      "locale": "Language",
+      "subject": "Subject",
+      "preview": "Preview (inbox)",
+      "heading": "Heading",
+      "body": "Text",
+      "bodyHint": "**bold**, *italic*, [link](https://…) · blank line = new paragraph.",
+      "cta": "Button",
+      "variables": "Variables",
+      "defaultHint": "Empty = default text",
+      "save": "Save",
+      "reset": "Back to the default text",
+      "resetDone": "Default text restored.",
+      "preview_action": "Preview",
+      "test": "Send me a test",
+      "testSent": "Test sent to {email}.",
+      "previewTitle": "Preview with example values"
+    },
+    "campaigns": {
+      "new": "New campaign",
+      "namePrompt": "Campaign name (internal)",
+      "empty": "No campaigns yet.",
+      "status": {
+        "draft": "Draft",
+        "scheduled": "Scheduled",
+        "sending": "Sending",
+        "sent": "Sent"
+      },
+      "sentCount": "{count, plural, one {# send} other {# sends}}",
+      "name": "Name (internal)",
+      "audience": "Recipients",
+      "audiences": {
+        "members": "All accepted members",
+        "paid": "Members whose fee is paid",
+        "unpaid": "Accepted members, fee due",
+        "pending": "Pending requests",
+        "event": "Signed up for an event"
+      },
+      "event": "Event",
+      "ctaUrl": "Button link",
+      "ctaUrlHint": "A page of the site (/evenements) or a web address; empty = no button.",
+      "count": "{count, plural, =0 {Nobody} one {# member} other {# members}} (with “Club news” on)",
+      "saveSettings": "Save settings",
+      "sendNow": "Send now",
+      "confirmSend": "Send this campaign to {count, plural, one {# member} other {# members}}?",
+      "sendAt": "Schedule for",
+      "schedule": "Schedule",
+      "unschedule": "Cancel schedule",
+      "scheduledFor": "Scheduled for {date}",
+      "delete": "Delete",
+      "confirmDelete": "Delete this campaign?",
+      "queued": "{count, plural, =0 {No recipients.} one {# email queued.} other {# emails queued.}}",
+      "scheduled": "Campaign scheduled.",
+      "noTexts": "Write the email first (at least in French).",
+      "locked": "This campaign is sent: it can no longer be changed.",
+      "textsTitle": "The email"
+    },
+    "journal": {
+      "empty": "Nothing sent.",
+      "filter": "Status",
+      "all": "All",
+      "to": "Recipient",
+      "what": "Email",
+      "when": "When",
+      "status": {
+        "pending": "Waiting",
+        "sending": "Sending",
+        "sent": "Sent",
+        "failed": "Failed",
+        "skipped": "Skipped",
+        "cancelled": "Cancelled"
+      },
+      "retry": "Retry",
+      "cancel": "Cancel",
+      "done": "Done.",
+      "campaign": "Campaign: {name}"
+    },
+    "settings": {
+      "paused": "Pause all sending",
+      "pausedHint": "Emails stay queued and go out when resumed.",
+      "pausedBanner": "Sending is paused.",
+      "dailyCap": "Cap per 24 h",
+      "perMinute": "Emails per minute",
+      "run": "Run now",
+      "runHint": "Looks for scheduled emails that are due and sends what is waiting, without waiting for the next minute.",
+      "runDone": "Sending round done."
+    },
+    "automations": {
+      "membership_received": {
+        "name": "Request received",
+        "when": "When the applicant confirms their email"
+      },
+      "membership_toCommittee": {
+        "name": "New request (committee)",
+        "when": "When the applicant confirms their email, to admins"
+      },
+      "membership_verifyReminder": {
+        "name": "Email confirmation reminder",
+        "when": "Email still not confirmed 2 days after signing up"
+      },
+      "membership_committeeDigest": {
+        "name": "Requests waiting (committee)",
+        "when": "Daily at 8 am, if requests are older than 3 days"
+      },
+      "membership_approved": {
+        "name": "Membership accepted",
+        "when": "When the committee accepts"
+      },
+      "membership_rejected": {
+        "name": "Membership declined",
+        "when": "When the committee declines"
+      },
+      "membership_completeProfile": {
+        "name": "Complete the profile",
+        "when": "3 days after acceptance, no phone nor address"
+      },
+      "account_deleted": {
+        "name": "Account deleted",
+        "when": "When the account is deleted"
+      },
+      "fee_reminder": {
+        "name": "Fee reminder",
+        "when": "7 and 21 days after acceptance, fee unpaid"
+      },
+      "fee_receipt": {
+        "name": "Fee received",
+        "when": "When an admin records the fee"
+      },
+      "fee_renewal": {
+        "name": "Renewal",
+        "when": "In June, to members paid until 30 June"
+      },
+      "fee_expired": {
+        "name": "Fee expired",
+        "when": "In July, to members who did not renew"
+      },
+      "event_new": {
+        "name": "New event",
+        "when": "On creation, if “notify members” is ticked"
+      },
+      "event_almostFull": {
+        "name": "Almost full",
+        "when": "When 20% of the spots are left, to members not signed up"
+      },
+      "event_reminder": {
+        "name": "Day-before reminder",
+        "when": "The day before, to those signed up (member card)"
+      },
+      "event_waitlistPromoted": {
+        "name": "Spot freed",
+        "when": "Moved from the waiting list to signed up"
+      },
+      "event_cancelled": {
+        "name": "Event cancelled",
+        "when": "When an event is deleted, to those signed up"
+      },
+      "event_thanks": {
+        "name": "Thanks for coming",
+        "when": "The day after, to members let in"
+      },
+      "prediction_reminder": {
+        "name": "Prediction reminder",
+        "when": "24 h before the match, to members without a prediction"
+      },
+      "prediction_result": {
+        "name": "Prediction result",
+        "when": "When the match is scored"
+      },
+      "leaderboard_monthly": {
+        "name": "Monthly recap",
+        "when": "On the 1st at 9 am, rank of the past month"
+      },
+      "engagement_inactive": {
+        "name": "Inactivity nudge",
+        "when": "60 days without a visit, at most every 90 days"
       }
     }
   }

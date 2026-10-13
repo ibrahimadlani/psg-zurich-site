@@ -1,4 +1,4 @@
-import { ChevronRight, Newspaper } from "lucide-react";
+import { ChevronRight, Mail, Newspaper } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
@@ -38,6 +38,18 @@ async function AdminPanel() {
         <span className="min-w-0 flex-1">
           <span className="block font-semibold">{t("newsCard")}</span>
           <span className="block text-sm text-muted-foreground">{t("newsCardDescription")}</span>
+        </span>
+        <ChevronRight className="size-4 text-muted-foreground" aria-hidden />
+      </Link>
+      <Link
+        href="/admin/mailing"
+        prefetch={false}
+        className="flex items-center gap-4 rounded-xl border bg-card p-4 transition-colors hover:border-foreground/30"
+      >
+        <Mail className="size-5 text-muted-foreground" aria-hidden />
+        <span className="min-w-0 flex-1">
+          <span className="block font-semibold">{t("mailingCard")}</span>
+          <span className="block text-sm text-muted-foreground">{t("mailingCardDescription")}</span>
         </span>
         <ChevronRight className="size-4 text-muted-foreground" aria-hidden />
       </Link>

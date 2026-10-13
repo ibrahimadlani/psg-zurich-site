@@ -12,12 +12,8 @@ import { loadMessages } from "@/i18n/messages";
 import { routing } from "@/i18n/routing";
 import { sendMail } from "@/lib/mail";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import {
-  findDeletedAccountInfo,
-  notifyNewMembershipRequest,
-  sendAccountDeletedEmail,
-  type DeletedAccountInfo,
-} from "@/lib/membership-mail";
+import { onAccountDeleted, onEmailVerified } from "@/lib/mailing/triggers";
+import { findDeletedAccountInfo, type DeletedAccountInfo } from "@/lib/membership-mail";
 
 const RESET_PASSWORD_TTL_SECONDS = 60 * 60;
 const VERIFY_EMAIL_TTL_SECONDS = 60 * 60 * 24;
@@ -101,7 +97,7 @@ function createAuth() {
             metadata: { memberNumber: info?.memberNumber ?? null },
             ipAddress: request ? getClientIp(request.headers) : null,
           });
-          await sendAccountDeletedEmail(deleted.email, info?.locale ?? "fr");
+          await onAccountDeleted(deleted.email, info?.locale ?? "fr");
         },
       },
       additionalFields: {
@@ -135,7 +131,7 @@ function createAuth() {
       sendVerificationEmail: ({ user, url }) => sendAuthLinkEmail("verifyEmail", user.email, url),
       // The committee hears about a membership request once the address is confirmed.
       afterEmailVerification: async (user) => {
-        await notifyNewMembershipRequest(user.id).catch((error) =>
+        await onEmailVerified(user.id).catch((error) =>
           console.error("[membership] request notification failed:", error),
         );
       },

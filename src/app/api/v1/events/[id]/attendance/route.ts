@@ -1,9 +1,10 @@
 import { and, eq } from "drizzle-orm";
+import { after } from "next/server";
 import { db } from "@/db";
 import { attendance, events } from "@/db/schema";
 import { apiHandler, ok } from "@/lib/api";
 import { promoteFromWaitlist, registeredCount } from "@/lib/events";
-import { sendWaitlistPromotion } from "@/lib/membership-mail";
+import { onSignUp, onWaitlistPromoted } from "@/lib/mailing/triggers";
 import { requirePaidMember } from "@/lib/members";
 import { HttpError } from "@/lib/permissions";
 
@@ -37,6 +38,7 @@ export const POST = apiHandler<Context>(async (_request, { params }) => {
     return next;
   });
 
+  if (status === "registered") after(() => onSignUp(id));
   return ok({ status });
 });
 
@@ -56,6 +58,6 @@ export const DELETE = apiHandler<Context>(async (_request, { params }) => {
     return existing.status === "registered" ? promoteFromWaitlist(id, tx) : null;
   });
 
-  if (promoted) await sendWaitlistPromotion(promoted, id);
+  if (promoted) after(() => onWaitlistPromoted(promoted, id));
   return ok({ status: "cancelled" });
 });

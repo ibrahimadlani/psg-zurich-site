@@ -37,9 +37,14 @@ export const displayName = (firstName: string, lastName: string, nickname?: stri
  * Ranking of active members on scored predictions: points, then exact scores.
  * Members who hide themselves are left out, except for their own row (`viewerId`).
  */
-export async function getLeaderboard(period: "season" | "month", viewerId: string | null = null) {
+export async function getLeaderboard(
+  period: "season" | "month",
+  viewerId: string | null = null,
+  /** Another month than the current one (monthly recap email). */
+  bounds = currentMonthBounds(),
+) {
   const [latest] = await db.select({ season: max(matches.season) }).from(matches);
-  const { start, end } = currentMonthBounds();
+  const { start, end } = bounds;
   const periodFilter =
     period === "month"
       ? and(gte(matches.kickoffAt, start), lt(matches.kickoffAt, end))

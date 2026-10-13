@@ -22,7 +22,7 @@ export async function onServerStart() {
   const { startFootballSync } = await import("@/lib/football/scheduler");
   startFootballSync();
 
-  // "24 h left to predict" emails.
-  const { startReminderScheduler } = await import("@/lib/notifications");
-  startReminderScheduler();
+  // Automated emails: queue worker and periodic scans (src/lib/mailing).
+  const { startMailing } = await import("@/lib/mailing");
+  startMailing();
 }

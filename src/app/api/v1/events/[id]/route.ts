@@ -1,8 +1,10 @@
-import { eq } from "drizzle-orm";
+import { and, eq, ne } from "drizzle-orm";
+import { after } from "next/server";
 import { db } from "@/db";
-import { events } from "@/db/schema";
+import { attendance, events } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
+import { onEventCancelled } from "@/lib/mailing/triggers";
 import { HttpError, requireRole } from "@/lib/permissions";
 import { createEventSchema } from "@/lib/validators";
 
@@ -61,6 +63,10 @@ export const DELETE = apiHandler<Context>(async (request, { params }) => {
   const session = await requireRole("admin");
   const { id } = await params;
   const event = await findOrThrow(id);
+  // Read before the deletion (sign-ups go with it): they are told it is cancelled.
+  const signedUp = event.startsAt.getTime() > Date.now()
+    ? (await db.select({ memberId: attendance.memberId }).from(attendance).where(and(eq(attendance.eventId, id), ne(attendance.status, "cancelled")))).map((row) => row.memberId)
+    : [];
 
   await db.transaction(async (tx) => {
     // Sign-ups go with it (ON DELETE CASCADE).
@@ -77,5 +83,6 @@ export const DELETE = apiHandler<Context>(async (request, { params }) => {
       tx,
     );
   });
+  after(() => onEventCancelled(event, signedUp));
   return ok({ deleted: true });
 });

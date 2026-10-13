@@ -167,6 +167,12 @@ export const members = mysqlTable(
     hideFromLeaderboard: boolean("hide_from_leaderboard").default(false).notNull(),
     notifyEvents: boolean("notify_events").default(true).notNull(),
     notifyPredictionReminders: boolean("notify_prediction_reminders").default(true).notNull(),
+    /** Points after each match and the monthly leaderboard recap. */
+    notifyResults: boolean("notify_results").default(true).notNull(),
+    /** Club news: campaigns and occasional nudges (profile, inactivity). */
+    notifyNews: boolean("notify_news").default(true).notNull(),
+    /** Last visit (at most hourly), for the "we miss you" email. */
+    lastSeenAt: datetime("last_seen_at", { fsp: 3 }),
     /**
      * Random token in the QR code on the back of the member card (event check-in); unique,
      * and can be replaced if a card leaks. Created the first time the card is shown.
@@ -556,4 +562,98 @@ export const media = mysqlTable("media", {
   height: int("height").notNull(),
   uploadedBy: fk("uploaded_by").references(() => user.id, { onDelete: "set null" }),
   createdAt: createdAt(),
+});
+
+/* -------------------------------------------------------------------------- */
+/*                                   Mailing                                  */
+/* -------------------------------------------------------------------------- */
+
+/** Automated emails: one row per automation of the registry (src/lib/mailing/registry.ts). */
+export const emailAutomations = mysqlTable("email_automations", {
+  key: varchar("key", { length: 64 }).primaryKey(),
+  enabled: boolean("enabled").default(true).notNull(),
+  delayMinutes: int("delay_minutes").default(0).notNull(),
+  updatedBy: fk("updated_by").references(() => user.id, { onDelete: "set null" }),
+  updatedAt: updatedAt(),
+});
+
+export const EMAIL_OWNER_TYPES = ["automation", "campaign"] as const;
+
+/** Texts edited by the committee; without a row, the defaults of messages/*.json apply. */
+export const emailTemplates = mysqlTable(
+  "email_templates",
+  {
+    id: id(),
+    ownerType: mysqlEnum("owner_type", EMAIL_OWNER_TYPES).notNull(),
+    ownerId: varchar("owner_id", { length: 64 }).notNull(),
+    locale: mysqlEnum("locale", LOCALES).notNull(),
+    subject: varchar("subject", { length: 200 }).notNull(),
+    preview: varchar("preview", { length: 200 }).notNull(),
+    heading: varchar("heading", { length: 200 }).notNull(),
+    /** Safe inline syntax (**bold**, *italic*, [link](url)) and {variables}; never HTML. */
+    body: text("body").notNull(),
+    ctaLabel: varchar("cta_label", { length: 80 }),
+    updatedAt: updatedAt(),
+  },
+  (t) => [uniqueIndex("email_templates_owner_locale_uq").on(t.ownerType, t.ownerId, t.locale)],
+);
+
+export const CAMPAIGN_AUDIENCES = ["members", "paid", "unpaid", "pending", "event"] as const;
+export const CAMPAIGN_STATUSES = ["draft", "scheduled", "sending", "sent"] as const;
+
+/** Emails written by the committee and sent once to an audience. */
+export const emailCampaigns = mysqlTable("email_campaigns", {
+  id: id(),
+  name: varchar("name", { length: 120 }).notNull(),
+  audience: mysqlEnum("audience", CAMPAIGN_AUDIENCES).default("members").notNull(),
+  audienceEventId: fk("audience_event_id").references(() => events.id, { onDelete: "set null" }),
+  /** Button target (a page of the site or an external link); no button without it. */
+  ctaUrl: varchar("cta_url", { length: 255 }),
+  status: mysqlEnum("status", CAMPAIGN_STATUSES).default("draft").notNull(),
+  scheduledAt: datetime("scheduled_at", { fsp: 3 }),
+  sentCount: int("sent_count").default(0).notNull(),
+  createdBy: fk("created_by").references(() => user.id, { onDelete: "set null" }),
+  ...timestamps(),
+});
+
+export const EMAIL_JOB_STATUSES = ["pending", "sending", "sent", "failed", "skipped", "cancelled"] as const;
+export type EmailJobStatus = (typeof EMAIL_JOB_STATUSES)[number];
+
+/** Outbox: every automated or campaign email goes through here (sent by the mailing worker). */
+export const emailJobs = mysqlTable(
+  "email_jobs",
+  {
+    id: id(),
+    automationKey: varchar("automation_key", { length: 64 }),
+    campaignId: fk("campaign_id").references(() => emailCampaigns.id, { onDelete: "cascade" }),
+    memberId: fk("member_id").references(() => members.id, { onDelete: "set null" }),
+    toEmail: varchar("to_email", { length: 255 }).notNull(),
+    locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
+    /** Variables of the texts, the button link and the info line, fixed when queued. */
+    payload: json<{ values: Record<string, string>; path?: string; url?: string; info?: string }>("payload").notNull(),
+    /** Same key = same email: never queued twice (NULL for test sends). */
+    dedupeKey: varchar("dedupe_key", { length: 191 }).unique(),
+    status: mysqlEnum("status", EMAIL_JOB_STATUSES).default("pending").notNull(),
+    sendAfter: datetime("send_after", { fsp: 3 }).notNull(),
+    attempts: int("attempts").default(0).notNull(),
+    lastError: varchar("last_error", { length: 500 }),
+    sentAt: datetime("sent_at", { fsp: 3 }),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    index("email_jobs_due_idx").on(t.status, t.sendAfter),
+    index("email_jobs_automation_idx").on(t.automationKey),
+    index("email_jobs_campaign_idx").on(t.campaignId),
+  ],
+);
+
+/** Single row (id 1): pause switch and sending pace. */
+export const mailingSettings = mysqlTable("mailing_settings", {
+  id: int("id").primaryKey(),
+  paused: boolean("paused").default(false).notNull(),
+  /** Most emails per day (automations and campaigns together). */
+  dailyCap: int("daily_cap").default(500).notNull(),
+  /** Most emails per minute, to stay within the SMTP provider's limits. */
+  perMinute: int("per_minute").default(20).notNull(),
+  updatedAt: updatedAt(),
 });

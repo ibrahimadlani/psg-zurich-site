@@ -4,7 +4,7 @@ import { members, user } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { todayInZurich } from "@/lib/dues";
-import { sendMembershipDecision } from "@/lib/membership-mail";
+import { onMemberDecision } from "@/lib/mailing/triggers";
 import { HttpError, requireRole } from "@/lib/permissions";
 import { memberDecisionSchema } from "@/lib/validators";
 
@@ -74,6 +74,6 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
     return row;
   });
 
-  await sendMembershipDecision(id, decision === "approve" ? "approved" : "rejected");
+  await onMemberDecision(id, decision === "approve" ? "approved" : "rejected");
   return ok(updated);
 });

@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { events } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { notifyNewEvent } from "@/lib/notifications";
+import { onEventCreated } from "@/lib/mailing/triggers";
 import { requirePaidMember } from "@/lib/members";
 import { requireRole } from "@/lib/permissions";
 import { createEventSchema, pagination } from "@/lib/validators";
@@ -46,7 +46,7 @@ export const POST = apiHandler(async (request) => {
   });
 
   // After the response: the admin doesn't wait for every email.
-  if (input.notifyMembers && created) after(() => notifyNewEvent(created.id));
+  if (input.notifyMembers && created) after(() => onEventCreated(created.id));
 
   return ok(created, { status: 201 });
 });

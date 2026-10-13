@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { matches, predictions, type MatchTimelineEntry } from "@/db/schema";
 import { footballApi, PSG_TEAM_ID, type ApiMatch } from "@/lib/football/api";
 import { scorePrediction } from "@/lib/football/scoring";
+import { onPredictionsScored } from "@/lib/mailing/triggers";
 
 type MatchStatus = (typeof matches.$inferSelect)["status"];
 
@@ -171,4 +172,6 @@ export async function scorePredictionsForMatch(matchId: string) {
     const points = scorePrediction({ psg: row.psgScore, opponent: row.opponentScore }, result);
     if (row.points !== points) await db.update(predictions).set({ points }).where(eq(predictions.id, row.id));
   }
+  // "Your points" email, once per match and member.
+  await onPredictionsScored(matchId);
 }

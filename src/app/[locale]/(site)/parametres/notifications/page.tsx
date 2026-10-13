@@ -24,7 +24,10 @@ async function Content() {
           description={t("remindersDescription")}
           initial={member.notifyPredictionReminders}
         />
+        <SettingSwitch field="notifyResults" label={t("results")} description={t("resultsDescription")} initial={member.notifyResults} />
+        <SettingSwitch field="notifyNews" label={t("news")} description={t("newsDescription")} initial={member.notifyNews} />
       </div>
+      <p className="pt-4 text-xs text-muted-foreground">{t("essential")}</p>
     </SettingsBlock>
   );
 }

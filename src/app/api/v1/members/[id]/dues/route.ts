@@ -5,6 +5,7 @@ import { members } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { seasonEnd } from "@/lib/dues";
+import { onFeeRecorded } from "@/lib/mailing/triggers";
 import { HttpError, requireRole } from "@/lib/permissions";
 
 type Context = RouteContext<"/api/v1/members/[id]/dues">;
@@ -34,5 +35,6 @@ export const POST = apiHandler<Context>(async (request, { params }) => {
       tx,
     );
   });
+  if (expiresOn) await onFeeRecorded(id, expiresOn);
   return ok({ expiresOn });
 });
