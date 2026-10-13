@@ -15,5 +15,5 @@ R.c("server/chunks/_0ettrwjf2e25u._.js")
 R.c("server/chunks/_0nc98jkeew7_2._.js")
 R.c("server/chunks/src_lib_football_1qa0oo8b6_w6v._.js")
 R.c("server/chunks/_next-internal_server_app_api_v1_matches_sync_route_actions_1jirh7ezzsbuk.js")
-R.m(70222)
-module.exports=R.m(70222).exports
+R.m(370222)
+module.exports=R.m(370222).exports

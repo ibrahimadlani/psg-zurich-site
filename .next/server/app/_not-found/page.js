@@ -12,5 +12,5 @@ R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_forbidde
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_0l_sp0xky89qu.js")
 R.c("server/chunks/ssr/src_app_global-error_tsx_009xrx8nk64k0._.js")
 R.c("server/chunks/ssr/_next-internal_server_app__not-found_page_actions_0pt47yrisjoev.js")
-R.m(87063)
-module.exports=R.m(87063).exports
+R.m(687063)
+module.exports=R.m(687063).exports

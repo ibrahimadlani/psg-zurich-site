@@ -14,5 +14,5 @@ R.c("server/chunks/[root-of-the-server]__02_2sm-ocfxhk._.js")
 R.c("server/chunks/node_modules_next_dist_12o8itlbm185b._.js")
 R.c("server/chunks/node_modules_next_1zdbrneapig6o._.js")
 R.c("server/chunks/_next-internal_server_app_api_v1_me_avatar_route_actions_024d1g4p7e-9i.js")
-R.m(43338)
-module.exports=R.m(43338).exports
+R.m(243338)
+module.exports=R.m(243338).exports

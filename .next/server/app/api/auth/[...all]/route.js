@@ -10,5 +10,5 @@ R.c("server/chunks/[root-of-the-server]__02_2sm-ocfxhk._.js")
 R.c("server/chunks/node_modules_@better-auth_1iqndebu-57re._.js")
 R.c("server/chunks/node_modules_0-ddq2emfnxqd._.js")
 R.c("server/chunks/_next-internal_server_app_api_auth_[___all]_route_actions_0avsr_3grsf9z.js")
-R.m(67691)
-module.exports=R.m(67691).exports
+R.m(267691)
+module.exports=R.m(267691).exports

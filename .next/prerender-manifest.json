@@ -6,7 +6,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 9716,
+      "htmlSize": 10040,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -43,7 +43,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 10794,
+      "htmlSize": 11318,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -79,7 +79,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13629,
+      "htmlSize": 15095,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -114,7 +114,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11778,
+      "htmlSize": 12181,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -149,7 +149,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13742,
+      "htmlSize": 14158,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -184,7 +184,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12370,
+      "htmlSize": 12843,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -219,7 +219,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13779,
+      "htmlSize": 14182,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -254,7 +254,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12664,
+      "htmlSize": 13067,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -284,12 +284,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/de/bienvenue": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8074,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/bienvenue",
+      "dataRoute": "/de/bienvenue.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/de/confidentialite": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 24984,
+      "htmlSize": 25704,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -324,7 +359,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 10540,
+      "htmlSize": 11620,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -359,7 +394,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 9247,
+      "htmlSize": 9987,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -394,7 +429,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8056,
+      "htmlSize": 8459,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -429,7 +464,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 19030,
+      "htmlSize": 19433,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -464,7 +499,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 7459,
+      "htmlSize": 7932,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -499,7 +534,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12153,
+      "htmlSize": 12556,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -534,7 +569,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12128,
+      "htmlSize": 12531,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -569,7 +604,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11996,
+      "htmlSize": 12399,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -604,7 +639,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12742,
+      "htmlSize": 13145,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -639,7 +674,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 20685,
+      "htmlSize": 21088,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -674,7 +709,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 21451,
+      "htmlSize": 21854,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -709,7 +744,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16479,
+      "htmlSize": 16882,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -744,7 +779,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16477,
+      "htmlSize": 16880,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -779,7 +814,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16465,
+      "htmlSize": 16868,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -814,7 +849,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16458,
+      "htmlSize": 16861,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -849,7 +884,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16584,
+      "htmlSize": 17127,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -884,7 +919,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 49209,
+      "htmlSize": 49612,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -919,7 +954,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13609,
+      "htmlSize": 15075,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -954,7 +989,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11735,
+      "htmlSize": 12138,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -989,7 +1024,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13725,
+      "htmlSize": 14142,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1024,7 +1059,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12309,
+      "htmlSize": 12782,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1059,7 +1094,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13733,
+      "htmlSize": 14136,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1094,7 +1129,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12621,
+      "htmlSize": 13024,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1124,12 +1159,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/en/bienvenue": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8066,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/bienvenue",
+      "dataRoute": "/en/bienvenue.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/en/confidentialite": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 24521,
+      "htmlSize": 25224,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1164,7 +1234,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 10489,
+      "htmlSize": 11569,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1199,7 +1269,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 9215,
+      "htmlSize": 9955,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1234,7 +1304,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8045,
+      "htmlSize": 8448,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1269,7 +1339,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 18913,
+      "htmlSize": 19316,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1304,7 +1374,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 7457,
+      "htmlSize": 7930,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1339,7 +1409,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12097,
+      "htmlSize": 12500,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1374,7 +1444,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12080,
+      "htmlSize": 12483,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1409,7 +1479,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11949,
+      "htmlSize": 12352,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1444,7 +1514,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12706,
+      "htmlSize": 13109,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1479,7 +1549,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 20670,
+      "htmlSize": 21073,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1514,7 +1584,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 21348,
+      "htmlSize": 21751,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1549,7 +1619,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16406,
+      "htmlSize": 16809,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1584,7 +1654,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16398,
+      "htmlSize": 16801,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1619,7 +1689,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16379,
+      "htmlSize": 16782,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1654,7 +1724,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16381,
+      "htmlSize": 16784,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1689,7 +1759,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16511,
+      "htmlSize": 17054,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1724,7 +1794,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 49146,
+      "htmlSize": 49549,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1759,7 +1829,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13710,
+      "htmlSize": 15176,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1794,7 +1864,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 11850,
+      "htmlSize": 12253,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1829,7 +1899,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13826,
+      "htmlSize": 14232,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1864,7 +1934,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12419,
+      "htmlSize": 12892,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1899,7 +1969,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 13849,
+      "htmlSize": 14252,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1934,7 +2004,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12733,
+      "htmlSize": 13136,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -1964,12 +2034,47 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/fr/bienvenue": {
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "initial",
+      "compute": "resuming",
+      "htmlSize": 8095,
+      "experimentalPPR": true,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/bienvenue",
+      "dataRoute": "/fr/bienvenue.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/fr/confidentialite": {
       "renderingMode": "PARTIALLY_STATIC",
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 25347,
+      "htmlSize": 26103,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2004,7 +2109,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 10572,
+      "htmlSize": 11652,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2039,7 +2144,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 9279,
+      "htmlSize": 10019,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2074,7 +2179,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 8102,
+      "htmlSize": 8505,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2109,7 +2214,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 19054,
+      "htmlSize": 19457,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2144,7 +2249,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 7487,
+      "htmlSize": 7960,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2179,7 +2284,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12217,
+      "htmlSize": 12620,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2214,7 +2319,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12205,
+      "htmlSize": 12608,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2249,7 +2354,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12037,
+      "htmlSize": 12440,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2284,7 +2389,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 12822,
+      "htmlSize": 13225,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2319,7 +2424,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 20890,
+      "htmlSize": 21293,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2354,7 +2459,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 21504,
+      "htmlSize": 21907,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2389,7 +2494,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16541,
+      "htmlSize": 16944,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2424,7 +2529,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16554,
+      "htmlSize": 16957,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2459,7 +2564,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16511,
+      "htmlSize": 16914,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2494,7 +2599,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16512,
+      "htmlSize": 16915,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2529,7 +2634,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 16635,
+      "htmlSize": 17178,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2564,7 +2669,7 @@
       "routeType": "page",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 49013,
+      "htmlSize": 49416,
       "experimentalPPR": true,
       "experimentalBypassFor": [
         {
@@ -2824,7 +2929,7 @@
       "routeType": "shell",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 1014,
+      "htmlSize": 1093,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -3059,7 +3164,7 @@
       "routeType": "shell",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 1014,
+      "htmlSize": 1093,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -3294,7 +3399,7 @@
       "routeType": "shell",
       "response": "initial",
       "compute": "resuming",
-      "htmlSize": 1014,
+      "htmlSize": 1093,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -3756,6 +3861,59 @@
         }
       ],
       "dataRouteRegex": "^/([^/]+?)/admin/actualites/([^/]+?)\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/[locale]/bienvenue": {
+      "experimentalPPR": true,
+      "remainingPrerenderableParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "throwOnEmptyStaticShell": false,
+      "renderingMode": "PARTIALLY_STATIC",
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        },
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(?:[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight).*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/bienvenue(?:/)?$",
+      "dataRoute": "/[locale]/bienvenue.rsc",
+      "fallback": null,
+      "fallbackRootParams": [
+        "locale"
+      ],
+      "fallbackSourceRoute": "/[locale]/bienvenue",
+      "fallbackRouteParams": [
+        {
+          "paramName": "locale",
+          "paramType": "dynamic"
+        }
+      ],
+      "dataRouteRegex": "^/([^/]+?)/bienvenue\\.rsc$",
       "prefetchDataRoute": null,
       "allowHeader": [
         "host",
@@ -4894,8 +5052,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "5be25cf8747517dcf7c1cce241b5fafb",
-    "previewModeSigningKey": "4a54252c35da49345ff5119e221799db315d7769884d99e2a108ccff3f0f8a11",
-    "previewModeEncryptionKey": "297bfabb96a26ea89cf1e1abd69d62f32ced1b20332a448a7a72781593c4464c"
+    "previewModeId": "409964d2bf3f1b2163f6e5dfafbdfcc3",
+    "previewModeSigningKey": "2bda4bd3a07f1e52f9ab0c78e955a0b474fba0f9fdec479d916e2966da0616e6",
+    "previewModeEncryptionKey": "58c0fe638a548aa48609b631c1e89d3bbd5e0d0c306a7b06ab4956d48f2d044a"
   }
 }

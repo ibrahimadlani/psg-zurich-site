@@ -373,6 +373,23 @@
       ]
     },
     {
+      "page": "/[locale]/bienvenue",
+      "regex": "^/([^/]+?)/bienvenue(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/bienvenue(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/bienvenue.segments/$d$locale/bienvenue$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/bienvenue\\.segments/\\$d\\$locale/bienvenue(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/confidentialite",
       "regex": "^/([^/]+?)/confidentialite(?:/)?$",
       "routeKeys": {
@@ -997,6 +1014,12 @@
       "regex": "^/api/v1/me/notifications(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/me/notifications(?:/)?$"
+    },
+    {
+      "page": "/api/v1/me/onboarding",
+      "regex": "^/api/v1/me/onboarding(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/me/onboarding(?:/)?$"
     },
     {
       "page": "/api/v1/me/settings",

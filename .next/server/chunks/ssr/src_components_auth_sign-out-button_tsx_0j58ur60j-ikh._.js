@@ -1,3 +1,3 @@
-module.exports=[41066,a=>{"use strict";var b=a.i(87924),c=a.i(15925),d=a.i(72131),e=a.i(99570),f=a.i(55027),g=a.i(29139);a.s(["SignOutButton",0,function(){let a=(0,c.r)("MemberArea"),h=(0,f.U)(),[i,j]=(0,d.useTransition)();return(0,b.jsx)(e.f,{variant:"outline",disabled:i,onClick:()=>j(async()=>{await (0,g._)(),h.refresh()}),children:a("signOut")})}])}];
+module.exports=[341066,a=>{"use strict";var b=a.i(187924),c=a.i(415925),d=a.i(572131),e=a.i(699570),f=a.i(555027),g=a.i(529139);a.s(["SignOutButton",0,function(){let a=(0,c.r)("MemberArea"),h=(0,f.U)(),[i,j]=(0,d.useTransition)();return(0,b.jsx)(e.f,{variant:"outline",disabled:i,onClick:()=>j(async()=>{await (0,g._)(),h.refresh()}),children:a("signOut")})}])}];
 
 //# sourceMappingURL=src_components_auth_sign-out-button_tsx_0j58ur60j-ikh._.js.map

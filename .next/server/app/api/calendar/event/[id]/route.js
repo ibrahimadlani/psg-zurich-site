@@ -16,5 +16,5 @@ R.c("server/chunks/node_modules_next_1_14bcs2pb4w8._.js")
 R.c("server/chunks/node_modules_next_dist_182yaz9b1ql64._.js")
 R.c("server/chunks/_0ettrwjf2e25u._.js")
 R.c("server/chunks/_next-internal_server_app_api_calendar_event_[id]_route_actions_1irlqjjs7_4aa.js")
-R.m(27774)
-module.exports=R.m(27774).exports
+R.m(427774)
+module.exports=R.m(427774).exports

@@ -64,6 +64,20 @@
       "when": 1791845377426,
       "tag": "0008_notifications",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1791887611869,
+      "tag": "0009_places",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1791892048969,
+      "tag": "0010_onboarding",
+      "breakpoints": true
     }
   ]
 }

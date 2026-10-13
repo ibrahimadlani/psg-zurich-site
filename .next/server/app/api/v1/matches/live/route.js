@@ -14,5 +14,5 @@ R.c("server/chunks/_0ettrwjf2e25u._.js")
 R.c("server/chunks/node_modules_@better-auth_1iqndebu-57re._.js")
 R.c("server/chunks/node_modules_1qqllkm8z1nqc._.js")
 R.c("server/chunks/_next-internal_server_app_api_v1_matches_live_route_actions_0r7mm13mk27g8.js")
-R.m(45487)
-module.exports=R.m(45487).exports
+R.m(945487)
+module.exports=R.m(945487).exports

@@ -9,5 +9,5 @@ R.c("server/chunks/[root-of-the-server]__02_2sm-ocfxhk._.js")
 R.c("server/chunks/node_modules_next_1zdbrneapig6o._.js")
 R.c("server/chunks/src_db_1r6opro2hkl2d._.js")
 R.c("server/chunks/1oeh_server_app_api_calendar_psg-zurich_ics_route_actions_1s7u9un2fk47f.js")
-R.m(4698)
-module.exports=R.m(4698).exports
+R.m(304698)
+module.exports=R.m(304698).exports
