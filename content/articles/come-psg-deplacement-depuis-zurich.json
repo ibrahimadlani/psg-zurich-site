@@ -1,0 +1,140 @@
+{
+  "category": "trips",
+  "translations": {
+    "fr": {
+      "slug": "come-psg-2027-deplacement-depuis-zurich",
+      "byline": "Le comité",
+      "title": "Côme – PSG le 20 janvier 2027 : le guide du déplacement depuis Zurich",
+      "excerpt": "Billets visiteurs, train ou voiture, stade, retour de nuit : comment vivre Côme – PSG en Ligue des champions en partant de Zurich, à 215 km seulement.",
+      "blocks": [
+        { "type": "paragraph", "text": "Le **mercredi 20 janvier 2027**, le PSG joue à Côme pour la 7e journée de la phase de ligue de la Ligue des champions. Le stade Giuseppe-Sinigaglia est à environ **215 km de Zurich**, contre plus de 600 pour le Parc des Princes. Pour les supporters parisiens de Suisse, c'est de loin le déplacement européen le plus accessible de la saison. Mais l'enceinte est petite, les places visiteurs seront rares et quelques règles locales peuvent gâcher la soirée. Ce qu'il faut savoir pour s'organiser." },
+        { "type": "heading", "text": "Côme, le nouveau venu de la Ligue des champions" },
+        { "type": "paragraph", "text": "Entraîné par Cesc Fàbregas, le Como 1907 a terminé **4e de Serie A** en 2025-2026 et dispute la première Ligue des champions de son histoire. Il est le 16e club italien à y participer. Ses débuts ont été spectaculaires : **4-1 contre le RB Leipzig**, le 10 septembre, devant son public." },
+        { "type": "paragraph", "text": "Pour accueillir l'Europe, le club a transformé cet été le Sinigaglia, posé au bord du lac : nouvelle tribune en béton, pelouse élargie. Après le feu vert de la commission de sécurité fin août, le stade compte **un peu moins de 11 000 places** pour les matchs de l'UEFA. Les tribunes provisoires utilisées en Serie A n'y sont pas autorisées." },
+        { "type": "heading", "text": "Comment obtenir une place en tribune visiteurs ?" },
+        { "type": "paragraph", "text": "Le règlement de l'UEFA oblige le club qui reçoit à réserver **au moins 5 % de sa capacité** aux supporters adverses, soit environ **550 places** à Côme. Ce quota est vendu par le **PSG lui-même**, via sa billetterie officielle, et en priorité à ses abonnés et membres les plus fidèles, comme pour tous ses déplacements européens. L'UEFA plafonne aussi le prix de ces billets : **50 € au maximum** la saison dernière. Le montant pour 2026-2027 n'avait pas encore été publié à la mi-octobre." },
+        { "type": "list", "ordered": true, "items": [
+          "**Activez les notifications** de la billetterie PSG et de l'application du club : les ventes des déplacements sont annoncées peu de temps à l'avance.",
+          "**Vérifiez votre statut** (abonné, MyParis Premium) : il conditionne l'ordre de passage dans les différentes vagues.",
+          "**Préparez une pièce d'identité valable** : en Italie, les billets de stade sont nominatifs et l'identité est contrôlée à l'entrée."
+        ] },
+        { "type": "callout", "tone": "important", "text": "**N'achetez pas de place en tribune locale.** Selon la RSI, le Côme interdit les couleurs de l'équipe adverse en dehors du secteur visiteurs, sous peine d'expulsion du stade. Les « packs » vendus plusieurs centaines d'euros sur les sites de revente ne viennent ni du PSG ni de l'UEFA, et rien ne garantit qu'ils donnent accès au secteur parisien." },
+        { "type": "heading", "text": "Y aller en train : moins de trois heures" },
+        { "type": "paragraph", "text": "Les EuroCity Zurich – Milan relient **Zurich HB à Côme San Giovanni sans changement, en un peu moins de trois heures**, par le tunnel de base du Saint-Gothard, Bellinzone, Lugano et Chiasso. La gare de San Giovanni domine le centre historique. Le stade est au bord du lac, à une vingtaine de minutes à pied." },
+        { "type": "callout", "tone": "info", "text": "En octobre et novembre 2026, des travaux côté italien privent Côme San Giovanni de l'arrêt des EuroCity. Un nouvel horaire entre en vigueur le 13 décembre 2026 : vérifiez sur [sbb.ch](https://www.sbb.ch) que votre train s'arrête bien à Côme le 20 janvier." },
+        { "type": "heading", "text": "Le retour : pas de train direct après le match" },
+        { "type": "paragraph", "text": "Le coup d'envoi est annoncé à 21 h, sous réserve de confirmation par l'UEFA, ce qui place la fin du match vers 22 h 50. En Italie, il est fréquent que les supporters visiteurs soient retenus quelques dizaines de minutes dans leur secteur après le coup de sifflet final. À cette heure-là, il n'y a plus d'EuroCity vers Zurich. Trois solutions :" },
+        { "type": "list", "ordered": false, "items": [
+          "**Dormir à Côme** et prendre un des premiers EuroCity du jeudi matin. C'est la solution la plus simple, mais les hôtels du centre se remplissent vite un soir de grand match : réservez dès l'ouverture de la billetterie.",
+          "**Dormir côté suisse**, à Chiasso ou à Lugano, avec les trains régionaux TILO qui relient Côme au Tessin. Vérifiez l'heure du dernier train de la soirée avant de compter dessus.",
+          "**Venir en voiture**, à plusieurs, pour rentrer dans la nuit."
+        ] },
+        { "type": "heading", "text": "En voiture : 2 h 30 par le Gothard" },
+        { "type": "paragraph", "text": "Par l'autoroute A2 et le tunnel routier du Saint-Gothard, comptez environ **2 h 30 hors bouchons** pour 215 km, jusqu'à la frontière de Chiasso, puis quelques kilomètres d'autoroute italienne jusqu'à Côme. Le tunnel est gratuit, mais la **vignette autoroutière suisse** est obligatoire. Le court tronçon italien est à péage : prévoyez une carte bancaire." },
+        { "type": "paragraph", "text": "Un mercredi de janvier, deux points méritent attention. En Lombardie, l'**équipement hivernal** est obligatoire sur les routes signalées de mi-novembre à mi-avril. Et le centre de Côme est en grande partie en zone à trafic limité, avec peu de places de stationnement près du stade : garez-vous en périphérie, puis finissez à pied ou en bus. Le covoiturage entre membres reste la façon la plus économique de faire le trajet aller-retour dans la soirée." },
+        { "type": "heading", "text": "La check-list du déplacement" },
+        { "type": "list", "ordered": false, "items": [
+          "Billet nominatif acheté via la billetterie officielle du PSG",
+          "Carte d'identité ou passeport, au même nom que le billet",
+          "Euros et carte bancaire (péages, transports, restauration)",
+          "Hébergement réservé tôt, ou retour en voiture organisé",
+          "Écharpe et maillot rangés jusqu'à l'entrée du secteur visiteurs",
+          "Horaires des trains vérifiés sur sbb.ch la veille"
+        ] },
+        { "type": "heading", "text": "Suivre le dossier avec le club" },
+        { "type": "paragraph", "text": "Le comité suit l'ouverture des ventes et relaiera les informations utiles aux membres. Si un déplacement groupé est organisé, il sera annoncé dans l'[agenda des événements](/fr/evenements). En attendant, le [calendrier des matchs](/fr/matchs) affiche le classement de la phase de ligue en direct. Pas encore membre ? [Adhérez en ligne](/fr/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Informations vérifiées au 13 octobre 2026. L'heure du coup d'envoi, les conditions de vente et les horaires de train peuvent encore changer : vérifiez-les auprès de la [billetterie du PSG](https://billetterie.psg.fr) et sur [sbb.ch](https://www.sbb.ch)." }
+      ]
+    },
+    "de": {
+      "slug": "como-psg-2027-auswaertsfahrt-ab-zuerich",
+      "byline": "Der Vorstand",
+      "title": "Como – PSG am 20. Januar 2027: der Ratgeber für die Reise ab Zürich",
+      "excerpt": "Gästetickets, Zug oder Auto, Stadion, Heimreise in der Nacht: So erleben Sie Como – PSG in der Champions League ab Zürich, nur 215 km entfernt.",
+      "blocks": [
+        { "type": "paragraph", "text": "Am **Mittwoch, 20. Januar 2027**, spielt PSG am 7. Spieltag der Champions-League-Ligaphase in Como. Das Stadio Giuseppe Sinigaglia liegt rund **215 km von Zürich** entfernt, der Parc des Princes über 600. Für PSG-Fans in der Schweiz ist es mit Abstand das am einfachsten erreichbare Europacup-Auswärtsspiel der Saison. Doch das Stadion ist klein, Gästetickets werden knapp, und einige lokale Regeln können den Abend verderben. Was Sie für die Planung wissen müssen." },
+        { "type": "heading", "text": "Como, der Neuling in der Champions League" },
+        { "type": "paragraph", "text": "Como 1907, trainiert von Cesc Fàbregas, wurde 2025/26 **Vierter der Serie A** und spielt zum ersten Mal in der Champions League, als 16. italienischer Klub überhaupt. Der Einstand war spektakulär: **4:1 gegen RB Leipzig** am 10. September vor eigenem Publikum." },
+        { "type": "paragraph", "text": "Für Europa hat der Klub im Sommer das Sinigaglia direkt am See umgebaut: neue Tribüne aus Beton, verbreitertes Spielfeld. Nach der Freigabe durch die Sicherheitskommission Ende August fasst das Stadion bei UEFA-Spielen **knapp 11 000 Zuschauer**. Die provisorischen Tribünen aus der Serie A sind dort nicht zugelassen." },
+        { "type": "heading", "text": "Wie kommt man an ein Ticket für den Gästesektor?" },
+        { "type": "paragraph", "text": "Das UEFA-Reglement verpflichtet den Heimklub, **mindestens 5 Prozent der Kapazität** für Gästefans bereitzustellen, in Como also rund **550 Plätze**. Dieses Kontingent verkauft **PSG selbst** über die offizielle Ticketseite, vorrangig an seine treuesten Abonnenten und Mitglieder, wie bei allen Europacup-Auswärtsspielen. Die UEFA deckelt zudem den Preis: **höchstens 50 €** in der letzten Saison. Der Betrag für 2026/27 war Mitte Oktober noch nicht veröffentlicht." },
+        { "type": "list", "ordered": true, "items": [
+          "**Aktivieren Sie die Benachrichtigungen** der PSG-Ticketseite und der Klub-App: Auswärtstickets werden oft kurzfristig angekündigt.",
+          "**Prüfen Sie Ihren Status** (Abonnent, MyParis Premium): Er bestimmt, in welcher Verkaufswelle Sie an der Reihe sind.",
+          "**Halten Sie einen gültigen Ausweis bereit**: In Italien sind Stadiontickets personalisiert, die Identität wird am Eingang kontrolliert."
+        ] },
+        { "type": "callout", "tone": "important", "text": "**Kaufen Sie keine Plätze im Heimbereich.** Laut RSI verbietet Como die Farben des Gegners ausserhalb des Gästesektors, bei Verstoss droht der Stadionverweis. Die «Pakete» für mehrere hundert Euro auf Wiederverkaufsportalen stammen weder von PSG noch von der UEFA, und nichts garantiert den Zugang zum Pariser Sektor." },
+        { "type": "heading", "text": "Mit dem Zug: weniger als drei Stunden" },
+        { "type": "paragraph", "text": "Die EuroCity Zürich – Mailand fahren **ohne Umsteigen in knapp drei Stunden von Zürich HB nach Como San Giovanni**, durch den Gotthard-Basistunnel via Bellinzona, Lugano und Chiasso. Der Bahnhof San Giovanni liegt oberhalb der Altstadt, das Stadion am Seeufer ist rund 20 Gehminuten entfernt." },
+        { "type": "callout", "tone": "info", "text": "Im Oktober und November 2026 halten die EuroCity wegen Bauarbeiten auf italienischer Seite nicht in Como San Giovanni. Am 13. Dezember 2026 tritt ein neuer Fahrplan in Kraft: Prüfen Sie auf [sbb.ch](https://www.sbb.ch), ob Ihr Zug am 20. Januar in Como hält." },
+        { "type": "heading", "text": "Die Heimreise: kein Direktzug nach dem Spiel" },
+        { "type": "paragraph", "text": "Anpfiff ist voraussichtlich um 21 Uhr, die UEFA muss das noch bestätigen. Das Spiel endet damit gegen 22.50 Uhr. In Italien werden Gästefans nach dem Schlusspfiff oft noch eine Weile im Sektor zurückgehalten. Zu dieser Zeit fährt kein EuroCity mehr nach Zürich. Drei Möglichkeiten:" },
+        { "type": "list", "ordered": false, "items": [
+          "**In Como übernachten** und am Donnerstagmorgen einen der ersten EuroCity nehmen. Das ist am einfachsten, aber die Hotels in der Altstadt sind an einem grossen Matchabend schnell voll: Buchen Sie, sobald der Ticketverkauf startet.",
+          "**Auf Schweizer Seite übernachten**, in Chiasso oder Lugano, mit den TILO-Regionalzügen zwischen Como und dem Tessin. Prüfen Sie vorher, wann der letzte Zug fährt.",
+          "**Mit dem Auto anreisen**, zu mehreren, und in der Nacht zurückfahren."
+        ] },
+        { "type": "heading", "text": "Mit dem Auto: 2 Stunden 30 via Gotthard" },
+        { "type": "paragraph", "text": "Über die A2 und den Gotthard-Strassentunnel sind es rund **2 Stunden 30 ohne Stau** für 215 km bis zur Grenze in Chiasso, danach wenige Kilometer italienische Autobahn bis Como. Der Tunnel ist gebührenfrei, die **Schweizer Autobahnvignette** aber Pflicht. Das kurze italienische Teilstück ist mautpflichtig: Nehmen Sie eine Kreditkarte mit." },
+        { "type": "paragraph", "text": "An einem Mittwoch im Januar sind zwei Punkte wichtig. In der Lombardei gilt von Mitte November bis Mitte April auf gekennzeichneten Strassen **Winterausrüstungspflicht**. Und die Altstadt von Como ist grösstenteils verkehrsbeschränkte Zone, Parkplätze beim Stadion sind rar: Parkieren Sie am Stadtrand und gehen Sie zu Fuss oder mit dem Bus weiter. Fahrgemeinschaften unter Mitgliedern sind die günstigste Lösung für Hin- und Rückfahrt am selben Abend." },
+        { "type": "heading", "text": "Die Checkliste" },
+        { "type": "list", "ordered": false, "items": [
+          "Personalisiertes Ticket über die offizielle PSG-Ticketseite",
+          "Identitätskarte oder Pass, auf denselben Namen wie das Ticket",
+          "Euro und Kreditkarte (Maut, Verkehr, Verpflegung)",
+          "Früh gebuchte Unterkunft oder organisierte Rückfahrt mit dem Auto",
+          "Schal und Trikot erst im Gästesektor auspacken",
+          "Zugverbindungen am Vortag auf sbb.ch prüfen"
+        ] },
+        { "type": "heading", "text": "Mit dem Klub auf dem Laufenden bleiben" },
+        { "type": "paragraph", "text": "Der Vorstand verfolgt den Ticketverkauf und informiert die Mitglieder. Falls eine gemeinsame Reise organisiert wird, erscheint sie in der [Agenda](/de/evenements). Den aktuellen Stand der Ligaphase zeigt der [Spielplan](/de/matchs) live. Noch kein Mitglied? [Hier anmelden](/de/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Stand: 13. Oktober 2026. Anstosszeit, Verkaufsbedingungen und Fahrpläne können sich noch ändern. Prüfen Sie sie auf der [PSG-Ticketseite](https://billetterie.psg.fr) und auf [sbb.ch](https://www.sbb.ch)." }
+      ]
+    },
+    "en": {
+      "slug": "como-psg-2027-away-trip-from-zurich",
+      "byline": "The committee",
+      "title": "Como v PSG on 20 January 2027: the away-trip guide from Zurich",
+      "excerpt": "Away tickets, train or car, the stadium and getting home at night: how to do Como v PSG in the Champions League from Zurich, just 215 km away.",
+      "blocks": [
+        { "type": "paragraph", "text": "On **Wednesday 20 January 2027**, PSG play in Como on matchday 7 of the Champions League league phase. The Stadio Giuseppe Sinigaglia is about **215 km from Zurich**, compared with more than 600 to the Parc des Princes. For PSG fans in Switzerland, it is by far the most accessible European away game of the season. But the ground is small, away tickets will be scarce, and a few local rules can ruin the night. Here is what you need to know to plan it." },
+        { "type": "heading", "text": "Como, the Champions League newcomers" },
+        { "type": "paragraph", "text": "Coached by Cesc Fàbregas, Como 1907 finished **fourth in Serie A** in 2025-26 and are playing in the Champions League for the first time, the 16th Italian club ever to do so. Their debut was spectacular: **4-1 against RB Leipzig** at home on 10 September." },
+        { "type": "paragraph", "text": "To host European football, the club rebuilt the lakeside Sinigaglia over the summer, with a new concrete stand and a wider pitch. After the safety commission signed it off in late August, the stadium holds **just under 11,000** for UEFA matches. The temporary stands used in Serie A are not allowed." },
+        { "type": "heading", "text": "How do you get an away-end ticket?" },
+        { "type": "paragraph", "text": "UEFA rules require the home club to set aside **at least 5% of capacity** for visiting fans, which means around **550 seats** in Como. That allocation is sold by **PSG themselves**, through their official ticketing site, with priority for their most loyal season-ticket holders and members, as for every European away game. UEFA also caps the price of these tickets: **€50 at most** last season. The 2026-27 figure had not been published by mid-October." },
+        { "type": "list", "ordered": true, "items": [
+          "**Turn on notifications** from PSG's ticketing site and the club app: away sales are often announced at short notice.",
+          "**Check your status** (season-ticket holder, MyParis Premium): it decides which sales wave you get into.",
+          "**Have valid ID ready**: in Italy, stadium tickets carry the holder's name, and ID is checked at the gate."
+        ] },
+        { "type": "callout", "tone": "important", "text": "**Do not buy a seat in the home stands.** According to Swiss broadcaster RSI, Como ban the visiting team's colours outside the away section, and offenders can be removed from the stadium. The \"packages\" selling for several hundred euros on resale sites come neither from PSG nor from UEFA, and nothing guarantees they get you into the PSG end." },
+        { "type": "heading", "text": "By train: under three hours" },
+        { "type": "paragraph", "text": "The Zurich – Milan EuroCity trains run **direct from Zurich HB to Como San Giovanni in just under three hours**, through the Gotthard Base Tunnel via Bellinzona, Lugano and Chiasso. San Giovanni station sits above the old town, and the lakeside stadium is about a 20-minute walk away." },
+        { "type": "callout", "tone": "info", "text": "In October and November 2026, engineering works on the Italian side mean EuroCity trains do not stop at Como San Giovanni. A new timetable starts on 13 December 2026, so check on [sbb.ch](https://www.sbb.ch) that your train calls at Como on 20 January." },
+        { "type": "heading", "text": "Getting home: no direct train after the game" },
+        { "type": "paragraph", "text": "Kick-off is expected at 9 pm, still to be confirmed by UEFA, so the match should end at around 10:50 pm. In Italy, away fans are often held in their section for a while after the final whistle. By then there are no more EuroCity trains to Zurich. You have three options:" },
+        { "type": "list", "ordered": false, "items": [
+          "**Stay the night in Como** and catch one of the first EuroCity trains on Thursday morning. It is the simplest option, but hotels in the old town fill up fast on a big match night, so book as soon as ticket sales open.",
+          "**Stay on the Swiss side**, in Chiasso or Lugano, using the TILO regional trains between Como and Ticino. Check when the last train of the evening leaves before relying on it.",
+          "**Drive down together** and head home overnight."
+        ] },
+        { "type": "heading", "text": "By car: 2 h 30 via the Gotthard" },
+        { "type": "paragraph", "text": "Via the A2 motorway and the Gotthard road tunnel, allow about **2 h 30 without traffic** for the 215 km to the border at Chiasso, then a few kilometres of Italian motorway to Como. The tunnel is free, but you need the **Swiss motorway vignette**. The short Italian stretch is tolled, so bring a credit card." },
+        { "type": "paragraph", "text": "On a Wednesday in January, two things matter. In Lombardy, **winter equipment** is mandatory on signposted roads from mid-November to mid-April. And much of central Como is a restricted traffic zone with little parking near the stadium: park on the outskirts and walk or take the bus. Car-sharing between members is the cheapest way to do the round trip in one evening." },
+        { "type": "heading", "text": "The checklist" },
+        { "type": "list", "ordered": false, "items": [
+          "A named ticket bought through PSG's official ticketing site",
+          "ID card or passport in the same name as the ticket",
+          "Euros and a bank card (tolls, transport, food)",
+          "Accommodation booked early, or a car ride home arranged",
+          "Scarf and shirt kept out of sight until you reach the away end",
+          "Train times checked on sbb.ch the day before"
+        ] },
+        { "type": "heading", "text": "Following it with the club" },
+        { "type": "paragraph", "text": "The committee is keeping an eye on ticket sales and will pass on what members need to know. If a group trip is organised, it will appear in the [events calendar](/en/evenements). Meanwhile, the [fixture list](/en/matchs) shows the league-phase table live. Not a member yet? [Join online](/en/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Information checked on 13 October 2026. Kick-off time, sale conditions and train times may still change, so check them on [PSG's ticketing site](https://billetterie.psg.fr) and [sbb.ch](https://www.sbb.ch)." }
+      ]
+    }
+  }
+}
