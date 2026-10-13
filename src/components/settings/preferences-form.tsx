@@ -3,6 +3,7 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useSyncExternalStore, useTransition } from "react";
+import { toast } from "sonner";
 import { readThemePreference, setThemePreference, type ThemePreference } from "@/components/theme-toggle";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -22,18 +23,16 @@ export function LanguageForm() {
   const router = useRouter();
   const pathname = usePathname();
   const [pending, startTransition] = useTransition();
-  const [failed, setFailed] = useState(false);
 
   const choose = (next: (typeof routing.locales)[number]) =>
     startTransition(async () => {
-      setFailed(false);
       const response = await fetch("/api/v1/me/settings", {
         method: "PATCH",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ locale: next }),
       });
       if (!response.ok) {
-        setFailed(true);
+        toast.error(t("error"));
         return;
       }
       if (next !== locale) router.replace(pathname, { locale: next });
@@ -52,7 +51,6 @@ export function LanguageForm() {
           </label>
         ))}
       </div>
-      {failed ? <p className="text-sm text-destructive">{t("error")}</p> : null}
     </fieldset>
   );
 }

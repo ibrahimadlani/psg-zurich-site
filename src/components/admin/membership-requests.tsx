@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { db } from "@/db";
 import { members, user } from "@/db/schema";
+import { formatPhone } from "@/lib/phone";
 
 const columns = {
   id: members.id,
@@ -62,7 +63,7 @@ export async function MembershipRequests() {
                     {row.emailVerified ? null : <Badge variant="outline">{t("unverified")}</Badge>}
                   </div>
                   <p className="truncate text-sm text-muted-foreground">
-                    {[row.email, row.phone, row.city].filter(Boolean).join(" · ")}
+                    {[row.email, formatPhone(row.phone), row.city].filter(Boolean).join(" · ")}
                   </p>
                   <p className="text-xs text-muted-foreground">{t("requestedOn", { date: date(row.createdAt) })}</p>
                 </div>

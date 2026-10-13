@@ -3,6 +3,7 @@
 import { Check, Link2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { toast } from "sonner";
 
 /** Copies the article's address (falls back to the share sheet where copying isn't allowed). */
 export function CopyLinkButton() {
@@ -13,6 +14,7 @@ export function CopyLinkButton() {
     try {
       await navigator.clipboard.writeText(window.location.href);
       setCopied(true);
+      toast.success(t("copied"));
       setTimeout(() => setCopied(false), 2000);
     } catch {
       await navigator.share?.({ url: window.location.href }).catch(() => undefined);

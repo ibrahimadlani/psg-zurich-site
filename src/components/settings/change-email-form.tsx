@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { FormMessage } from "@/components/auth/auth-ui";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,29 +13,29 @@ export function ChangeEmailForm({ current }: { current: string }) {
   const t = useTranslations("Settings.account");
   const locale = useLocale();
   const [email, setEmail] = useState("");
-  const [result, setResult] = useState<{ tone: "success" | "error"; text: string } | null>(null);
   const [pending, startTransition] = useTransition();
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
     const newEmail = email.trim().toLowerCase();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)) {
-      setResult({ tone: "error", text: t("emailInvalid") });
+      toast.error(t("emailInvalid"));
       return;
     }
     if (newEmail === current) {
-      setResult({ tone: "error", text: t("emailSame") });
+      toast.error(t("emailSame"));
       return;
     }
     startTransition(async () => {
       // The links in both emails come back to this page, in this language.
       const { error } = await authClient.changeEmail({ newEmail, callbackURL: `/${locale}/parametres/compte` });
       if (error) {
-        setResult({ tone: "error", text: t("emailError") });
+        toast.error(t("emailError"));
         return;
       }
       setEmail("");
-      setResult({ tone: "success", text: t("emailSent", { current }) });
+      // Longer message: left on screen a little longer.
+      toast.success(t("emailSent", { current }), { duration: 8000 });
     });
   };
 
@@ -51,7 +51,6 @@ export function ChangeEmailForm({ current }: { current: string }) {
           </Button>
         </div>
       </div>
-      {result ? <FormMessage tone={result.tone}>{result.text}</FormMessage> : null}
     </form>
   );
 }

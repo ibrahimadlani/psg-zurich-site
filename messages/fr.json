@@ -48,6 +48,18 @@
     "location": "Zurich, Suisse",
     "openMap": "Ouvrir dans Google Maps"
   },
+  "Onboarding": {
+    "pageTitle": "Bienvenue",
+    "title": "Bienvenue, {name} !",
+    "body": "Votre adresse est confirmée. Deux infos facultatives pour que le comité puisse vous joindre.",
+    "bodyPending": "Votre adresse est confirmée et votre demande d'adhésion part au comité. En attendant, deux infos facultatives pour qu'il puisse vous joindre.",
+    "addressPlaceholder": "Rue, numéro, ville",
+    "hint": "Vous pourrez les modifier à tout moment dans vos paramètres.",
+    "continue": "Continuer",
+    "later": "Plus tard",
+    "saved": "Vos coordonnées sont enregistrées.",
+    "error": "L'enregistrement a échoué. Réessayez."
+  },
   "Notifications": {
     "label": "Notifications",
     "labelUnread": "Notifications ({count} non lues)",
@@ -100,6 +112,7 @@
     "invalidEmail": "Adresse e-mail invalide.",
     "passwordRequired": "Saisissez votre mot de passe.",
     "invalidCredentials": "E-mail ou mot de passe incorrect.",
+    "welcome": "Content de vous revoir, {name} !",
     "error": "Connexion impossible pour le moment. Réessayez plus tard.",
     "notVerified": "Confirmez d'abord votre adresse e-mail : nous venons de vous renvoyer un lien.",
     "linkInvalid": "Ce lien de confirmation n'est plus valable. Connectez-vous pour en recevoir un nouveau."
@@ -125,7 +138,6 @@
     "invalidLink": "Ce lien n'est plus valide. Demandez-en un nouveau.",
     "requestNew": "Demander un nouveau lien",
     "done": "Mot de passe enregistré. Vous pouvez maintenant vous connecter.",
-    "goToLogin": "Se connecter",
     "error": "Impossible d'enregistrer le mot de passe. Réessayez plus tard."
   },
   "Membership": {
@@ -135,6 +147,11 @@
     "lastName": "Nom",
     "email": "Adresse e-mail",
     "phone": "Téléphone",
+    "phoneCountry": "Pays de l'indicatif",
+    "invalidPhone": "Numéro invalide pour ce pays.",
+    "address": "Adresse",
+    "postcode": "NPA",
+    "addressPlaceholder": "Rue et numéro",
     "city": "Ville",
     "optional": "Facultatif",
     "password": "Mot de passe",
@@ -295,6 +312,7 @@
     "newsCardDescription": "Rédiger et publier les articles du site."
   },
   "AdminBanner": {
+    "published": "Annonce publiée.",
     "title": "Bannière d'annonce",
     "description": "Message affiché en haut de toutes les pages. Une seule annonce est active à la fois ; publier une annonce active remplace la précédente.",
     "tone": "Type",
@@ -365,8 +383,8 @@
       "subject": "Confirmez votre adresse — PSG Zurich",
       "preview": "Plus qu'une étape pour activer votre compte",
       "heading": "Bienvenue au PSG Zurich",
-      "body": "Cliquez sur le bouton ci-dessous pour confirmer votre adresse e-mail et activer votre compte. Ce lien est valable 24 heures.",
-      "cta": "Confirmer mon adresse",
+      "body": "Il ne reste qu'un clic : le bouton ci-dessous confirme votre adresse e-mail, active votre compte et vous emmène sur le site. Ce lien est valable 24 heures.",
+      "cta": "Commencer",
       "ignore": "Si vous n'avez pas créé de compte, ignorez simplement cet e-mail."
     },
     "membershipRequest": {
@@ -443,6 +461,8 @@
     }
   },
   "AdminMembers": {
+    "approved": "Adhésion acceptée.",
+    "rejected": "Demande refusée.",
     "title": "Demandes d'adhésion",
     "description": "Acceptez ou refusez les nouvelles inscriptions. Le membre est prévenu par e-mail.",
     "empty": "Aucune demande en attente.",
@@ -460,6 +480,8 @@
     }
   },
   "AdminRoles": {
+    "added": "{email} est maintenant admin.",
+    "removed": "{email} n'est plus admin.",
     "title": "Administrateurs",
     "description": "Les administrateurs valident les adhésions et gèrent le contenu. Seul un superadmin peut en nommer ou en retirer.",
     "emailPlaceholder": "Adresse e-mail du compte",
@@ -550,6 +572,7 @@
     "update": "Mettre à jour",
     "closed": "Les pronostics sont fermés pour ce match.",
     "error": "L'enregistrement a échoué. Réessayez.",
+    "toastSaved": "Pronostic enregistré : PSG {psg} – {other} {opponent}.",
     "signIn": "Se connecter",
     "guestHint": "Devinez le score avant le coup d'envoi et grimpez au classement des membres.",
     "notMember": "Pas encore membre ? <join>Adhérer</join>",
@@ -604,6 +627,9 @@
     "signInToJoin": "Se connecter pour s'inscrire",
     "membersOnlySignup": "Inscriptions réservées aux membres dont l'adhésion est acceptée.",
     "error": "Action impossible. Rechargez la page.",
+    "toastRegistered": "Inscription confirmée. À bientôt !",
+    "toastWaitlisted": "Événement complet : vous êtes sur liste d'attente.",
+    "toastCancelled": "Désinscription enregistrée.",
     "types": {
       "watch_party": "Watch party",
       "away_trip": "Déplacement",
@@ -614,6 +640,7 @@
     "backToEvents": "Tous les événements",
     "addToCalendar": "Ajouter à mon agenda",
     "openMap": "Voir sur la carte",
+    "directions": "Itinéraire dans Google Maps",
     "when": "Quand",
     "where": "Où",
     "places": "Places",
@@ -630,6 +657,10 @@
     "countOf": "{count, plural, =0 {0 inscrit} one {# inscrit} other {# inscrits}} / {capacity}"
   },
   "AdminEvents": {
+    "created": "Événement créé.",
+    "updated": "Événement mis à jour.",
+    "deleted": "Événement supprimé.",
+    "deleteError": "La suppression a échoué. Réessayez.",
     "cardTitle": "Matchs et événements",
     "cardDescription": "Les matchs sont importés automatiquement. Créez les événements du club et rattachez-les à un match.",
     "sync": "Synchroniser les matchs",
@@ -644,8 +675,12 @@
     "match": "Match lié",
     "noMatch": "Aucun",
     "description": "Description",
-    "location": "Lieu",
-    "locationPlaceholder": "Bar, adresse, point de rendez-vous",
+    "location": "Nom du lieu",
+    "locationPlaceholder": "Bar Le Parisien, Parc des Princes…",
+    "address": "Adresse",
+    "addressPlaceholder": "Commencez à taper l'adresse…",
+    "addressHint": "Choisissez une suggestion pour placer l'événement sur la carte.",
+    "addressLocated": "Adresse localisée : la carte s'affichera sur la page de l'événement.",
     "startsAt": "Début",
     "endsAt": "Fin (facultatif)",
     "capacity": "Places",
@@ -667,6 +702,10 @@
     "notifyMembers": "Prévenir les membres par e-mail (ceux qui l'ont activé)"
   },
   "AdminMatches": {
+    "created": "Match ajouté.",
+    "updated": "Match mis à jour.",
+    "deleted": "Match supprimé.",
+    "deleteError": "La suppression a échoué. Réessayez.",
     "new": "Ajouter un match à la main",
     "newHint": "Pour les matchs que l'import automatique ne couvre pas : Coupe de France, Trophée des Champions, amicaux… Les membres peuvent les pronostiquer comme les autres.",
     "listTitle": "Matchs saisis à la main",
@@ -729,6 +768,7 @@
   "Settings": {
     "title": "Paramètres",
     "saveError": "L'enregistrement a échoué. Réessayez.",
+    "saved": "Préférence enregistrée.",
     "sections": {
       "label": "Sections des paramètres",
       "profile": {
@@ -760,6 +800,9 @@
       "removePhoto": "Retirer",
       "photoHint": "JPG, PNG ou HEIC : recadrée en carré automatiquement.",
       "photoError": "Impossible d'utiliser cette image. Essayez-en une autre.",
+      "photoSaved": "Photo mise à jour.",
+      "photoRemoved": "Photo retirée.",
+      "photoRemoveError": "Impossible de retirer la photo. Réessayez.",
       "details": "Mes informations",
       "detailsDescription": "Visibles uniquement par le comité.",
       "nickname": "Pseudo",
@@ -783,6 +826,9 @@
       "emailSame": "C'est déjà votre adresse.",
       "emailError": "La demande a échoué. Réessayez plus tard.",
       "emailSent": "Confirmez le changement depuis le lien envoyé à {current} ; un lien de vérification partira ensuite vers la nouvelle adresse.",
+      "deviceRevoked": "Appareil déconnecté.",
+      "devicesRevoked": "Tous les autres appareils sont déconnectés.",
+      "deviceError": "La déconnexion a échoué. Réessayez.",
       "password": "Mot de passe",
       "passwordDescription": "Changer de mot de passe déconnecte vos autres appareils.",
       "devices": "Appareils connectés",
@@ -846,6 +892,8 @@
     "defaultByline": "Le comité"
   },
   "Cms": {
+    "deleted": "Article supprimé.",
+    "deleteError": "La suppression a échoué. Réessayez.",
     "title": "Actualités",
     "description": "Rédigez, programmez et publiez les articles du site.",
     "new": "Nouvel article",

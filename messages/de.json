@@ -48,6 +48,18 @@
     "location": "Zürich, Schweiz",
     "openMap": "In Google Maps öffnen"
   },
+  "Onboarding": {
+    "pageTitle": "Willkommen",
+    "title": "Willkommen, {name}!",
+    "body": "Deine Adresse ist bestätigt. Zwei freiwillige Angaben, damit der Vorstand dich erreichen kann.",
+    "bodyPending": "Deine Adresse ist bestätigt und dein Antrag geht an den Vorstand. In der Zwischenzeit zwei freiwillige Angaben, damit er dich erreichen kann.",
+    "addressPlaceholder": "Strasse, Nummer, Ort",
+    "hint": "Du kannst sie jederzeit in deinen Einstellungen ändern.",
+    "continue": "Weiter",
+    "later": "Später",
+    "saved": "Deine Angaben sind gespeichert.",
+    "error": "Speichern fehlgeschlagen. Versuche es erneut."
+  },
   "Notifications": {
     "label": "Benachrichtigungen",
     "labelUnread": "Benachrichtigungen ({count} ungelesen)",
@@ -100,6 +112,7 @@
     "invalidEmail": "Ungültige E-Mail-Adresse.",
     "passwordRequired": "Bitte gib dein Passwort ein.",
     "invalidCredentials": "E-Mail oder Passwort ist falsch.",
+    "welcome": "Willkommen zurück, {name}!",
     "error": "Anmeldung zurzeit nicht möglich. Bitte versuche es später erneut.",
     "notVerified": "Bitte bestätige zuerst deine E-Mail-Adresse: Wir haben dir soeben einen neuen Link gesendet.",
     "linkInvalid": "Dieser Bestätigungslink ist nicht mehr gültig. Melde dich an, um einen neuen zu erhalten."
@@ -125,7 +138,6 @@
     "invalidLink": "Dieser Link ist nicht mehr gültig. Bitte fordere einen neuen an.",
     "requestNew": "Neuen Link anfordern",
     "done": "Passwort gespeichert. Du kannst dich jetzt anmelden.",
-    "goToLogin": "Anmelden",
     "error": "Das Passwort konnte nicht gespeichert werden. Bitte versuche es später erneut."
   },
   "Membership": {
@@ -135,6 +147,11 @@
     "lastName": "Nachname",
     "email": "E-Mail-Adresse",
     "phone": "Telefon",
+    "phoneCountry": "Landesvorwahl",
+    "invalidPhone": "Ungültige Nummer für dieses Land.",
+    "address": "Adresse",
+    "postcode": "PLZ",
+    "addressPlaceholder": "Strasse und Nummer",
     "city": "Ort",
     "optional": "Optional",
     "password": "Passwort",
@@ -295,6 +312,7 @@
     "newsCardDescription": "Artikel der Website schreiben und veröffentlichen."
   },
   "AdminBanner": {
+    "published": "Mitteilung veröffentlicht.",
     "title": "Hinweisbanner",
     "description": "Nachricht oben auf allen Seiten. Es ist immer nur ein Hinweis aktiv; ein neuer aktiver Hinweis ersetzt den vorherigen.",
     "tone": "Typ",
@@ -365,8 +383,8 @@
       "subject": "E-Mail bestätigen — PSG Zurich",
       "preview": "Nur noch ein Schritt, um dein Konto zu aktivieren",
       "heading": "Willkommen bei PSG Zurich",
-      "body": "Klicke auf die Schaltfläche unten, um deine E-Mail-Adresse zu bestätigen und dein Konto zu aktivieren. Dieser Link ist 24 Stunden gültig.",
-      "cta": "E-Mail bestätigen",
+      "body": "Nur noch ein Klick: Die Schaltfläche unten bestätigt deine E-Mail-Adresse, aktiviert dein Konto und bringt dich auf die Website. Dieser Link ist 24 Stunden gültig.",
+      "cta": "Los geht's",
       "ignore": "Wenn du kein Konto erstellt hast, ignoriere diese E-Mail einfach."
     },
     "membershipRequest": {
@@ -443,6 +461,8 @@
     }
   },
   "AdminMembers": {
+    "approved": "Mitgliedschaft angenommen.",
+    "rejected": "Antrag abgelehnt.",
     "title": "Mitgliedschaftsanträge",
     "description": "Neue Anmeldungen annehmen oder ablehnen. Das Mitglied wird per E-Mail informiert.",
     "empty": "Keine offenen Anträge.",
@@ -460,6 +480,8 @@
     }
   },
   "AdminRoles": {
+    "added": "{email} ist jetzt Admin.",
+    "removed": "{email} ist kein Admin mehr.",
     "title": "Administratoren",
     "description": "Administratoren nehmen Mitglieder auf und verwalten Inhalte. Nur ein Superadmin kann sie ernennen oder entfernen.",
     "emailPlaceholder": "E-Mail-Adresse des Kontos",
@@ -550,6 +572,7 @@
     "update": "Aktualisieren",
     "closed": "Für dieses Spiel sind die Tipps geschlossen.",
     "error": "Speichern fehlgeschlagen. Bitte erneut versuchen.",
+    "toastSaved": "Tipp gespeichert: PSG {psg} – {other} {opponent}.",
     "signIn": "Anmelden",
     "guestHint": "Tippe das Ergebnis vor dem Anpfiff und klettere in der Mitgliederrangliste.",
     "notMember": "Noch kein Mitglied? <join>Beitreten</join>",
@@ -604,6 +627,9 @@
     "signInToJoin": "Anmelden, um teilzunehmen",
     "membersOnlySignup": "Anmeldungen sind aufgenommenen Mitgliedern vorbehalten.",
     "error": "Aktion fehlgeschlagen. Seite neu laden.",
+    "toastRegistered": "Anmeldung bestätigt. Bis bald!",
+    "toastWaitlisted": "Die Veranstaltung ist voll: Du stehst auf der Warteliste.",
+    "toastCancelled": "Abmeldung gespeichert.",
     "types": {
       "watch_party": "Watch-Party",
       "away_trip": "Auswärtsfahrt",
@@ -614,6 +640,7 @@
     "backToEvents": "Alle Events",
     "addToCalendar": "Zu meinem Kalender hinzufügen",
     "openMap": "Auf der Karte ansehen",
+    "directions": "Route in Google Maps",
     "when": "Wann",
     "where": "Wo",
     "places": "Plätze",
@@ -630,6 +657,10 @@
     "countOf": "{count} angemeldet / {capacity}"
   },
   "AdminEvents": {
+    "created": "Veranstaltung erstellt.",
+    "updated": "Veranstaltung aktualisiert.",
+    "deleted": "Veranstaltung gelöscht.",
+    "deleteError": "Das Löschen ist fehlgeschlagen. Versuche es erneut.",
     "cardTitle": "Spiele und Events",
     "cardDescription": "Spiele werden automatisch importiert. Erstelle Club-Events und verknüpfe sie mit einem Spiel.",
     "sync": "Spiele synchronisieren",
@@ -644,8 +675,12 @@
     "match": "Verknüpftes Spiel",
     "noMatch": "Keines",
     "description": "Beschreibung",
-    "location": "Ort",
-    "locationPlaceholder": "Bar, Adresse, Treffpunkt",
+    "location": "Name des Ortes",
+    "locationPlaceholder": "Bar Le Parisien, Parc des Princes…",
+    "address": "Adresse",
+    "addressPlaceholder": "Adresse eingeben…",
+    "addressHint": "Wähle einen Vorschlag, um die Veranstaltung auf der Karte zu zeigen.",
+    "addressLocated": "Adresse gefunden: Die Karte erscheint auf der Veranstaltungsseite.",
     "startsAt": "Beginn",
     "endsAt": "Ende (optional)",
     "capacity": "Plätze",
@@ -667,6 +702,10 @@
     "notifyMembers": "Mitglieder per E-Mail informieren (wer es aktiviert hat)"
   },
   "AdminMatches": {
+    "created": "Spiel hinzugefügt.",
+    "updated": "Spiel aktualisiert.",
+    "deleted": "Spiel gelöscht.",
+    "deleteError": "Das Löschen ist fehlgeschlagen. Versuche es erneut.",
     "new": "Spiel von Hand hinzufügen",
     "newHint": "Für Spiele, die der automatische Import nicht abdeckt: Coupe de France, Trophée des Champions, Testspiele… Mitglieder können sie wie alle anderen tippen.",
     "listTitle": "Von Hand erfasste Spiele",
@@ -729,6 +768,7 @@
   "Settings": {
     "title": "Einstellungen",
     "saveError": "Speichern fehlgeschlagen. Bitte erneut versuchen.",
+    "saved": "Einstellung gespeichert.",
     "sections": {
       "label": "Bereiche der Einstellungen",
       "profile": {
@@ -760,6 +800,9 @@
       "removePhoto": "Entfernen",
       "photoHint": "JPG, PNG oder HEIC: wird automatisch quadratisch zugeschnitten.",
       "photoError": "Dieses Bild kann nicht verwendet werden. Versuch ein anderes.",
+      "photoSaved": "Foto aktualisiert.",
+      "photoRemoved": "Foto entfernt.",
+      "photoRemoveError": "Das Foto konnte nicht entfernt werden. Versuche es erneut.",
       "details": "Meine Angaben",
       "detailsDescription": "Nur für den Vorstand sichtbar.",
       "nickname": "Spitzname",
@@ -783,6 +826,9 @@
       "emailSame": "Das ist bereits deine Adresse.",
       "emailError": "Die Anfrage ist fehlgeschlagen. Bitte später erneut versuchen.",
       "emailSent": "Bestätige die Änderung über den Link an {current}; danach geht ein Bestätigungslink an die neue Adresse.",
+      "deviceRevoked": "Gerät abgemeldet.",
+      "devicesRevoked": "Alle anderen Geräte sind abgemeldet.",
+      "deviceError": "Die Abmeldung ist fehlgeschlagen. Versuche es erneut.",
       "password": "Passwort",
       "passwordDescription": "Eine Passwortänderung meldet deine anderen Geräte ab.",
       "devices": "Angemeldete Geräte",
@@ -846,6 +892,8 @@
     "defaultByline": "Der Vorstand"
   },
   "Cms": {
+    "deleted": "Artikel gelöscht.",
+    "deleteError": "Das Löschen ist fehlgeschlagen. Versuche es erneut.",
     "title": "News",
     "description": "Artikel der Website schreiben, planen und veröffentlichen.",
     "new": "Neuer Artikel",

@@ -8,12 +8,15 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: { absolute: `${t("title")} · ${site("title")}` } };
 }
 
-/** Small isometric traffic cone: slab base, two-tone cone (lit left, shaded right), white bands. */
-function TrafficCone() {
+/**
+ * Small isometric traffic cone: slab base, two-tone cone (lit left, shaded right), white bands.
+ * `mirrored`: the one on the right, flipped so the pair frames the text.
+ */
+function TrafficCone({ id, mirrored = false }: { id: string; mirrored?: boolean }) {
   return (
-    <svg aria-hidden viewBox="0 0 24 24" className="size-[18px] shrink-0 overflow-visible">
+    <svg aria-hidden viewBox="0 0 24 24" className={`size-[18px] shrink-0 overflow-visible ${mirrored ? "-scale-x-100" : ""}`}>
       <defs>
-        <clipPath id="cone-body">
+        <clipPath id={id}>
           <path d="M10.5 3.4Q12 0.6 13.5 3.4L16.8 17.2Q17.1 18.5 15.9 18.9Q12 20.1 8.1 18.9Q6.9 18.5 7.2 17.2Z" />
         </clipPath>
       </defs>
@@ -21,7 +24,7 @@ function TrafficCone() {
       <path d="M2.5 18.6 12 15 21.5 18.6 12 22.2Z" fill="#f97316" stroke="#f97316" strokeWidth="1.6" strokeLinejoin="round" />
       <path d="M2.5 18.6 12 22.2V23.8L2.5 20.2Z" fill="#c2410c" stroke="#c2410c" strokeWidth="1.6" strokeLinejoin="round" />
       <path d="M21.5 18.6 12 22.2V23.8L21.5 20.2Z" fill="#9a3412" stroke="#9a3412" strokeWidth="1.6" strokeLinejoin="round" />
-      <g clipPath="url(#cone-body)">
+      <g clipPath={`url(#${id})`}>
         <rect x="6" y="1" width="6" height="21" fill="#fb923c" />
         <rect x="12" y="1" width="6" height="21" fill="#ea580c" />
         <rect x="6" y="7" width="6" height="2.6" fill="#fff" />
@@ -40,8 +43,9 @@ export default async function ComingSoonPage() {
     <BrandShell>
       <div className="flex max-w-[34rem] flex-col items-center gap-3 text-center">
         <span className="flex items-center gap-2 font-wide text-[12px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-          <TrafficCone />
+          <TrafficCone id="cone-left" />
           {t("eyebrow")}
+          <TrafficCone id="cone-right" mirrored />
         </span>
         <h1 className="font-narrow text-[length:clamp(48px,9vw,88px)] leading-[0.95] font-extrabold tracking-normal text-balance uppercase italic">
           {t("title")}

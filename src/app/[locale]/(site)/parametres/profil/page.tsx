@@ -27,7 +27,14 @@ async function Content() {
           <SettingsBlock title={t("details")} description={t("detailsDescription")}>
             <ProfileForm
               email={user.email}
-              defaults={{ firstName: member.firstName, lastName: member.lastName, phone: member.phone ?? "", city: member.city ?? "" }}
+              defaults={{
+                firstName: member.firstName,
+                lastName: member.lastName,
+                phone: member.phone ?? "",
+                address: member.address ?? "",
+                postcode: member.postcode ?? "",
+                city: member.city ?? "",
+              }}
               bare
             />
           </SettingsBlock>

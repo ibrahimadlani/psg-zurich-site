@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -119,21 +120,20 @@ function RichTextArea({
 
 /** Picks a file, uploads it (resized), returns the media ids. */
 function useUpload(maxSize: number) {
+  const t = useTranslations("Cms.editor");
   const [busy, setBusy] = useState(false);
-  const [failed, setFailed] = useState(false);
   const upload = async (files: File[]) => {
     setBusy(true);
-    setFailed(false);
     try {
       return await Promise.all(files.map((file) => uploadMedia(file, maxSize).then((media) => media.id)));
     } catch {
-      setFailed(true);
+      toast.error(t("uploadFailed"));
       return [];
     } finally {
       setBusy(false);
     }
   };
-  return { busy, failed, upload };
+  return { busy, upload };
 }
 
 function FilePicker({
@@ -280,7 +280,6 @@ function BlockFields({
               }}
             />
             {image.busy ? <span className="text-xs text-muted-foreground">{t("uploading")}</span> : null}
-            {image.failed ? <span className="text-xs text-destructive">{t("uploadFailed")}</span> : null}
           </div>
           <Input value={block.alt} maxLength={200} onChange={(event) => onChange({ ...block, alt: event.target.value })} placeholder={t("altPlaceholder")} />
           <Input value={block.caption} maxLength={300} onChange={(event) => onChange({ ...block, caption: event.target.value })} placeholder={t("captionPlaceholder")} />
@@ -318,7 +317,6 @@ function BlockFields({
               }}
             />
             <span className="text-xs text-muted-foreground">{gallery.busy ? t("uploading") : t("galleryHint", { count: block.images.length })}</span>
-            {gallery.failed ? <span className="text-xs text-destructive">{t("uploadFailed")}</span> : null}
           </div>
           <Input value={block.caption} maxLength={300} onChange={(event) => onChange({ ...block, caption: event.target.value })} placeholder={t("captionPlaceholder")} />
         </div>

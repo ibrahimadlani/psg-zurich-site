@@ -5,11 +5,11 @@ import { Check } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import {
   AuthPanel,
   FieldError,
-  FormMessage,
   inlineLinkClass,
   inputClass,
   labelClass,
@@ -27,7 +27,6 @@ export function ForgotPasswordPanel() {
   const tLogin = useTranslations("Login");
   const locale = useLocale();
   const [sentTo, setSentTo] = useState<string | null>(null);
-  const [failed, setFailed] = useState(false);
   const {
     register,
     handleSubmit,
@@ -35,13 +34,12 @@ export function ForgotPasswordPanel() {
   } = useForm<Values>({ resolver: zodResolver(schema), defaultValues: { email: "" } });
 
   async function onSubmit({ email }: Values) {
-    setFailed(false);
     const { error } = await requestPasswordReset({
       email,
       redirectTo: `/${locale}/connexion/nouveau-mot-de-passe`,
     });
     if (error) {
-      setFailed(true);
+      toast.error(tLogin("error"));
       return;
     }
     // Same answer whether or not the account exists.
@@ -78,7 +76,6 @@ export function ForgotPasswordPanel() {
     <div key="form" className="w-full max-w-[360px] animate-page-in motion-reduce:animate-none">
       <AuthPanel title={t("title")} body={t("body")}>
         <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-[14px]">
-          {failed ? <FormMessage tone="error">{tLogin("error")}</FormMessage> : null}
           <label className="flex flex-col gap-2">
             <span className={labelClass}>{tLogin("email")}</span>
             <input

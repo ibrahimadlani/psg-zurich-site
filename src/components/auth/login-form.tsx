@@ -2,12 +2,12 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import {
   FieldError,
-  FormMessage,
   inputClass,
   labelClass,
   submitClass,
@@ -22,12 +22,6 @@ const schema = z.object({
 });
 type Values = z.infer<typeof schema>;
 
-type Failure = "invalidCredentials" | "notVerified" | "linkInvalid" | "error";
-
-// An expired or invalid confirmation link lands here with ?error=… (set by Better Auth).
-const noop = () => () => {};
-const linkErrorFromUrl = () =>
-  new URLSearchParams(window.location.search).has("error");
 
 /** Page to go back to after signing in (`?suite=/matchs/…`), only paths of this site. */
 function returnPath() {
@@ -39,9 +33,6 @@ export function LoginForm() {
   const t = useTranslations("Login");
   const locale = useLocale();
   const router = useRouter();
-  const linkError = useSyncExternalStore(noop, linkErrorFromUrl, () => false);
-  const [failure, setFailure] = useState<Failure | null>(null);
-  const shown = failure ?? (linkError ? "linkInvalid" : null);
   const {
     register,
     handleSubmit,
@@ -51,24 +42,34 @@ export function LoginForm() {
     defaultValues: { email: "", password: "" },
   });
 
+  // An expired or invalid confirmation link lands here with ?error=… (set by Better Auth).
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).has("error")) {
+      toast.error(t("linkInvalid"), { id: "link-invalid" });
+    }
+  }, [t]);
+
   async function onSubmit(values: Values) {
-    setFailure(null);
     // callbackURL: where a re-sent confirmation link lands (and the email's language).
-    const { error } = await signIn.email({
+    const { data, error } = await signIn.email({
       ...values,
-      callbackURL: `/${locale}/connexion`,
+      callbackURL: `/${locale}/bienvenue`,
     });
     if (error) {
-      setFailure(
-        error.code === "INVALID_EMAIL_OR_PASSWORD"
-          ? "invalidCredentials"
-          : error.code === "EMAIL_NOT_VERIFIED"
-            ? "notVerified"
-            : "error",
+      toast.error(
+        t(
+          error.code === "INVALID_EMAIL_OR_PASSWORD"
+            ? "invalidCredentials"
+            : error.code === "EMAIL_NOT_VERIFIED"
+              ? "notVerified"
+              : "error",
+        ),
       );
       return;
     }
-    router.push(returnPath());
+    toast.success(t("welcome", { name: data?.user.name.split(" ")[0] ?? "" }));
+    // Through the welcome step, which steps aside at once when it was already done.
+    router.push(`/bienvenue?suite=${encodeURIComponent(returnPath())}`);
     router.refresh();
   }
 
@@ -78,7 +79,6 @@ export function LoginForm() {
       noValidate
       className="flex flex-col gap-[14px]"
     >
-      {shown ? <FormMessage tone="error">{t(shown)}</FormMessage> : null}
       <label className="flex flex-col gap-2">
         <span className={labelClass}>{t("email")}</span>
         <input

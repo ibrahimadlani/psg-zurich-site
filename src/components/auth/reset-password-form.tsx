@@ -4,11 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FieldError, FormMessage, inlineLinkClass, labelClass, submitClass } from "@/components/auth/auth-ui";
 import { PasswordInput } from "@/components/auth/password-input";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { resetPassword } from "@/lib/auth-client";
 
 const schema = z
@@ -20,7 +21,8 @@ export function ResetPasswordForm() {
   const t = useTranslations("ResetPassword");
   const params = useSearchParams();
   const token = params.get("token");
-  const [result, setResult] = useState<"done" | "invalidLink" | "error" | null>(
+  const router = useRouter();
+  const [result, setResult] = useState<"invalidLink" | null>(
     token && !params.get("error") ? null : "invalidLink",
   );
   const {
@@ -31,19 +33,19 @@ export function ResetPasswordForm() {
 
   async function onSubmit({ password }: Values) {
     const { error } = await resetPassword({ newPassword: password, token: token ?? "" });
-    if (!error) setResult("done");
-    else setResult(error.code === "INVALID_TOKEN" ? "invalidLink" : "error");
+    if (!error) {
+      toast.success(t("done"));
+      router.push("/connexion");
+    } else if (error.code === "INVALID_TOKEN") setResult("invalidLink");
+    else toast.error(t("error"));
   }
 
-  if (result === "done" || result === "invalidLink") {
+  if (result === "invalidLink") {
     return (
       <div className="flex flex-col items-center gap-4 text-center">
-        <FormMessage tone={result === "done" ? "success" : "error"}>{t(result)}</FormMessage>
-        <Link
-          href={result === "done" ? "/connexion" : "/connexion/mot-de-passe-oublie"}
-          className={`text-[14px] ${inlineLinkClass}`}
-        >
-          {result === "done" ? t("goToLogin") : t("requestNew")}
+        <FormMessage tone="error">{t(result)}</FormMessage>
+        <Link href="/connexion/mot-de-passe-oublie" className={`text-[14px] ${inlineLinkClass}`}>
+          {t("requestNew")}
         </Link>
       </div>
     );
@@ -51,7 +53,6 @@ export function ResetPasswordForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-[14px]">
-      {result === "error" ? <FormMessage tone="error">{t("error")}</FormMessage> : null}
       <div className="flex flex-col gap-2">
         <label htmlFor="password" className={labelClass}>
           {t("password")}

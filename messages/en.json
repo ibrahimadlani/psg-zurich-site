@@ -48,6 +48,18 @@
     "location": "Zurich, Switzerland",
     "openMap": "Open in Google Maps"
   },
+  "Onboarding": {
+    "pageTitle": "Welcome",
+    "title": "Welcome, {name}!",
+    "body": "Your address is confirmed. Two optional details so the committee can reach you.",
+    "bodyPending": "Your address is confirmed and your membership request is on its way to the committee. Meanwhile, two optional details so it can reach you.",
+    "addressPlaceholder": "Street, number, city",
+    "hint": "You can change them at any time in your settings.",
+    "continue": "Continue",
+    "later": "Later",
+    "saved": "Your details are saved.",
+    "error": "Saving failed. Try again."
+  },
   "Notifications": {
     "label": "Notifications",
     "labelUnread": "Notifications ({count} unread)",
@@ -100,6 +112,7 @@
     "invalidEmail": "Invalid email address.",
     "passwordRequired": "Enter your password.",
     "invalidCredentials": "Incorrect email or password.",
+    "welcome": "Welcome back, {name}!",
     "error": "Sign-in is unavailable right now. Please try again later.",
     "notVerified": "Please confirm your email address first: we just sent you a new link.",
     "linkInvalid": "This confirmation link is no longer valid. Sign in to get a new one."
@@ -125,7 +138,6 @@
     "invalidLink": "This link is no longer valid. Please request a new one.",
     "requestNew": "Request a new link",
     "done": "Password saved. You can now sign in.",
-    "goToLogin": "Sign in",
     "error": "The password could not be saved. Please try again later."
   },
   "Membership": {
@@ -135,6 +147,11 @@
     "lastName": "Last name",
     "email": "Email address",
     "phone": "Phone",
+    "phoneCountry": "Country code",
+    "invalidPhone": "Invalid number for this country.",
+    "address": "Address",
+    "postcode": "Postcode",
+    "addressPlaceholder": "Street and number",
     "city": "City",
     "optional": "Optional",
     "password": "Password",
@@ -295,6 +312,7 @@
     "newsCardDescription": "Write and publish the website's articles."
   },
   "AdminBanner": {
+    "published": "Announcement published.",
     "title": "Announcement banner",
     "description": "Message shown at the top of every page. Only one announcement is live at a time; publishing an active one replaces the previous.",
     "tone": "Type",
@@ -365,8 +383,8 @@
       "subject": "Confirm your email — PSG Zurich",
       "preview": "One last step to activate your account",
       "heading": "Welcome to PSG Zurich",
-      "body": "Click the button below to confirm your email address and activate your account. This link is valid for 24 hours.",
-      "cta": "Confirm my email",
+      "body": "Just one click left: the button below confirms your email address, activates your account and takes you to the site. This link is valid for 24 hours.",
+      "cta": "Get started",
       "ignore": "If you did not create an account, simply ignore this email."
     },
     "membershipRequest": {
@@ -443,6 +461,8 @@
     }
   },
   "AdminMembers": {
+    "approved": "Membership accepted.",
+    "rejected": "Request declined.",
     "title": "Membership requests",
     "description": "Accept or refuse new sign-ups. The member is notified by email.",
     "empty": "No pending requests.",
@@ -460,6 +480,8 @@
     }
   },
   "AdminRoles": {
+    "added": "{email} is now an admin.",
+    "removed": "{email} is no longer an admin.",
     "title": "Administrators",
     "description": "Administrators approve memberships and manage content. Only a superadmin can name or remove them.",
     "emailPlaceholder": "Account email address",
@@ -550,6 +572,7 @@
     "update": "Update",
     "closed": "Predictions are closed for this match.",
     "error": "Saving failed. Please try again.",
+    "toastSaved": "Prediction saved: PSG {psg} – {other} {opponent}.",
     "signIn": "Sign in",
     "guestHint": "Guess the score before kick-off and climb the members' leaderboard.",
     "notMember": "Not a member yet? <join>Join</join>",
@@ -604,6 +627,9 @@
     "signInToJoin": "Sign in to join",
     "membersOnlySignup": "Sign-ups are for accepted members only.",
     "error": "Action failed. Reload the page.",
+    "toastRegistered": "You're signed up. See you there!",
+    "toastWaitlisted": "The event is full: you're on the waiting list.",
+    "toastCancelled": "You're no longer signed up.",
     "types": {
       "watch_party": "Watch party",
       "away_trip": "Away trip",
@@ -614,6 +640,7 @@
     "backToEvents": "All events",
     "addToCalendar": "Add to my calendar",
     "openMap": "See on the map",
+    "directions": "Directions in Google Maps",
     "when": "When",
     "where": "Where",
     "places": "Places",
@@ -630,6 +657,10 @@
     "countOf": "{count} registered / {capacity}"
   },
   "AdminEvents": {
+    "created": "Event created.",
+    "updated": "Event updated.",
+    "deleted": "Event deleted.",
+    "deleteError": "Deleting failed. Try again.",
     "cardTitle": "Matches and events",
     "cardDescription": "Matches are imported automatically. Create club events and attach them to a match.",
     "sync": "Sync matches",
@@ -644,8 +675,12 @@
     "match": "Linked match",
     "noMatch": "None",
     "description": "Description",
-    "location": "Place",
-    "locationPlaceholder": "Bar, address, meeting point",
+    "location": "Place name",
+    "locationPlaceholder": "Le Parisien bar, Parc des Princes…",
+    "address": "Address",
+    "addressPlaceholder": "Start typing the address…",
+    "addressHint": "Pick a suggestion to put the event on the map.",
+    "addressLocated": "Address located: the map will show on the event page.",
     "startsAt": "Start",
     "endsAt": "End (optional)",
     "capacity": "Places",
@@ -667,6 +702,10 @@
     "notifyMembers": "Email the members (those who opted in)"
   },
   "AdminMatches": {
+    "created": "Match added.",
+    "updated": "Match updated.",
+    "deleted": "Match deleted.",
+    "deleteError": "Deleting failed. Try again.",
     "new": "Add a match by hand",
     "newHint": "For matches the automatic import doesn't cover: Coupe de France, Trophée des Champions, friendlies… Members can predict them like any other.",
     "listTitle": "Matches entered by hand",
@@ -729,6 +768,7 @@
   "Settings": {
     "title": "Settings",
     "saveError": "Saving failed. Please try again.",
+    "saved": "Preference saved.",
     "sections": {
       "label": "Settings sections",
       "profile": {
@@ -760,6 +800,9 @@
       "removePhoto": "Remove",
       "photoHint": "JPG, PNG or HEIC: cropped to a square automatically.",
       "photoError": "This image can't be used. Try another one.",
+      "photoSaved": "Photo updated.",
+      "photoRemoved": "Photo removed.",
+      "photoRemoveError": "Couldn't remove the photo. Try again.",
       "details": "My details",
       "detailsDescription": "Only the committee can see them.",
       "nickname": "Nickname",
@@ -783,6 +826,9 @@
       "emailSame": "That is already your address.",
       "emailError": "The request failed. Please try again later.",
       "emailSent": "Confirm the change from the link sent to {current}; a verification link will then go to the new address.",
+      "deviceRevoked": "Device signed out.",
+      "devicesRevoked": "All other devices are signed out.",
+      "deviceError": "Signing out failed. Try again.",
       "password": "Password",
       "passwordDescription": "Changing your password signs out your other devices.",
       "devices": "Signed-in devices",
@@ -846,6 +892,8 @@
     "defaultByline": "The committee"
   },
   "Cms": {
+    "deleted": "Article deleted.",
+    "deleteError": "Deleting failed. Try again.",
     "title": "News",
     "description": "Write, schedule and publish the website's articles.",
     "new": "New article",

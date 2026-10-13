@@ -57,22 +57,26 @@ export function MainNav() {
   const barRef = useRef<HTMLSpanElement>(null);
 
   // One underline for the whole bar, slid under the active tab (CSS transition on transform/width).
-  function moveBar(target: HTMLElement | null) {
+  // It only slides when a tab is clicked; every other placement (first paint, fonts arriving,
+  // menu items appearing once the session is known, resizes) is instant, so it never jumps.
+  function moveBar(target: HTMLElement | null, animate = false) {
     const bar = barRef.current;
     if (!bar) return;
     if (!target) {
       bar.style.opacity = "0";
       return;
     }
-    const firstPlacement = bar.dataset.placed !== "true";
-    if (firstPlacement) bar.style.transition = "none";
+    const width = `${target.offsetWidth}px`;
+    const transform = `translateX(${target.offsetLeft}px)`;
+    // Already there or on its way (a click just started the slide): let it finish.
+    if (bar.style.opacity === "1" && bar.style.width === width && bar.style.transform === transform) return;
+    if (!animate) bar.style.transition = "none";
     bar.style.opacity = "1";
-    bar.style.width = `${target.offsetWidth}px`;
-    bar.style.transform = `translateX(${target.offsetLeft}px)`;
-    if (firstPlacement) {
-      void bar.offsetWidth; // apply the initial position without animating it
+    bar.style.width = width;
+    bar.style.transform = transform;
+    if (!animate) {
+      void bar.offsetWidth; // apply the position before the transition comes back
       bar.style.transition = "";
-      bar.dataset.placed = "true";
     }
   }
 
@@ -100,7 +104,7 @@ export function MainNav() {
                 aria-current={active ? "page" : undefined}
                 // Slide right away, without waiting for the new page — except towards the
                 // sign-up page, which has no navbar (the underline would slide for nothing).
-                onClick={key === "membership" ? undefined : (event) => moveBar(event.currentTarget)}
+                onClick={key === "membership" ? undefined : (event) => moveBar(event.currentTarget, true)}
                 className={cn(
                   "relative inline-flex items-center gap-2 font-wide text-[10px] font-semibold tracking-[0.08em] whitespace-nowrap uppercase transition-colors duration-300",
                   active

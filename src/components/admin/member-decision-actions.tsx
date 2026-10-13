@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
 
@@ -12,23 +13,21 @@ export function MemberDecisionActions({ id, status, emailVerified }: Props) {
   const t = useTranslations("AdminMembers");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
-  const [failed, setFailed] = useState(false);
 
   const decide = (decision: "approve" | "reject") =>
     startTransition(async () => {
-      setFailed(false);
       const response = await fetch(`/api/v1/members/${id}`, {
         method: "PATCH",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ decision }),
       });
-      if (!response.ok) setFailed(true);
+      if (!response.ok) toast.error(t("error"));
+      else toast.success(t(decision === "approve" ? "approved" : "rejected"));
       router.refresh();
     });
 
   return (
-    <div className="flex shrink-0 flex-col items-end gap-1">
-      <div className="flex gap-2">
+    <div className="flex shrink-0 gap-2">
         <Button
           size="sm"
           disabled={pending || !emailVerified}
@@ -49,8 +48,6 @@ export function MemberDecisionActions({ id, status, emailVerified }: Props) {
             {t("reject")}
           </Button>
         ) : null}
-      </div>
-      {failed ? <span className="text-xs text-destructive">{t("error")}</span> : null}
     </div>
   );
 }

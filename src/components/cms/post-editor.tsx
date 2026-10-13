@@ -3,6 +3,7 @@
 import { Eye, PenLine, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
+import { toast } from "sonner";
 import { BlockEditor, withKey, type KeyedBlock, type Option } from "@/components/cms/block-editor";
 import { ArticleBody, type BlockRefs } from "@/components/news/article-body";
 import { Button } from "@/components/ui/button";
@@ -71,7 +72,6 @@ export function PostEditor({
   const [slugEdited, setSlugEdited] = useState(Boolean(postId));
   const [saved, setSaved] = useState(() => JSON.stringify(initial));
   const [preview, setPreview] = useState(false);
-  const [message, setMessage] = useState<{ tone: "ok" | "error"; text: string } | null>(null);
   const [pending, startTransition] = useTransition();
   const [coverBusy, setCoverBusy] = useState(false);
   const coverInput = useRef<HTMLInputElement>(null);
@@ -91,7 +91,6 @@ export function PostEditor({
 
   const save = () =>
     startTransition(async () => {
-      setMessage(null);
       // "Publish": the server keeps the original date of an already published article.
       const publishedAt = current.mode === "schedule" && current.publishAt ? new Date(current.publishAt).toISOString() : undefined;
       const response = await fetch(postId ? `/api/v1/posts/${postId}` : "/api/v1/posts", {
@@ -114,11 +113,11 @@ export function PostEditor({
       });
       const body = (await response.json().catch(() => null)) as { data?: { id: string }; error?: { code: string } } | null;
       if (!response.ok) {
-        setMessage({ tone: "error", text: body?.error?.code === "conflict" ? t("slugTaken") : t("saveError") });
+        toast.error(body?.error?.code === "conflict" ? t("slugTaken") : t("saveError"));
         return;
       }
       setSaved(JSON.stringify(current));
-      setMessage({ tone: "ok", text: current.mode === "draft" ? t("savedDraft") : current.mode === "schedule" ? t("savedScheduled") : t("savedPublished") });
+      toast.success(current.mode === "draft" ? t("savedDraft") : current.mode === "schedule" ? t("savedScheduled") : t("savedPublished"));
       if (!postId && body?.data) router.replace(`/admin/actualites/${body.data.id}`);
       else router.refresh();
     });
@@ -126,7 +125,12 @@ export function PostEditor({
   const remove = () => {
     if (!postId || !confirm(t("confirmDelete"))) return;
     startTransition(async () => {
-      await fetch(`/api/v1/posts/${postId}`, { method: "DELETE" });
+      const response = await fetch(`/api/v1/posts/${postId}`, { method: "DELETE" });
+      if (!response.ok) {
+        toast.error(t("deleteError"));
+        return;
+      }
+      toast.success(t("deleted"));
       setSaved(JSON.stringify(current));
       router.replace("/admin/actualites");
     });
@@ -138,7 +142,7 @@ export function PostEditor({
       const media = await uploadMedia(file, 1600);
       set("imageUrl", media.url);
     } catch {
-      setMessage({ tone: "error", text: t("uploadError") });
+      toast.error(t("uploadError"));
     } finally {
       setCoverBusy(false);
     }
@@ -184,11 +188,6 @@ export function PostEditor({
           </Button>
         </div>
       </div>
-      {message ? (
-        <p role="status" className={cn("text-sm", message.tone === "ok" ? "text-ok" : "text-destructive")}>
-          {message.text}
-        </p>
-      ) : null}
 
       {preview ? (
         <div className="space-y-8">

@@ -21,6 +21,8 @@ export const PATCH = apiHandler(async (request) => {
         firstName: input.firstName,
         lastName: input.lastName,
         phone: input.phone || null,
+        address: input.address || null,
+        postcode: input.postcode || null,
         city: input.city || null,
       })
       .where(eq(members.id, member.id));

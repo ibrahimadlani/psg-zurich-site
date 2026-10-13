@@ -38,8 +38,8 @@ export const POST = apiHandler(async (request) => {
         name: `${input.firstName} ${input.lastName}`,
         email: input.email,
         password: input.password,
-        // Where the confirmation link lands; also sets the email's language.
-        callbackURL: `/${input.locale}/connexion`,
+        // The confirmation link signs in and lands on the welcome step (also sets the email's language).
+        callbackURL: `/${input.locale}/bienvenue`,
       },
       headers: request.headers,
     });
@@ -60,6 +60,8 @@ export const POST = apiHandler(async (request) => {
         firstName: input.firstName,
         lastName: input.lastName,
         phone: input.phone || null,
+        address: input.address || null,
+        postcode: input.postcode || null,
         city: input.city || null,
         status: "pending",
         locale: input.locale,

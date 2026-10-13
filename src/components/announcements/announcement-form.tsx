@@ -2,8 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,7 +45,6 @@ const selectClass =
 export function AnnouncementForm() {
   const t = useTranslations("AdminBanner");
   const router = useRouter();
-  const [failed, setFailed] = useState(false);
   const {
     register,
     handleSubmit,
@@ -54,7 +53,6 @@ export function AnnouncementForm() {
   } = useForm<Values>({ resolver: zodResolver(schema), defaultValues: empty });
 
   async function onSubmit(values: Values) {
-    setFailed(false);
     const response = await fetch("/api/v1/announcements", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -65,9 +63,10 @@ export function AnnouncementForm() {
       }),
     });
     if (!response.ok) {
-      setFailed(true);
+      toast.error(t("error"));
       return;
     }
+    toast.success(t("published"));
     reset(empty);
     router.refresh();
   }
@@ -80,7 +79,7 @@ export function AnnouncementForm() {
   );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit, () => toast.error(t("invalid")))} noValidate className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-[12rem_1fr]">
         <div className="space-y-1.5">
           <Label htmlFor="banner-tone">{t("tone")}</Label>
@@ -116,11 +115,6 @@ export function AnnouncementForm() {
         {t("activeNow")}
       </label>
 
-      {failed || Object.keys(errors).length > 0 ? (
-        <p role="alert" className="text-sm text-destructive">
-          {failed ? t("error") : t("invalid")}
-        </p>
-      ) : null}
 
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? t("saving") : t("publish")}

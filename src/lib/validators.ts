@@ -12,9 +12,20 @@ import {
   POST_STATUSES,
 } from "@/db/schema";
 import { blocksSchema } from "@/lib/article-blocks";
+import { normalizePhone } from "@/lib/phone";
 
 const text = (max: number) => z.string().trim().min(1).max(max);
 const optionalText = (max: number) => z.string().trim().max(max).optional();
+/**
+ * Optional phone number: empty, or valid for its country (CH and neighbours), stored in
+ * E.164 ("+41791234567").
+ */
+const phone = z
+  .string()
+  .trim()
+  .max(32)
+  .refine((value) => value === "" || normalizePhone(value) !== null, { message: "invalid_phone" })
+  .transform((value) => (value === "" ? "" : normalizePhone(value)!));
 const dateTime = z.iso.datetime({ offset: true }).transform((value) => new Date(value));
 const score = z.number().int().min(0).max(99).optional();
 
@@ -101,6 +112,11 @@ export const createEventSchema = z
     description: optionalText(10_000),
     matchId: z.uuid().optional(),
     location: optionalText(255),
+    /** Picked from the Google address suggestions; the coordinates place the pin. */
+    address: optionalText(255),
+    placeId: optionalText(255),
+    latitude: z.number().min(-90).max(90).optional(),
+    longitude: z.number().min(-180).max(180).optional(),
     startsAt: dateTime,
     endsAt: dateTime.optional(),
     capacity: z.number().int().positive().optional(),
@@ -120,7 +136,7 @@ export const createMemberSchema = z.object({
   userId: z.uuid(),
   firstName: text(100),
   lastName: text(100),
-  phone: optionalText(32),
+  phone: phone.optional(),
   city: optionalText(100),
   memberNumber: optionalText(20),
   status: z.enum(MEMBER_STATUSES).default("pending"),
@@ -132,8 +148,18 @@ export const createMemberSchema = z.object({
 export const profileUpdateSchema = z.object({
   firstName: text(100),
   lastName: text(100),
-  phone: z.string().trim().max(32),
+  phone,
+  address: z.string().trim().max(255).default(""),
+  postcode: z.string().trim().max(10).default(""),
   city: z.string().trim().max(100),
+});
+
+/** Welcome step (POST /api/v1/me/onboarding): optional details, or nothing when skipped. */
+export const onboardingSchema = z.object({
+  phone: phone.default(""),
+  address: z.string().trim().max(255).default(""),
+  postcode: z.string().trim().max(10).default(""),
+  city: z.string().trim().max(100).default(""),
 });
 
 /** Member settings (PATCH /api/v1/me/settings): any subset of the fields. */
@@ -222,7 +248,9 @@ export const membershipSignupSchema = z.object({
   firstName: text(100),
   lastName: text(100),
   email: z.email().max(255).transform((email) => email.toLowerCase()),
-  phone: optionalText(32),
+  phone: phone.optional(),
+  address: optionalText(255),
+  postcode: optionalText(10),
   city: optionalText(100),
   password: z.string().min(8).max(128),
   acceptTerms: z.literal(true),

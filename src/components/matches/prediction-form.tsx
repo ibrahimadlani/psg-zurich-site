@@ -3,6 +3,7 @@
 import { Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -51,23 +52,22 @@ export function PredictionForm({
   const [psg, setPsg] = useState(initial?.psgScore ?? 0);
   const [other, setOther] = useState(initial?.opponentScore ?? 0);
   const [saved, setSaved] = useState(initial);
-  const [failure, setFailure] = useState<"closed" | "error" | null>(null);
   const [pending, startTransition] = useTransition();
   const isSaved = saved !== null && saved.psgScore === psg && saved.opponentScore === other;
 
   const save = () =>
     startTransition(async () => {
-      setFailure(null);
       const response = await fetch(`/api/v1/matches/${matchId}/prediction`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ psgScore: psg, opponentScore: other }),
       });
       if (!response.ok) {
-        setFailure(response.status === 409 ? "closed" : "error");
+        toast.error(t(response.status === 409 ? "closed" : "error"));
         return;
       }
       setSaved({ psgScore: psg, opponentScore: other });
+      toast.success(t("toastSaved", { psg, other, opponent }));
       router.refresh();
     });
 
@@ -93,11 +93,6 @@ export function PredictionForm({
         {psgHome ? [psgStepper, otherStepper] : [otherStepper, psgStepper]}
       </div>
 
-      {failure ? (
-        <p role="alert" className="text-sm text-destructive">
-          {t(failure)}
-        </p>
-      ) : null}
       <button
         type="button"
         onClick={save}

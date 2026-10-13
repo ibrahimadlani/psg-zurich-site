@@ -5,18 +5,17 @@ import { MailCheck } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
-import { FieldError, FormMessage, inlineLinkClass, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
+import { FieldError, inlineLinkClass, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
 import { PasswordInput } from "@/components/auth/password-input";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const schema = z.object({
   firstName: z.string().trim().min(1).max(100),
   lastName: z.string().trim().min(1).max(100),
   email: z.email(),
-  phone: z.string().trim().max(32),
-  city: z.string().trim().max(100),
   password: z.string().min(8).max(128),
   acceptTerms: z.boolean().refine(Boolean),
 });
@@ -30,21 +29,26 @@ const heading = "font-narrow text-[length:clamp(32px,6vw,44px)] leading-[0.95] f
  */
 export function MembershipForm() {
   const t = useTranslations("Membership");
+  const router = useRouter();
   const locale = useLocale();
   const [sentTo, setSentTo] = useState<string | null>(null);
-  const [failure, setFailure] = useState<"emailTaken" | "tooManyRequests" | "error" | null>(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<Values>({
     resolver: zodResolver(schema),
-    defaultValues: { firstName: "", lastName: "", email: "", phone: "", city: "", password: "", acceptTerms: false },
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      acceptTerms: false,
+    },
   });
 
   async function onSubmit(values: Values, event?: React.BaseSyntheticEvent) {
     const form = event?.target instanceof HTMLFormElement ? event.target : null;
-    setFailure(null);
     const response = await fetch("/api/v1/membership", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -52,14 +56,16 @@ export function MembershipForm() {
       body: JSON.stringify({ ...values, locale, website: form ? new FormData(form).get("website") : "" }),
     });
     if (!response.ok) {
-      setFailure(response.status === 409 ? "emailTaken" : response.status === 429 ? "tooManyRequests" : "error");
+      if (response.status === 409) {
+        toast.error(t("emailTaken"), { action: { label: t("signIn"), onClick: () => router.push("/connexion") } });
+      } else toast.error(t(response.status === 429 ? "tooManyRequests" : "error"));
       return;
     }
     setSentTo(values.email);
   }
 
   const field = (
-    name: "firstName" | "lastName" | "email" | "phone" | "city",
+    name: "firstName" | "lastName" | "email",
     props: React.ComponentProps<"input">,
     optional = false,
   ) => (
@@ -115,17 +121,7 @@ export function MembershipForm() {
             <h1 className={heading}>{t("title")}</h1>
             <p className="text-[15px] leading-normal text-pretty text-muted-foreground">{t("body")}</p>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-[14px]">
-            {failure ? (
-              <FormMessage tone="error">
-                {t(failure)}{" "}
-                {failure === "emailTaken" ? (
-                  <Link href="/connexion" prefetch={false} className="underline underline-offset-2">
-                    {t("signIn")}
-                  </Link>
-                ) : null}
-              </FormMessage>
-            ) : null}
+          <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-3">
             <input
               type="text"
               name="website"
@@ -134,15 +130,11 @@ export function MembershipForm() {
               aria-hidden
               className="pointer-events-none absolute -left-[9999px] size-px opacity-0"
             />
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-[14px]">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3">
               {field("firstName", { autoComplete: "given-name", maxLength: 100 })}
               {field("lastName", { autoComplete: "family-name", maxLength: 100 })}
             </div>
             {field("email", { type: "email", autoComplete: "email" })}
-            <div className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-[14px]">
-              {field("phone", { type: "tel", autoComplete: "tel", maxLength: 32 }, true)}
-              {field("city", { autoComplete: "address-level2", maxLength: 100 }, true)}
-            </div>
             <div className="flex flex-col gap-[7px]">
               <label htmlFor="password" className={labelClass}>
                 {t("password")}
@@ -179,9 +171,9 @@ export function MembershipForm() {
                     </a>
                   ),
                 })}
-                {errors.acceptTerms ? (
-                  <span className="mt-1 block text-destructive">{t("termsRequired")}</span>
-                ) : null}
+                <span className="mt-1 block">
+                  <FieldError id="terms-error">{errors.acceptTerms ? t("termsRequired") : null}</FieldError>
+                </span>
               </span>
             </label>
             <button type="submit" disabled={isSubmitting} className={cn(submitClass, "mt-1.5")}>

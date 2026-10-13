@@ -8,6 +8,7 @@ import {
   int,
   mediumtext,
   mysqlEnum,
+  double,
   mysqlTable,
   text,
   uniqueIndex,
@@ -150,6 +151,9 @@ export const members = mysqlTable(
     firstName: varchar("first_name", { length: 100 }).notNull(),
     lastName: varchar("last_name", { length: 100 }).notNull(),
     phone: varchar("phone", { length: 32 }),
+    /** Street and number (optional, filled in with Google address completion). */
+    address: varchar("address", { length: 255 }),
+    postcode: varchar("postcode", { length: 10 }),
     city: varchar("city", { length: 100 }),
     memberNumber: varchar("member_number", { length: 20 }).unique(),
     status: mysqlEnum("status", MEMBER_STATUSES).default("pending").notNull(),
@@ -163,6 +167,8 @@ export const members = mysqlTable(
     hideFromLeaderboard: boolean("hide_from_leaderboard").default(false).notNull(),
     notifyEvents: boolean("notify_events").default(true).notNull(),
     notifyPredictionReminders: boolean("notify_prediction_reminders").default(true).notNull(),
+    /** Welcome step done or skipped (phone and address, asked once after signing up). */
+    onboardedAt: datetime("onboarded_at", { fsp: 3 }),
     /** Last time the member opened the notification bell: newer items count as unread. */
     notificationsSeenAt: datetime("notifications_seen_at", { fsp: 3 }),
     ...timestamps(),
@@ -296,7 +302,13 @@ export const events = mysqlTable(
     matchId: fk("match_id").references(() => matches.id, {
       onDelete: "set null",
     }),
+    /** Name of the place ("Bar Le Parisien"); the address below locates it on the map. */
     location: varchar("location", { length: 255 }),
+    address: varchar("address", { length: 255 }),
+    /** Google place id of the address, for the "open in Google Maps" link. */
+    placeId: varchar("place_id", { length: 255 }),
+    latitude: double("latitude"),
+    longitude: double("longitude"),
     startsAt: datetime("starts_at").notNull(),
     endsAt: datetime("ends_at"),
     // null = unlimited

@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -22,14 +23,12 @@ export function SettingSwitch({
   const t = useTranslations("Settings");
   const router = useRouter();
   const [checked, setChecked] = useState(initial);
-  const [failed, setFailed] = useState(false);
   const [pending, startTransition] = useTransition();
   const id = `switch-${field}`;
 
   const toggle = () => {
     const next = !checked;
     setChecked(next);
-    setFailed(false);
     startTransition(async () => {
       const response = await fetch("/api/v1/me/settings", {
         method: "PATCH",
@@ -38,9 +37,10 @@ export function SettingSwitch({
       });
       if (!response.ok) {
         setChecked(!next);
-        setFailed(true);
+        toast.error(t("saveError"));
         return;
       }
+      toast.success(t("saved"));
       router.refresh();
     });
   };
@@ -52,7 +52,6 @@ export function SettingSwitch({
           {label}
         </label>
         <p className="text-sm text-pretty text-muted-foreground">{description}</p>
-        {failed ? <p className="text-sm text-destructive">{t("saveError")}</p> : null}
       </div>
       <button
         id={id}

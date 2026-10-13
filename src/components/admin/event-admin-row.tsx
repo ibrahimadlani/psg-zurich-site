@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { EventForm, type EventFormValues } from "@/components/admin/event-form";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "@/i18n/navigation";
@@ -34,7 +35,9 @@ export function EventAdminActions({
           onClick={() => {
             if (!confirm(t("confirmDelete"))) return;
             startTransition(async () => {
-              await fetch(`/api/v1/events/${eventId}`, { method: "DELETE" });
+              const response = await fetch(`/api/v1/events/${eventId}`, { method: "DELETE" });
+              if (response.ok) toast.success(t("deleted"));
+              else toast.error(t("deleteError"));
               router.refresh();
             });
           }}
@@ -56,7 +59,6 @@ export function MatchSyncButton() {
   const t = useTranslations("AdminEvents");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
-  const [result, setResult] = useState<string | null>(null);
 
   return (
     <div className="flex flex-wrap items-center gap-3">
@@ -66,26 +68,24 @@ export function MatchSyncButton() {
         disabled={pending}
         onClick={() =>
           startTransition(async () => {
-            setResult(null);
             const response = await fetch("/api/v1/matches/sync", { method: "POST" });
             const body = (await response.json().catch(() => null)) as {
               data?: { fixtures: number };
               error?: { code: string; message: string };
             } | null;
-            setResult(
-              response.ok
-                ? t("synced", { count: body?.data?.fixtures ?? 0 })
-                : body?.error?.code === "not_configured"
+            if (response.ok) toast.success(t("synced", { count: body?.data?.fixtures ?? 0 }));
+            else
+              toast.error(
+                body?.error?.code === "not_configured"
                   ? t("syncNotConfigured")
                   : t("syncFailed", { message: body?.error?.message ?? "" }),
-            );
+              );
             router.refresh();
           })
         }
       >
         {pending ? t("syncing") : t("sync")}
       </Button>
-      {result ? <span className="text-sm text-muted-foreground">{result}</span> : null}
     </div>
   );
 }

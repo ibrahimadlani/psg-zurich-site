@@ -2,20 +2,18 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "@/i18n/navigation";
 
-type Failure = "not_found" | "self" | "superadmin" | "error";
-
 function useRoleChange() {
+  const t = useTranslations("AdminRoles");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
-  const [failure, setFailure] = useState<Failure | null>(null);
 
   const change = (email: string, role: "member" | "admin", onDone?: () => void) =>
     startTransition(async () => {
-      setFailure(null);
       const response = await fetch("/api/v1/users/role", {
         method: "PATCH",
         headers: { "content-type": "application/json" },
@@ -23,21 +21,22 @@ function useRoleChange() {
       });
       if (!response.ok) {
         const code = ((await response.json().catch(() => null)) as { error?: { code?: string } } | null)?.error?.code;
-        setFailure(code === "not_found" || code === "self" || code === "superadmin" ? code : "error");
+        toast.error(t(`errors.${code === "not_found" || code === "self" || code === "superadmin" ? code : "error"}`));
         return;
       }
+      toast.success(t(role === "admin" ? "added" : "removed", { email }));
       onDone?.();
       router.refresh();
     });
 
-  return { pending, failure, change };
+  return { pending, change };
 }
 
 /** "Name admin" form: by email address of an existing account. */
 export function AddAdminForm() {
   const t = useTranslations("AdminRoles");
   const [email, setEmail] = useState("");
-  const { pending, failure, change } = useRoleChange();
+  const { pending, change } = useRoleChange();
 
   return (
     <form
@@ -60,7 +59,6 @@ export function AddAdminForm() {
           {t("add")}
         </Button>
       </div>
-      {failure ? <p className="text-sm text-destructive">{t(`errors.${failure}`)}</p> : null}
     </form>
   );
 }
@@ -68,21 +66,19 @@ export function AddAdminForm() {
 /** "Remove" button on an admin row. */
 export function RemoveAdminButton({ email }: { email: string }) {
   const t = useTranslations("AdminRoles");
-  const { pending, failure, change } = useRoleChange();
+  const { pending, change } = useRoleChange();
 
   return (
-    <div className="flex shrink-0 flex-col items-end gap-1">
-      <Button
-        variant="outline"
-        size="sm"
-        disabled={pending}
-        onClick={() => {
-          if (confirm(t("confirmRemove", { email }))) change(email, "member");
-        }}
-      >
-        {t("remove")}
-      </Button>
-      {failure ? <span className="text-xs text-destructive">{t(`errors.${failure}`)}</span> : null}
-    </div>
+    <Button
+      variant="outline"
+      size="sm"
+      disabled={pending}
+      className="shrink-0"
+      onClick={() => {
+        if (confirm(t("confirmRemove", { email }))) change(email, "member");
+      }}
+    >
+      {t("remove")}
+    </Button>
   );
 }

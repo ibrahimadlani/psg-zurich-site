@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
+import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -63,7 +64,6 @@ const toNumber = (value: string) => (value === "" ? undefined : Number(value));
 export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?: string; defaults?: MatchFormValues; onDone?: () => void }) {
   const t = useTranslations("AdminMatches");
   const router = useRouter();
-  const [failed, setFailed] = useState(false);
   const {
     register,
     handleSubmit,
@@ -76,7 +76,6 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
   const prefix = `match-${matchId ?? "new"}`;
 
   async function onSubmit(values: MatchFormValues) {
-    setFailed(false);
     const optional = (value: string) => value || undefined;
     const response = await fetch(matchId ? `/api/v1/matches/${matchId}` : "/api/v1/matches", {
       method: matchId ? "PATCH" : "POST",
@@ -100,9 +99,10 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
       }),
     });
     if (!response.ok) {
-      setFailed(true);
+      toast.error(t("error"));
       return;
     }
+    toast.success(t(matchId ? "updated" : "created"));
     if (!matchId) reset(emptyMatch);
     onDone?.();
     router.refresh();
@@ -118,7 +118,7 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
     field(name, label, { inputMode: "numeric", maxLength: 2, className: "w-20 text-center tabular-nums" });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit, () => toast.error(t("invalid")))} noValidate className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         {field("competition", t("competition"), { list: `${prefix}-competitions`, maxLength: 120, placeholder: "Coupe de France" })}
         <datalist id={`${prefix}-competitions`}>
@@ -183,11 +183,6 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
         </fieldset>
       ) : null}
 
-      {failed || Object.keys(errors).length > 0 ? (
-        <p role="alert" className="text-sm text-destructive">
-          {failed ? t("error") : t("invalid")}
-        </p>
-      ) : null}
       <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? t("saving") : matchId ? t("save") : t("create")}
       </Button>
@@ -215,8 +210,10 @@ export function ManualMatchActions({ matchId, defaults }: { matchId: string; def
           onClick={async () => {
             if (!confirm(t("confirmDelete"))) return;
             setDeleting(true);
-            await fetch(`/api/v1/matches/${matchId}`, { method: "DELETE" });
+            const response = await fetch(`/api/v1/matches/${matchId}`, { method: "DELETE" });
             setDeleting(false);
+            if (response.ok) toast.success(t("deleted"));
+            else toast.error(t("deleteError"));
             router.refresh();
           }}
         >

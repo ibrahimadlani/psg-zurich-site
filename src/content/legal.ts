@@ -223,7 +223,7 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             ul: [
               "Compte : prénom, nom, adresse e-mail et mot de passe (enregistré uniquement sous forme chiffrée, illisible même pour nous).",
-              "Profil de membre : téléphone et ville (facultatifs), statut de l'adhésion et date d'inscription.",
+              "Profil de membre : téléphone et adresse postale (facultatifs), statut de l'adhésion et date d'inscription.",
               "Consentement : date et heure auxquelles vous avez accepté les statuts et la présente politique.",
               "Sécurité : adresse IP et type de navigateur liés à vos sessions de connexion et à votre inscription.",
             ],
@@ -250,7 +250,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Hébergement et destinataires",
         blocks: [
           {
-            p: `Les données sont stockées en Suisse chez ${host.name}, qui héberge le site, la base de données et la messagerie. Seuls les membres du comité chargés de l'administration y ont accès. Aucune donnée n'est transmise à l'étranger.`,
+            p: `Les données sont stockées en Suisse chez ${host.name}, qui héberge le site, la base de données et la messagerie. Seuls les membres du comité chargés de l'administration y ont accès.`,
+          },
+          {
+            p: "Exception : les cartes et la saisie d'adresse avec suggestions utilisent Google Maps (Google LLC, États-Unis). Quand vous affichez une carte ou tapez une adresse dans ces champs, Google reçoit votre adresse IP et le texte saisi. Le reste de vos données n'est jamais transmis.",
           },
         ],
       },
@@ -275,7 +278,7 @@ const privacy: Record<Locale, LegalDocument> = {
             p: "Le site n'utilise qu'un seul cookie, indispensable : celui qui vous garde connecté. Votre navigateur retient aussi votre choix de thème (clair ou sombre) et les annonces que vous avez fermées.",
           },
           {
-            p: "Aucun outil de mesure d'audience, aucune publicité, aucun cookie tiers. Les polices de caractères sont servies par le site lui-même.",
+            p: "Aucun outil de mesure d'audience, aucune publicité. Les polices de caractères sont servies par le site lui-même. Seules les pages qui affichent une carte Google (Contact, événements) peuvent laisser Google déposer ses propres cookies.",
           },
         ],
       },
@@ -337,7 +340,7 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             ul: [
               "Account: first name, last name, email address and password (stored only in encrypted form, unreadable even to us).",
-              "Member profile: phone and city (optional), membership status and sign-up date.",
+              "Member profile: phone and postal address (optional), membership status and sign-up date.",
               "Consent: date and time at which you accepted the statutes and this policy.",
               "Security: IP address and browser type linked to your sign-in sessions and your sign-up.",
             ],
@@ -364,7 +367,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Hosting and recipients",
         blocks: [
           {
-            p: `Data is stored in Switzerland by ${host.name}, which hosts the website, the database and the email service. Only committee members in charge of administration can access it. No data is transferred abroad.`,
+            p: `Data is stored in Switzerland by ${host.name}, which hosts the website, the database and the email service. Only committee members in charge of administration can access it.`,
+          },
+          {
+            p: "Exception: maps and address fields with suggestions use Google Maps (Google LLC, United States). When you view a map or type an address in these fields, Google receives your IP address and what you type. None of your other data is ever transferred.",
           },
         ],
       },
@@ -389,7 +395,7 @@ const privacy: Record<Locale, LegalDocument> = {
             p: "The website uses a single, essential cookie: the one that keeps you signed in. Your browser also remembers your theme (light or dark) and the announcements you closed.",
           },
           {
-            p: "No analytics, no advertising, no third-party cookies. Fonts are served by the website itself.",
+            p: "No analytics, no advertising. Fonts are served by the website itself. Only the pages showing a Google map (Contact, events) may let Google set its own cookies.",
           },
         ],
       },
@@ -451,7 +457,7 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             ul: [
               "Konto: Vorname, Nachname, E-Mail-Adresse und Passwort (nur verschlüsselt gespeichert, auch für uns nicht lesbar).",
-              "Mitgliederprofil: Telefon und Ort (freiwillig), Mitgliedschaftsstatus und Anmeldedatum.",
+              "Mitgliederprofil: Telefon und Postadresse (freiwillig), Mitgliedschaftsstatus und Anmeldedatum.",
               "Einwilligung: Datum und Uhrzeit, zu denen du die Statuten und diese Erklärung akzeptiert hast.",
               "Sicherheit: IP-Adresse und Browsertyp deiner Anmeldesitzungen und deiner Registrierung.",
             ],
@@ -478,7 +484,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Hosting und Empfänger",
         blocks: [
           {
-            p: `Die Daten werden in der Schweiz bei ${host.name} gespeichert, die Website, Datenbank und E-Mail-Dienst hostet. Nur die für die Verwaltung zuständigen Vorstandsmitglieder haben Zugriff. Es werden keine Daten ins Ausland übermittelt.`,
+            p: `Die Daten werden in der Schweiz bei ${host.name} gespeichert, die Website, Datenbank und E-Mail-Dienst hostet. Nur die für die Verwaltung zuständigen Vorstandsmitglieder haben Zugriff.`,
+          },
+          {
+            p: "Ausnahme: Karten und Adressfelder mit Vorschlägen nutzen Google Maps (Google LLC, USA). Wenn du eine Karte ansiehst oder in diesen Feldern eine Adresse eingibst, erhält Google deine IP-Adresse und den eingegebenen Text. Deine übrigen Daten werden nie übermittelt.",
           },
         ],
       },
@@ -503,7 +512,7 @@ const privacy: Record<Locale, LegalDocument> = {
             p: "Die Website verwendet ein einziges, notwendiges Cookie: jenes, das dich angemeldet hält. Dein Browser merkt sich ausserdem dein Design (hell oder dunkel) und die geschlossenen Mitteilungen.",
           },
           {
-            p: "Keine Reichweitenmessung, keine Werbung, keine Cookies von Dritten. Die Schriften werden von der Website selbst ausgeliefert.",
+            p: "Keine Reichweitenmessung, keine Werbung. Die Schriften werden von der Website selbst ausgeliefert. Nur die Seiten mit einer Google-Karte (Kontakt, Veranstaltungen) können Google eigene Cookies setzen lassen.",
           },
         ],
       },

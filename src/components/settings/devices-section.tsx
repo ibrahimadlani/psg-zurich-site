@@ -3,6 +3,7 @@
 import { Laptop, Smartphone } from "lucide-react";
 import { useFormatter, useNow, useTranslations } from "next-intl";
 import { useCallback, useEffect, useState, useTransition } from "react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { authClient, useSession } from "@/lib/auth-client";
 
@@ -74,12 +75,16 @@ export function DevicesSection() {
 
   const revoke = (token: string) =>
     startTransition(async () => {
-      await authClient.revokeSession({ token });
+      const { error } = await authClient.revokeSession({ token });
+      if (error) toast.error(t("deviceError"));
+      else toast.success(t("deviceRevoked"));
       await load();
     });
   const revokeOthers = () =>
     startTransition(async () => {
-      await authClient.revokeOtherSessions();
+      const { error } = await authClient.revokeOtherSessions();
+      if (error) toast.error(t("deviceError"));
+      else toast.success(t("devicesRevoked"));
       await load();
     });
 

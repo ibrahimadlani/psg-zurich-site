@@ -2,8 +2,9 @@
 
 import { ArrowRight, Check, Hourglass } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 import { Link, useRouter } from "@/i18n/navigation";
+import { sendAttendance } from "@/lib/event-attendance";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -23,17 +24,12 @@ export function EventRegistration({ eventId, status, full, access, phase }: Prop
   const t = useTranslations("Events");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
-  const [failed, setFailed] = useState(false);
 
   const send = (method: "POST" | "DELETE") =>
     startTransition(async () => {
-      setFailed(false);
-      const response = await fetch(`/api/v1/events/${eventId}/attendance`, { method });
-      if (!response.ok) setFailed(true);
+      await sendAttendance(eventId, method, t);
       router.refresh();
     });
-
-  const error = failed ? <p className="text-sm text-destructive">{t("error")}</p> : null;
 
   if (phase !== "open") return <p className="text-[15px] text-muted-foreground">{t(phase === "over" ? "over" : "started")}</p>;
 
@@ -67,7 +63,6 @@ export function EventRegistration({ eventId, status, full, access, phase }: Prop
             {t(waitlisted ? "leaveWaitlist" : "cancel")}
           </button>
         </div>
-        {error}
       </div>
     );
   }
@@ -89,7 +84,6 @@ export function EventRegistration({ eventId, status, full, access, phase }: Prop
         <ArrowRight aria-hidden />
       </button>
       {full ? <p className="text-sm text-muted-foreground">{t("waitlistHint")}</p> : null}
-      {error}
     </div>
   );
 }

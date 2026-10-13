@@ -5,6 +5,7 @@ import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
+import { EventMapCard } from "@/components/events/event-map-card";
 import { EventRegistration } from "@/components/events/event-registration";
 import { MatchMiniCard } from "@/components/matches/match-mini-card";
 import { PredictionCard, type Access } from "@/components/matches/prediction-card";
@@ -12,6 +13,7 @@ import { db } from "@/db";
 import { events } from "@/db/schema";
 import { Link, redirect } from "@/i18n/navigation";
 import { eventPhase, getEventsWithAttendance } from "@/lib/events";
+import { mapsLink } from "@/lib/google-maps";
 import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
@@ -51,7 +53,9 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
 
   const full = event.capacity !== null && event.registered >= event.capacity;
   const left = event.capacity === null ? null : Math.max(0, event.capacity - event.registered);
-  const mapUrl = event.location ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}` : null;
+  const place = event.address || event.location;
+  const mapUrl = place ? mapsLink(place, event.placeId) : null;
+  const located = event.latitude !== null && event.longitude !== null;
   const when = format.dateTimeRange(event.startsAt, event.endsAt ?? event.startsAt, {
     weekday: "long",
     day: "numeric",
@@ -86,10 +90,15 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
               {t("addToCalendar")}
             </a>
           </div>
-          {event.location ? (
+          {place ? (
             <div className={rowClass}>
               <dt className={termClass}>{t("where")}</dt>
-              <dd className={valueClass}>{event.location}</dd>
+              <dd className={valueClass}>
+                {event.location ?? event.address}
+                {event.location && event.address ? (
+                  <span className="mt-0.5 block text-[14px] text-muted-foreground">{event.address}</span>
+                ) : null}
+              </dd>
               {mapUrl ? (
                 <a href={mapUrl} target="_blank" rel="noreferrer" className={actionClass}>
                   {t("openMap")}
@@ -130,10 +139,23 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
         ) : null}
       </div>
 
-      {match ? (
+      {match || located ? (
         <aside className="flex max-w-full min-w-0 flex-[1_1_300px] flex-col gap-4 lg:sticky lg:top-6">
-          <MatchMiniCard match={match} />
-          <PredictionCard match={match} access={access} memberId={member?.id ?? null} />
+          {located ? (
+            <EventMapCard
+              location={event.location}
+              address={event.address}
+              placeId={event.placeId}
+              latitude={event.latitude!}
+              longitude={event.longitude!}
+            />
+          ) : null}
+          {match ? (
+            <>
+              <MatchMiniCard match={match} />
+              <PredictionCard match={match} access={access} memberId={member?.id ?? null} />
+            </>
+          ) : null}
         </aside>
       ) : null}
     </div>

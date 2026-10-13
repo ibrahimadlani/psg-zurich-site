@@ -32,14 +32,7 @@ export function AuthPanel({
   );
 }
 
-export function FieldError({ id, children }: { id: string; children?: React.ReactNode }) {
-  if (!children) return null;
-  return (
-    <span id={id} className="text-[13px] text-destructive">
-      {children}
-    </span>
-  );
-}
+export { FieldError } from "@/components/ui/field-error";
 
 export function FormMessage({ tone, children }: { tone: "error" | "success"; children: React.ReactNode }) {
   return (

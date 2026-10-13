@@ -3,6 +3,7 @@
 import { Check, Copy } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { toast } from "sonner";
 
 /** Copies the club's address (some visitors have no mail app behind mailto links). */
 export function CopyEmailButton({ email }: { email: string }) {
@@ -13,6 +14,7 @@ export function CopyEmailButton({ email }: { email: string }) {
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
+      toast.success(t("copied"));
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Copying not allowed: the address stays visible to select by hand.

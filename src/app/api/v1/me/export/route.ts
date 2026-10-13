@@ -28,6 +28,8 @@ export const GET = apiHandler(async () => {
         firstName: members.firstName,
         lastName: members.lastName,
         phone: members.phone,
+        address: members.address,
+        postcode: members.postcode,
         city: members.city,
         memberNumber: members.memberNumber,
         status: members.status,

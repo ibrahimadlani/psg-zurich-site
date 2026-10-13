@@ -3,7 +3,7 @@
 import { Download } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { FormMessage } from "@/components/auth/auth-ui";
+import { toast } from "sonner";
 import { PasswordInput } from "@/components/auth/password-input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -18,16 +18,14 @@ export function DataSection({ canDelete, bare = false }: { canDelete: boolean; b
   const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmed, setConfirmed] = useState(false);
-  const [failure, setFailure] = useState<"wrongPassword" | "error" | null>(null);
   const [pending, startTransition] = useTransition();
 
   const remove = (event: React.FormEvent) => {
     event.preventDefault();
     startTransition(async () => {
-      setFailure(null);
       const { error } = await deleteUser({ password });
       if (error) {
-        setFailure(error.code === "INVALID_PASSWORD" ? "wrongPassword" : "error");
+        toast.error(t(error.code === "INVALID_PASSWORD" ? "wrongPassword" : "error"));
         return;
       }
       router.replace("/");
@@ -51,7 +49,6 @@ export function DataSection({ canDelete, bare = false }: { canDelete: boolean; b
           ) : open ? (
             <form onSubmit={remove} className="space-y-4 rounded-lg border border-destructive/40 p-4">
               <p className="text-sm text-destructive">{t("deleteWarning")}</p>
-              {failure ? <FormMessage tone="error">{t(failure)}</FormMessage> : null}
               <div className="max-w-sm space-y-1.5">
                 <Label htmlFor="delete-password">{t("deletePassword")}</Label>
                 <PasswordInput

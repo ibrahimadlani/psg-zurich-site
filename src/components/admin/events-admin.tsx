@@ -125,10 +125,13 @@ export async function EventsAdmin() {
                 description: event.description ?? "",
                 matchId: event.matchId ?? "",
                 location: event.location ?? "",
+                address: event.address ?? "",
+                placeId: event.placeId ?? "",
+                latitude: event.latitude,
+                longitude: event.longitude,
                 startsAt: toLocalInput(event.startsAt),
                 endsAt: toLocalInput(event.endsAt),
                 capacity: event.capacity?.toString() ?? "",
-                membersOnly: event.membersOnly,
                 notifyMembers: false,
               };
               return (

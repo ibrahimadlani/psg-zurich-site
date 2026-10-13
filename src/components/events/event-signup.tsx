@@ -1,9 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useState, useTransition } from "react";
+import { useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, useRouter } from "@/i18n/navigation";
+import { sendAttendance } from "@/lib/event-attendance";
 
 type Props = {
   eventId: string;
@@ -19,7 +20,6 @@ export function EventSignup({ eventId, status, full, access }: Props) {
   const t = useTranslations("Events");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
-  const [failed, setFailed] = useState(false);
 
   if (access === "guest") {
     return (
@@ -34,9 +34,7 @@ export function EventSignup({ eventId, status, full, access }: Props) {
 
   const send = (method: "POST" | "DELETE") =>
     startTransition(async () => {
-      setFailed(false);
-      const response = await fetch(`/api/v1/events/${eventId}/attendance`, { method });
-      if (!response.ok) setFailed(true);
+      await sendAttendance(eventId, method, t);
       router.refresh();
     });
 
@@ -55,7 +53,6 @@ export function EventSignup({ eventId, status, full, access }: Props) {
           {full ? t("joinWaitlist") : t("signUp")}
         </Button>
       )}
-      {failed ? <span className="text-xs text-destructive">{t("error")}</span> : null}
     </div>
   );
 }

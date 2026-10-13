@@ -6,6 +6,7 @@ import { AnnouncementBanner } from "@/components/announcements/announcement-bann
 import { SessionSync } from "@/components/auth/session-sync";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeSync } from "@/components/theme-sync";
+import { Toaster } from "@/components/ui/toaster";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import "../globals.css";
@@ -42,6 +43,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
             <AnnouncementBanner />
           </Suspense>
           {children}
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>

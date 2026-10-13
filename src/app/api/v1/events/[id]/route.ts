@@ -32,6 +32,10 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
         description: input.description ?? null,
         matchId: input.matchId ?? null,
         location: input.location ?? null,
+        address: input.address ?? null,
+        placeId: input.placeId ?? null,
+        latitude: input.latitude ?? null,
+        longitude: input.longitude ?? null,
         endsAt: input.endsAt ?? null,
         capacity: input.capacity ?? null,
       })
