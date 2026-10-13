@@ -23,12 +23,7 @@
       "away_trip": "By coach or train to the Parc des Princes and across Europe, tickets and travel organised.",
       "members_match": "Our own matches between members on a local pitch: everyone plays.",
       "social": "Evenings, the general assembly, the end-of-season dinner: time together away from the games."
-    },
-    "ctaTitle": "The programme is for members",
-    "ctaBody": "Dates, places, spots and sign-ups are visible once you are a member of the club.",
-    "pending": "Your membership is being reviewed: the programme will appear here as soon as it is accepted.",
-    "join": "Join",
-    "signIn": "Already a member? <link>Sign in</link>"
+    }
   },
   "Contact": {
     "title": "Contact",
@@ -221,8 +216,9 @@
       "title": "My membership",
       "number": "Member number",
       "joined": "Member since",
-      "fee": "Membership fee",
-      "feeSoon": "Online payment is coming soon.",
+      "feePaid": "Fee paid until {date}.",
+      "feeDue": "This season's fee is due to access events.",
+      "payFee": "Pay my fee",
       "status": {
         "pending": "Pending",
         "active": "Active",
@@ -281,6 +277,12 @@
       "error": "Deletion failed. Please try again."
     },
     "card": {
+      "flip": "Member card — turn over",
+      "flipHint": "Tap the card to turn it over",
+      "qrLabel": "Member QR code",
+      "backTitle": "Member card",
+      "backHint": "Show this code at the entrance of club events.",
+      "backPending": "Your QR code will appear here once your membership is accepted.",
       "season": "Season"
     },
     "registrations": {
@@ -460,6 +462,83 @@
       "statutes": "A question about the association?"
     }
   },
+  "Scan": {
+    "title": "Entrance check",
+    "loading": "Loading…",
+    "forbidden": "For organisers (admins) only.",
+    "unknown": "Unknown card",
+    "unknownHint": "This QR code matches no member. The card may have been renewed.",
+    "state": {
+      "paid": "Member, fee paid",
+      "unpaid": "Fee to pay",
+      "notAccepted": "Membership not accepted yet"
+    },
+    "today": "Today's events",
+    "noEvent": "No club event within 12 hours.",
+    "registered": "Signed up",
+    "waitlisted": "On the waiting list",
+    "notRegistered": "Not signed up",
+    "checkIn": "Let in",
+    "checkedIn": "{name} is in.",
+    "present": "Present since {time}",
+    "error": "Check-in failed. Try again."
+  },
+  "Dues": {
+    "title": "Membership fee",
+    "intro": "This season's fee opens the events programme and sign-ups.",
+    "pendingTitle": "Membership being reviewed",
+    "pendingBody": "The fee is paid once the committee has accepted your membership. You will get an email.",
+    "paidTitle": "Fee paid",
+    "paidBody": "Thank you! Your fee covers the season until {date}.",
+    "amountLabel": "Season until {end}",
+    "amountHint": "Junior rate: {junior}.",
+    "after": "Once received, the committee records your fee (usually within a few days) and the programme opens.",
+    "transfer": "By bank transfer",
+    "holder": "Account holder",
+    "iban": "IBAN",
+    "bank": "Bank",
+    "reference": "Reference",
+    "twint": "Send the amount to {number} with the reference “{reference}”.",
+    "copy": "Copy",
+    "copied": "Copied."
+  },
+  "Access": {
+    "preview": {
+      "title": "Watch party at Le Parisien bar",
+      "titleMatch": "Watch party PSG – {opponent}",
+      "when": "Saturday · 8:30 pm",
+      "where": "Langstrasse, Zurich",
+      "places": "12 spots left",
+      "signUp": "Sign up"
+    },
+    "guestTitle": "For members only",
+    "guest": {
+      "predictions": "Join the club to predict every match and climb the members' leaderboard.",
+      "events": "Watch parties, away trips, evenings: the programme and sign-ups are for members."
+    },
+    "pendingTitle": "Membership being reviewed",
+    "pendingBody": "The committee is reviewing your request: everything opens as soon as it is accepted.",
+    "unpaidTitle": "Fee to pay",
+    "unpaidBody": "Your membership is accepted. Pay this season's fee to see the programme and sign up.",
+    "join": "Join",
+    "signIn": "Already a member? <link>Sign in</link>",
+    "pay": "Pay my fee"
+  },
+  "AdminDues": {
+    "title": "Membership fees",
+    "description": "Accepted members and their fee for the season (until {end}). Only members whose fee is paid can access events.",
+    "paidUntil": "Paid until {date}",
+    "unpaid": "Fee to pay",
+    "badgePaid": "Paid",
+    "badgeUnpaid": "To pay",
+    "record": "Fee received",
+    "cancel": "Cancel",
+    "confirmCancel": "Cancel this member's fee for the season?",
+    "recorded": "Fee recorded.",
+    "cancelled": "Fee cancelled.",
+    "error": "Saving failed. Try again.",
+    "empty": "No accepted members yet."
+  },
   "AdminMembers": {
     "approved": "Membership accepted.",
     "rejected": "Request declined.",
@@ -520,7 +599,7 @@
     "fullTime": "Full time",
     "penalties": "Penalties: {home} – {away}",
     "addToCalendar": "Add to my calendar",
-    "clubEventsTitle": "With the club",
+    "clubEventsTitle": "Club events",
     "noClubEvents": "No club event planned for this match.",
     "clubEventsMembersOnly": "The club's events around this match are for members. <link>See what we organise</link>",
     "backToMatches": "All matches",
@@ -564,6 +643,10 @@
     "kickoff": "Kick-off"
   },
   "Predictions": {
+    "closesIn": "Closes in {time}",
+    "countdownDays": "{days} d {hours} h",
+    "infoBody": "Predictions are on the score at the end of regulation time (no extra time or penalties). You can change yours until kick-off.",
+    "infoLabel": "How it works",
     "title": "Prediction",
     "openHint": "Score at the end of regular time. Editable until kick-off.",
     "closedHint": "Predictions closed at kick-off.",
@@ -573,17 +656,12 @@
     "closed": "Predictions are closed for this match.",
     "error": "Saving failed. Please try again.",
     "toastSaved": "Prediction saved: PSG {psg} – {other} {opponent}.",
-    "signIn": "Sign in",
-    "guestHint": "Guess the score before kick-off and climb the members' leaderboard.",
-    "notMember": "Not a member yet? <join>Join</join>",
-    "membersOnly": "Predictions are for accepted members only.",
     "community": "Community predictions ({count})",
     "win": "PSG win {percent}%",
     "draw": "Draw {percent}%",
     "loss": "PSG loss {percent}%",
     "less": "One goal less for {team}",
     "more": "One goal more for {team}",
-    "savedBadge": "Saved",
     "saveButton": "Save my prediction",
     "savedButton": "Prediction saved",
     "yourPredictionLabel": "Your prediction",
@@ -680,6 +758,7 @@
     "address": "Address",
     "addressPlaceholder": "Start typing the address…",
     "addressHint": "Pick a suggestion to put the event on the map.",
+    "addressRequired": "Pick the address from the list: every event gets its pin on the map.",
     "addressLocated": "Address located: the map will show on the event page.",
     "startsAt": "Start",
     "endsAt": "End (optional)",

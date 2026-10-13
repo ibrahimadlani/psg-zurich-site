@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { PlaceMap } from "@/components/maps/place-map";
+import { mapsEnabled } from "@/lib/google-maps";
 
 /** Zurich city centre (Hauptbahnhof / Bahnhofstrasse). */
 const CENTER = { lat: 47.3744, lng: 8.5411 };
@@ -6,11 +8,19 @@ const EMBED = `https://www.google.com/maps?ll=${CENTER.lat},${CENTER.lng}&z=13&o
 export const MAPS_URL = "https://www.google.com/maps/place/Z%C3%BCrich";
 
 /**
- * Google Maps centred on Zurich, tinted in the site's colours: the embed is made grey, then
+ * Without an API key: Google's embed, tinted in the site's colours: the embed is made grey, then
  * PSG blue is blended over it (light) or it is inverted into a night map (dark). The crest pin
  * sits on top; clicks still reach the map.
  */
 export function ZurichMap({ label }: { label: string }) {
+  // With an API key: a real Google map in the site's light/dark style, crest pin with a pulse.
+  if (mapsEnabled) {
+    return (
+      <div className="relative aspect-[4/3] overflow-hidden rounded-[14px] border bg-psg-blue/10 shadow-brand sm:aspect-[16/9]">
+        <PlaceMap latitude={CENTER.lat} longitude={CENTER.lng} label={label} zoom={13} large />
+      </div>
+    );
+  }
   return (
     <div className="relative isolate aspect-[4/3] overflow-hidden rounded-[14px] border bg-psg-blue shadow-brand sm:aspect-[16/9]">
       <iframe

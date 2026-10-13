@@ -12,6 +12,7 @@ import { PredictionCard, type Access } from "@/components/matches/prediction-car
 import { db } from "@/db";
 import { events } from "@/db/schema";
 import { Link, redirect } from "@/i18n/navigation";
+import { isDuesPaid } from "@/lib/dues";
 import { eventPhase, getEventsWithAttendance } from "@/lib/events";
 import { mapsLink } from "@/lib/google-maps";
 import { getMatch } from "@/lib/matches";
@@ -24,7 +25,7 @@ export const instant = false;
 export async function generateMetadata({ params }: PageProps<"/[locale]/evenements/[id]">): Promise<Metadata> {
   // Events are for members only: no title for anyone else, never indexed.
   const member = await getCurrentMember();
-  if (member?.status !== "active") return { robots: { index: false } };
+  if (!isDuesPaid(member)) return { robots: { index: false } };
   const [event] = await db.select({ title: events.title }).from(events).where(eq(events.id, (await params).id));
   return { title: event?.title, robots: { index: false } };
 }
@@ -45,8 +46,8 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
 
-  // Events are for accepted members: anyone else lands on the showcase.
-  if (access !== "member") redirect({ href: "/evenements", locale: await getLocale() });
+  // Events are for members whose fee is paid: anyone else lands on the showcase.
+  if (!isDuesPaid(member)) redirect({ href: "/evenements", locale: await getLocale() });
   const [event] = await getEventsWithAttendance(eq(events.id, id), member?.id ?? null);
   if (!event) notFound();
   const match = event.matchId ? await getMatch(event.matchId) : null;

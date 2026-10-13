@@ -11,6 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { EVENT_TYPES } from "@/db/schema";
 import { useRouter } from "@/i18n/navigation";
+import { mapsEnabled } from "@/lib/google-maps";
+import { cn } from "@/lib/utils";
 
 const schema = z
   .object({
@@ -29,7 +31,9 @@ const schema = z
     capacity: z.string().regex(/^\d*$/),
     notifyMembers: z.boolean(),
   })
-  .refine((v) => !v.endsAt || v.endsAt >= v.startsAt, { path: ["endsAt"] });
+  .refine((v) => !v.endsAt || v.endsAt >= v.startsAt, { path: ["endsAt"] })
+  // Every event gets its pin on the map: the address must come from the suggestions.
+  .refine((v) => !mapsEnabled || (v.latitude !== null && v.longitude !== null), { path: ["address"] });
 export type EventFormValues = z.infer<typeof schema>;
 
 export const emptyEvent: EventFormValues = {
@@ -50,7 +54,7 @@ export const emptyEvent: EventFormValues = {
 
 /** Same look as <Input> for the address field (a plain input with suggestions). */
 const inputClass =
-  "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm dark:bg-input/30";
+  "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive md:text-sm dark:bg-input/30";
 
 const selectClass =
   "h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
@@ -161,6 +165,7 @@ export function EventForm({
             className={inputClass}
             maxLength={255}
             placeholder={t("addressPlaceholder")}
+            aria-invalid={errors.address ? true : undefined}
             value={address}
             onChange={(value) => {
               setValue("address", value, { shouldDirty: true });
@@ -171,10 +176,12 @@ export function EventForm({
             onPick={(place) => {
               setValue("placeId", place.placeId);
               setValue("latitude", place.latitude);
-              setValue("longitude", place.longitude);
+              setValue("longitude", place.longitude, { shouldValidate: Boolean(errors.address) });
             }}
           />
-          <p className="text-xs text-muted-foreground">{latitude !== null ? t("addressLocated") : t("addressHint")}</p>
+          <p className={cn("text-xs", errors.address ? "text-destructive" : "text-muted-foreground")}>
+            {errors.address ? t("addressRequired") : latitude !== null ? t("addressLocated") : t("addressHint")}
+          </p>
         </div>
       </div>
       <div className="grid gap-4 sm:grid-cols-3">

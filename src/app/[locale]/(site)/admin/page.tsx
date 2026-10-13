@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { AdminsManager } from "@/components/admin/admins-manager";
+import { DuesAdmin } from "@/components/admin/dues-admin";
 import { EventsAdmin } from "@/components/admin/events-admin";
 import { MembershipRequests } from "@/components/admin/membership-requests";
 import { AnnouncementsAdmin } from "@/components/announcements/announcements-admin";
@@ -41,6 +42,7 @@ async function AdminPanel() {
         <ChevronRight className="size-4 text-muted-foreground" aria-hidden />
       </Link>
       <MembershipRequests />
+      <DuesAdmin />
       <EventsAdmin />
       <AnnouncementsAdmin />
       {hasRole(session.user.role, "superadmin") ? <AdminsManager currentUserId={session.user.id} /> : null}

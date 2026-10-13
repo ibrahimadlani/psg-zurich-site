@@ -12,6 +12,7 @@ import {
   POST_STATUSES,
 } from "@/db/schema";
 import { blocksSchema } from "@/lib/article-blocks";
+import { mapsEnabled } from "@/lib/google-maps";
 import { normalizePhone } from "@/lib/phone";
 
 const text = (max: number) => z.string().trim().min(1).max(max);
@@ -128,6 +129,11 @@ export const createEventSchema = z
   .refine((event) => !event.endsAt || event.endsAt >= event.startsAt, {
     message: "endsAt must be after startsAt.",
     path: ["endsAt"],
+  })
+  // Every event has its pin on the map (when Google Maps is set up).
+  .refine((event) => !mapsEnabled || (event.address && event.latitude !== undefined && event.longitude !== undefined), {
+    message: "address must be picked from the suggestions.",
+    path: ["address"],
   });
 
 /* --------------------------------- Members -------------------------------- */

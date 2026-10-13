@@ -4,6 +4,7 @@ import { AdvancedMarker, APIProvider, ColorScheme, Map } from "@vis.gl/react-goo
 import Image from "next/image";
 import { useSyncExternalStore } from "react";
 import { MAP_ID, MAPS_API_KEY, mapsEnabled } from "@/lib/google-maps";
+import { cn } from "@/lib/utils";
 
 /** Follows the site theme (the "dark" class on <html>), not only the OS setting. */
 function subscribeTheme(onChange: () => void) {
@@ -13,8 +14,23 @@ function subscribeTheme(onChange: () => void) {
 }
 const isDark = () => document.documentElement.classList.contains("dark");
 
-/** Small Google map centred on a place, with the club's crest as the pin. */
-export function PlaceMap({ latitude, longitude, label }: { latitude: number; longitude: number; label: string }) {
+/**
+ * Google map centred on a place, with the club's crest as the pin. `large`: bigger pin with a
+ * slow red pulse (contact page); `zoom` 15 = street level, 13 = city.
+ */
+export function PlaceMap({
+  latitude,
+  longitude,
+  label,
+  zoom = 15,
+  large = false,
+}: {
+  latitude: number;
+  longitude: number;
+  label: string;
+  zoom?: number;
+  large?: boolean;
+}) {
   const dark = useSyncExternalStore(subscribeTheme, isDark, () => false);
   if (!mapsEnabled) return null;
   const position = { lat: latitude, lng: longitude };
@@ -27,7 +43,7 @@ export function PlaceMap({ latitude, longitude, label }: { latitude: number; lon
         mapId={MAP_ID}
         colorScheme={dark ? ColorScheme.DARK : ColorScheme.LIGHT}
         defaultCenter={position}
-        defaultZoom={15}
+        defaultZoom={zoom}
         // No controls at all; the Google logo and terms stay (required by Google).
         disableDefaultUI
         keyboardShortcuts={false}
@@ -37,11 +53,28 @@ export function PlaceMap({ latitude, longitude, label }: { latitude: number; lon
         className="size-full"
       >
         <AdvancedMarker position={position} title={label}>
-          <span className="flex flex-col items-center drop-shadow-[0_6px_10px_rgb(0_0_0/0.35)]">
-            <span className="grid size-10 place-items-center rounded-full bg-white p-0.5 ring-2 ring-psg-red">
-              <Image src="/brand/psg-crest.svg" alt="" width={34} height={34} className="size-[34px]" />
+          <span className="relative flex flex-col items-center drop-shadow-[0_6px_10px_rgb(0_0_0/0.35)]">
+            {large ? (
+              <span
+                aria-hidden
+                className="absolute bottom-0 left-1/2 size-20 -translate-x-1/2 translate-y-1/2 animate-ping rounded-full bg-psg-red/25 [animation-duration:2.4s] motion-reduce:hidden"
+              />
+            ) : null}
+            <span
+              className={cn(
+                "relative grid place-items-center rounded-full bg-white p-0.5 ring-2 ring-psg-red",
+                large ? "size-14" : "size-10",
+              )}
+            >
+              <Image
+                src="/brand/psg-crest.svg"
+                alt=""
+                width={48}
+                height={48}
+                className={large ? "size-12" : "size-[34px]"}
+              />
             </span>
-            <span className="-mt-1 size-2.5 rotate-45 rounded-[2px] bg-psg-red" />
+            <span className={cn("relative -mt-1 rotate-45 rounded-[2px] bg-psg-red", large ? "size-3" : "size-2.5")} />
           </span>
         </AdvancedMarker>
       </Map>

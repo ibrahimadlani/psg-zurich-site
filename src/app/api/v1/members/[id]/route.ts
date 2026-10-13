@@ -3,6 +3,7 @@ import { db, type Transaction } from "@/db";
 import { members, user } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
+import { todayInZurich } from "@/lib/dues";
 import { sendMembershipDecision } from "@/lib/membership-mail";
 import { HttpError, requireRole } from "@/lib/permissions";
 import { memberDecisionSchema } from "@/lib/validators";
@@ -20,8 +21,6 @@ async function nextMemberNumber(tx: Transaction) {
   return `${NUMBER_PREFIX}${String(Number(row?.max ?? 0) + 1).padStart(4, "0")}`;
 }
 
-// Calendar date in Zurich (YYYY-MM-DD).
-const todayInZurich = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Zurich" }).format(new Date());
 
 /** Committee decision on a membership request: approve (from pending or rejected) or reject (from pending). */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {

@@ -5,13 +5,13 @@ import { events } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { notifyNewEvent } from "@/lib/notifications";
-import { requireActiveMember } from "@/lib/members";
+import { requirePaidMember } from "@/lib/members";
 import { requireRole } from "@/lib/permissions";
 import { createEventSchema, pagination } from "@/lib/validators";
 
-/** Club events are for accepted members only. */
+/** Club events are for members whose fee is paid. */
 export const GET = apiHandler(async (request) => {
-  await requireActiveMember();
+  await requirePaidMember();
   const { limit, offset } = parseQuery(request, pagination);
   const rows = await db
     .select()

@@ -7,6 +7,7 @@ import { events, matches, members, predictions, user, type Locale } from "@/db/s
 import { AuthLinkEmail } from "@/emails/auth-link";
 import { loadMessages } from "@/i18n/messages";
 import { sendMail } from "@/lib/mail";
+import { todayInZurich } from "@/lib/dues";
 import { matchTitle } from "@/lib/matches";
 import { unsubscribeUrl, type NotificationType } from "@/lib/unsubscribe";
 
@@ -71,7 +72,8 @@ export async function notifyNewEvent(eventId: string) {
     .select(recipientColumns)
     .from(members)
     .innerJoin(user, eq(user.id, members.userId))
-    .where(and(eq(members.status, "active"), eq(members.notifyEvents, true)));
+    // Only members whose fee is paid see events.
+    .where(and(eq(members.status, "active"), gte(members.expiresOn, todayInZurich()), eq(members.notifyEvents, true)));
 
   await sendToEach(recipients, "events", "Emails.newEvent", (recipient) => ({
     values: {

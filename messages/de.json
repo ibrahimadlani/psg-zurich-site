@@ -23,12 +23,7 @@
       "away_trip": "Mit Car oder Zug in den Parc des Princes und quer durch Europa, Tickets und Reise organisiert.",
       "members_match": "Unsere eigenen Spiele unter Mitgliedern auf einem Platz in der Region: Alle spielen mit.",
       "social": "Abende, Generalversammlung, Saisonabschlussessen: Zeit miteinander abseits der Spiele."
-    },
-    "ctaTitle": "Das Programm ist Mitgliedern vorbehalten",
-    "ctaBody": "Daten, Orte, Plätze und Anmeldungen siehst du, sobald du Mitglied des Clubs bist.",
-    "pending": "Dein Antrag wird geprüft: Das Programm erscheint hier, sobald er angenommen ist.",
-    "join": "Beitreten",
-    "signIn": "Schon Mitglied? <link>Anmelden</link>"
+    }
   },
   "Contact": {
     "title": "Kontakt",
@@ -221,8 +216,9 @@
       "title": "Meine Mitgliedschaft",
       "number": "Mitgliedernummer",
       "joined": "Mitglied seit",
-      "fee": "Mitgliederbeitrag",
-      "feeSoon": "Die Online-Zahlung folgt in Kürze.",
+      "feePaid": "Beitrag bezahlt bis {date}.",
+      "feeDue": "Der Saisonbeitrag ist offen – er öffnet die Veranstaltungen.",
+      "payFee": "Beitrag bezahlen",
       "status": {
         "pending": "Ausstehend",
         "active": "Aktiv",
@@ -281,6 +277,12 @@
       "error": "Löschen fehlgeschlagen. Bitte erneut versuchen."
     },
     "card": {
+      "flip": "Mitgliederkarte — umdrehen",
+      "flipHint": "Tippe auf die Karte, um sie umzudrehen",
+      "qrLabel": "Mitglieder-QR-Code",
+      "backTitle": "Mitgliederkarte",
+      "backHint": "Zeige diesen Code beim Eingang der Clubveranstaltungen.",
+      "backPending": "Dein QR-Code erscheint hier, sobald deine Mitgliedschaft angenommen ist.",
       "season": "Saison"
     },
     "registrations": {
@@ -460,6 +462,83 @@
       "statutes": "Eine Frage zum Verein?"
     }
   },
+  "Scan": {
+    "title": "Einlasskontrolle",
+    "loading": "Wird geladen…",
+    "forbidden": "Nur für Organisatoren (Admins).",
+    "unknown": "Unbekannte Karte",
+    "unknownHint": "Dieser QR-Code gehört zu keinem Mitglied. Die Karte wurde vielleicht erneuert.",
+    "state": {
+      "paid": "Mitglied, Beitrag bezahlt",
+      "unpaid": "Beitrag offen",
+      "notAccepted": "Mitgliedschaft noch nicht angenommen"
+    },
+    "today": "Heutige Veranstaltungen",
+    "noEvent": "Keine Clubveranstaltung in den nächsten 12 Stunden.",
+    "registered": "Angemeldet",
+    "waitlisted": "Auf der Warteliste",
+    "notRegistered": "Nicht angemeldet",
+    "checkIn": "Einlass bestätigen",
+    "checkedIn": "{name} ist drin.",
+    "present": "Anwesend seit {time}",
+    "error": "Einlass fehlgeschlagen. Versuche es erneut."
+  },
+  "Dues": {
+    "title": "Mitgliederbeitrag",
+    "intro": "Der Saisonbeitrag öffnet das Veranstaltungsprogramm und die Anmeldungen.",
+    "pendingTitle": "Mitgliedschaft wird geprüft",
+    "pendingBody": "Der Beitrag wird bezahlt, sobald der Vorstand deine Mitgliedschaft angenommen hat. Du erhältst eine E-Mail.",
+    "paidTitle": "Beitrag bezahlt",
+    "paidBody": "Danke! Dein Beitrag deckt die Saison bis {date}.",
+    "amountLabel": "Saison bis {end}",
+    "amountHint": "Juniorentarif: {junior}.",
+    "after": "Nach Eingang bestätigt der Vorstand deinen Beitrag (meist innert weniger Tage) und das Programm wird freigeschaltet.",
+    "transfer": "Per Überweisung",
+    "holder": "Kontoinhaber",
+    "iban": "IBAN",
+    "bank": "Bank",
+    "reference": "Mitteilung",
+    "twint": "Sende den Betrag an {number} mit der Mitteilung «{reference}».",
+    "copy": "Kopieren",
+    "copied": "Kopiert."
+  },
+  "Access": {
+    "preview": {
+      "title": "Watch-Party in der Bar Le Parisien",
+      "titleMatch": "Watch-Party PSG – {opponent}",
+      "when": "Samstag · 20:30",
+      "where": "Langstrasse, Zürich",
+      "places": "Noch 12 Plätze",
+      "signUp": "Anmelden"
+    },
+    "guestTitle": "Nur für Mitglieder",
+    "guest": {
+      "predictions": "Werde Mitglied, um jedes Spiel zu tippen und in der Mitgliederrangliste zu klettern.",
+      "events": "Watch-Partys, Auswärtsfahrten, Abende: Programm und Anmeldungen sind Mitgliedern vorbehalten."
+    },
+    "pendingTitle": "Mitgliedschaft wird geprüft",
+    "pendingBody": "Der Vorstand prüft deinen Antrag: Alles wird freigeschaltet, sobald er angenommen ist.",
+    "unpaidTitle": "Beitrag offen",
+    "unpaidBody": "Deine Mitgliedschaft ist angenommen. Bezahle den Saisonbeitrag, um das Programm zu sehen und dich anzumelden.",
+    "join": "Beitreten",
+    "signIn": "Schon Mitglied? <link>Anmelden</link>",
+    "pay": "Beitrag bezahlen"
+  },
+  "AdminDues": {
+    "title": "Mitgliederbeiträge",
+    "description": "Angenommene Mitglieder und ihr Beitrag für die Saison (bis {end}). Nur Mitglieder mit bezahltem Beitrag haben Zugang zu den Veranstaltungen.",
+    "paidUntil": "Bezahlt bis {date}",
+    "unpaid": "Beitrag offen",
+    "badgePaid": "Bezahlt",
+    "badgeUnpaid": "Offen",
+    "record": "Beitrag erhalten",
+    "cancel": "Rückgängig",
+    "confirmCancel": "Den Beitrag dieses Mitglieds für die Saison zurücknehmen?",
+    "recorded": "Beitrag gespeichert.",
+    "cancelled": "Beitrag zurückgenommen.",
+    "error": "Speichern fehlgeschlagen. Versuche es erneut.",
+    "empty": "Noch keine angenommenen Mitglieder."
+  },
   "AdminMembers": {
     "approved": "Mitgliedschaft angenommen.",
     "rejected": "Antrag abgelehnt.",
@@ -520,7 +599,7 @@
     "fullTime": "Abgepfiffen",
     "penalties": "Penaltyschiessen: {home} – {away}",
     "addToCalendar": "Zu meinem Kalender hinzufügen",
-    "clubEventsTitle": "Mit dem Club",
+    "clubEventsTitle": "Clubveranstaltungen",
     "noClubEvents": "Für dieses Spiel ist kein Club-Event geplant.",
     "clubEventsMembersOnly": "Die Clubveranstaltungen rund um dieses Spiel sind Mitgliedern vorbehalten. <link>Entdecke, was wir organisieren</link>",
     "backToMatches": "Alle Spiele",
@@ -564,6 +643,10 @@
     "kickoff": "Anpfiff"
   },
   "Predictions": {
+    "closesIn": "Schliesst in {time}",
+    "countdownDays": "{days} T {hours} Std.",
+    "infoBody": "Getippt wird das Resultat nach der regulären Spielzeit (ohne Verlängerung und Penaltyschiessen). Änderbar bis zum Anpfiff.",
+    "infoLabel": "So funktioniert's",
     "title": "Tipp",
     "openHint": "Ergebnis nach regulärer Spielzeit. Änderbar bis zum Anpfiff.",
     "closedHint": "Die Tipps sind seit dem Anpfiff geschlossen.",
@@ -573,17 +656,12 @@
     "closed": "Für dieses Spiel sind die Tipps geschlossen.",
     "error": "Speichern fehlgeschlagen. Bitte erneut versuchen.",
     "toastSaved": "Tipp gespeichert: PSG {psg} – {other} {opponent}.",
-    "signIn": "Anmelden",
-    "guestHint": "Tippe das Ergebnis vor dem Anpfiff und klettere in der Mitgliederrangliste.",
-    "notMember": "Noch kein Mitglied? <join>Beitreten</join>",
-    "membersOnly": "Tipps sind aufgenommenen Mitgliedern vorbehalten.",
     "community": "Tipps der Community ({count})",
     "win": "PSG-Sieg {percent} %",
     "draw": "Unentschieden {percent} %",
     "loss": "PSG-Niederlage {percent} %",
     "less": "Ein Tor weniger für {team}",
     "more": "Ein Tor mehr für {team}",
-    "savedBadge": "Gespeichert",
     "saveButton": "Tipp speichern",
     "savedButton": "Tipp gespeichert",
     "yourPredictionLabel": "Dein Tipp",
@@ -680,6 +758,7 @@
     "address": "Adresse",
     "addressPlaceholder": "Adresse eingeben…",
     "addressHint": "Wähle einen Vorschlag, um die Veranstaltung auf der Karte zu zeigen.",
+    "addressRequired": "Wähle die Adresse aus der Liste: Jede Veranstaltung bekommt ihren Punkt auf der Karte.",
     "addressLocated": "Adresse gefunden: Die Karte erscheint auf der Veranstaltungsseite.",
     "startsAt": "Beginn",
     "endsAt": "Ende (optional)",

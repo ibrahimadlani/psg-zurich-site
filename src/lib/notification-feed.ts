@@ -8,6 +8,7 @@ import {
   predictions,
   type Locale,
 } from "@/db/schema";
+import { isDuesPaid } from "@/lib/dues";
 import { getNewsList } from "@/lib/news";
 
 /*
@@ -54,16 +55,18 @@ export async function getNotifications(userId: string, locale: Locale) {
       id: members.id,
       status: members.status,
       joinedOn: members.joinedOn,
+      expiresOn: members.expiresOn,
       seenAt: members.notificationsSeenAt,
     })
     .from(members)
     .where(eq(members.userId, userId));
   const active = member?.status === "active";
+  const paid = isDuesPaid(member);
 
   const [news, newEvents, nextMatches, scored] = await Promise.all([
     getNewsList(locale),
-    // Club events are for accepted members only.
-    active
+    // Club events are for members whose fee is paid.
+    paid
       ? db
           .select({
             id: events.id,

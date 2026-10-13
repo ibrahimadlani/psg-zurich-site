@@ -167,6 +167,11 @@ export const members = mysqlTable(
     hideFromLeaderboard: boolean("hide_from_leaderboard").default(false).notNull(),
     notifyEvents: boolean("notify_events").default(true).notNull(),
     notifyPredictionReminders: boolean("notify_prediction_reminders").default(true).notNull(),
+    /**
+     * Random token in the QR code on the back of the member card (event check-in); unique,
+     * and can be replaced if a card leaks. Created the first time the card is shown.
+     */
+    cardToken: varchar("card_token", { length: 32 }).unique(),
     /** Welcome step done or skipped (phone and address, asked once after signing up). */
     onboardedAt: datetime("onboarded_at", { fsp: 3 }),
     /** Last time the member opened the notification bell: newer items count as unread. */
@@ -350,6 +355,8 @@ export const attendance = mysqlTable(
       .default("not_required")
       .notNull(),
     paidAt: datetime("paid_at"),
+    /** Scanned at the entrance (member card QR code). */
+    checkedInAt: datetime("checked_in_at", { fsp: 3 }),
     ...timestamps(),
   },
   (t) => [uniqueIndex("attendance_event_member_uq").on(t.eventId, t.memberId)],

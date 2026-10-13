@@ -1,7 +1,7 @@
 "use client";
 
 import { Minus, Plus } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useNow, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { useRouter } from "@/i18n/navigation";
@@ -30,6 +30,24 @@ function Stepper({ label, value, onChange }: { label: string; value: number; onC
   );
 }
 
+/** Time left before predictions close (kick-off): "2 d 4 h", then "03:12:45" on the last day. */
+function Countdown({ to }: { to: string }) {
+  const t = useTranslations("Predictions");
+  const now = useNow({ updateInterval: 1000 });
+  const left = Math.max(0, new Date(to).getTime() - now.getTime());
+  if (left === 0) return <p className="-mt-2 text-center text-xs text-muted-foreground">{t("closed")}</p>;
+  const total = Math.floor(left / 1000);
+  const days = Math.floor(total / 86_400);
+  const hours = Math.floor((total % 86_400) / 3600);
+  const two = (value: number) => String(value).padStart(2, "0");
+  const time = days > 0 ? t("countdownDays", { days, hours }) : `${two(hours)}:${two(Math.floor((total % 3600) / 60))}:${two(total % 60)}`;
+  return (
+    <p className="-mt-2 text-center text-xs text-muted-foreground tabular-nums" suppressHydrationWarning>
+      {t("closesIn", { time })}
+    </p>
+  );
+}
+
 /**
  * Open prediction (until kick-off): title with a "Saved" mark, hint, the two scores in
  * scoreboard order, then a button that reads "Save", "Update" or "Saved".
@@ -39,13 +57,14 @@ export function PredictionForm({
   psgHome,
   opponent,
   initial,
-  rules,
+  kickoffAt,
 }: {
   matchId: string;
   psgHome: boolean;
   opponent: string;
   initial: { psgScore: number; opponentScore: number } | null;
-  rules: React.ReactNode;
+  /** ISO date: the countdown under the button runs to it. */
+  kickoffAt: string;
 }) {
   const t = useTranslations("Predictions");
   const router = useRouter();
@@ -76,20 +95,7 @@ export function PredictionForm({
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex flex-col gap-1.5">
-        <div className="flex items-center justify-between gap-2">
-          <h2 className="font-wide text-xs font-semibold tracking-[0.08em] uppercase">{t("title")}</h2>
-          {isSaved ? (
-            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-              <span aria-hidden className="size-1.5 rounded-full bg-ok" />
-              {t("savedBadge")}
-            </span>
-          ) : null}
-        </div>
-        <p className="text-sm leading-normal text-pretty text-muted-foreground">{t("openHint")}</p>
-      </div>
-
-      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-2 border-y py-5">
+      <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-2 border-b pb-5">
         {psgHome ? [psgStepper, otherStepper] : [otherStepper, psgStepper]}
       </div>
 
@@ -106,7 +112,36 @@ export function PredictionForm({
       >
         {isSaved ? t("savedButton") : saved ? t("update") : t("saveButton")}
       </button>
-      {rules}
+      <Countdown to={kickoffAt} />
+    </div>
+  );
+}
+
+/** Static look-alike of the form (2 – 1), shown blurred under the "members only" lock. */
+export function PredictionPreview({ opponent, psgHome }: { opponent: string; psgHome: boolean }) {
+  const t = useTranslations("Predictions");
+  const side = (label: string, value: number) => (
+    <div key={label} className="flex flex-col items-center gap-3">
+      <span className="max-w-full truncate text-sm">{label}</span>
+      <span className="font-narrow text-[64px] leading-[0.9] font-extrabold tabular-nums italic">{value}</span>
+      <div className="flex gap-1.5">
+        <span className={stepButton}>
+          <Minus aria-hidden />
+        </span>
+        <span className={stepButton}>
+          <Plus aria-hidden />
+        </span>
+      </div>
+    </div>
+  );
+  return (
+    <div className="flex flex-col gap-5 p-6">
+      <div className="grid grid-cols-2 items-start gap-2 border-b pb-5">
+        {psgHome ? [side("PSG", 2), side(opponent, 1)] : [side(opponent, 1), side("PSG", 2)]}
+      </div>
+      <span className="grid h-11 place-items-center rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase">
+        {t("saveButton")}
+      </span>
     </div>
   );
 }

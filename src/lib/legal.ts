@@ -34,6 +34,14 @@ export const LEGAL = {
     assemblyBy: "[fin septembre]",
     fiscalYearEnd: "[30 juin]",
   },
+  /** How to pay the fee (/cotisation); the committee then records it in the admin. */
+  payment: {
+    accountHolder: "[PSG Zurich Supporters Club]",
+    iban: "[CH00 0000 0000 0000 0000 0]",
+    bank: "[Nom de la banque]",
+    /** TWINT number, or null if not offered. */
+    twint: "[+41 79 000 00 00]" as string | null,
+  },
   host: {
     name: "Infomaniak Network SA",
     address: "Rue Eugène-Marziano 25, 1227 Les Acacias (GE), Suisse",

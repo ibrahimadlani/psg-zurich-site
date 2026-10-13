@@ -204,7 +204,7 @@ export function PostEditor({
             // eslint-disable-next-line @next/next/no-img-element -- uploaded media
             <img src={current.imageUrl} alt="" className="aspect-video w-full rounded-[14px] object-cover" />
           ) : null}
-          <ArticleBody blocks={current.blocks.filter(isComplete)} refs={refs} access="member" />
+          <ArticleBody blocks={current.blocks.filter(isComplete)} refs={refs} eventsOpen />
         </div>
       ) : (
         <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">

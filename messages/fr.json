@@ -23,12 +23,7 @@
       "away_trip": "En car ou en train jusqu'au Parc des Princes et sur les routes d'Europe, billets et trajet organisés.",
       "members_match": "Nos propres matchs entre membres, sur un terrain de la région : tout le monde joue.",
       "social": "Soirées, assemblée générale, repas de fin de saison : les moments pour se retrouver hors des matchs."
-    },
-    "ctaTitle": "Le programme est réservé aux membres",
-    "ctaBody": "Dates, lieux, places et inscriptions sont visibles une fois membre du club.",
-    "pending": "Votre adhésion est en cours de validation : le programme apparaîtra ici dès qu'elle sera acceptée.",
-    "join": "Adhérer",
-    "signIn": "Déjà membre ? <link>Se connecter</link>"
+    }
   },
   "Contact": {
     "title": "Contact",
@@ -221,8 +216,9 @@
       "title": "Mon adhésion",
       "number": "Numéro de membre",
       "joined": "Membre depuis",
-      "fee": "Cotisation",
-      "feeSoon": "Le paiement en ligne arrive bientôt.",
+      "feePaid": "Cotisation à jour jusqu'au {date}.",
+      "feeDue": "Votre cotisation de la saison est à régler pour accéder aux événements.",
+      "payFee": "Payer ma cotisation",
       "status": {
         "pending": "En attente",
         "active": "Active",
@@ -281,6 +277,12 @@
       "error": "La suppression a échoué. Réessayez."
     },
     "card": {
+      "flip": "Carte de membre — retourner",
+      "flipHint": "Touchez la carte pour la retourner",
+      "qrLabel": "QR code de membre",
+      "backTitle": "Carte de membre",
+      "backHint": "Présentez ce code à l'entrée des événements du club.",
+      "backPending": "Votre QR code apparaîtra ici dès que votre adhésion sera acceptée.",
       "season": "Saison"
     },
     "registrations": {
@@ -460,6 +462,83 @@
       "statutes": "Une question sur l'association ?"
     }
   },
+  "Scan": {
+    "title": "Contrôle d'entrée",
+    "loading": "Chargement…",
+    "forbidden": "Réservé aux organisateurs (admins).",
+    "unknown": "Carte inconnue",
+    "unknownHint": "Ce QR code ne correspond à aucun membre. La carte a peut-être été renouvelée.",
+    "state": {
+      "paid": "Membre à jour de cotisation",
+      "unpaid": "Cotisation à payer",
+      "notAccepted": "Adhésion pas encore acceptée"
+    },
+    "today": "Événements du jour",
+    "noEvent": "Aucun événement du club dans les 12 heures.",
+    "registered": "Inscrit",
+    "waitlisted": "Sur liste d'attente",
+    "notRegistered": "Pas inscrit",
+    "checkIn": "Valider l'entrée",
+    "checkedIn": "Entrée validée pour {name}.",
+    "present": "Présent depuis {time}",
+    "error": "La validation a échoué. Réessayez."
+  },
+  "Dues": {
+    "title": "Cotisation",
+    "intro": "La cotisation de la saison donne accès au programme des événements et aux inscriptions.",
+    "pendingTitle": "Adhésion en cours de validation",
+    "pendingBody": "La cotisation se règle une fois votre adhésion acceptée par le comité. Vous recevrez un e-mail.",
+    "paidTitle": "Cotisation à jour",
+    "paidBody": "Merci ! Votre cotisation couvre la saison jusqu'au {date}.",
+    "amountLabel": "Saison jusqu'au {end}",
+    "amountHint": "Tarif junior : {junior}.",
+    "after": "Dès réception, le comité valide votre cotisation (en général sous quelques jours) et le programme s'ouvre.",
+    "transfer": "Par virement",
+    "holder": "Titulaire",
+    "iban": "IBAN",
+    "bank": "Banque",
+    "reference": "Communication",
+    "twint": "Envoyez le montant au {number} avec la communication « {reference} ».",
+    "copy": "Copier",
+    "copied": "Copié."
+  },
+  "Access": {
+    "preview": {
+      "title": "Watch party au bar Le Parisien",
+      "titleMatch": "Watch party PSG – {opponent}",
+      "when": "Samedi · 20:30",
+      "where": "Langstrasse, Zurich",
+      "places": "12 places restantes",
+      "signUp": "S'inscrire"
+    },
+    "guestTitle": "Réservé aux membres",
+    "guest": {
+      "predictions": "Rejoignez le club pour pronostiquer chaque match et grimper au classement des membres.",
+      "events": "Watch parties, déplacements, soirées : le programme et les inscriptions sont réservés aux membres."
+    },
+    "pendingTitle": "Adhésion en cours de validation",
+    "pendingBody": "Le comité examine votre demande : tout s'ouvrira dès qu'elle sera acceptée.",
+    "unpaidTitle": "Cotisation à régler",
+    "unpaidBody": "Votre adhésion est acceptée. Réglez la cotisation de la saison pour voir le programme et vous inscrire.",
+    "join": "Adhérer",
+    "signIn": "Déjà membre ? <link>Se connecter</link>",
+    "pay": "Payer ma cotisation"
+  },
+  "AdminDues": {
+    "title": "Cotisations",
+    "description": "Membres acceptés et leur cotisation pour la saison (jusqu'au {end}). Seuls les membres à jour ont accès aux événements.",
+    "paidUntil": "À jour jusqu'au {date}",
+    "unpaid": "Cotisation à payer",
+    "badgePaid": "À jour",
+    "badgeUnpaid": "À payer",
+    "record": "Cotisation reçue",
+    "cancel": "Annuler",
+    "confirmCancel": "Annuler la cotisation de ce membre pour la saison ?",
+    "recorded": "Cotisation enregistrée.",
+    "cancelled": "Cotisation annulée.",
+    "error": "L'enregistrement a échoué. Réessayez.",
+    "empty": "Aucun membre accepté pour l'instant."
+  },
   "AdminMembers": {
     "approved": "Adhésion acceptée.",
     "rejected": "Demande refusée.",
@@ -520,7 +599,7 @@
     "fullTime": "Terminé",
     "penalties": "Tirs au but : {home} – {away}",
     "addToCalendar": "Ajouter à mon agenda",
-    "clubEventsTitle": "Avec le club",
+    "clubEventsTitle": "Événements du club",
     "noClubEvents": "Aucun événement du club prévu pour ce match.",
     "clubEventsMembersOnly": "Les événements du club autour de ce match sont réservés aux membres. <link>Découvrir ce qu'on organise</link>",
     "backToMatches": "Tous les matchs",
@@ -564,6 +643,10 @@
     "kickoff": "Coup d'envoi"
   },
   "Predictions": {
+    "closesIn": "Clôture dans {time}",
+    "countdownDays": "{days} j {hours} h",
+    "infoBody": "Le pronostic se joue sur le score à la fin du temps réglementaire (sans prolongation ni tirs au but). Modifiable jusqu'au coup d'envoi.",
+    "infoLabel": "Comment ça marche",
     "title": "Pronostic",
     "openHint": "Score à la fin du temps réglementaire. Modifiable jusqu'au coup d'envoi.",
     "closedHint": "Les pronostics sont fermés depuis le coup d'envoi.",
@@ -573,17 +656,12 @@
     "closed": "Les pronostics sont fermés pour ce match.",
     "error": "L'enregistrement a échoué. Réessayez.",
     "toastSaved": "Pronostic enregistré : PSG {psg} – {other} {opponent}.",
-    "signIn": "Se connecter",
-    "guestHint": "Devinez le score avant le coup d'envoi et grimpez au classement des membres.",
-    "notMember": "Pas encore membre ? <join>Adhérer</join>",
-    "membersOnly": "Les pronostics sont réservés aux membres dont l'adhésion est acceptée.",
     "community": "Pronostics de la communauté ({count})",
     "win": "Victoire PSG {percent} %",
     "draw": "Nul {percent} %",
     "loss": "Défaite {percent} %",
     "less": "Un but de moins pour {team}",
     "more": "Un but de plus pour {team}",
-    "savedBadge": "Enregistré",
     "saveButton": "Enregistrer mon pronostic",
     "savedButton": "Pronostic enregistré",
     "yourPredictionLabel": "Votre pronostic",
@@ -680,6 +758,7 @@
     "address": "Adresse",
     "addressPlaceholder": "Commencez à taper l'adresse…",
     "addressHint": "Choisissez une suggestion pour placer l'événement sur la carte.",
+    "addressRequired": "Choisissez l'adresse dans la liste : chaque événement a son point sur la carte.",
     "addressLocated": "Adresse localisée : la carte s'affichera sur la page de l'événement.",
     "startsAt": "Début",
     "endsAt": "Fin (facultatif)",

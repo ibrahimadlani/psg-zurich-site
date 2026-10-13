@@ -4,16 +4,15 @@ import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
-import type { Access } from "@/components/matches/prediction-card";
 import { ArticleBody } from "@/components/news/article-body";
 import { CopyLinkButton } from "@/components/news/copy-link-button";
 import { NewsCard, NewsCover } from "@/components/news/news-cards";
 import { type Locale } from "@/db/schema";
 import { Link, redirect } from "@/i18n/navigation";
+import { isDuesPaid } from "@/lib/dues";
 import { parseBlocks } from "@/lib/article-blocks";
 import { getCurrentMember } from "@/lib/members";
 import { articleReadingMinutes, authorName, blockReferences, getArticle, getNewsList, relatedArticles } from "@/lib/news";
-import { getSession } from "@/lib/permissions";
 
 // Slugs only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;
@@ -53,13 +52,11 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
   const t = await getTranslations("News");
   const format = await getFormatter();
   const blocks = parseBlocks(post.content);
-  const [session, member, all, author] = await Promise.all([
-    getSession(),
+  const [member, all, author] = await Promise.all([
     getCurrentMember(),
     getNewsList(locale),
     post.byline ? Promise.resolve(post.byline) : authorName(post.authorId),
   ]);
-  const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
   const refs = await blockReferences(blocks, member?.id ?? null);
   const related = relatedArticles(all, post);
   const signature = author ?? t("defaultByline");
@@ -102,7 +99,7 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
 
       {post.imageUrl ? <NewsCover post={post} priority className="aspect-video w-full rounded-[14px]" /> : null}
 
-      <ArticleBody blocks={blocks} refs={refs} access={access} />
+      <ArticleBody blocks={blocks} refs={refs} eventsOpen={isDuesPaid(member)} />
 
       {related.length > 0 ? (
         <section className="mt-[clamp(24px,5vw,48px)] flex flex-col gap-6 border-t pt-[clamp(28px,4vw,40px)]">

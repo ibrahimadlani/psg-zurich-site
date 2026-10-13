@@ -11,6 +11,7 @@ import { Scoreboard } from "@/components/matches/scoreboard";
 import { db } from "@/db";
 import { events, predictions } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
+import { isDuesPaid } from "@/lib/dues";
 import { closestMatch, getSeasonMatches } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 
@@ -26,8 +27,8 @@ async function MatchesContent() {
   const ids = season.map((match) => match.id);
 
   const [eventCounts, myPredictions] = await Promise.all([
-    // Club events are for accepted members only.
-    member?.status === "active" && ids.length
+    // Club events are for members whose fee is paid.
+    isDuesPaid(member) && ids.length
       ? db.select({ matchId: events.matchId, value: count() }).from(events).where(inArray(events.matchId, ids)).groupBy(events.matchId)
       : [],
     member?.status === "active" && ids.length

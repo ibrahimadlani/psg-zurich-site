@@ -4,14 +4,14 @@ import { attendance, events } from "@/db/schema";
 import { apiHandler, ok } from "@/lib/api";
 import { promoteFromWaitlist, registeredCount } from "@/lib/events";
 import { sendWaitlistPromotion } from "@/lib/membership-mail";
-import { requireActiveMember } from "@/lib/members";
+import { requirePaidMember } from "@/lib/members";
 import { HttpError } from "@/lib/permissions";
 
 type Context = RouteContext<"/api/v1/events/[id]/attendance">;
 
 /** Sign up: registered while places remain, waitlisted after. */
 export const POST = apiHandler<Context>(async (_request, { params }) => {
-  const { member } = await requireActiveMember();
+  const { member } = await requirePaidMember();
   const { id } = await params;
 
   const status = await db.transaction(async (tx) => {
@@ -42,7 +42,7 @@ export const POST = apiHandler<Context>(async (_request, { params }) => {
 
 /** Cancel my sign-up; the first waitlisted member takes the place. */
 export const DELETE = apiHandler<Context>(async (_request, { params }) => {
-  const { member } = await requireActiveMember();
+  const { member } = await requirePaidMember();
   const { id } = await params;
 
   const promoted = await db.transaction(async (tx) => {

@@ -1,6 +1,5 @@
 import { ArrowRight, Info, Lock, TriangleAlert } from "lucide-react";
 import { useTranslations } from "next-intl";
-import type { Access } from "@/components/matches/prediction-card";
 import { EventCard } from "@/components/events/event-card";
 import { MatchRow } from "@/components/matches/match-row";
 import { RichText } from "@/components/news/rich-text";
@@ -36,7 +35,7 @@ function EventTeaser({ type }: { type: (typeof EVENT_TYPES)[number] }) {
   );
 }
 
-function BlockView({ block, refs, access }: { block: Block; refs: BlockRefs; access: Access }) {
+function BlockView({ block, refs, eventsOpen }: { block: Block; refs: BlockRefs; eventsOpen: boolean }) {
   switch (block.type) {
     case "paragraph":
       return block.text.trim() ? (
@@ -151,18 +150,18 @@ function BlockView({ block, refs, access }: { block: Block; refs: BlockRefs; acc
     case "event": {
       const event = refs.events.get(block.eventId);
       if (!event) return null;
-      // Events are for accepted members: everyone else sees a pointer to the showcase.
-      return access === "member" ? <EventCard event={event} access={access} /> : <EventTeaser type={event.type} />;
+      // Events are for members whose fee is paid: everyone else sees a pointer to the showcase.
+      return eventsOpen ? <EventCard event={event} access="member" /> : <EventTeaser type={event.type} />;
     }
   }
 }
 
 /** Article body in the reading column (blocks referencing missing data are skipped). */
-export function ArticleBody({ blocks, refs, access }: { blocks: Block[]; refs: BlockRefs; access: Access }) {
+export function ArticleBody({ blocks, refs, eventsOpen }: { blocks: Block[]; refs: BlockRefs; eventsOpen: boolean }) {
   return (
     <div className="mx-auto flex w-full max-w-[40rem] flex-col gap-[22px]">
       {blocks.map((block, index) => (
-        <BlockView key={index} block={block} refs={refs} access={access} />
+        <BlockView key={index} block={block} refs={refs} eventsOpen={eventsOpen} />
       ))}
     </div>
   );

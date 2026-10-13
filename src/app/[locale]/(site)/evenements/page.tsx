@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { EventCard } from "@/components/events/event-card";
 import { EventsShowcase } from "@/components/events/events-showcase";
 import { PageHeader } from "@/components/page-header";
+import { eventAccess } from "@/lib/dues";
 import { getEventsWithAttendance, upcomingEvents } from "@/lib/events";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
@@ -18,15 +19,15 @@ async function EventsContent() {
   await connection();
   const t = await getTranslations("Events");
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
-  const access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
-  // The programme is for accepted members; everyone else gets the illustrated showcase.
-  if (access !== "member") return <EventsShowcase pending={access === "inactive"} />;
+  // The programme is for members whose fee is paid; everyone else gets the illustrated showcase.
+  const access = eventAccess(Boolean(session), member);
+  if (access !== "full") return <EventsShowcase access={access} />;
   const visible = await getEventsWithAttendance(upcomingEvents(), member?.id ?? null);
 
   return visible.length > 0 ? (
     <div className="space-y-3">
       {visible.map((event) => (
-        <EventCard key={event.id} event={event} access={access} />
+        <EventCard key={event.id} event={event} access="member" />
       ))}
     </div>
   ) : (

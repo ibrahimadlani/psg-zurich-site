@@ -1,12 +1,12 @@
 import { and, eq } from "drizzle-orm";
 import { getTranslations } from "next-intl/server";
 import { asideCard } from "@/components/matches/match-utils";
-import { PredictionForm } from "@/components/matches/prediction-form";
+import { PredictionForm, PredictionPreview } from "@/components/matches/prediction-form";
+import { LockedCard } from "@/components/membership/locked-card";
+import { InfoBubble } from "@/components/ui/info-bubble";
 import { PredictionRules } from "@/components/matches/prediction-rules";
 import { db } from "@/db";
 import { predictions } from "@/db/schema";
-import { inlineLinkClass } from "@/components/auth/auth-ui";
-import { Link } from "@/i18n/navigation";
 import { isPredictionOpen, type Match } from "@/lib/matches";
 
 export type Access = "member" | "guest" | "inactive";
@@ -22,11 +22,30 @@ async function communityStats(matchId: string) {
   return { total: rows.length, win, draw, loss: rows.length - win - draw };
 }
 
+type Props = { match: Match; access: Access; memberId: string | null };
+
 /**
- * Prediction card of a match: the form until kick-off (active members), then the member's
- * prediction, their points and the community split.
+ * "Prediction" of a match: a section title like "Club events", then the card — the form until
+ * kick-off (accepted members), then the member's prediction, their points and the community split.
  */
-export async function PredictionCard({
+export async function PredictionCard(props: Props) {
+  const tp = await getTranslations("Predictions");
+  return (
+    <section className="space-y-3">
+      <div className="flex items-center justify-between gap-2">
+        <h2 className="font-wide text-xs font-semibold tracking-[0.08em] uppercase">{tp("title")}</h2>
+        {/* How predictions work, out of the way: in a bubble. */}
+        <InfoBubble label={tp("infoLabel")}>
+          <p className="mb-3 text-[13px] leading-normal text-pretty text-muted-foreground">{tp("infoBody")}</p>
+          <PredictionRules />
+        </InfoBubble>
+      </div>
+      <PredictionCardBody {...props} />
+    </section>
+  );
+}
+
+async function PredictionCardBody({
   match,
   access,
   memberId,
@@ -64,61 +83,27 @@ export async function PredictionCard({
               ? { psgScore: mine.psgScore, opponentScore: mine.opponentScore }
               : null
           }
-          rules={<PredictionRules />}
+          kickoffAt={match.kickoffAt.toISOString()}
         />
       </div>
     );
   }
 
-  if (open && access === "guest") {
+  // Not a member yet: the card is there, locked, with the way in.
+  if (open && access !== "member") {
     return (
-      <div className={asideCard}>
-        <div className="flex items-baseline justify-between gap-3">
-          <h2 className="font-wide text-xs font-semibold tracking-[0.08em] uppercase">
-            {tp("title")}
-          </h2>
-          <span
-            aria-hidden
-            className="font-narrow text-2xl leading-none font-extrabold text-foreground/15 tabular-nums italic"
-          >
-            ? – ?
-          </span>
-        </div>
-        <p className="-mt-2 text-sm leading-normal text-pretty text-muted-foreground">
-          {tp("guestHint")}
-        </p>
-        <div className="flex flex-col items-center gap-3">
-          <Link
-            href={`/connexion?suite=${encodeURIComponent(`/matchs/${match.id}`)}`}
-            prefetch={false}
-            className="inline-flex h-10 w-full items-center justify-center rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
-          >
-            {tp("signIn")}
-          </Link>
-          <p className="text-[13px] text-muted-foreground">
-            {tp.rich("notMember", {
-              join: (chunks) => (
-                <Link
-                  href="/adhesion"
-                  prefetch={false}
-                  className={inlineLinkClass}
-                >
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
-        </div>
-      </div>
+      <LockedCard
+        access={access === "guest" ? "guest" : "pending"}
+        feature="predictions"
+        next={`/matchs/${match.id}`}
+        preview={<PredictionPreview opponent={match.opponent} psgHome={match.venue !== "away"} />}
+      />
     );
   }
 
   return (
     <div className={asideCard}>
       <div className="flex flex-col gap-1.5">
-        <h2 className="font-wide text-xs font-semibold tracking-[0.08em] uppercase">
-          {tp("title")}
-        </h2>
         <p className="text-sm leading-normal text-pretty text-muted-foreground">
           {open
             ? tp("openHint")
@@ -127,9 +112,6 @@ export async function PredictionCard({
               : tp("closedHint")}
         </p>
       </div>
-      {open && access === "inactive" ? (
-        <p className="text-sm text-muted-foreground">{tp("membersOnly")}</p>
-      ) : null}
       {!open && mine ? (
         <p className="border-y py-4 text-center">
           <span className="block text-xs text-muted-foreground">

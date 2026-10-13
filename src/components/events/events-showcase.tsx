@@ -5,7 +5,9 @@ import {
   SocialIllustration,
   WatchPartyIllustration,
 } from "@/components/events/event-illustrations";
-import { Link } from "@/i18n/navigation";
+import { EventPreview } from "@/components/events/event-preview";
+import { LockedCard } from "@/components/membership/locked-card";
+import type { EventAccess } from "@/lib/dues";
 
 const KINDS = [
   { type: "watch_party", Illustration: WatchPartyIllustration },
@@ -16,9 +18,9 @@ const KINDS = [
 
 /**
  * /evenements for everyone who isn't an accepted member: what the club does, illustrated,
- * then a way in. The programme itself (dates, places, sign-ups) is for members only.
+ * then a locked sample event with the way in. The programme itself is for members whose fee is paid.
  */
-export function EventsShowcase({ pending }: { pending: boolean }) {
+export function EventsShowcase({ access }: { access: Exclude<EventAccess, "full"> }) {
   const t = useTranslations("EventsShowcase");
   const types = useTranslations("Events.types");
 
@@ -40,36 +42,8 @@ export function EventsShowcase({ pending }: { pending: boolean }) {
         ))}
       </ul>
 
-      <section className="flex flex-col items-center gap-4 rounded-[14px] border border-dashed px-6 py-[clamp(24px,4vw,36px)] text-center">
-        <h2 className="font-wide text-xs font-semibold tracking-[0.08em] uppercase">{t("ctaTitle")}</h2>
-        <p className="max-w-[30rem] text-[15px] leading-normal text-pretty text-muted-foreground">
-          {pending ? t("pending") : t("ctaBody")}
-        </p>
-        {pending ? null : (
-          <div className="flex flex-col items-center gap-3">
-            <Link
-              href="/adhesion"
-              prefetch={false}
-              className="inline-flex h-10 items-center justify-center rounded-[8px] bg-segment px-6 font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
-            >
-              {t("join")}
-            </Link>
-            <p className="text-[13px] text-muted-foreground">
-              {t.rich("signIn", {
-                link: (chunks) => (
-                  <Link
-                    href="/connexion?suite=%2Fevenements"
-                    prefetch={false}
-                    className="border-b pb-0.5 text-foreground transition-colors hover:border-brand-red"
-                  >
-                    {chunks}
-                  </Link>
-                ),
-              })}
-            </p>
-          </div>
-        )}
-      </section>
+      {/* What a member would see here: a sample event, locked, with this visitor's next step. */}
+      <LockedCard access={access} feature="events" next="/evenements" preview={<EventPreview />} />
     </div>
   );
 }
