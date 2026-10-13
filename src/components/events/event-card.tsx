@@ -1,7 +1,8 @@
 import { MapPin, Users } from "lucide-react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { EventSignup } from "@/components/events/event-signup";
 import { Badge } from "@/components/ui/badge";
+import { EventWhen } from "@/components/events/event-when";
 import { Link } from "@/i18n/navigation";
 import type { EventView } from "@/lib/events";
 
@@ -16,7 +17,6 @@ export function EventCard({
   showMatch?: boolean;
 }) {
   const t = useTranslations("Events");
-  const format = useFormatter();
   const full = event.capacity !== null && event.registered >= event.capacity;
   const left = event.capacity === null ? null : Math.max(0, event.capacity - event.registered);
 
@@ -32,13 +32,7 @@ export function EventCard({
           </Link>
         </h3>
         <p className="text-sm text-muted-foreground">
-          {format.dateTimeRange(event.startsAt, event.endsAt ?? event.startsAt, {
-            weekday: "long",
-            day: "numeric",
-            month: "long",
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
+          <EventWhen startsAt={event.startsAt} endsAt={event.endsAt} />
         </p>
         {event.location ? (
           <p className="flex items-start gap-1.5 text-sm text-muted-foreground">

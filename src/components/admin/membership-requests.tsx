@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { db } from "@/db";
 import { members, user } from "@/db/schema";
+import { ageOn, isJunior } from "@/lib/dues";
 import { formatPhone } from "@/lib/phone";
 
 const columns = {
@@ -19,11 +20,15 @@ const columns = {
   updatedAt: members.updatedAt,
   email: user.email,
   emailVerified: user.emailVerified,
+  birthDate: members.birthDate,
+  interests: members.interests,
+  psgTicketing: members.psgTicketing,
+  photoConsent: members.photoConsent,
 };
 
 /** Pending membership requests (accept / refuse), then the latest decisions. */
 export async function MembershipRequests() {
-  const [t, format] = await Promise.all([getTranslations("AdminMembers"), getFormatter()]);
+  const [t, tProfile, format] = await Promise.all([getTranslations("AdminMembers"), getTranslations("MemberProfile"), getFormatter()]);
   const [requests, decided] = await Promise.all([
     db
       .select(columns)
@@ -61,10 +66,27 @@ export async function MembershipRequests() {
                       {row.firstName} {row.lastName}
                     </span>
                     {row.emailVerified ? null : <Badge variant="outline">{t("unverified")}</Badge>}
+                    {/* Statutes: under 18 needs a guardian's consent and pays the junior fee. */}
+                    {isJunior(row.birthDate) ? (
+                      <Badge variant="secondary">
+                        {tProfile("junior")} · {tProfile("age", { age: ageOn(row.birthDate!) })}
+                      </Badge>
+                    ) : null}
+                    {row.photoConsent === true ? null : <Badge variant="outline">{tProfile("noPhotos")}</Badge>}
                   </div>
                   <p className="truncate text-sm text-muted-foreground">
                     {[row.email, formatPhone(row.phone), row.city].filter(Boolean).join(" · ")}
                   </p>
+                  {row.psgTicketing || row.interests?.length ? (
+                    <p className="text-xs text-muted-foreground">
+                      {[
+                        row.psgTicketing ? tProfile(`ticketing.${row.psgTicketing}.label`) : null,
+                        ...(row.interests ?? []).map((item) => tProfile(`interests.${item}`)),
+                      ]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </p>
+                  ) : null}
                   <p className="text-xs text-muted-foreground">{t("requestedOn", { date: date(row.createdAt) })}</p>
                 </div>
                 <MemberDecisionActions id={row.id} status="pending" emailVerified={row.emailVerified} />

@@ -8,6 +8,7 @@ import { isDuesPaid, seasonEnd } from "@/lib/dues";
 import { LEGAL } from "@/lib/legal";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+import { PanelSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Dues");
@@ -100,7 +101,7 @@ export default async function DuesPage() {
         </h1>
         <p className="max-w-[36rem] text-base text-pretty text-muted-foreground">{t("intro")}</p>
       </div>
-      <Suspense fallback={null}>
+      <Suspense fallback={<PanelSkeleton />}>
         <DuesContent />
       </Suspense>
     </div>

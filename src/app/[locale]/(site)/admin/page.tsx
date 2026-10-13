@@ -12,6 +12,7 @@ import { PageHeader } from "@/components/page-header";
 import { Link, redirect } from "@/i18n/navigation";
 import { getSession } from "@/lib/permissions";
 import { hasRole } from "@/lib/roles";
+import { AdminSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Admin");
@@ -68,7 +69,7 @@ export default async function AdminPage() {
   return (
     <>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<p className="text-muted-foreground">{t("loading")}</p>}>
+      <Suspense fallback={<AdminSkeleton />}>
         <AdminPanel />
       </Suspense>
     </>

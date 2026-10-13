@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
-import { getFormatter, getLocale, getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
@@ -18,6 +18,9 @@ import { mapsLink } from "@/lib/google-maps";
 import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+import { EventDetailSkeleton } from "@/components/skeletons";
+import { EventWhen } from "@/components/events/event-when";
+import { HumanDate } from "@/components/human-date";
 
 // Event ids only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;
@@ -42,7 +45,6 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
   await connection();
   const { id } = await params;
   const t = await getTranslations("Events");
-  const format = await getFormatter();
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
 
@@ -57,13 +59,6 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
   const place = event.address || event.location;
   const mapUrl = place ? mapsLink(place, event.placeId) : null;
   const located = event.latitude !== null && event.longitude !== null;
-  const when = format.dateTimeRange(event.startsAt, event.endsAt ?? event.startsAt, {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
 
   return (
     <div className="mt-[clamp(24px,4vw,36px)] flex flex-wrap items-start gap-[clamp(32px,5vw,56px)]">
@@ -74,7 +69,7 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
               {t(`types.${event.type}`)}
             </span>
             <span className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-              {format.dateTime(event.startsAt, { weekday: "short", day: "numeric", month: "short" })}
+              <HumanDate date={event.startsAt} absolute={{ weekday: "short", day: "numeric", month: "short" }} />
             </span>
           </div>
           {/* Long titles: smaller on phones, balanced lines, words may wrap rather than overflow. */}
@@ -86,7 +81,9 @@ async function EventContent({ params }: { params: Promise<{ id: string }> }) {
         <dl className="flex flex-col border-t">
           <div className={rowClass}>
             <dt className={termClass}>{t("when")}</dt>
-            <dd className={`${valueClass} first-letter:uppercase`}>{when}</dd>
+            <dd className={valueClass}>
+              <EventWhen startsAt={event.startsAt} endsAt={event.endsAt} />
+            </dd>
             <a href={`/api/calendar/event/${event.id}`} className={actionClass}>
               {t("addToCalendar")}
             </a>
@@ -171,7 +168,7 @@ export default async function EventPage({ params }: PageProps<"/[locale]/eveneme
         <ArrowLeft className="size-3.5" aria-hidden />
         {t("backToEvents")}
       </Link>
-      <Suspense fallback={<p className="mt-8 text-muted-foreground">{t("loading")}</p>}>
+      <Suspense fallback={<EventDetailSkeleton />}>
         <EventContent params={params} />
       </Suspense>
     </div>

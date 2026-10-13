@@ -1,14 +1,15 @@
 import { and, asc, eq, gte, inArray } from "drizzle-orm";
 import { ChevronRight } from "lucide-react";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { Badge } from "@/components/ui/badge";
 import { db } from "@/db";
 import { attendance, events } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
+import { HumanDate } from "@/components/human-date";
 
 /** Upcoming events I'm registered for, or waiting for a place. */
 export async function MyRegistrations({ memberId }: { memberId: string }) {
-  const [t, tEvents, format] = await Promise.all([getTranslations("MemberArea"), getTranslations("Events"), getFormatter()]);
+  const [t, tEvents] = await Promise.all([getTranslations("MemberArea"), getTranslations("Events")]);
   const rows = await db
     .select({ id: events.id, title: events.title, type: events.type, startsAt: events.startsAt, status: attendance.status })
     .from(attendance)
@@ -33,7 +34,7 @@ export async function MyRegistrations({ memberId }: { memberId: string }) {
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[15px] font-medium">{row.title}</span>
                   <span className="block text-xs text-muted-foreground first-letter:uppercase">
-                    {tEvents(`types.${row.type}`)} · {format.dateTime(row.startsAt, { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })}
+                    {tEvents(`types.${row.type}`)} · <HumanDate date={row.startsAt} absolute={{ weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }} />
                   </span>
                 </span>
                 <Badge variant={row.status === "registered" ? "default" : "secondary"}>

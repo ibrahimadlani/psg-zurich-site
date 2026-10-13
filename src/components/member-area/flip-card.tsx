@@ -1,7 +1,7 @@
 "use client";
 
 import { RotateCcw } from "lucide-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -14,6 +14,7 @@ export function FlipCard({
   back,
   label,
   hint,
+  anchor,
 }: {
   front: React.ReactNode;
   back: React.ReactNode;
@@ -21,6 +22,8 @@ export function FlipCard({
   label: string;
   /** Small line under the card ("Tap to see the QR code"). */
   hint: string;
+  /** Opened with this #hash (menu shortcut "My card"): scrolls to the card and turns it over. */
+  anchor?: string;
 }) {
   const [flipped, setFlipped] = useState(false);
   const card = useRef<HTMLDivElement>(null);
@@ -46,6 +49,14 @@ export function FlipCard({
     element.style.setProperty("--ry", "0deg");
     delete element.dataset.tilting;
   };
+  useEffect(() => {
+    if (!anchor || window.location.hash !== `#${anchor}`) return;
+    card.current?.scrollIntoView({ block: "center" });
+    // A beat after the page appears, so the turn is seen.
+    const timer = window.setTimeout(() => setFlipped(true), 450);
+    return () => window.clearTimeout(timer);
+  }, [anchor]);
+
   const turn = () => {
     if (card.current) delete card.current.dataset.tilting;
     turningUntil.current = performance.now() + 700;

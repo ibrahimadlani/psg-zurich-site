@@ -6,13 +6,16 @@ import {
   LOCALES,
   MATCH_STATUSES,
   MATCH_VENUES,
+  MEMBER_INTERESTS,
   MEMBER_STATUSES,
   POLL_STATUSES,
   POST_CATEGORIES,
   POST_STATUSES,
   EMAIL_OWNER_TYPES,
+  PSG_TICKETING,
 } from "@/db/schema";
 import { blocksSchema } from "@/lib/article-blocks";
+import { ageOn, todayInZurich } from "@/lib/dues";
 import { mapsEnabled } from "@/lib/google-maps";
 import { normalizePhone } from "@/lib/phone";
 
@@ -161,13 +164,40 @@ export const profileUpdateSchema = z.object({
   city: z.string().trim().max(100),
 });
 
-/** Welcome step (POST /api/v1/me/onboarding): optional details, or nothing when skipped. */
-export const onboardingSchema = z.object({
-  phone: phone.default(""),
-  address: z.string().trim().max(255).default(""),
-  postcode: z.string().trim().max(10).default(""),
-  city: z.string().trim().max(100).default(""),
-});
+/**
+ * Member profile asked at onboarding and editable in the settings (any subset): birth date
+ * ("" clears it), interests, PSG ticketing access, photo consent (null clears the answer).
+ */
+export const memberProfileFields = {
+  birthDate: z.union([
+    z.iso.date().refine((value) => {
+      const today = todayInZurich();
+      return value >= "1900-01-01" && value <= today && ageOn(value, today) >= 6;
+    }, "Not a plausible birth date."),
+    z.literal(""),
+  ]),
+  interests: z
+    .array(z.enum(MEMBER_INTERESTS))
+    .max(MEMBER_INTERESTS.length)
+    .transform((values) => [...new Set(values)]),
+  psgTicketing: z.enum(PSG_TICKETING).nullable(),
+  photoConsent: z.boolean().nullable(),
+};
+
+/**
+ * Welcome steps (POST /api/v1/me/onboarding): each step saves what it has (empty contact
+ * fields keep what is there); `done` ends the flow (finished or skipped).
+ */
+export const onboardingSchema = z
+  .object({
+    phone: phone,
+    address: z.string().trim().max(255),
+    postcode: z.string().trim().max(10),
+    city: z.string().trim().max(100),
+    ...memberProfileFields,
+  })
+  .partial()
+  .extend({ done: z.boolean().default(false) });
 
 /** Member settings (PATCH /api/v1/me/settings): any subset of the fields. */
 export const memberSettingsSchema = z
@@ -188,6 +218,7 @@ export const memberSettingsSchema = z
     notifyPredictionReminders: z.boolean(),
     notifyResults: z.boolean(),
     notifyNews: z.boolean(),
+    ...memberProfileFields,
   })
   .partial();
 

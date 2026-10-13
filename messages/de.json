@@ -1,4 +1,14 @@
 {
+  "Common": {
+    "loading": "Wird geladen…"
+  },
+  "HumanDate": {
+    "now": "jetzt",
+    "tomorrow": "morgen",
+    "yesterday": "gestern",
+    "tomorrowAt": "morgen um {time}",
+    "yesterdayAt": "gestern um {time}"
+  },
   "Metadata": {
     "title": "PSG Zurich",
     "description": "Offizieller Fanclub von Paris Saint-Germain in Zürich."
@@ -15,7 +25,31 @@
     "admin": "Administration",
     "menu": "Menü",
     "close": "Schließen",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "drawer": {
+      "nextMatch": "Nächstes Spiel",
+      "predict": "Tippen",
+      "see": "Ansehen",
+      "new": "Neuer Artikel",
+      "upcoming": "{count} bevorstehend",
+      "joinTitle": "Werde Mitglied",
+      "joinBody": "Watch-Partys, Auswärtsfahrten, Tipps: die PSG-Fangemeinde in Zürich.",
+      "signIn": "Anmelden",
+      "card": "Meine Karte",
+      "predictions": "Tipps",
+      "admin": "Admin",
+      "status": {
+        "full": "Beitrag bezahlt",
+        "unpaid": "Beitrag offen",
+        "pending": "Wartet auf den Vorstand"
+      },
+      "theme": {
+        "label": "Design",
+        "light": "Hell",
+        "dark": "Dunkel",
+        "system": "System"
+      }
+    }
   },
   "EventsShowcase": {
     "kinds": {
@@ -45,15 +79,95 @@
   },
   "Onboarding": {
     "pageTitle": "Willkommen",
-    "title": "Willkommen, {name}!",
-    "body": "Deine Adresse ist bestätigt. Zwei freiwillige Angaben, damit der Vorstand dich erreichen kann.",
-    "bodyPending": "Deine Adresse ist bestätigt und dein Antrag geht an den Vorstand. In der Zwischenzeit zwei freiwillige Angaben, damit er dich erreichen kann.",
-    "addressPlaceholder": "Strasse, Nummer, Ort",
-    "hint": "Du kannst sie jederzeit in deinen Einstellungen ändern.",
-    "continue": "Weiter",
+    "welcome": {
+      "title": "Willkommen, {name}!",
+      "body": "Deine Adresse ist bestätigt. Ein paar Fragen, damit der Club dich etwas besser kennenlernt.",
+      "bodyPending": "Deine Adresse ist bestätigt und dein Antrag geht an den Vorstand. In der Zwischenzeit ein paar Fragen, damit der Club dich etwas besser kennenlernt.",
+      "duration": "5 Fragen · 1 Minute · alle freiwillig"
+    },
+    "start": "Los geht's",
+    "next": "Weiter",
+    "skip": "Überspringen",
+    "finish": "Fertig",
+    "backToRecap": "Zurück zur Übersicht",
     "later": "Später",
-    "saved": "Deine Angaben sind gespeichert.",
-    "error": "Speichern fehlgeschlagen. Versuche es erneut."
+    "back": "Vorheriger Schritt",
+    "progress": "Schritt {current} von {total}",
+    "saved": "Dein Profil ist gespeichert.",
+    "error": "Speichern fehlgeschlagen. Bitte versuche es erneut.",
+    "contact": {
+      "title": "Deine Kontaktdaten",
+      "why": "Damit der Vorstand dich erreichen kann, vor allem bei Auswärtsfahrten.",
+      "addressPlaceholder": "Strasse, Nummer, Ort"
+    },
+    "birth": {
+      "title": "Dein Geburtsdatum",
+      "why": "Die Statuten unterscheiden Aktivmitglieder (ab 18) und Juniormitglieder. Andere Mitglieder sehen es nie.",
+      "day": "Tag",
+      "month": "Monat",
+      "year": "Jahr",
+      "invalid": "Unvollständiges oder ungültiges Datum.",
+      "junior": "Du wirst <b>Juniormitglied</b>: reduzierter Beitrag, und der Vorstand holt die Zustimmung einer erziehungsberechtigten Person ein."
+    },
+    "interests": {
+      "title": "Was dich interessiert",
+      "why": "Damit wir dir die passenden Veranstaltungen vorschlagen.",
+      "hint": "Mehrere Antworten möglich."
+    },
+    "ticketing": {
+      "title": "PSG-Tickets",
+      "why": "Um Sammelbestellungen von Tickets für Auswärtsfahrten zu organisieren."
+    },
+    "photos": {
+      "title": "Clubfotos",
+      "why": "Der Club veröffentlicht Fotos seiner Veranstaltungen auf der Website und in den sozialen Medien. Du kannst deine Meinung jederzeit ändern.",
+      "yes": "Ich bin einverstanden, auf Fotos zu erscheinen",
+      "yesHint": "Website und soziale Medien des Clubs",
+      "no": "Ich möchte lieber nicht erscheinen",
+      "noHint": "Der Club verzichtet auf Fotos, auf denen du erkennbar bist"
+    },
+    "recap": {
+      "title": "Alles bereit",
+      "body": "Das hast du angegeben. Alles bleibt in deinen Einstellungen änderbar.",
+      "birthDate": "Geburtsdatum",
+      "interests": "Interessen",
+      "ticketing": "PSG-Tickets",
+      "photos": "Fotos",
+      "photosYes": "Einverstanden",
+      "photosNo": "Lieber nicht",
+      "empty": "Nicht angegeben",
+      "edit": "Ändern"
+    }
+  },
+  "MemberProfile": {
+    "interests": {
+      "watch_party": "Watch-Partys",
+      "home_trips": "Reisen zum Parc",
+      "away_trips": "Auswärtsfahrten",
+      "members_match": "Spiele unter Mitgliedern",
+      "social": "Abende"
+    },
+    "ticketing": {
+      "season_ticket": {
+        "label": "Saisonkarte im Parc",
+        "hint": "Saisonabo im Parc des Princes"
+      },
+      "myparis_premium": {
+        "label": "MyParis Premium",
+        "hint": "Kaufpriorität beim Ticketverkauf"
+      },
+      "myparis": {
+        "label": "Gratis-Konto MyParis",
+        "hint": "Benachrichtigung beim Verkaufsstart"
+      },
+      "none": {
+        "label": "Keines",
+        "hint": "Kein PSG-Ticketkonto"
+      }
+    },
+    "junior": "Junior",
+    "noPhotos": "Keine Fotos",
+    "age": "{age} Jahre"
   },
   "Notifications": {
     "label": "Benachrichtigungen",
@@ -302,6 +416,10 @@
       "pending": "ausstehend",
       "empty": "Du hast noch nicht getippt.",
       "browse": "Spiele ansehen"
+    },
+    "completeProfile": {
+      "title": "Profil vervollständigen",
+      "body": "Vier Fragen, eine Minute: Geburtsdatum, Interessen, Tickets und Fotos."
     }
   },
   "Admin": {
@@ -358,7 +476,7 @@
   },
   "ServerError": {
     "title": "Ein Fehler ist aufgetreten.",
-    "body": "Es liegt nicht an Ihnen, sondern an uns: Die Seite konnte nicht angezeigt werden. Versuchen Sie es gleich noch einmal. Bleibt das Problem bestehen, schreiben Sie uns an <mail></mail>.",
+    "body": "Es liegt nicht an dir, sondern an uns: Die Seite konnte nicht angezeigt werden. Versuche es gleich noch einmal. Bleibt das Problem bestehen, schreib uns an <mail></mail>.",
     "retry": "Erneut versuchen",
     "backHome": "Zur Startseite",
     "reference": "Referenz: {digest}"
@@ -773,6 +891,65 @@
       "form": "Form",
       "points": "Pkt.",
       "unavailable": "Tabelle derzeit nicht verfügbar."
+    },
+    "details": {
+      "sheet": "Spielinfos",
+      "competition": "Wettbewerb",
+      "kickoff": "Anstoss",
+      "venue": "Stadion",
+      "side": "Ort",
+      "sides": {
+        "home": "Heimspiel",
+        "away": "Auswärtsspiel",
+        "neutral": "Neutraler Platz"
+      },
+      "officials": {
+        "referee": "Schiedsrichter",
+        "assistant": "Schiedsrichterassistent",
+        "fourth": "Vierter Offizieller",
+        "var": "Videoschiedsrichter (VAR)",
+        "other": "Offizieller"
+      },
+      "facts": "Spielgeschehen",
+      "periods": {
+        "first": "1. Halbzeit",
+        "second": "2. Halbzeit",
+        "extra": "Verlängerung",
+        "penalties": "Penaltyschiessen"
+      },
+      "tallies": {
+        "goals": "Tore",
+        "penalties": "Penaltys",
+        "yellow": "Gelbe Karten",
+        "red": "Rote Karten",
+        "substitutions": "Wechsel"
+      },
+      "noTimeline": "Torschützen, Karten und Wechsel liefert unsere Datenquelle für dieses Spiel nicht.",
+      "standingsLigue1": "In der Ligue-1-Tabelle",
+      "standingsCl": "In der Champions-League-Tabelle",
+      "headToHead": "Direkte Duelle gegen {opponent}",
+      "record": {
+        "wins": "{count, plural, one {Sieg} other {Siege}}",
+        "draws": "{count, plural, one {Remis} other {Remis}}",
+        "losses": "{count, plural, one {Niederlage} other {Niederlagen}}",
+        "summary": "{played, plural, one {# Spiel} other {# Spiele}} · {scored} Tore erzielt, {conceded} kassiert",
+        "onPenalties": "n. P.",
+        "short": {
+          "W": "S",
+          "D": "U",
+          "L": "N"
+        }
+      },
+      "predictions": {
+        "title": "Tipps der Mitglieder",
+        "count": "{count, plural, one {# Mitglied hat getippt} other {# Mitglieder haben getippt}}",
+        "win": "PSG-Sieg",
+        "draw": "Remis",
+        "loss": "PSG-Niederlage",
+        "topScores": "Häufigste Tipps",
+        "exact": "{count, plural, =0 {Niemand hat das genaue Resultat getippt} one {# Mitglied hat das genaue Resultat getippt} other {# Mitglieder haben das genaue Resultat getippt}}",
+        "average": "{points} Pkt. im Schnitt"
+      }
     }
   },
   "Predictions": {
@@ -1030,6 +1207,20 @@
         "taken": "Dieser Spitzname ist schon vergeben.",
         "invalid": "3 bis 32 Zeichen: Buchstaben, Ziffern, Leerzeichen, Punkte, Bindestriche.",
         "error": "Speichern fehlgeschlagen. Bitte erneut versuchen."
+      },
+      "memberProfile": {
+        "birthDate": "Geburtsdatum",
+        "birthDateDescription": "Um Aktiv- und Juniormitglieder zu unterscheiden. Nur für den Vorstand sichtbar.",
+        "interests": "Interessen",
+        "interestsDescription": "Damit wir dir die passenden Veranstaltungen vorschlagen.",
+        "ticketing": "PSG-Tickets",
+        "ticketingDescription": "Um Sammelbestellungen von Tickets zu organisieren.",
+        "photos": "Klubfotos",
+        "photosDescription": "Ob du auf Fotos erscheinst, die der Club veröffentlicht (Website, soziale Medien).",
+        "save": "Speichern",
+        "saved": "Profil aktualisiert.",
+        "error": "Speichern fehlgeschlagen. Bitte versuche es erneut.",
+        "junior": "Juniormitglied: reduzierter Beitrag, mit Zustimmung einer erziehungsberechtigten Person."
       }
     },
     "account": {

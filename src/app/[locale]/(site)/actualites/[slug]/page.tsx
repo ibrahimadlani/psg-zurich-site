@@ -23,6 +23,7 @@ import {
   type Post,
 } from "@/lib/news";
 import { publicSiteUrl } from "@/lib/seo";
+import { ArticleSkeleton } from "@/components/skeletons";
 
 // Slugs only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;
@@ -172,7 +173,7 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
 
 export default function ArticlePage({ params }: PageProps<"/[locale]/actualites/[slug]">) {
   return (
-    <Suspense>
+    <Suspense fallback={<ArticleSkeleton />}>
       <ArticleContent params={params} />
     </Suspense>
   );

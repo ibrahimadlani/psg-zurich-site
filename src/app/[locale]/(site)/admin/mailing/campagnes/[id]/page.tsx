@@ -13,6 +13,7 @@ import { emailCampaigns, events } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { requireMailingAdmin, savedTemplates } from "@/lib/mailing/admin-data";
 import { recentEventsSince } from "@/lib/mailing/time";
+import { AdminSkeleton } from "@/components/skeletons";
 
 // Campaign ids exist at runtime only: rendered at request time.
 export const instant = false;
@@ -66,7 +67,7 @@ export default async function CampaignPage({ params }: PageProps<"/[locale]/admi
         <ArrowLeft className="size-3.5" aria-hidden />
         {t("back")}
       </Link>
-      <Suspense fallback={null}>
+      <Suspense fallback={<AdminSkeleton cards={2} />}>
         <Editor params={params} />
       </Suspense>
     </>

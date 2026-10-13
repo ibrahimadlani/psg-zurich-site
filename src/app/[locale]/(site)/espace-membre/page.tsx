@@ -1,5 +1,4 @@
-import { eq } from "drizzle-orm";
-import { LayoutDashboard, Settings } from "lucide-react";
+import { ArrowRight, LayoutDashboard, Settings } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
@@ -9,11 +8,11 @@ import { MyPredictions } from "@/components/member-area/my-predictions";
 import { MyRegistrations } from "@/components/member-area/my-registrations";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
-import { db } from "@/db";
-import { members } from "@/db/schema";
 import { Link, redirect } from "@/i18n/navigation";
+import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { hasRole } from "@/lib/roles";
+import { MemberAreaSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("MemberArea");
@@ -28,11 +27,27 @@ async function MemberPanel() {
   if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
 
   const { user } = session;
-  const [member] = await db.select().from(members).where(eq(members.userId, user.id));
+  const member = await getCurrentMember();
   const name = member ? `${member.firstName} ${member.lastName}` : user.name || user.email;
+
+  // Signed up before the profile questions existed, or skipped them: a quiet nudge.
+  const profileIncomplete = member && (member.birthDate === null || member.photoConsent === null);
 
   return (
     <div className="space-y-10">
+      {profileIncomplete ? (
+        <Link
+          href="/bienvenue?reprendre=1"
+          prefetch={false}
+          className="group flex items-center gap-4 rounded-[14px] border bg-card px-5 py-4 transition-colors hover:border-foreground/30"
+        >
+          <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <span className="font-semibold">{t("completeProfile.title")}</span>
+            <span className="text-sm text-pretty text-muted-foreground">{t("completeProfile.body")}</span>
+          </span>
+          <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
+        </Link>
+      ) : null}
       <MemberCard member={member ?? null} name={name} />
       {member?.status === "active" ? (
         <div className="grid gap-10 lg:grid-cols-2">
@@ -66,7 +81,7 @@ export default async function MemberAreaPage() {
   return (
     <>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<p className="text-muted-foreground">{t("loading")}</p>}>
+      <Suspense fallback={<MemberAreaSkeleton />}>
         <MemberPanel />
       </Suspense>
     </>

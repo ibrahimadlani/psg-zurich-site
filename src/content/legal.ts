@@ -224,6 +224,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Compte : prénom, nom, adresse e-mail et mot de passe (enregistré uniquement sous forme chiffrée, illisible même pour nous).",
               "Profil de membre : téléphone et adresse postale (facultatifs), statut de l'adhésion et date d'inscription.",
+              "Questions d'accueil (toutes facultatives) : date de naissance, centres d'intérêt, accès à la billetterie du PSG et choix concernant les photos, avec la date de ce choix.",
               "Consentement : date et heure auxquelles vous avez accepté les statuts et la présente politique.",
               "Sécurité : adresse IP et type de navigateur liés à vos sessions de connexion et à votre inscription.",
             ],
@@ -238,6 +239,9 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             ul: [
               "Gérer votre adhésion et votre espace membre.",
+              "Appliquer les statuts : la date de naissance distingue membres actifs et juniors (cotisation réduite, accord d'un représentant légal). Elle n'est jamais visible par les autres membres.",
+              "Organiser la vie du club : proposer les événements qui vous intéressent et coordonner les achats de billets groupés lors des déplacements.",
+              "Photos : le club ne publie des photos où vous êtes reconnaissable (site, réseaux) que si vous l'avez accepté. Vous pouvez retirer votre accord à tout moment dans vos paramètres.",
               "Vous connecter de façon sécurisée et protéger les comptes contre les abus.",
               "Vous envoyer les e-mails nécessaires (confirmation d'adresse, mot de passe, adhésion, cotisation, événements auxquels vous êtes inscrit) et, si vous les gardez activés dans vos paramètres, les annonces d'événements, les rappels et résultats de pronostics et les actualités du club. Chacun de ces e-mails optionnels contient un lien pour s'en désabonner.",
             ],
@@ -342,6 +346,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Account: first name, last name, email address and password (stored only in encrypted form, unreadable even to us).",
               "Member profile: phone and postal address (optional), membership status and sign-up date.",
+              "Welcome questions (all optional): date of birth, interests, access to PSG ticketing and your choice about photos, with the date of that choice.",
               "Consent: date and time at which you accepted the statutes and this policy.",
               "Security: IP address and browser type linked to your sign-in sessions and your sign-up.",
             ],
@@ -356,6 +361,9 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             ul: [
               "Manage your membership and your member area.",
+              "Apply the statutes: your date of birth tells active and junior members apart (reduced fee, legal guardian's consent). Other members never see it.",
+              "Run the club: suggest the events that interest you and coordinate group ticket purchases for trips.",
+              "Photos: the club only publishes photos in which you can be recognised (website, social media) if you agreed to it. You can withdraw your consent at any time in your settings.",
               "Sign you in securely and protect accounts against abuse.",
               "Send you the necessary emails (address confirmation, password, membership, fee, events you signed up for) and, if you keep them on in your settings, event announcements, prediction reminders and results, and club news. Each of these optional emails has a link to unsubscribe.",
             ],
@@ -460,6 +468,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Konto: Vorname, Nachname, E-Mail-Adresse und Passwort (nur verschlüsselt gespeichert, auch für uns nicht lesbar).",
               "Mitgliederprofil: Telefon und Postadresse (freiwillig), Mitgliedschaftsstatus und Anmeldedatum.",
+              "Willkommensfragen (alle freiwillig): Geburtsdatum, Interessen, Zugang zum PSG-Ticketverkauf und deine Wahl zu Fotos, mit dem Datum dieser Wahl.",
               "Einwilligung: Datum und Uhrzeit, zu denen du die Statuten und diese Erklärung akzeptiert hast.",
               "Sicherheit: IP-Adresse und Browsertyp deiner Anmeldesitzungen und deiner Registrierung.",
             ],
@@ -474,6 +483,9 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             ul: [
               "Deine Mitgliedschaft und deinen Mitgliederbereich verwalten.",
+              "Die Statuten anwenden: Das Geburtsdatum unterscheidet Aktiv- und Juniormitglieder (reduzierter Beitrag, Zustimmung einer erziehungsberechtigten Person). Andere Mitglieder sehen es nie.",
+              "Das Clubleben organisieren: dir passende Veranstaltungen vorschlagen und Sammelbestellungen von Tickets für Auswärtsfahrten koordinieren.",
+              "Fotos: Der Club veröffentlicht Fotos, auf denen du erkennbar bist (Website, soziale Medien), nur mit deinem Einverständnis. Du kannst es jederzeit in deinen Einstellungen widerrufen.",
               "Dich sicher anmelden und Konten vor Missbrauch schützen.",
               "Dir die nötigen E-Mails senden (Adressbestätigung, Passwort, Mitgliedschaft, Beitrag, Veranstaltungen, für die du angemeldet bist) und, wenn du sie in deinen Einstellungen aktiviert lässt, Veranstaltungsankündigungen, Tipp-Erinnerungen und -Resultate sowie Clubneuigkeiten. Jede dieser freiwilligen E-Mails enthält einen Abmeldelink.",
             ],

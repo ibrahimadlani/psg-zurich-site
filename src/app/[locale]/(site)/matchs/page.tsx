@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { ChampionsLeagueLogo, Ligue1Logo } from "@/components/matches/competition-logos";
+import { LazyList } from "@/components/lazy-list";
 import { LiveMatches } from "@/components/matches/live-matches";
 import { MatchRow, type PredictionView } from "@/components/matches/match-row";
 import { MatchTabs } from "@/components/matches/match-tabs";
@@ -17,6 +18,7 @@ import { isDuesPaid } from "@/lib/dues";
 import { getStandings } from "@/lib/football/standings";
 import { closestMatch, getSeasonMatches } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
+import { MatchesSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Matches");
@@ -57,8 +59,10 @@ async function MatchesContent() {
 
   const list = (items: typeof season, empty: string) =>
     items.length ? (
-      <div className="space-y-2.5">
-        {items.map((match) => (
+      // A full season is ~60 matches: rendered 10 at a time as the list scrolls.
+      <LazyList
+        className="space-y-2.5"
+        items={items.map((match) => (
           <MatchRow
             key={match.id}
             match={match}
@@ -66,7 +70,7 @@ async function MatchesContent() {
             prediction={predictionByMatch.get(match.id)}
           />
         ))}
-      </div>
+      />
     ) : (
       <p className="rounded-[10px] border border-dashed p-8 text-center text-sm text-muted-foreground">{empty}</p>
     );
@@ -142,7 +146,7 @@ export default async function MatchesPage() {
     <>
       {/* The page title stays for screen readers and the browser tab; the screen shows the match. */}
       <h1 className="sr-only">{t("title")}</h1>
-      <Suspense fallback={<p className="text-muted-foreground">{t("loading")}</p>}>
+      <Suspense fallback={<MatchesSkeleton />}>
         <MatchesContent />
       </Suspense>
     </>

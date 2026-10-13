@@ -3,10 +3,11 @@ import { db } from "@/db";
 import { members } from "@/db/schema";
 import { apiHandler, fail, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
+import { profileValues } from "@/lib/member-profile";
 import { HttpError, requireRole } from "@/lib/permissions";
 import { memberSettingsSchema } from "@/lib/validators";
 
-/** Leaderboard nickname and visibility, email language, notifications (any subset). */
+/** Leaderboard nickname and visibility, email language, notifications, member profile (any subset). */
 export const PATCH = apiHandler(async (request) => {
   const session = await requireRole("member");
   const input = await parseBody(request, memberSettingsSchema);
@@ -14,7 +15,12 @@ export const PATCH = apiHandler(async (request) => {
   const [member] = await db.select({ id: members.id }).from(members).where(eq(members.userId, session.user.id));
   if (!member) throw new HttpError(404, "not_found", "No member profile for this account.");
 
-  const values = { ...input, ...(input.nickname !== undefined ? { nickname: input.nickname || null } : {}) };
+  const { birthDate, interests, psgTicketing, photoConsent, ...settings } = input;
+  const values = {
+    ...settings,
+    ...(settings.nickname !== undefined ? { nickname: settings.nickname || null } : {}),
+    ...profileValues({ birthDate, interests, psgTicketing, photoConsent }),
+  };
   if (Object.keys(values).length === 0) return ok({ updated: false });
 
   if (values.nickname) {

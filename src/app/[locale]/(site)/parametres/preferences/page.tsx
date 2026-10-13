@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { LanguageForm, ThemeForm } from "@/components/settings/preferences-form";
 import { SettingsBlock, SettingsSection } from "@/components/settings/settings-section";
 import { getSettingsContext } from "@/lib/settings";
+import { SettingsSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Settings.sections");
@@ -28,7 +29,7 @@ async function Content() {
 export default function PreferencesSettingsPage() {
   return (
     <SettingsSection section="preferences">
-      <Suspense fallback={<p className="py-6 text-sm text-muted-foreground">…</p>}>
+      <Suspense fallback={<SettingsSkeleton />}>
         <Content />
       </Suspense>
     </SettingsSection>

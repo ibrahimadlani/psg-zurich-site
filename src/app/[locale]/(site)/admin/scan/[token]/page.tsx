@@ -1,14 +1,15 @@
-import { CircleAlert, CircleCheck, Clock } from "lucide-react";
+import { CameraOff, CircleAlert, CircleCheck, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { CheckInButton } from "@/components/admin/checkin-button";
 import { redirect } from "@/i18n/navigation";
-import { isDuesPaid } from "@/lib/dues";
+import { isDuesPaid, isJunior } from "@/lib/dues";
 import { eventsAroundNow, memberByCardToken } from "@/lib/member-card";
 import { getSession } from "@/lib/permissions";
 import { hasRole } from "@/lib/roles";
+import { PanelSkeleton } from "@/components/skeletons";
 
 // Tokens only exist at runtime: rendered at request time.
 export const instant = false;
@@ -27,7 +28,12 @@ const card = "flex flex-col gap-3 rounded-[14px] border bg-card p-[clamp(16px,3v
 async function ScanContent({ params }: { params: Promise<{ token: string }> }) {
   await connection();
   const { token } = await params;
-  const [t, format, locale] = await Promise.all([getTranslations("Scan"), getFormatter(), getLocale()]);
+  const [t, tProfile, format, locale] = await Promise.all([
+    getTranslations("Scan"),
+    getTranslations("MemberProfile"),
+    getFormatter(),
+    getLocale(),
+  ]);
   const session = await getSession();
   if (!session) return redirect({ href: `/connexion?suite=${encodeURIComponent(`/admin/scan/${token}`)}`, locale });
   if (!hasRole(session.user.role, "admin")) return <p className="text-destructive">{t("forbidden")}</p>;
@@ -67,6 +73,14 @@ async function ScanContent({ params }: { params: Promise<{ token: string }> }) {
           <State className="size-4" aria-hidden />
           {t(`state.${state}`)}
         </p>
+        {/* For whoever takes pictures at the event: no answer counts as a no. */}
+        {member.photoConsent === true ? null : (
+          <p className="flex items-center gap-2 text-sm text-muted-foreground">
+            <CameraOff className="size-4" aria-hidden />
+            {tProfile("noPhotos")}
+          </p>
+        )}
+        {isJunior(member.birthDate) ? <p className="text-sm text-muted-foreground">{tProfile("junior")}</p> : null}
       </section>
 
       <h2 className="font-wide text-xs font-semibold tracking-[0.08em] uppercase">{t("today")}</h2>
@@ -108,7 +122,7 @@ export default async function ScanPage({ params }: PageProps<"/[locale]/admin/sc
   return (
     <div className="mx-auto flex w-full max-w-xl flex-col gap-5">
       <h1 className="font-wide text-xs font-semibold tracking-[0.08em] text-muted-foreground uppercase">{t("title")}</h1>
-      <Suspense fallback={<p className="text-muted-foreground">{t("loading")}</p>}>
+      <Suspense fallback={<PanelSkeleton />}>
         <ScanContent params={params} />
       </Suspense>
     </div>

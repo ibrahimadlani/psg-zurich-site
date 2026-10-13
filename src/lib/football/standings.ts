@@ -107,3 +107,10 @@ export async function getStandings(code: Competition, now: number = Date.now()):
   inflight.set(code, request);
   return request;
 }
+
+/** Table a match belongs to, from its competition name (null: cup, friendly…). */
+export function competitionCode(competition: string): Competition | null {
+  if (/^ligue 1/i.test(competition)) return "FL1";
+  if (/champions league/i.test(competition)) return "CL";
+  return null;
+}

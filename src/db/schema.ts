@@ -140,6 +140,12 @@ export const MEMBER_STATUSES = [
 
 export type MemberStatus = (typeof MEMBER_STATUSES)[number];
 
+/** What a member enjoys doing with the club (asked at onboarding, for events and emails). */
+export const MEMBER_INTERESTS = ["watch_party", "home_trips", "away_trips", "members_match", "social"] as const;
+export type MemberInterest = (typeof MEMBER_INTERESTS)[number];
+/** Access to PSG tickets, for group purchases on trips. Order = MySQL enum order: append only. */
+export const PSG_TICKETING = ["season_ticket", "myparis_premium", "myparis", "none"] as const;
+
 export const members = mysqlTable(
   "members",
   {
@@ -178,7 +184,15 @@ export const members = mysqlTable(
      * and can be replaced if a card leaks. Created the first time the card is shown.
      */
     cardToken: varchar("card_token", { length: 32 }).unique(),
-    /** Welcome step done or skipped (phone and address, asked once after signing up). */
+    /** Statutes: under 18 = junior member (reduced fee, legal guardian's consent). Never shown to other members. */
+    birthDate: date("birth_date", { mode: "string" }),
+    interests: json<MemberInterest[]>("interests"),
+    psgTicketing: mysqlEnum("psg_ticketing", PSG_TICKETING),
+    /** Club photos (site, social media): null = no answer, treated as a no. */
+    photoConsent: boolean("photo_consent"),
+    /** When the photo answer was last given (proof of consent). */
+    photoConsentAt: datetime("photo_consent_at", { fsp: 3 }),
+    /** Welcome steps done or skipped (asked once after signing up). */
     onboardedAt: datetime("onboarded_at", { fsp: 3 }),
     /** Last time the member opened the notification bell: newer items count as unread. */
     notificationsSeenAt: datetime("notifications_seen_at", { fsp: 3 }),
@@ -250,6 +264,9 @@ export type MatchTimelineEntry = {
   related: string | null;
 };
 
+/** Match officials as the API lists them (referee, assistants, fourth official, VAR). */
+export type MatchOfficial = { name: string; type: string; nationality: string | null };
+
 export const matches = mysqlTable(
   "matches",
   {
@@ -259,6 +276,8 @@ export const matches = mysqlTable(
     /** Season start year (2026 = 2026/27). */
     season: int("season"),
     opponent: varchar("opponent", { length: 120 }).notNull(),
+    /** Opponent's team id at football-data.org (table and head-to-head lookups). */
+    opponentExternalId: int("opponent_external_id"),
     opponentLogo: varchar("opponent_logo", { length: 255 }),
     competition: varchar("competition", { length: 120 }).notNull(),
     competitionLogo: varchar("competition_logo", { length: 255 }),
@@ -269,12 +288,15 @@ export const matches = mysqlTable(
     stadium: varchar("stadium", { length: 160 }),
     city: varchar("city", { length: 120 }),
     referee: varchar("referee", { length: 120 }),
+    officials: json<MatchOfficial[]>("officials"),
     /** Final score, extra time included. */
     psgScore: int("psg_score"),
     opponentScore: int("opponent_score"),
     /** Score after 90 minutes: the one predictions are scored against. */
     regulationPsgScore: int("regulation_psg_score"),
     regulationOpponentScore: int("regulation_opponent_score"),
+    halfTimePsgScore: int("half_time_psg_score"),
+    halfTimeOpponentScore: int("half_time_opponent_score"),
     penaltyPsgScore: int("penalty_psg_score"),
     penaltyOpponentScore: int("penalty_opponent_score"),
     status: mysqlEnum("status", MATCH_STATUSES).default("scheduled").notNull(),

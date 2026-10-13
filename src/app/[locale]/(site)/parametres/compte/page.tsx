@@ -6,6 +6,7 @@ import { ChangeEmailForm } from "@/components/settings/change-email-form";
 import { DevicesSection } from "@/components/settings/devices-section";
 import { SettingsBlock, SettingsSection } from "@/components/settings/settings-section";
 import { getSettingsContext } from "@/lib/settings";
+import { SettingsSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Settings.sections");
@@ -33,7 +34,7 @@ async function Content() {
 export default function AccountSettingsPage() {
   return (
     <SettingsSection section="account">
-      <Suspense fallback={<p className="py-6 text-sm text-muted-foreground">…</p>}>
+      <Suspense fallback={<SettingsSkeleton />}>
         <Content />
       </Suspense>
     </SettingsSection>

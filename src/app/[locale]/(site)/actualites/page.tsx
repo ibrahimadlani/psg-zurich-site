@@ -7,6 +7,7 @@ import { POST_CATEGORIES, type Locale, type PostCategory } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { getNewsList } from "@/lib/news";
 import { cn } from "@/lib/utils";
+import { NewsListSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("News");
@@ -72,7 +73,7 @@ async function NewsContent({ searchParams }: { searchParams: Promise<Record<stri
 
 export default function NewsPage({ searchParams }: PageProps<"/[locale]/actualites">) {
   return (
-    <Suspense>
+    <Suspense fallback={<NewsListSkeleton />}>
       <NewsContent searchParams={searchParams} />
     </Suspense>
   );

@@ -1,4 +1,14 @@
 {
+  "Common": {
+    "loading": "Loading…"
+  },
+  "HumanDate": {
+    "now": "now",
+    "tomorrow": "tomorrow",
+    "yesterday": "yesterday",
+    "tomorrowAt": "tomorrow at {time}",
+    "yesterdayAt": "yesterday at {time}"
+  },
   "Metadata": {
     "title": "PSG Zurich",
     "description": "Official Paris Saint-Germain supporters club in Zurich."
@@ -15,7 +25,31 @@
     "admin": "Administration",
     "menu": "Menu",
     "close": "Close",
-    "settings": "Settings"
+    "settings": "Settings",
+    "drawer": {
+      "nextMatch": "Next match",
+      "predict": "Predict",
+      "see": "View",
+      "new": "New article",
+      "upcoming": "{count} upcoming",
+      "joinTitle": "Join the club",
+      "joinBody": "Watch parties, trips, predictions: the PSG supporters' community in Zurich.",
+      "signIn": "Sign in",
+      "card": "My card",
+      "predictions": "Predictions",
+      "admin": "Admin",
+      "status": {
+        "full": "Fee paid",
+        "unpaid": "Fee to pay",
+        "pending": "Waiting for the committee"
+      },
+      "theme": {
+        "label": "Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      }
+    }
   },
   "EventsShowcase": {
     "kinds": {
@@ -45,15 +79,95 @@
   },
   "Onboarding": {
     "pageTitle": "Welcome",
-    "title": "Welcome, {name}!",
-    "body": "Your address is confirmed. Two optional details so the committee can reach you.",
-    "bodyPending": "Your address is confirmed and your membership request is on its way to the committee. Meanwhile, two optional details so it can reach you.",
-    "addressPlaceholder": "Street, number, city",
-    "hint": "You can change them at any time in your settings.",
-    "continue": "Continue",
+    "welcome": {
+      "title": "Welcome, {name}!",
+      "body": "Your address is confirmed. A few questions so the club can get to know you a little better.",
+      "bodyPending": "Your address is confirmed and your application is on its way to the committee. Meanwhile, a few questions so the club can get to know you a little better.",
+      "duration": "5 questions · 1 minute · all optional"
+    },
+    "start": "Let's go",
+    "next": "Next",
+    "skip": "Skip",
+    "finish": "Finish",
+    "backToRecap": "Back to the summary",
     "later": "Later",
-    "saved": "Your details are saved.",
-    "error": "Saving failed. Try again."
+    "back": "Previous step",
+    "progress": "Step {current} of {total}",
+    "saved": "Your profile is saved.",
+    "error": "Saving failed. Please try again.",
+    "contact": {
+      "title": "Your contact details",
+      "why": "So the committee can reach you, especially on trips.",
+      "addressPlaceholder": "Street, number, city"
+    },
+    "birth": {
+      "title": "Your date of birth",
+      "why": "The statutes distinguish active members (18 and over) from junior members. Other members never see it.",
+      "day": "Day",
+      "month": "Month",
+      "year": "Year",
+      "invalid": "Incomplete or invalid date.",
+      "junior": "You will be a <b>junior member</b>: reduced fee, and the committee will ask for a legal guardian's consent."
+    },
+    "interests": {
+      "title": "What interests you",
+      "why": "So we can suggest the right events.",
+      "hint": "Pick as many as you like."
+    },
+    "ticketing": {
+      "title": "PSG tickets",
+      "why": "To organise group ticket purchases for trips."
+    },
+    "photos": {
+      "title": "Club photos",
+      "why": "The club posts photos of its events on its website and social media. You can change your mind at any time.",
+      "yes": "I'm happy to appear in photos",
+      "yesHint": "Club website and social media",
+      "no": "I'd rather not appear",
+      "noHint": "The club will avoid posting photos where you can be recognised"
+    },
+    "recap": {
+      "title": "All set",
+      "body": "Here is what you filled in. Everything can be changed in your settings.",
+      "birthDate": "Date of birth",
+      "interests": "Interests",
+      "ticketing": "PSG tickets",
+      "photos": "Photos",
+      "photosYes": "Happy to appear",
+      "photosNo": "Rather not appear",
+      "empty": "Not filled in",
+      "edit": "Edit"
+    }
+  },
+  "MemberProfile": {
+    "interests": {
+      "watch_party": "Watch parties",
+      "home_trips": "Trips to the Parc",
+      "away_trips": "Away trips",
+      "members_match": "Members' matches",
+      "social": "Nights out"
+    },
+    "ticketing": {
+      "season_ticket": {
+        "label": "Parc season-ticket holder",
+        "hint": "Season ticket at the Parc des Princes"
+      },
+      "myparis_premium": {
+        "label": "MyParis Premium",
+        "hint": "Priority on ticket sales"
+      },
+      "myparis": {
+        "label": "Free MyParis account",
+        "hint": "Sale alerts"
+      },
+      "none": {
+        "label": "None",
+        "hint": "No PSG ticketing account"
+      }
+    },
+    "junior": "Junior",
+    "noPhotos": "No photos",
+    "age": "{age} years old"
   },
   "Notifications": {
     "label": "Notifications",
@@ -302,6 +416,10 @@
       "pending": "pending",
       "empty": "You haven't made a prediction yet.",
       "browse": "See the matches"
+    },
+    "completeProfile": {
+      "title": "Complete your profile",
+      "body": "Four questions, one minute: date of birth, interests, tickets and photos."
     }
   },
   "Admin": {
@@ -773,6 +891,65 @@
       "form": "Form",
       "points": "Pts",
       "unavailable": "Table unavailable right now."
+    },
+    "details": {
+      "sheet": "Match facts sheet",
+      "competition": "Competition",
+      "kickoff": "Kick-off",
+      "venue": "Stadium",
+      "side": "Venue",
+      "sides": {
+        "home": "Home",
+        "away": "Away",
+        "neutral": "Neutral ground"
+      },
+      "officials": {
+        "referee": "Referee",
+        "assistant": "Assistant referee",
+        "fourth": "Fourth official",
+        "var": "Video referee (VAR)",
+        "other": "Official"
+      },
+      "facts": "Match events",
+      "periods": {
+        "first": "1st half",
+        "second": "2nd half",
+        "extra": "Extra time",
+        "penalties": "Penalties"
+      },
+      "tallies": {
+        "goals": "Goals",
+        "penalties": "Penalties",
+        "yellow": "Yellow cards",
+        "red": "Red cards",
+        "substitutions": "Substitutions"
+      },
+      "noTimeline": "Scorers, cards and substitutions are not provided by our data source for this match.",
+      "standingsLigue1": "In the Ligue 1 table",
+      "standingsCl": "In the Champions League table",
+      "headToHead": "Head to head against {opponent}",
+      "record": {
+        "wins": "{count, plural, one {win} other {wins}}",
+        "draws": "{count, plural, one {draw} other {draws}}",
+        "losses": "{count, plural, one {loss} other {losses}}",
+        "summary": "{played, plural, one {# match} other {# matches}} · {scored} goals scored, {conceded} conceded",
+        "onPenalties": "pens",
+        "short": {
+          "W": "W",
+          "D": "D",
+          "L": "L"
+        }
+      },
+      "predictions": {
+        "title": "Members' predictions",
+        "count": "{count, plural, one {# member predicted} other {# members predicted}}",
+        "win": "PSG win",
+        "draw": "Draw",
+        "loss": "PSG loss",
+        "topScores": "Most picked scores",
+        "exact": "{count, plural, =0 {Nobody got the exact score} one {# member got the exact score} other {# members got the exact score}}",
+        "average": "{points} pts on average"
+      }
     }
   },
   "Predictions": {
@@ -1030,6 +1207,20 @@
         "taken": "This nickname is already taken.",
         "invalid": "3 to 32 characters: letters, digits, spaces, dots, dashes.",
         "error": "Saving failed. Please try again."
+      },
+      "memberProfile": {
+        "birthDate": "Date of birth",
+        "birthDateDescription": "To tell active and junior members apart. Only the committee sees it.",
+        "interests": "Interests",
+        "interestsDescription": "So we can suggest the right events.",
+        "ticketing": "PSG tickets",
+        "ticketingDescription": "To organise group ticket purchases.",
+        "photos": "Club photos",
+        "photosDescription": "Whether you appear in photos the club publishes (website, social media).",
+        "save": "Save",
+        "saved": "Profile updated.",
+        "error": "Saving failed. Please try again.",
+        "junior": "Junior member: reduced fee, with a legal guardian's consent."
       }
     },
     "account": {

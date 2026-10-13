@@ -1,5 +1,6 @@
 import { CalendarClock, Users } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
+import { HumanDate } from "@/components/human-date";
 import { CompetitionLogo, hasLocalLogo } from "@/components/matches/competition-logos";
 import { outcome, roundInfo, sides, toDate, type MatchView } from "@/components/matches/match-utils";
 import { ShortName } from "@/components/matches/short-name";
@@ -9,8 +10,11 @@ import { cn } from "@/lib/utils";
 
 export type PredictionView = { psgScore: number; opponentScore: number; points: number | null };
 
-/** Competition + round, e.g. "Ligue 1 · Matchday 9". */
-export function CompetitionLabel({ match, className }: { match: MatchView; className?: string }) {
+/**
+ * Competition + round, e.g. "Ligue 1 · Matchday 9". `short`: the Champions League always as its
+ * local abbreviation ("LDC · Phase de ligue · J3"), for narrow spots like the match sheet.
+ */
+export function CompetitionLabel({ match, className, short = false }: { match: MatchView; className?: string; short?: boolean }) {
   const t = useTranslations("Matches");
   const round = roundInfo(match.round);
   const roundLabel = !round
@@ -29,7 +33,7 @@ export function CompetitionLabel({ match, className }: { match: MatchView; class
         <img src={match.competitionLogo} alt="" width={16} height={16} loading="lazy" className="size-4 shrink-0 object-contain" />
       ) : null}
       <span className="truncate">
-        <ShortName name={match.competition} />
+        {short && /champions league/i.test(match.competition) ? t("standings.championsLeague") : <ShortName name={match.competition} />}
         {roundLabel ? ` · ${roundLabel}` : null}
       </span>
     </span>
@@ -71,7 +75,12 @@ export function MatchRow({
       className="group grid grid-cols-[4.5rem_1fr_auto] items-center gap-3 rounded-[10px] border bg-card/60 p-3 transition-colors hover:border-foreground/30 sm:grid-cols-[6rem_1fr_auto] sm:gap-5 sm:p-4"
     >
       <span className="flex flex-col text-xs leading-tight">
-        <span className="font-semibold text-foreground uppercase">{format.dateTime(kickoff, { weekday: "short", day: "numeric", month: "short" })}</span>
+        <HumanDate
+          date={kickoff}
+          absolute={{ weekday: "short", day: "numeric", month: "short" }}
+          withTime={false}
+          className="font-semibold text-foreground uppercase"
+        />
         <span className="text-muted-foreground">{format.dateTime(kickoff, { hour: "2-digit", minute: "2-digit" })}</span>
       </span>
 

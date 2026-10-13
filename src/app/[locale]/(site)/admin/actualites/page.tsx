@@ -10,6 +10,7 @@ import { db } from "@/db";
 import { posts } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { postState, requireCmsAccess } from "@/lib/cms";
+import { AdminSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cms");
@@ -74,7 +75,7 @@ export default async function CmsListPage() {
           </Link>
         </Button>
       </div>
-      <Suspense fallback={<p className="text-muted-foreground">…</p>}>
+      <Suspense fallback={<AdminSkeleton cards={1} />}>
         <PostList />
       </Suspense>
     </div>

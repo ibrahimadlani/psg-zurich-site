@@ -1,26 +1,15 @@
-import { eq, like, sql } from "drizzle-orm";
-import { db, type Transaction } from "@/db";
+import { eq } from "drizzle-orm";
+import { db } from "@/db";
 import { members, user } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { todayInZurich } from "@/lib/dues";
 import { onMemberDecision } from "@/lib/mailing/triggers";
+import { nextMemberNumber } from "@/lib/member-number";
 import { HttpError, requireRole } from "@/lib/permissions";
 import { memberDecisionSchema } from "@/lib/validators";
 
 type Context = RouteContext<"/api/v1/members/[id]">;
-
-const NUMBER_PREFIX = "PSGZ-";
-
-/** Next member number: PSGZ-0001, PSGZ-0002… (the UNIQUE constraint guards against races). */
-async function nextMemberNumber(tx: Transaction) {
-  const [row] = await tx
-    .select({ max: sql<number | null>`MAX(CAST(SUBSTRING(${members.memberNumber}, ${NUMBER_PREFIX.length + 1}) AS UNSIGNED))` })
-    .from(members)
-    .where(like(members.memberNumber, `${NUMBER_PREFIX}%`));
-  return `${NUMBER_PREFIX}${String(Number(row?.max ?? 0) + 1).padStart(4, "0")}`;
-}
-
 
 /** Committee decision on a membership request: approve (from pending or rejected) or reject (from pending). */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {

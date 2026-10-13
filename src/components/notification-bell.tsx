@@ -12,6 +12,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Skeleton, SkeletonGroup } from "@/components/ui/skeleton";
 import { Link, usePathname } from "@/i18n/navigation";
 import type { NotificationItem } from "@/lib/notification-feed";
 import { cn } from "@/lib/utils";
@@ -135,7 +136,21 @@ export function NotificationBell() {
             })}
           </div>
         ) : (
-          <p className="px-4 pt-2 pb-6 text-center text-[13px] text-muted-foreground">{feed ? t("empty") : t("loading")}</p>
+          feed ? (
+            <p className="px-4 pt-2 pb-6 text-center text-[13px] text-muted-foreground">{t("empty")}</p>
+          ) : (
+            <SkeletonGroup label={t("loading")} className="space-y-1 px-2 pb-2">
+              {[0, 1, 2].map((index) => (
+                <div key={index} className="flex gap-3 px-2 py-2.5">
+                  <Skeleton className="size-8 shrink-0 rounded-full" />
+                  <div className="flex-1 space-y-2 pt-1">
+                    <Skeleton className="h-3 w-1/3 rounded-full" />
+                    <Skeleton className="h-3 w-11/12 rounded-full" />
+                  </div>
+                </div>
+              ))}
+            </SkeletonGroup>
+          )
         )}
         <DropdownMenuSeparator className="my-0" />
         <DropdownMenuItem asChild className="justify-center rounded-none px-4 py-2.5 text-[12px] text-muted-foreground">

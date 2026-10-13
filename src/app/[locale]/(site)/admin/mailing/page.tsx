@@ -19,6 +19,7 @@ import {
 import { getMailingSettings } from "@/lib/mailing/queue";
 import { MAIL_GROUPS } from "@/lib/mailing/registry";
 import { cn } from "@/lib/utils";
+import { AdminSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Mailing");
@@ -213,7 +214,7 @@ export default async function MailingPage({ searchParams }: PageProps<"/[locale]
         {tAdmin("title")}
       </Link>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={null}>
+      <Suspense fallback={<AdminSkeleton />}>
         <MailingContent searchParams={searchParams} />
       </Suspense>
     </>

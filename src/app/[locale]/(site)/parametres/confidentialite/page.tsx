@@ -5,6 +5,7 @@ import { DataSection } from "@/components/member-area/data-section";
 import { SettingSwitch } from "@/components/settings/setting-switch";
 import { SettingsBlock, SettingsSection } from "@/components/settings/settings-section";
 import { getSettingsContext } from "@/lib/settings";
+import { SettingsSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Settings.sections");
@@ -31,7 +32,7 @@ async function Content() {
 export default function PrivacySettingsPage() {
   return (
     <SettingsSection section="privacy">
-      <Suspense fallback={<p className="py-6 text-sm text-muted-foreground">…</p>}>
+      <Suspense fallback={<SettingsSkeleton />}>
         <Content />
       </Suspense>
     </SettingsSection>

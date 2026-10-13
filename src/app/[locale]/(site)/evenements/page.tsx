@@ -9,6 +9,7 @@ import { eventAccess } from "@/lib/dues";
 import { getEventsWithAttendance, upcomingEvents } from "@/lib/events";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+import { EventsSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Events");
@@ -40,7 +41,7 @@ export default async function EventsPage() {
   return (
     <>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<p className="text-muted-foreground">{t("loading")}</p>}>
+      <Suspense fallback={<EventsSkeleton />}>
         <EventsContent />
       </Suspense>
     </>

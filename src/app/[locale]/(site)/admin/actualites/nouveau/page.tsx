@@ -7,6 +7,7 @@ import { PostEditor } from "@/components/cms/post-editor";
 import type { Locale } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { editorData, requireCmsAccess } from "@/lib/cms";
+import { AdminSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cms");
@@ -49,7 +50,7 @@ export default async function NewPostPage() {
         <ArrowLeft className="size-3.5" aria-hidden />
         {t("title")}
       </Link>
-      <Suspense fallback={<p className="text-muted-foreground">…</p>}>
+      <Suspense fallback={<AdminSkeleton cards={1} />}>
         <NewPost />
       </Suspense>
     </div>

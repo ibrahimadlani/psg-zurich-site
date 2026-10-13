@@ -9,6 +9,7 @@ import { Link, redirect } from "@/i18n/navigation";
 import { getLeaderboard } from "@/lib/leaderboard";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+import { TableSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Leaderboard");
@@ -42,7 +43,7 @@ export default async function LeaderboardPage() {
         {t("backToMatches")}
       </Link>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<p className="text-muted-foreground">{t("loading")}</p>}>
+      <Suspense fallback={<TableSkeleton />}>
         <LeaderboardContent />
       </Suspense>
     </div>

@@ -1,4 +1,5 @@
 import { useFormatter, useTranslations } from "next-intl";
+import { HumanDate } from "@/components/human-date";
 import { CompetitionLabel, liveLabel } from "@/components/matches/match-row";
 import { MatchTimeline } from "@/components/matches/match-timeline";
 import { sides, toDate, type MatchView } from "@/components/matches/match-utils";
@@ -37,7 +38,7 @@ export function Scoreboard({ match, className }: { match: MatchView; className?:
           </span>
         ) : (
           <span className="text-xs text-muted-foreground">
-            {format.dateTime(toDate(match.kickoffAt), { weekday: "long", day: "numeric", month: "long" })}
+            <HumanDate date={match.kickoffAt} absolute={{ weekday: "long", day: "numeric", month: "long" }} withTime={false} capitalize />
           </span>
         )}
       </div>

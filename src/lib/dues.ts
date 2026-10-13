@@ -14,6 +14,17 @@ export function seasonEnd(today = todayInZurich()) {
   return `${month >= 7 ? year + 1 : year}-06-30`;
 }
 
+/** Age in whole years on `today` (both YYYY-MM-DD). */
+export function ageOn(birthDate: string, today = todayInZurich()) {
+  const [by, bm, bd] = birthDate.split("-").map(Number) as [number, number, number];
+  const [ty, tm, td] = today.split("-").map(Number) as [number, number, number];
+  return ty - by - (tm < bm || (tm === bm && td < bd) ? 1 : 0);
+}
+
+/** Statutes: members under 18 are juniors (reduced fee, legal guardian's consent). */
+export const isJunior = (birthDate: string | null | undefined, today = todayInZurich()) =>
+  !!birthDate && ageOn(birthDate, today) < 18;
+
 type MemberLike = { status: string; expiresOn: string | null } | null | undefined;
 
 export const isDuesPaid = (member: MemberLike, today = todayInZurich()) =>

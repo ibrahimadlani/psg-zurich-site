@@ -23,6 +23,7 @@ export async function MemberCard({ member, name }: { member: Member | null; name
   return (
     <section className="flex flex-col items-center gap-4 sm:items-start">
       <FlipCard
+        anchor="carte"
         label={t("card.flip")}
         hint={t("card.flipHint")}
         front={

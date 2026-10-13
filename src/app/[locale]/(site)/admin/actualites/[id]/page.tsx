@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import { PostEditor } from "@/components/cms/post-editor";
 import { Link } from "@/i18n/navigation";
 import { editorData, loadPost, postState, requireCmsAccess, toLocalInput } from "@/lib/cms";
+import { AdminSkeleton } from "@/components/skeletons";
 
 // Post ids only exist at runtime.
 export const instant = false;
@@ -61,7 +62,7 @@ export default async function EditPostPage({ params }: PageProps<"/[locale]/admi
         <ArrowLeft className="size-3.5" aria-hidden />
         {t("title")}
       </Link>
-      <Suspense fallback={<p className="text-muted-foreground">…</p>}>
+      <Suspense fallback={<AdminSkeleton cards={1} />}>
         <EditPost params={params} />
       </Suspense>
     </div>

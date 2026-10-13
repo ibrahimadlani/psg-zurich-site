@@ -32,11 +32,12 @@ export type ApiMatch = {
   score: {
     duration: string;
     fullTime: Pair;
+    halfTime?: Pair;
     regularTime?: Pair;
     extraTime?: Pair;
     penalties?: Pair;
   };
-  referees?: { name: string; type: string }[];
+  referees?: { name: string; type: string; nationality?: string | null }[];
   goals?: {
     minute: number;
     injuryTime: number | null;

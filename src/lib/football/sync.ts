@@ -53,6 +53,7 @@ function timelineOf(match: ApiMatch): MatchTimelineEntry[] | undefined {
       minute: booking.minute,
       extra: null,
       side: side(booking.team.id),
+      // A second yellow ("YELLOW_RED") sends the player off: shown as a red card.
       type: booking.card === "YELLOW" ? ("yellow" as const) : ("red" as const),
       player: booking.player?.name ?? null,
       related: null,
@@ -94,6 +95,7 @@ function toMatchValues(match: ApiMatch) {
   const [regularPsg, regularOpponent] = score.regularTime ? sides(score.regularTime) : sides(score.fullTime);
   const [extraPsg, extraOpponent] = sides(score.extraTime);
   const [penaltyPsg, penaltyOpponent] = sides(score.penalties);
+  const [halfTimePsg, halfTimeOpponent] = sides(score.halfTime);
   const played = status === "live" || status === "finished";
   const total = (regular: number | null, extra: number | null) =>
     played ? (regular ?? 0) + (score.regularTime ? (extra ?? 0) : 0) : null;
@@ -105,6 +107,7 @@ function toMatchValues(match: ApiMatch) {
     externalId: match.id,
     season: Number(match.season.startDate.slice(0, 4)),
     opponent: (opponent.shortName || opponent.name).slice(0, 120),
+    opponentExternalId: opponent.id,
     opponentLogo: opponent.crest,
     competition: match.competition.name.slice(0, 120),
     competitionLogo: match.competition.emblem,
@@ -113,11 +116,17 @@ function toMatchValues(match: ApiMatch) {
     venue: psgHome ? ("home" as const) : ("away" as const),
     stadium: match.venue?.slice(0, 160) ?? null,
     referee: match.referees?.find((referee) => referee.type === "REFEREE")?.name.slice(0, 120) ?? null,
+    officials: match.referees?.length
+      ? match.referees.map((official) => ({ name: official.name, type: official.type, nationality: official.nationality ?? null }))
+      : null,
     psgScore: total(regularPsg, extraPsg),
     opponentScore: total(regularOpponent, extraOpponent),
     // Predictions are scored on the score after 90 minutes.
     regulationPsgScore: status === "finished" ? regularPsg : null,
     regulationOpponentScore: status === "finished" ? regularOpponent : null,
+    // Known from half-time on (null before, and for some competitions).
+    halfTimePsgScore: played ? halfTimePsg : null,
+    halfTimeOpponentScore: played ? halfTimeOpponent : null,
     penaltyPsgScore: penaltyPsg,
     penaltyOpponentScore: penaltyOpponent,
     status,

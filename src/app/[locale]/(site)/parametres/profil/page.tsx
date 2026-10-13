@@ -3,10 +3,12 @@ import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { ProfileForm } from "@/components/member-area/profile-form";
 import { AvatarUploader } from "@/components/settings/avatar-uploader";
+import { BirthDateForm, InterestsForm, PhotoConsentForm, TicketingForm } from "@/components/settings/member-profile-forms";
 import { NicknameForm } from "@/components/settings/nickname-form";
 import { displayName } from "@/lib/leaderboard";
 import { SettingsBlock, SettingsSection } from "@/components/settings/settings-section";
 import { getSettingsContext } from "@/lib/settings";
+import { SettingsSkeleton } from "@/components/skeletons";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Settings.sections");
@@ -41,6 +43,18 @@ async function Content() {
           <SettingsBlock title={t("nickname")} description={t("nicknameDescription")}>
             <NicknameForm initial={member.nickname ?? ""} fallback={displayName(member.firstName, member.lastName)} />
           </SettingsBlock>
+          <SettingsBlock title={t("memberProfile.birthDate")} description={t("memberProfile.birthDateDescription")}>
+            <BirthDateForm initial={member.birthDate} />
+          </SettingsBlock>
+          <SettingsBlock title={t("memberProfile.interests")} description={t("memberProfile.interestsDescription")}>
+            <InterestsForm initial={member.interests ?? []} />
+          </SettingsBlock>
+          <SettingsBlock title={t("memberProfile.ticketing")} description={t("memberProfile.ticketingDescription")}>
+            <TicketingForm initial={member.psgTicketing} />
+          </SettingsBlock>
+          <SettingsBlock title={t("memberProfile.photos")} description={t("memberProfile.photosDescription")}>
+            <PhotoConsentForm initial={member.photoConsent} />
+          </SettingsBlock>
         </>
       ) : null}
     </>
@@ -50,7 +64,7 @@ async function Content() {
 export default function ProfileSettingsPage() {
   return (
     <SettingsSection section="profile">
-      <Suspense fallback={<p className="py-6 text-sm text-muted-foreground">…</p>}>
+      <Suspense fallback={<SettingsSkeleton blocks={4} />}>
         <Content />
       </Suspense>
     </SettingsSection>
