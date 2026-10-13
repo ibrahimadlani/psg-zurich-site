@@ -9,6 +9,7 @@ import { ThemeSync } from "@/components/theme-sync";
 import { Toaster } from "@/components/ui/toaster";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
+import { publicSiteUrl } from "@/lib/seo";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -18,6 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Metadata");
   return {
+    metadataBase: new URL(publicSiteUrl()),
     title: { default: t("title"), template: `%s · ${t("title")}` },
     description: t("description"),
   };

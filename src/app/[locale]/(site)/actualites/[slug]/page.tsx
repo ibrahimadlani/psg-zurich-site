@@ -12,7 +12,17 @@ import { Link, redirect } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
 import { parseBlocks } from "@/lib/article-blocks";
 import { getCurrentMember } from "@/lib/members";
-import { articleReadingMinutes, authorName, blockReferences, getArticle, getNewsList, relatedArticles } from "@/lib/news";
+import {
+  articleReadingMinutes,
+  articleVersions,
+  authorName,
+  blockReferences,
+  getArticle,
+  getNewsList,
+  relatedArticles,
+  type Post,
+} from "@/lib/news";
+import { publicSiteUrl } from "@/lib/seo";
 
 // Slugs only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;
@@ -23,11 +33,50 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/actualit
   const found = await getArticle((await params).slug, (await getLocale()) as Locale);
   if (!found) return {};
   const { post } = found;
+  const versions = await articleVersions(post);
+  const languages = Object.fromEntries(versions.map((version) => [version.locale, `/${version.locale}/actualites/${version.slug}`]));
+  const original = versions.find((version) => version.locale === "fr") ?? versions[0];
   return {
     title: post.title,
     description: post.excerpt ?? undefined,
-    openGraph: { type: "article", title: post.title, description: post.excerpt ?? undefined, images: post.imageUrl ? [post.imageUrl] : undefined },
+    alternates: {
+      canonical: `/${post.locale}/actualites/${post.slug}`,
+      // Only when the article exists in more than one language.
+      languages: versions.length > 1 ? { ...languages, "x-default": languages[original!.locale]! } : undefined,
+    },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.excerpt ?? undefined,
+      locale: post.locale,
+      publishedTime: post.publishedAt?.toISOString(),
+      modifiedTime: post.updatedAt.toISOString(),
+      images: post.imageUrl ? [post.imageUrl] : undefined,
+    },
   };
+}
+
+/** NewsArticle structured data (search results), with absolute addresses. */
+function articleJsonLd(post: Post, author: string) {
+  const site = publicSiteUrl();
+  const absolute = (path: string) => (path.startsWith("http") ? path : `${site}${path}`);
+  const club = { "@type": "Organization", name: "PSG Zurich Supporters Club", url: site, logo: absolute("/brand/psg-crest.svg") };
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: post.title,
+    description: post.excerpt ?? undefined,
+    inLanguage: post.locale,
+    datePublished: post.publishedAt?.toISOString(),
+    // Never before the publication date (an article can be published without being edited).
+    dateModified: new Date(Math.max(post.updatedAt.getTime(), post.publishedAt?.getTime() ?? 0)).toISOString(),
+    image: post.imageUrl ? [absolute(post.imageUrl)] : undefined,
+    author: author === club.name ? club : { "@type": "Organization", name: author, url: site },
+    publisher: club,
+    mainEntityOfPage: absolute(`/${post.locale}/actualites/${post.slug}`),
+  };
+  // "<" escaped so the text can never close the script tag.
+  return { __html: JSON.stringify(data).replace(/</g, "\\u003c") };
 }
 
 const initials = (name: string) =>
@@ -63,6 +112,7 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
 
   return (
     <article className="flex flex-col gap-[clamp(28px,4vw,40px)]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={articleJsonLd(post, signature)} />
       <div className="mx-auto flex w-full max-w-[44rem] flex-col gap-5">
         <Link href="/actualites" className="inline-flex items-center gap-2 self-start text-sm text-muted-foreground hover:text-foreground">
           <ArrowLeft className="size-3.5" aria-hidden />

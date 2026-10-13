@@ -18,6 +18,12 @@ cp scripts/migrate.mjs "$out/scripts/migrate.mjs"
 rm -rf "$out/drizzle"
 cp -R drizzle "$out/drizzle"
 
+# Ready-made articles, imported as drafts on the server: `node scripts/import-articles.mjs`.
+cp scripts/import-articles.mjs "$out/scripts/import-articles.mjs"
+rm -rf "$out/content"
+mkdir -p "$out/content"
+cp -R content/articles "$out/content/articles"
+
 # Image optimization is disabled (next.config.ts): sharp's native binaries are dead weight.
 rm -rf "$out/node_modules/sharp" "$out/node_modules/@img"
 

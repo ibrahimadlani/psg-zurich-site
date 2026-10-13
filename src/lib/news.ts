@@ -51,6 +51,15 @@ export async function getArticle(slug: string, locale: Locale) {
   return { post, redirectTo: null };
 }
 
+/** Published versions of an article (itself and its translations), for hreflang links. */
+export async function articleVersions(post: Post) {
+  if (!post.translationGroup) return [{ locale: post.locale, slug: post.slug }];
+  return db
+    .select({ locale: posts.locale, slug: posts.slug })
+    .from(posts)
+    .where(and(eq(posts.translationGroup, post.translationGroup), visible()));
+}
+
 /** Same category first, then the latest; never the article itself. */
 export function relatedArticles(all: Post[], current: Post, count = 3) {
   const others = all.filter((post) => (post.translationGroup ?? post.id) !== (current.translationGroup ?? current.id));
