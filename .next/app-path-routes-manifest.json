@@ -78,6 +78,7 @@
   "/api/v1/members/[id]/route": "/api/v1/members/[id]",
   "/api/v1/members/route": "/api/v1/members",
   "/api/v1/membership/route": "/api/v1/membership",
+  "/api/v1/menu/route": "/api/v1/menu",
   "/api/v1/polls/route": "/api/v1/polls",
   "/api/v1/posts/[id]/route": "/api/v1/posts/[id]",
   "/api/v1/posts/route": "/api/v1/posts",

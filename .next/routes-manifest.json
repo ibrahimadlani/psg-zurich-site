@@ -1400,6 +1400,12 @@
       "namedRegex": "^/api/v1/membership(?:/)?$"
     },
     {
+      "page": "/api/v1/menu",
+      "regex": "^/api/v1/menu(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/menu(?:/)?$"
+    },
+    {
       "page": "/api/v1/polls",
       "regex": "^/api/v1/polls(?:/)?$",
       "routeKeys": {},

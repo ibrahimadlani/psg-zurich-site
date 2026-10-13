@@ -78,6 +78,7 @@
   "/api/v1/members/[id]/route": "app/api/v1/members/[id]/route.js",
   "/api/v1/members/route": "app/api/v1/members/route.js",
   "/api/v1/membership/route": "app/api/v1/membership/route.js",
+  "/api/v1/menu/route": "app/api/v1/menu/route.js",
   "/api/v1/polls/route": "app/api/v1/polls/route.js",
   "/api/v1/posts/[id]/route": "app/api/v1/posts/[id]/route.js",
   "/api/v1/posts/route": "app/api/v1/posts/route.js",
