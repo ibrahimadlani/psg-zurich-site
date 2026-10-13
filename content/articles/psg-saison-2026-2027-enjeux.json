@@ -1,0 +1,170 @@
+{
+  "category": "club",
+  "translations": {
+    "fr": {
+      "slug": "psg-saison-2026-2027-enjeux",
+      "byline": "Le comité",
+      "title": "PSG 2026-2027 : les enjeux d'une saison pour l'histoire",
+      "excerpt": "Double champion d'Europe, un PSG remodelé par le mercato vise un triplé que seul le Real Madrid a réussi. Effectif, calendrier, rivaux : les clés de la saison.",
+      "blocks": [
+        { "type": "paragraph", "text": "Le dernier club à avoir remporté trois Ligues des champions d'affilée est le Real Madrid, de 2016 à 2018. Le PSG, sacré à Munich en 2025 puis à Budapest le 30 mai 2026 face à Arsenal (1-1, 4 tirs au but à 3), peut l'égaler cette saison. Mais l'été a profondément changé l'attaque, et le début de saison en Ligue 1 a été laborieux. À la mi-octobre, voici où en est Paris et ce qui l'attend." },
+        { "type": "heading", "text": "Un mercato qui a redessiné l'attaque" },
+        { "type": "paragraph", "text": "Luis Enrique, sous contrat jusqu'en 2027, a perdu plusieurs joueurs offensifs. **Bradley Barcola** est parti à Liverpool, **Gonçalo Ramos** à l'AC Milan (environ 75 M€), **Ibrahim Mbaye** à Aston Villa, et **Randal Kolo Muani** comme **Lee Kang-in** ont quitté le club." },
+        { "type": "paragraph", "text": "En face, cinq recrues sont arrivées :" },
+        { "type": "list", "ordered": false, "items": [
+          "**Maghnes Akliouche**, en provenance de Monaco pour 50 M€ : un milieu offensif créatif, formé en France ;",
+          "**Ferran Torres**, venu du FC Barcelone, international espagnol capable de jouer sur tout le front de l'attaque ;",
+          "**Mika Godts**, ailier belge révélé à l'Ajax ;",
+          "**Lucas Digne**, latéral gauche expérimenté venu d'Aston Villa ;",
+          "**Alessandro Longoni**, gardien arrivé libre de l'AC Milan."
+        ] },
+        { "type": "paragraph", "text": "Le cœur du jeu, lui, n'a pas bougé : Vitinha, João Neves, Fabian Ruiz et Warren Zaïre-Emery sont toujours là, derrière un Ousmane Dembélé toujours aussi décisif. C'est la continuité choisie par le club : changer les finisseurs sans toucher à l'animation." },
+        { "type": "callout", "tone": "info", "text": "**L'homme en forme : Ferran Torres.** Il a déjà marqué sept buts, quatre en Ligue 1 et un triplé contre le Slovan Bratislava en Ligue des champions. C'est le meilleur départ parmi les recrues." },
+        { "type": "heading", "text": "Ligue 1 : un départ poussif, puis la réaction" },
+        { "type": "paragraph", "text": "Les premières semaines ont rappelé que le titre ne se gagne pas sur le nom. Après le Trophée des champions perdu contre Lens (0-1) et une Supercoupe d'Europe gagnée contre Aston Villa (2-1), Paris a concédé deux nuls (2-2 à Rennes puis à Lille) avant de tomber au Parc contre Monaco (1-2). Le PSG a ensuite enchaîné trois victoires : à Brest (1-0), au Vélodrome contre Marseille (2-1), puis contre Le Mans (3-1)." },
+        { "type": "paragraph", "text": "Après six journées, Paris est **6e avec 11 points**, à trois longueurs de Monaco, leader. Rien d'alarmant à ce stade de la saison, mais l'écart ne pardonnera plus en cas de nouveau faux pas. Le [classement de Ligue 1 est à suivre en direct sur le site](/fr/matchs)." },
+        { "type": "heading", "text": "Ligue des champions : un calendrier piégé" },
+        { "type": "paragraph", "text": "La phase de ligue a bien commencé, avec un 6-1 contre le Slovan Bratislava le 9 septembre (doublé de Dembélé, triplé de Ferran Torres). Le tirage n'a cependant pas épargné le double tenant du titre : Barcelone, Manchester City, la Roma et Aston Villa figurent parmi ses adversaires. Seuls les **huit premiers** du classement à 36 équipes se qualifient directement pour les huitièmes de finale, et les équipes classées de la 9e à la 24e place passent par des barrages. Les sept matchs restants :" },
+        { "type": "list", "ordered": false, "items": [
+          "**14 octobre** : Manchester City – PSG (Etihad Stadium)",
+          "**20 octobre** : PSG – FC Barcelone (Parc des Princes)",
+          "**3 novembre** : Villarreal – PSG (Estadio de la Cerámica)",
+          "**25 novembre** : PSG – AS Rome (Parc des Princes)",
+          "**8 décembre** : Aston Villa – PSG (Villa Park)",
+          "**20 janvier 2027** : Côme – PSG (stade Giuseppe-Sinigaglia)",
+          "**27 janvier 2027** : PSG – Galatasaray (Parc des Princes)"
+        ] },
+        { "type": "paragraph", "text": "La semaine du 14 au 20 octobre, avec Manchester City à l'extérieur puis Barcelone au Parc, dira beaucoup de la capacité de ce PSG remodelé à rivaliser avec les meilleurs." },
+        { "type": "heading", "text": "Les trois questions de la saison" },
+        { "type": "list", "ordered": true, "items": [
+          "**L'attaque nouvelle formule tiendra-t-elle la distance ?** Ferran Torres a vite trouvé ses marques. Il reste à voir si Akliouche et Godts s'imposent dans les grands rendez-vous, là où Barcola et Ramos apportaient de la profondeur.",
+          "**Le corps tiendra-t-il ?** Entre la Ligue 1, la Ligue des champions, la Coupe de France et la finale de la Coupe intercontinentale, prévue le 16 décembre 2026, le calendrier est chargé jusqu'à la trêve. La rotation de l'effectif sera décisive.",
+          "**Paris peut-il reprendre la Ligue 1 en main ?** Champion en titre, le PSG a laissé filer des points tôt. Le choc contre Lyon au Parc, le 25 octobre, puis le déplacement à Lens, le 3 janvier, serviront de tests."
+        ] },
+        { "type": "heading", "text": "Les dates à cocher d'ici la trêve" },
+        { "type": "list", "ordered": false, "items": [
+          "**Samedi 17 octobre** : Strasbourg – PSG (Ligue 1, 7e journée)",
+          "**Dimanche 25 octobre** : PSG – Lyon (Ligue 1, 8e journée)",
+          "**Samedi 7 novembre** : PSG – Troyes (Ligue 1, 10e journée)",
+          "**Samedi 28 novembre** : PSG – Lorient (Ligue 1, 12e journée)",
+          "**Mercredi 16 décembre** : finale de la Coupe intercontinentale",
+          "**Dimanche 3 janvier 2027** : Lens – PSG (Ligue 1, 15e journée)"
+        ] },
+        { "type": "paragraph", "text": "Les dates de Ligue 1 peuvent encore bouger : la Ligue fixe les jours et horaires définitifs quelques semaines à l'avance, en fonction des matchs européens." },
+        { "type": "heading", "text": "Vivre la saison depuis Zurich" },
+        { "type": "paragraph", "text": "Le [calendrier des matchs](/fr/matchs) du site est mis à jour automatiquement, avec les scores en direct et les classements de Ligue 1 et de Ligue des champions. Les membres du club peuvent aussi pronostiquer chaque match et se retrouver aux watch parties annoncées dans l'[agenda](/fr/evenements). Pour en faire partie : [adhérer au PSG Zurich Supporters Club](/fr/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Résultats et classement arrêtés au 13 octobre 2026, à la veille de Manchester City – PSG." }
+      ]
+    },
+    "de": {
+      "slug": "psg-saison-2026-27-analyse",
+      "byline": "Der Vorstand",
+      "title": "PSG 2026/27: Was in dieser historischen Saison auf dem Spiel steht",
+      "excerpt": "Zweifacher Champions-League-Sieger, umgebaute Offensive, holpriger Ligastart: Kader, Spielplan und die grossen Fragen der PSG-Saison 2026/27.",
+      "blocks": [
+        { "type": "paragraph", "text": "Der letzte Klub, der die Champions League dreimal in Folge gewann, war Real Madrid von 2016 bis 2018. PSG gewann 2025 in München und am 30. Mai 2026 in Budapest gegen Arsenal (1:1, 4:3 im Penaltyschiessen) und kann in dieser Saison gleichziehen. Doch der Sommer hat die Offensive stark verändert, und der Start in der Ligue 1 verlief harzig. Eine Standortbestimmung Mitte Oktober." },
+        { "type": "heading", "text": "Ein Transfersommer mit neuer Offensive" },
+        { "type": "paragraph", "text": "Trainer Luis Enrique, unter Vertrag bis 2027, hat mehrere Offensivspieler verloren. **Bradley Barcola** wechselte zu Liverpool, **Gonçalo Ramos** zur AC Milan (rund 75 Mio. €), **Ibrahim Mbaye** zu Aston Villa, und auch **Randal Kolo Muani** und **Lee Kang-in** sind weg." },
+        { "type": "paragraph", "text": "Dafür kamen fünf Neue:" },
+        { "type": "list", "ordered": false, "items": [
+          "**Maghnes Akliouche**, für 50 Mio. € von Monaco: ein kreativer Offensivmann aus französischer Ausbildung;",
+          "**Ferran Torres** vom FC Barcelona, spanischer Nationalspieler, der auf allen Offensivpositionen spielen kann;",
+          "**Mika Godts**, belgischer Flügel, bei Ajax gross geworden;",
+          "**Lucas Digne**, erfahrener Linksverteidiger von Aston Villa;",
+          "**Alessandro Longoni**, Goalie, ablösefrei von der AC Milan."
+        ] },
+        { "type": "paragraph", "text": "Das Herzstück blieb unangetastet: Vitinha, João Neves, Fabian Ruiz und Warren Zaïre-Emery sind weiterhin da, vor ihnen ein unverändert entscheidender Ousmane Dembélé. Der Klub setzt auf Kontinuität: neue Vollstrecker, aber das gleiche Spielsystem." },
+        { "type": "callout", "tone": "info", "text": "**Der Mann der Stunde: Ferran Torres.** Bereits sieben Tore, vier in der Ligue 1 und ein Hattrick gegen Slovan Bratislava in der Champions League. Kein anderer Neuzugang ist so gut gestartet." },
+        { "type": "heading", "text": "Ligue 1: harziger Start, dann die Reaktion" },
+        { "type": "paragraph", "text": "Die ersten Wochen zeigten, dass der Titel kein Selbstläufer ist. Nach der Niederlage in der Trophée des Champions gegen Lens (0:1) und dem Sieg im UEFA-Supercup gegen Aston Villa (2:1) spielte Paris zweimal 2:2, in Rennes und in Lille, und verlor dann zu Hause gegen Monaco (1:2). Danach folgten drei Siege: in Brest (1:0), im Vélodrome gegen Marseille (2:1) und gegen Le Mans (3:1)." },
+        { "type": "paragraph", "text": "Nach sechs Runden liegt PSG mit **11 Punkten auf Rang 6**, drei Zähler hinter Leader Monaco. Noch kein Grund zur Sorge, aber viel Spielraum für weitere Ausrutscher bleibt nicht. Die [Ligue-1-Tabelle gibt es live auf unserer Website](/de/matchs)." },
+        { "type": "heading", "text": "Champions League: ein tückisches Programm" },
+        { "type": "paragraph", "text": "Die Ligaphase begann mit einem 6:1 gegen Slovan Bratislava am 9. September (Doppelpack Dembélé, Hattrick Ferran Torres). Die Auslosung hat den Titelverteidiger aber nicht geschont: Barcelona, Manchester City, die Roma und Aston Villa stehen auf dem Programm. Nur die **ersten acht** der 36er-Tabelle ziehen direkt in die Achtelfinals ein, die Teams auf den Plätzen 9 bis 24 müssen in die Playoffs. Die restlichen sieben Spiele:" },
+        { "type": "list", "ordered": false, "items": [
+          "**14. Oktober**: Manchester City – PSG (Etihad Stadium)",
+          "**20. Oktober**: PSG – FC Barcelona (Parc des Princes)",
+          "**3. November**: Villarreal – PSG (Estadio de la Cerámica)",
+          "**25. November**: PSG – AS Roma (Parc des Princes)",
+          "**8. Dezember**: Aston Villa – PSG (Villa Park)",
+          "**20. Januar 2027**: Como – PSG (Stadio Giuseppe Sinigaglia)",
+          "**27. Januar 2027**: PSG – Galatasaray (Parc des Princes)"
+        ] },
+        { "type": "paragraph", "text": "Die Woche vom 14. bis 20. Oktober, auswärts bei Manchester City und dann zu Hause gegen Barcelona, wird zeigen, ob das umgebaute PSG mit den Besten mithalten kann." },
+        { "type": "heading", "text": "Die drei grossen Fragen" },
+        { "type": "list", "ordered": true, "items": [
+          "**Hält die neue Offensive durch?** Ferran Torres hat sich schnell eingefunden. Offen ist, ob sich Akliouche und Godts in den grossen Spielen durchsetzen, wo Barcola und Ramos für Tiefe sorgten.",
+          "**Macht der Körper mit?** Ligue 1, Champions League, Coupe de France und der Final des Interkontinental-Pokals am 16. Dezember 2026: Bis zur Winterpause ist der Kalender voll. Die Rotation wird entscheidend.",
+          "**Holt sich Paris die Ligue 1 zurück?** Der Meister hat früh Punkte liegen lassen. Das Spitzenspiel gegen Lyon im Parc am 25. Oktober und das Gastspiel in Lens am 3. Januar werden zu Gradmessern."
+        ] },
+        { "type": "heading", "text": "Termine bis zur Winterpause" },
+        { "type": "list", "ordered": false, "items": [
+          "**Samstag, 17. Oktober**: Strasbourg – PSG (Ligue 1, 7. Runde)",
+          "**Sonntag, 25. Oktober**: PSG – Lyon (Ligue 1, 8. Runde)",
+          "**Samstag, 7. November**: PSG – Troyes (Ligue 1, 10. Runde)",
+          "**Samstag, 28. November**: PSG – Lorient (Ligue 1, 12. Runde)",
+          "**Mittwoch, 16. Dezember**: Final des Interkontinental-Pokals",
+          "**Sonntag, 3. Januar 2027**: Lens – PSG (Ligue 1, 15. Runde)"
+        ] },
+        { "type": "paragraph", "text": "Die Ligue-1-Termine können sich noch verschieben: Die Liga legt Tage und Anstosszeiten einige Wochen im Voraus fest, abhängig von den Europacup-Spielen." },
+        { "type": "heading", "text": "Die Saison in Zürich erleben" },
+        { "type": "paragraph", "text": "Der [Spielplan](/de/matchs) auf unserer Website wird automatisch aktualisiert, mit Liveresultaten und den Tabellen der Ligue 1 und der Champions League. Mitglieder können zudem jedes Spiel tippen und sich an den Watch-Partys treffen, die in der [Agenda](/de/evenements) angekündigt werden. Dabei sein: [Mitglied im PSG Zurich Supporters Club werden](/de/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Resultate und Tabelle: Stand 13. Oktober 2026, am Vorabend von Manchester City – PSG." }
+      ]
+    },
+    "en": {
+      "slug": "psg-2026-27-season-preview",
+      "byline": "The committee",
+      "title": "PSG 2026-27: what is at stake in a season for the history books",
+      "excerpt": "Two-time European champions with a rebuilt attack chase a hat-trick only Real Madrid have managed. Squad, fixtures and the big questions of PSG's season.",
+      "blocks": [
+        { "type": "paragraph", "text": "The last club to win three Champions Leagues in a row was Real Madrid, from 2016 to 2018. PSG won in Munich in 2025 and in Budapest on 30 May 2026 against Arsenal (1-1, 4-3 on penalties), and can match them this season. But the summer reshaped the attack, and the Ligue 1 campaign started slowly. Here is where Paris stand in mid-October, and what lies ahead." },
+        { "type": "heading", "text": "A transfer window that redrew the attack" },
+        { "type": "paragraph", "text": "Luis Enrique, under contract until 2027, lost several attacking players. **Bradley Barcola** joined Liverpool, **Gonçalo Ramos** went to AC Milan (around €75m), **Ibrahim Mbaye** moved to Aston Villa, and **Randal Kolo Muani** and **Lee Kang-in** also left." },
+        { "type": "paragraph", "text": "Five players came in:" },
+        { "type": "list", "ordered": false, "items": [
+          "**Maghnes Akliouche**, from Monaco for €50m: a creative, French-trained attacking midfielder;",
+          "**Ferran Torres**, from FC Barcelona, a Spain international who can play anywhere across the front line;",
+          "**Mika Godts**, a Belgian winger who made his name at Ajax;",
+          "**Lucas Digne**, an experienced left-back from Aston Villa;",
+          "**Alessandro Longoni**, a goalkeeper signed on a free from AC Milan."
+        ] },
+        { "type": "paragraph", "text": "The core of the side is unchanged: Vitinha, João Neves, Fabian Ruiz and Warren Zaïre-Emery are all still there, behind an Ousmane Dembélé who remains as decisive as ever. The club chose continuity: new finishers, same system." },
+        { "type": "callout", "tone": "info", "text": "**Man in form: Ferran Torres.** Seven goals already, four in Ligue 1 and a hat-trick against Slovan Bratislava in the Champions League. No other new signing has started better." },
+        { "type": "heading", "text": "Ligue 1: a sluggish start, then a response" },
+        { "type": "paragraph", "text": "The opening weeks were a reminder that titles are not won on reputation. After losing the Trophée des Champions to Lens (0-1) and winning the UEFA Super Cup against Aston Villa (2-1), Paris drew 2-2 at Rennes and again at Lille, then lost at home to Monaco (1-2). Three wins followed: at Brest (1-0), against Marseille at the Vélodrome (2-1) and against Le Mans (3-1)." },
+        { "type": "paragraph", "text": "After six rounds PSG are **6th on 11 points**, three behind leaders Monaco. No cause for alarm yet, but there is little room left for further slips. You can follow the [live Ligue 1 table on our site](/en/matchs)." },
+        { "type": "heading", "text": "Champions League: a tricky draw" },
+        { "type": "paragraph", "text": "The league phase began with a 6-1 win over Slovan Bratislava on 9 September (a Dembélé double and a Ferran Torres hat-trick). The draw was not kind to the holders, though: Barcelona, Manchester City, Roma and Aston Villa are all on the list. Only the **top eight** in the 36-team table go straight into the round of 16, while teams from 9th to 24th go into the play-offs. The remaining seven games:" },
+        { "type": "list", "ordered": false, "items": [
+          "**14 October**: Manchester City v PSG (Etihad Stadium)",
+          "**20 October**: PSG v FC Barcelona (Parc des Princes)",
+          "**3 November**: Villarreal v PSG (Estadio de la Cerámica)",
+          "**25 November**: PSG v AS Roma (Parc des Princes)",
+          "**8 December**: Aston Villa v PSG (Villa Park)",
+          "**20 January 2027**: Como v PSG (Stadio Giuseppe Sinigaglia)",
+          "**27 January 2027**: PSG v Galatasaray (Parc des Princes)"
+        ] },
+        { "type": "paragraph", "text": "The week from 14 to 20 October, away at Manchester City and then Barcelona at home, will say a lot about whether this rebuilt PSG can live with the best." },
+        { "type": "heading", "text": "Three questions for the season" },
+        { "type": "list", "ordered": true, "items": [
+          "**Will the new-look attack last the distance?** Ferran Torres has settled quickly. The question is whether Akliouche and Godts can deliver in the big games, where Barcola and Ramos used to stretch defences.",
+          "**Will the legs hold up?** Ligue 1, the Champions League, the Coupe de France and the Intercontinental Cup final on 16 December 2026 make for a packed schedule until the winter break. Squad rotation will be decisive.",
+          "**Can Paris take back control of Ligue 1?** The champions dropped points early. Lyon at the Parc on 25 October and the trip to Lens on 3 January will be the real tests."
+        ] },
+        { "type": "heading", "text": "Dates for the diary until the winter break" },
+        { "type": "list", "ordered": false, "items": [
+          "**Saturday 17 October**: Strasbourg v PSG (Ligue 1, round 7)",
+          "**Sunday 25 October**: PSG v Lyon (Ligue 1, round 8)",
+          "**Saturday 7 November**: PSG v Troyes (Ligue 1, round 10)",
+          "**Saturday 28 November**: PSG v Lorient (Ligue 1, round 12)",
+          "**Wednesday 16 December**: Intercontinental Cup final",
+          "**Sunday 3 January 2027**: Lens v PSG (Ligue 1, round 15)"
+        ] },
+        { "type": "paragraph", "text": "Ligue 1 dates can still move: the league sets final days and kick-off times a few weeks ahead, around the European fixtures." },
+        { "type": "heading", "text": "Following the season from Zurich" },
+        { "type": "paragraph", "text": "The [fixture list](/en/matchs) on our site updates automatically, with live scores and the Ligue 1 and Champions League tables. Members can also predict every match and meet up at the watch parties announced in the [events calendar](/en/evenements). To be part of it, [join PSG Zurich Supporters Club](/en/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Results and table as of 13 October 2026, on the eve of Manchester City v PSG." }
+      ]
+    }
+  }
+}

@@ -83,5 +83,6 @@
   "/api/v1/posts/route": "/api/v1/posts",
   "/api/v1/subscribers/route": "/api/v1/subscribers",
   "/api/v1/users/role/route": "/api/v1/users/role",
-  "/icon.svg/route": "/icon.svg"
+  "/icon.svg/route": "/icon.svg",
+  "/sitemap.xml/route": "/sitemap.xml"
 }

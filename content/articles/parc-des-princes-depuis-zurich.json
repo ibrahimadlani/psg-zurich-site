@@ -1,0 +1,119 @@
+{
+  "category": "trips",
+  "translations": {
+    "fr": {
+      "slug": "voir-psg-parc-des-princes-depuis-zurich",
+      "byline": "Le comité",
+      "title": "Voir le PSG au Parc des Princes depuis Zurich : le guide complet",
+      "excerpt": "Billets, TGV Lyria, nuit sur place, accès au stade : tout ce qu'il faut savoir pour aller voir le PSG au Parc des Princes depuis Zurich, étape par étape.",
+      "blocks": [
+        { "type": "paragraph", "text": "Quatre heures de TGV séparent Zurich HB de la gare de Lyon. Pour un supporter parisien installé en Suisse, la distance n'est donc pas le vrai obstacle. Les deux difficultés sont ailleurs : **obtenir un billet** dans un stade rempli presque entièrement par ses abonnés, et **rentrer** après un match du soir, alors que le dernier train direct pour Zurich part en fin d'après-midi. Voici comment s'organiser, étape par étape." },
+        { "type": "heading", "text": "Combien de temps faut-il pour aller de Zurich au Parc des Princes ?" },
+        { "type": "paragraph", "text": "Le TGV Lyria relie Zurich HB à Paris gare de Lyon **sans changement en 4 h 04**. À la mi-octobre 2026, six trains directs partent chaque jour de Zurich, à 7 h 34, 9 h 34, 11 h 34, 13 h 34, 15 h 34 et 18 h 34. Les billets en classe Standard sont affichés **dès 47 CHF** l'aller simple, à condition de réserver tôt : les prix montent à mesure que le train se remplit." },
+        { "type": "paragraph", "text": "De la gare de Lyon, comptez environ 40 minutes de métro jusqu'au stade : **ligne 1** jusqu'à Franklin D. Roosevelt, puis **ligne 9** (direction Pont de Sèvres) jusqu'à **Porte de Saint-Cloud**, à cinq minutes à pied du Parc. La ligne 10 (Porte d'Auteuil) dessert aussi le stade, côté virage Auteuil. Au total, il faut prévoir environ cinq heures de porte à porte." },
+        { "type": "callout", "tone": "important", "text": "**Le piège du retour.** Le dernier TGV Lyria direct Paris → Zurich part vers 18 h 22. Les matchs du PSG se jouent le plus souvent le soir, à 21 h en Ligue 1 comme en Ligue des champions : il est impossible de rentrer le soir même en train direct. Réservez une nuit à Paris et le premier train du lendemain." },
+        { "type": "heading", "text": "Comment obtenir un billet pour un match au Parc ?" },
+        { "type": "paragraph", "text": "Le Parc des Princes compte environ 48 000 places, dont la très grande majorité est occupée par des abonnés. Selon les guides spécialisés, plus de 99 % d'entre eux ont renouvelé pour 2026-2027, et le club n'ouvre pas de nouveaux abonnements. Les places restantes sont vendues **match par match**, par vagues successives, quelques semaines avant chaque rencontre. Pour mettre toutes les chances de votre côté :" },
+        { "type": "list", "ordered": true, "items": [
+          "**Créez un compte MyParis** sur la billetterie officielle du club. La version gratuite vous prévient par notification de l'ouverture des ventes.",
+          "**Passez à MyParis Premium** si vous visez un match précis. L'adhésion coûte 19,90 € par saison (9,90 € à partir du 1er janvier) et donne la priorité d'achat la plus haute après les abonnés.",
+          "**Soyez connecté à l'heure d'ouverture.** Sur les grandes affiches, les places restantes partent en quelques minutes.",
+          "**Si c'est complet, utilisez TicketPlace**, la plateforme de revente officielle du club, où des abonnés remettent en vente les places qu'ils n'utilisent pas."
+        ] },
+        { "type": "callout", "tone": "important", "text": "Méfiez-vous des revendeurs non officiels. Les prix y sont souvent plusieurs fois supérieurs au tarif du club, sans garantie que le billet soit valable à l'entrée. Seules la billetterie officielle du PSG et TicketPlace offrent cette garantie." },
+        { "type": "heading", "text": "Quel budget prévoir ?" },
+        { "type": "list", "ordered": false, "items": [
+          "**Train** : dès 47 CHF par trajet en Standard en réservant tôt, nettement plus en dernière minute.",
+          "**Billet** : le tarif officiel varie selon l'adversaire et la catégorie de place ; les affiches de Ligue des champions sont les plus chères.",
+          "**MyParis Premium** : 19,90 € par saison, utile seulement si vous voulez la priorité.",
+          "**Nuit à Paris** : indispensable pour un match à 21 h. Le quartier de la gare de Lyon simplifie le départ du lendemain matin."
+        ] },
+        { "type": "heading", "text": "Le jour du match : horaires, contrôles et objets interdits" },
+        { "type": "paragraph", "text": "Arrivez tôt. Lors des grandes soirées, les portes ouvrent environ trois heures avant le coup d'envoi, et les contrôles prennent du temps : palpation par les stewards, parfois une seconde par la police, puis passage aux tourniquets. Les guides remis aux supporters adverses limitent les sacs au **format A4** et précisent qu'**il n'y a pas de consigne** au stade." },
+        { "type": "paragraph", "text": "Restent interdits : bouteilles en verre ou en plastique, canettes, parapluies longs (les modèles pliants sont tolérés), pointeurs laser, engins pyrotechniques et mâts de drapeau. Les règles peuvent varier d'un match à l'autre : vérifiez les consignes publiées par le club avant de partir." },
+        { "type": "heading", "text": "Et à l'extérieur ? Côme, le déplacement le plus proche de la Suisse" },
+        { "type": "paragraph", "text": "Le calendrier européen offre cette saison une occasion rare. Le **20 janvier 2027**, le PSG joue à **Côme**, pour la 7e journée de la phase de ligue de la Ligue des champions, au stade Giuseppe-Sinigaglia, au bord du lac. Depuis Zurich, la ville est à **moins de trois heures de train**, par le tunnel de base du Saint-Gothard, Lugano et Chiasso." },
+        { "type": "paragraph", "text": "Le stade est petit, et les places réservées aux supporters visiteurs sont attribuées par le PSG, en priorité à ses abonnés les plus fidèles. Aucune modalité de vente n'était publiée à la mi-octobre. Les offres qui circulent déjà sur des sites de revente, à plusieurs centaines d'euros, ne viennent ni du club ni de l'UEFA." },
+        { "type": "heading", "text": "Partir avec le club" },
+        { "type": "paragraph", "text": "Le PSG Zurich Supporters Club organise des déplacements, des watch parties et des soirées entre membres. Les sorties sont annoncées dans l'[agenda des événements](/fr/evenements), réservé aux membres, et le [calendrier des matchs](/fr/matchs) est tenu à jour avec les classements de Ligue 1 et de Ligue des champions. Pas encore membre ? [L'adhésion se fait en ligne](/fr/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Informations vérifiées au 13 octobre 2026. Les horaires, les tarifs et les règles d'accès changent régulièrement : confirmez-les sur [tgv-lyria.com](https://www.tgv-lyria.com) et sur la [billetterie officielle du PSG](https://billetterie.psg.fr) avant de réserver." }
+      ]
+    },
+    "de": {
+      "slug": "psg-parc-des-princes-anreise-ab-zuerich",
+      "byline": "Der Vorstand",
+      "title": "PSG im Parc des Princes: So klappt der Matchbesuch ab Zürich",
+      "excerpt": "Tickets, TGV Lyria, Übernachtung und Anreise zum Stadion: der Schritt-für-Schritt-Ratgeber für PSG-Fans aus Zürich, die ein Spiel in Paris erleben wollen.",
+      "blocks": [
+        { "type": "paragraph", "text": "Vier Stunden TGV trennen Zürich HB vom Pariser Gare de Lyon. Für PSG-Fans in der Schweiz ist die Distanz also nicht das eigentliche Problem. Schwierig sind zwei andere Dinge: **an ein Ticket zu kommen**, in einem Stadion, das fast nur mit Saisonkarteninhabern gefüllt ist, und **nach einem Abendspiel heimzukommen**, wenn der letzte Direktzug nach Zürich schon am späten Nachmittag abfährt. So planen Sie den Matchbesuch Schritt für Schritt." },
+        { "type": "heading", "text": "Wie lange dauert die Reise von Zürich zum Parc des Princes?" },
+        { "type": "paragraph", "text": "Der TGV Lyria fährt **ohne Umsteigen in 4 Stunden und 4 Minuten** von Zürich HB nach Paris Gare de Lyon. Mitte Oktober 2026 gibt es sechs Direktverbindungen pro Tag ab Zürich: 7.34, 9.34, 11.34, 13.34, 15.34 und 18.34 Uhr. Tickets in der Standardklasse gibt es **ab 47 CHF** pro Strecke, sofern man früh bucht. Je voller der Zug, desto teurer wird es." },
+        { "type": "paragraph", "text": "Vom Gare de Lyon sind es rund 40 Minuten mit der Metro: **Linie 1** bis Franklin D. Roosevelt, dann **Linie 9** (Richtung Pont de Sèvres) bis **Porte de Saint-Cloud**, fünf Gehminuten vom Stadion entfernt. Auch die Linie 10 (Porte d'Auteuil) hält beim Stadion, auf der Seite der Auteuil-Kurve. Insgesamt sollten Sie rund fünf Stunden von Tür zu Tür rechnen." },
+        { "type": "callout", "tone": "important", "text": "**Achtung bei der Rückreise.** Der letzte direkte TGV Lyria von Paris nach Zürich fährt gegen 18.22 Uhr ab. PSG spielt meist abends um 21 Uhr, in der Ligue 1 wie in der Champions League. Eine Rückfahrt mit dem Direktzug am selben Abend ist deshalb nicht möglich. Buchen Sie eine Übernachtung in Paris und den ersten Zug am nächsten Morgen." },
+        { "type": "heading", "text": "Wie kommt man an PSG-Tickets?" },
+        { "type": "paragraph", "text": "Der Parc des Princes fasst rund 48 000 Zuschauer, die meisten davon mit Saisonkarte. Laut Fachportalen haben über 99 Prozent der Abonnenten für 2026/27 verlängert, neue Saisonkarten verkauft der Klub derzeit nicht. Die übrigen Plätze werden **Spiel für Spiel** in mehreren Verkaufswellen angeboten, jeweils einige Wochen vor der Partie. So erhöhen Sie Ihre Chancen:" },
+        { "type": "list", "ordered": true, "items": [
+          "**Eröffnen Sie ein MyParis-Konto** auf der offiziellen Ticketseite des Klubs. Die Gratisversion meldet Ihnen per Push-Nachricht, wann der Verkauf startet.",
+          "**Wechseln Sie zu MyParis Premium**, wenn Sie ein bestimmtes Spiel sehen möchten. Die Mitgliedschaft kostet 19,90 € pro Saison (ab 1. Januar 9,90 €) und bringt nach den Abonnenten die höchste Kaufpriorität.",
+          "**Seien Sie beim Verkaufsstart eingeloggt.** Bei Topspielen sind die freien Plätze innert Minuten weg.",
+          "**Bei «ausverkauft» lohnt sich TicketPlace.** Auf der offiziellen Wiederverkaufsplattform des Klubs bieten Abonnenten ihre ungenutzten Plätze an."
+        ] },
+        { "type": "callout", "tone": "important", "text": "Vorsicht vor inoffiziellen Wiederverkäufern. Die Preise liegen dort oft um ein Vielfaches über dem Klubtarif, und niemand garantiert, dass das Ticket am Eingang gültig ist. Diese Garantie gibt es nur bei der offiziellen PSG-Ticketseite und bei TicketPlace." },
+        { "type": "heading", "text": "Mit welchen Kosten muss man rechnen?" },
+        { "type": "list", "ordered": false, "items": [
+          "**Zug**: ab 47 CHF pro Strecke in der Standardklasse bei früher Buchung, kurzfristig deutlich mehr.",
+          "**Matchticket**: Der offizielle Preis hängt vom Gegner und der Kategorie ab; Champions-League-Spiele sind am teuersten.",
+          "**MyParis Premium**: 19,90 € pro Saison, nur nötig, wenn Sie Kaufpriorität wollen.",
+          "**Hotel in Paris**: bei einem Spiel um 21 Uhr unverzichtbar. Eine Unterkunft beim Gare de Lyon vereinfacht die Abreise am Morgen."
+        ] },
+        { "type": "heading", "text": "Am Matchtag: Einlass, Kontrollen und verbotene Gegenstände" },
+        { "type": "paragraph", "text": "Kommen Sie früh. An grossen Abenden öffnen die Tore etwa drei Stunden vor Anpfiff, und die Kontrollen dauern: Abtasten durch Ordner, manchmal ein zweites Mal durch die Polizei, danach die Drehkreuze. Laut den Hinweisen für Gästefans sind nur **Taschen bis Grösse A4** erlaubt, und eine **Garderobe gibt es nicht**." },
+        { "type": "paragraph", "text": "Verboten sind unter anderem Glas- und Plastikflaschen, Dosen, lange Regenschirme (Knirpse sind erlaubt), Laserpointer, Pyrotechnik und Fahnenstangen. Die Regeln können je nach Spiel ändern. Prüfen Sie vor der Abreise die Hinweise des Klubs." },
+        { "type": "heading", "text": "Und auswärts? Como liegt fast vor der Haustür" },
+        { "type": "paragraph", "text": "Der Spielplan bietet diese Saison eine seltene Gelegenheit. Am **20. Januar 2027** spielt PSG am 7. Spieltag der Champions-League-Ligaphase in **Como**, im Stadio Giuseppe Sinigaglia direkt am See. Von Zürich aus ist Como mit dem Zug **in weniger als drei Stunden** erreichbar, durch den Gotthard-Basistunnel via Lugano und Chiasso." },
+        { "type": "paragraph", "text": "Das Stadion ist klein. Die Plätze im Gästesektor vergibt PSG selbst, vorrangig an seine treuesten Abonnenten. Mitte Oktober waren noch keine Verkaufsmodalitäten veröffentlicht. Die Angebote für mehrere hundert Euro, die bereits auf Wiederverkaufsportalen auftauchen, stammen weder vom Klub noch von der UEFA." },
+        { "type": "heading", "text": "Gemeinsam mit dem Klub reisen" },
+        { "type": "paragraph", "text": "Der PSG Zurich Supporters Club organisiert Auswärtsfahrten, Watch-Partys und Abende unter Mitgliedern. Alle Anlässe finden Sie in der [Agenda](/de/evenements), die den Mitgliedern vorbehalten ist. Der [Spielplan](/de/matchs) ist immer aktuell, inklusive Tabellen der Ligue 1 und der Champions League. Noch kein Mitglied? [Hier geht es zur Anmeldung](/de/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Stand: 13. Oktober 2026. Fahrpläne, Preise und Einlassregeln ändern sich regelmässig. Prüfen Sie sie vor der Buchung auf [tgv-lyria.com](https://www.tgv-lyria.com) und auf der [offiziellen PSG-Ticketseite](https://billetterie.psg.fr)." }
+      ]
+    },
+    "en": {
+      "slug": "psg-parc-des-princes-from-zurich-guide",
+      "byline": "The committee",
+      "title": "Seeing PSG at the Parc des Princes from Zurich: the complete guide",
+      "excerpt": "Tickets, TGV Lyria, an overnight stay and getting to the stadium: a step-by-step guide for Zurich-based fans who want to see PSG play at the Parc des Princes.",
+      "blocks": [
+        { "type": "paragraph", "text": "Four hours on the TGV separate Zurich HB from Paris Gare de Lyon. For a PSG fan living in Switzerland, distance is not really the problem. The two hard parts are **getting a ticket** for a stadium filled almost entirely by season-ticket holders, and **getting home** after an evening kick-off, when the last direct train to Zurich leaves in the late afternoon. Here is how to plan the trip, step by step." },
+        { "type": "heading", "text": "How long does it take to get from Zurich to the Parc des Princes?" },
+        { "type": "paragraph", "text": "TGV Lyria runs **direct from Zurich HB to Paris Gare de Lyon in 4 h 04**. As of mid-October 2026 there are six direct trains a day from Zurich, at 07:34, 09:34, 11:34, 13:34, 15:34 and 18:34. Standard-class tickets start **from CHF 47** one way if you book early, and prices rise as the train fills up." },
+        { "type": "paragraph", "text": "From Gare de Lyon, allow about 40 minutes on the metro: **line 1** to Franklin D. Roosevelt, then **line 9** (towards Pont de Sèvres) to **Porte de Saint-Cloud**, a five-minute walk from the ground. Line 10 (Porte d'Auteuil) also serves the stadium, on the Auteuil end. All in, plan for about five hours door to door." },
+        { "type": "callout", "tone": "important", "text": "**Watch out for the return trip.** The last direct TGV Lyria from Paris to Zurich leaves at around 18:22. PSG usually play at 9 pm, in Ligue 1 and in the Champions League, so you cannot get home the same night by direct train. Book a night in Paris and the first train the next morning." },
+        { "type": "heading", "text": "How do you get a ticket for a match at the Parc?" },
+        { "type": "paragraph", "text": "The Parc des Princes holds around 48,000 people, and the vast majority are season-ticket holders. According to specialist guides, more than 99% of them renewed for 2026-27, and the club is not selling new season tickets. The remaining seats go on sale **match by match**, in waves, a few weeks before each game. To give yourself the best chance:" },
+        { "type": "list", "ordered": true, "items": [
+          "**Create a MyParis account** on the club's official ticketing site. The free tier sends you a notification when sales open.",
+          "**Upgrade to MyParis Premium** if you are targeting a specific game. Membership costs €19.90 per season (€9.90 from 1 January) and gives you the highest buying priority after season-ticket holders.",
+          "**Be logged in when sales open.** For the big games, the remaining seats are gone within minutes.",
+          "**If it sells out, try TicketPlace**, the club's official resale platform, where season-ticket holders put up the seats they won't use."
+        ] },
+        { "type": "callout", "tone": "important", "text": "Beware of unofficial resellers. Their prices are often several times the club's, and nobody guarantees the ticket will scan at the gate. Only PSG's official ticketing site and TicketPlace offer that guarantee." },
+        { "type": "heading", "text": "What budget should you plan for?" },
+        { "type": "list", "ordered": false, "items": [
+          "**Train**: from CHF 47 each way in Standard class if you book early, much more at the last minute.",
+          "**Match ticket**: the official price depends on the opponent and the seat category; Champions League nights are the most expensive.",
+          "**MyParis Premium**: €19.90 per season, only worth it if you want priority.",
+          "**A night in Paris**: unavoidable for a 9 pm kick-off. Staying near Gare de Lyon makes the morning train easy."
+        ] },
+        { "type": "heading", "text": "On match day: gates, security checks and banned items" },
+        { "type": "paragraph", "text": "Arrive early. On big nights the gates open about three hours before kick-off, and security takes time: a pat-down by stewards, sometimes a second one by the police, then the turnstiles. Guidance issued to visiting fans limits bags to **A4 size** and points out that **there is no bag storage** at the ground." },
+        { "type": "paragraph", "text": "Banned items include glass or plastic bottles, cans, long umbrellas (small folding ones are fine), laser pointers, pyrotechnics and flagpoles. The rules can change from one match to the next, so check the club's instructions before you travel." },
+        { "type": "heading", "text": "And away games? Como, the closest trip from Switzerland" },
+        { "type": "paragraph", "text": "This season's European schedule offers a rare opportunity. On **20 January 2027**, PSG play in **Como** in matchday 7 of the Champions League league phase, at the lakeside Stadio Giuseppe Sinigaglia. From Zurich, Como is **under three hours by train**, through the Gotthard Base Tunnel via Lugano and Chiasso." },
+        { "type": "paragraph", "text": "The stadium is small, and PSG allocate the away-end seats themselves, giving priority to their most loyal season-ticket holders. No sales details had been published by mid-October. The offers of several hundred euros already appearing on resale sites come neither from the club nor from UEFA." },
+        { "type": "heading", "text": "Travel with the club" },
+        { "type": "paragraph", "text": "PSG Zurich Supporters Club organises away trips, watch parties and members' nights out. Every outing is listed in the members-only [events calendar](/en/evenements), and the [fixture list](/en/matchs) stays up to date, with the Ligue 1 and Champions League tables. Not a member yet? [You can join online](/en/adhesion)." },
+        { "type": "callout", "tone": "info", "text": "Information checked on 13 October 2026. Timetables, prices and entry rules change regularly, so confirm them on [tgv-lyria.com](https://www.tgv-lyria.com) and on [PSG's official ticketing site](https://billetterie.psg.fr) before booking." }
+      ]
+    }
+  }
+}

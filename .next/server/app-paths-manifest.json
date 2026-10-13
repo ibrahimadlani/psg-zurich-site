@@ -83,5 +83,6 @@
   "/api/v1/posts/route": "app/api/v1/posts/route.js",
   "/api/v1/subscribers/route": "app/api/v1/subscribers/route.js",
   "/api/v1/users/role/route": "app/api/v1/users/role/route.js",
-  "/icon.svg/route": "app/icon.svg/route.js"
+  "/icon.svg/route": "app/icon.svg/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }

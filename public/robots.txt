@@ -3,3 +3,5 @@ Disallow: /api/
 Disallow: /fr/admin
 Disallow: /en/admin
 Disallow: /de/admin
+
+Sitemap: https://psg-zurich.ch/sitemap.xml
