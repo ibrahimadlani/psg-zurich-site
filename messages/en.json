@@ -758,7 +758,22 @@
     "live": "Live",
     "nextMatch": "Next match",
     "lastMatch": "Last match",
-    "kickoff": "Kick-off"
+    "kickoff": "Kick-off",
+    "standings": {
+      "ligue1": "Ligue 1",
+      "championsLeague": "UCL",
+      "team": "Club",
+      "played": "P",
+      "playedLong": "Played",
+      "won": "W",
+      "draw": "D",
+      "lost": "L",
+      "goalDifference": "GD",
+      "goalDifferenceLong": "Goal difference",
+      "form": "Form",
+      "points": "Pts",
+      "unavailable": "Table unavailable right now."
+    }
   },
   "Predictions": {
     "closesIn": "Closes in {time}",

@@ -4,14 +4,17 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
+import { ChampionsLeagueLogo, Ligue1Logo } from "@/components/matches/competition-logos";
 import { LiveMatches } from "@/components/matches/live-matches";
 import { MatchRow, type PredictionView } from "@/components/matches/match-row";
 import { MatchTabs } from "@/components/matches/match-tabs";
 import { Scoreboard } from "@/components/matches/scoreboard";
+import { StandingsTable } from "@/components/matches/standings-table";
 import { db } from "@/db";
 import { events, predictions } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
+import { getStandings } from "@/lib/football/standings";
 import { closestMatch, getSeasonMatches } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 
@@ -23,7 +26,12 @@ export async function generateMetadata(): Promise<Metadata> {
 async function MatchesContent() {
   await connection();
   const t = await getTranslations("Matches");
-  const [season, member] = await Promise.all([getSeasonMatches(), getCurrentMember()]);
+  const [season, member, ligue1, championsLeague] = await Promise.all([
+    getSeasonMatches(),
+    getCurrentMember(),
+    getStandings("FL1"),
+    getStandings("CL"),
+  ]);
   const ids = season.map((match) => match.id);
 
   const [eventCounts, myPredictions] = await Promise.all([
@@ -99,6 +107,28 @@ async function MatchesContent() {
         labels={{ upcoming: t("upcoming"), results: t("results") }}
         upcoming={list(upcoming, t("noUpcoming"))}
         results={list(results, t("noResults"))}
+        extra={[
+          {
+            id: "ligue1",
+            label: (
+              <>
+                <Ligue1Logo className="size-3 text-current" />
+                {t("standings.ligue1")}
+              </>
+            ),
+            content: <StandingsTable rows={ligue1} />,
+          },
+          {
+            id: "championsLeague",
+            label: (
+              <>
+                <ChampionsLeagueLogo className="size-3.5 text-current dark:text-current" />
+                {t("standings.championsLeague")}
+              </>
+            ),
+            content: <StandingsTable rows={championsLeague} />,
+          },
+        ]}
       />
     </div>
   );

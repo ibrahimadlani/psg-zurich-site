@@ -758,7 +758,22 @@
     "live": "En direct",
     "nextMatch": "Prochain match",
     "lastMatch": "Dernier match",
-    "kickoff": "Coup d'envoi"
+    "kickoff": "Coup d'envoi",
+    "standings": {
+      "ligue1": "Ligue 1",
+      "championsLeague": "LDC",
+      "team": "Club",
+      "played": "J",
+      "playedLong": "Matchs joués",
+      "won": "G",
+      "draw": "N",
+      "lost": "P",
+      "goalDifference": "Diff.",
+      "goalDifferenceLong": "Différence de buts",
+      "form": "Forme",
+      "points": "Pts",
+      "unavailable": "Classement indisponible pour le moment."
+    }
   },
   "Predictions": {
     "closesIn": "Clôture dans {time}",
