@@ -87,6 +87,46 @@
       "namedRegex": "^/api/v1/events/(?<nxtPid>[^/]+?)/checkin(?:/)?$"
     },
     {
+      "page": "/api/v1/mailing/automations/[key]",
+      "regex": "^/api/v1/mailing/automations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPkey": "nxtPkey"
+      },
+      "namedRegex": "^/api/v1/mailing/automations/(?<nxtPkey>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/campaigns/[id]",
+      "regex": "^/api/v1/mailing/campaigns/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/mailing/campaigns/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/campaigns/[id]/audience",
+      "regex": "^/api/v1/mailing/campaigns/([^/]+?)/audience(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/mailing/campaigns/(?<nxtPid>[^/]+?)/audience(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/campaigns/[id]/send",
+      "regex": "^/api/v1/mailing/campaigns/([^/]+?)/send(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/mailing/campaigns/(?<nxtPid>[^/]+?)/send(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/jobs/[id]",
+      "regex": "^/api/v1/mailing/jobs/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/mailing/jobs/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/v1/matches/[id]",
       "regex": "^/api/v1/matches/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -381,6 +421,175 @@
         {
           "destination": "/[locale]/admin/actualites/[id].segments/$d$locale/!KHNpdGUp/admin/actualites/$d$id$segment",
           "source": "^/(?<nxtPlocale>[^/]+?)/admin/actualites/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/actualites/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/mailing",
+      "regex": "^/([^/]+?)/admin/mailing(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/mailing(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/mailing.segments/$d$locale/!KHNpdGUp/admin/mailing$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/mailing\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/mailing/automatisations/[key]",
+      "page": "/de/admin/mailing/automatisations/[key]",
+      "regex": "^/de/admin/mailing/automatisations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPkey": "nxtPkey"
+      },
+      "namedRegex": "^/de/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/admin/mailing/automatisations/[key].segments/$d$locale/!KHNpdGUp/admin/mailing/automatisations/$d$key$segment",
+          "source": "^/de/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/automatisations/\\$d\\$key(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPkey": "nxtPkey"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/mailing/automatisations/[key]",
+      "page": "/en/admin/mailing/automatisations/[key]",
+      "regex": "^/en/admin/mailing/automatisations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPkey": "nxtPkey"
+      },
+      "namedRegex": "^/en/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/admin/mailing/automatisations/[key].segments/$d$locale/!KHNpdGUp/admin/mailing/automatisations/$d$key$segment",
+          "source": "^/en/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/automatisations/\\$d\\$key(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPkey": "nxtPkey"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/mailing/automatisations/[key]",
+      "page": "/fr/admin/mailing/automatisations/[key]",
+      "regex": "^/fr/admin/mailing/automatisations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPkey": "nxtPkey"
+      },
+      "namedRegex": "^/fr/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/admin/mailing/automatisations/[key].segments/$d$locale/!KHNpdGUp/admin/mailing/automatisations/$d$key$segment",
+          "source": "^/fr/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/automatisations/\\$d\\$key(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPkey": "nxtPkey"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/mailing/automatisations/[key]",
+      "regex": "^/([^/]+?)/admin/mailing/automatisations/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPkey": "nxtPkey"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/mailing/automatisations/[key].segments/$d$locale/!KHNpdGUp/admin/mailing/automatisations/$d$key$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/mailing/automatisations/(?<nxtPkey>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/automatisations/\\$d\\$key(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPkey": "nxtPkey"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/mailing/campagnes/[id]",
+      "page": "/de/admin/mailing/campagnes/[id]",
+      "regex": "^/de/admin/mailing/campagnes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/de/admin/mailing/campagnes/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/admin/mailing/campagnes/[id].segments/$d$locale/!KHNpdGUp/admin/mailing/campagnes/$d$id$segment",
+          "source": "^/de/admin/mailing/campagnes/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/campagnes/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/mailing/campagnes/[id]",
+      "page": "/en/admin/mailing/campagnes/[id]",
+      "regex": "^/en/admin/mailing/campagnes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/en/admin/mailing/campagnes/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/admin/mailing/campagnes/[id].segments/$d$locale/!KHNpdGUp/admin/mailing/campagnes/$d$id$segment",
+          "source": "^/en/admin/mailing/campagnes/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/campagnes/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/mailing/campagnes/[id]",
+      "page": "/fr/admin/mailing/campagnes/[id]",
+      "regex": "^/fr/admin/mailing/campagnes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/fr/admin/mailing/campagnes/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/admin/mailing/campagnes/[id].segments/$d$locale/!KHNpdGUp/admin/mailing/campagnes/$d$id$segment",
+          "source": "^/fr/admin/mailing/campagnes/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/campagnes/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/mailing/campagnes/[id]",
+      "regex": "^/([^/]+?)/admin/mailing/campagnes/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/mailing/campagnes/(?<nxtPid>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/mailing/campagnes/[id].segments/$d$locale/!KHNpdGUp/admin/mailing/campagnes/$d$id$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/mailing/campagnes/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/admin/mailing/campagnes/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale",
             "nxtPid": "nxtPid"
@@ -1081,6 +1290,42 @@
       "regex": "^/api/v1/events(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/events(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/campaigns",
+      "regex": "^/api/v1/mailing/campaigns(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/mailing/campaigns(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/preview",
+      "regex": "^/api/v1/mailing/preview(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/mailing/preview(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/run",
+      "regex": "^/api/v1/mailing/run(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/mailing/run(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/settings",
+      "regex": "^/api/v1/mailing/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/mailing/settings(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/templates",
+      "regex": "^/api/v1/mailing/templates(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/mailing/templates(?:/)?$"
+    },
+    {
+      "page": "/api/v1/mailing/test",
+      "regex": "^/api/v1/mailing/test(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/mailing/test(?:/)?$"
     },
     {
       "page": "/api/v1/matches",

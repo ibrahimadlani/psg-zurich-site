@@ -1,7 +1,7 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/[locale]/(site)/mentions-legales/page.js")
 R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_1p_m2b3ns0l0i.js")
 R.c("server/chunks/ssr/node_modules_cn_dist_index_166wukavr11of.js")
-R.c("server/chunks/ssr/[root-of-the-server]__09yzzyil_rzmk._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0jnz1kyygi3ma._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__01pprqwppej2f._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0janj0i6dqko7._.js")
 R.c("server/chunks/ssr/src_components_legal_legal-page_tsx_03oy77rnbh5tx._.js")

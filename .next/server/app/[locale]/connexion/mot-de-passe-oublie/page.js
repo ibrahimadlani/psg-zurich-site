@@ -1,5 +1,5 @@
 var R=require("../../../../chunks/ssr/[turbopack]_runtime.js")("server/app/[locale]/connexion/mot-de-passe-oublie/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__1p20-q8y3ox-i._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__07q6_ur644m3f._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_0xogc2cff_255.js")
 R.c("server/chunks/ssr/[root-of-the-server]__01pprqwppej2f._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0janj0i6dqko7._.js")

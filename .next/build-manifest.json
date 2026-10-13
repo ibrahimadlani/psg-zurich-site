@@ -7,9 +7,9 @@
     "static/chunks/0cz1d0mv5g_q7.js"
   ],
   "lowPriorityFiles": [
-    "static/ukZwNfVLg82O8XbVTb0R7/_buildManifest.js",
-    "static/ukZwNfVLg82O8XbVTb0R7/_ssgManifest.js",
-    "static/ukZwNfVLg82O8XbVTb0R7/_clientMiddlewareManifest.js"
+    "static/VoA1VhZ0w4RpUfpMCBi2R/_buildManifest.js",
+    "static/VoA1VhZ0w4RpUfpMCBi2R/_ssgManifest.js",
+    "static/VoA1VhZ0w4RpUfpMCBi2R/_clientMiddlewareManifest.js"
   ],
   "rootMainFiles": [
     "static/chunks/1ut8uu7hk2mga.js",
@@ -100,6 +100,36 @@
       ]
     },
     "/[locale]/(site)/admin/actualites/nouveau/page": {
+      "otherChunks": [
+        "static/chunks/1ut8uu7hk2mga.js",
+        "static/chunks/0_ay46c3hye7k.js",
+        "static/chunks/0e2b3w4vqg-ps.js"
+      ],
+      "runtimeModuleIds": [
+        494553
+      ]
+    },
+    "/[locale]/(site)/admin/mailing/page": {
+      "otherChunks": [
+        "static/chunks/1ut8uu7hk2mga.js",
+        "static/chunks/0_ay46c3hye7k.js",
+        "static/chunks/0e2b3w4vqg-ps.js"
+      ],
+      "runtimeModuleIds": [
+        494553
+      ]
+    },
+    "/[locale]/(site)/admin/mailing/automatisations/[key]/page": {
+      "otherChunks": [
+        "static/chunks/1ut8uu7hk2mga.js",
+        "static/chunks/0_ay46c3hye7k.js",
+        "static/chunks/0e2b3w4vqg-ps.js"
+      ],
+      "runtimeModuleIds": [
+        494553
+      ]
+    },
+    "/[locale]/(site)/admin/mailing/campagnes/[id]/page": {
       "otherChunks": [
         "static/chunks/1ut8uu7hk2mga.js",
         "static/chunks/0_ay46c3hye7k.js",
