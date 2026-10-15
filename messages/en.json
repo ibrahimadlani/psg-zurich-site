@@ -1042,7 +1042,26 @@
     "waitlistedBanner": "You're on the waitlist",
     "leaveWaitlist": "Leave the waitlist",
     "waitlistHint": "It's full: you'll get an email if a place frees up.",
-    "countOf": "{count} registered / {capacity}"
+    "countOf": "{count} registered / {capacity}",
+    "nextUp": "Next event",
+    "withWho": "Who's going?",
+    "nobodyYet": "Nobody yet: be the first!",
+    "you": "you",
+    "returnTrip": "Return",
+    "hideMap": "Hide the map",
+    "others": "{count, plural, one {and # other} other {and # others}}",
+    "confirmation": {
+      "registeredLabel": "You're in",
+      "seeYou": "See you {when}!",
+      "seeYouTomorrow": "See you tomorrow!",
+      "seeYouToday": "See you later!",
+      "registeredBody": "Your place is booked. Show <card>your member card</card> at the door.",
+      "waitlistedLabel": "Waiting list",
+      "waitlistedTitle": "Waiting for a place",
+      "waitlistedBody": "We'll email you as soon as a place opens up.",
+      "seeYouOn": "See you on {when}!"
+    },
+    "backToMatch": "Back to the match"
   },
   "AdminEvents": {
     "created": "Event created.",

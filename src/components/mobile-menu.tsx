@@ -4,6 +4,7 @@ import { LayoutDashboard, LogOut, Monitor, Moon, QrCode, Settings, Sun, Target }
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
+import { PsgBanner } from "@/components/psg-banner";
 import { useNavItems } from "@/components/main-nav";
 import { readThemePreference, setThemePreference, type ThemePreference } from "@/components/theme-toggle";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -284,15 +285,8 @@ function Spine({
         className="pointer-events-none absolute w-px origin-top animate-spine-draw bg-foreground/15 motion-reduce:animate-none"
         style={{ left: spine.x - 0.5, top: start, height: Math.max(0, end - start) }}
       />
-      <span
-        aria-hidden
-        className={cn(
-          "pointer-events-none absolute top-0 h-7 w-2.5 rounded-[2px] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none",
-          // Blue, white, red, white, blue: the band of the Hechter shirt.
-          "[background:linear-gradient(90deg,var(--color-psg-blue)_0_26%,#fff_26%_36%,var(--color-psg-red)_36%_64%,#fff_64%_74%,var(--color-psg-blue)_74%)]",
-          // A hairline keeps the white stripes and blue edges visible on both themes.
-          "shadow-[0_0_0_0.5px_rgb(0_0_0/0.12)] dark:shadow-[0_0_0_0.5px_rgb(255_255_255/0.35)]",
-        )}
+      <PsgBanner
+        className="pointer-events-none absolute top-0 h-7 w-2.5 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
         style={{
           left: spine.x - 5,
           transform: `translateY(${y - 14}px) scaleY(${settled && to != null ? 1 : 0.4})`,

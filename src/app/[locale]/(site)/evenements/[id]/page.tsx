@@ -1,26 +1,15 @@
 import { eq } from "drizzle-orm";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
-import { getLocale, getTranslations } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { connection } from "next/server";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
-import { EventMapCard } from "@/components/events/event-map-card";
-import { EventRegistration } from "@/components/events/event-registration";
-import { MatchMiniCard } from "@/components/matches/match-mini-card";
-import { PredictionCard, type Access } from "@/components/matches/prediction-card";
+import { EventDetail } from "@/components/events/event-detail";
+import { EventDetailSkeleton } from "@/components/skeletons";
 import { db } from "@/db";
 import { events } from "@/db/schema";
-import { Link, redirect } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
-import { eventPhase, getEventsWithAttendance } from "@/lib/events";
-import { mapsLink } from "@/lib/google-maps";
-import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
-import { getSession } from "@/lib/permissions";
-import { EventDetailSkeleton } from "@/components/skeletons";
-import { EventWhen } from "@/components/events/event-when";
-import { HumanDate } from "@/components/human-date";
 
 // Event ids only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;
@@ -33,143 +22,22 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/evenemen
   return { title: event?.title, robots: { index: false } };
 }
 
-// Phones: label + action on the first line, the value full width below. From sm: three columns.
-const rowClass =
-  "grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-2 border-b py-4 sm:grid-cols-[96px_minmax(0,1fr)_auto] sm:gap-y-1";
-const valueClass = "col-span-2 row-start-2 text-base sm:col-span-1 sm:row-start-auto";
-const sideClass = "col-start-2 row-start-1 justify-self-end sm:col-start-auto sm:row-start-auto";
-const termClass = "font-wide text-[10px] font-semibold tracking-[0.06em] text-muted-foreground uppercase";
-const actionClass = `${sideClass} border-b text-[13px] whitespace-nowrap text-muted-foreground transition-colors hover:border-psg-red hover:text-foreground`;
-
-async function EventContent({ params }: { params: Promise<{ id: string }> }) {
-  await connection();
-  const { id } = await params;
-  const t = await getTranslations("Events");
-  const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
-  const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
-
-  // Events are for members whose fee is paid: anyone else lands on the showcase.
-  if (!isDuesPaid(member)) redirect({ href: "/evenements", locale: await getLocale() });
-  const [event] = await getEventsWithAttendance(eq(events.id, id), member?.id ?? null);
-  if (!event) notFound();
-  const match = event.matchId ? await getMatch(event.matchId) : null;
-
-  const full = event.capacity !== null && event.registered >= event.capacity;
-  const left = event.capacity === null ? null : Math.max(0, event.capacity - event.registered);
-  const place = event.address || event.location;
-  const mapUrl = place ? mapsLink(place, event.placeId) : null;
-  const located = event.latitude !== null && event.longitude !== null;
-
-  return (
-    <div className="mt-[clamp(24px,4vw,36px)] flex flex-wrap items-start gap-[clamp(32px,5vw,56px)]">
-      <div className="flex min-w-0 flex-[1_1_520px] flex-col gap-10">
-        <header className="flex flex-col gap-4">
-          <div className="flex flex-wrap items-center gap-2.5">
-            <span className="inline-flex h-[22px] items-center rounded-full bg-psg-red px-[9px] font-wide text-[9px] font-semibold tracking-[0.08em] text-white uppercase">
-              {t(`types.${event.type}`)}
-            </span>
-            <span className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-              <HumanDate date={event.startsAt} absolute={{ weekday: "short", day: "numeric", month: "short" }} />
-            </span>
-          </div>
-          {/* Long titles: smaller on phones, balanced lines, words may wrap rather than overflow. */}
-          <h1 className="font-narrow text-[length:clamp(34px,7vw,60px)] leading-[0.92] font-extrabold tracking-[-0.01em] text-balance [overflow-wrap:anywhere] hyphens-auto uppercase italic">
-            {event.title}
-          </h1>
-        </header>
-
-        <dl className="flex flex-col border-t">
-          <div className={rowClass}>
-            <dt className={termClass}>{t("when")}</dt>
-            <dd className={valueClass}>
-              <EventWhen startsAt={event.startsAt} endsAt={event.endsAt} />
-            </dd>
-            <a href={`/api/calendar/event/${event.id}`} className={actionClass}>
-              {t("addToCalendar")}
-            </a>
-          </div>
-          {place ? (
-            <div className={rowClass}>
-              <dt className={termClass}>{t("where")}</dt>
-              <dd className={valueClass}>
-                {event.location ?? event.address}
-                {event.location && event.address ? (
-                  <span className="mt-0.5 block text-[14px] text-muted-foreground">{event.address}</span>
-                ) : null}
-              </dd>
-              {mapUrl ? (
-                <a href={mapUrl} target="_blank" rel="noreferrer" className={actionClass}>
-                  {t("openMap")}
-                </a>
-              ) : null}
-            </div>
-          ) : null}
-          <div className={`${rowClass} sm:items-center`}>
-            <dt className={termClass}>{t("places")}</dt>
-            <dd className={`${valueClass} flex max-w-60 flex-col gap-2`}>
-              <span className="text-base">
-                {left === null ? t("registeredCount", { count: event.registered }) : full ? t("full") : t("placesLeft", { count: left })}
-              </span>
-              {event.capacity !== null ? (
-                <span className="block h-[3px] overflow-hidden rounded-[2px] bg-border">
-                  <span
-                    className="block h-full bg-segment transition-[width] duration-400"
-                    style={{ width: `${Math.max(2, Math.min(100, (event.registered / event.capacity) * 100))}%` }}
-                  />
-                </span>
-              ) : null}
-            </dd>
-            <span className={`${sideClass} text-[13px] whitespace-nowrap text-muted-foreground`}>
-              {event.capacity !== null
-                ? t("countOf", { count: event.registered, capacity: event.capacity })
-                : t("registeredCount", { count: event.registered })}
-            </span>
-          </div>
-        </dl>
-
-        <EventRegistration eventId={event.id} status={event.myStatus} full={full} access={access} phase={eventPhase(event)} />
-
-        {event.description ? (
-          <section className="flex flex-col gap-3">
-            <h2 className={termClass}>{t("about")}</h2>
-            <p className="text-lg leading-normal text-pretty whitespace-pre-line">{event.description}</p>
-          </section>
-        ) : null}
-      </div>
-
-      {match || located ? (
-        <aside className="flex max-w-full min-w-0 flex-[1_1_300px] flex-col gap-4 lg:sticky lg:top-6">
-          {located ? (
-            <EventMapCard
-              location={event.location}
-              address={event.address}
-              placeId={event.placeId}
-              latitude={event.latitude!}
-              longitude={event.longitude!}
-            />
-          ) : null}
-          {match ? (
-            <>
-              <MatchMiniCard match={match} />
-              <PredictionCard match={match} access={access} memberId={member?.id ?? null} />
-            </>
-          ) : null}
-        </aside>
-      ) : null}
-    </div>
-  );
-}
-
 export default async function EventPage({ params }: PageProps<"/[locale]/evenements/[id]">) {
   const t = await getTranslations("Events");
+  const { id } = await params;
   return (
     <div>
-      <Link href="/evenements" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-        <ArrowLeft className="size-3.5" aria-hidden />
+      {/* Phones only: on a computer the list stays on the left. */}
+      {/* Same discreet label as "Prochain événement" in the list. */}
+      <Link
+        href="/evenements"
+        className="inline-flex items-center gap-2 font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase transition-colors hover:text-foreground lg:hidden"
+      >
+        <ArrowLeft className="size-3" aria-hidden />
         {t("backToEvents")}
       </Link>
       <Suspense fallback={<EventDetailSkeleton />}>
-        <EventContent params={params} />
+        <EventDetail id={id} />
       </Suspense>
     </div>
   );

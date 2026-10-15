@@ -2,48 +2,52 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
-import { EventCard } from "@/components/events/event-card";
+import { EventDetail } from "@/components/events/event-detail";
 import { EventsShowcase } from "@/components/events/events-showcase";
 import { PageHeader } from "@/components/page-header";
+import { EventDetailSkeleton } from "@/components/skeletons";
+import { db } from "@/db";
+import { events } from "@/db/schema";
 import { eventAccess } from "@/lib/dues";
-import { getEventsWithAttendance, upcomingEvents } from "@/lib/events";
+import { upcomingEvents } from "@/lib/events";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
-import { EventsSkeleton } from "@/components/skeletons";
+import { asc } from "drizzle-orm";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Events");
   return { title: t("title"), description: t("description") };
 }
 
+/**
+ * Members whose fee is paid: the list is in the layout; here, on a computer, the next event
+ * opens on the right. Everyone else: the illustrated showcase.
+ */
 async function EventsContent() {
   await connection();
   const t = await getTranslations("Events");
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
-  // The programme is for members whose fee is paid; everyone else gets the illustrated showcase.
   const access = eventAccess(Boolean(session), member);
-  if (access !== "full") return <EventsShowcase access={access} />;
-  const visible = await getEventsWithAttendance(upcomingEvents(), member?.id ?? null);
-
-  return visible.length > 0 ? (
-    <div className="space-y-3">
-      {visible.map((event) => (
-        <EventCard key={event.id} event={event} access="member" />
-      ))}
-    </div>
-  ) : (
-    <p className="rounded-[10px] border border-dashed p-8 text-center text-sm text-muted-foreground">{t("empty")}</p>
-  );
+  if (access !== "full") {
+    return (
+      <>
+        <PageHeader title={t("title")} description={t("description")} />
+        <EventsShowcase access={access} />
+      </>
+    );
+  }
+  const [next] = await db.select({ id: events.id }).from(events).where(upcomingEvents()).orderBy(asc(events.startsAt)).limit(1);
+  return next ? (
+    <Suspense fallback={<EventDetailSkeleton />}>
+      <EventDetail id={next.id} />
+    </Suspense>
+  ) : null;
 }
 
-export default async function EventsPage() {
-  const t = await getTranslations("Events");
+export default function EventsPage() {
   return (
-    <>
-      <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<EventsSkeleton />}>
-        <EventsContent />
-      </Suspense>
-    </>
+    <Suspense fallback={<EventDetailSkeleton />}>
+      <EventsContent />
+    </Suspense>
   );
 }

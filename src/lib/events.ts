@@ -1,7 +1,8 @@
 import "server-only";
 import { and, asc, count, eq, gte, inArray, type SQL } from "drizzle-orm";
 import { db, type Transaction } from "@/db";
-import { attendance, events, matches } from "@/db/schema";
+import { attendance, events, matches, members, user } from "@/db/schema";
+import { displayName } from "@/lib/leaderboard";
 
 /** Registered (not waitlisted) sign-ups of an event. */
 export async function registeredCount(eventId: string, executor: Transaction | typeof db = db) {
@@ -39,7 +40,13 @@ export async function getEventsWithAttendance(where: SQL | undefined, memberId: 
   const rows = await db
     .select({
       event: events,
-      match: { id: matches.id, opponent: matches.opponent, venue: matches.venue, kickoffAt: matches.kickoffAt },
+      match: {
+        id: matches.id,
+        opponent: matches.opponent,
+        opponentLogo: matches.opponentLogo,
+        venue: matches.venue,
+        kickoffAt: matches.kickoffAt,
+      },
     })
     .from(events)
     .leftJoin(matches, eq(matches.id, events.matchId))
@@ -81,3 +88,25 @@ export function eventPhase(event: { startsAt: Date; endsAt: Date | null }) {
 
 /** Upcoming events (not started yet). */
 export const upcomingEvents = () => gte(events.startsAt, new Date());
+
+/**
+ * Members registered for an event, in sign-up order, as other members see them: the
+ * leaderboard name ("Prénom N." or nickname) and the profile picture.
+ */
+export async function eventParticipants(eventId: string) {
+  const rows = await db
+    .select({
+      memberId: members.id,
+      firstName: members.firstName,
+      lastName: members.lastName,
+      nickname: members.nickname,
+      email: user.email,
+      image: user.image,
+    })
+    .from(attendance)
+    .innerJoin(members, eq(members.id, attendance.memberId))
+    .innerJoin(user, eq(user.id, members.userId))
+    .where(and(eq(attendance.eventId, eventId), eq(attendance.status, "registered")))
+    .orderBy(asc(attendance.createdAt));
+  return rows.map((row) => ({ ...row, name: displayName(row.firstName, row.lastName, row.nickname) }));
+}

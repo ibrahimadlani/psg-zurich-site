@@ -45,16 +45,24 @@ export async function PredictionCard(props: Props) {
   );
 }
 
-async function PredictionCardBody({
+/** The card alone (no section title), e.g. as the back face of the event page's match card. */
+export async function PredictionCardBody({
   match,
   access,
   memberId,
+  bare = false,
+  header,
 }: {
   match: Match;
   access: Access;
   memberId: string | null;
+  /** Content only, without the card's frame (the frame belongs to the caller). */
+  bare?: boolean;
+  /** First row inside the card (e.g. a back button). */
+  header?: React.ReactNode;
 }) {
   const tp = await getTranslations("Predictions");
+  const frame = bare ? "flex flex-col gap-5" : asideCard;
   const open = isPredictionOpen(match);
   const [[mine], stats] = await Promise.all([
     access === "member" && memberId
@@ -73,11 +81,13 @@ async function PredictionCardBody({
 
   if (open && access === "member") {
     return (
-      <div className={asideCard}>
+      <div className={frame}>
+        {header}
         <PredictionForm
           matchId={match.id}
           psgHome={match.venue !== "away"}
           opponent={match.opponent}
+          opponentLogo={match.opponentLogo}
           initial={
             mine
               ? { psgScore: mine.psgScore, opponentScore: mine.opponentScore }
@@ -96,13 +106,14 @@ async function PredictionCardBody({
         access={access === "guest" ? "guest" : "pending"}
         feature="predictions"
         next={`/matchs/${match.id}`}
-        preview={<PredictionPreview opponent={match.opponent} psgHome={match.venue !== "away"} />}
+        preview={<PredictionPreview opponent={match.opponent} opponentLogo={match.opponentLogo} psgHome={match.venue !== "away"} />}
       />
     );
   }
 
   return (
-    <div className={asideCard}>
+    <div className={frame}>
+      {header}
       <div className="flex flex-col gap-1.5">
         <p className="text-sm leading-normal text-pretty text-muted-foreground">
           {open

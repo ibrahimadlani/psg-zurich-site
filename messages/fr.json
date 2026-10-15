@@ -1042,7 +1042,26 @@
     "waitlistedBanner": "Vous êtes sur la liste d'attente",
     "leaveWaitlist": "Quitter la liste d'attente",
     "waitlistHint": "C'est complet : vous serez prévenu par e-mail si une place se libère.",
-    "countOf": "{count, plural, =0 {0 inscrit} one {# inscrit} other {# inscrits}} / {capacity}"
+    "countOf": "{count, plural, =0 {0 inscrit} one {# inscrit} other {# inscrits}} / {capacity}",
+    "nextUp": "Prochain événement",
+    "withWho": "Avec qui ?",
+    "nobodyYet": "Personne pour l'instant : soyez le premier !",
+    "you": "vous",
+    "returnTrip": "Retour",
+    "hideMap": "Masquer la carte",
+    "others": "{count, plural, one {et # autre participant} other {et # autres participants}}",
+    "confirmation": {
+      "registeredLabel": "Inscription confirmée",
+      "seeYou": "À {when} !",
+      "seeYouTomorrow": "À demain !",
+      "seeYouToday": "À tout à l'heure !",
+      "registeredBody": "Votre place est réservée. Présentez <card>votre carte de membre</card> à l'entrée.",
+      "waitlistedLabel": "Liste d'attente",
+      "waitlistedTitle": "En attente d'une place",
+      "waitlistedBody": "Nous vous écrivons dès qu'une place se libère.",
+      "seeYouOn": "Rendez-vous le {when} !"
+    },
+    "backToMatch": "Retour au match"
   },
   "AdminEvents": {
     "created": "Événement créé.",

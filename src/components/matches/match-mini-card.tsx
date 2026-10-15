@@ -7,20 +7,32 @@ import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-/** Compact scoreboard for an aside: competition, crests, kick-off time (or score), calendar link. */
-export function MatchMiniCard({ match }: { match: MatchView }) {
+/** Compact scoreboard: competition, crests, kick-off time (or score), calendar link (and `action` beside it). */
+export function MatchMiniCard({
+  match,
+  action,
+  bare = false,
+}: {
+  match: MatchView;
+  action?: React.ReactNode;
+  /** Content only, without the card's frame (the frame belongs to the caller). */
+  bare?: boolean;
+}) {
   const t = useTranslations("Matches");
   const format = useFormatter();
   const [home, away] = sides(match);
   const played = match.status === "live" || match.status === "finished";
 
   return (
-    <section className={cn(asideCard, "p-5")}>
+    <section className={bare ? "flex flex-col gap-5" : cn(asideCard, "p-5")}>
       <div className="flex items-center justify-between gap-3">
         <CompetitionLabel match={match} className="text-[13px]" />
-        <a href={`/api/calendar/match/${match.id}`} aria-label={t("addToCalendar")} className="inline-flex text-muted-foreground transition-colors hover:text-foreground">
-          <CalendarDays className="size-4" aria-hidden />
-        </a>
+        <span className="flex items-center gap-3">
+          {action}
+          <a href={`/api/calendar/match/${match.id}`} aria-label={t("addToCalendar")} className="inline-flex text-muted-foreground transition-colors hover:text-foreground">
+            <CalendarDays className="size-4" aria-hidden />
+          </a>
+        </span>
       </div>
       <Link href={`/matchs/${match.id}`} className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 transition-opacity hover:opacity-85">
         {[home, away].map((team, index) => (

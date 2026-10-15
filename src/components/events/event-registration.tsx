@@ -1,9 +1,11 @@
 "use client";
 
 import { ArrowRight, Check, Hourglass } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useNow, useTimeZone, useTranslations } from "next-intl";
 import { useTransition } from "react";
+import { PsgBanner } from "@/components/psg-banner";
 import { Link, useRouter } from "@/i18n/navigation";
+import { dayIn } from "@/lib/human-date";
 import { sendAttendance } from "@/lib/event-attendance";
 import { cn } from "@/lib/utils";
 
@@ -14,13 +16,14 @@ type Props = {
   access: "member" | "guest" | "inactive";
   /** Sign-ups close when the event starts. */
   phase: "open" | "started" | "over";
+  startsAt: Date;
 };
 
 const primaryButton =
   "inline-flex h-11 cursor-pointer items-center gap-2 self-start rounded-[8px] bg-segment px-[22px] font-wide text-xs font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-[opacity,transform] hover:opacity-90 active:scale-[0.98] disabled:opacity-60 [&_svg]:size-3";
 
 /** Event page sign-up: "You're registered" banner, waitlist banner, or the main call to action. */
-export function EventRegistration({ eventId, status, full, access, phase }: Props) {
+export function EventRegistration({ eventId, status, full, access, phase, startsAt }: Props) {
   const t = useTranslations("Events");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -34,37 +37,7 @@ export function EventRegistration({ eventId, status, full, access, phase }: Prop
   if (phase !== "open") return <p className="text-[15px] text-muted-foreground">{t(phase === "over" ? "over" : "started")}</p>;
 
   if (status === "registered" || status === "waitlisted") {
-    const waitlisted = status === "waitlisted";
-    return (
-      <div className="space-y-2">
-        <div
-          className={cn(
-            "flex flex-wrap items-center justify-between gap-x-5 gap-y-3 rounded-[10px] border px-4 py-3.5",
-            waitlisted ? "border-foreground/15 bg-card" : "border-ok/30 bg-[color-mix(in_oklch,var(--ok)_10%,var(--card))]",
-          )}
-        >
-          <span className="inline-flex items-center gap-2.5 text-[15px] font-semibold">
-            <span
-              className={cn(
-                "inline-flex size-5 items-center justify-center rounded-full text-white [&_svg]:size-[11px]",
-                waitlisted ? "bg-foreground/50" : "bg-ok",
-              )}
-            >
-              {waitlisted ? <Hourglass aria-hidden strokeWidth={3} /> : <Check aria-hidden strokeWidth={3} />}
-            </span>
-            {t(waitlisted ? "waitlistedBanner" : "registeredBanner")}
-          </span>
-          <button
-            type="button"
-            disabled={pending}
-            onClick={() => send("DELETE")}
-            className="cursor-pointer border-b pt-1 pb-0.5 text-sm text-muted-foreground transition-colors hover:border-psg-red hover:text-psg-red"
-          >
-            {t(waitlisted ? "leaveWaitlist" : "cancel")}
-          </button>
-        </div>
-      </div>
-    );
+    return <Confirmation waitlisted={status === "waitlisted"} startsAt={startsAt} pending={pending} onLeave={() => send("DELETE")} />;
   }
 
   if (access === "guest") {
@@ -84,6 +57,81 @@ export function EventRegistration({ eventId, status, full, access, phase }: Prop
         <ArrowRight aria-hidden />
       </button>
       {full ? <p className="text-sm text-muted-foreground">{t("waitlistHint")}</p> : null}
+    </div>
+  );
+}
+
+const label = "font-wide text-[10px] font-semibold tracking-[0.08em] uppercase";
+
+/** "À demain !", "À samedi !", "À tout à l'heure !"… from the event's date. */
+function useSeeYou(startsAt: Date) {
+  const t = useTranslations("Events.confirmation");
+  const format = useFormatter();
+  const timeZone = useTimeZone() ?? "Europe/Zurich";
+  const now = useNow({ updateInterval: 60_000 });
+  const days = Math.round((Date.parse(dayIn(startsAt, timeZone)) - Date.parse(dayIn(now, timeZone))) / 86_400_000);
+  if (days <= 0) return t("seeYouToday");
+  if (days === 1) return t("seeYouTomorrow");
+  // Within the week: "À samedi !"; further: "Rendez-vous le 7 novembre !".
+  return days < 7
+    ? t("seeYou", { when: format.dateTime(startsAt, { weekday: "long" }) })
+    : t("seeYouOn", { when: format.dateTime(startsAt, { day: "numeric", month: "long" }) });
+}
+
+/**
+ * After signing up, a clean ticket instead of a banner: the shirt's banner on the edge, a
+ * friendly "See you Saturday!", one useful line, and a quiet way out.
+ */
+function Confirmation({
+  waitlisted,
+  startsAt,
+  pending,
+  onLeave,
+}: {
+  waitlisted: boolean;
+  startsAt: Date;
+  pending: boolean;
+  onLeave: () => void;
+}) {
+  const t = useTranslations("Events");
+  const seeYou = useSeeYou(startsAt);
+  return (
+    <div role="status" className="relative animate-page-in overflow-hidden rounded-[12px] border bg-card py-4 pr-5 pl-7">
+      {waitlisted ? (
+        <span aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-foreground/15" />
+      ) : (
+        <PsgBanner className="absolute inset-y-0 left-0 h-full w-2.5 origin-top animate-[spine-draw_0.6s_cubic-bezier(0.16,1,0.3,1)_0.1s_backwards] rounded-none shadow-none motion-reduce:animate-none" />
+      )}
+      <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
+        <div className="min-w-0 space-y-1.5">
+          <p className={cn(label, "inline-flex items-center gap-1.5", waitlisted ? "text-muted-foreground" : "text-ok")}>
+            {waitlisted ? <Hourglass className="size-3" aria-hidden /> : <Check className="size-3" strokeWidth={3} aria-hidden />}
+            {t(waitlisted ? "confirmation.waitlistedLabel" : "confirmation.registeredLabel")}
+          </p>
+          <p className="font-narrow text-[length:clamp(26px,5vw,32px)] leading-[0.95] font-extrabold uppercase italic">
+            {waitlisted ? t("confirmation.waitlistedTitle") : seeYou}
+          </p>
+          <p className="text-sm text-pretty text-muted-foreground">
+            {waitlisted
+              ? t("confirmation.waitlistedBody")
+              : t.rich("confirmation.registeredBody", {
+                  card: (chunks) => (
+                    <Link href="/espace-membre#carte" prefetch={false} className="border-b text-foreground transition-colors hover:border-psg-red">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
+          </p>
+        </div>
+        <button
+          type="button"
+          disabled={pending}
+          onClick={onLeave}
+          className="cursor-pointer text-[13px] text-muted-foreground underline-offset-4 transition-colors hover:text-psg-red hover:underline disabled:opacity-50"
+        >
+          {t(waitlisted ? "leaveWaitlist" : "cancel")}
+        </button>
+      </div>
     </div>
   );
 }

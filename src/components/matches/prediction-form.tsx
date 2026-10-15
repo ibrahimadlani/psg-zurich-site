@@ -6,23 +6,52 @@ import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { TeamCrest } from "@/components/matches/team-crest";
 
 const stepButton =
   "inline-flex size-9 cursor-pointer items-center justify-center rounded-full border text-foreground transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.92] disabled:cursor-default disabled:opacity-40 [&_svg]:size-3.5";
 
-function Stepper({ label, value, onChange }: { label: string; value: number; onChange: (value: number) => void }) {
+const PSG_LOGO = "/brand/psg-crest.svg";
+
+/** Team name with its small crest, above each score. */
+function TeamLabel({ name, logo }: { name: string; logo: string | null }) {
+  return (
+    <span className="flex max-w-full min-w-0 items-center gap-1.5 text-sm">
+      <TeamCrest name={name} logo={logo} className="size-5" />
+      <span className="truncate">{name}</span>
+    </span>
+  );
+}
+
+function Stepper({ label, logo, value, onChange }: { label: string; logo: string | null; value: number; onChange: (value: number) => void }) {
   const t = useTranslations("Predictions");
+  // Which way the last change went: the new figure rolls in from below (+) or above (−).
+  const [direction, setDirection] = useState<"up" | "down" | null>(null);
+  const change = (next: number) => {
+    setDirection(next > value ? "up" : "down");
+    onChange(next);
+  };
   return (
     <div className="flex flex-col items-center gap-3">
-      <span className="max-w-full truncate text-sm">{label}</span>
-      <output aria-live="polite" className="font-narrow text-[64px] leading-[0.9] font-extrabold tabular-nums italic">
-        {value}
+      <TeamLabel name={label} logo={logo} />
+      {/* Clipped vertically only, so the italic figure keeps its slant. */}
+      <output aria-live="polite" className="block px-2 font-narrow text-[64px] leading-[0.9] font-extrabold tabular-nums italic [overflow-y:clip]">
+        <span
+          key={value}
+          className={cn(
+            "inline-block motion-reduce:animate-none",
+            direction === "up" && "animate-score-up",
+            direction === "down" && "animate-score-down",
+          )}
+        >
+          {value}
+        </span>
       </output>
       <div className="flex gap-1.5">
-        <button type="button" className={stepButton} aria-label={t("less", { team: label })} disabled={value <= 0} onClick={() => onChange(value - 1)}>
+        <button type="button" className={stepButton} aria-label={t("less", { team: label })} disabled={value <= 0} onClick={() => change(value - 1)}>
           <Minus aria-hidden />
         </button>
-        <button type="button" className={stepButton} aria-label={t("more", { team: label })} disabled={value >= 20} onClick={() => onChange(value + 1)}>
+        <button type="button" className={stepButton} aria-label={t("more", { team: label })} disabled={value >= 20} onClick={() => change(value + 1)}>
           <Plus aria-hidden />
         </button>
       </div>
@@ -56,12 +85,14 @@ export function PredictionForm({
   matchId,
   psgHome,
   opponent,
+  opponentLogo = null,
   initial,
   kickoffAt,
 }: {
   matchId: string;
   psgHome: boolean;
   opponent: string;
+  opponentLogo?: string | null;
   initial: { psgScore: number; opponentScore: number } | null;
   /** ISO date: the countdown under the button runs to it. */
   kickoffAt: string;
@@ -90,8 +121,8 @@ export function PredictionForm({
       router.refresh();
     });
 
-  const psgStepper = <Stepper key="psg" label="PSG" value={psg} onChange={setPsg} />;
-  const otherStepper = <Stepper key="other" label={opponent} value={other} onChange={setOther} />;
+  const psgStepper = <Stepper key="psg" label="PSG" logo={PSG_LOGO} value={psg} onChange={setPsg} />;
+  const otherStepper = <Stepper key="other" label={opponent} logo={opponentLogo} value={other} onChange={setOther} />;
 
   return (
     <div className="flex flex-col gap-5">
@@ -118,11 +149,19 @@ export function PredictionForm({
 }
 
 /** Static look-alike of the form (2 – 1), shown blurred under the "members only" lock. */
-export function PredictionPreview({ opponent, psgHome }: { opponent: string; psgHome: boolean }) {
+export function PredictionPreview({
+  opponent,
+  opponentLogo = null,
+  psgHome,
+}: {
+  opponent: string;
+  opponentLogo?: string | null;
+  psgHome: boolean;
+}) {
   const t = useTranslations("Predictions");
-  const side = (label: string, value: number) => (
+  const side = (label: string, logo: string | null, value: number) => (
     <div key={label} className="flex flex-col items-center gap-3">
-      <span className="max-w-full truncate text-sm">{label}</span>
+      <TeamLabel name={label} logo={logo} />
       <span className="font-narrow text-[64px] leading-[0.9] font-extrabold tabular-nums italic">{value}</span>
       <div className="flex gap-1.5">
         <span className={stepButton}>
@@ -137,7 +176,9 @@ export function PredictionPreview({ opponent, psgHome }: { opponent: string; psg
   return (
     <div className="flex flex-col gap-5 p-6">
       <div className="grid grid-cols-2 items-start gap-2 border-b pb-5">
-        {psgHome ? [side("PSG", 2), side(opponent, 1)] : [side(opponent, 1), side("PSG", 2)]}
+        {psgHome
+          ? [side("PSG", PSG_LOGO, 2), side(opponent, opponentLogo, 1)]
+          : [side(opponent, opponentLogo, 1), side("PSG", PSG_LOGO, 2)]}
       </div>
       <span className="grid h-11 place-items-center rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase">
         {t("saveButton")}

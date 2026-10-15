@@ -217,11 +217,20 @@
    sweeps across, shown after 150 ms so quick loads don't flash. */
 @theme {
   --animate-skeleton-in: skeleton-in 0.3s ease-out 0.15s backwards;
+  /* Prediction scores: the new figure rolls in (from below when it goes up), with a small bounce. */
+  --animate-score-up: score-up 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-score-down: score-down 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   /* Mobile menu: the hairline under the crest draws itself down. */
   --animate-spine-draw: spine-draw 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
 
   @keyframes skeleton-in {
     from { opacity: 0; }
+  }
+  @keyframes score-up {
+    from { opacity: 0; transform: translateY(55%) scale(0.85); filter: blur(2px); }
+  }
+  @keyframes score-down {
+    from { opacity: 0; transform: translateY(-55%) scale(0.85); filter: blur(2px); }
   }
   @keyframes spine-draw {
     from { transform: scaleY(0); }
