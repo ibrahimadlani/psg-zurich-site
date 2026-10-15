@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
@@ -11,7 +11,8 @@ import { dayIn } from "@/lib/human-date";
 import { MatchMiniCard } from "@/components/matches/match-mini-card";
 import { BackToMatch, MatchPredictionSwitch, PredictionToggle } from "@/components/matches/match-prediction-switch";
 import { PredictionCardBody, type Access } from "@/components/matches/prediction-card";
-import { events } from "@/db/schema";
+import { db } from "@/db";
+import { events, predictions } from "@/db/schema";
 import { redirect } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
 import { eventParticipants, eventPhase, getEventsWithAttendance } from "@/lib/events";
@@ -34,7 +35,11 @@ const actionClass = `${sideClass} border-b text-[13px] whitespace-nowrap text-mu
  */
 export async function EventDetail({ id }: { id: string }) {
   await connection();
-  const [t, tPredictions] = await Promise.all([getTranslations("Events"), getTranslations("Predictions")]);
+  const [t, tPredictions, tMatches] = await Promise.all([
+    getTranslations("Events"),
+    getTranslations("Predictions"),
+    getTranslations("Matches"),
+  ]);
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
 
@@ -42,7 +47,25 @@ export async function EventDetail({ id }: { id: string }) {
   if (!isDuesPaid(member)) redirect({ href: "/evenements", locale: await getLocale() });
   const [event] = await getEventsWithAttendance(eq(events.id, id), member?.id ?? null);
   if (!event) notFound();
-  const [match, participants] = await Promise.all([event.matchId ? getMatch(event.matchId) : null, eventParticipants(id)]);
+  const [match, participants, [myPrediction]] = await Promise.all([
+    event.matchId ? getMatch(event.matchId) : null,
+    eventParticipants(id),
+    event.matchId && member
+      ? db
+          .select({ psgScore: predictions.psgScore, opponentScore: predictions.opponentScore })
+          .from(predictions)
+          .where(and(eq(predictions.matchId, event.matchId), eq(predictions.memberId, member.id)))
+      : [],
+  ]);
+  // Once saved, the card's link shows the prediction itself ("Mon prono : 2 – 1", home side first).
+  const predictionLabel = myPrediction
+    ? tMatches("myPrediction", {
+        score:
+          match?.venue === "away"
+            ? `${myPrediction.opponentScore} – ${myPrediction.psgScore}`
+            : `${myPrediction.psgScore} – ${myPrediction.opponentScore}`,
+      })
+    : tPredictions("title");
 
   const full = event.capacity !== null && event.registered >= event.capacity;
   const left = event.capacity === null ? null : Math.max(0, event.capacity - event.registered);
@@ -144,7 +167,7 @@ export async function EventDetail({ id }: { id: string }) {
             <h2 className={termClass}>{t("theMatch")}</h2>
             <div className="max-w-xl">
               <MatchPredictionSwitch
-                matchFace={<MatchMiniCard bare match={match} action={<PredictionToggle label={tPredictions("title")} />} />}
+                matchFace={<MatchMiniCard bare match={match} action={<PredictionToggle label={predictionLabel} />} />}
                 predictionFace={
                   <PredictionCardBody
                     bare

@@ -1,11 +1,11 @@
 "use client";
 
-import { LayoutDashboard, LogOut, Monitor, Moon, QrCode, Settings, Sun, Target } from "lucide-react";
+import { ArrowRight, ChevronUp, LayoutDashboard, LogOut, Monitor, Moon, Settings, Sun } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
 import { PsgBanner } from "@/components/psg-banner";
-import { useNavItems } from "@/components/main-nav";
+import { Cockade, useNavItems } from "@/components/main-nav";
 import { readThemePreference, setThemePreference, type ThemePreference } from "@/components/theme-toggle";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { UserAvatar } from "@/components/user-avatar";
@@ -58,6 +58,7 @@ export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<MenuData | null>(null);
   const [newsSeen, setNewsSeen] = useState<string | null>(null);
+  // Admin, member area and "Adhérer" live in the block at the bottom, not in the list.
   const navItems = useNavItems().filter((item) => item.key !== "admin" && item.key !== "memberArea" && item.key !== "membership");
 
   // Reading the news page counts as seeing the news.
@@ -161,6 +162,8 @@ export function MobileMenu() {
   };
 
   const activeIndex = navItems.findIndex(({ href }) => (href === "/" ? pathname === "/" : pathname.startsWith(href)));
+  const { data: session, isPending: sessionPending } = useSession();
+  const showPreferences = !sessionPending && (!session || hasRole(session.user.role, "superadmin"));
   const newsUnread = Boolean(data?.latestNewsAt && (!newsSeen || data.latestNewsAt > newsSeen));
   const badge = (key: string) => {
     if (key === "news" && newsUnread) return <span className="size-2 rounded-full bg-psg-red" aria-label={t("drawer.new")} />;
@@ -201,7 +204,7 @@ export function MobileMenu() {
       >
         <SheetTitle className="sr-only">{t("label")}</SheetTitle>
 
-        <div ref={header} className="flex items-center justify-between gap-2 border-b px-4 py-[clamp(12px,3vw,16px)]">
+        <div ref={header} className="flex items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]">
           <BrandLogo />
           <SheetClose className={burgerButton} aria-label={t("close")}>
             <Burger closing />
@@ -251,18 +254,40 @@ export function MobileMenu() {
           </nav>
         </div>
 
+        {/* Signed in: the member area on its own, above the footer, framed by two cockades as in the desktop bar. */}
+        {session ? (
+          <div className="px-4 pb-4">
+            <Link
+              href="/espace-membre"
+              prefetch={false}
+              aria-current={pathname.startsWith("/espace-membre") ? "page" : undefined}
+              className="flex h-11 items-center justify-center gap-2.5 rounded-[8px] border bg-card font-wide text-[11px] font-semibold tracking-[0.08em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98] aria-[current=page]:text-psg-blue dark:aria-[current=page]:text-foreground"
+            >
+              <Cockade />
+              {t("memberArea")}
+              <Cockade />
+            </Link>
+          </div>
+        ) : null}
+
         <Spine spine={spine} settled={settled} target={hovered ?? (activeIndex === -1 ? null : activeIndex)} />
 
         <div className="space-y-4 border-t px-4 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
-          <AccountBlock access={data?.access ?? null} motionIndex={navItems.length} />
-          <Preferences />
+          {/* Language and theme for visitors (members set them in Paramètres; the superadmin keeps
+              them to check pages quickly), then the account or the sign-in button, within the thumb's reach. */}
+          {showPreferences ? (
+            <div className="border-b pb-4">
+              <Preferences />
+            </div>
+          ) : null}
+          <AccountBlock motionIndex={navItems.length} />
         </div>
       </SheetContent>
     </Sheet>
   );
 }
 
-/** Hairline from the crest down the links, and the PSG banner sliding on it. */
+/** The PSG banner gliding down from under the crest to the current (or hovered) link. */
 function Spine({
   spine,
   settled,
@@ -274,17 +299,11 @@ function Spine({
 }) {
   if (!spine || spine.centers.length === 0) return null;
   const start = spine.top + 6;
-  const end = Math.max(...spine.centers) + 22;
   const to = target === null ? null : spine.centers[target];
   // Before it settles (and with no target), the banner waits under the crest.
   const y = settled && to !== undefined && to !== null ? to : start;
   return (
     <>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute w-px origin-top animate-spine-draw bg-foreground/15 motion-reduce:animate-none"
-        style={{ left: spine.x - 0.5, top: start, height: Math.max(0, end - start) }}
-      />
       <PsgBanner
         className="pointer-events-none absolute top-0 h-7 w-2.5 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
         style={{
@@ -297,13 +316,10 @@ function Spine({
   );
 }
 
-const tile =
-  "flex h-11 items-center gap-2 rounded-[10px] border bg-card px-3 text-[13px] font-medium transition-[border-color,transform] hover:border-foreground/30 active:scale-[0.97] [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground";
 
-/** Signed-in member with their status and shortcuts, or an invitation to join. */
-function AccountBlock({ access, motionIndex }: { access: EventAccess | null; motionIndex: number }) {
+/** The signed-in account (nav-user), or join / sign-in buttons for visitors. */
+function AccountBlock({ motionIndex }: { motionIndex: number }) {
   const t = useTranslations("Nav");
-  const tMember = useTranslations("MemberArea");
   const pathname = usePathname();
   const { data, isPending } = useSession();
   const handleSignOut = useSignOut();
@@ -312,86 +328,40 @@ function AccountBlock({ access, motionIndex }: { access: EventAccess | null; mot
   if (isPending) return <span aria-hidden className="skeleton block h-[124px] rounded-[12px]" />;
 
   if (!data) {
-    if (pathname.startsWith("/connexion")) return null;
+    // Visitors: join (the call to action, in PSG blue with the shirt's bands) above sign in. On either page, only the other.
+    const join = !pathname.startsWith("/adhesion");
+    const signIn = !pathname.startsWith("/connexion");
     return (
-      <div className={cn(motion.className, "space-y-3 rounded-[12px] border bg-card p-4")} style={motion.style}>
-        <div className="space-y-1">
-          <p className="font-narrow text-2xl leading-none font-extrabold uppercase italic">{t("drawer.joinTitle")}</p>
-          <p className="text-[13px] text-pretty text-muted-foreground">{t("drawer.joinBody")}</p>
-        </div>
-        <div className="grid grid-cols-2 gap-2">
+      <div className={cn(motion.className, "grid gap-2")} style={motion.style}>
+        {join ? (
           <Link
             href="/adhesion"
             prefetch={false}
-            className="grid h-10 place-items-center rounded-[8px] bg-segment font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
+            className="group relative flex h-11 items-center justify-center gap-2 overflow-hidden rounded-[8px] bg-psg-blue font-wide text-[11px] font-semibold tracking-[0.06em] text-white uppercase shadow-brand transition-[opacity,transform] hover:opacity-90 active:scale-[0.98]"
           >
+            {/* The Hechter band on the right: red edged with thin white. */}
+            <span aria-hidden className="absolute inset-y-0 right-4 w-3.5 border-x-[3px] border-white bg-psg-red" />
             {t("membership")}
+            <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
           </Link>
+        ) : null}
+        {signIn ? (
           <Link
             href="/connexion"
             prefetch={false}
-            className="grid h-10 place-items-center rounded-[8px] border font-wide text-[11px] font-semibold tracking-[0.06em] uppercase transition-colors hover:bg-foreground/5"
+            className="flex h-11 items-center justify-center rounded-[8px] border bg-card font-wide text-[11px] font-semibold tracking-[0.06em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98]"
           >
             {t("drawer.signIn")}
           </Link>
-        </div>
+        ) : null}
       </div>
     );
   }
 
   const { user } = data;
-  const status = access && access !== "guest" ? access : null;
-  const statusStyle = { full: "text-emerald-600 dark:text-emerald-400", unpaid: "text-amber-600 dark:text-amber-400", pending: "text-muted-foreground" } as const;
-
   return (
-    <div className={cn(motion.className, "space-y-3")} style={motion.style}>
-      <div className="flex items-center gap-3">
-        <UserAvatar name={user.name} email={user.email} image={user.image} className="size-10 text-[12px]" />
-        <span className="min-w-0 flex-1">
-          <span className="block truncate text-[15px] font-semibold">{user.name || user.email}</span>
-          {status ? (
-            status === "unpaid" ? (
-              <Link href="/cotisation" prefetch={false} className={cn("block truncate text-xs underline-offset-2 hover:underline", statusStyle.unpaid)}>
-                {t(`drawer.status.${status}`)}
-              </Link>
-            ) : (
-              <span className={cn("block truncate text-xs", statusStyle[status])}>{t(`drawer.status.${status}`)}</span>
-            )
-          ) : (
-            <span className="block h-4" />
-          )}
-        </span>
-        <button type="button" data-close-menu onClick={handleSignOut} aria-label={tMember("signOut")} title={tMember("signOut")} className="grid size-9 cursor-pointer place-items-center rounded-[8px] text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground">
-          <LogOut className="size-4" aria-hidden />
-        </button>
-      </div>
-      <div className="grid grid-cols-2 gap-2">
-        {status !== "pending" ? (
-          <Link href="/espace-membre#carte" prefetch={false} className={tile}>
-            <QrCode aria-hidden />
-            {t("drawer.card")}
-          </Link>
-        ) : (
-          <Link href="/espace-membre" prefetch={false} className={tile}>
-            <QrCode aria-hidden />
-            {t("memberArea")}
-          </Link>
-        )}
-        <Link href="/matchs/classement" prefetch={false} className={tile}>
-          <Target aria-hidden />
-          {t("drawer.predictions")}
-        </Link>
-        <Link href="/parametres" prefetch={false} className={tile}>
-          <Settings aria-hidden />
-          {t("settings")}
-        </Link>
-        {hasRole(user.role, "admin") ? (
-          <Link href="/admin" prefetch={false} className={tile}>
-            <LayoutDashboard aria-hidden />
-            {t("drawer.admin")}
-          </Link>
-        ) : null}
-      </div>
+    <div className={motion.className} style={motion.style}>
+      <NavUser user={user} isAdmin={hasRole(user.role, "admin")} onSignOut={handleSignOut} />
     </div>
   );
 }
@@ -452,6 +422,74 @@ function Preferences() {
           </button>
         ))}
       </div>
+    </div>
+  );
+}
+
+const navUserItem =
+  "flex h-10 w-full cursor-pointer items-center gap-2.5 rounded-[8px] px-2.5 text-[14px] transition-colors hover:bg-foreground/5 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground";
+
+/**
+ * The signed-in account, shadcn "nav-user" style: avatar, name and email on one row with a
+ * caret; tapping it unfolds the account links above (accordion, upwards).
+ */
+function NavUser({
+  user,
+  isAdmin,
+  onSignOut,
+}: {
+  user: { name: string; email: string; image?: string | null };
+  isAdmin: boolean;
+  onSignOut: () => void;
+}) {
+  const t = useTranslations("Nav");
+  const tMember = useTranslations("MemberArea");
+  const [open, setOpen] = useState(false);
+  const panel = useId();
+
+  return (
+    <div className="flex flex-col">
+      <div
+        id={panel}
+        data-open={open || undefined}
+        className="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] data-[open]:grid-rows-[1fr] data-[open]:opacity-100 motion-reduce:transition-none"
+      >
+        <div className="min-h-0 overflow-hidden" inert={!open}>
+          <div className="mb-2 flex flex-col gap-0.5 border-b pb-2">
+            <Link href="/parametres" prefetch={false} className={navUserItem}>
+              <Settings aria-hidden />
+              {t("settings")}
+            </Link>
+            {isAdmin ? (
+              <Link href="/admin" prefetch={false} className={navUserItem}>
+                <LayoutDashboard aria-hidden />
+                {t("admin")}
+              </Link>
+            ) : null}
+            <button type="button" data-close-menu onClick={onSignOut} className={navUserItem}>
+              <LogOut aria-hidden />
+              {tMember("signOut")}
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={panel}
+        onClick={() => setOpen((value) => !value)}
+        className="flex w-full cursor-pointer items-center gap-3 rounded-[10px] p-2 text-left transition-colors hover:bg-foreground/5 aria-expanded:bg-foreground/5"
+      >
+        <UserAvatar name={user.name} email={user.email} image={user.image} className="size-9 rounded-[8px] text-[11px]" />
+        <span className="min-w-0 flex-1 leading-tight">
+          <span className="block truncate text-[14px] font-semibold">{user.name || user.email}</span>
+          <span className="block truncate text-xs text-muted-foreground">{user.email}</span>
+        </span>
+        <ChevronUp
+          className={cn("size-4 shrink-0 text-muted-foreground transition-transform duration-300 ease-out", open && "rotate-180")}
+          aria-hidden
+        />
+      </button>
     </div>
   );
 }

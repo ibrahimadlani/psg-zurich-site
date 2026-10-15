@@ -1,6 +1,7 @@
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { EventList } from "@/components/events/event-list";
+import { EventsEmpty } from "@/components/events/events-empty";
 import { EventsShell } from "@/components/events/events-shell";
 import { EventsSkeleton } from "@/components/skeletons";
 import { eventAccess } from "@/lib/dues";
@@ -17,7 +18,11 @@ async function EventsFrame({ children }: { children: React.ReactNode }) {
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   if (eventAccess(Boolean(session), member) !== "full") return children;
   const list = await getEventsWithAttendance(upcomingEvents(), member?.id ?? null);
-  return <EventsShell list={<EventList events={list} />}>{children}</EventsShell>;
+  return (
+    <EventsShell list={<EventList events={list} />} empty={list.length === 0 ? <EventsEmpty /> : undefined}>
+      {children}
+    </EventsShell>
+  );
 }
 
 export default function EventsLayout({ children }: LayoutProps<"/[locale]/evenements">) {

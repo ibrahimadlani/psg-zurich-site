@@ -36,7 +36,7 @@ export function useNavItems(): NavItem[] {
 }
 
 /** Small cockade in the club colours (PSG blue, white, red), marking the key page of the bar. */
-function Cockade() {
+export function Cockade() {
   return (
     <svg aria-hidden viewBox="-0.8 -0.8 13.6 13.6" className="size-3 shrink-0">
       {/* Thin white outer ring so the blue edge stays visible on the dark background. */}
@@ -116,6 +116,7 @@ export function MainNav() {
               >
                 {featured ? <Cockade /> : null}
                 {t(key)}
+                {featured ? <Cockade /> : null}
               </Link>
             </li>
           );

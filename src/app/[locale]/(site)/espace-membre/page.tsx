@@ -48,13 +48,12 @@ async function MemberPanel() {
           <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5" aria-hidden />
         </Link>
       ) : null}
-      <MemberCard member={member ?? null} name={name} />
-      {member?.status === "active" ? (
-        <div className="grid gap-10 lg:grid-cols-2">
-          <MyRegistrations memberId={member.id} />
-          <MyPredictions memberId={member.id} />
-        </div>
-      ) : null}
+      {/* The card on the left, the predictions in the room beside it; registrations below. */}
+      <div className="grid items-start gap-10 lg:grid-cols-2">
+        <MemberCard member={member ?? null} name={name} />
+        {member?.status === "active" ? <MyPredictions memberId={member.id} /> : null}
+      </div>
+      {member?.status === "active" ? <MyRegistrations memberId={member.id} /> : null}
       <div className="flex flex-wrap gap-2 border-t pt-6">
         <Button variant="outline" asChild>
           <Link href="/parametres" prefetch={false}>

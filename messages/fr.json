@@ -1061,7 +1061,12 @@
       "waitlistedBody": "Nous vous écrivons dès qu'une place se libère.",
       "seeYouOn": "Rendez-vous le {when} !"
     },
-    "backToMatch": "Retour au match"
+    "backToMatch": "Retour au match",
+    "emptyState": {
+      "title": "Rien de prévu pour l'instant",
+      "body": "Les prochaines watch parties et sorties du club apparaîtront ici. Vous recevrez un e-mail à chaque nouvel événement.",
+      "cta": "Voir les matchs"
+    }
   },
   "AdminEvents": {
     "created": "Événement créé.",

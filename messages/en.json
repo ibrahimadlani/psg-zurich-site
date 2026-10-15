@@ -1061,7 +1061,12 @@
       "waitlistedBody": "We'll email you as soon as a place opens up.",
       "seeYouOn": "See you on {when}!"
     },
-    "backToMatch": "Back to the match"
+    "backToMatch": "Back to the match",
+    "emptyState": {
+      "title": "Nothing planned yet",
+      "body": "The club's next watch parties and outings will show up here. You'll get an email for each new event.",
+      "cta": "See the matches"
+    }
   },
   "AdminEvents": {
     "created": "Event created.",

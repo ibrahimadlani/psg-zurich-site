@@ -8,11 +8,21 @@ import { cn } from "@/lib/utils";
  * one fades and slides in). On a phone: the list alone, and an event slides in from the right
  * over it; going back slides the list in from the left.
  */
-export function EventsShell({ list, children }: { list: React.ReactNode; children: React.ReactNode }) {
+export function EventsShell({
+  list,
+  empty,
+  children,
+}: {
+  list: React.ReactNode;
+  /** Shown instead of the two columns when nothing is planned (an open event still shows). */
+  empty?: React.ReactNode;
+  children: React.ReactNode;
+}) {
   const segment = useSelectedLayoutSegment();
   const open = segment !== null;
+  if (empty) return open ? <div className="animate-page-in">{children}</div> : empty;
   return (
-    <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-10">
+    <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_1px_minmax(0,2fr)] lg:gap-x-5">
       <aside
         className={cn(
           // Scrolls on its own on a computer, so the open event stays in view.
@@ -22,6 +32,8 @@ export function EventsShell({ list, children }: { list: React.ReactNode; childre
       >
         {list}
       </aside>
+      {/* Discreet divider between the list and the open event, the height of the taller column. */}
+      <div aria-hidden className="hidden w-px self-stretch bg-border lg:block" />
       <section
         key={segment ?? "next"}
         className={cn(

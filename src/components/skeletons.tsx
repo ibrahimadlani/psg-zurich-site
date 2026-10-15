@@ -74,7 +74,11 @@ export function MatchesSkeleton() {
         <ScoreboardSkeleton />
       </div>
       <div className="space-y-4">
-        <TabsSkeleton count={4} />
+        {/* Two groups, like the real bar: fixtures on the left, league tables on the right. */}
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <TabsSkeleton count={2} />
+          <TabsSkeleton count={2} />
+        </div>
         <div className="space-y-2.5">
           {times(5).map((index) => (
             <MatchRowSkeleton key={index} />
@@ -246,22 +250,26 @@ export function ArticleSkeleton() {
   );
 }
 
-/** /espace-membre: member card, then registrations and predictions. */
+/** /espace-membre: member card with predictions beside it, then registrations. */
 export function MemberAreaSkeleton() {
   return (
     <SkeletonGroup className="space-y-10">
-      <div className="space-y-4">
-        <Skeleton className="aspect-[1.586] w-full max-w-[380px] rounded-[16px]" />
-        <Line w="14rem" />
+      <div className="grid items-start gap-10 lg:grid-cols-2">
+        <div className="space-y-4">
+          <Skeleton className="aspect-[1.586] w-full max-w-[380px] rounded-[16px]" />
+          <Line w="14rem" />
+        </div>
+        <div className="space-y-3">
+          <Line w="9rem" className="h-3" />
+          {times(2).map((index) => (
+            <Skeleton key={index} className="h-16 w-full rounded-[12px]" />
+          ))}
+        </div>
       </div>
-      <div className="grid gap-10 lg:grid-cols-2">
-        {times(2).map((column) => (
-          <div key={column} className="space-y-3">
-            <Line w="9rem" className="h-3" />
-            {times(2).map((index) => (
-              <Skeleton key={index} className="h-16 w-full rounded-[12px]" />
-            ))}
-          </div>
+      <div className="space-y-3">
+        <Line w="9rem" className="h-3" />
+        {times(2).map((index) => (
+          <Skeleton key={index} className="h-16 w-full rounded-[12px]" />
         ))}
       </div>
     </SkeletonGroup>

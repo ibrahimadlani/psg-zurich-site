@@ -1061,7 +1061,12 @@
       "waitlistedBody": "Wir schreiben dir, sobald ein Platz frei wird.",
       "seeYouOn": "Bis zum {when}!"
     },
-    "backToMatch": "Zurück zum Spiel"
+    "backToMatch": "Zurück zum Spiel",
+    "emptyState": {
+      "title": "Noch nichts geplant",
+      "body": "Die nächsten Watch-Partys und Ausflüge des Clubs erscheinen hier. Du erhältst für jeden neuen Anlass eine E-Mail.",
+      "cta": "Zu den Spielen"
+    }
   },
   "AdminEvents": {
     "created": "Veranstaltung erstellt.",

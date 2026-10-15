@@ -48,11 +48,15 @@ function NextEvent({ event }: { event: EventView }) {
     <EventListLink
       id={event.id}
       isDefault
-      className="overflow-hidden rounded-[14px] bg-psg-blue p-5 text-white shadow-brand transition-transform duration-200 active:scale-[0.99] data-[selected]:ring-2 data-[selected]:ring-psg-red lg:data-[default]:ring-2 lg:data-[default]:ring-psg-red"
+      className="rounded-[14px] bg-psg-blue p-5 text-white shadow-brand transition-transform duration-200 active:scale-[0.99]"
     >
-      {/* The shirt's red and white bands at the edge, as on the member card. */}
-      <span aria-hidden className="absolute inset-y-0 right-7 w-4 bg-psg-red/90" />
-      <span aria-hidden className="absolute inset-y-0 right-3 w-4 bg-white/90" />
+      {/* The shirt's red and white bands at the edge, as on the member card (clipped to the corners). */}
+      <span aria-hidden className="absolute inset-0 overflow-hidden rounded-[inherit]">
+        <span className="absolute inset-y-0 right-7 w-4 bg-psg-red/90" />
+        <span className="absolute inset-y-0 right-3 w-4 bg-white/90" />
+      </span>
+      {/* Open event: the same PSG banner in the left margin as the other rows, no red halo. */}
+      <PsgBanner className="absolute top-1/2 -left-[5px] z-10 h-7 w-2.5 -translate-y-1/2 scale-y-0 transition-transform duration-300 ease-out group-data-[selected]:scale-y-100 lg:group-data-[default]:scale-y-100" />
       <span className="relative flex flex-col gap-3 pr-10">
         <span className={cn(label, "text-white/70")}>
           {/* The time joins the date here, now that the full schedule line is gone. */}
@@ -133,14 +137,13 @@ export function EventList({ events }: { events: EventView[] }) {
     <div className="space-y-6">
       {/* Same discreet labels as "En direct" on the matches page; the page title stays for screen readers. */}
       <h1 className="sr-only">{t("title")}</h1>
+      {/* (With no event at all, the layout shows EventsEmpty instead of this list.) */}
       {next ? (
         <section className="space-y-2.5">
           <h2 className={cn(label, "text-muted-foreground")}>{t("nextUp")}</h2>
           <NextEvent event={next} />
         </section>
-      ) : (
-        <p className="rounded-[10px] border border-dashed p-8 text-center text-sm text-muted-foreground">{t("empty")}</p>
-      )}
+      ) : null}
 
       {[...months.entries()].map(([month, list]) => (
         <section key={month} className="space-y-2.5" aria-label={month}>
