@@ -9,10 +9,10 @@ f:"/_next/static/chunks/41-n4vk_ai0th.js"
 11:"/_next/static/chunks/10zmr2c54oho9.js"
 12:"/_next/static/chunks/0yawwdry4310l.js"
 13:"/_next/static/chunks/3u2qhlzyr0y9v.js"
-14:"/_next/static/chunks/208vpxhyrv8t-.js"
+14:"/_next/static/chunks/2u2jap3ufxiui.js"
 15:"/_next/static/chunks/3d-e3ijixx5_l.js"
-16:"/_next/static/chunks/2zx8837tzc9a8.js"
-17:"/_next/static/chunks/0ktenso5zbzz6.js"
+16:"/_next/static/chunks/0ktenso5zbzz6.js"
+17:"/_next/static/chunks/2zx8837tzc9a8.js"
 18:I[77105,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17"],"default"]
 19:I[505014,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17"],"default"]
 1a:I[605500,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17"],"Image"]
@@ -39,17 +39,17 @@ a:[["children",{"s":"nouveau-mot-de-passe","h":49250,"d":{"r":["$","$3","c",{"ch
 2e:C
 31:X
 31:T6,locale31:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L29",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2c","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2d","v":"$2e","s":"$9"}},"a":"$@2f","u":"$@30","b":"0JtvJSo4iCxsRGlVARSbV","r":"$31"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L29",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2c","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2d","v":"$2e","s":"$9"}},"a":"$@2f","u":"$@30","b":"uEMAjUqRPnOxbMzKcOprb","r":"$31"}
 32:"ResetPasswordForm"
 33:I[300806,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17"],"$32"]
 34:I[897367,["$4"],"OutletBoundary"]
 1e:["$","$L33",null,{}]
 1f:["$","script","script-0",{"src":"/_next/static/chunks/0yawwdry4310l.js","async":true}]
 20:["$","script","script-1",{"src":"/_next/static/chunks/3u2qhlzyr0y9v.js","async":true}]
-21:["$","script","script-2",{"src":"/_next/static/chunks/208vpxhyrv8t-.js","async":true}]
+21:["$","script","script-2",{"src":"/_next/static/chunks/2u2jap3ufxiui.js","async":true}]
 22:["$","script","script-3",{"src":"/_next/static/chunks/3d-e3ijixx5_l.js","async":true}]
-23:["$","script","script-4",{"src":"/_next/static/chunks/2zx8837tzc9a8.js","async":true}]
-24:["$","script","script-5",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
+23:["$","script","script-4",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
+24:["$","script","script-5",{"src":"/_next/static/chunks/2zx8837tzc9a8.js","async":true}]
 25:["$","$L34",null,{"children":["$","$1d",null,{"name":"Next.MetadataOutlet","children":"$@35"}]}]
 30:false
 35:null

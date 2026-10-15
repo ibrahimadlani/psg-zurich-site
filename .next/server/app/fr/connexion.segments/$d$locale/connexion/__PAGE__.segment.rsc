@@ -9,9 +9,9 @@ e:"/_next/static/chunks/2__g39ioof7sf.js"
 f:"/_next/static/chunks/10zmr2c54oho9.js"
 10:"/_next/static/chunks/1yfr8_kzt64fo.js"
 11:"/_next/static/chunks/3u2qhlzyr0y9v.js"
-12:"/_next/static/chunks/208vpxhyrv8t-.js"
-13:"/_next/static/chunks/3d-e3ijixx5_l.js"
-14:"/_next/static/chunks/0ktenso5zbzz6.js"
+12:"/_next/static/chunks/2u2jap3ufxiui.js"
+13:"/_next/static/chunks/0ktenso5zbzz6.js"
+14:"/_next/static/chunks/3d-e3ijixx5_l.js"
 15:"/_next/static/chunks/2zx8837tzc9a8.js"
 16:I[77105,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15"],"default"]
 17:I[505014,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15"],"default"]
@@ -40,13 +40,13 @@ a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$
 2d:C
 30:X
 30:T6,locale30:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Connexion · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2b","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2c","v":"$2d","s":"$9"}},"a":"$@2e","u":"$@2f","b":"0JtvJSo4iCxsRGlVARSbV","r":"$30"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Connexion · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2b","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2c","v":"$2d","s":"$9"}},"a":"$@2e","u":"$@2f","b":"uEMAjUqRPnOxbMzKcOprb","r":"$30"}
 31:I[897367,["$4"],"OutletBoundary"]
 1d:["$","script","script-0",{"src":"/_next/static/chunks/1yfr8_kzt64fo.js","async":true}]
 1e:["$","script","script-1",{"src":"/_next/static/chunks/3u2qhlzyr0y9v.js","async":true}]
-1f:["$","script","script-2",{"src":"/_next/static/chunks/208vpxhyrv8t-.js","async":true}]
-20:["$","script","script-3",{"src":"/_next/static/chunks/3d-e3ijixx5_l.js","async":true}]
-21:["$","script","script-4",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
+1f:["$","script","script-2",{"src":"/_next/static/chunks/2u2jap3ufxiui.js","async":true}]
+20:["$","script","script-3",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
+21:["$","script","script-4",{"src":"/_next/static/chunks/3d-e3ijixx5_l.js","async":true}]
 22:["$","script","script-5",{"src":"/_next/static/chunks/2zx8837tzc9a8.js","async":true}]
 23:["$","$L31",null,{"children":["$","$2a",null,{"name":"Next.MetadataOutlet","children":"$@32"}]}]
 2f:false
