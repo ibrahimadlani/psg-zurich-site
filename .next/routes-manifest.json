@@ -63,6 +63,22 @@
       "namedRegex": "^/api/v1/avatars/(?<nxtPuserId>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/api/v1/documents/[id]",
+      "regex": "^/api/v1/documents/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/documents/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/documents/[id]/file",
+      "regex": "^/api/v1/documents/([^/]+?)/file(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/documents/(?<nxtPid>[^/]+?)/file(?:/)?$"
+    },
+    {
       "page": "/api/v1/events/[id]",
       "regex": "^/api/v1/events/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -181,6 +197,22 @@
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/api/v1/members/(?<nxtPid>[^/]+?)/dues(?:/)?$"
+    },
+    {
+      "page": "/api/v1/polls/[id]",
+      "regex": "^/api/v1/polls/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/polls/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/polls/[id]/vote",
+      "regex": "^/api/v1/polls/([^/]+?)/vote(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/polls/(?<nxtPid>[^/]+?)/vote(?:/)?$"
     },
     {
       "page": "/api/v1/posts/[id]",
@@ -479,6 +511,23 @@
       ]
     },
     {
+      "page": "/[locale]/admin/documents",
+      "regex": "^/([^/]+?)/admin/documents(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/documents(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/documents.segments/$d$locale/!KGFkbWluKQ/admin/documents$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/documents\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/documents(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/admin/evenements",
       "regex": "^/([^/]+?)/admin/evenements(?:/)?$",
       "routeKeys": {
@@ -567,6 +616,23 @@
           "routeKeys": {
             "nxtPlocale": "nxtPlocale",
             "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/journal",
+      "regex": "^/([^/]+?)/admin/journal(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/journal(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/journal.segments/$d$locale/!KGFkbWluKQ/admin/journal$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/journal\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/journal(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
           }
         }
       ]
@@ -954,6 +1020,23 @@
         {
           "destination": "/[locale]/admin/scanner.segments/$d$locale/!KGFkbWluKQ/admin/scanner$segment",
           "source": "^/(?<nxtPlocale>[^/]+?)/admin/scanner\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/scanner(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/sondages",
+      "regex": "^/([^/]+?)/admin/sondages(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/sondages(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/sondages.segments/$d$locale/!KGFkbWluKQ/admin/sondages$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/sondages\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/sondages(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -1571,6 +1654,12 @@
       "regex": "^/api/v1/admin/scan(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/admin/scan(?:/)?$"
+    },
+    {
+      "page": "/api/v1/admin/search",
+      "regex": "^/api/v1/admin/search(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/admin/search(?:/)?$"
     },
     {
       "page": "/api/v1/admin/summary",
