@@ -1,55 +1,59 @@
-import { desc, eq, inArray } from "drizzle-orm";
+import { connection } from "next/server";
+import { z } from "zod";
 import { db } from "@/db";
-import { documents, type DOCUMENT_VISIBILITIES } from "@/db/schema";
-import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
+import { DOCUMENT_VISIBILITIES, documentFiles, documents } from "@/db/schema";
+import { apiHandler, fail, ok } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { getSession, requireCapability } from "@/lib/permissions";
-import { hasRole } from "@/lib/roles";
-import { createDocumentSchema, pagination } from "@/lib/validators";
+import { MAX_DOCUMENT_BYTES, documentType, documentUrl, listDocuments, visibleDocumentLevels } from "@/lib/documents";
+import { requireCapability } from "@/lib/permissions";
 
-type Visibility = (typeof DOCUMENT_VISIBILITIES)[number];
-
-export const GET = apiHandler(async (request) => {
-  const { limit, offset } = parseQuery(request, pagination);
-  const role = (await getSession())?.user.role;
-
-  const visible: Visibility[] = hasRole(role, "admin")
-    ? ["public", "members", "admins"]
-    : hasRole(role, "member")
-      ? ["public", "members"]
-      : ["public"];
-
-  const rows = await db
-    .select()
-    .from(documents)
-    .where(inArray(documents.visibility, visible))
-    .orderBy(desc(documents.createdAt))
-    .limit(limit)
-    .offset(offset);
-  return ok(rows);
+/** The documents the visitor may see (public ones for everyone, members' ones for accepted members). */
+export const GET = apiHandler(async () => {
+  await connection();
+  return ok(await listDocuments(await visibleDocumentLevels()));
 });
 
+const fields = z.object({
+  title: z.string().trim().min(1).max(200),
+  category: z.string().trim().max(80),
+  visibility: z.enum(DOCUMENT_VISIBILITIES),
+});
+
+/** Upload (multipart form: file, title, category, visibility). PDF or picture, 10 MB at most. */
 export const POST = apiHandler(async (request) => {
   const session = await requireCapability("documents");
-  const input = await parseBody(request, createDocumentSchema);
+  const form = await request.formData();
+  const file = form.get("file");
+  if (!(file instanceof File)) return fail(400, "no_file", "A file is required.");
+  if (file.size === 0 || file.size > MAX_DOCUMENT_BYTES) return fail(413, "too_large", "File too large (10 MB at most).");
+  const data = new Uint8Array(await file.arrayBuffer());
+  const mimeType = documentType(data);
+  if (!mimeType) return fail(415, "unsupported", "Only PDF and pictures are accepted.");
+  const input = fields.parse({ title: form.get("title"), category: form.get("category") ?? "", visibility: form.get("visibility") });
 
-  const created = await db.transaction(async (tx) => {
-    const id = crypto.randomUUID();
-    await tx.insert(documents).values({ ...input, id });
+  const id = crypto.randomUUID();
+  await db.transaction(async (tx) => {
+    await tx.insert(documents).values({
+      id,
+      title: input.title,
+      category: input.category || null,
+      visibility: input.visibility,
+      mimeType,
+      sizeBytes: data.byteLength,
+      filePath: documentUrl(id),
+    });
+    await tx.insert(documentFiles).values({ documentId: id, data: Buffer.from(data) });
     await writeAuditLog(
       {
         actorId: session.user.id,
         action: "document.create",
         entityType: "document",
         entityId: id,
-        metadata: { title: input.title, visibility: input.visibility },
+        metadata: { title: input.title, visibility: input.visibility, size: data.byteLength },
         ipAddress: getClientIp(request.headers),
       },
       tx,
     );
-    const [row] = await tx.select().from(documents).where(eq(documents.id, id));
-    return row;
   });
-
-  return ok(created, { status: 201 });
+  return ok({ id }, { status: 201 });
 });

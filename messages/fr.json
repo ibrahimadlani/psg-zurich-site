@@ -521,6 +521,160 @@
     "checkedIn": "Entrée validée pour {name}.",
     "error": "Action impossible. Réessayez."
   },
+  "AdminPolls": {
+    "description": "Consultez les membres : une question, quelques choix, les résultats en direct.",
+    "new": "Nouveau sondage",
+    "newHint": "Les membres acceptés votent depuis leur espace membre.",
+    "question": "Question",
+    "questionPlaceholder": "Quel bar pour la prochaine watch party ?",
+    "options": "Choix",
+    "optionLabel": "Choix {number}",
+    "addOption": "Ajouter un choix",
+    "removeOption": "Retirer ce choix",
+    "up": "Monter",
+    "down": "Descendre",
+    "closesAt": "Fin du vote (facultatif)",
+    "openNow": "Ouvrir le vote tout de suite",
+    "createOpen": "Créer et ouvrir",
+    "createDraft": "Créer en brouillon",
+    "createdOpen": "Sondage ouvert aux membres.",
+    "createdDraft": "Sondage enregistré en brouillon.",
+    "invalid": "Une question et au moins deux choix.",
+    "error": "Action impossible. Réessayez.",
+    "status": {
+      "live": "Vote ouvert",
+      "draft": "Brouillon",
+      "scheduled": "Programmé",
+      "closed": "Fermé"
+    },
+    "until": "Jusqu'au {date}",
+    "createdOn": "Créé le {date}",
+    "votes": "{count, plural, =0 {0 voix} one {# voix} other {# voix}}",
+    "total": "{count, plural, =0 {Aucun vote} one {# vote} other {# votes}}",
+    "open": "Ouvrir",
+    "reopen": "Rouvrir",
+    "close": "Fermer",
+    "opened": "Vote ouvert.",
+    "closed": "Vote fermé.",
+    "delete": "Supprimer",
+    "deleteTitle": "Supprimer le sondage ?",
+    "deleteBody": "« {question} » et tous ses votes disparaissent.",
+    "deleted": "Sondage supprimé.",
+    "empty": "Aucun sondage pour l'instant.",
+    "descriptionLabel": "Précisions (facultatif)"
+  },
+  "AdminDocuments": {
+    "description": "Statuts, procès-verbaux, règlements : partagés avec les membres (ou tout le monde).",
+    "new": "Ajouter un document",
+    "newHint": "PDF ou image, 10 Mo au plus.",
+    "drop": "Choisir ou déposer un fichier",
+    "dropHint": "PDF, PNG, JPEG ou WebP · 10 Mo max.",
+    "titleLabel": "Titre",
+    "category": "Catégorie",
+    "categoryPlaceholder": "Statuts, Assemblée générale…",
+    "visibility": "Visible par",
+    "visibilities": {
+      "members": "Membres",
+      "public": "Tout le monde",
+      "admins": "Comité"
+    },
+    "visibilityHints": {
+      "members": "Les membres acceptés le trouvent dans leur espace membre.",
+      "public": "Lien ouvert à tous, même sans compte.",
+      "admins": "Seulement le comité (admins)."
+    },
+    "upload": "Envoyer",
+    "uploading": "Envoi…",
+    "uploaded": "Document ajouté.",
+    "tooLarge": "Fichier trop lourd (10 Mo au plus).",
+    "unsupported": "Seuls les PDF et les images sont acceptés.",
+    "error": "Action impossible. Réessayez.",
+    "edit": "Modifier",
+    "save": "Enregistrer",
+    "saved": "Document modifié.",
+    "delete": "Supprimer",
+    "deleteTitle": "Supprimer le document ?",
+    "deleteBody": "« {title} » et son fichier disparaissent.",
+    "deleted": "Document supprimé.",
+    "uncategorised": "Sans catégorie",
+    "empty": "Aucun document pour l'instant."
+  },
+  "AdminAudit": {
+    "description": "Qui a fait quoi dans l'administration, du plus récent au plus ancien.",
+    "filters": "Filtrer",
+    "all": "Tout",
+    "domains": {
+      "member": "Membres",
+      "event": "Événements",
+      "match": "Matchs",
+      "post": "Articles",
+      "announcement": "Bannière",
+      "poll": "Sondages",
+      "document": "Documents",
+      "mailing": "Mailing",
+      "user": "Comptes"
+    },
+    "system": "Automatique",
+    "count": "{count, plural, one {# élément} other {# éléments}}",
+    "empty": "Rien dans le journal.",
+    "newer": "Plus récents",
+    "older": "Plus anciens",
+    "actions": {
+      "member_approve": "a accepté l'adhésion",
+      "member_reject": "a refusé la demande",
+      "member_dues_paid": "a enregistré la cotisation",
+      "member_dues_cancelled": "a annulé la cotisation",
+      "member_update": "a modifié les coordonnées",
+      "member_suspend": "a suspendu le membre",
+      "member_reactivate": "a réactivé le membre",
+      "member_fee_reminder": "a relancé la cotisation",
+      "member_verify_reminder": "a relancé la confirmation d'e-mail",
+      "member_export": "a exporté les membres",
+      "member_create": "a créé une fiche membre",
+      "member_signup": "demande d'adhésion",
+      "member_profile_update": "a mis à jour son profil",
+      "member_settings_update": "a modifié ses réglages",
+      "event_create": "a créé l'événement",
+      "event_update": "a modifié l'événement",
+      "event_delete": "a supprimé l'événement",
+      "event_export": "a exporté les inscrits",
+      "event_checkin": "a scanné une entrée",
+      "event_attendee_checkin": "a pointé",
+      "event_attendee_uncheck": "a annulé le pointage",
+      "event_attendee_promote": "a donné une place",
+      "event_attendee_remove": "a retiré un inscrit",
+      "event_attendee_add": "a inscrit",
+      "match_create": "a ajouté le match",
+      "match_update": "a modifié le match",
+      "match_delete": "a supprimé le match",
+      "match_sync": "a synchronisé les matchs",
+      "post_create": "a créé l'article",
+      "post_update": "a modifié l'article",
+      "post_delete": "a supprimé l'article",
+      "announcement_create": "a publié l'annonce",
+      "announcement_activate": "a mis en ligne l'annonce",
+      "announcement_deactivate": "a masqué l'annonce",
+      "announcement_delete": "a supprimé l'annonce",
+      "poll_create": "a créé le sondage",
+      "poll_open": "a ouvert le sondage",
+      "poll_closed": "a fermé le sondage",
+      "poll_draft": "a remis en brouillon le sondage",
+      "poll_delete": "a supprimé le sondage",
+      "document_create": "a ajouté le document",
+      "document_update": "a modifié le document",
+      "document_delete": "a supprimé le document",
+      "mailing_campaign_send": "a envoyé la campagne",
+      "mailing_campaign_schedule": "a programmé la campagne",
+      "mailing_campaign_unschedule": "a déprogrammé la campagne",
+      "mailing_template_save": "a modifié un modèle d'e-mail",
+      "mailing_settings_update": "a modifié les réglages d'envoi",
+      "mailing_automation_update": "a modifié une automatisation",
+      "mailing_run": "a lancé l'envoi",
+      "user_role_change": "a changé un rôle",
+      "user_delete": "compte supprimé",
+      "subscriber_create": "nouvel abonné newsletter"
+    }
+  },
   "AdminShell": {
     "label": "Navigation de l'administration",
     "home": "Accueil de l'administration",
@@ -546,7 +700,10 @@
       "banner": "Bannière",
       "settings": "Réglages",
       "matches": "Matchs",
-      "scanner": "Scanner"
+      "scanner": "Scanner",
+      "polls": "Sondages",
+      "documents": "Documents",
+      "journal": "Journal"
     },
     "tabs": {
       "home": "Accueil",
@@ -558,7 +715,10 @@
       "banner": "Bannière",
       "settings": "Réglages",
       "matches": "Matchs",
-      "scanner": "Scanner"
+      "scanner": "Scanner",
+      "polls": "Sondages",
+      "documents": "Docs",
+      "journal": "Journal"
     },
     "roles": {
       "member": "Membre",
@@ -570,6 +730,13 @@
       "cancel": "Annuler",
       "confirm": "Confirmer",
       "typeToConfirm": "Tapez « {text} » pour confirmer"
+    },
+    "palette": {
+      "title": "Recherche rapide",
+      "short": "Rechercher…",
+      "placeholder": "Membre, événement, article, section…",
+      "sections": "Sections",
+      "empty": "Aucun résultat."
     }
   },
   "AdminBanner": {
@@ -1334,7 +1501,9 @@
       "title": "Rien de prévu pour l'instant",
       "body": "Les prochaines watch parties et sorties du club apparaîtront ici. Vous recevrez un e-mail à chaque nouvel événement.",
       "cta": "Voir les matchs"
-    }
+    },
+    "driveTime": "{duration} en voiture depuis chez vous · {distance}",
+    "route": "Itinéraire"
   },
   "AdminEvents": {
     "created": "Événement créé.",
@@ -2022,5 +2191,20 @@
         "when": "60 jours sans visite, au plus tous les 90 jours"
       }
     }
+  },
+  "Polls": {
+    "title": "Sondages du club",
+    "open": "Vote ouvert",
+    "closed": "Résultats",
+    "until": "Jusqu'à {date}",
+    "votes": "{count, plural, =0 {0 voix} one {# voix} other {# voix}}",
+    "total": "{count, plural, =0 {Aucun vote pour l'instant} one {# vote} other {# votes}}",
+    "change": "Changer mon vote",
+    "thanks": "Merci, c'est voté !",
+    "error": "Le vote n'a pas pu être enregistré."
+  },
+  "Documents": {
+    "title": "Documents du club",
+    "other": "Autres"
   }
 }

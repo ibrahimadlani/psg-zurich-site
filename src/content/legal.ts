@@ -65,6 +65,29 @@ const imprint: Record<Locale, LegalDocument> = {
         ],
       },
       {
+        id: "sources",
+        title: "Sources et services tiers",
+        blocks: [
+          {
+            ul: [
+              "Calendriers, résultats et classements des matchs : football-data.org.",
+              "Cartes, suggestions d'adresses et temps de trajet : Google Maps (Google LLC).",
+              "Photos : association et, pour certaines illustrations, banques d'images libres de droits (Pexels).",
+            ],
+          },
+          { p: "Ces données sont affichées à titre informatif ; seules les annonces du club engagent l'association." },
+        ],
+      },
+      {
+        id: "donnees-personnelles",
+        title: "Données personnelles",
+        blocks: [
+          {
+            p: `Le traitement des données des membres et des visiteurs est décrit dans la page Confidentialité. Pour toute question : ${email}.`,
+          },
+        ],
+      },
+      {
         id: "responsabilite",
         title: "Responsabilité",
         blocks: [
@@ -118,6 +141,29 @@ const imprint: Record<Locale, LegalDocument> = {
           },
           {
             p: "The Paris Saint-Germain name, crest and trademarks belong to Paris Saint-Germain Football Club. They are used under the association's status as an official supporters club.",
+          },
+        ],
+      },
+      {
+        id: "sources",
+        title: "Sources and third-party services",
+        blocks: [
+          {
+            ul: [
+              "Match fixtures, results and standings: football-data.org.",
+              "Maps, address suggestions and travel times: Google Maps (Google LLC).",
+              "Photos: the association and, for some illustrations, royalty-free image libraries (Pexels).",
+            ],
+          },
+          { p: "This data is shown for information only; only the club's own announcements bind the association." },
+        ],
+      },
+      {
+        id: "donnees-personnelles",
+        title: "Personal data",
+        blocks: [
+          {
+            p: `How members' and visitors' data is handled is described on the Privacy page. Any questions: ${email}.`,
           },
         ],
       },
@@ -179,6 +225,29 @@ const imprint: Record<Locale, LegalDocument> = {
         ],
       },
       {
+        id: "sources",
+        title: "Quellen und Drittdienste",
+        blocks: [
+          {
+            ul: [
+              "Spielpläne, Resultate und Tabellen: football-data.org.",
+              "Karten, Adressvorschläge und Fahrzeiten: Google Maps (Google LLC).",
+              "Fotos: der Verein und, für einzelne Illustrationen, lizenzfreie Bilddatenbanken (Pexels).",
+            ],
+          },
+          { p: "Diese Angaben dienen nur zur Information; verbindlich sind allein die Mitteilungen des Clubs." },
+        ],
+      },
+      {
+        id: "donnees-personnelles",
+        title: "Personendaten",
+        blocks: [
+          {
+            p: `Wie wir die Daten von Mitgliedern und Besuchenden bearbeiten, steht auf der Seite Datenschutz. Bei Fragen: ${email}.`,
+          },
+        ],
+      },
+      {
         id: "responsabilite",
         title: "Haftung",
         blocks: [
@@ -200,7 +269,7 @@ const privacy: Record<Locale, LegalDocument> = {
   fr: {
     title: "Confidentialité",
     intro:
-      "Quelles données nous collectons, pourquoi, combien de temps nous les gardons et comment exercer vos droits, selon la loi fédérale sur la protection des données (LPD).",
+      "Quelles données nous collectons, pourquoi, qui y a accès, combien de temps nous les gardons et comment exercer vos droits, selon la loi fédérale sur la protection des données (LPD).",
     sections: [
       {
         id: "responsable",
@@ -222,9 +291,12 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              "Compte : prénom, nom, adresse e-mail et mot de passe (enregistré uniquement sous forme chiffrée, illisible même pour nous).",
-              "Profil de membre : téléphone et adresse postale (facultatifs), statut de l'adhésion et date d'inscription.",
+              "Compte : prénom, nom, adresse e-mail, mot de passe (enregistré uniquement sous forme chiffrée, illisible même pour nous) et photo de profil si vous en ajoutez une.",
+              "Profil de membre : téléphone et adresse postale (facultatifs), langue, numéro de membre, statut de l'adhésion, dates de demande et d'adhésion, et date jusqu'à laquelle la cotisation est payée.",
               "Questions d'accueil (toutes facultatives) : date de naissance, centres d'intérêt, accès à la billetterie du PSG et choix concernant les photos, avec la date de ce choix.",
+              "Vie du club : vos inscriptions aux événements (y compris la liste d'attente), votre présence le jour même quand votre carte de membre est scannée à l'entrée (date et heure), vos pronostics et le pseudo éventuel du classement, et vos réponses aux sondages du club.",
+              "Carte de membre : un code aléatoire, imprimé dans le QR code, qui permet au comité de vérifier votre adhésion à l'entrée. Il ne contient aucune donnée personnelle et peut être renouvelé.",
+              "Newsletter : adresse e-mail et langue, si vous vous y abonnez sans être membre.",
               "Consentement : date et heure auxquelles vous avez accepté les statuts et la présente politique.",
               "Sécurité : adresse IP et type de navigateur liés à vos sessions de connexion et à votre inscription.",
             ],
@@ -238,9 +310,12 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              "Gérer votre adhésion et votre espace membre.",
+              "Gérer votre adhésion, votre cotisation et votre espace membre.",
               "Appliquer les statuts : la date de naissance distingue membres actifs et juniors (cotisation réduite, accord d'un représentant légal). Elle n'est jamais visible par les autres membres.",
-              "Organiser la vie du club : proposer les événements qui vous intéressent et coordonner les achats de billets groupés lors des déplacements.",
+              "Organiser la vie du club : proposer les événements qui vous intéressent, gérer les places et la liste d'attente, contrôler les entrées et coordonner les achats de billets groupés lors des déplacements.",
+              "Pronostics : votre prénom et l'initiale de votre nom (ou votre pseudo) apparaissent dans le classement des membres. Vous pouvez vous en masquer dans vos paramètres.",
+              "Sondages : seul le total des voix par réponse est affiché, aux membres comme au comité. Votre choix personnel n'est visible que par vous.",
+              "Documents du club (statuts, procès-verbaux…) : ils sont mis à disposition des membres et ne contiennent pas de données vous concernant, sauf mention contraire.",
               "Photos : le club ne publie des photos où vous êtes reconnaissable (site, réseaux) que si vous l'avez accepté. Vous pouvez retirer votre accord à tout moment dans vos paramètres.",
               "Vous connecter de façon sécurisée et protéger les comptes contre les abus.",
               "Vous envoyer les e-mails nécessaires (confirmation d'adresse, mot de passe, adhésion, cotisation, événements auxquels vous êtes inscrit) et, si vous les gardez activés dans vos paramètres, les annonces d'événements, les rappels et résultats de pronostics et les actualités du club. Chacun de ces e-mails optionnels contient un lien pour s'en désabonner.",
@@ -250,14 +325,33 @@ const privacy: Record<Locale, LegalDocument> = {
         ],
       },
       {
+        id: "acces",
+        title: "Qui y a accès au sein du club",
+        blocks: [
+          {
+            ul: [
+              "Administrateurs (membres du comité) : l'ensemble des données de membre, pour gérer les adhésions, les cotisations, les e-mails et les exports nécessaires à l'organisation (liste des inscrits d'un déplacement, par exemple).",
+              "Modérateurs (bénévoles désignés par le comité) : l'annuaire des membres en lecture seule (coordonnées, profil, cotisation) et les données des événements (inscriptions, présence), pour l'organisation et l'accueil. Ils ne peuvent ni modifier les adhésions ni exporter la liste des membres.",
+              "Les autres membres voient seulement votre nom et votre photo dans la liste « Avec qui ? » des événements auxquels vous êtes inscrit, et votre place au classement des pronostics (sauf si vous vous en masquez).",
+            ],
+          },
+          {
+            p: "Chaque action du comité sur les données (acceptation, cotisation, modification, export…) est enregistrée dans un journal d'audit, avec son auteur, sa date et l'adresse IP utilisée.",
+          },
+        ],
+      },
+      {
         id: "destinataires",
         title: "Hébergement et destinataires",
         blocks: [
           {
-            p: `Les données sont stockées en Suisse chez ${host.name}, qui héberge le site, la base de données et la messagerie. Seuls les membres du comité chargés de l'administration y ont accès.`,
+            p: `Les données sont stockées en Suisse chez ${host.name}, qui héberge le site, la base de données, les documents et la messagerie. Elles ne sont transmises à aucun autre destinataire.`,
           },
           {
-            p: "Exception : les cartes et la saisie d'adresse avec suggestions utilisent Google Maps (Google LLC, États-Unis). Quand vous affichez une carte ou tapez une adresse dans ces champs, Google reçoit votre adresse IP et le texte saisi. Le reste de vos données n'est jamais transmis.",
+            p: "Exception : les cartes et la saisie d'adresse avec suggestions utilisent Google Maps (Google LLC, États-Unis). Quand vous affichez une carte ou tapez une adresse dans ces champs, Google reçoit votre adresse IP et le texte saisi. Pour afficher le temps de trajet en voiture jusqu'à un événement, le serveur du club envoie à Google votre adresse (rue, NPA, localité) et le lieu de l'événement, sans votre nom ni votre e-mail ; seul le résultat est conservé, sous une clé qui ne permet pas de retrouver l'adresse. Le reste de vos données n'est jamais transmis.",
+          },
+          {
+            p: "Les résultats et calendriers des matchs proviennent de football-data.org : aucune donnée vous concernant ne lui est envoyée.",
           },
         ],
       },
@@ -267,7 +361,9 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              `Données de membre : pendant toute la durée de l'adhésion, puis ${LEGAL.retentionAfterMembership} au plus.`,
+              `Données de membre, inscriptions, présences, pronostics et votes : pendant toute la durée de l'adhésion, puis ${LEGAL.retentionAfterMembership} au plus.`,
+              "Demandes d'adhésion refusées : conservées jusqu'à l'assemblée générale suivante (droit de recours), puis supprimées sur demande.",
+              "Journal d'audit des actions du comité : 2 ans.",
               "Sessions de connexion : 7 jours après la dernière activité.",
               "Historique des e-mails envoyés (destinataire, type, date) : 90 jours.",
               "Liens envoyés par e-mail : 24 heures pour la confirmation d'adresse, 1 heure pour le mot de passe.",
@@ -280,10 +376,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Cookies et stockage local",
         blocks: [
           {
-            p: "Le site n'utilise qu'un seul cookie, indispensable : celui qui vous garde connecté. Votre navigateur retient aussi votre choix de thème (clair ou sombre) et les annonces que vous avez fermées.",
+            p: "Le site n'utilise qu'un seul cookie, indispensable : celui qui vous garde connecté. Votre navigateur retient aussi votre choix de thème (clair ou sombre), les annonces que vous avez fermées et, pour le comité, l'affichage du menu d'administration.",
           },
           {
-            p: "Aucun outil de mesure d'audience, aucune publicité. Les polices de caractères sont servies par le site lui-même. Seules les pages qui affichent une carte Google (Contact, événements) peuvent laisser Google déposer ses propres cookies.",
+            p: "Aucun outil de mesure d'audience, aucune publicité. Les polices de caractères sont servies par le site lui-même. Seules les pages qui affichent une carte Google (Contact, événements) peuvent laisser Google déposer ses propres cookies. Le scanner de cartes du comité utilise la caméra du téléphone uniquement pendant le scan : aucune image n'est enregistrée ni envoyée.",
           },
         ],
       },
@@ -292,7 +388,7 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Sécurité",
         blocks: [
           {
-            p: "Les échanges sont chiffrés (HTTPS), les mots de passe sont stockés sous forme hachée et les liens envoyés par e-mail sont à usage limité dans le temps.",
+            p: "Les échanges sont chiffrés (HTTPS), les mots de passe sont stockés sous forme hachée, les liens envoyés par e-mail sont à usage limité dans le temps, et l'accès aux données du comité est limité selon le rôle de chacun.",
           },
         ],
       },
@@ -301,10 +397,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Vos droits",
         blocks: [
           {
-            p: "Vous pouvez à tout moment demander à consulter, corriger, exporter ou supprimer vos données, ou retirer votre consentement.",
+            p: "Vous pouvez à tout moment consulter, corriger, exporter ou supprimer vos données, ou retirer votre consentement. Depuis vos paramètres, vous pouvez déjà modifier votre profil, télécharger toutes vos données (fichier JSON) et supprimer votre compte.",
           },
           {
-            p: `Écrivez-nous à ${email} : nous répondons dans un délai de 30 jours. Vous pouvez aussi vous adresser au Préposé fédéral à la protection des données et à la transparence (PFPDT) : https://www.edoeb.admin.ch`,
+            p: `Pour toute autre demande, écrivez-nous à ${email} : nous répondons dans un délai de 30 jours. Vous pouvez aussi vous adresser au Préposé fédéral à la protection des données et à la transparence (PFPDT) : https://www.edoeb.admin.ch`,
           },
         ],
       },
@@ -322,7 +418,7 @@ const privacy: Record<Locale, LegalDocument> = {
   en: {
     title: "Privacy",
     intro:
-      "What data we collect, why, how long we keep it and how to exercise your rights, under the Swiss Federal Act on Data Protection (FADP).",
+      "What data we collect, why, who can access it, how long we keep it and how to exercise your rights, under the Swiss Federal Act on Data Protection (FADP).",
     sections: [
       {
         id: "responsable",
@@ -344,9 +440,12 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              "Account: first name, last name, email address and password (stored only in encrypted form, unreadable even to us).",
-              "Member profile: phone and postal address (optional), membership status and sign-up date.",
+              "Account: first name, last name, email address, password (stored only in encrypted form, unreadable even to us) and a profile picture if you add one.",
+              "Member profile: phone and postal address (optional), language, member number, membership status, request and membership dates, and the date until which your fee is paid.",
               "Welcome questions (all optional): date of birth, interests, access to PSG ticketing and your choice about photos, with the date of that choice.",
+              "Club life: your event sign-ups (waiting list included), your attendance on the day when your member card is scanned at the door (date and time), your predictions and any leaderboard nickname, and your answers to the club's polls.",
+              "Member card: a random code, printed in the QR code, that lets the committee check your membership at the door. It holds no personal data and can be renewed.",
+              "Newsletter: email address and language, if you subscribe without being a member.",
               "Consent: date and time at which you accepted the statutes and this policy.",
               "Security: IP address and browser type linked to your sign-in sessions and your sign-up.",
             ],
@@ -360,15 +459,34 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              "Manage your membership and your member area.",
-              "Apply the statutes: your date of birth tells active and junior members apart (reduced fee, legal guardian's consent). Other members never see it.",
-              "Run the club: suggest the events that interest you and coordinate group ticket purchases for trips.",
-              "Photos: the club only publishes photos in which you can be recognised (website, social media) if you agreed to it. You can withdraw your consent at any time in your settings.",
+              "Manage your membership, your fee and your member area.",
+              "Apply the statutes: the date of birth distinguishes active and junior members (reduced fee, consent of a legal guardian). It is never visible to other members.",
+              "Run club life: suggest the events you care about, manage places and the waiting list, check people in at the door and coordinate group ticket purchases for away trips.",
+              "Predictions: your first name and last-name initial (or your nickname) appear in the members' leaderboard. You can hide yourself in your settings.",
+              "Polls: only the total number of votes per answer is shown, to members and committee alike. Your own choice is visible to you only.",
+              "Club documents (statutes, minutes…): they are shared with members and hold no data about you unless stated otherwise.",
+              "Photos: the club only publishes photos in which you can be recognised (website, social media) if you have agreed to it. You can withdraw your consent at any time in your settings.",
               "Sign you in securely and protect accounts against abuse.",
-              "Send you the necessary emails (address confirmation, password, membership, fee, events you signed up for) and, if you keep them on in your settings, event announcements, prediction reminders and results, and club news. Each of these optional emails has a link to unsubscribe.",
+              "Send you the necessary emails (address confirmation, password, membership, fee, events you signed up for) and, if you keep them enabled in your settings, event announcements, prediction reminders and results, and club news. Each of these optional emails contains an unsubscribe link.",
             ],
           },
           { p: "Your data is never sold or used for advertising." },
+        ],
+      },
+      {
+        id: "acces",
+        title: "Who can access it within the club",
+        blocks: [
+          {
+            ul: [
+              "Administrators (committee members): all member data, to manage memberships, fees, emails and the exports the organisation needs (the sign-up list of an away trip, for instance).",
+              "Moderators (volunteers appointed by the committee): the member list, read only (contact details, profile, fee), and event data (sign-ups, attendance), for organising and welcoming people. They can neither change memberships nor export the member list.",
+              "Other members only see your name and picture in the “Who's going?” list of the events you signed up for, and your place in the predictions leaderboard (unless you hide yourself).",
+            ],
+          },
+          {
+            p: "Every committee action on the data (acceptance, fee, change, export…) is recorded in an audit log, with its author, its date and the IP address used.",
+          },
         ],
       },
       {
@@ -376,10 +494,13 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Hosting and recipients",
         blocks: [
           {
-            p: `Data is stored in Switzerland by ${host.name}, which hosts the website, the database and the email service. Only committee members in charge of administration can access it.`,
+            p: `Data is stored in Switzerland with ${host.name}, which hosts the website, the database, the documents and the email service. It is not passed on to any other recipient.`,
           },
           {
-            p: "Exception: maps and address fields with suggestions use Google Maps (Google LLC, United States). When you view a map or type an address in these fields, Google receives your IP address and what you type. None of your other data is ever transferred.",
+            p: "Exception: maps and the address field with suggestions use Google Maps (Google LLC, USA). When you display a map or type an address in these fields, Google receives your IP address and the text you type. To show the driving time to an event, the club's server sends Google your address (street, postcode, town) and the event's location, without your name or email; only the result is kept, under a key from which the address cannot be recovered. None of your other data is ever transmitted.",
+          },
+          {
+            p: "Match results and fixtures come from football-data.org: no data about you is sent to it.",
           },
         ],
       },
@@ -389,9 +510,11 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              `Member data: for the duration of the membership, then ${LEGAL.retentionAfterMembership} at most.`,
+              `Member data, sign-ups, attendance, predictions and votes: for the duration of the membership, then ${LEGAL.retentionAfterMembership} at most.`,
+              "Refused membership requests: kept until the next general assembly (right of appeal), then deleted on request.",
+              "Audit log of committee actions: 2 years.",
               "Sign-in sessions: 7 days after the last activity.",
-              "History of the emails sent (recipient, type, date): 90 days.",
+              "History of sent emails (recipient, type, date): 90 days.",
               "Links sent by email: 24 hours for address confirmation, 1 hour for passwords.",
             ],
           },
@@ -402,10 +525,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Cookies and local storage",
         blocks: [
           {
-            p: "The website uses a single, essential cookie: the one that keeps you signed in. Your browser also remembers your theme (light or dark) and the announcements you closed.",
+            p: "The website uses a single, essential cookie: the one that keeps you signed in. Your browser also remembers your theme (light or dark), the announcements you closed and, for the committee, how the admin menu is displayed.",
           },
           {
-            p: "No analytics, no advertising. Fonts are served by the website itself. Only the pages showing a Google map (Contact, events) may let Google set its own cookies.",
+            p: "No analytics, no advertising. Fonts are served by the website itself. Only pages that display a Google map (Contact, events) may let Google set its own cookies. The committee's card scanner uses the phone's camera only while scanning: no image is recorded or sent.",
           },
         ],
       },
@@ -414,7 +537,7 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Security",
         blocks: [
           {
-            p: "Connections are encrypted (HTTPS), passwords are stored hashed and links sent by email expire quickly.",
+            p: "Traffic is encrypted (HTTPS), passwords are stored hashed, links sent by email expire, and the committee's access to data is limited according to each person's role.",
           },
         ],
       },
@@ -423,10 +546,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Your rights",
         blocks: [
           {
-            p: "You can ask at any time to access, correct, export or delete your data, or withdraw your consent.",
+            p: "You can at any time view, correct, export or delete your data, or withdraw your consent. In your settings you can already edit your profile, download all your data (JSON file) and delete your account.",
           },
           {
-            p: `Write to us at ${email}: we reply within 30 days. You can also contact the Federal Data Protection and Information Commissioner (FDPIC): https://www.edoeb.admin.ch`,
+            p: `For any other request, write to us at ${email}: we reply within 30 days. You can also contact the Federal Data Protection and Information Commissioner (FDPIC): https://www.edoeb.admin.ch`,
           },
         ],
       },
@@ -435,7 +558,7 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Changes",
         blocks: [
           {
-            p: "This policy may change. The update date appears at the top of the page; members are notified by email of any significant change.",
+            p: "This policy may change. The update date is shown at the top of the page; members are notified by email of any significant change.",
           },
         ],
       },
@@ -444,7 +567,7 @@ const privacy: Record<Locale, LegalDocument> = {
   de: {
     title: "Datenschutz",
     intro:
-      "Welche Daten wir erheben, wozu, wie lange wir sie aufbewahren und wie du deine Rechte ausübst – nach dem Bundesgesetz über den Datenschutz (DSG).",
+      "Welche Daten wir erheben, wozu, wer darauf zugreift, wie lange wir sie aufbewahren und wie du deine Rechte ausübst – nach dem Bundesgesetz über den Datenschutz (DSG).",
     sections: [
       {
         id: "responsable",
@@ -466,11 +589,14 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              "Konto: Vorname, Nachname, E-Mail-Adresse und Passwort (nur verschlüsselt gespeichert, auch für uns nicht lesbar).",
-              "Mitgliederprofil: Telefon und Postadresse (freiwillig), Mitgliedschaftsstatus und Anmeldedatum.",
-              "Willkommensfragen (alle freiwillig): Geburtsdatum, Interessen, Zugang zum PSG-Ticketverkauf und deine Wahl zu Fotos, mit dem Datum dieser Wahl.",
+              "Konto: Vorname, Nachname, E-Mail-Adresse, Passwort (nur verschlüsselt gespeichert, auch für uns nicht lesbar) und ein Profilbild, falls du eines hinzufügst.",
+              "Mitgliederprofil: Telefon und Postadresse (freiwillig), Sprache, Mitgliedsnummer, Mitgliedschaftsstatus, Antrags- und Beitrittsdatum sowie das Datum, bis zu dem dein Beitrag bezahlt ist.",
+              "Willkommensfragen (alle freiwillig): Geburtsdatum, Interessen, Zugang zum PSG-Ticketing und deine Entscheidung zu Fotos, mit dem Datum dieser Entscheidung.",
+              "Vereinsleben: deine Anmeldungen zu Veranstaltungen (inkl. Warteliste), deine Anwesenheit am Tag selbst, wenn deine Mitgliederkarte am Eingang gescannt wird (Datum und Uhrzeit), deine Tipps und ein allfälliger Spitzname in der Rangliste sowie deine Antworten auf die Umfragen des Clubs.",
+              "Mitgliederkarte: ein zufälliger Code im QR-Code, mit dem der Vorstand deine Mitgliedschaft am Eingang prüft. Er enthält keine Personendaten und kann erneuert werden.",
+              "Newsletter: E-Mail-Adresse und Sprache, wenn du dich ohne Mitgliedschaft anmeldest.",
               "Einwilligung: Datum und Uhrzeit, zu denen du die Statuten und diese Erklärung akzeptiert hast.",
-              "Sicherheit: IP-Adresse und Browsertyp deiner Anmeldesitzungen und deiner Registrierung.",
+              "Sicherheit: IP-Adresse und Browsertyp im Zusammenhang mit deinen Anmeldesitzungen und deiner Registrierung.",
             ],
           },
           { p: "Wir erheben keine besonders schützenswerten Daten und kaufen keine Daten von Dritten." },
@@ -482,15 +608,34 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              "Deine Mitgliedschaft und deinen Mitgliederbereich verwalten.",
-              "Die Statuten anwenden: Das Geburtsdatum unterscheidet Aktiv- und Juniormitglieder (reduzierter Beitrag, Zustimmung einer erziehungsberechtigten Person). Andere Mitglieder sehen es nie.",
-              "Das Clubleben organisieren: dir passende Veranstaltungen vorschlagen und Sammelbestellungen von Tickets für Auswärtsfahrten koordinieren.",
-              "Fotos: Der Club veröffentlicht Fotos, auf denen du erkennbar bist (Website, soziale Medien), nur mit deinem Einverständnis. Du kannst es jederzeit in deinen Einstellungen widerrufen.",
+              "Deine Mitgliedschaft, deinen Beitrag und deinen Mitgliederbereich verwalten.",
+              "Die Statuten anwenden: Das Geburtsdatum unterscheidet aktive Mitglieder und Junioren (reduzierter Beitrag, Zustimmung einer gesetzlichen Vertretung). Es ist für andere Mitglieder nie sichtbar.",
+              "Das Vereinsleben organisieren: passende Veranstaltungen vorschlagen, Plätze und Warteliste verwalten, den Einlass kontrollieren und Gruppen-Ticketkäufe für Auswärtsfahrten koordinieren.",
+              "Tipps: Dein Vorname und die Initiale deines Nachnamens (oder dein Spitzname) erscheinen in der Rangliste der Mitglieder. In deinen Einstellungen kannst du dich ausblenden.",
+              "Umfragen: Angezeigt wird nur die Gesamtzahl der Stimmen pro Antwort, für Mitglieder wie für den Vorstand. Deine eigene Wahl siehst nur du.",
+              "Dokumente des Clubs (Statuten, Protokolle …): Sie werden den Mitgliedern zur Verfügung gestellt und enthalten keine Daten über dich, sofern nicht anders angegeben.",
+              "Fotos: Der Club veröffentlicht Fotos, auf denen du erkennbar bist (Website, soziale Netzwerke), nur mit deiner Zustimmung. Du kannst sie jederzeit in deinen Einstellungen widerrufen.",
               "Dich sicher anmelden und Konten vor Missbrauch schützen.",
-              "Dir die nötigen E-Mails senden (Adressbestätigung, Passwort, Mitgliedschaft, Beitrag, Veranstaltungen, für die du angemeldet bist) und, wenn du sie in deinen Einstellungen aktiviert lässt, Veranstaltungsankündigungen, Tipp-Erinnerungen und -Resultate sowie Clubneuigkeiten. Jede dieser freiwilligen E-Mails enthält einen Abmeldelink.",
+              "Dir die nötigen E-Mails senden (Adressbestätigung, Passwort, Mitgliedschaft, Beitrag, Veranstaltungen, für die du angemeldet bist) und – sofern du sie in deinen Einstellungen aktiviert lässt – Veranstaltungshinweise, Tipp-Erinnerungen und -Resultate sowie Club-News. Jede dieser optionalen E-Mails enthält einen Abmeldelink.",
             ],
           },
-          { p: "Deine Daten werden nie verkauft oder für Werbung verwendet." },
+          { p: "Deine Daten werden nie verkauft und nicht für Werbung verwendet." },
+        ],
+      },
+      {
+        id: "acces",
+        title: "Wer im Club darauf zugreift",
+        blocks: [
+          {
+            ul: [
+              "Administratoren (Vorstandsmitglieder): alle Mitgliederdaten, um Mitgliedschaften, Beiträge, E-Mails und die für die Organisation nötigen Exporte zu verwalten (z. B. die Anmeldeliste einer Auswärtsfahrt).",
+              "Moderatoren (vom Vorstand bestimmte Freiwillige): die Mitgliederliste nur zum Lesen (Kontaktdaten, Profil, Beitrag) und die Daten der Veranstaltungen (Anmeldungen, Anwesenheit), für Organisation und Einlass. Sie können weder Mitgliedschaften ändern noch die Mitgliederliste exportieren.",
+              "Andere Mitglieder sehen nur deinen Namen und dein Bild in der Liste «Mit wem?» der Veranstaltungen, für die du angemeldet bist, und deinen Platz in der Tipp-Rangliste (ausser du blendest dich aus).",
+            ],
+          },
+          {
+            p: "Jede Aktion des Vorstands an den Daten (Annahme, Beitrag, Änderung, Export …) wird in einem Audit-Protokoll mit Urheber, Datum und verwendeter IP-Adresse festgehalten.",
+          },
         ],
       },
       {
@@ -498,10 +643,13 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Hosting und Empfänger",
         blocks: [
           {
-            p: `Die Daten werden in der Schweiz bei ${host.name} gespeichert, die Website, Datenbank und E-Mail-Dienst hostet. Nur die für die Verwaltung zuständigen Vorstandsmitglieder haben Zugriff.`,
+            p: `Die Daten werden in der Schweiz bei ${host.name} gespeichert, das die Website, die Datenbank, die Dokumente und den E-Mail-Dienst hostet. Sie werden an keine weiteren Empfänger weitergegeben.`,
           },
           {
-            p: "Ausnahme: Karten und Adressfelder mit Vorschlägen nutzen Google Maps (Google LLC, USA). Wenn du eine Karte ansiehst oder in diesen Feldern eine Adresse eingibst, erhält Google deine IP-Adresse und den eingegebenen Text. Deine übrigen Daten werden nie übermittelt.",
+            p: "Ausnahme: Karten und das Adressfeld mit Vorschlägen nutzen Google Maps (Google LLC, USA). Wenn du eine Karte anzeigst oder in diesen Feldern eine Adresse eingibst, erhält Google deine IP-Adresse und den eingegebenen Text. Um die Fahrzeit mit dem Auto zu einer Veranstaltung anzuzeigen, sendet der Server des Clubs Google deine Adresse (Strasse, PLZ, Ort) und den Ort der Veranstaltung, ohne Namen oder E-Mail; gespeichert wird nur das Ergebnis, unter einem Schlüssel, aus dem sich die Adresse nicht ableiten lässt. Deine übrigen Daten werden nie übermittelt.",
+          },
+          {
+            p: "Spielresultate und Spielpläne stammen von football-data.org: Es werden keine Daten über dich dorthin gesendet.",
           },
         ],
       },
@@ -511,7 +659,9 @@ const privacy: Record<Locale, LegalDocument> = {
         blocks: [
           {
             ul: [
-              `Mitgliederdaten: für die Dauer der Mitgliedschaft, danach höchstens ${LEGAL.retentionAfterMembership}.`,
+              `Mitgliederdaten, Anmeldungen, Anwesenheiten, Tipps und Stimmen: für die Dauer der Mitgliedschaft, danach höchstens ${LEGAL.retentionAfterMembership}.`,
+              "Abgelehnte Mitgliedsanträge: bis zur nächsten Generalversammlung (Rekursrecht), danach auf Anfrage gelöscht.",
+              "Audit-Protokoll der Vorstandsaktionen: 2 Jahre.",
               "Anmeldesitzungen: 7 Tage nach der letzten Aktivität.",
               "Verlauf der gesendeten E-Mails (Empfänger, Art, Datum): 90 Tage.",
               "Per E-Mail gesendete Links: 24 Stunden für die Adressbestätigung, 1 Stunde für das Passwort.",
@@ -524,10 +674,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Cookies und lokaler Speicher",
         blocks: [
           {
-            p: "Die Website verwendet ein einziges, notwendiges Cookie: jenes, das dich angemeldet hält. Dein Browser merkt sich ausserdem dein Design (hell oder dunkel) und die geschlossenen Mitteilungen.",
+            p: "Die Website verwendet nur ein einziges, notwendiges Cookie: jenes, das dich angemeldet hält. Dein Browser speichert ausserdem dein Farbschema (hell oder dunkel), die geschlossenen Hinweise und, für den Vorstand, die Darstellung des Admin-Menüs.",
           },
           {
-            p: "Keine Reichweitenmessung, keine Werbung. Die Schriften werden von der Website selbst ausgeliefert. Nur die Seiten mit einer Google-Karte (Kontakt, Veranstaltungen) können Google eigene Cookies setzen lassen.",
+            p: "Keine Analyse-Tools, keine Werbung. Die Schriften werden von der Website selbst ausgeliefert. Nur Seiten mit einer Google-Karte (Kontakt, Veranstaltungen) können Google eigene Cookies setzen lassen. Der Kartenscanner des Vorstands nutzt die Handykamera nur während des Scans: Es wird kein Bild gespeichert oder gesendet.",
           },
         ],
       },
@@ -536,7 +686,7 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Sicherheit",
         blocks: [
           {
-            p: "Verbindungen sind verschlüsselt (HTTPS), Passwörter werden gehasht gespeichert und per E-Mail gesendete Links sind nur kurz gültig.",
+            p: "Die Verbindungen sind verschlüsselt (HTTPS), Passwörter werden gehasht gespeichert, per E-Mail gesendete Links sind zeitlich begrenzt, und der Zugriff des Vorstands auf die Daten ist je nach Rolle beschränkt.",
           },
         ],
       },
@@ -545,10 +695,10 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Deine Rechte",
         blocks: [
           {
-            p: "Du kannst jederzeit Auskunft, Berichtigung, Herausgabe oder Löschung deiner Daten verlangen oder deine Einwilligung widerrufen.",
+            p: "Du kannst deine Daten jederzeit einsehen, berichtigen, exportieren oder löschen sowie deine Einwilligung widerrufen. In deinen Einstellungen kannst du bereits dein Profil ändern, alle deine Daten herunterladen (JSON-Datei) und dein Konto löschen.",
           },
           {
-            p: `Schreib uns an ${email}: Wir antworten innerhalb von 30 Tagen. Du kannst dich auch an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) wenden: https://www.edoeb.admin.ch`,
+            p: `Für andere Anliegen schreib uns an ${email}: Wir antworten innert 30 Tagen. Du kannst dich auch an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) wenden: https://www.edoeb.admin.ch`,
           },
         ],
       },

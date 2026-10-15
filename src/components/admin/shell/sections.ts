@@ -1,14 +1,17 @@
 import {
   Banknote,
   CalendarDays,
+  FileText,
   House,
   Mail,
   Megaphone,
   Newspaper,
   ScanLine,
+  ScrollText,
   Settings2,
   Trophy,
   Users,
+  Vote,
   type LucideIcon,
 } from "lucide-react";
 import type { Capability } from "@/lib/roles";
@@ -17,7 +20,7 @@ import type { Capability } from "@/lib/roles";
 export type AdminBadge = "requests" | "unpaid" | "failedEmails";
 
 export type AdminSection = {
-  key: "home" | "members" | "dues" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "settings";
+  key: "home" | "members" | "dues" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "polls" | "documents" | "settings" | "journal";
   href: string;
   icon: LucideIcon;
   capability: Capability;
@@ -38,7 +41,10 @@ export const ADMIN_SECTIONS: AdminSection[] = [
   { key: "news", href: "/admin/actualites", icon: Newspaper, capability: "news", group: "content" },
   { key: "mailing", href: "/admin/mailing", icon: Mail, capability: "mailing", group: "content", badge: "failedEmails" },
   { key: "banner", href: "/admin/banniere", icon: Megaphone, capability: "news", group: "content" },
+  { key: "polls", href: "/admin/sondages", icon: Vote, capability: "polls", group: "content" },
+  { key: "documents", href: "/admin/documents", icon: FileText, capability: "documents", group: "content" },
   { key: "settings", href: "/admin/reglages", icon: Settings2, capability: "roles", group: "team" },
+  { key: "journal", href: "/admin/journal", icon: ScrollText, capability: "audit", group: "team" },
 ];
 
 export const ADMIN_GROUPS = ["club", "programme", "content", "team"] as const;

@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowUpRight, Ellipsis, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { ArrowUpRight, Ellipsis, PanelLeftClose, PanelLeftOpen, Search } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react";
+import { CommandPalette, OPEN_PALETTE } from "@/components/admin/shell/command-palette";
 import { ConfirmProvider } from "@/components/admin/ui/confirm-dialog";
 import { ADMIN_GROUPS, ADMIN_SECTIONS, activeSection, type AdminBadge, type AdminSection } from "@/components/admin/shell/sections";
 import { BrandLogo } from "@/components/brand-logo";
@@ -128,6 +129,20 @@ function Sidebar({ sections, active, counters }: { sections: AdminSection[]; act
         </span>
       </div>
 
+      {/* Quick search (⌘K / Ctrl+K). */}
+      <div className="px-3 pt-1">
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new Event(OPEN_PALETTE))}
+          title={t("palette.title")}
+          className="flex h-10 w-full cursor-pointer items-center gap-3 rounded-[8px] border bg-card/60 px-2.5 text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <Search className="size-[18px] shrink-0" aria-hidden />
+          <span className={cn(whenOpen, "min-w-0 flex-1 truncate text-left text-[13px]")}>{t("palette.short")}</span>
+          <kbd className={cn(whenOpen, "rounded-[5px] border px-1.5 py-0.5 font-mono text-[10px]")}>⌘K</kbd>
+        </button>
+      </div>
+
       <nav ref={nav} aria-label={t("label")} className="relative flex-1 overflow-y-auto px-3 py-3 [scrollbar-width:thin]">
         {marker !== null ? (
           <PsgBanner
@@ -224,6 +239,14 @@ function TopBar({ active }: { active: AdminSection | undefined }) {
         {t("badge")}
         {active && active.key !== "home" ? <span className="text-foreground"> · {t(`sections.${active.key}`)}</span> : null}
       </span>
+      <button
+        type="button"
+        onClick={() => window.dispatchEvent(new Event(OPEN_PALETTE))}
+        className="grid size-8 shrink-0 cursor-pointer place-items-center rounded-[8px] border transition-colors hover:bg-foreground/5"
+      >
+        <Search className="size-4" aria-hidden />
+        <span className="sr-only">{t("palette.title")}</span>
+      </button>
       <Link
         href="/"
         className="inline-flex h-8 items-center gap-1 rounded-[8px] border px-2.5 font-wide text-[9px] font-semibold tracking-[0.08em] uppercase transition-colors hover:bg-foreground/5"
@@ -381,6 +404,7 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
         </div>
         <TabBar sections={sections} active={active} counters={counters} />
       </div>
+      <CommandPalette sections={sections} />
     </ConfirmProvider>
   );
 }

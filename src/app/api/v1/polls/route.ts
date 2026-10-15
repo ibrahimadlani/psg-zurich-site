@@ -4,7 +4,7 @@ import { pollOptions, polls } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { requireCapability, requireRole } from "@/lib/permissions";
-import { hasRole } from "@/lib/roles";
+import { can } from "@/lib/roles";
 import { createPollSchema, pagination } from "@/lib/validators";
 
 type Poll = typeof polls.$inferSelect;
@@ -29,7 +29,7 @@ export const GET = apiHandler(async (request) => {
   const rows = await db
     .select()
     .from(polls)
-    .where(hasRole(session.user.role, "admin") ? undefined : ne(polls.status, "draft"))
+    .where(can(session.user.role, "polls") ? undefined : ne(polls.status, "draft"))
     .orderBy(desc(polls.createdAt))
     .limit(limit)
     .offset(offset);

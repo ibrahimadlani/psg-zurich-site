@@ -1,7 +1,6 @@
 import { z } from "zod";
 import {
   ANNOUNCEMENT_TONES,
-  DOCUMENT_VISIBILITIES,
   EVENT_TYPES,
   LOCALES,
   MATCH_STATUSES,
@@ -261,17 +260,6 @@ export const roleChangeSchema = z.object({
 export const createSubscriberSchema = z.object({
   email: z.email().max(255).transform((email) => email.toLowerCase()),
   locale: z.enum(LOCALES).default("fr"),
-});
-
-/* -------------------------------- Documents ------------------------------- */
-
-export const createDocumentSchema = z.object({
-  title: text(200),
-  filePath: text(512),
-  mimeType: text(127),
-  sizeBytes: z.number().int().min(0),
-  visibility: z.enum(DOCUMENT_VISIBILITIES).default("members"),
-  category: optionalText(80),
 });
 
 /* ---------------------------------- Polls --------------------------------- */

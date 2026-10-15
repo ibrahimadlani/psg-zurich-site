@@ -587,6 +587,28 @@ export const media = mysqlTable("media", {
   createdAt: createdAt(),
 });
 
+/**
+ * The file of a club document (statutes, minutes…), kept in the database like the article
+ * images so it survives redeploys. 10 MB at most (checked by the upload route).
+ */
+export const documentFiles = mysqlTable("document_files", {
+  documentId: fk("document_id")
+    .primaryKey()
+    .references(() => documents.id, { onDelete: "cascade" }),
+  data: blob("data").notNull(),
+});
+
+/**
+ * Driving time from a member's home to an event (Google Routes API), so each pair is paid for
+ * once. Keyed by a hash of the two places: no address is stored here.
+ */
+export const routeTimes = mysqlTable("route_times", {
+  key: varchar("key", { length: 64 }).primaryKey(),
+  durationSeconds: int("duration_seconds").notNull(),
+  distanceMeters: int("distance_meters").notNull(),
+  computedAt: createdAt(),
+});
+
 /* -------------------------------------------------------------------------- */
 /*                                   Mailing                                  */
 /* -------------------------------------------------------------------------- */

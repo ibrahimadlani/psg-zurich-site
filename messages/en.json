@@ -521,6 +521,160 @@
     "checkedIn": "{name} is in.",
     "error": "That didn't work. Try again."
   },
+  "AdminPolls": {
+    "description": "Ask the members: one question, a few choices, live results.",
+    "new": "New poll",
+    "newHint": "Accepted members vote from their member area.",
+    "question": "Question",
+    "questionPlaceholder": "Which bar for the next watch party?",
+    "options": "Choices",
+    "optionLabel": "Choice {number}",
+    "addOption": "Add a choice",
+    "removeOption": "Remove this choice",
+    "up": "Move up",
+    "down": "Move down",
+    "closesAt": "Voting ends (optional)",
+    "openNow": "Open voting right away",
+    "createOpen": "Create and open",
+    "createDraft": "Create as draft",
+    "createdOpen": "Poll open to members.",
+    "createdDraft": "Poll saved as draft.",
+    "invalid": "A question and at least two choices.",
+    "error": "That didn't work. Try again.",
+    "status": {
+      "live": "Voting open",
+      "draft": "Draft",
+      "scheduled": "Scheduled",
+      "closed": "Closed"
+    },
+    "until": "Until {date}",
+    "createdOn": "Created on {date}",
+    "votes": "{count, plural, =0 {0 votes} one {# vote} other {# votes}}",
+    "total": "{count, plural, =0 {No votes} one {# vote} other {# votes}}",
+    "open": "Open",
+    "reopen": "Reopen",
+    "close": "Close",
+    "opened": "Voting open.",
+    "closed": "Voting closed.",
+    "delete": "Delete",
+    "deleteTitle": "Delete the poll?",
+    "deleteBody": "“{question}” and all its votes disappear.",
+    "deleted": "Poll deleted.",
+    "empty": "No polls yet.",
+    "descriptionLabel": "Details (optional)"
+  },
+  "AdminDocuments": {
+    "description": "Statutes, minutes, rules: shared with members (or everyone).",
+    "new": "Add a document",
+    "newHint": "PDF or picture, 10 MB at most.",
+    "drop": "Choose or drop a file",
+    "dropHint": "PDF, PNG, JPEG or WebP · 10 MB max.",
+    "titleLabel": "Title",
+    "category": "Category",
+    "categoryPlaceholder": "Statutes, General assembly…",
+    "visibility": "Visible to",
+    "visibilities": {
+      "members": "Members",
+      "public": "Everyone",
+      "admins": "Committee"
+    },
+    "visibilityHints": {
+      "members": "Accepted members find it in their member area.",
+      "public": "Open link, even without an account.",
+      "admins": "Only the committee (admins)."
+    },
+    "upload": "Upload",
+    "uploading": "Uploading…",
+    "uploaded": "Document added.",
+    "tooLarge": "File too large (10 MB at most).",
+    "unsupported": "Only PDFs and pictures are accepted.",
+    "error": "That didn't work. Try again.",
+    "edit": "Edit",
+    "save": "Save",
+    "saved": "Document updated.",
+    "delete": "Delete",
+    "deleteTitle": "Delete the document?",
+    "deleteBody": "“{title}” and its file disappear.",
+    "deleted": "Document deleted.",
+    "uncategorised": "No category",
+    "empty": "No documents yet."
+  },
+  "AdminAudit": {
+    "description": "Who did what in the admin, newest first.",
+    "filters": "Filter",
+    "all": "All",
+    "domains": {
+      "member": "Members",
+      "event": "Events",
+      "match": "Matches",
+      "post": "Articles",
+      "announcement": "Banner",
+      "poll": "Polls",
+      "document": "Documents",
+      "mailing": "Mailing",
+      "user": "Accounts"
+    },
+    "system": "Automatic",
+    "count": "{count, plural, one {# item} other {# items}}",
+    "empty": "Nothing in the log.",
+    "newer": "Newer",
+    "older": "Older",
+    "actions": {
+      "member_approve": "accepted the membership",
+      "member_reject": "refused the request",
+      "member_dues_paid": "recorded the fee",
+      "member_dues_cancelled": "cancelled the fee",
+      "member_update": "edited the details",
+      "member_suspend": "suspended the member",
+      "member_reactivate": "reinstated the member",
+      "member_fee_reminder": "sent a fee reminder",
+      "member_verify_reminder": "sent an email confirmation reminder",
+      "member_export": "exported members",
+      "member_create": "created a member file",
+      "member_signup": "membership request",
+      "member_profile_update": "updated their profile",
+      "member_settings_update": "changed their settings",
+      "event_create": "created the event",
+      "event_update": "edited the event",
+      "event_delete": "deleted the event",
+      "event_export": "exported the sign-ups",
+      "event_checkin": "scanned someone in",
+      "event_attendee_checkin": "checked in",
+      "event_attendee_uncheck": "undid a check-in",
+      "event_attendee_promote": "gave a place",
+      "event_attendee_remove": "removed a sign-up",
+      "event_attendee_add": "signed up",
+      "match_create": "added the match",
+      "match_update": "edited the match",
+      "match_delete": "deleted the match",
+      "match_sync": "synced the matches",
+      "post_create": "created the article",
+      "post_update": "edited the article",
+      "post_delete": "deleted the article",
+      "announcement_create": "published the announcement",
+      "announcement_activate": "put the announcement live",
+      "announcement_deactivate": "hid the announcement",
+      "announcement_delete": "deleted the announcement",
+      "poll_create": "created the poll",
+      "poll_open": "opened the poll",
+      "poll_closed": "closed the poll",
+      "poll_draft": "put the poll back in draft",
+      "poll_delete": "deleted the poll",
+      "document_create": "added the document",
+      "document_update": "edited the document",
+      "document_delete": "deleted the document",
+      "mailing_campaign_send": "sent the campaign",
+      "mailing_campaign_schedule": "scheduled the campaign",
+      "mailing_campaign_unschedule": "unscheduled the campaign",
+      "mailing_template_save": "edited an email template",
+      "mailing_settings_update": "changed the sending settings",
+      "mailing_automation_update": "changed an automation",
+      "mailing_run": "ran the sending",
+      "user_role_change": "changed a role",
+      "user_delete": "account deleted",
+      "subscriber_create": "new newsletter subscriber"
+    }
+  },
   "AdminShell": {
     "label": "Admin navigation",
     "home": "Admin home",
@@ -546,7 +700,10 @@
       "banner": "Banner",
       "settings": "Settings",
       "matches": "Matches",
-      "scanner": "Scanner"
+      "scanner": "Scanner",
+      "polls": "Polls",
+      "documents": "Documents",
+      "journal": "Log"
     },
     "tabs": {
       "home": "Home",
@@ -558,7 +715,10 @@
       "banner": "Banner",
       "settings": "Settings",
       "matches": "Matches",
-      "scanner": "Scan"
+      "scanner": "Scan",
+      "polls": "Polls",
+      "documents": "Docs",
+      "journal": "Log"
     },
     "roles": {
       "member": "Member",
@@ -570,6 +730,13 @@
       "cancel": "Cancel",
       "confirm": "Confirm",
       "typeToConfirm": "Type “{text}” to confirm"
+    },
+    "palette": {
+      "title": "Quick search",
+      "short": "Search…",
+      "placeholder": "Member, event, article, section…",
+      "sections": "Sections",
+      "empty": "No results."
     }
   },
   "AdminBanner": {
@@ -1334,7 +1501,9 @@
       "title": "Nothing planned yet",
       "body": "The club's next watch parties and outings will show up here. You'll get an email for each new event.",
       "cta": "See the matches"
-    }
+    },
+    "driveTime": "{duration} by car from your home · {distance}",
+    "route": "Directions"
   },
   "AdminEvents": {
     "created": "Event created.",
@@ -2022,5 +2191,20 @@
         "when": "60 days without a visit, at most every 90 days"
       }
     }
+  },
+  "Polls": {
+    "title": "Club polls",
+    "open": "Voting open",
+    "closed": "Results",
+    "until": "Until {date}",
+    "votes": "{count, plural, =0 {0 votes} one {# vote} other {# votes}}",
+    "total": "{count, plural, =0 {No votes yet} one {# vote} other {# votes}}",
+    "change": "Change my vote",
+    "thanks": "Thanks, vote counted!",
+    "error": "Your vote couldn't be saved."
+  },
+  "Documents": {
+    "title": "Club documents",
+    "other": "Other"
   }
 }

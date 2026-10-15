@@ -1,7 +1,7 @@
 import "server-only";
-import { and, asc, count, eq, gte, lt, lte } from "drizzle-orm";
+import { and, asc, count, eq, gte, lt, lte, ne } from "drizzle-orm";
 import { db } from "@/db";
-import { emailCampaigns, emailJobs, members, type EmailJobStatus } from "@/db/schema";
+import { auditLog, emailCampaigns, emailJobs, members, type EmailJobStatus } from "@/db/schema";
 import { sendMail } from "@/lib/mail";
 import { stillRelevant } from "@/lib/mailing/guards";
 import { getMailingSettings } from "@/lib/mailing/queue";
@@ -99,11 +99,17 @@ async function finishCampaigns() {
   }
 }
 
-/** Jobs stuck in "sending" (server stopped mid-way) go back to the queue; history over 90 days goes. */
+/**
+ * Jobs stuck in "sending" (server stopped mid-way) go back to the queue; history over 90 days
+ * goes, and the admin's audit log after 2 years (as the privacy policy says).
+ */
 export async function cleanUpJobs() {
   await db
     .update(emailJobs)
     .set({ status: "pending" })
     .where(and(eq(emailJobs.status, "sending"), lt(emailJobs.sendAfter, new Date(Date.now() - 15 * 60_000))));
   await db.delete(emailJobs).where(lt(emailJobs.createdAt, new Date(Date.now() - 90 * DAY)));
+  // Except the sign-up line: it proves consent to the statutes and the privacy policy, kept as
+  // long as the account exists.
+  await db.delete(auditLog).where(and(lt(auditLog.createdAt, new Date(Date.now() - 730 * DAY)), ne(auditLog.action, "member.signup")));
 }

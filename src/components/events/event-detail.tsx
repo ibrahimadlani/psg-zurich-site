@@ -2,8 +2,10 @@ import { and, eq } from "drizzle-orm";
 import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
+import { Suspense } from "react";
 import { EventParticipants } from "@/components/events/event-participants";
 import { EventRegistration } from "@/components/events/event-registration";
+import { EventTravelTime } from "@/components/events/event-travel-time";
 import { EventWhen } from "@/components/events/event-when";
 import { HumanDate } from "@/components/human-date";
 import { EventPlaceMap } from "@/components/events/event-place-map";
@@ -20,6 +22,7 @@ import { mapsEnabled, mapsLink } from "@/lib/google-maps";
 import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+import { homeAddress, routeTimesEnabled } from "@/lib/route-time";
 
 // Phones: label + action on the first line, the value full width below. From sm: three columns.
 const rowClass =
@@ -72,6 +75,9 @@ export async function EventDetail({ id }: { id: string }) {
   const place = event.address || event.location;
   const mapUrl = place ? mapsLink(place, event.placeId) : null;
   const located = event.latitude !== null && event.longitude !== null;
+  // The drive from home, while the event is still ahead and both places are known.
+  const home = member ? homeAddress(member) : null;
+  const showDrive = routeTimesEnabled() && located && home !== null && eventPhase(event) === "open";
   const overDays = event.endsAt !== null && dayIn(event.startsAt, "Europe/Zurich") !== dayIn(event.endsAt, "Europe/Zurich");
 
   return (
@@ -131,6 +137,11 @@ export async function EventDetail({ id }: { id: string }) {
                 {event.location ?? event.address}
                 {event.location && event.address ? (
                   <span className="mt-0.5 block text-[14px] text-muted-foreground">{event.address}</span>
+                ) : null}
+                {showDrive ? (
+                  <Suspense fallback={null}>
+                    <EventTravelTime origin={home!} destination={{ latitude: event.latitude!, longitude: event.longitude! }} placeId={event.placeId} />
+                  </Suspense>
                 ) : null}
               </dd>
               {located && mapsEnabled ? (

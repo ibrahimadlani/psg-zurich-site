@@ -521,6 +521,160 @@
     "checkedIn": "{name} ist drin.",
     "error": "Hat nicht geklappt. Versuch es nochmal."
   },
+  "AdminPolls": {
+    "description": "Frag die Mitglieder: eine Frage, ein paar Antworten, Ergebnisse live.",
+    "new": "Neue Umfrage",
+    "newHint": "Angenommene Mitglieder stimmen im Mitgliederbereich ab.",
+    "question": "Frage",
+    "questionPlaceholder": "Welche Bar für die nächste Watch Party?",
+    "options": "Antworten",
+    "optionLabel": "Antwort {number}",
+    "addOption": "Antwort hinzufügen",
+    "removeOption": "Diese Antwort entfernen",
+    "up": "Nach oben",
+    "down": "Nach unten",
+    "closesAt": "Abstimmung endet (optional)",
+    "openNow": "Abstimmung sofort öffnen",
+    "createOpen": "Erstellen und öffnen",
+    "createDraft": "Als Entwurf erstellen",
+    "createdOpen": "Umfrage für Mitglieder offen.",
+    "createdDraft": "Umfrage als Entwurf gespeichert.",
+    "invalid": "Eine Frage und mindestens zwei Antworten.",
+    "error": "Hat nicht geklappt. Versuch es nochmal.",
+    "status": {
+      "live": "Abstimmung offen",
+      "draft": "Entwurf",
+      "scheduled": "Geplant",
+      "closed": "Geschlossen"
+    },
+    "until": "Bis {date}",
+    "createdOn": "Erstellt am {date}",
+    "votes": "{count, plural, =0 {0 Stimmen} one {# Stimme} other {# Stimmen}}",
+    "total": "{count, plural, =0 {Keine Stimmen} one {# Stimme} other {# Stimmen}}",
+    "open": "Öffnen",
+    "reopen": "Wieder öffnen",
+    "close": "Schliessen",
+    "opened": "Abstimmung offen.",
+    "closed": "Abstimmung geschlossen.",
+    "delete": "Löschen",
+    "deleteTitle": "Umfrage löschen?",
+    "deleteBody": "«{question}» und alle Stimmen verschwinden.",
+    "deleted": "Umfrage gelöscht.",
+    "empty": "Noch keine Umfragen.",
+    "descriptionLabel": "Details (optional)"
+  },
+  "AdminDocuments": {
+    "description": "Statuten, Protokolle, Reglemente: für Mitglieder (oder alle) freigegeben.",
+    "new": "Dokument hinzufügen",
+    "newHint": "PDF oder Bild, höchstens 10 MB.",
+    "drop": "Datei wählen oder ablegen",
+    "dropHint": "PDF, PNG, JPEG oder WebP · max. 10 MB.",
+    "titleLabel": "Titel",
+    "category": "Kategorie",
+    "categoryPlaceholder": "Statuten, Generalversammlung…",
+    "visibility": "Sichtbar für",
+    "visibilities": {
+      "members": "Mitglieder",
+      "public": "Alle",
+      "admins": "Vorstand"
+    },
+    "visibilityHints": {
+      "members": "Angenommene Mitglieder finden es im Mitgliederbereich.",
+      "public": "Offener Link, auch ohne Konto.",
+      "admins": "Nur der Vorstand (Admins)."
+    },
+    "upload": "Hochladen",
+    "uploading": "Lädt hoch…",
+    "uploaded": "Dokument hinzugefügt.",
+    "tooLarge": "Datei zu gross (höchstens 10 MB).",
+    "unsupported": "Nur PDFs und Bilder sind erlaubt.",
+    "error": "Hat nicht geklappt. Versuch es nochmal.",
+    "edit": "Bearbeiten",
+    "save": "Speichern",
+    "saved": "Dokument geändert.",
+    "delete": "Löschen",
+    "deleteTitle": "Dokument löschen?",
+    "deleteBody": "«{title}» und die Datei verschwinden.",
+    "deleted": "Dokument gelöscht.",
+    "uncategorised": "Ohne Kategorie",
+    "empty": "Noch keine Dokumente."
+  },
+  "AdminAudit": {
+    "description": "Wer hat was im Admin gemacht, neueste zuerst.",
+    "filters": "Filtern",
+    "all": "Alle",
+    "domains": {
+      "member": "Mitglieder",
+      "event": "Veranstaltungen",
+      "match": "Matches",
+      "post": "Artikel",
+      "announcement": "Banner",
+      "poll": "Umfragen",
+      "document": "Dokumente",
+      "mailing": "Mailing",
+      "user": "Konten"
+    },
+    "system": "Automatisch",
+    "count": "{count, plural, one {# Eintrag} other {# Einträge}}",
+    "empty": "Nichts im Protokoll.",
+    "newer": "Neuere",
+    "older": "Ältere",
+    "actions": {
+      "member_approve": "hat die Mitgliedschaft angenommen",
+      "member_reject": "hat den Antrag abgelehnt",
+      "member_dues_paid": "hat den Beitrag erfasst",
+      "member_dues_cancelled": "hat den Beitrag storniert",
+      "member_update": "hat die Angaben geändert",
+      "member_suspend": "hat das Mitglied gesperrt",
+      "member_reactivate": "hat das Mitglied reaktiviert",
+      "member_fee_reminder": "hat an den Beitrag erinnert",
+      "member_verify_reminder": "hat an die E-Mail-Bestätigung erinnert",
+      "member_export": "hat Mitglieder exportiert",
+      "member_create": "hat ein Mitgliederprofil erstellt",
+      "member_signup": "Mitgliedsantrag",
+      "member_profile_update": "hat das Profil aktualisiert",
+      "member_settings_update": "hat die Einstellungen geändert",
+      "event_create": "hat die Veranstaltung erstellt",
+      "event_update": "hat die Veranstaltung geändert",
+      "event_delete": "hat die Veranstaltung gelöscht",
+      "event_export": "hat die Anmeldungen exportiert",
+      "event_checkin": "hat jemanden eingescannt",
+      "event_attendee_checkin": "hat eingecheckt",
+      "event_attendee_uncheck": "hat einen Check-in rückgängig gemacht",
+      "event_attendee_promote": "hat einen Platz vergeben",
+      "event_attendee_remove": "hat eine Anmeldung entfernt",
+      "event_attendee_add": "hat angemeldet",
+      "match_create": "hat das Match hinzugefügt",
+      "match_update": "hat das Match geändert",
+      "match_delete": "hat das Match gelöscht",
+      "match_sync": "hat die Matches synchronisiert",
+      "post_create": "hat den Artikel erstellt",
+      "post_update": "hat den Artikel geändert",
+      "post_delete": "hat den Artikel gelöscht",
+      "announcement_create": "hat den Hinweis veröffentlicht",
+      "announcement_activate": "hat den Hinweis online gestellt",
+      "announcement_deactivate": "hat den Hinweis ausgeblendet",
+      "announcement_delete": "hat den Hinweis gelöscht",
+      "poll_create": "hat die Umfrage erstellt",
+      "poll_open": "hat die Umfrage geöffnet",
+      "poll_closed": "hat die Umfrage geschlossen",
+      "poll_draft": "hat die Umfrage zurück in den Entwurf gesetzt",
+      "poll_delete": "hat die Umfrage gelöscht",
+      "document_create": "hat das Dokument hinzugefügt",
+      "document_update": "hat das Dokument geändert",
+      "document_delete": "hat das Dokument gelöscht",
+      "mailing_campaign_send": "hat die Kampagne gesendet",
+      "mailing_campaign_schedule": "hat die Kampagne geplant",
+      "mailing_campaign_unschedule": "hat die Planung aufgehoben",
+      "mailing_template_save": "hat eine E-Mail-Vorlage geändert",
+      "mailing_settings_update": "hat die Versandeinstellungen geändert",
+      "mailing_automation_update": "hat eine Automatisierung geändert",
+      "mailing_run": "hat den Versand gestartet",
+      "user_role_change": "hat eine Rolle geändert",
+      "user_delete": "Konto gelöscht",
+      "subscriber_create": "neuer Newsletter-Abonnent"
+    }
+  },
   "AdminShell": {
     "label": "Admin-Navigation",
     "home": "Admin-Startseite",
@@ -546,7 +700,10 @@
       "banner": "Banner",
       "settings": "Einstellungen",
       "matches": "Matches",
-      "scanner": "Scanner"
+      "scanner": "Scanner",
+      "polls": "Umfragen",
+      "documents": "Dokumente",
+      "journal": "Protokoll"
     },
     "tabs": {
       "home": "Start",
@@ -558,7 +715,10 @@
       "banner": "Banner",
       "settings": "Einstellungen",
       "matches": "Matches",
-      "scanner": "Scan"
+      "scanner": "Scan",
+      "polls": "Umfragen",
+      "documents": "Doks",
+      "journal": "Protokoll"
     },
     "roles": {
       "member": "Mitglied",
@@ -570,6 +730,13 @@
       "cancel": "Abbrechen",
       "confirm": "Bestätigen",
       "typeToConfirm": "Tippe «{text}» zur Bestätigung"
+    },
+    "palette": {
+      "title": "Schnellsuche",
+      "short": "Suchen…",
+      "placeholder": "Mitglied, Veranstaltung, Artikel, Bereich…",
+      "sections": "Bereiche",
+      "empty": "Keine Treffer."
     }
   },
   "AdminBanner": {
@@ -1334,7 +1501,9 @@
       "title": "Noch nichts geplant",
       "body": "Die nächsten Watch-Partys und Ausflüge des Clubs erscheinen hier. Du erhältst für jeden neuen Anlass eine E-Mail.",
       "cta": "Zu den Spielen"
-    }
+    },
+    "driveTime": "{duration} mit dem Auto von dir zu Hause · {distance}",
+    "route": "Route"
   },
   "AdminEvents": {
     "created": "Veranstaltung erstellt.",
@@ -2022,5 +2191,20 @@
         "when": "60 Tage ohne Besuch, höchstens alle 90 Tage"
       }
     }
+  },
+  "Polls": {
+    "title": "Umfragen des Clubs",
+    "open": "Abstimmung offen",
+    "closed": "Ergebnisse",
+    "until": "Bis {date}",
+    "votes": "{count, plural, =0 {0 Stimmen} one {# Stimme} other {# Stimmen}}",
+    "total": "{count, plural, =0 {Noch keine Stimmen} one {# Stimme} other {# Stimmen}}",
+    "change": "Meine Stimme ändern",
+    "thanks": "Danke, abgestimmt!",
+    "error": "Deine Stimme konnte nicht gespeichert werden."
+  },
+  "Documents": {
+    "title": "Dokumente des Clubs",
+    "other": "Weitere"
   }
 }

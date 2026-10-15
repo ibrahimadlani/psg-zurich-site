@@ -5,12 +5,15 @@ import { Suspense } from "react";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { MemberCard } from "@/components/member-area/member-card";
 import { MyPredictions } from "@/components/member-area/my-predictions";
+import { ClubDocuments } from "@/components/member-area/club-documents";
+import { MemberPolls } from "@/components/member-area/member-polls";
 import { MyRegistrations } from "@/components/member-area/my-registrations";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Link, redirect } from "@/i18n/navigation";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+import { memberPolls } from "@/lib/polls";
 import { hasRole } from "@/lib/roles";
 import { MemberAreaSkeleton } from "@/components/skeletons";
 
@@ -19,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("title"), robots: { index: false } };
 }
 
-/** Life as a member: card, my events, my predictions. Account settings live in /parametres. */
+/** Life as a member: card, predictions, polls, my events, the club's documents. Account settings live in /parametres. */
 async function MemberPanel() {
   const t = await getTranslations("MemberArea");
   const tNav = await getTranslations("Nav");
@@ -53,7 +56,9 @@ async function MemberPanel() {
         <MemberCard member={member ?? null} name={name} />
         {member?.status === "active" ? <MyPredictions memberId={member.id} /> : null}
       </div>
+      {member?.status === "active" ? <MemberPolls polls={await memberPolls(member.id)} /> : null}
       {member?.status === "active" ? <MyRegistrations memberId={member.id} /> : null}
+      {member?.status === "active" ? <ClubDocuments /> : null}
       <div className="flex flex-wrap gap-2 border-t pt-6">
         <Button variant="outline" asChild>
           <Link href="/parametres" prefetch={false}>
