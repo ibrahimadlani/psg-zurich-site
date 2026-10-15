@@ -22,59 +22,6 @@
       }
     }
   },
-  "/[locale]/actualites/[slug]": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49248,
-                    "slots": {
-                      "children": {
-                        "hints": 49312,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/actualites": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49312,
-                    "slots": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
   "/[locale]/admin/actualites/[id]": {
     "hints": 49216,
     "slots": {
@@ -144,6 +91,127 @@
     }
   },
   "/[locale]/admin/actualites": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/banniere": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/cotisations": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/evenements/[id]": {
+    "hints": 16448,
+    "slots": {
+      "children": {
+        "hints": 16416,
+        "slots": {
+          "children": {
+            "hints": 16448,
+            "slots": {
+              "children": {
+                "hints": 16480,
+                "slots": {
+                  "children": {
+                    "hints": 16480,
+                    "slots": {
+                      "children": {
+                        "hints": 16480,
+                        "slots": {
+                          "children": {
+                            "hints": 16544,
+                            "slots": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/evenements": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -279,31 +347,7 @@
       }
     }
   },
-  "/[locale]/admin": {
-    "hints": 64,
-    "slots": {
-      "children": {
-        "hints": 32,
-        "slots": {
-          "children": {
-            "hints": 64,
-            "slots": {
-              "children": {
-                "hints": 96,
-                "slots": {
-                  "children": {
-                    "hints": 160,
-                    "slots": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/admin/scan/[token]": {
+  "/[locale]/admin/matchs": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -319,15 +363,242 @@
                     "hints": 49248,
                     "slots": {
                       "children": {
-                        "hints": 49248,
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/membres/[id]": {
+    "hints": 16448,
+    "slots": {
+      "children": {
+        "hints": 16416,
+        "slots": {
+          "children": {
+            "hints": 16448,
+            "slots": {
+              "children": {
+                "hints": 16480,
+                "slots": {
+                  "children": {
+                    "hints": 16480,
+                    "slots": {
+                      "children": {
+                        "hints": 16480,
                         "slots": {
                           "children": {
-                            "hints": 49312,
+                            "hints": 16544,
                             "slots": null
                           }
                         }
                       }
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/membres": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/reglages": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/scan/[token]": {
+    "hints": 16448,
+    "slots": {
+      "children": {
+        "hints": 16416,
+        "slots": {
+          "children": {
+            "hints": 16448,
+            "slots": {
+              "children": {
+                "hints": 16480,
+                "slots": {
+                  "children": {
+                    "hints": 16480,
+                    "slots": {
+                      "children": {
+                        "hints": 16480,
+                        "slots": {
+                          "children": {
+                            "hints": 16544,
+                            "slots": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/scanner": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/actualites/[slug]": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/actualites": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
                   }
                 }
               }

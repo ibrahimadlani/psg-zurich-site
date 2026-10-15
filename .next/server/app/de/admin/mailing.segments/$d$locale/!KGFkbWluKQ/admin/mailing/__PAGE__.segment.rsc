@@ -1,0 +1,50 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/0tq1h0sac681q.js"
+5:"/_next/static/chunks/2dc_yxrg-hsid.js"
+6:"/_next/static/chunks/41-n4vk_ai0th.js"
+7:"/_next/static/chunks/2__g39ioof7sf.js"
+8:"/_next/static/chunks/10zmr2c54oho9.js"
+9:"/_next/static/chunks/0m0qhgl347n4f.js"
+a:"/_next/static/chunks/21s7mgjvwpstx.js"
+b:"/_next/static/chunks/3ebyw7h1-9ghh.js"
+c:I[868132,["$4","$5","$6","$7","$8","$9","$a","$b"],"AdminShell"]
+d:"/_next/static/chunks/095g8usnrcprg.js"
+e:I[339756,["$d"],"default"]
+f:I[837457,["$d"],"default"]
+19:"$Sreact.suspense"
+21:"ViewportBoundary"
+22:I[897367,["$d"],"$21"]
+23:"MetadataBoundary"
+24:I[897367,["$d"],"$23"]
+25:I[27201,["$d"],"IconMark"]
+11:X
+11:C
+12:X
+12:300
+12:C
+15:X
+15:C
+20:X
+20:C
+18:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[[["$","header",null,{"className":"mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-8","children":[["$","div",null,{"className":"min-w-0 space-y-2","children":[null,["$","h1",null,{"className":"font-narrow text-[length:clamp(34px,6vw,52px)] leading-[0.9] font-extrabold tracking-[-0.01em] text-balance uppercase italic","children":"Mailing"}],["$","p",null,{"className":"max-w-prose text-[15px] text-pretty text-muted-foreground","children":"Die automatischen E-Mails der Website, Kampagnen und der Versandverlauf."}]]}],null]}],["$","$19",null,{"fallback":["$","div",null,{"role":"status","aria-busy":"true","aria-label":"Wird geladen…","className":"animate-skeleton-in grid gap-6","children":[["$","div","0",{"className":"space-y-4 rounded-[14px] border bg-card p-5","children":[["$","div",null,{"className":"space-y-2","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"10rem"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"18rem"}}]]}],[["$","div","0",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"45%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}],["$","div","1",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"39%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}],["$","div","2",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"33%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}]]]}],["$","div","1",{"className":"space-y-4 rounded-[14px] border bg-card p-5","children":[["$","div",null,{"className":"space-y-2","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"10rem"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"18rem"}}]]}],[["$","div","0",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"45%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}],["$","div","1",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"39%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}],["$","div","2",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"33%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}]]]}],["$","div","2",{"className":"space-y-4 rounded-[14px] border bg-card p-5","children":[["$","div",null,{"className":"space-y-2","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"10rem"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"18rem"}}]]}],[["$","div","0",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"45%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}],["$","div","1",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"39%"}}],"$L1a"]}],"$L1b"]]}]]}],"children":"$L1c"}]],["$L1d"],"$L1e"]}],"p":"$@1f","v":"$20","s":"$12"}}]]
+16:[["children",{"s":"mailing","h":49250,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@17","v":"$15","s":"$12"},"c":"$Q18"}]]
+13:[["children",{"s":"admin","h":49250,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@14","v":"$15","s":"$12"},"c":"$Q16"}]]
+2:[["children",{"s":"(admin)","h":49218,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0m0qhgl347n4f.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/3ebyw7h1-9ghh.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
+27:X
+27:C
+2a:X
+2a:T6,locale2a:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mailing · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$12"}},"a":"$@28","u":"$@29","b":"2xMt7V4CzmHfpylhdJfXA","r":"$2a"}
+2b:I[897367,["$d"],"OutletBoundary"]
+1a:["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]
+1b:["$","div","2",{"className":"flex items-center gap-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"33%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton ml-auto h-8 w-20 rounded-[8px]"}]]}]
+1d:["$","script","script-0",{"src":"/_next/static/chunks/0ehi72tz9wk-j.js","async":true}]
+1e:["$","$L2b",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@2c"}]}]
+29:false
+2c:null
+28:null
+17:"$undefined"
+14:"$undefined"
+10:"$undefined"
+26:"$undefined"

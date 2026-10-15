@@ -1,3 +1,0 @@
-module.exports=[577720,a=>{"use strict";var b=a.i(187924),c=a.i(752562),d=a.i(415925),e=a.i(572131),f=a.i(823292),g=a.i(699570),h=a.i(555027);a.s(["CheckInButton",0,function({eventId:a,token:i,name:j}){let k=(0,d.r)("Scan"),l=(0,h.U)(),[m,n]=(0,e.useTransition)();return(0,b.jsxs)(g.f,{size:"lg",disabled:m,className:"h-11 w-full sm:w-auto",onClick:()=>n(async()=>{(await fetch(`/api/v1/events/${a}/checkin`,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({token:i})})).ok?(f.c.success(k("checkedIn",{name:j})),l.refresh()):f.c.error(k("error"))}),children:[(0,b.jsx)(c.f,{"aria-hidden":!0}),k("checkIn")]})}])}];
-
-//# sourceMappingURL=src_components_admin_checkin-button_tsx_03b4aeh31lipf._.js.map
