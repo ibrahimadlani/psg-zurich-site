@@ -5,7 +5,7 @@ import { attendance, events } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { memberByCardToken } from "@/lib/member-card";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 
 type Context = RouteContext<"/api/v1/events/[id]/checkin">;
 
@@ -14,7 +14,7 @@ type Context = RouteContext<"/api/v1/events/[id]/checkin">;
  * (signed up on the spot if they were not, or were on the waiting list).
  */
 export const POST = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("scan");
   const { id: eventId } = await params;
   const { token } = await parseBody(request, z.object({ token: z.string().max(64) }));
 

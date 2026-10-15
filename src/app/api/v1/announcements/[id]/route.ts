@@ -4,7 +4,7 @@ import { announcements } from "@/db/schema";
 import { deactivateOthers } from "@/lib/announcements";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 import { announcementPatchSchema } from "@/lib/validators";
 
 type Context = RouteContext<"/api/v1/announcements/[id]">;
@@ -17,7 +17,7 @@ async function findOrThrow(id: string) {
 
 /** Switch a banner on or off. */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("news");
   const { id } = await params;
   const { active } = await parseBody(request, announcementPatchSchema);
   await findOrThrow(id);
@@ -43,7 +43,7 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
 });
 
 export const DELETE = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("news");
   const { id } = await params;
   const row = await findOrThrow(id);
 

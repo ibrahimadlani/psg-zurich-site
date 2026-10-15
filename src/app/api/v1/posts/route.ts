@@ -3,7 +3,7 @@ import { db } from "@/db";
 import { posts } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 import { postValues } from "@/lib/posts";
 import { createPostSchema, postsQuery } from "@/lib/validators";
 
@@ -28,7 +28,7 @@ export const GET = apiHandler(async (request) => {
 });
 
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("news");
   const input = await parseBody(request, createPostSchema);
 
   const id = crypto.randomUUID();

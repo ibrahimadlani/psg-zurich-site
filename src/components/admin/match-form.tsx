@@ -2,15 +2,13 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { adminButton, adminInput } from "@/components/admin/ui/styles";
 import { MATCH_STATUSES, MATCH_VENUES } from "@/db/schema";
 import { useRouter } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 
 const goals = z.string().regex(/^\d{0,2}$/);
 const schema = z
@@ -55,8 +53,7 @@ export const emptyMatch: MatchFormValues = {
 // Competitions football-data.org's free plan doesn't cover.
 const SUGGESTED_COMPETITIONS = ["Coupe de France", "Trophée des Champions", "Match amical", "Coupe du monde des clubs"];
 
-const selectClass =
-  "h-8 w-full rounded-lg border border-input bg-transparent px-2.5 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
+const labelClass = "text-[13px] font-medium";
 
 const toNumber = (value: string) => (value === "" ? undefined : Number(value));
 
@@ -108,10 +105,12 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
     router.refresh();
   }
 
-  const field = (name: keyof MatchFormValues, label: string, props: React.ComponentProps<"input"> = {}) => (
+  const field = (name: keyof MatchFormValues, label: string, { className, ...props }: React.ComponentProps<"input"> = {}) => (
     <div className="space-y-1.5">
-      <Label htmlFor={`${prefix}-${name}`}>{label}</Label>
-      <Input id={`${prefix}-${name}`} aria-invalid={errors[name] ? true : undefined} {...props} {...register(name)} />
+      <label htmlFor={`${prefix}-${name}`} className={labelClass}>
+        {label}
+      </label>
+      <input id={`${prefix}-${name}`} aria-invalid={errors[name] ? true : undefined} className={cn(adminInput, className)} {...props} {...register(name)} />
     </div>
   );
   const scoreField = (name: keyof MatchFormValues, label: string) =>
@@ -135,8 +134,10 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
       <div className="grid gap-4 sm:grid-cols-[1fr_12rem]">
         {field("kickoffAt", t("kickoffAt"), { type: "datetime-local" })}
         <div className="space-y-1.5">
-          <Label htmlFor={`${prefix}-venue`}>{t("venue")}</Label>
-          <select id={`${prefix}-venue`} className={selectClass} {...register("venue")}>
+          <label htmlFor={`${prefix}-venue`} className={labelClass}>
+            {t("venue")}
+          </label>
+          <select id={`${prefix}-venue`} className={adminInput} {...register("venue")}>
             {MATCH_VENUES.map((venue) => (
               <option key={venue} value={venue}>
                 {t(`venues.${venue}`)}
@@ -151,8 +152,10 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
       </div>
 
       <div className="space-y-1.5 sm:max-w-xs">
-        <Label htmlFor={`${prefix}-status`}>{t("status")}</Label>
-        <select id={`${prefix}-status`} className={selectClass} {...register("status")}>
+        <label htmlFor={`${prefix}-status`} className={labelClass}>
+          {t("status")}
+        </label>
+        <select id={`${prefix}-status`} className={adminInput} {...register("status")}>
           {MATCH_STATUSES.map((value) => (
             <option key={value} value={value}>
               {t(`statuses.${value}`)}
@@ -162,7 +165,7 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
       </div>
 
       {played ? (
-        <fieldset className="space-y-3 rounded-lg border p-3">
+        <fieldset className="space-y-3 rounded-[12px] border p-3.5">
           <legend className="px-1 text-sm font-medium">{t("score")}</legend>
           <div className="flex flex-wrap gap-4">
             {scoreField("psgScore", "PSG")}
@@ -183,48 +186,14 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
         </fieldset>
       ) : null}
 
-      <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? t("saving") : matchId ? t("save") : t("create")}
-      </Button>
+      {/* Pinned at the bottom of the panel (its padding included). */}
+      <div className="sticky -bottom-5 -mx-5 -mb-5 border-t bg-background px-5 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+        <button type="submit" disabled={isSubmitting} className={adminButton("primary", "md", "w-full")}>
+          {isSubmitting ? t("saving") : matchId ? t("save") : t("create")}
+        </button>
+      </div>
     </form>
   );
 }
 
 /** Edit / delete buttons of a manual match, with the form unfolding below. */
-export function ManualMatchActions({ matchId, defaults }: { matchId: string; defaults: MatchFormValues }) {
-  const t = useTranslations("AdminMatches");
-  const router = useRouter();
-  const [editing, setEditing] = useState(false);
-  const [deleting, setDeleting] = useState(false);
-
-  return (
-    <div className="w-full space-y-3">
-      <div className="flex gap-2">
-        <Button size="sm" variant="outline" onClick={() => setEditing((value) => !value)}>
-          {editing ? t("close") : t("edit")}
-        </Button>
-        <Button
-          size="sm"
-          variant="destructive"
-          disabled={deleting}
-          onClick={async () => {
-            if (!confirm(t("confirmDelete"))) return;
-            setDeleting(true);
-            const response = await fetch(`/api/v1/matches/${matchId}`, { method: "DELETE" });
-            setDeleting(false);
-            if (response.ok) toast.success(t("deleted"));
-            else toast.error(t("deleteError"));
-            router.refresh();
-          }}
-        >
-          {t("delete")}
-        </Button>
-      </div>
-      {editing ? (
-        <div className="rounded-lg border p-3">
-          <MatchForm matchId={matchId} defaults={defaults} onDone={() => setEditing(false)} />
-        </div>
-      ) : null}
-    </div>
-  );
-}

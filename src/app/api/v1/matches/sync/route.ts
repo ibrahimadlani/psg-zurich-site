@@ -5,11 +5,11 @@ import { apiHandler, fail, ok } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { FootballApiError, isFootballApiConfigured } from "@/lib/football/api";
 import { syncMatch, syncSeason } from "@/lib/football/sync";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 
 /** Admin "Sync now": the season, then any match in progress. */
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("events");
   if (!isFootballApiConfigured()) return fail(503, "not_configured", "FOOTBALL_DATA_KEY is not set.");
 
   try {

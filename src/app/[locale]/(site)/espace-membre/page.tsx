@@ -61,7 +61,7 @@ async function MemberPanel() {
             {tNav("settings")}
           </Link>
         </Button>
-        {hasRole(user.role, "admin") ? (
+        {hasRole(user.role, "moderator") ? (
           <Button variant="outline" asChild>
             <Link href="/admin" prefetch={false}>
               <LayoutDashboard aria-hidden />

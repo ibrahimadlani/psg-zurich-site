@@ -3,7 +3,6 @@
 import { ArrowRight, Check, Hourglass } from "lucide-react";
 import { useFormatter, useNow, useTimeZone, useTranslations } from "next-intl";
 import { useTransition } from "react";
-import { PsgBanner } from "@/components/psg-banner";
 import { Link, useRouter } from "@/i18n/navigation";
 import { dayIn } from "@/lib/human-date";
 import { sendAttendance } from "@/lib/event-attendance";
@@ -96,12 +95,7 @@ function Confirmation({
   const t = useTranslations("Events");
   const seeYou = useSeeYou(startsAt);
   return (
-    <div role="status" className="relative animate-page-in overflow-hidden rounded-[12px] border bg-card py-4 pr-5 pl-7">
-      {waitlisted ? (
-        <span aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-foreground/15" />
-      ) : (
-        <PsgBanner className="absolute inset-y-0 left-0 h-full w-2.5 origin-top animate-[spine-draw_0.6s_cubic-bezier(0.16,1,0.3,1)_0.1s_backwards] rounded-none shadow-none motion-reduce:animate-none" />
-      )}
+    <div role="status" className="relative animate-page-in overflow-hidden rounded-[12px] border bg-card px-5 py-4">
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-3">
         <div className="min-w-0 space-y-1.5">
           <p className={cn(label, "inline-flex items-center gap-1.5", waitlisted ? "text-muted-foreground" : "text-ok")}>

@@ -1,57 +1,61 @@
 import { desc } from "drizzle-orm";
-import { getFormatter, getTranslations } from "next-intl/server";
+import { getFormatter, getNow, getTranslations } from "next-intl/server";
+import { StatusPill } from "@/components/admin/ui/status-pill";
+import { adminLabel } from "@/components/admin/ui/styles";
 import { AnnouncementActions } from "@/components/announcements/announcement-actions";
-import { AnnouncementForm } from "@/components/announcements/announcement-form";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { BANNER_TONES } from "@/components/announcements/banner-tones";
 import { db } from "@/db";
 import { announcements } from "@/db/schema";
+import { cn } from "@/lib/utils";
 
+/** The banners, the live one first: each as it looks on the site, with its state and dates. */
 export async function AnnouncementsAdmin() {
-  const [t, format] = await Promise.all([getTranslations("AdminBanner"), getFormatter()]);
-  const rows = await db.select().from(announcements).orderBy(desc(announcements.createdAt)).limit(20);
-  const now = new Date();
+  const [t, format, now] = await Promise.all([getTranslations("AdminBanner"), getFormatter(), getNow()]);
+  const rows = await db.select().from(announcements).orderBy(desc(announcements.createdAt)).limit(30);
+  const withStatus = rows
+    .map((row) => {
+      const expired = row.endsAt !== null && row.endsAt <= now;
+      return { row, expired, status: row.active && !expired ? ("live" as const) : expired ? ("expired" as const) : ("off" as const) };
+    })
+    .sort((a, b) => Number(b.status === "live") - Number(a.status === "live"));
+  const live = withStatus.filter((item) => item.status === "live");
+  const others = withStatus.filter((item) => item.status !== "live");
+
+  const list = (items: typeof withStatus) => (
+    <ul className="space-y-2">
+      {items.map(({ row, expired, status }) => (
+        <li key={row.id} className={cn("space-y-3 rounded-[14px] border bg-card p-3.5", status !== "live" && "opacity-80")}>
+          <div className={cn("rounded-[8px] px-3 py-1.5 text-center text-[13px] leading-5", BANNER_TONES[row.tone])}>
+            <strong className="font-semibold">{row.titleFr}</strong>
+            <span className="opacity-85"> · {row.messageFr}</span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <StatusPill tone={status === "live" ? "ok" : "neutral"}>{t(`status.${status}`)}</StatusPill>
+            <StatusPill>{t(`tones.${row.tone}`)}</StatusPill>
+            {row.titleDe || row.titleEn ? <StatusPill>{[row.titleDe ? "DE" : null, row.titleEn ? "EN" : null].filter(Boolean).join(" · ")}</StatusPill> : null}
+            <span className="min-w-0 flex-1 text-[12px] text-muted-foreground">
+              {format.dateTime(row.createdAt, { dateStyle: "medium", timeStyle: "short" })}
+              {row.endsAt ? ` → ${format.dateTime(row.endsAt, { dateStyle: "medium", timeStyle: "short" })}` : ""}
+            </span>
+            <AnnouncementActions id={row.id} active={row.active} expired={expired} />
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{t("title")}</CardTitle>
-        <CardDescription>{t("description")}</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <AnnouncementForm />
-        {rows.length > 0 ? (
-          <ul className="divide-y rounded-lg border">
-            {rows.map((row) => {
-              const expired = row.endsAt !== null && row.endsAt <= now;
-              const status = row.active && !expired ? "live" : expired ? "expired" : "off";
-              return (
-                <li key={row.id} className="flex flex-col gap-3 p-3 sm:flex-row sm:items-center">
-                  <div className="min-w-0 flex-1 space-y-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <Badge variant={status === "live" ? "default" : "outline"}>{t(`status.${status}`)}</Badge>
-                      <Badge variant="secondary">{t(`tones.${row.tone}`)}</Badge>
-                      <span className="text-xs text-muted-foreground">
-                        {format.dateTime(row.createdAt, { dateStyle: "medium", timeStyle: "short" })}
-                        {row.endsAt
-                          ? ` → ${format.dateTime(row.endsAt, { dateStyle: "medium", timeStyle: "short" })}`
-                          : ""}
-                      </span>
-                    </div>
-                    <p className="truncate text-sm">
-                      <strong className="font-semibold">{row.titleFr}</strong>
-                      <span className="text-muted-foreground"> · {row.messageFr}</span>
-                    </p>
-                  </div>
-                  <AnnouncementActions id={row.id} active={row.active} />
-                </li>
-              );
-            })}
-          </ul>
-        ) : (
-          <p className="text-sm text-muted-foreground">{t("empty")}</p>
-        )}
-      </CardContent>
-    </Card>
+    <div className="space-y-8">
+      <section className="space-y-3">
+        <h2 className={adminLabel}>{t("liveTitle")}</h2>
+        {live.length ? list(live) : <p className="rounded-[14px] border border-dashed p-6 text-center text-sm text-muted-foreground">{t("noneLive")}</p>}
+      </section>
+      {others.length ? (
+        <section className="space-y-3">
+          <h2 className={adminLabel}>{t("historyTitle")}</h2>
+          {list(others)}
+        </section>
+      ) : null}
+    </div>
   );
 }

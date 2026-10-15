@@ -5,7 +5,7 @@ import { emailAutomations } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { automation } from "@/lib/mailing/registry";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 
 type Context = RouteContext<"/api/v1/mailing/automations/[key]">;
 
@@ -16,7 +16,7 @@ const schema = z
 
 /** Turn an automation on or off, or change its delay. */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("mailing");
   const { key } = await params;
   if (!automation(key)) throw new HttpError(404, "not_found", "Unknown automation.");
   const input = await parseBody(request, schema);

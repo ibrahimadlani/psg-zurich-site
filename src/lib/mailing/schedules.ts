@@ -77,7 +77,7 @@ async function committeeDigest() {
   const today = todayInZurich();
   await enqueue("membership.committeeDigest", await committeeRecipients(), (recipient) => ({
     values: { count: String(waiting.length), names: waiting.map((row) => `${row.firstName} ${row.lastName}`).join(", ") },
-    path: "/admin#adhesions",
+    path: "/admin/membres",
     dedupe: `membership.committeeDigest:${today}:${recipient.email}`,
   }));
 }

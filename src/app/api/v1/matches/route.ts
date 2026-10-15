@@ -5,7 +5,7 @@ import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { scorePredictionsForMatch } from "@/lib/football/sync";
 import { manualMatchValues } from "@/lib/matches";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 import { createMatchSchema, pagination } from "@/lib/validators";
 
 export const GET = apiHandler(async (request) => {
@@ -21,7 +21,7 @@ export const GET = apiHandler(async (request) => {
 
 /** Match entered by hand (cup, friendly…); the football-data.org sync never touches it. */
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("events");
   const input = await parseBody(request, createMatchSchema);
 
   const id = crypto.randomUUID();

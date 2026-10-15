@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { mailingSettings } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 
 const schema = z
   .object({
@@ -16,7 +16,7 @@ const schema = z
 
 /** Pause switch and sending pace. */
 export const PATCH = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("mailing");
   const input = await parseBody(request, schema);
   await db.update(mailingSettings).set(input).where(eq(mailingSettings.id, 1));
   await writeAuditLog({

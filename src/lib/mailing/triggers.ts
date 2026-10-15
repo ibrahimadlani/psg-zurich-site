@@ -24,7 +24,7 @@ export async function onEmailVerified(userId: string) {
     .where(eq(members.id, member.memberId));
   await enqueue("membership.toCommittee", await committeeRecipients(), (recipient) => ({
     values: { name: `${details?.firstName} ${details?.lastName}`, email: member.email, city: details?.city || "—" },
-    path: "/admin#adhesions",
+    path: "/admin/membres",
     dedupe: `membership.toCommittee:${member.memberId}:${recipient.email}`,
   }));
 }
@@ -157,4 +157,24 @@ export async function userEmailLocale(userId: string) {
     .leftJoin(members, eq(members.userId, user.id))
     .where(eq(user.id, userId));
   return row;
+}
+
+/** The committee nudges applicants who have not confirmed their email (once a day at most). */
+export async function onVerifyReminder(memberIds: string[]) {
+  const recipients = await memberRecipients(and(inArray(members.id, memberIds), eq(members.status, "pending"), eq(user.emailVerified, false))!);
+  return enqueue("membership.verifyReminder", recipients, (recipient) => ({
+    path: "/connexion",
+    dedupe: `membership.verifyReminder:manual:${recipient.memberId}:${todayInZurich()}`,
+  }));
+}
+
+/** The committee reminds accepted members that their fee is due (once a day at most). */
+export async function onFeeReminder(memberIds: string[], fee: string) {
+  const today = todayInZurich();
+  const recipients = await memberRecipients(and(inArray(members.id, memberIds), eq(members.status, "active"))!);
+  return enqueue("fee.reminder", recipients, (recipient) => ({
+    values: { fee },
+    path: "/cotisation",
+    dedupe: `fee.reminder:manual:${recipient.memberId}:${today}`,
+  }));
 }

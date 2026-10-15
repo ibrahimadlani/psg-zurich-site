@@ -5,7 +5,7 @@ import { attendance, events } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { onEventCancelled } from "@/lib/mailing/triggers";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 import { createEventSchema } from "@/lib/validators";
 
 type Context = RouteContext<"/api/v1/events/[id]">;
@@ -21,7 +21,7 @@ async function findOrThrow(id: string) {
 
 /** Full update of an event (the admin form always sends every field). */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("events");
   const { id } = await params;
   const input = await parseBody(request, createEventSchema);
   await findOrThrow(id);
@@ -60,7 +60,7 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
 });
 
 export const DELETE = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("events");
   const { id } = await params;
   const event = await findOrThrow(id);
   // Read before the deletion (sign-ups go with it): they are told it is cancelled.

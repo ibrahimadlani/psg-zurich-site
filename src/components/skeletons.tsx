@@ -318,6 +318,89 @@ export function AdminSkeleton({ cards = 3 }: { cards?: number }) {
   );
 }
 
+/** /admin: title, to-do rows beside shortcuts, then the season's figures. */
+export function AdminHomeSkeleton() {
+  return (
+    <SkeletonGroup className="space-y-8">
+      <div className="space-y-3">
+        <Line w="9rem" className="h-2.5" />
+        <Skeleton className="h-12 w-64 rounded-[10px]" />
+        <Line w="16rem" />
+      </div>
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-10">
+        <div className="space-y-2">
+          {times(3).map((index) => (
+            <Skeleton key={index} className="h-[62px] w-full rounded-[12px]" />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {times(4).map((index) => (
+            <Skeleton key={index} className="h-20 rounded-[12px]" />
+          ))}
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-3">
+        {times(4).map((index) => (
+          <Skeleton key={index} className="h-36 rounded-[14px]" />
+        ))}
+      </div>
+    </SkeletonGroup>
+  );
+}
+
+/** An admin list (members, fees): tabs, search, rows with avatar and status. */
+export function AdminListSkeleton({ rows = 6 }: { rows?: number }) {
+  return (
+    <SkeletonGroup className="space-y-3">
+      <div className="flex gap-1.5">
+        {times(3).map((index) => (
+          <Skeleton key={index} className="h-9 w-24 rounded-full" />
+        ))}
+      </div>
+      <Skeleton className="h-11 w-full rounded-[8px] lg:h-9" />
+      <div className="space-y-2">
+        {times(rows).map((index) => (
+          <div key={index} className="flex items-center gap-3 rounded-[12px] border bg-card/70 p-3">
+            <Skeleton className="size-10 rounded-[10px]" />
+            <div className="flex-1 space-y-1.5">
+              <Line w={`${55 - (index % 3) * 10}%`} />
+              <Line w="35%" className="h-3" />
+            </div>
+            <Skeleton className="h-6 w-16 rounded-full" />
+          </div>
+        ))}
+      </div>
+    </SkeletonGroup>
+  );
+}
+
+/** An admin item (member…): header with avatar, actions, rows of facts. */
+export function AdminDetailSkeleton() {
+  return (
+    <SkeletonGroup className="space-y-8">
+      <div className="flex items-center gap-4">
+        <Skeleton className="size-14 rounded-[12px]" />
+        <div className="flex-1 space-y-2.5">
+          <Skeleton className="h-9 w-2/3 rounded-[8px]" />
+          <Line w="40%" className="h-3" />
+        </div>
+      </div>
+      <div className="flex gap-2">
+        <Skeleton className="h-9 w-32 rounded-[8px]" />
+        <Skeleton className="h-9 w-24 rounded-[8px]" />
+      </div>
+      <div className="divide-y border-y">
+        {times(5).map((index) => (
+          <div key={index} className="flex gap-6 py-4">
+            <Line w="5rem" className="h-3" />
+            <Line w={`${50 - (index % 2) * 15}%`} />
+          </div>
+        ))}
+      </div>
+    </SkeletonGroup>
+  );
+}
+
 /** One block of text-only content (forms, small panels). */
 export function PanelSkeleton({ className }: { className?: string }) {
   return (

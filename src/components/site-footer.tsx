@@ -23,7 +23,7 @@ export function SiteFooter() {
 function LegalLinks() {
   const t = useTranslations("Footer");
   return (
-    <span className="flex items-center gap-x-4">
+    <span className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
       <Link href="/statuts" className="transition-colors hover:text-foreground">
         {t("statutes")}
       </Link>
@@ -41,7 +41,7 @@ function MemberFooter() {
   const t = useTranslations("Footer");
   return (
     <footer className="relative border-t">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-4 text-[12px] text-muted-foreground">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-x-6 gap-y-2 px-4 py-4 text-center text-[12px] text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-between sm:text-left">
         <p>© PSG Zurich · {t("official")}</p>
         <LegalLinks />
       </div>
@@ -102,7 +102,7 @@ function VisitorFooter() {
         </div>
       </div>
       <div className="border-t">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-4 text-[12px] text-muted-foreground">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-x-6 gap-y-2 px-4 py-4 text-center text-[12px] text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-between sm:text-left">
           <p>© PSG Zurich · {t("official")}</p>
           <LegalLinks />
         </div>

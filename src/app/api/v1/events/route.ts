@@ -6,7 +6,7 @@ import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { onEventCreated } from "@/lib/mailing/triggers";
 import { requirePaidMember } from "@/lib/members";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 import { createEventSchema, pagination } from "@/lib/validators";
 
 /** Club events are for members whose fee is paid. */
@@ -23,7 +23,7 @@ export const GET = apiHandler(async (request) => {
 });
 
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("events");
   const input = await parseBody(request, createEventSchema);
 
   const created = await db.transaction(async (tx) => {

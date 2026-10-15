@@ -11,7 +11,7 @@ import { hasRole } from "@/lib/roles";
 type Member = typeof members.$inferSelect;
 
 /**
- * Committee accounts (admin, superadmin) are members by definition: if one has no member
+ * Committee accounts (moderator, admin, superadmin) are members by definition: if one has no member
  * profile yet, or one still waiting for approval, it is created / accepted on first use, so
  * every member feature works for them (predictions and sign-ups need the row).
  */
@@ -43,7 +43,7 @@ async function ensureCommitteeMember(session: Session, member: Member | undefine
 /** Member row for a session, with the committee's rights applied. */
 async function memberFor(session: Session): Promise<Member | null> {
   const [member] = await db.select().from(members).where(eq(members.userId, session.user.id));
-  if (!hasRole(session.user.role, "admin")) return member ?? null;
+  if (!hasRole(session.user.role, "moderator")) return member ?? null;
   const row = await ensureCommitteeMember(session, member);
   // The committee runs the club: no fee needed to open member features (the paid-until date
   // shown is the season's end; nothing is written to the dues record).

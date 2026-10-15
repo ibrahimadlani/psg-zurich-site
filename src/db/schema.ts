@@ -59,7 +59,8 @@ const json = <T>(name: string) =>
 // Content locales. Order = MySQL enum order: only ever append new values.
 export const LOCALES = ["fr", "de", "en"] as const;
 export type Locale = (typeof LOCALES)[number];
-export const ROLES = ["member", "admin", "superadmin"] as const;
+// Order = MySQL enum order: append only (the rank is in lib/roles.ts).
+export const ROLES = ["member", "admin", "superadmin", "moderator"] as const;
 export type Role = (typeof ROLES)[number];
 
 /* -------------------------------------------------------------------------- */

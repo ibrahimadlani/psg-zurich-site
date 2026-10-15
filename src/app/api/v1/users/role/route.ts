@@ -3,12 +3,12 @@ import { db } from "@/db";
 import { user } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 import { roleChangeSchema } from "@/lib/validators";
 
 /** Name or remove an admin. Superadmin only; superadmins are never changed here. */
 export const PATCH = apiHandler(async (request) => {
-  const session = await requireRole("superadmin");
+  const session = await requireCapability("roles");
   const { email, role } = await parseBody(request, roleChangeSchema);
 
   const [target] = await db.select({ id: user.id, role: user.role }).from(user).where(eq(user.email, email));

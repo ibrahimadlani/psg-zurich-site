@@ -3,7 +3,7 @@ import { db } from "@/db";
 import { documents, type DOCUMENT_VISIBILITIES } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { getSession, requireRole } from "@/lib/permissions";
+import { getSession, requireCapability } from "@/lib/permissions";
 import { hasRole } from "@/lib/roles";
 import { createDocumentSchema, pagination } from "@/lib/validators";
 
@@ -30,7 +30,7 @@ export const GET = apiHandler(async (request) => {
 });
 
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("documents");
   const input = await parseBody(request, createDocumentSchema);
 
   const created = await db.transaction(async (tx) => {

@@ -4,11 +4,11 @@ import { announcements } from "@/db/schema";
 import { deactivateOthers } from "@/lib/announcements";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 import { announcementSchema, pagination } from "@/lib/validators";
 
 export const GET = apiHandler(async (request) => {
-  await requireRole("admin");
+  await requireCapability("news");
   const { limit, offset } = parseQuery(request, pagination);
   const rows = await db
     .select()
@@ -20,7 +20,7 @@ export const GET = apiHandler(async (request) => {
 });
 
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("news");
   const input = await parseBody(request, announcementSchema);
 
   const created = await db.transaction(async (tx) => {

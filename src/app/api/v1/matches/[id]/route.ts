@@ -5,7 +5,7 @@ import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { scorePredictionsForMatch } from "@/lib/football/sync";
 import { manualMatchValues } from "@/lib/matches";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 import { createMatchSchema } from "@/lib/validators";
 
 type Context = RouteContext<"/api/v1/matches/[id]">;
@@ -20,7 +20,7 @@ async function findManualOrThrow(id: string) {
 
 /** Full update (schedule, then score once played). Finishing the match scores the predictions. */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("events");
   const { id } = await params;
   const input = await parseBody(request, createMatchSchema);
   await findManualOrThrow(id);
@@ -47,7 +47,7 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
 
 /** Removes the match and its predictions; linked events stay, without a match. */
 export const DELETE = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("events");
   const { id } = await params;
   const match = await findManualOrThrow(id);
 

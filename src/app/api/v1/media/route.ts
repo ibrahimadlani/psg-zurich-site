@@ -2,13 +2,13 @@ import { db } from "@/db";
 import { media } from "@/db/schema";
 import { apiHandler, fail, ok } from "@/lib/api";
 import { imageType } from "@/lib/avatars";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 
 const MAX_BYTES = 1.5 * 1024 * 1024;
 
 /** Article image, sent as raw bytes already resized by the browser (?w=&h= give its size). */
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("news");
   const data = new Uint8Array(await request.arrayBuffer());
   if (data.byteLength === 0 || data.byteLength > MAX_BYTES) return fail(413, "too_large", "Image too large.");
   const type = imageType(data);

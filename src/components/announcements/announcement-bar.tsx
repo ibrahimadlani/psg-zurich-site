@@ -3,18 +3,13 @@
 import { X } from "lucide-react";
 import { useSyncExternalStore } from "react";
 import type { announcements } from "@/db/schema";
+import { BANNER_TONES } from "@/components/announcements/banner-tones";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "psgz-banner-dismissed";
 const CHANGE_EVENT = "psgz-banner-change";
 
 type Tone = (typeof announcements.$inferSelect)["tone"];
-
-const TONES: Record<Tone, string> = {
-  info: "bg-primary text-primary-foreground",
-  maintenance: "bg-psg-blue text-white dark:bg-foreground dark:text-background",
-  urgent: "bg-psg-red text-white",
-};
 
 function subscribe(onChange: () => void) {
   window.addEventListener("storage", onChange);
@@ -68,7 +63,7 @@ export function AnnouncementBar({ storageKey, tone, title, message, linkUrl, clo
       )}
     >
       <div className="min-h-0 overflow-hidden">
-        <aside aria-label={title} className={cn("relative", TONES[tone])}>
+        <aside aria-label={title} className={cn("relative", BANNER_TONES[tone])}>
           <div className="mx-auto flex max-w-5xl items-center gap-2 px-4 py-1.5">
             <span aria-hidden className="size-6 shrink-0" />
             <p className="min-w-0 flex-1 truncate text-center text-[13px] leading-5">

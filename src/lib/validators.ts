@@ -222,15 +222,38 @@ export const memberSettingsSchema = z
   })
   .partial();
 
-/** Committee decision on a membership request (PATCH /api/v1/members/[id]). */
+/**
+ * What the committee does to a member (PATCH /api/v1/members/[id]): decide on a request
+ * (accepting may record the fee at once; a refusal may carry an internal reason), suspend or
+ * reinstate, or correct the member's details.
+ */
 export const memberDecisionSchema = z.object({
   decision: z.enum(["approve", "reject"]),
+  withDues: z.boolean().default(false),
+  reason: z.string().trim().max(500).default(""),
 });
+export const memberStatusActionSchema = z.object({ action: z.enum(["suspend", "reactivate"]) });
+export const memberAdminEditSchema = z.object({
+  profile: z.object({
+    firstName: text(100),
+    lastName: text(100),
+    phone,
+    address: z.string().trim().max(255),
+    postcode: z.string().trim().max(10),
+    city: z.string().trim().max(100),
+    birthDate: memberProfileFields.birthDate,
+    locale: z.enum(LOCALES),
+  }),
+});
+export const memberAdminSchema = z.union([memberDecisionSchema, memberStatusActionSchema, memberAdminEditSchema]);
 
-/** Name or remove an admin (superadmin only; superadmin itself is never set here). */
+/** Several members at once (fees, reminders, export): ids from the admin list. */
+export const memberIdsSchema = z.object({ ids: z.array(z.string().min(1).max(36)).min(1).max(1000) });
+
+/** Name or remove an admin or moderator (superadmin only; superadmin itself is never set here). */
 export const roleChangeSchema = z.object({
   email: z.email().max(255).transform((email) => email.toLowerCase()),
-  role: z.enum(["member", "admin"]),
+  role: z.enum(["member", "moderator", "admin"]),
 });
 
 /* ------------------------------- Subscribers ------------------------------ */

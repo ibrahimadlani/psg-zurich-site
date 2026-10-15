@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { EMAIL_OWNER_TYPES, LOCALES, emailTemplates } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 
 const owner = z.object({
   ownerType: z.enum(EMAIL_OWNER_TYPES),
@@ -24,7 +24,7 @@ const texts = owner
 
 /** Save the texts of an automation or a campaign, in one language. */
 export const PUT = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("mailing");
   const input = await parseBody(request, texts);
   await db
     .insert(emailTemplates)
@@ -45,7 +45,7 @@ export const PUT = apiHandler(async (request) => {
 
 /** Back to the default texts (automations) or remove a language (campaigns). */
 export const DELETE = apiHandler(async (request) => {
-  await requireRole("admin");
+  await requireCapability("mailing");
   const input = await parseBody(request, owner);
   await db
     .delete(emailTemplates)

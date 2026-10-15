@@ -30,7 +30,7 @@ export function useNavItems(): NavItem[] {
   // Visitors (and the first instant while the session loads) see the public menu.
   if (!data) return [home, ...content, contact, { href: "/adhesion", key: "membership", featured: true, authDependent: true }];
   const memberArea: NavItem = { href: "/espace-membre", key: "memberArea", featured: true, authDependent: true };
-  return hasRole(data.user.role, "admin")
+  return hasRole(data.user.role, "moderator")
     ? [home, ...content, contact, { href: "/admin", key: "admin", authDependent: true }, memberArea]
     : [home, ...content, contact, memberArea];
 }

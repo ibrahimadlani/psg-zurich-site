@@ -8,13 +8,13 @@ import { parseBlocks } from "@/lib/article-blocks";
 import { getEventsWithAttendance } from "@/lib/events";
 import { matchTitle } from "@/lib/matches";
 import { getSession } from "@/lib/permissions";
-import { hasRole } from "@/lib/roles";
+import { can } from "@/lib/roles";
 
-/** Admins only; visitors go to sign-in, members get null (the page shows "forbidden"). */
+/** Moderators and up; visitors go to sign-in, members get null (the page shows "forbidden"). */
 export async function requireCmsAccess() {
   const session = await getSession();
   if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
-  return hasRole(session.user.role, "admin") ? session : null;
+  return can(session.user.role, "news") ? session : null;
 }
 
 /** Choices and preview data of the editor: matches, events, articles to translate. */

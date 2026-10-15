@@ -4,7 +4,7 @@ import { db } from "@/db";
 import { subscribers } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 import { createSubscriberSchema, pagination } from "@/lib/validators";
 
 const publicColumns = {
@@ -18,7 +18,7 @@ const publicColumns = {
 };
 
 export const GET = apiHandler(async (request) => {
-  await requireRole("admin");
+  await requireCapability("mailing");
   const { limit, offset } = parseQuery(request, pagination);
   const rows = await db
     .select(publicColumns)
@@ -30,7 +30,7 @@ export const GET = apiHandler(async (request) => {
 });
 
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("mailing");
   const input = await parseBody(request, createSubscriberSchema);
 
   const created = await db.transaction(async (tx) => {

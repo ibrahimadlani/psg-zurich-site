@@ -3,7 +3,7 @@ import { z } from "zod";
 import { db } from "@/db";
 import { CAMPAIGN_AUDIENCES, emailCampaigns, emailTemplates } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 
 type Context = RouteContext<"/api/v1/mailing/campaigns/[id]">;
 
@@ -22,7 +22,7 @@ const schema = z.object({
 
 /** Campaign settings, while it is a draft or scheduled. */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {
-  await requireRole("admin");
+  await requireCapability("mailing");
   const { id } = await params;
   const input = await parseBody(request, schema);
   const [result] = await db
@@ -35,7 +35,7 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
 
 /** Delete a campaign that has not been sent. */
 export const DELETE = apiHandler<Context>(async (_request, { params }) => {
-  await requireRole("admin");
+  await requireCapability("mailing");
   const { id } = await params;
   const [result] = await db
     .delete(emailCampaigns)

@@ -3,13 +3,13 @@ import { and, count, desc, eq, gte, isNotNull } from "drizzle-orm";
 import { db } from "@/db";
 import { EMAIL_JOB_STATUSES, emailAutomations, emailCampaigns, emailJobs, emailTemplates, type EmailJobStatus, type Locale } from "@/db/schema";
 import { loadMessages } from "@/i18n/messages";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 import { AUTOMATIONS, automation } from "@/lib/mailing/registry";
 import { ensureAutomations } from "@/lib/mailing/queue";
 
 export async function requireMailingAdmin() {
   try {
-    return await requireRole("admin");
+    return await requireCapability("mailing");
   } catch {
     return null;
   }

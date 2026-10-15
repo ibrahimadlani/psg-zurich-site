@@ -1,9 +1,11 @@
 "use client";
 
-import { Play } from "lucide-react";
+import { Mail, Play } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
+import { useConfirm } from "@/components/admin/ui/confirm-dialog";
+import { adminButton } from "@/components/admin/ui/styles";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,27 +15,52 @@ import { cn } from "@/lib/utils";
 const send = (url: string, method: string, body?: object) =>
   fetch(url, { method, headers: { "content-type": "application/json" }, body: body ? JSON.stringify(body) : undefined });
 
-/** "New campaign": asks for an internal name, then opens its editor. */
-export function NewCampaignButton() {
+/**
+ * "New campaign": asks for an internal name, then opens its editor. From an event or the fees
+ * page, the audience comes already chosen (its sign-ups, the members who still owe the fee).
+ */
+export function NewCampaignButton({
+  audience,
+  eventId,
+  defaultName,
+  label,
+  className,
+}: {
+  audience?: "unpaid" | "event";
+  eventId?: string;
+  defaultName?: string;
+  label?: string;
+  className?: string;
+}) {
   const t = useTranslations("Mailing");
   const router = useRouter();
+  const ask = useConfirm();
   const [pending, startTransition] = useTransition();
   return (
-    <Button
+    <button
+      type="button"
       disabled={pending}
-      onClick={() => {
-        const name = prompt(t("campaigns.namePrompt"))?.trim();
-        if (!name) return;
+      className={className ?? adminButton("primary")}
+      onClick={async () => {
+        const name = (
+          await ask({
+            title: t("campaigns.new"),
+            confirmLabel: t("campaigns.create"),
+            input: { label: t("campaigns.namePrompt"), placeholder: defaultName, required: !defaultName },
+          })
+        )?.trim();
+        if (name === undefined) return;
         startTransition(async () => {
-          const response = await send("/api/v1/mailing/campaigns", "POST", { name });
+          const response = await send("/api/v1/mailing/campaigns", "POST", { name: name || defaultName, audience, audienceEventId: eventId });
           if (!response.ok) return void toast.error(t("error"));
           const { data } = (await response.json()) as { data: { id: string } };
           router.push(`/admin/mailing/campagnes/${data.id}`);
         });
       }}
     >
-      {t("campaigns.new")}
-    </Button>
+      <Mail aria-hidden />
+      {label ?? t("campaigns.new")}
+    </button>
   );
 }
 

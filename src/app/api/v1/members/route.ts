@@ -3,12 +3,12 @@ import { db } from "@/db";
 import { members, user } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability } from "@/lib/permissions";
 import { createMemberSchema, pagination } from "@/lib/validators";
 
 // Personal data: admins only, for reading too.
 export const GET = apiHandler(async (request) => {
-  await requireRole("admin");
+  await requireCapability("members.read");
   const { limit, offset } = parseQuery(request, pagination);
   const rows = await db
     .select({ ...getTableColumns(members), email: user.email })
@@ -21,7 +21,7 @@ export const GET = apiHandler(async (request) => {
 });
 
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("members.write");
   const input = await parseBody(request, createMemberSchema);
 
   const created = await db.transaction(async (tx) => {

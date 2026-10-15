@@ -4,6 +4,7 @@ import { Send } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
+import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -34,6 +35,7 @@ export function CampaignSettings({
   const t = useTranslations("Mailing");
   const format = useFormatter();
   const router = useRouter();
+  const ask = useConfirm();
   const [name, setName] = useState(campaign.name);
   const [audience, setAudience] = useState<Audience>(campaign.audience);
   const [eventId, setEventId] = useState(campaign.audienceEventId ?? events[0]?.id ?? "");
@@ -132,8 +134,8 @@ export function CampaignSettings({
         </Button>
         <Button
           disabled={pending || !count}
-          onClick={() => {
-            if (confirm(t("campaigns.confirmSend", { count: count ?? 0 }))) launch(undefined);
+          onClick={async () => {
+            if ((await ask({ title: t("campaigns.sendNow"), body: t("campaigns.confirmSend", { count: count ?? 0 }), confirmLabel: t("campaigns.sendNow") })) !== null) launch(undefined);
           }}
         >
           <Send aria-hidden />
@@ -157,8 +159,8 @@ export function CampaignSettings({
           variant="ghost"
           className="ml-auto text-destructive hover:text-destructive"
           disabled={pending}
-          onClick={() => {
-            if (!confirm(t("campaigns.confirmDelete"))) return;
+          onClick={async () => {
+            if ((await ask({ title: t("campaigns.delete"), body: t("campaigns.confirmDelete"), confirmLabel: t("campaigns.delete"), tone: "danger" })) === null) return;
             startTransition(async () => {
               const response = await call(`/api/v1/mailing/campaigns/${campaign.id}`, "DELETE");
               if (!response.ok) return void toast.error(t("error"));

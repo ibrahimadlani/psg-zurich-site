@@ -3,7 +3,7 @@ import { db } from "@/db";
 import { posts } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 import { postValues } from "@/lib/posts";
 import { createPostSchema } from "@/lib/validators";
 
@@ -17,12 +17,12 @@ async function findOrThrow(id: string) {
 
 /** Full article for the CMS (drafts included). */
 export const GET = apiHandler<Context>(async (_request, { params }) => {
-  await requireRole("admin");
+  await requireCapability("news");
   return ok(await findOrThrow((await params).id));
 });
 
 export const PATCH = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("news");
   const { id } = await params;
   const input = await parseBody(request, createPostSchema);
   const current = await findOrThrow(id);
@@ -50,7 +50,7 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
 });
 
 export const DELETE = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("news");
   const { id } = await params;
   const post = await findOrThrow(id);
   await db.transaction(async (tx) => {

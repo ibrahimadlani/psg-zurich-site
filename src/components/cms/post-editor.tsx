@@ -1,9 +1,12 @@
 "use client";
 
-import { Eye, PenLine, Trash2 } from "lucide-react";
+import { Eye, PenLine, SlidersHorizontal, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { toast } from "sonner";
+import { useConfirm } from "@/components/admin/ui/confirm-dialog";
+import { ResponsivePanel, useIsDesktop } from "@/components/admin/ui/responsive-panel";
+import { adminButton } from "@/components/admin/ui/styles";
 import { BlockEditor, withKey, type KeyedBlock, type Option } from "@/components/cms/block-editor";
 import { ArticleBody, type BlockRefs } from "@/components/news/article-body";
 import { Button } from "@/components/ui/button";
@@ -67,6 +70,9 @@ export function PostEditor({
   const t = useTranslations("Cms");
   const tNews = useTranslations("News");
   const router = useRouter();
+  const ask = useConfirm();
+  const desktop = useIsDesktop();
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const [draft, setDraft] = useState(initial);
   const [blocks, setBlocks] = useState<KeyedBlock[]>(() => initial.blocks.map(withKey));
   const [slugEdited, setSlugEdited] = useState(Boolean(postId));
@@ -122,8 +128,8 @@ export function PostEditor({
       else router.refresh();
     });
 
-  const remove = () => {
-    if (!postId || !confirm(t("confirmDelete"))) return;
+  const remove = async () => {
+    if (!postId || (await ask({ title: t("delete"), body: t("confirmDelete"), confirmLabel: t("delete"), tone: "danger" })) === null) return;
     startTransition(async () => {
       const response = await fetch(`/api/v1/posts/${postId}`, { method: "DELETE" });
       if (!response.ok) {
@@ -150,89 +156,9 @@ export function PostEditor({
 
   const canSave = current.title.trim().length > 0 && (current.mode !== "schedule" || current.publishAt !== "");
 
-  return (
-    <div className="space-y-6">
-      {/* Sticky action bar: edit / preview, save state, save. */}
-      <div className="sticky top-0 z-20 -mx-4 flex items-center gap-3 border-b bg-background/85 px-4 py-3 backdrop-blur">
-        <div className="inline-flex rounded-lg border p-0.5 text-sm">
-          {[
-            { value: false, icon: PenLine, label: t("edit") },
-            { value: true, icon: Eye, label: t("preview") },
-          ].map(({ value, icon: Icon, label }) => (
-            <button
-              key={label}
-              type="button"
-              onClick={() => setPreview(value)}
-              className={cn(
-                "inline-flex cursor-pointer items-center gap-1.5 rounded-md px-3 py-1.5",
-                preview === value ? "bg-segment text-segment-foreground" : "text-muted-foreground",
-              )}
-            >
-              <Icon className="size-3.5" aria-hidden />
-              {label}
-            </button>
-          ))}
-        </div>
-        <span className={cn("flex items-center gap-1.5 text-xs", dirty ? "text-psg-red" : "text-muted-foreground")}>
-          <span aria-hidden className={cn("size-1.5 rounded-full sm:hidden", dirty ? "bg-psg-red" : "bg-ok")} />
-          <span className="max-sm:sr-only">{dirty ? t("unsaved") : t("upToDate")}</span>
-        </span>
-        <div className="ml-auto flex items-center gap-2">
-          {publicUrl ? (
-            <a href={publicUrl} target="_blank" rel="noreferrer" className="hidden text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline sm:inline">
-              {t("viewPublic")}
-            </a>
-          ) : null}
-          <Button onClick={save} disabled={pending || !canSave}>
-            {pending ? t("saving") : current.mode === "draft" ? t("saveDraft") : current.mode === "schedule" ? t("schedule") : t("publish")}
-          </Button>
-        </div>
-      </div>
-
-      {preview ? (
-        <div className="space-y-8">
-          <div className="mx-auto flex max-w-[44rem] flex-col gap-4">
-            <span className="self-start rounded-full bg-psg-red px-[9px] py-1 font-wide text-[9px] font-semibold tracking-[0.08em] text-white uppercase">
-              {tNews(`categories.${current.category}`)}
-            </span>
-            <h1 className="font-narrow text-[length:clamp(34px,6.4vw,68px)] leading-[0.92] font-extrabold text-balance uppercase italic">
-              {current.title || t("untitled")}
-            </h1>
-            {current.excerpt ? <p className="text-[length:clamp(18px,2.2vw,21px)] leading-normal text-muted-foreground">{current.excerpt}</p> : null}
-          </div>
-          {current.imageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element -- uploaded media
-            <img src={current.imageUrl} alt="" className="aspect-video w-full rounded-[14px] object-cover" />
-          ) : null}
-          <ArticleBody blocks={current.blocks.filter(isComplete)} refs={refs} eventsOpen />
-        </div>
-      ) : (
-        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
-          <div className="min-w-0 space-y-5">
-            <textarea
-              value={current.title}
-              maxLength={255}
-              onChange={(event) => {
-                set("title", event.target.value);
-                if (!slugEdited) set("slug", slugify(event.target.value));
-              }}
-              placeholder={t("titlePlaceholder")}
-              rows={1}
-              // Accents of the first line need room above the capitals.
-              className="w-full resize-none overflow-hidden bg-transparent pt-[0.2em] font-narrow text-[length:clamp(30px,5vw,48px)] leading-[1.02] font-extrabold uppercase italic outline-none [field-sizing:content] placeholder:text-muted-foreground/50"
-            />
-            <textarea
-              value={current.excerpt}
-              maxLength={500}
-              onChange={(event) => set("excerpt", event.target.value)}
-              placeholder={t("excerptPlaceholder")}
-              rows={2}
-              className="w-full resize-none bg-transparent text-lg leading-normal text-muted-foreground outline-none [field-sizing:content] placeholder:text-muted-foreground/50"
-            />
-            <BlockEditor value={blocks} onChange={setBlocks} matches={matches} events={events} />
-          </div>
-
-          <aside className="space-y-4 lg:sticky lg:top-20">
+  // Publication, category, language, cover: beside the text on a computer, in a panel on a phone.
+  const settings = (
+    <>
             <div className={panel}>
               <p className="text-sm font-semibold">{t("publication")}</p>
               <div className="grid grid-cols-3 gap-1 rounded-lg border p-0.5 text-xs">
@@ -344,8 +270,118 @@ export function PostEditor({
                 {t("delete")}
               </Button>
             ) : null}
-          </aside>
+    </>
+  );
+
+  return (
+    <div className="space-y-6">
+      {/* Sticky action bar: edit / preview, save state, save. */}
+      <div className="sticky top-14 z-20 -mx-4 flex items-center gap-2 border-b bg-background/85 px-4 py-3 backdrop-blur sm:-mx-6 sm:gap-3 sm:px-6 lg:top-0 lg:-mx-10 lg:px-10">
+        <div className="inline-flex rounded-lg border p-0.5 text-sm">
+          {[
+            { value: false, icon: PenLine, label: t("edit") },
+            { value: true, icon: Eye, label: t("preview") },
+          ].map(({ value, icon: Icon, label }) => (
+            <button
+              key={label}
+              type="button"
+              onClick={() => setPreview(value)}
+              className={cn(
+                "inline-flex cursor-pointer items-center gap-1.5 rounded-md px-2.5 py-1.5 sm:px-3",
+                preview === value ? "bg-segment text-segment-foreground" : "text-muted-foreground",
+              )}
+            >
+              <Icon className="size-3.5" aria-hidden />
+              {/* Phones: icons only, so the save button keeps its room. */}
+              <span className="max-sm:sr-only">{label}</span>
+            </button>
+          ))}
         </div>
+        <span className={cn("flex items-center gap-1.5 text-xs", dirty ? "text-psg-red" : "text-muted-foreground")}>
+          <span aria-hidden className={cn("size-1.5 rounded-full sm:hidden", dirty ? "bg-psg-red" : "bg-ok")} />
+          <span className="max-sm:sr-only">{dirty ? t("unsaved") : t("upToDate")}</span>
+        </span>
+        <div className="ml-auto flex items-center gap-2">
+          {publicUrl ? (
+            <a href={publicUrl} target="_blank" rel="noreferrer" className="hidden text-sm text-muted-foreground underline-offset-2 hover:text-foreground hover:underline sm:inline">
+              {t("viewPublic")}
+            </a>
+          ) : null}
+          {/* Phones: category, language, cover… in a panel (the text gets the whole screen). */}
+          {desktop ? null : (
+            <button type="button" onClick={() => setSettingsOpen(true)} className={adminButton("secondary", "sm")}>
+              <SlidersHorizontal aria-hidden />
+              <span className="sr-only">{t("settings")}</span>
+            </button>
+          )}
+          <button type="button" onClick={save} disabled={pending || !canSave} className={adminButton("primary", "sm")}>
+            {pending ? (
+              t("saving")
+            ) : current.mode === "draft" ? (
+              <>
+                {/* "Enregistrer le brouillon" is too long for a phone's bar. */}
+                <span className="sm:hidden">{t("saveShort")}</span>
+                <span className="max-sm:hidden">{t("saveDraft")}</span>
+              </>
+            ) : current.mode === "schedule" ? (
+              t("schedule")
+            ) : (
+              t("publish")
+            )}
+          </button>
+        </div>
+      </div>
+
+      {preview ? (
+        <div className="space-y-8">
+          <div className="mx-auto flex max-w-[44rem] flex-col gap-4">
+            <span className="self-start rounded-full bg-psg-red px-[9px] py-1 font-wide text-[9px] font-semibold tracking-[0.08em] text-white uppercase">
+              {tNews(`categories.${current.category}`)}
+            </span>
+            <h1 className="font-narrow text-[length:clamp(34px,6.4vw,68px)] leading-[0.92] font-extrabold text-balance uppercase italic">
+              {current.title || t("untitled")}
+            </h1>
+            {current.excerpt ? <p className="text-[length:clamp(18px,2.2vw,21px)] leading-normal text-muted-foreground">{current.excerpt}</p> : null}
+          </div>
+          {current.imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element -- uploaded media
+            <img src={current.imageUrl} alt="" className="aspect-video w-full rounded-[14px] object-cover" />
+          ) : null}
+          <ArticleBody blocks={current.blocks.filter(isComplete)} refs={refs} eventsOpen />
+        </div>
+      ) : (
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
+          <div className="min-w-0 space-y-5">
+            <textarea
+              value={current.title}
+              maxLength={255}
+              onChange={(event) => {
+                set("title", event.target.value);
+                if (!slugEdited) set("slug", slugify(event.target.value));
+              }}
+              placeholder={t("titlePlaceholder")}
+              rows={1}
+              // Accents of the first line need room above the capitals.
+              className="w-full resize-none overflow-hidden bg-transparent pt-[0.2em] font-narrow text-[length:clamp(30px,5vw,48px)] leading-[1.02] font-extrabold uppercase italic outline-none [field-sizing:content] placeholder:text-muted-foreground/50"
+            />
+            <textarea
+              value={current.excerpt}
+              maxLength={500}
+              onChange={(event) => set("excerpt", event.target.value)}
+              placeholder={t("excerptPlaceholder")}
+              rows={2}
+              className="w-full resize-none bg-transparent text-lg leading-normal text-muted-foreground outline-none [field-sizing:content] placeholder:text-muted-foreground/50"
+            />
+            <BlockEditor value={blocks} onChange={setBlocks} matches={matches} events={events} />
+          </div>
+
+          {desktop ? <aside className="space-y-4 lg:sticky lg:top-20">{settings}</aside> : null}
+        </div>
+      )}
+      {desktop ? null : (
+        <ResponsivePanel open={settingsOpen} onOpenChange={setSettingsOpen} title={t("settings")}>
+          <div className="space-y-4">{settings}</div>
+        </ResponsivePanel>
       )}
     </div>
   );

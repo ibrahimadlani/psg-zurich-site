@@ -254,9 +254,21 @@ export function MobileMenu() {
           </nav>
         </div>
 
-        {/* Signed in: the member area on its own, above the footer, framed by two cockades as in the desktop bar. */}
+        {/* Signed in: the member area (and admin area) on its own, above the footer, framed by two cockades as in the desktop bar. */}
         {session ? (
-          <div className="px-4 pb-4">
+          <div className="grid gap-2 px-4 pb-4">
+            {/* Admins: the admin area just above. */}
+            {hasRole(session.user.role, "moderator") ? (
+              <Link
+                href="/admin"
+                prefetch={false}
+                aria-current={pathname.startsWith("/admin") ? "page" : undefined}
+                className="flex h-11 items-center justify-center gap-2.5 rounded-[8px] border bg-card font-wide text-[11px] font-semibold tracking-[0.08em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98] aria-[current=page]:text-psg-blue dark:aria-[current=page]:text-foreground"
+              >
+                <LayoutDashboard className="size-3.5 text-muted-foreground" aria-hidden />
+                {t("admin")}
+              </Link>
+            ) : null}
             <Link
               href="/espace-membre"
               prefetch={false}
@@ -361,7 +373,7 @@ function AccountBlock({ motionIndex }: { motionIndex: number }) {
   const { user } = data;
   return (
     <div className={motion.className} style={motion.style}>
-      <NavUser user={user} isAdmin={hasRole(user.role, "admin")} onSignOut={handleSignOut} />
+      <NavUser user={user} onSignOut={handleSignOut} />
     </div>
   );
 }
@@ -435,11 +447,9 @@ const navUserItem =
  */
 function NavUser({
   user,
-  isAdmin,
   onSignOut,
 }: {
   user: { name: string; email: string; image?: string | null };
-  isAdmin: boolean;
   onSignOut: () => void;
 }) {
   const t = useTranslations("Nav");
@@ -460,12 +470,6 @@ function NavUser({
               <Settings aria-hidden />
               {t("settings")}
             </Link>
-            {isAdmin ? (
-              <Link href="/admin" prefetch={false} className={navUserItem}>
-                <LayoutDashboard aria-hidden />
-                {t("admin")}
-              </Link>
-            ) : null}
             <button type="button" data-close-menu onClick={onSignOut} className={navUserItem}>
               <LogOut aria-hidden />
               {tMember("signOut")}

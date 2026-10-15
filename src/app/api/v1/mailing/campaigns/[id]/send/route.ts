@@ -5,13 +5,13 @@ import { emailCampaigns, emailTemplates } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { launchCampaign } from "@/lib/mailing/campaigns";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 
 type Context = RouteContext<"/api/v1/mailing/campaigns/[id]/send">;
 
 /** Send now, schedule (`at`), or take a scheduled campaign back to draft (`at: null`). */
 export const POST = apiHandler<Context>(async (request, { params }) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("mailing");
   const { id } = await params;
   const { at } = await parseBody(request, z.object({ at: z.iso.datetime({ offset: true }).nullable().optional() }));
   const [template] = await db

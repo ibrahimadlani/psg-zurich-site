@@ -67,7 +67,7 @@ export function UserNav() {
             {t("settings")}
           </Link>
         </DropdownMenuItem>
-        {hasRole(user.role, "admin") ? (
+        {hasRole(user.role, "moderator") ? (
           <DropdownMenuItem asChild>
             <Link href="/admin" prefetch={false}>
               <LayoutDashboard aria-hidden />

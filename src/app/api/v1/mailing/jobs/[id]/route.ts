@@ -3,13 +3,13 @@ import { z } from "zod";
 import { db } from "@/db";
 import { emailJobs } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
-import { HttpError, requireRole } from "@/lib/permissions";
+import { HttpError, requireCapability } from "@/lib/permissions";
 
 type Context = RouteContext<"/api/v1/mailing/jobs/[id]">;
 
 /** Journal actions: try a failed or skipped email again, or cancel one still waiting. */
 export const PATCH = apiHandler<Context>(async (request, { params }) => {
-  await requireRole("admin");
+  await requireCapability("mailing");
   const { id } = await params;
   const { action } = await parseBody(request, z.object({ action: z.enum(["retry", "cancel"]) }));
   const [result] =

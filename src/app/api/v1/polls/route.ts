@@ -3,7 +3,7 @@ import { db, type Transaction } from "@/db";
 import { pollOptions, polls } from "@/db/schema";
 import { apiHandler, ok, parseBody, parseQuery } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
-import { requireRole } from "@/lib/permissions";
+import { requireCapability, requireRole } from "@/lib/permissions";
 import { hasRole } from "@/lib/roles";
 import { createPollSchema, pagination } from "@/lib/validators";
 
@@ -37,7 +37,7 @@ export const GET = apiHandler(async (request) => {
 });
 
 export const POST = apiHandler(async (request) => {
-  const session = await requireRole("admin");
+  const session = await requireCapability("polls");
   const { options, ...input } = await parseBody(request, createPollSchema);
 
   const created = await db.transaction(async (tx) => {
