@@ -1,0 +1,365 @@
+{
+  "category": "trips",
+  "translations": {
+    "fr": {
+      "slug": "aston-villa-psg-2026-deplacement-depuis-zurich",
+      "byline": "Le comité",
+      "title": "Aston Villa – PSG : le guide du déplacement depuis Zurich",
+      "excerpt": "Billets visiteurs, ETA obligatoire, passeport, vols Zurich – Birmingham, accès à Villa Park : comment préparer Aston Villa – PSG du 8 décembre 2026.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Le **mardi 8 décembre 2026**, le PSG joue à Villa Park pour la 6e journée de la phase de ligue de la Ligue des champions. Coup d'envoi à **20 h, heure anglaise, soit 21 h en Suisse**. Birmingham est à moins de deux heures de vol de Zurich, mais le Royaume-Uni n'est ni dans l'UE ni dans Schengen : un oubli administratif suffit à rester au sol. Voici ce qu'il faut régler, et dans quel ordre."
+        },
+        {
+          "type": "heading",
+          "text": "Aston Villa – PSG, une affiche devenue familière"
+        },
+        {
+          "type": "paragraph",
+          "text": "C'est la troisième rencontre entre les deux clubs en dix-huit mois. En quart de finale de la Ligue des champions 2025, Paris s'était imposé 3-1 au Parc avant de trembler à Villa Park (2-3), qualifié de justesse. Le 12 août dernier à Salzbourg, le PSG a encore battu Villa en Supercoupe d'Europe (2-1), sur des buts de Khvicha Kvaratskhelia et de Désiré Doué. L'égalisation anglaise était venue de **Brian Madjo**, attaquant de 17 ans qui avait donné bien du travail à la défense parisienne."
+        },
+        {
+          "type": "heading",
+          "text": "Premier réflexe : passeport et ETA"
+        },
+        {
+          "type": "paragraph",
+          "text": "Deux documents sont indispensables pour entrer au Royaume-Uni :"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**Un passeport valable.** Depuis 2021, le Royaume-Uni n'accepte plus les cartes d'identité suisses ou européennes, sauf rares exceptions liées au statut de résident. La carte d'identité qui suffit pour Côme ou Paris ne suffit pas ici.",
+            "**Une autorisation de voyage électronique (ETA).** Obligatoire pour les Suisses et les ressortissants de l'UE, elle coûte **20 £ depuis le 8 avril 2026** et reste valable deux ans. Sans elle, la compagnie aérienne refuse l'embarquement."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "Demandez l'ETA **uniquement** sur le site GOV.UK ou dans l'application officielle « UK ETA ». Des sites intermédiaires la revendent jusqu'à 100 €. La réponse arrive généralement en quelques jours : faites la demande dès que votre déplacement est décidé."
+        },
+        {
+          "type": "heading",
+          "text": "Les billets : passer par le PSG"
+        },
+        {
+          "type": "paragraph",
+          "text": "Le règlement de l'UEFA oblige le club qui reçoit à réserver au moins **5 % de sa capacité** aux supporters adverses. À Villa Park, qui compte un peu plus de 42 000 places, le contingent parisien devrait donc dépasser les 2 000 billets. Ils sont vendus par la **billetterie officielle du PSG**, en priorité aux abonnés et aux membres les plus fidèles. L'UEFA plafonne aussi le prix de ces places : 50 € au maximum la saison dernière."
+        },
+        {
+          "type": "paragraph",
+          "text": "Le secteur visiteurs se trouve dans l'angle nord-est de la **tribune Doug Ellis**, sur deux niveaux. Pour la tribune haute, prévoyez une bonne soixantaine de marches. Les places proposées sur les sites de revente, souvent plus de 200 £, sont presque toujours en tribune locale. Vous y prenez le risque d'être refoulé, et vous ne serez pas avec les Parisiens."
+        },
+        {
+          "type": "heading",
+          "text": "Y aller : Zurich – Birmingham en vol direct"
+        },
+        {
+          "type": "paragraph",
+          "text": "SWISS dessert Birmingham en vol direct depuis Zurich, en moins de deux heures, avec une fréquence qui varie selon la saison. Vérifiez le programme de décembre sur swiss.com avant de bloquer vos congés. Depuis l'aéroport, le train rejoint **Birmingham New Street**, la gare du centre, en une dizaine de minutes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prévoyez d'arriver la veille ou en début de journée. Un mardi de décembre, le centre-ville accueille le **marché de Noël de Francfort**, ouvert du 5 novembre au 24 décembre entre Victoria Square et New Street. C'est là que la plupart des supporters visiteurs passent l'après-midi : il n'existe aucun pub réservé aux visiteurs près du stade."
+        },
+        {
+          "type": "heading",
+          "text": "De New Street à Villa Park"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**En train jusqu'à Witton** : environ 10 minutes, un train toutes les demi-heures. La gare est à cinq minutes à pied du secteur visiteurs. C'est la solution la plus directe.",
+            "**En navette** : un bus spécial part de Dudley Street, près de New Street, les soirs de match. Comptez 5 £ l'aller-retour, payable au chauffeur.",
+            "**Au retour**, les trains de Witton sont pris d'assaut : marchez un quart d'heure jusqu'à la gare d'Aston, mieux desservie. À pied, le centre-ville est à environ une heure."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Laissez les sacs à l'hôtel. Seuls les petits sacs sont acceptés après fouille, et le stade n'a pas de consigne. Les portes ouvrent environ 90 minutes avant le coup d'envoi."
+        },
+        {
+          "type": "heading",
+          "text": "Le retour : une nuit sur place"
+        },
+        {
+          "type": "paragraph",
+          "text": "Le match se termine vers 21 h 50, heure locale, et il n'y a plus de vol pour Zurich ce soir-là. Il faut donc dormir à Birmingham et rentrer le mercredi matin. Les hôtels autour de New Street et du quartier de Digbeth sont les plus pratiques. Réservez une chambre annulable dès que la vente des billets est annoncée, car les prix grimpent vite les soirs de Ligue des champions."
+        },
+        {
+          "type": "heading",
+          "text": "La check-list du déplacement"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Passeport valable (la carte d'identité ne suffit pas)",
+            "ETA approuvée, demandée sur GOV.UK",
+            "Billet acheté via la billetterie officielle du PSG",
+            "Vol et hôtel réservés avec une option d'annulation",
+            "Livres sterling ou carte bancaire sans frais à l'étranger : le sans-contact est accepté presque partout",
+            "Écharpe et maillot rangés jusqu'au secteur visiteurs"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Partir avec le club"
+        },
+        {
+          "type": "paragraph",
+          "text": "Le comité suit l'ouverture des ventes du PSG et relaiera les informations aux membres. Si un déplacement groupé est organisé, il apparaîtra dans l'[agenda des événements](/fr/evenements). Le classement de la phase de ligue est à suivre en direct dans le [calendrier des matchs](/fr/matchs). Pour Côme, le 20 janvier, notre [guide du déplacement](/fr/actualites/come-psg-2027-deplacement-depuis-zurich) est déjà en ligne. Pas encore membre ? [Adhérez en ligne](/fr/adhesion)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Informations vérifiées au 16 octobre 2026. Les conditions de vente des billets, les horaires de vol et les règles d'entrée au Royaume-Uni peuvent changer : vérifiez-les sur [billetterie.psg.fr](https://billetterie.psg.fr), [swiss.com](https://www.swiss.com) et [gov.uk](https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta) avant de partir."
+        }
+      ]
+    },
+    "de": {
+      "slug": "aston-villa-psg-2026-auswaertsfahrt-ab-zuerich",
+      "byline": "Der Vorstand",
+      "title": "Aston Villa – PSG: der Ratgeber für die Reise ab Zürich",
+      "excerpt": "Gästetickets, Pflicht-ETA, Reisepass, Direktflüge Zürich – Birmingham, Weg zum Villa Park: So planen Sie Aston Villa – PSG am 8. Dezember 2026.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Am **Dienstag, 8. Dezember 2026**, spielt PSG am 6. Spieltag der Champions-League-Ligaphase im Villa Park. Anstoss ist um **20 Uhr Ortszeit, also 21 Uhr in der Schweiz**. Birmingham liegt weniger als zwei Flugstunden von Zürich entfernt, doch Grossbritannien gehört weder zur EU noch zu Schengen: Ein vergessenes Dokument reicht, um am Boden zu bleiben. Hier steht, was zu erledigen ist, und in welcher Reihenfolge."
+        },
+        {
+          "type": "heading",
+          "text": "Aston Villa – PSG: ein vertrautes Duell"
+        },
+        {
+          "type": "paragraph",
+          "text": "Es ist das dritte Aufeinandertreffen in achtzehn Monaten. Im Champions-League-Viertelfinal 2025 gewann Paris im Parc 3:1 und zitterte sich nach einem 2:3 im Villa Park knapp weiter. Am 12. August besiegte PSG Villa in Salzburg auch im UEFA-Supercup (2:1), mit Toren von Khvicha Kvaratskhelia und Désiré Doué. Den Ausgleich für die Engländer erzielte der 17-jährige Stürmer **Brian Madjo**, der die Pariser Abwehr lange beschäftigt hatte."
+        },
+        {
+          "type": "heading",
+          "text": "Zuerst: Reisepass und ETA"
+        },
+        {
+          "type": "paragraph",
+          "text": "Für die Einreise nach Grossbritannien brauchen Sie zwei Dokumente:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**Einen gültigen Reisepass.** Seit 2021 akzeptiert Grossbritannien Schweizer und EU-Identitätskarten nicht mehr, von wenigen Ausnahmen für Aufenthaltsberechtigte abgesehen. Die ID, die für Como oder Paris reicht, genügt hier nicht.",
+            "**Eine elektronische Reisegenehmigung (ETA).** Sie ist für Schweizer und EU-Bürger Pflicht, kostet **seit dem 8. April 2026 20 Pfund** und gilt zwei Jahre. Ohne ETA verweigert die Airline das Boarding."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "Beantragen Sie die ETA **ausschliesslich** auf GOV.UK oder in der offiziellen App «UK ETA». Vermittlungsseiten verlangen bis zu 100 Euro dafür. Die Antwort kommt meist innert weniger Tage: Stellen Sie den Antrag, sobald die Reise feststeht."
+        },
+        {
+          "type": "heading",
+          "text": "Tickets: nur über PSG"
+        },
+        {
+          "type": "paragraph",
+          "text": "Das UEFA-Reglement verpflichtet den Heimklub, mindestens **5 % seiner Kapazität** für Gästefans zu reservieren. Im Villa Park mit gut 42 000 Plätzen dürfte das Pariser Kontingent also über 2000 Tickets betragen. Verkauft werden sie über die **offizielle Ticketing-Plattform von PSG**, zuerst an Abonnenten und treue Mitglieder. Die UEFA deckelt auch den Preis: letzte Saison höchstens 50 Euro."
+        },
+        {
+          "type": "paragraph",
+          "text": "Der Gästesektor liegt in der Nordost-Ecke der **Doug Ellis Stand**, auf zwei Rängen. Für den oberen Rang sind gut sechzig Treppenstufen zu bewältigen. Tickets auf Wiederverkaufsseiten, oft für über 200 Pfund, liegen fast immer im Heimsektor. Dort riskieren Sie, abgewiesen zu werden, und Sie stehen nicht bei den Parisern."
+        },
+        {
+          "type": "heading",
+          "text": "Anreise: direkt von Zürich nach Birmingham"
+        },
+        {
+          "type": "paragraph",
+          "text": "SWISS fliegt in weniger als zwei Stunden direkt von Zürich nach Birmingham, je nach Saison unterschiedlich oft. Prüfen Sie den Dezember-Flugplan auf swiss.com, bevor Sie Ferien eingeben. Vom Flughafen fährt der Zug in rund zehn Minuten nach **Birmingham New Street** im Stadtzentrum."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reisen Sie am Vortag oder früh am Spieltag an. An einem Dienstag im Dezember findet in der Innenstadt der **Frankfurter Weihnachtsmarkt** statt, vom 5. November bis 24. Dezember zwischen Victoria Square und New Street. Dort verbringen die meisten Gästefans den Nachmittag: In der Nähe des Stadions gibt es keinen Pub für Auswärtsfans."
+        },
+        {
+          "type": "heading",
+          "text": "Von New Street zum Villa Park"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Mit dem Zug nach Witton**: rund 10 Minuten, alle halbe Stunde. Der Bahnhof liegt fünf Gehminuten vom Gästesektor. Die direkteste Variante.",
+            "**Mit dem Shuttle**: An Spieltagen fährt ein Sonderbus ab Dudley Street bei New Street. Retourbillett 5 Pfund, beim Fahrer zahlbar.",
+            "**Auf dem Rückweg** sind die Züge ab Witton überfüllt: Gehen Sie eine Viertelstunde zum besser bedienten Bahnhof Aston. Zu Fuss ist das Zentrum rund eine Stunde entfernt."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Lassen Sie Taschen im Hotel. Nur kleine Taschen sind nach Kontrolle erlaubt, und es gibt keine Gepäckaufbewahrung. Die Tore öffnen etwa 90 Minuten vor Anpfiff."
+        },
+        {
+          "type": "heading",
+          "text": "Rückreise: eine Nacht vor Ort"
+        },
+        {
+          "type": "paragraph",
+          "text": "Das Spiel endet gegen 21.50 Uhr Ortszeit, danach fliegt nichts mehr nach Zürich. Sie übernachten also in Birmingham und fliegen am Mittwochmorgen zurück. Am praktischsten sind Hotels rund um New Street und im Viertel Digbeth. Buchen Sie ein stornierbares Zimmer, sobald der Ticketverkauf angekündigt ist: An Champions-League-Abenden steigen die Preise schnell."
+        },
+        {
+          "type": "heading",
+          "text": "Die Checkliste"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Gültiger Reisepass (die ID reicht nicht)",
+            "Bewilligte ETA, beantragt auf GOV.UK",
+            "Ticket über die offizielle PSG-Plattform",
+            "Flug und Hotel mit Stornierungsoption",
+            "Pfund oder eine Karte ohne Auslandgebühren: Kontaktlos zahlen geht fast überall",
+            "Schal und Trikot erst im Gästesektor auspacken"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Mit dem Klub reisen"
+        },
+        {
+          "type": "paragraph",
+          "text": "Der Vorstand verfolgt den Ticketverkauf von PSG und informiert die Mitglieder. Falls eine Gruppenreise organisiert wird, erscheint sie in der [Agenda](/de/evenements). Die Tabelle der Ligaphase finden Sie live im [Spielplan](/de/matchs). Für Como am 20. Januar ist unser [Reise-Ratgeber](/de/actualites/como-psg-2027-auswaertsfahrt-ab-zuerich) bereits online. Noch nicht Mitglied? [Jetzt online beitreten](/de/adhesion)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Stand: 16. Oktober 2026. Ticketbedingungen, Flugpläne und Einreiseregeln können sich ändern: Prüfen Sie sie vor der Abreise auf [billetterie.psg.fr](https://billetterie.psg.fr), [swiss.com](https://www.swiss.com) und [gov.uk](https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta)."
+        }
+      ]
+    },
+    "en": {
+      "slug": "aston-villa-psg-2026-away-trip-from-zurich",
+      "byline": "The committee",
+      "title": "Aston Villa v PSG on 8 December: the away-trip guide from Zurich",
+      "excerpt": "Away tickets, the compulsory ETA, passports, direct Zurich – Birmingham flights, getting to Villa Park: how to plan Aston Villa v PSG on 8 December 2026.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On **Tuesday 8 December 2026**, PSG play at Villa Park on matchday 6 of the Champions League league phase. Kick-off is at **8pm UK time, 9pm in Switzerland**. Birmingham is under two hours' flight from Zurich, but the UK is in neither the EU nor Schengen: one forgotten document is enough to keep you on the ground. Here is what to sort out, and in what order."
+        },
+        {
+          "type": "heading",
+          "text": "Aston Villa v PSG, a familiar fixture"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is the third meeting between the clubs in eighteen months. In the 2025 Champions League quarter-finals, Paris won 3-1 at the Parc, then held on after losing 3-2 at Villa Park. On 12 August in Salzburg, PSG beat Villa again in the UEFA Super Cup (2-1), with goals from Khvicha Kvaratskhelia and Désiré Doué. Villa's equaliser came from **Brian Madjo**, a 17-year-old striker who gave the Paris defence plenty of trouble."
+        },
+        {
+          "type": "heading",
+          "text": "First things first: passport and ETA"
+        },
+        {
+          "type": "paragraph",
+          "text": "You need two documents to enter the UK:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "**A valid passport.** Since 2021, the UK no longer accepts Swiss or EU identity cards, apart from a few exceptions tied to residence status. The ID card that gets you to Como or Paris will not do here.",
+            "**An Electronic Travel Authorisation (ETA).** Compulsory for Swiss and EU nationals, it has cost **£20 since 8 April 2026** and is valid for two years. Without one, the airline will refuse to board you."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "Apply for the ETA **only** on GOV.UK or in the official \"UK ETA\" app. Third-party sites charge up to €100 for it. Decisions usually arrive within a few days: apply as soon as your trip is decided."
+        },
+        {
+          "type": "heading",
+          "text": "Tickets: go through PSG"
+        },
+        {
+          "type": "paragraph",
+          "text": "UEFA rules require the home club to set aside at least **5% of its capacity** for away fans. With Villa Park holding just over 42,000, the Paris allocation should exceed 2,000 tickets. They are sold through **PSG's official ticketing platform**, with priority for season-ticket holders and the most loyal members. UEFA also caps the price of these tickets: €50 at most last season."
+        },
+        {
+          "type": "paragraph",
+          "text": "The away section is in the north-east corner of the **Doug Ellis Stand**, on two tiers. The upper tier means climbing sixty-odd steps. Tickets on resale sites, often over £200, are almost always in home areas. You risk being turned away there, and you will not be with the Paris fans."
+        },
+        {
+          "type": "heading",
+          "text": "Getting there: direct from Zurich to Birmingham"
+        },
+        {
+          "type": "paragraph",
+          "text": "SWISS flies direct from Zurich to Birmingham in under two hours, with frequency varying by season. Check the December schedule on swiss.com before booking time off. From the airport, the train reaches **Birmingham New Street** in the city centre in around ten minutes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Aim to arrive the day before or early on matchday. On a December Tuesday, the city centre hosts the **Frankfurt Christmas Market**, open from 5 November to 24 December between Victoria Square and New Street. That is where most away fans spend the afternoon: there are no away pubs near the ground."
+        },
+        {
+          "type": "heading",
+          "text": "From New Street to Villa Park"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Train to Witton**: about 10 minutes, every half hour. The station is a five-minute walk from the away end. The most direct option.",
+            "**Matchday shuttle**: a special bus runs from Dudley Street, next to New Street. £5 return, paid to the driver.",
+            "**After the game**, Witton trains are packed: walk a quarter of an hour to Aston station, which has more services. On foot, the city centre is about an hour away."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Leave bags at the hotel. Only small bags are allowed after a search, and there is no bag storage. Turnstiles open about 90 minutes before kick-off."
+        },
+        {
+          "type": "heading",
+          "text": "Getting home: one night in Birmingham"
+        },
+        {
+          "type": "paragraph",
+          "text": "The game ends around 9.50pm local time, with no flights to Zurich after that. So plan to stay the night and fly back on Wednesday morning. Hotels around New Street and in Digbeth are the most convenient. Book a cancellable room as soon as ticket sales are announced: prices climb fast on Champions League nights."
+        },
+        {
+          "type": "heading",
+          "text": "The checklist"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Valid passport (an ID card is not enough)",
+            "Approved ETA, applied for on GOV.UK",
+            "Ticket bought through PSG's official platform",
+            "Flight and hotel booked with a cancellation option",
+            "Pounds or a card with no foreign fees: contactless works almost everywhere",
+            "Scarf and shirt kept out of sight until the away section"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Travel with the club"
+        },
+        {
+          "type": "paragraph",
+          "text": "The committee is following PSG's ticket sales and will pass on the details to members. If a group trip is organised, it will appear in the [events calendar](/en/evenements). The league-phase table is live on the [fixtures page](/en/matchs). For Como on 20 January, our [away-trip guide](/en/actualites/como-psg-2027-away-trip-from-zurich) is already online. Not a member yet? [Join online](/en/adhesion)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Information checked on 16 October 2026. Ticket conditions, flight schedules and UK entry rules can change: check them on [billetterie.psg.fr](https://billetterie.psg.fr), [swiss.com](https://www.swiss.com) and [gov.uk](https://www.gov.uk/guidance/apply-for-an-electronic-travel-authorisation-eta) before you travel."
+        }
+      ]
+    }
+  }
+}
