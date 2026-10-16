@@ -92,6 +92,9 @@ jobs:
             curl -fsS -o /dev/null "http://127.0.0.1:3000/$locale"
           done
           curl -fsS http://127.0.0.1:3000/api/v1/posts
+          # Files of public/ are served at the root (a broken copy once hid every image).
+          curl -fsS -o /dev/null http://127.0.0.1:3000/brand/psg-crest.svg
+          curl -fsS -o /dev/null http://127.0.0.1:3000/brand/email/logo-light.png
 
           # Running the CLI again must be a no-op.
           node scripts/migrate.mjs

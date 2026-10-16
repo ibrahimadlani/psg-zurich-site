@@ -10,7 +10,9 @@ cp -R .next/standalone "$out"
 # Static assets are not part of the standalone trace.
 mkdir -p "$out/.next"
 cp -R .next/static "$out/.next/static"
-if [ -d public ]; then cp -R public "$out/public"; fi
+# Merged into what the trace already put there (the PDF fonts read from public/brand/pdf):
+# `cp -R public "$out/public"` would then nest it as public/public and break every image.
+if [ -d public ]; then mkdir -p "$out/public" && cp -R public/. "$out/public/"; fi
 
 # Migrations, runnable on the server without drizzle-kit: `node scripts/migrate.mjs`.
 mkdir -p "$out/scripts"
