@@ -786,6 +786,7 @@
   },
   "NotFound": {
     "title": "Page not found.",
+    "body": "The link may be wrong, or the page has been moved or deleted.",
     "backHome": "Back to home"
   },
   "ServerError": {
@@ -804,7 +805,8 @@
     "official": "Official PSG Supporters Club",
     "imprint": "Legal notice",
     "privacy": "Privacy",
-    "statutes": "Statutes"
+    "statutes": "Statutes",
+    "legal": "Official documents"
   },
   "Emails": {
     "resetPassword": {
