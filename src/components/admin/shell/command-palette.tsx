@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, CornerDownLeft, Inbox, Newspaper, Search } from "lucide-react";
+import { CalendarDays, CornerDownLeft, Inbox, Newspaper, Receipt, Search } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Dialog } from "radix-ui";
 import { useEffect, useMemo, useState } from "react";
@@ -14,6 +14,7 @@ type Found = {
   events: { id: string; title: string; startsAt: string }[];
   posts: { id: string; title: string; locale: string }[];
   messages: { id: string; name: string; reference: string }[];
+  payments?: { id: string; name: string; reference: string; amount: string }[];
 };
 type Item = { key: string; href: string; group: string; label: string; hint?: string; icon: React.ReactNode };
 
@@ -101,6 +102,9 @@ export function CommandPalette({ sections }: { sections: AdminSection[] }) {
           hint: format.dateTime(new Date(event.startsAt), { day: "numeric", month: "short", year: "numeric" }),
           icon: <CalendarDays className="size-4" aria-hidden />,
         });
+      }
+      for (const payment of found.payments ?? []) {
+        list.push({ key: `p-${payment.id}`, href: `/admin/finances/paiements/${payment.id}`, group: t("palette.payments"), label: payment.name, hint: `${payment.reference} · ${payment.amount}`, icon: <Receipt className="size-4" aria-hidden /> });
       }
       for (const message of found.messages ?? []) {
         list.push({ key: `c-${message.id}`, href: `/admin/messages/${message.id}`, group: t("palette.messages"), label: message.name, hint: message.reference, icon: <Inbox className="size-4" aria-hidden /> });

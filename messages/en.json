@@ -49,7 +49,8 @@
         "dark": "Dark",
         "system": "System"
       }
-    }
+    },
+    "shop": "Shop"
   },
   "EventsShowcase": {
     "kinds": {
@@ -523,7 +524,9 @@
       "body": "Four questions, one minute: date of birth, interests, tickets and photos."
     },
     "messagesLink": "My messages",
-    "newReplies": "{count, plural, one {# new reply} other {# new replies}}"
+    "newReplies": "{count, plural, one {# new reply} other {# new replies}}",
+    "paymentsLink": "My payments",
+    "supportLink": "Support the club"
   },
   "Admin": {
     "title": "Administration",
@@ -631,7 +634,10 @@
     "unknown": "Unknown card",
     "unknownHint": "This QR code matches no member. The card may have been renewed.",
     "checkedIn": "{name} is in.",
-    "error": "That didn't work. Try again."
+    "error": "That didn't work. Try again.",
+    "pickups": "Orders to hand over",
+    "handOver": "Handed over",
+    "handedOver": "Order handed over."
   },
   "AdminPolls": {
     "description": "Ask the members: one question, a few choices, live results.",
@@ -725,7 +731,9 @@
       "document": "Documents",
       "mailing": "Mailing",
       "user": "Accounts",
-      "contact": "Messages"
+      "contact": "Messages",
+      "payment": "Payments",
+      "refund": "Refunds"
     },
     "system": "Automatic",
     "count": "{count, plural, one {# item} other {# items}}",
@@ -797,7 +805,22 @@
       "contact_spam": "marked the message as spam",
       "contact_new": "put the message back to handle",
       "contact_delete": "deleted the message",
-      "member_committeeTitle": "changed a committee role"
+      "member_committeeTitle": "changed a committee role",
+      "payment_succeeded": "Payment received",
+      "payment_export": "Accounts exported",
+      "payment_rates": "Fee rate",
+      "payment_shipping": "Postage",
+      "payment_payout": "Payout reconciled",
+      "payment_order_ready": "Order ready",
+      "payment_order_handed_over": "Order handed over",
+      "payment_order_shipped": "Order shipped",
+      "payment_order_paid": "Order to prepare",
+      "payment_product_created": "Item created",
+      "payment_product_updated": "Item edited",
+      "payment_product_deleted": "Item deleted",
+      "refund_requested": "Refund requested",
+      "refund_succeeded": "Refund made",
+      "refund_failed": "Refund failed"
     }
   },
   "AdminShell": {
@@ -829,7 +852,8 @@
       "polls": "Polls",
       "documents": "Documents",
       "journal": "Log",
-      "messages": "Messages"
+      "messages": "Messages",
+      "finances": "Finances"
     },
     "tabs": {
       "home": "Home",
@@ -845,7 +869,8 @@
       "polls": "Polls",
       "documents": "Docs",
       "journal": "Log",
-      "messages": "Messages"
+      "messages": "Messages",
+      "finances": "Finances"
     },
     "roles": {
       "member": "Member",
@@ -864,7 +889,8 @@
       "placeholder": "Member, event, article, section…",
       "sections": "Sections",
       "empty": "No results.",
-      "messages": "Messages"
+      "messages": "Messages",
+      "payments": "Payments"
     }
   },
   "AdminBanner": {
@@ -935,7 +961,8 @@
     "privacy": "Privacy",
     "statutes": "Statutes",
     "legal": "Official documents",
-    "instagram": "Instagram"
+    "instagram": "Instagram",
+    "support": "Support the club"
   },
   "Emails": {
     "resetPassword": {
@@ -1178,6 +1205,42 @@
       "body": "{count, plural, one {This request has} other {These requests have}} been waiting for a reply for over 24 hours: **{references}**.\n\nThe Contact page promises a reply within 24 h.",
       "cta": "Open the inbox",
       "footer": "Daily reminder while messages are waiting."
+    },
+    "paymentReceipt": {
+      "subject": "Thank you for {what}",
+      "preview": "{amount} received — receipt {receipt}",
+      "heading": "Thank you, {firstName}!",
+      "body": "We have received **{amount}** for {what}. Your receipt **{receipt}** is attached to this email; you will also find it in your member area.",
+      "cta": "My payments",
+      "footer": "Payment reference: {payment}."
+    },
+    "paymentRefunded": {
+      "subject": "Refund of {amount}",
+      "preview": "Credit note {receipt}",
+      "heading": "Refund made",
+      "body": "Hello {firstName}, we have refunded **{amount}** to the payment method you used (payment {payment}). It shows on your statement within a few days. Credit note **{receipt}** is attached to this email.",
+      "cta": "My payments"
+    },
+    "shopReady": {
+      "subject": "Your order is ready",
+      "preview": "Pick-up: {pickup}",
+      "heading": "Your order is ready",
+      "body": "Hello {firstName}, your order {payment} is waiting for you: {items}.\n\nPick-up: **{pickup}**. Just show your membership card.",
+      "cta": "See my order"
+    },
+    "shopShipped": {
+      "subject": "Your order is on its way",
+      "preview": "Tracking: {tracking}",
+      "heading": "On its way!",
+      "body": "Hello {firstName}, your order {payment} has been shipped: {items}.\n\nSwiss Post tracking number: **{tracking}**.",
+      "cta": "See my order"
+    },
+    "shopNewOrder": {
+      "subject": "New order {payment} — {amount}",
+      "preview": "{name}: {items}",
+      "heading": "New order",
+      "body": "**{name}** ordered: {items}.\n\nAmount: **{amount}** · {delivery}.",
+      "cta": "Prepare the order"
     }
   },
   "Legal": {
@@ -1207,7 +1270,15 @@
     "reference": "Reference",
     "twint": "Send the amount to {number} with the reference “{reference}”.",
     "copy": "Copy",
-    "copied": "Copied."
+    "copied": "Copied.",
+    "payNow": "Pay {amount}",
+    "adultRate": "Adult rate",
+    "juniorRate": "Junior rate (under 18)",
+    "onlineAfter": "Confirmed at once: the events programme opens as soon as you pay, and the receipt comes by email.",
+    "otherWays": "Another way to pay",
+    "manualAfter": "By bank transfer or direct TWINT, the committee confirms your fee once received (usually within a few days).",
+    "methods": "TWINT, Apple Pay, Google Pay or card",
+    "sheetTitle": "Membership fee"
   },
   "Access": {
     "preview": {
@@ -1264,11 +1335,12 @@
     "allPaid": "Every fee is in. Well done!",
     "kpiPaid": "Paid",
     "kpiPaidHint": "{paid} of {total} members",
-    "kpiAmount": "Collected",
-    "kpiAmountHint": "With online payment",
-    "onlineSoon": "Online payment (TWINT, card): coming soon. Until then, record here the fees received in person or by bank transfer.",
+    "kpiAmount": "Received this season",
+    "kpiAmountHint": "Fees in the journal, online and by hand",
+    "onlineSoon": "Paid online, a fee records itself with its receipt. A payment received in person or by bank transfer is recorded here: it gets its receipt too.",
     "writeUnpaid": "Email unpaid members",
-    "campaignName": "Fee reminder {season}"
+    "campaignName": "Fee reminder {season}",
+    "paidOnline": "{count, plural, one {# fee paid online stays} other {# fees paid online stay}}: refund them from Finances."
   },
   "AdminMembers": {
     "title": "Members",
@@ -2191,7 +2263,8 @@
       "fee": "Membership fee",
       "events": "Events",
       "predictions": "Predictions & engagement",
-      "contact": "Contact"
+      "contact": "Contact",
+      "payments": "Payments & shop"
     },
     "categories": {
       "transactional": "Essential",
@@ -2411,6 +2484,26 @@
       "contact_reminder": {
         "name": "24 h reminder",
         "when": "Every day at 9 am, if messages have waited over 24 h"
+      },
+      "payment_receipt": {
+        "name": "Receipt (shop, donation)",
+        "when": "As soon as a purchase or donation is paid, with the PDF receipt"
+      },
+      "payment_refunded": {
+        "name": "Refund",
+        "when": "When a refund goes through, with the PDF credit note"
+      },
+      "shop_ready": {
+        "name": "Order ready",
+        "when": "When the committee marks an order ready for pick-up"
+      },
+      "shop_shipped": {
+        "name": "Order shipped",
+        "when": "When the committee marks an order shipped"
+      },
+      "shop_newOrder": {
+        "name": "New order (committee)",
+        "when": "For every paid order, to the admins"
       }
     }
   },
@@ -2562,5 +2655,314 @@
     "website": "Thanks for reporting this. We're looking into the problem and will let you know once it's fixed.",
     "account": "We've received your request about your data. As a reminder, your settings also let you download it or delete your account yourself.",
     "other": "Thank you for your message."
+  },
+  "Pay": {
+    "total": "Total",
+    "starting": "Getting the payment ready…",
+    "savedCard": "Pay with {brand} •••• {last4}",
+    "applePay": "Pay with Apple Pay",
+    "googlePay": "Pay with Google Pay",
+    "twint": "Pay with TWINT",
+    "card": "Card",
+    "cardNumber": "Card number",
+    "expiry": "Expiry",
+    "cvc": "CVC",
+    "payAmount": "Pay {amount}",
+    "processing": "Paying…",
+    "error": "The payment did not go through. Nothing was charged.",
+    "retry": "Try again",
+    "secure": "Secure payment · the club keeps no card details",
+    "errors": {
+      "payments_disabled": "Online payment is not open yet. Try again soon.",
+      "out_of_stock": "An item in your bag just sold out. Adjust your bag and try again.",
+      "already_paid": "This fee is already paid.",
+      "product_unavailable": "An item in your bag is no longer available.",
+      "too_many_requests": "Too many attempts. Wait a few minutes.",
+      "membership_inactive": "Your membership must first be accepted by the committee."
+    }
+  },
+  "PaymentStatus": {
+    "title": "Payment",
+    "checking": "Confirming the payment…",
+    "checkingBody": "This only takes a few seconds. You can keep this page open.",
+    "processingTitle": "Payment being confirmed",
+    "processingBody": "Your bank is confirming the payment. You will get an email as soon as it is through.",
+    "succeededTitle": "Thank you!",
+    "duesBody": "Your membership fee is paid: the events programme is open to you.",
+    "donationBody": "Your donation keeps the club going. Thank you so much.",
+    "shopBody": "Your order is confirmed. We will let you know as soon as it is ready.",
+    "failedTitle": "The payment did not go through",
+    "failedBody": "Nothing was charged. You can try again.",
+    "canceledTitle": "Payment cancelled",
+    "notFound": "This payment cannot be found.",
+    "reference": "Reference",
+    "receipt": "Receipt",
+    "amount": "Amount",
+    "toMemberArea": "My member area",
+    "toEvents": "See the events",
+    "toHome": "Back to home",
+    "retry": "Try again"
+  },
+  "MyPayments": {
+    "title": "My payments",
+    "description": "Membership fees, orders and donations, with their receipts.",
+    "back": "Member area",
+    "empty": "No payments yet.",
+    "order": "Order:",
+    "receipt": "Receipt {number}",
+    "creditNote": "Credit note {number} · {amount}",
+    "kinds": {
+      "dues": "Membership fee",
+      "shop": "Shop",
+      "donation": "Donation"
+    },
+    "status": {
+      "refunded": "Refunded",
+      "partiallyRefunded": "Partly refunded",
+      "processing": "Processing"
+    },
+    "orderStatus": {
+      "paid": "being prepared",
+      "ready": "ready for pick-up",
+      "handed_over": "handed over",
+      "shipped": "shipped",
+      "canceled": "cancelled",
+      "pending": "awaiting payment"
+    }
+  },
+  "Support": {
+    "title": "Support the club",
+    "intro": "The club lives thanks to its members and everyone who loves it. Every donation helps keep PSG alive in Zurich.",
+    "uses": {
+      "events": "Ever better watch parties",
+      "travel": "More affordable away trips",
+      "tifo": "Banners, flags and displays in the stands"
+    },
+    "taxNote": "The club is a supporters' association: donations are not tax-deductible.",
+    "amount": "Amount",
+    "customAmount": "Other amount",
+    "amountRange": "Between {min} and {max}.",
+    "name": "Name",
+    "email": "Email",
+    "emailHint": "To send you the receipt.",
+    "message": "A word for the club (optional)",
+    "messagePlaceholder": "Allez Paris!",
+    "anonymous": "Anonymous donation",
+    "anonymousHint": "Your name will never be shown publicly.",
+    "give": "Give {amount}",
+    "giveNoAmount": "Give",
+    "sheetTitle": "Donation",
+    "line": "Donation to the club",
+    "unavailable": "Online donations are coming soon. Meanwhile, write to us at {email}."
+  },
+  "AdminFinances": {
+    "title": "Finances",
+    "year": "Financial year {year}",
+    "description": "Everything coming in and going out, written in the journal: fees, shop, donations, refunds and payment fees.",
+    "descriptionManual": "Online payment is not switched on yet: payments recorded by the committee show here.",
+    "exportCsv": "CSV export",
+    "report": "PDF report",
+    "kpiIncome": "Received",
+    "kpiIncomeHint": "Fees, shop, shipping and donations",
+    "kpiRefunds": "Refunded",
+    "kpiRefundsHint": "Credit notes issued",
+    "kpiFees": "Fees",
+    "kpiFeesHint": "Taken by the payment provider",
+    "kpiResult": "Result",
+    "kpiResultHint": "Received − refunded − fees",
+    "byAccount": "By account",
+    "result": "Result of the year",
+    "ledgerNote": "The journal is never erased: a correction is a reversing line. Records kept 10 years (art. 958f CO).",
+    "tabs": {
+      "label": "Finance sections",
+      "overview": "Overview",
+      "payments": "Payments",
+      "orders": "Orders",
+      "shop": "Shop",
+      "payouts": "Payouts",
+      "settings": "Rates"
+    },
+    "paymentsTitle": "Payments",
+    "paymentsDescription": "Every payment with its receipt, its journal lines and its history.",
+    "pickTitle": "Pick a payment",
+    "pickBody": "Its details, receipt and refunds open here.",
+    "filters": {
+      "paid": "Received",
+      "refunds": "Refunded",
+      "open": "In progress"
+    },
+    "kinds": {
+      "dues": "Fee",
+      "shop": "Shop",
+      "donation": "Donation"
+    },
+    "search": "Name, P-000123 or Q-2026-0001",
+    "none": "No payments here.",
+    "anonymous": "anonymous",
+    "status": {
+      "succeeded": "Paid",
+      "processing": "Processing",
+      "pending": "Unpaid",
+      "failed": "Declined",
+      "refunded": "Refunded",
+      "partially_refunded": "Partly refunded",
+      "canceled": "Abandoned"
+    },
+    "refund": "Refund",
+    "refundTitle": "Refund",
+    "refundDescription": "Up to {amount}. A numbered credit note is issued and sent to the payer.",
+    "cancel": "Cancel",
+    "refunding": "Refunding…",
+    "refundConfirm": "Refund {amount}",
+    "refundAmount": "Amount (CHF)",
+    "refundReason": "Reason",
+    "refundReasonHint": "E.g. size sold out, paid twice…",
+    "refundNote": "Online payment: the money goes back to the card or TWINT account (a few days). Manual payment: give the money back yourself, the credit note records it. A fee refunded in full is no longer paid up.",
+    "refundError": "The refund could not be made.",
+    "refundDone": "Refunded · credit note {number}",
+    "refundPending": "Refund requested: it will be confirmed shortly.",
+    "detail": {
+      "status": "Status",
+      "method": "Method",
+      "payer": "Email",
+      "paidAt": "Paid on",
+      "fees": "Fees",
+      "net": "net",
+      "recordedBy": "Recorded by",
+      "message": "Message",
+      "lines": "Lines",
+      "order": "Order:",
+      "refunds": "Refunds",
+      "books": "Journal",
+      "noBooks": "Nothing in the journal: the payment did not go through.",
+      "trail": "History",
+      "started": "Payment started"
+    },
+    "orderStatus": {
+      "pending": "awaiting payment",
+      "paid": "to prepare",
+      "ready": "ready",
+      "handed_over": "handed over",
+      "shipped": "shipped",
+      "canceled": "cancelled"
+    },
+    "refundStatus": {
+      "pending": "In progress",
+      "succeeded": "Done",
+      "failed": "Failed"
+    },
+    "ordersTitle": "Orders",
+    "ordersDescription": "To prepare, ready for pick-up, handed over or shipped. The buyer is told at each step.",
+    "orderError": "The order could not be updated.",
+    "orderMoved": {
+      "ready": "Order ready: the buyer is told.",
+      "handed_over": "Order handed over.",
+      "shipped": "Order shipped: the buyer has the tracking.",
+      "paid": "Order back to prepare."
+    },
+    "orderGroups": {
+      "toPrepare": "To prepare",
+      "ready": "Ready for pick-up",
+      "done": "Handed over and shipped"
+    },
+    "noOrders": "No orders yet.",
+    "pickup": "Pick-up at an event",
+    "shipTo": "Ship to",
+    "markReady": "Ready",
+    "markShipped": "Shipped",
+    "markHandedOver": "Handed over",
+    "tracking": "Swiss Post tracking number",
+    "trackingHint": "Optional: the buyer gets the tracking link.",
+    "payoutsTitle": "Payouts",
+    "payoutsDescription": "Each transfer from the provider to the club's account, with the payments it carries: to tick off the bank statement.",
+    "noPayouts": "No payouts yet.",
+    "payoutLine": "{count, plural, one {# payment} other {# payments}} · fees {fees}",
+    "settingsTitle": "Rates",
+    "settingsDescription": "Fee of each season (voted by the general assembly) and the shop's postage.",
+    "ratesTitle": "Fee {season}",
+    "ratesSet": "Set by the committee.",
+    "ratesDefault": "Not set yet: the statutes' rate applies.",
+    "adult": "Adult",
+    "junior": "Junior (under 18)",
+    "save": "Save",
+    "saved": "Saved.",
+    "saveError": "Saving failed.",
+    "shippingTitle": "Shipping",
+    "shippingBody": "Offered in Switzerland next to the free pick-up at an event.",
+    "shippingEnabled": "Offer shipping",
+    "shippingFee": "Postage",
+    "shopTitle": "Shop",
+    "shopDescription": "The club's items, their sizes and stock. Only visible items appear in the shop.",
+    "newProduct": "New item",
+    "editProduct": "Edit item",
+    "noProducts": "No items yet.",
+    "hidden": "Hidden",
+    "uploadError": "The photo could not be uploaded.",
+    "slugTaken": "This address is already taken.",
+    "productError": "The item could not be saved.",
+    "deleteProduct": "Delete the item?",
+    "deleteProductBody": "Only possible if it was never sold; otherwise, hide it.",
+    "delete": "Delete",
+    "hasSales": "This item was sold: hide it instead.",
+    "photos": "Photos",
+    "cover": "Cover",
+    "removePhoto": "Remove the photo",
+    "addPhoto": "Add photos",
+    "productName": "Name",
+    "productDescription": "Description",
+    "price": "Price (CHF)",
+    "slug": "Address",
+    "sizes": "Sizes and stock",
+    "sizeLabel": "Size",
+    "stock": "Stock",
+    "removeSize": "Remove the size",
+    "addSize": "Add a size",
+    "sizesHint": "Only one size? Call it \"One size\". Stock goes down with each paid sale.",
+    "active": "Visible in the shop",
+    "activeHint": "Unticked, the item stays in the admin and in the history."
+  },
+  "Shop": {
+    "eyebrow": "PSG Zurich · Collection",
+    "title": "Shop",
+    "intro": "Pieces designed for the club, in small runs. For members, picked up at a watch party or delivered in Switzerland.",
+    "soon": "The collection is coming soon.",
+    "soldOut": "Sold out",
+    "soldOutLong": "Sold out for now. Come back soon.",
+    "chooseSize": "Size",
+    "fewLeft": "{count, plural, one {Only one left} other {Only # left}}",
+    "less": "Fewer",
+    "more": "More",
+    "addToBag": "Add to bag",
+    "pickSizeFirst": "Pick a size",
+    "buyNow": "Buy",
+    "added": "Added to your bag.",
+    "cart": "Bag",
+    "openCart": "Open the bag ({count})",
+    "emptyCart": "Your bag is empty.",
+    "remove": "Remove",
+    "size": "Size {size}",
+    "delivery": "Delivery",
+    "pickupTitle": "Pick-up at a watch party",
+    "pickupBody": "We tell you when it is ready; show your membership card.",
+    "free": "Free",
+    "shippingTitle": "Shipping in Switzerland",
+    "shippingBody": "Delivered by Swiss Post within a few days, with tracking.",
+    "name": "Name",
+    "street": "Street and number",
+    "postcode": "Postcode",
+    "city": "Town",
+    "switzerlandOnly": "Shipping within Switzerland only.",
+    "total": "Total",
+    "checkout": "Order · {amount}",
+    "order": "Order",
+    "membersOnly": "For members",
+    "membersOnlyBody": "The shop is for club members.",
+    "pendingTitle": "Membership being reviewed",
+    "pendingBody": "You can order as soon as the committee has accepted your membership.",
+    "join": "Join the club",
+    "signIn": "I already have an account",
+    "perkPickup": "Free pick-up at the next watch party",
+    "perkShipping": "Or shipping in Switzerland",
+    "perkReceipt": "Receipt by email, pay with TWINT, Apple Pay or card"
   }
 }

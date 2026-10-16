@@ -17,12 +17,15 @@ export async function recordDues({
   actorId,
   ipAddress,
   source = "manual",
+  receipt,
 }: {
   memberIds: string[];
   paid: boolean;
   actorId: string | null;
   ipAddress: string | null;
   source?: "manual" | "online";
+  /** Receipt of the payment that paid the fee, sent with the email. */
+  receipt?: string;
 }) {
   const expiresOn = paid ? seasonEnd() : null;
   const targets = await db
@@ -49,6 +52,6 @@ export async function recordDues({
       );
     }
   });
-  if (expiresOn) for (const member of changing) await onFeeRecorded(member.id, expiresOn);
+  if (expiresOn) for (const member of changing) await onFeeRecorded(member.id, expiresOn, receipt);
   return { updated: changing.length, expiresOn };
 }

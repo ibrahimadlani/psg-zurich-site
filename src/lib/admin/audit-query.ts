@@ -5,7 +5,7 @@ import { announcements, auditLog, documents, events, matches, members, polls, po
 import { matchTitle } from "@/lib/matches";
 
 /** The journal's filters: the first part of the action ("member.approve" → member). */
-export const AUDIT_DOMAINS = ["member", "contact", "event", "match", "post", "announcement", "poll", "document", "mailing", "user"] as const;
+export const AUDIT_DOMAINS = ["member", "contact", "event", "match", "post", "announcement", "poll", "document", "mailing", "user", "payment", "refund"] as const;
 export type AuditDomain = (typeof AUDIT_DOMAINS)[number];
 
 export const AUDIT_PAGE = 50;
@@ -22,6 +22,9 @@ function entityHref(type: string, id: string | null) {
   if (type === "announcement") return "/admin/banniere";
   if (type === "email_campaign") return `/admin/mailing/campagnes/${id}`;
   if (type === "contact") return `/admin/messages/${id}`;
+  if (type === "payment") return `/admin/finances/paiements/${id}`;
+  if (type === "product") return "/admin/finances/boutique";
+  if (type === "payout") return "/admin/finances/versements";
   return null;
 }
 

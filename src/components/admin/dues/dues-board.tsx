@@ -18,7 +18,7 @@ const fold = (text: string) => text.normalize("NFD").replace(/\p{Diacritic}/gu, 
 async function post(url: string, body: unknown) {
   const response = await fetch(url, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
   if (!response.ok) throw new Error();
-  return ((await response.json()) as { data: { updated?: number; queued?: number } }).data;
+  return ((await response.json()) as { data: { updated?: number; queued?: number; online?: string[] } }).data;
 }
 
 const chip = (on: boolean) =>
@@ -65,8 +65,10 @@ export function DuesBoard({ rows }: { rows: MemberRow[] }) {
     startTransition(async () => {
       setPaid({ ids, paid });
       try {
-        await post("/api/v1/members/dues", { ids, paid });
+        const result = await post("/api/v1/members/dues", { ids, paid });
         setSelected([]);
+        // Fees paid online are refunded from Finances (the money goes back), not cancelled here.
+        if (result.online?.length) toast.info(t("paidOnline", { count: result.online.length }));
         toast.success(t(paid ? "recordedMany" : "cancelledMany", { count: ids.length }), {
           action: {
             label: t("undo"),

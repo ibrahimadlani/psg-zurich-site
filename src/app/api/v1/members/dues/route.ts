@@ -1,14 +1,24 @@
 import { z } from "zod";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp } from "@/lib/audit";
-import { recordDues } from "@/lib/dues-record";
+import { seasonEnd } from "@/lib/dues";
+import { cancelDues, recordManualDues } from "@/lib/payments/manual";
 import { requireCapability } from "@/lib/permissions";
 import { memberIdsSchema } from "@/lib/validators";
 
-/** Several fees at once (the fees page's selection): records or cancels them for the season. */
+const MANUAL_METHODS = ["bank_transfer", "cash", "twint_manual"] as const;
+
+/**
+ * Several fees at once (the fees page's selection): recorded as payments by hand, with a
+ * receipt each, or cancelled (with a credit note) for the season.
+ */
 export const POST = apiHandler(async (request) => {
   const session = await requireCapability("members.write");
-  const { ids, paid } = await parseBody(request, memberIdsSchema.extend({ paid: z.boolean() }));
-  const result = await recordDues({ memberIds: ids, paid, actorId: session.user.id, ipAddress: getClientIp(request.headers) });
-  return ok(result);
+  const { ids, paid, method, note } = await parseBody(
+    request,
+    memberIdsSchema.extend({ paid: z.boolean(), method: z.enum(MANUAL_METHODS).default("bank_transfer"), note: z.string().trim().max(500).optional() }),
+  );
+  const actor = { actorId: session.user.id, ipAddress: getClientIp(request.headers) };
+  if (paid) return ok({ ...(await recordManualDues(ids, method, actor, note)), expiresOn: seasonEnd(), online: [] as string[] });
+  return ok({ ...(await cancelDues(ids, actor)), expiresOn: null });
 });

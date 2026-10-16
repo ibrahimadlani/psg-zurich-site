@@ -30,9 +30,11 @@ type SendMailOptions = {
   unsubscribeUrl?: string;
   /** Answers go there instead of the club's address. */
   replyTo?: string;
+  /** Files sent along (receipts as PDF). */
+  attachments?: { filename: string; content: Buffer; contentType: string }[];
 };
 
-export async function sendMail({ to, subject, react, unsubscribeUrl, replyTo }: SendMailOptions) {
+export async function sendMail({ to, subject, react, unsubscribeUrl, replyTo, attachments }: SendMailOptions) {
   const [html, text] = await Promise.all([
     render(react),
     render(react, { plainText: true }),
@@ -43,7 +45,8 @@ export async function sendMail({ to, subject, react, unsubscribeUrl, replyTo }: 
     if (process.env.NODE_ENV === "production") {
       throw new Error("SMTP is not configured (SMTP_HOST is missing).");
     }
-    console.info(`[mail] SMTP not configured, email not sent.\nTo: ${to}${replyTo ? `\nReply-To: ${replyTo}` : ""}\nSubject: ${subject}\n\n${text}`);
+    const files = attachments?.length ? `\nAttachments: ${attachments.map((file) => `${file.filename} (${file.content.length} bytes)`).join(", ")}` : "";
+    console.info(`[mail] SMTP not configured, email not sent.\nTo: ${to}${replyTo ? `\nReply-To: ${replyTo}` : ""}${files}\nSubject: ${subject}\n\n${text}`);
     return;
   }
 
@@ -54,6 +57,7 @@ export async function sendMail({ to, subject, react, unsubscribeUrl, replyTo }: 
     subject,
     html,
     text,
+    attachments,
     ...(unsubscribeUrl
       ? { headers: { "List-Unsubscribe": `<${unsubscribeUrl}>`, "List-Unsubscribe-Post": "List-Unsubscribe=One-Click" } }
       : {}),

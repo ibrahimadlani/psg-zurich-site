@@ -2,11 +2,13 @@ import { and, desc, eq, inArray, like, or } from "drizzle-orm";
 import { connection } from "next/server";
 import { z } from "zod";
 import { db } from "@/db";
-import { contactThreads, events, members, posts, user } from "@/db/schema";
+import { contactThreads, events, members, payments, posts, user } from "@/db/schema";
 import { apiHandler, ok, parseQuery } from "@/lib/api";
 import { requireCapability } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 import { formatReference, visibleTopics } from "@/lib/contact";
+import { formatChf } from "@/lib/money";
+import { formatPaymentReference, parsePaymentReference } from "@/lib/payments/config";
 
 /** `%word%` with the LIKE wildcards of the word itself escaped. */
 const pattern = (word: string) => `%${word.replace(/[%_\\]/g, "\\$&")}%`;
@@ -25,7 +27,9 @@ export const GET = apiHandler(async (request) => {
   const topics = visibleTopics(role);
   // "C-0042", "c42" or "42" find a conversation by its reference.
   const referenceNumber = Number(q.replace(/^c-?/i, ""));
-  const [memberRows, eventRows, postRows, messageRows] = await Promise.all([
+  // "P-000123" finds a payment, "Q-2026-0001" a receipt.
+  const paymentNumber = parsePaymentReference(q);
+  const [memberRows, eventRows, postRows, messageRows, paymentRows] = await Promise.all([
     can(role, "members.read")
       ? db
           .select({ id: members.id, firstName: members.firstName, lastName: members.lastName, memberNumber: members.memberNumber, status: members.status, email: user.email, image: user.image })
@@ -65,6 +69,20 @@ export const GET = apiHandler(async (request) => {
           .orderBy(desc(contactThreads.lastMessageAt))
           .limit(5)
       : [],
+    can(role, "finances")
+      ? db
+          .select({ id: payments.id, reference: payments.reference, receiptNumber: payments.receiptNumber, payerName: payments.payerName, amount: payments.amount })
+          .from(payments)
+          .where(
+            paymentNumber !== null
+              ? eq(payments.reference, paymentNumber)
+              : /^[qa]-\d{4}-\d+$/i.test(q)
+                ? eq(payments.receiptNumber, q.toUpperCase())
+                : and(inArray(payments.status, ["succeeded", "partially_refunded", "refunded"]), ...words.map((word) => or(like(payments.payerName, pattern(word)), like(payments.payerEmail, pattern(word))))),
+          )
+          .orderBy(desc(payments.createdAt))
+          .limit(5)
+      : [],
   ]);
 
   return ok({
@@ -72,5 +90,6 @@ export const GET = apiHandler(async (request) => {
     events: eventRows,
     posts: postRows,
     messages: messageRows.map((row) => ({ id: row.id, name: row.name, reference: formatReference(row.reference) })),
+    payments: paymentRows.map((row) => ({ id: row.id, name: row.payerName, reference: row.receiptNumber ?? formatPaymentReference(row.reference), amount: formatChf(row.amount) })),
   });
 });

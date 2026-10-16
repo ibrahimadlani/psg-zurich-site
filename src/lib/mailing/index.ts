@@ -2,10 +2,14 @@ import "server-only";
 import { ensureAutomations } from "@/lib/mailing/queue";
 import { runSchedules } from "@/lib/mailing/schedules";
 import { cleanUpJobs, processQueue } from "@/lib/mailing/worker";
+import { paymentHousekeeping } from "@/lib/payments/housekeeping";
 
 let started = false;
 
-/** While the server runs: send due emails every minute, scan for scheduled ones every 5 minutes. */
+/**
+ * While the server runs: send due emails every minute, scan for scheduled ones every 5 minutes,
+ * and tidy the payments (provider events to retry, abandoned checkouts) every 5 minutes.
+ */
 export function startMailing() {
   if (started) return;
   started = true;
@@ -19,5 +23,6 @@ export function startMailing() {
       setInterval(safely("schedules", runSchedules), 5 * 60_000).unref();
       setInterval(safely("queue", processQueue), 60_000).unref();
       setInterval(safely("clean-up", cleanUpJobs), 60 * 60_000).unref();
+      setInterval(safely("payments", paymentHousekeeping), 5 * 60_000).unref();
     });
 }

@@ -24,6 +24,10 @@ import { apiHandler } from "@/lib/api";
 import { LEGAL } from "@/lib/legal";
 import { matchTitle } from "@/lib/matches";
 import { requireRole } from "@/lib/permissions";
+import { formatChf } from "@/lib/money";
+import { formatPaymentReference } from "@/lib/payments/config";
+import { memberPayments } from "@/lib/payments/history";
+import { methodLabel } from "@/lib/payments/receipts";
 
 /**
  * Everything stored about the signed-in person, as a JSON download (right of access and
@@ -183,6 +187,21 @@ export const GET = apiHandler(async () => {
         return all;
       }, {}),
     ),
+    payments: memberId
+      ? (await memberPayments(memberId)).map((payment) => ({
+          reference: formatPaymentReference(payment.reference),
+          kind: payment.kind,
+          status: payment.status,
+          amount: formatChf(payment.amount),
+          method: methodLabel(payment, payment.locale),
+          paidAt: payment.paidAt,
+          receipt: payment.receiptNumber,
+          lines: payment.items.map((item) => ({ description: item.description, quantity: item.quantity, total: formatChf(item.total) })),
+          refunds: payment.refunds.map((refund) => ({ amount: formatChf(refund.amount), reason: refund.reason, creditNote: refund.creditNoteNumber })),
+          order: payment.order ? { status: payment.order.status, delivery: payment.order.fulfilment, shippingAddress: payment.order.shippingAddress, trackingNumber: payment.order.trackingNumber } : null,
+          message: payment.message,
+        }))
+      : [],
     pollVotes: votes,
     newsletter: newsletter[0] ?? null,
     emailsSent: emails.map((row) => ({ type: row.type ?? (row.campaign ? "campaign" : null), status: row.status, queuedAt: row.createdAt, sentAt: row.sentAt })),

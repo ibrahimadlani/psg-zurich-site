@@ -49,7 +49,8 @@
         "dark": "Sombre",
         "system": "Système"
       }
-    }
+    },
+    "shop": "Boutique"
   },
   "EventsShowcase": {
     "kinds": {
@@ -523,7 +524,9 @@
       "body": "Quatre questions, une minute : date de naissance, centres d'intérêt, billetterie et photos."
     },
     "messagesLink": "Mes messages",
-    "newReplies": "{count, plural, one {# nouvelle réponse} other {# nouvelles réponses}}"
+    "newReplies": "{count, plural, one {# nouvelle réponse} other {# nouvelles réponses}}",
+    "paymentsLink": "Mes paiements",
+    "supportLink": "Soutenir le club"
   },
   "Admin": {
     "title": "Administration",
@@ -631,7 +634,10 @@
     "unknown": "Carte inconnue",
     "unknownHint": "Ce QR code ne correspond à aucun membre. La carte a peut-être été renouvelée.",
     "checkedIn": "Entrée validée pour {name}.",
-    "error": "Action impossible. Réessayez."
+    "error": "Action impossible. Réessayez.",
+    "pickups": "Commandes à remettre",
+    "handOver": "Remis",
+    "handedOver": "Commande remise."
   },
   "AdminPolls": {
     "description": "Consultez les membres : une question, quelques choix, les résultats en direct.",
@@ -725,7 +731,9 @@
       "document": "Documents",
       "mailing": "Mailing",
       "user": "Comptes",
-      "contact": "Messages"
+      "contact": "Messages",
+      "payment": "Paiements",
+      "refund": "Remboursements"
     },
     "system": "Automatique",
     "count": "{count, plural, one {# élément} other {# éléments}}",
@@ -797,7 +805,22 @@
       "contact_spam": "a classé le message en spam",
       "contact_new": "a remis le message à traiter",
       "contact_delete": "a supprimé le message",
-      "member_committeeTitle": "a changé un rôle au comité"
+      "member_committeeTitle": "a changé un rôle au comité",
+      "payment_succeeded": "Paiement encaissé",
+      "payment_export": "Export des comptes",
+      "payment_rates": "Tarif de cotisation",
+      "payment_shipping": "Frais de port",
+      "payment_payout": "Versement rapproché",
+      "payment_order_ready": "Commande prête",
+      "payment_order_handed_over": "Commande remise",
+      "payment_order_shipped": "Commande expédiée",
+      "payment_order_paid": "Commande à préparer",
+      "payment_product_created": "Article créé",
+      "payment_product_updated": "Article modifié",
+      "payment_product_deleted": "Article supprimé",
+      "refund_requested": "Remboursement demandé",
+      "refund_succeeded": "Remboursement effectué",
+      "refund_failed": "Remboursement échoué"
     }
   },
   "AdminShell": {
@@ -829,7 +852,8 @@
       "polls": "Sondages",
       "documents": "Documents",
       "journal": "Journal",
-      "messages": "Messages"
+      "messages": "Messages",
+      "finances": "Finances"
     },
     "tabs": {
       "home": "Accueil",
@@ -845,7 +869,8 @@
       "polls": "Sondages",
       "documents": "Docs",
       "journal": "Journal",
-      "messages": "Messages"
+      "messages": "Messages",
+      "finances": "Finances"
     },
     "roles": {
       "member": "Membre",
@@ -864,7 +889,8 @@
       "placeholder": "Membre, événement, article, section…",
       "sections": "Sections",
       "empty": "Aucun résultat.",
-      "messages": "Messages"
+      "messages": "Messages",
+      "payments": "Paiements"
     }
   },
   "AdminBanner": {
@@ -935,7 +961,8 @@
     "privacy": "Confidentialité",
     "statutes": "Statuts",
     "legal": "Documents officiels",
-    "instagram": "Instagram"
+    "instagram": "Instagram",
+    "support": "Soutenir le club"
   },
   "Emails": {
     "resetPassword": {
@@ -1178,6 +1205,42 @@
       "body": "{count, plural, one {Cette demande attend} other {Ces demandes attendent}} une réponse depuis plus de 24 heures : **{references}**.\n\nLa page Contact promet une réponse sous 24 h.",
       "cta": "Ouvrir la boîte de réception",
       "footer": "Rappel quotidien tant que des messages attendent."
+    },
+    "paymentReceipt": {
+      "subject": "Merci pour {what}",
+      "preview": "{amount} bien reçus — quittance {receipt}",
+      "heading": "Merci, {firstName} !",
+      "body": "Nous avons bien reçu **{amount}** pour {what}. Votre quittance **{receipt}** est jointe à cet e-mail ; vous la retrouvez aussi dans votre espace membre.",
+      "cta": "Mes paiements",
+      "footer": "Référence du paiement : {payment}."
+    },
+    "paymentRefunded": {
+      "subject": "Remboursement de {amount}",
+      "preview": "Avoir {receipt}",
+      "heading": "Remboursement effectué",
+      "body": "Bonjour {firstName}, nous vous avons remboursé **{amount}** sur le moyen de paiement utilisé (paiement {payment}). Le montant apparaît sur votre relevé sous quelques jours. L'avoir **{receipt}** est joint à cet e-mail.",
+      "cta": "Mes paiements"
+    },
+    "shopReady": {
+      "subject": "Votre commande est prête",
+      "preview": "À retirer : {pickup}",
+      "heading": "Votre commande est prête",
+      "body": "Bonjour {firstName}, votre commande {payment} vous attend : {items}.\n\nRetrait : **{pickup}**. Présentez simplement votre carte de membre.",
+      "cta": "Voir ma commande"
+    },
+    "shopShipped": {
+      "subject": "Votre commande est en route",
+      "preview": "Suivi : {tracking}",
+      "heading": "C'est parti !",
+      "body": "Bonjour {firstName}, votre commande {payment} a été expédiée : {items}.\n\nNuméro de suivi La Poste : **{tracking}**.",
+      "cta": "Voir ma commande"
+    },
+    "shopNewOrder": {
+      "subject": "Nouvelle commande {payment} — {amount}",
+      "preview": "{name} : {items}",
+      "heading": "Nouvelle commande",
+      "body": "**{name}** a commandé : {items}.\n\nMontant : **{amount}** · {delivery}.",
+      "cta": "Préparer la commande"
     }
   },
   "Legal": {
@@ -1207,7 +1270,15 @@
     "reference": "Communication",
     "twint": "Envoyez le montant au {number} avec la communication « {reference} ».",
     "copy": "Copier",
-    "copied": "Copié."
+    "copied": "Copié.",
+    "payNow": "Payer {amount}",
+    "adultRate": "Tarif adulte",
+    "juniorRate": "Tarif junior (moins de 18 ans)",
+    "onlineAfter": "Validée immédiatement : le programme des événements s'ouvre dès le paiement, et la quittance arrive par e-mail.",
+    "otherWays": "Autre moyen de paiement",
+    "manualAfter": "Par virement ou TWINT direct, le comité valide votre cotisation dès réception (en général sous quelques jours).",
+    "methods": "TWINT, Apple Pay, Google Pay ou carte",
+    "sheetTitle": "Cotisation"
   },
   "Access": {
     "preview": {
@@ -1264,11 +1335,12 @@
     "allPaid": "Toutes les cotisations sont encaissées. Bravo !",
     "kpiPaid": "Payé",
     "kpiPaidHint": "{paid} sur {total} membres",
-    "kpiAmount": "Encaissé",
-    "kpiAmountHint": "Avec le paiement en ligne",
-    "onlineSoon": "Paiement en ligne (TWINT, carte) : bientôt. En attendant, enregistrez ici les cotisations reçues en main propre ou par virement.",
+    "kpiAmount": "Encaissé cette saison",
+    "kpiAmountHint": "Cotisations au journal, en ligne et à la main",
+    "onlineSoon": "Payé en ligne, une cotisation s'enregistre seule avec sa quittance. Un paiement reçu en main propre ou par virement se saisit ici : il a lui aussi sa quittance.",
     "writeUnpaid": "Écrire aux impayés",
-    "campaignName": "Relance cotisations {season}"
+    "campaignName": "Relance cotisations {season}",
+    "paidOnline": "{count, plural, one {# cotisation payée en ligne reste} other {# cotisations payées en ligne restent}} : remboursez-les depuis Finances."
   },
   "AdminMembers": {
     "title": "Membres",
@@ -2191,7 +2263,8 @@
       "fee": "Cotisation",
       "events": "Événements",
       "predictions": "Pronostics & engagement",
-      "contact": "Contact"
+      "contact": "Contact",
+      "payments": "Paiements & boutique"
     },
     "categories": {
       "transactional": "Indispensable",
@@ -2411,6 +2484,26 @@
       "contact_reminder": {
         "name": "Relance 24 h",
         "when": "Chaque jour à 9 h, s'il reste des messages sans réponse depuis 24 h"
+      },
+      "payment_receipt": {
+        "name": "Quittance (boutique, don)",
+        "when": "Dès qu'un achat ou un don est payé, avec la quittance PDF"
+      },
+      "payment_refunded": {
+        "name": "Remboursement",
+        "when": "Quand un remboursement aboutit, avec l'avoir PDF"
+      },
+      "shop_ready": {
+        "name": "Commande prête",
+        "when": "Quand le comité marque une commande prête à retirer"
+      },
+      "shop_shipped": {
+        "name": "Commande expédiée",
+        "when": "Quand le comité marque une commande expédiée"
+      },
+      "shop_newOrder": {
+        "name": "Nouvelle commande (comité)",
+        "when": "À chaque commande payée, aux admins"
       }
     }
   },
@@ -2562,5 +2655,314 @@
     "website": "Merci pour votre signalement. Nous regardons le problème et vous tenons au courant dès qu'il est corrigé.",
     "account": "Nous avons bien reçu votre demande concernant vos données. Pour rappel, vos paramètres permettent aussi de les télécharger ou de supprimer votre compte vous-même.",
     "other": "Merci pour votre message."
+  },
+  "Pay": {
+    "total": "Total",
+    "starting": "Préparation du paiement…",
+    "savedCard": "Payer avec {brand} •••• {last4}",
+    "applePay": "Payer avec Apple Pay",
+    "googlePay": "Payer avec Google Pay",
+    "twint": "Payer avec TWINT",
+    "card": "Carte bancaire",
+    "cardNumber": "Numéro de carte",
+    "expiry": "Expiration",
+    "cvc": "CVC",
+    "payAmount": "Payer {amount}",
+    "processing": "Paiement en cours…",
+    "error": "Le paiement n'a pas abouti. Aucun montant n'a été débité.",
+    "retry": "Réessayer",
+    "secure": "Paiement sécurisé · aucune donnée de carte n'est conservée par le club",
+    "errors": {
+      "payments_disabled": "Le paiement en ligne n'est pas encore ouvert. Réessayez bientôt.",
+      "out_of_stock": "Une pièce de votre panier vient d'être épuisée. Ajustez votre panier puis réessayez.",
+      "already_paid": "Cette cotisation est déjà réglée.",
+      "product_unavailable": "Un article de votre panier n'est plus disponible.",
+      "too_many_requests": "Trop de tentatives. Patientez quelques minutes.",
+      "membership_inactive": "Votre adhésion doit d'abord être acceptée par le comité."
+    }
+  },
+  "PaymentStatus": {
+    "title": "Paiement",
+    "checking": "Confirmation du paiement…",
+    "checkingBody": "Cela ne prend que quelques secondes. Vous pouvez laisser cette page ouverte.",
+    "processingTitle": "Paiement en cours de confirmation",
+    "processingBody": "Votre banque confirme le paiement. Vous recevrez un e-mail dès qu'il est validé.",
+    "succeededTitle": "Merci !",
+    "duesBody": "Votre cotisation est réglée : le programme des événements vous est ouvert.",
+    "donationBody": "Votre don soutient la vie du club. Merci du fond du cœur.",
+    "shopBody": "Votre commande est confirmée. Nous vous prévenons dès qu'elle est prête.",
+    "failedTitle": "Le paiement n'a pas abouti",
+    "failedBody": "Aucun montant n'a été débité. Vous pouvez réessayer.",
+    "canceledTitle": "Paiement annulé",
+    "notFound": "Ce paiement est introuvable.",
+    "reference": "Référence",
+    "receipt": "Quittance",
+    "amount": "Montant",
+    "toMemberArea": "Mon espace membre",
+    "toEvents": "Voir les événements",
+    "toHome": "Retour à l'accueil",
+    "retry": "Réessayer"
+  },
+  "MyPayments": {
+    "title": "Mes paiements",
+    "description": "Cotisations, commandes et dons, avec leurs quittances.",
+    "back": "Espace membre",
+    "empty": "Aucun paiement pour l'instant.",
+    "order": "Commande :",
+    "receipt": "Quittance {number}",
+    "creditNote": "Avoir {number} · {amount}",
+    "kinds": {
+      "dues": "Cotisation",
+      "shop": "Boutique",
+      "donation": "Don"
+    },
+    "status": {
+      "refunded": "Remboursé",
+      "partiallyRefunded": "Remboursé en partie",
+      "processing": "En cours"
+    },
+    "orderStatus": {
+      "paid": "en préparation",
+      "ready": "prête à retirer",
+      "handed_over": "remise",
+      "shipped": "expédiée",
+      "canceled": "annulée",
+      "pending": "en attente du paiement"
+    }
+  },
+  "Support": {
+    "title": "Soutenir le club",
+    "intro": "Le club vit grâce à ses membres et à ceux qui l'aiment. Chaque don aide à faire vivre le PSG à Zurich.",
+    "uses": {
+      "events": "Des watch parties toujours plus belles",
+      "travel": "Des déplacements plus accessibles",
+      "tifo": "Bâches, drapeaux et animations en tribune"
+    },
+    "taxNote": "Le club est une association de supporters : les dons ne sont pas déductibles des impôts.",
+    "amount": "Montant",
+    "customAmount": "Autre montant",
+    "amountRange": "Entre {min} et {max}.",
+    "name": "Nom",
+    "email": "E-mail",
+    "emailHint": "Pour vous envoyer la quittance.",
+    "message": "Un mot pour le club (facultatif)",
+    "messagePlaceholder": "Allez Paris !",
+    "anonymous": "Don anonyme",
+    "anonymousHint": "Votre nom n'apparaîtra jamais publiquement.",
+    "give": "Donner {amount}",
+    "giveNoAmount": "Donner",
+    "sheetTitle": "Don",
+    "line": "Don au club",
+    "unavailable": "Le don en ligne arrive bientôt. En attendant, écrivez-nous à {email}."
+  },
+  "AdminFinances": {
+    "title": "Finances",
+    "year": "Exercice {year}",
+    "description": "Tout ce qui entre et sort, écrit au journal : cotisations, boutique, dons, remboursements et frais de paiement.",
+    "descriptionManual": "Paiement en ligne pas encore activé : les paiements saisis par le comité apparaissent ici.",
+    "exportCsv": "Export CSV",
+    "report": "Bilan PDF",
+    "kpiIncome": "Encaissé",
+    "kpiIncomeHint": "Cotisations, boutique, port et dons",
+    "kpiRefunds": "Remboursé",
+    "kpiRefundsHint": "Avoirs émis",
+    "kpiFees": "Frais",
+    "kpiFeesHint": "Prélevés par le prestataire de paiement",
+    "kpiResult": "Résultat",
+    "kpiResultHint": "Encaissé − remboursé − frais",
+    "byAccount": "Par compte",
+    "result": "Résultat de l'exercice",
+    "ledgerNote": "Le journal ne s'efface jamais : une correction s'écrit par une ligne inverse. Pièces conservées 10 ans (art. 958f CO).",
+    "tabs": {
+      "label": "Sections des finances",
+      "overview": "Aperçu",
+      "payments": "Paiements",
+      "orders": "Commandes",
+      "shop": "Boutique",
+      "payouts": "Versements",
+      "settings": "Tarifs"
+    },
+    "paymentsTitle": "Paiements",
+    "paymentsDescription": "Chaque paiement avec sa quittance, ses lignes au journal et son historique.",
+    "pickTitle": "Choisissez un paiement",
+    "pickBody": "Son détail, sa quittance et ses remboursements s'ouvrent ici.",
+    "filters": {
+      "paid": "Encaissés",
+      "refunds": "Remboursés",
+      "open": "En cours"
+    },
+    "kinds": {
+      "dues": "Cotisation",
+      "shop": "Boutique",
+      "donation": "Don"
+    },
+    "search": "Nom, P-000123 ou Q-2026-0001",
+    "none": "Aucun paiement ici.",
+    "anonymous": "anonyme",
+    "status": {
+      "succeeded": "Payé",
+      "processing": "En cours",
+      "pending": "Non payé",
+      "failed": "Refusé",
+      "refunded": "Remboursé",
+      "partially_refunded": "Remboursé en partie",
+      "canceled": "Abandonné"
+    },
+    "refund": "Rembourser",
+    "refundTitle": "Rembourser",
+    "refundDescription": "Jusqu'à {amount}. Un avoir numéroté est émis et envoyé au payeur.",
+    "cancel": "Annuler",
+    "refunding": "Remboursement…",
+    "refundConfirm": "Rembourser {amount}",
+    "refundAmount": "Montant (CHF)",
+    "refundReason": "Motif",
+    "refundReasonHint": "Ex. taille épuisée, double paiement…",
+    "refundNote": "Paiement en ligne : l'argent repart sur la carte ou le compte TWINT (quelques jours). Paiement manuel : rendez l'argent vous-même, l'avoir le constate. Une cotisation remboursée en entier n'est plus à jour.",
+    "refundError": "Le remboursement n'a pas pu être fait.",
+    "refundDone": "Remboursé · avoir {number}",
+    "refundPending": "Remboursement demandé : il sera confirmé sous peu.",
+    "detail": {
+      "status": "État",
+      "method": "Moyen",
+      "payer": "E-mail",
+      "paidAt": "Payé le",
+      "fees": "Frais",
+      "net": "net",
+      "recordedBy": "Saisi par",
+      "message": "Message",
+      "lines": "Lignes",
+      "order": "Commande :",
+      "refunds": "Remboursements",
+      "books": "Journal",
+      "noBooks": "Rien au journal : le paiement n'a pas abouti.",
+      "trail": "Historique",
+      "started": "Paiement commencé"
+    },
+    "orderStatus": {
+      "pending": "en attente du paiement",
+      "paid": "à préparer",
+      "ready": "prête",
+      "handed_over": "remise",
+      "shipped": "expédiée",
+      "canceled": "annulée"
+    },
+    "refundStatus": {
+      "pending": "En cours",
+      "succeeded": "Fait",
+      "failed": "Échoué"
+    },
+    "ordersTitle": "Commandes",
+    "ordersDescription": "À préparer, prêtes à retirer, remises ou expédiées. L'acheteur est prévenu à chaque étape.",
+    "orderError": "La commande n'a pas pu être mise à jour.",
+    "orderMoved": {
+      "ready": "Commande prête : l'acheteur est prévenu.",
+      "handed_over": "Commande remise.",
+      "shipped": "Commande expédiée : l'acheteur a le suivi.",
+      "paid": "Commande remise à préparer."
+    },
+    "orderGroups": {
+      "toPrepare": "À préparer",
+      "ready": "Prêtes à retirer",
+      "done": "Remises et expédiées"
+    },
+    "noOrders": "Aucune commande pour l'instant.",
+    "pickup": "Retrait à un événement",
+    "shipTo": "Envoi à",
+    "markReady": "Prête",
+    "markShipped": "Expédiée",
+    "markHandedOver": "Remise",
+    "tracking": "Numéro de suivi La Poste",
+    "trackingHint": "Facultatif : l'acheteur reçoit le lien de suivi.",
+    "payoutsTitle": "Versements",
+    "payoutsDescription": "Chaque virement du prestataire vers le compte du club, avec les paiements qu'il contient : pour pointer le relevé bancaire.",
+    "noPayouts": "Aucun versement pour l'instant.",
+    "payoutLine": "{count, plural, one {# paiement} other {# paiements}} · frais {fees}",
+    "settingsTitle": "Tarifs",
+    "settingsDescription": "Cotisation de chaque saison (votée par l'AG) et frais de port de la boutique.",
+    "ratesTitle": "Cotisation {season}",
+    "ratesSet": "Fixée par le comité.",
+    "ratesDefault": "Pas encore fixée : tarif des statuts appliqué.",
+    "adult": "Adulte",
+    "junior": "Junior (− 18 ans)",
+    "save": "Enregistrer",
+    "saved": "Enregistré.",
+    "saveError": "L'enregistrement a échoué.",
+    "shippingTitle": "Envoi postal",
+    "shippingBody": "Proposé en Suisse à côté du retrait gratuit à un événement.",
+    "shippingEnabled": "Proposer l'envoi postal",
+    "shippingFee": "Frais de port",
+    "shopTitle": "Boutique",
+    "shopDescription": "Les articles du club, leurs tailles et leur stock. Seuls les articles visibles apparaissent dans la boutique.",
+    "newProduct": "Nouvel article",
+    "editProduct": "Modifier l'article",
+    "noProducts": "Aucun article pour l'instant.",
+    "hidden": "Masqué",
+    "uploadError": "La photo n'a pas pu être envoyée.",
+    "slugTaken": "Cette adresse est déjà prise.",
+    "productError": "L'article n'a pas pu être enregistré.",
+    "deleteProduct": "Supprimer l'article ?",
+    "deleteProductBody": "Possible seulement s'il n'a jamais été vendu ; sinon, masquez-le.",
+    "delete": "Supprimer",
+    "hasSales": "Cet article a été vendu : masquez-le plutôt.",
+    "photos": "Photos",
+    "cover": "Couverture",
+    "removePhoto": "Retirer la photo",
+    "addPhoto": "Ajouter des photos",
+    "productName": "Nom",
+    "productDescription": "Description",
+    "price": "Prix (CHF)",
+    "slug": "Adresse",
+    "sizes": "Tailles et stock",
+    "sizeLabel": "Taille",
+    "stock": "Stock",
+    "removeSize": "Retirer la taille",
+    "addSize": "Ajouter une taille",
+    "sizesHint": "Une seule taille ? Nommez-la « Unique ». Le stock baisse à chaque vente payée.",
+    "active": "Visible dans la boutique",
+    "activeHint": "Décoché, l'article reste dans l'admin et dans l'historique."
+  },
+  "Shop": {
+    "eyebrow": "PSG Zurich · Collection",
+    "title": "Boutique",
+    "intro": "Des pièces dessinées pour le club, en petites séries. Réservées aux membres, à retirer à une watch party ou livrées en Suisse.",
+    "soon": "La collection arrive bientôt.",
+    "soldOut": "Épuisé",
+    "soldOutLong": "Épuisé pour le moment. Revenez bientôt.",
+    "chooseSize": "Taille",
+    "fewLeft": "{count, plural, one {Plus qu'une pièce} other {Plus que # pièces}}",
+    "less": "Moins",
+    "more": "Plus",
+    "addToBag": "Ajouter au panier",
+    "pickSizeFirst": "Choisissez une taille",
+    "buyNow": "Acheter",
+    "added": "Ajouté au panier.",
+    "cart": "Panier",
+    "openCart": "Ouvrir le panier ({count})",
+    "emptyCart": "Votre panier est vide.",
+    "remove": "Retirer",
+    "size": "Taille {size}",
+    "delivery": "Réception",
+    "pickupTitle": "Retrait à une watch party",
+    "pickupBody": "Nous vous prévenons quand c'est prêt ; présentez votre carte de membre.",
+    "free": "Offert",
+    "shippingTitle": "Envoi postal en Suisse",
+    "shippingBody": "Livré par La Poste en quelques jours, avec suivi.",
+    "name": "Nom",
+    "street": "Rue et numéro",
+    "postcode": "NPA",
+    "city": "Localité",
+    "switzerlandOnly": "Envoi en Suisse uniquement.",
+    "total": "Total",
+    "checkout": "Commander · {amount}",
+    "order": "Commande",
+    "membersOnly": "Réservé aux membres",
+    "membersOnlyBody": "La boutique est réservée aux membres du club.",
+    "pendingTitle": "Adhésion en cours de validation",
+    "pendingBody": "Vous pourrez commander dès que le comité aura accepté votre adhésion.",
+    "join": "Adhérer au club",
+    "signIn": "J'ai déjà un compte",
+    "perkPickup": "Retrait offert à la prochaine watch party",
+    "perkShipping": "Ou envoi postal en Suisse",
+    "perkReceipt": "Quittance par e-mail, paiement TWINT, Apple Pay ou carte"
   }
 }

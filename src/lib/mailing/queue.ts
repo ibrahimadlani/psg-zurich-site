@@ -22,6 +22,8 @@ export type JobContent = {
   replyTo?: string;
   /** Event emails: its kind and date, shown above the heading like on the event page. */
   event?: { type: string; startsAt: string };
+  /** A receipt or credit note (its number) sent along as a PDF. */
+  attachment?: string;
   /** Same key = same email, never queued twice; null for one-off sends (tests). */
   dedupe: string | null;
 };
@@ -86,6 +88,7 @@ export async function enqueue(key: string, recipients: Recipient[], build: (reci
           quote: content.quote,
           replyTo: content.replyTo,
           event: content.event,
+          attachment: content.attachment,
         },
         dedupeKey: content.dedupe,
         sendAfter,

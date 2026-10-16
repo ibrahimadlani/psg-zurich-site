@@ -203,6 +203,8 @@ export const members = mysqlTable(
     notificationsClearedAt: datetime("notifications_cleared_at", { fsp: 3 }),
     /** Items removed one by one from the bell (their feed ids, the most recent ones only). */
     notificationsDismissed: json<string[]>("notifications_dismissed"),
+    /** Payment customer of the member (saved card for one-tap payments). */
+    stripeCustomerId: varchar("stripe_customer_id", { length: 64 }).unique(),
     ...timestamps(),
   },
   (t) => [index("members_status_idx").on(t.status)],
@@ -778,7 +780,7 @@ export const emailJobs = mysqlTable(
     toEmail: varchar("to_email", { length: 255 }).notNull(),
     locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
     /** Variables of the texts, the button link and the info line, fixed when queued. */
-    payload: json<{ values: Record<string, string>; path?: string; url?: string; info?: string; quote?: string; replyTo?: string; event?: { type: string; startsAt: string } }>("payload").notNull(),
+    payload: json<{ values: Record<string, string>; path?: string; url?: string; info?: string; quote?: string; replyTo?: string; event?: { type: string; startsAt: string }; attachment?: string }>("payload").notNull(),
     /** Same key = same email: never queued twice (NULL for test sends). */
     dedupeKey: varchar("dedupe_key", { length: 191 }).unique(),
     status: mysqlEnum("status", EMAIL_JOB_STATUSES).default("pending").notNull(),
@@ -803,5 +805,273 @@ export const mailingSettings = mysqlTable("mailing_settings", {
   dailyCap: int("daily_cap").default(500).notNull(),
   /** Most emails per minute, to stay within the SMTP provider's limits. */
   perMinute: int("per_minute").default(20).notNull(),
+  updatedAt: updatedAt(),
+});
+
+/* -------------------------------------------------------------------------- */
+/*                         Payments and the club's books                      */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Every franc that comes in or goes out leaves a trace here. A payment row is created when a
+ * checkout starts and settles once the payment provider confirms it (webhook) or the committee
+ * records a manual payment. The ledger is append-only: a correction is a reversing entry.
+ * Amounts are integer centimes, in CHF.
+ */
+
+// Order = MySQL enum order: append only.
+export const PAYMENT_KINDS = ["dues", "shop", "donation"] as const;
+export type PaymentKind = (typeof PAYMENT_KINDS)[number];
+export const PAYMENT_STATES = ["pending", "processing", "succeeded", "failed", "canceled", "refunded", "partially_refunded"] as const;
+export type PaymentState = (typeof PAYMENT_STATES)[number];
+export const PAYMENT_METHODS = ["card", "twint", "apple_pay", "google_pay", "bank_transfer", "cash", "twint_manual"] as const;
+export type PaymentMethod = (typeof PAYMENT_METHODS)[number];
+export const PAYMENT_ITEM_TYPES = ["dues", "product", "shipping", "donation"] as const;
+export const LEDGER_ACCOUNTS = ["dues", "shop", "shipping", "donations", "refunds", "stripe_fees", "payouts"] as const;
+export type LedgerAccount = (typeof LEDGER_ACCOUNTS)[number];
+export const REFUND_STATES = ["pending", "succeeded", "failed"] as const;
+export const ORDER_FULFILMENTS = ["pickup", "shipping"] as const;
+// "pending": checkout started, not paid yet (append only: MySQL enum order).
+export const ORDER_STATUSES = ["paid", "ready", "handed_over", "shipped", "canceled", "pending"] as const;
+export type OrderStatus = (typeof ORDER_STATUSES)[number];
+
+export const payments = mysqlTable(
+  "payments",
+  {
+    id: id(),
+    /** Shown to the payer and the committee: P-000123. */
+    reference: int("reference").notNull().unique(),
+    kind: mysqlEnum("kind", PAYMENT_KINDS).notNull(),
+    status: mysqlEnum("status", PAYMENT_STATES).default("pending").notNull(),
+    amount: int("amount").notNull(),
+    currency: varchar("currency", { length: 3 }).default("CHF").notNull(),
+    /** Provider fee and what reaches the bank, once known. */
+    feeAmount: int("fee_amount"),
+    netAmount: int("net_amount"),
+    refundedAmount: int("refunded_amount").default(0).notNull(),
+    method: mysqlEnum("method", PAYMENT_METHODS),
+    /** Payer as at the payment: the receipt stays readable after the account is gone. */
+    memberId: fk("member_id").references(() => members.id, { onDelete: "set null" }),
+    payerName: varchar("payer_name", { length: 200 }).notNull(),
+    payerEmail: varchar("payer_email", { length: 255 }).notNull(),
+    locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
+    /** Donations: a word for the club, and whether the name may be shown. */
+    message: varchar("message", { length: 500 }),
+    anonymous: boolean("anonymous").default(false).notNull(),
+    stripePaymentIntentId: varchar("stripe_payment_intent_id", { length: 64 }).unique(),
+    stripeChargeId: varchar("stripe_charge_id", { length: 64 }),
+    cardBrand: varchar("card_brand", { length: 20 }),
+    cardLast4: varchar("card_last4", { length: 4 }),
+    /** Receipt number (Q-2026-0001), given only once the money is in. */
+    receiptNumber: varchar("receipt_number", { length: 20 }).unique(),
+    paidAt: dateTime3("paid_at"),
+    payoutId: fk("payout_id"),
+    /** Committee member who recorded a manual payment. */
+    createdById: fk("created_by_id").references(() => user.id, { onDelete: "set null" }),
+    note: varchar("note", { length: 500 }),
+    ipAddress: varchar("ip_address", { length: 45 }),
+    ...timestamps(),
+  },
+  (t) => [
+    index("payments_status_idx").on(t.status, t.createdAt),
+    index("payments_member_idx").on(t.memberId),
+    index("payments_kind_paid_idx").on(t.kind, t.paidAt),
+  ],
+);
+
+/** What a payment pays for, frozen at checkout (prices, names, season). */
+export const paymentItems = mysqlTable(
+  "payment_items",
+  {
+    id: id(),
+    paymentId: fk("payment_id")
+      .notNull()
+      .references(() => payments.id, { onDelete: "cascade" }),
+    type: mysqlEnum("type", PAYMENT_ITEM_TYPES).notNull(),
+    description: varchar("description", { length: 255 }).notNull(),
+    quantity: int("quantity").default(1).notNull(),
+    unitAmount: int("unit_amount").notNull(),
+    total: int("total").notNull(),
+    /** Fee: the season paid for ("2026/27"). */
+    season: varchar("season", { length: 9 }),
+    variantId: fk("variant_id"),
+  },
+  (t) => [index("payment_items_payment_idx").on(t.paymentId)],
+);
+
+export const refunds = mysqlTable(
+  "refunds",
+  {
+    id: id(),
+    paymentId: fk("payment_id")
+      .notNull()
+      .references(() => payments.id, { onDelete: "restrict" }),
+    amount: int("amount").notNull(),
+    reason: varchar("reason", { length: 500 }).notNull(),
+    status: mysqlEnum("status", REFUND_STATES).default("pending").notNull(),
+    /** Credit note number (A-2026-0001), given once the refund went through. */
+    creditNoteNumber: varchar("credit_note_number", { length: 20 }).unique(),
+    stripeRefundId: varchar("stripe_refund_id", { length: 64 }).unique(),
+    createdById: fk("created_by_id").references(() => user.id, { onDelete: "set null" }),
+    ...timestamps(),
+  },
+  (t) => [index("refunds_payment_idx").on(t.paymentId)],
+);
+
+/** The club's journal: append-only, one signed amount per line. */
+export const ledgerEntries = mysqlTable(
+  "ledger_entries",
+  {
+    id: id(),
+    /** Accounting date (Zurich), and the club's financial year it belongs to ("2026/27"). */
+    date: date("date", { mode: "string" }).notNull(),
+    fiscalYear: varchar("fiscal_year", { length: 9 }).notNull(),
+    account: mysqlEnum("account", LEDGER_ACCOUNTS).notNull(),
+    amount: int("amount").notNull(),
+    description: varchar("description", { length: 255 }).notNull(),
+    paymentId: fk("payment_id").references(() => payments.id, { onDelete: "restrict" }),
+    refundId: fk("refund_id").references(() => refunds.id, { onDelete: "restrict" }),
+    payoutId: fk("payout_id"),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    index("ledger_year_idx").on(t.fiscalYear, t.date),
+    index("ledger_payment_idx").on(t.paymentId),
+  ],
+);
+
+/** Transfers from the payment provider to the club's bank account. */
+export const stripePayouts = mysqlTable("stripe_payouts", {
+  id: id(),
+  stripePayoutId: varchar("stripe_payout_id", { length: 64 }).notNull().unique(),
+  amount: int("amount").notNull(),
+  fees: int("fees").default(0).notNull(),
+  arrivalDate: date("arrival_date", { mode: "string" }).notNull(),
+  status: varchar("status", { length: 20 }).notNull(),
+  ...timestamps(),
+});
+
+/** Every notification received from the payment provider: processed once, kept as proof. */
+export const stripeEvents = mysqlTable(
+  "stripe_events",
+  {
+    id: varchar("id", { length: 64 }).primaryKey(),
+    type: varchar("type", { length: 80 }).notNull(),
+    payload: json<Record<string, unknown>>("payload").notNull(),
+    receivedAt: createdAt(),
+    processedAt: dateTime3("processed_at"),
+    attempts: int("attempts").default(0).notNull(),
+    error: varchar("error", { length: 500 }),
+  },
+  (t) => [index("stripe_events_pending_idx").on(t.processedAt)],
+);
+
+/** Gapless numbering of receipts (Q) and credit notes (A), per calendar year. */
+export const documentNumbers = mysqlTable(
+  "document_numbers",
+  {
+    series: varchar("series", { length: 2 }).notNull(),
+    year: int("year").notNull(),
+    last: int("last").default(0).notNull(),
+  },
+  (t) => [uniqueIndex("document_numbers_uq").on(t.series, t.year)],
+);
+
+/** Receipts and credit notes as issued: the PDF is frozen, with its fingerprint. */
+export const receipts = mysqlTable("receipts", {
+  number: varchar("number", { length: 20 }).primaryKey(),
+  paymentId: fk("payment_id").references(() => payments.id, { onDelete: "restrict" }),
+  refundId: fk("refund_id").references(() => refunds.id, { onDelete: "restrict" }),
+  pdf: blob("pdf").notNull(),
+  sha256: varchar("sha256", { length: 64 }).notNull(),
+  issuedAt: createdAt(),
+});
+
+/** Membership fee of each season, as voted by the general assembly. */
+export const duesRates = mysqlTable("dues_rates", {
+  season: varchar("season", { length: 9 }).primaryKey(),
+  adultAmount: int("adult_amount").notNull(),
+  juniorAmount: int("junior_amount").notNull(),
+  setById: fk("set_by_id").references(() => user.id, { onDelete: "set null" }),
+  ...timestamps(),
+});
+
+/* Shop ------------------------------------------------------------------------ */
+
+export const products = mysqlTable("products", {
+  id: id(),
+  slug: varchar("slug", { length: 120 }).notNull().unique(),
+  name: json<Record<Locale, string>>("name").notNull(),
+  description: json<Record<Locale, string>>("description").notNull(),
+  price: int("price").notNull(),
+  /** Article images (media ids), first one on the grid. */
+  images: json<string[]>("images").notNull(),
+  active: boolean("active").default(false).notNull(),
+  sortOrder: int("sort_order").default(0).notNull(),
+  ...timestamps(),
+});
+
+export const productVariants = mysqlTable(
+  "product_variants",
+  {
+    id: id(),
+    productId: fk("product_id")
+      .notNull()
+      .references(() => products.id, { onDelete: "cascade" }),
+    /** "M", "XL", "Unique"… */
+    label: varchar("label", { length: 40 }).notNull(),
+    sku: varchar("sku", { length: 60 }),
+    stock: int("stock").default(0).notNull(),
+    /** Set aside by checkouts in progress (stock_holds). */
+    held: int("held").default(0).notNull(),
+    sortOrder: int("sort_order").default(0).notNull(),
+  },
+  (t) => [index("product_variants_product_idx").on(t.productId)],
+);
+
+/** Pieces set aside while a checkout is paid; released when it fails or expires. */
+export const stockHolds = mysqlTable(
+  "stock_holds",
+  {
+    id: id(),
+    variantId: fk("variant_id")
+      .notNull()
+      .references(() => productVariants.id, { onDelete: "cascade" }),
+    paymentId: fk("payment_id")
+      .notNull()
+      .references(() => payments.id, { onDelete: "cascade" }),
+    quantity: int("quantity").notNull(),
+    expiresAt: dateTime3("expires_at").notNull(),
+  },
+  (t) => [index("stock_holds_payment_idx").on(t.paymentId), index("stock_holds_expiry_idx").on(t.expiresAt)],
+);
+
+export const orders = mysqlTable(
+  "orders",
+  {
+    id: id(),
+    paymentId: fk("payment_id")
+      .notNull()
+      .unique()
+      .references(() => payments.id, { onDelete: "restrict" }),
+    memberId: fk("member_id").references(() => members.id, { onDelete: "set null" }),
+    fulfilment: mysqlEnum("fulfilment", ORDER_FULFILMENTS).notNull(),
+    /** Shipping: the address as given at checkout. */
+    shippingAddress: json<{ name: string; street: string; postcode: string; city: string; country: "CH" }>("shipping_address"),
+    status: mysqlEnum("status", ORDER_STATUSES).default("pending").notNull(),
+    trackingNumber: varchar("tracking_number", { length: 80 }),
+    handedOverAt: dateTime3("handed_over_at"),
+    handedOverById: fk("handed_over_by_id").references(() => user.id, { onDelete: "set null" }),
+    ...timestamps(),
+  },
+  (t) => [index("orders_status_idx").on(t.status), index("orders_member_idx").on(t.memberId)],
+);
+
+/** Single row (id 1): shop options. */
+export const shopSettings = mysqlTable("shop_settings", {
+  id: int("id").primaryKey(),
+  /** Flat postage within Switzerland, in centimes. */
+  shippingFee: int("shipping_fee").default(900).notNull(),
+  shippingEnabled: boolean("shipping_enabled").default(true).notNull(),
   updatedAt: updatedAt(),
 });

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 type NavItem = {
   href: string;
-  key: "home" | "news" | "matches" | "events" | "membership" | "contact" | "memberArea";
+  key: "home" | "news" | "matches" | "events" | "shop" | "membership" | "contact" | "memberArea";
   /** Key page (membership / member area): last, pushed to the right of the desktop bar. */
   featured?: boolean;
   /** Page whose answer depends on the session (redirects): never prefetched. */
@@ -20,6 +20,7 @@ const content: NavItem[] = [
   { href: "/actualites", key: "news" },
   { href: "/matchs", key: "matches" },
   { href: "/evenements", key: "events" },
+  { href: "/boutique", key: "shop" },
 ];
 const contact: NavItem = { href: "/contact", key: "contact" };
 

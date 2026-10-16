@@ -20,6 +20,8 @@ export const CAPABILITIES = {
   /** Contact messages; moderators only see some topics (lib/contact.ts). */
   messages: "moderator",
   "members.write": "admin",
+  /** Payments, refunds, the books, the shop. */
+  finances: "admin",
   mailing: "admin",
   polls: "admin",
   documents: "admin",

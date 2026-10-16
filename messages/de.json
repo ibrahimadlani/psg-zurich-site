@@ -49,7 +49,8 @@
         "dark": "Dunkel",
         "system": "System"
       }
-    }
+    },
+    "shop": "Shop"
   },
   "EventsShowcase": {
     "kinds": {
@@ -523,7 +524,9 @@
       "body": "Vier Fragen, eine Minute: Geburtsdatum, Interessen, Tickets und Fotos."
     },
     "messagesLink": "Meine Nachrichten",
-    "newReplies": "{count, plural, one {# neue Antwort} other {# neue Antworten}}"
+    "newReplies": "{count, plural, one {# neue Antwort} other {# neue Antworten}}",
+    "paymentsLink": "Meine Zahlungen",
+    "supportLink": "Club unterstützen"
   },
   "Admin": {
     "title": "Administration",
@@ -631,7 +634,10 @@
     "unknown": "Unbekannte Karte",
     "unknownHint": "Dieser QR-Code gehört zu keinem Mitglied. Vielleicht wurde die Karte erneuert.",
     "checkedIn": "{name} ist drin.",
-    "error": "Hat nicht geklappt. Versuch es nochmal."
+    "error": "Hat nicht geklappt. Versuch es nochmal.",
+    "pickups": "Bestellungen zu übergeben",
+    "handOver": "Übergeben",
+    "handedOver": "Bestellung übergeben."
   },
   "AdminPolls": {
     "description": "Frag die Mitglieder: eine Frage, ein paar Antworten, Ergebnisse live.",
@@ -725,7 +731,9 @@
       "document": "Dokumente",
       "mailing": "Mailing",
       "user": "Konten",
-      "contact": "Nachrichten"
+      "contact": "Nachrichten",
+      "payment": "Zahlungen",
+      "refund": "Rückerstattungen"
     },
     "system": "Automatisch",
     "count": "{count, plural, one {# Eintrag} other {# Einträge}}",
@@ -797,7 +805,22 @@
       "contact_spam": "hat die Nachricht als Spam markiert",
       "contact_new": "hat die Nachricht wieder geöffnet",
       "contact_delete": "hat die Nachricht gelöscht",
-      "member_committeeTitle": "hat eine Vorstandsrolle geändert"
+      "member_committeeTitle": "hat eine Vorstandsrolle geändert",
+      "payment_succeeded": "Zahlung eingegangen",
+      "payment_export": "Konten exportiert",
+      "payment_rates": "Beitragstarif",
+      "payment_shipping": "Versandkosten",
+      "payment_payout": "Auszahlung abgeglichen",
+      "payment_order_ready": "Bestellung bereit",
+      "payment_order_handed_over": "Bestellung übergeben",
+      "payment_order_shipped": "Bestellung verschickt",
+      "payment_order_paid": "Bestellung vorzubereiten",
+      "payment_product_created": "Artikel erstellt",
+      "payment_product_updated": "Artikel bearbeitet",
+      "payment_product_deleted": "Artikel gelöscht",
+      "refund_requested": "Rückerstattung beantragt",
+      "refund_succeeded": "Rückerstattung erfolgt",
+      "refund_failed": "Rückerstattung fehlgeschlagen"
     }
   },
   "AdminShell": {
@@ -829,7 +852,8 @@
       "polls": "Umfragen",
       "documents": "Dokumente",
       "journal": "Protokoll",
-      "messages": "Nachrichten"
+      "messages": "Nachrichten",
+      "finances": "Finanzen"
     },
     "tabs": {
       "home": "Start",
@@ -845,7 +869,8 @@
       "polls": "Umfragen",
       "documents": "Doks",
       "journal": "Protokoll",
-      "messages": "Nachrichten"
+      "messages": "Nachrichten",
+      "finances": "Finanzen"
     },
     "roles": {
       "member": "Mitglied",
@@ -864,7 +889,8 @@
       "placeholder": "Mitglied, Veranstaltung, Artikel, Bereich…",
       "sections": "Bereiche",
       "empty": "Keine Treffer.",
-      "messages": "Nachrichten"
+      "messages": "Nachrichten",
+      "payments": "Zahlungen"
     }
   },
   "AdminBanner": {
@@ -935,7 +961,8 @@
     "privacy": "Datenschutz",
     "statutes": "Statuten",
     "legal": "Offizielle Dokumente",
-    "instagram": "Instagram"
+    "instagram": "Instagram",
+    "support": "Club unterstützen"
   },
   "Emails": {
     "resetPassword": {
@@ -1178,6 +1205,42 @@
       "body": "{count, plural, one {Diese Anfrage wartet} other {Diese Anfragen warten}} seit über 24 Stunden auf eine Antwort: **{references}**.\n\nDie Kontaktseite verspricht eine Antwort innert 24 h.",
       "cta": "Posteingang öffnen",
       "footer": "Tägliche Erinnerung, solange Nachrichten warten."
+    },
+    "paymentReceipt": {
+      "subject": "Danke für {what}",
+      "preview": "{amount} erhalten — Quittung {receipt}",
+      "heading": "Danke, {firstName}!",
+      "body": "Wir haben **{amount}** für {what} erhalten. Deine Quittung **{receipt}** ist dieser E-Mail angehängt; du findest sie auch in deinem Mitgliederbereich.",
+      "cta": "Meine Zahlungen",
+      "footer": "Zahlungsreferenz: {payment}."
+    },
+    "paymentRefunded": {
+      "subject": "Rückerstattung von {amount}",
+      "preview": "Gutschrift {receipt}",
+      "heading": "Rückerstattung erfolgt",
+      "body": "Hallo {firstName}, wir haben dir **{amount}** auf das verwendete Zahlungsmittel zurückerstattet (Zahlung {payment}). Der Betrag erscheint innert weniger Tage auf deiner Abrechnung. Die Gutschrift **{receipt}** ist dieser E-Mail angehängt.",
+      "cta": "Meine Zahlungen"
+    },
+    "shopReady": {
+      "subject": "Deine Bestellung ist bereit",
+      "preview": "Abholung: {pickup}",
+      "heading": "Deine Bestellung ist bereit",
+      "body": "Hallo {firstName}, deine Bestellung {payment} wartet auf dich: {items}.\n\nAbholung: **{pickup}**. Zeig einfach deine Mitgliederkarte.",
+      "cta": "Meine Bestellung"
+    },
+    "shopShipped": {
+      "subject": "Deine Bestellung ist unterwegs",
+      "preview": "Sendungsnummer: {tracking}",
+      "heading": "Unterwegs!",
+      "body": "Hallo {firstName}, deine Bestellung {payment} wurde verschickt: {items}.\n\nSendungsnummer der Post: **{tracking}**.",
+      "cta": "Meine Bestellung"
+    },
+    "shopNewOrder": {
+      "subject": "Neue Bestellung {payment} — {amount}",
+      "preview": "{name}: {items}",
+      "heading": "Neue Bestellung",
+      "body": "**{name}** hat bestellt: {items}.\n\nBetrag: **{amount}** · {delivery}.",
+      "cta": "Bestellung vorbereiten"
     }
   },
   "Legal": {
@@ -1207,7 +1270,15 @@
     "reference": "Mitteilung",
     "twint": "Sende den Betrag an {number} mit der Mitteilung «{reference}».",
     "copy": "Kopieren",
-    "copied": "Kopiert."
+    "copied": "Kopiert.",
+    "payNow": "{amount} bezahlen",
+    "adultRate": "Tarif Erwachsene",
+    "juniorRate": "Tarif Junior (unter 18)",
+    "onlineAfter": "Sofort bestätigt: das Eventprogramm öffnet sich mit der Zahlung, die Quittung kommt per E-Mail.",
+    "otherWays": "Andere Zahlungsart",
+    "manualAfter": "Per Überweisung oder direktem TWINT bestätigt der Vorstand deinen Beitrag nach Eingang (meist innert weniger Tage).",
+    "methods": "TWINT, Apple Pay, Google Pay oder Karte",
+    "sheetTitle": "Mitgliederbeitrag"
   },
   "Access": {
     "preview": {
@@ -1264,11 +1335,12 @@
     "allPaid": "Alle Beiträge sind bezahlt. Super!",
     "kpiPaid": "Bezahlt",
     "kpiPaidHint": "{paid} von {total} Mitgliedern",
-    "kpiAmount": "Eingenommen",
-    "kpiAmountHint": "Mit Online-Zahlung",
-    "onlineSoon": "Online-Zahlung (TWINT, Karte): bald. Bis dahin erfasst du hier die bar oder per Überweisung erhaltenen Beiträge.",
+    "kpiAmount": "Diese Saison eingenommen",
+    "kpiAmountHint": "Beiträge im Journal, online und manuell",
+    "onlineSoon": "Online bezahlt erfasst sich ein Beitrag selbst mit Quittung. Bar oder per Überweisung erhaltene Zahlungen werden hier erfasst: auch sie erhalten eine Quittung.",
     "writeUnpaid": "Offenen Beiträgen schreiben",
-    "campaignName": "Beitragserinnerung {season}"
+    "campaignName": "Beitragserinnerung {season}",
+    "paidOnline": "{count, plural, one {# online bezahlter Beitrag bleibt} other {# online bezahlte Beiträge bleiben}}: über Finanzen zurückerstatten."
   },
   "AdminMembers": {
     "title": "Mitglieder",
@@ -2191,7 +2263,8 @@
       "fee": "Beitrag",
       "events": "Veranstaltungen",
       "predictions": "Tipps & Engagement",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "payments": "Zahlungen & Shop"
     },
     "categories": {
       "transactional": "Unerlässlich",
@@ -2411,6 +2484,26 @@
       "contact_reminder": {
         "name": "Erinnerung nach 24 h",
         "when": "Täglich um 9 Uhr, falls Nachrichten seit über 24 h warten"
+      },
+      "payment_receipt": {
+        "name": "Quittung (Shop, Spende)",
+        "when": "Sobald ein Kauf oder eine Spende bezahlt ist, mit der PDF-Quittung"
+      },
+      "payment_refunded": {
+        "name": "Rückerstattung",
+        "when": "Wenn eine Rückerstattung durch ist, mit der PDF-Gutschrift"
+      },
+      "shop_ready": {
+        "name": "Bestellung bereit",
+        "when": "Wenn der Vorstand eine Bestellung als abholbereit markiert"
+      },
+      "shop_shipped": {
+        "name": "Bestellung verschickt",
+        "when": "Wenn der Vorstand eine Bestellung als verschickt markiert"
+      },
+      "shop_newOrder": {
+        "name": "Neue Bestellung (Vorstand)",
+        "when": "Bei jeder bezahlten Bestellung, an die Admins"
       }
     }
   },
@@ -2562,5 +2655,314 @@
     "website": "Danke für die Meldung. Wir schauen uns das Problem an und melden uns, sobald es behoben ist.",
     "account": "Wir haben deine Anfrage zu deinen Daten erhalten. Zur Erinnerung: In deinen Einstellungen kannst du sie auch herunterladen oder dein Konto selbst löschen.",
     "other": "Danke für deine Nachricht."
+  },
+  "Pay": {
+    "total": "Total",
+    "starting": "Zahlung wird vorbereitet…",
+    "savedCard": "Mit {brand} •••• {last4} bezahlen",
+    "applePay": "Mit Apple Pay bezahlen",
+    "googlePay": "Mit Google Pay bezahlen",
+    "twint": "Mit TWINT bezahlen",
+    "card": "Karte",
+    "cardNumber": "Kartennummer",
+    "expiry": "Ablaufdatum",
+    "cvc": "CVC",
+    "payAmount": "{amount} bezahlen",
+    "processing": "Zahlung läuft…",
+    "error": "Die Zahlung ist nicht durchgegangen. Es wurde nichts belastet.",
+    "retry": "Erneut versuchen",
+    "secure": "Sichere Zahlung · der Club speichert keine Kartendaten",
+    "errors": {
+      "payments_disabled": "Online-Zahlung ist noch nicht geöffnet. Versuche es bald wieder.",
+      "out_of_stock": "Ein Artikel in deinem Warenkorb ist gerade ausverkauft. Passe den Warenkorb an und versuche es erneut.",
+      "already_paid": "Dieser Beitrag ist bereits bezahlt.",
+      "product_unavailable": "Ein Artikel in deinem Warenkorb ist nicht mehr erhältlich.",
+      "too_many_requests": "Zu viele Versuche. Warte ein paar Minuten.",
+      "membership_inactive": "Deine Mitgliedschaft muss zuerst vom Vorstand angenommen werden."
+    }
+  },
+  "PaymentStatus": {
+    "title": "Zahlung",
+    "checking": "Zahlung wird bestätigt…",
+    "checkingBody": "Das dauert nur ein paar Sekunden. Du kannst diese Seite offen lassen.",
+    "processingTitle": "Zahlung wird bestätigt",
+    "processingBody": "Deine Bank bestätigt die Zahlung. Du erhältst eine E-Mail, sobald sie durch ist.",
+    "succeededTitle": "Danke!",
+    "duesBody": "Dein Mitgliederbeitrag ist bezahlt: das Eventprogramm steht dir offen.",
+    "donationBody": "Deine Spende hält den Club am Leben. Herzlichen Dank.",
+    "shopBody": "Deine Bestellung ist bestätigt. Wir melden uns, sobald sie bereit ist.",
+    "failedTitle": "Die Zahlung ist nicht durchgegangen",
+    "failedBody": "Es wurde nichts belastet. Du kannst es erneut versuchen.",
+    "canceledTitle": "Zahlung abgebrochen",
+    "notFound": "Diese Zahlung wurde nicht gefunden.",
+    "reference": "Referenz",
+    "receipt": "Quittung",
+    "amount": "Betrag",
+    "toMemberArea": "Mein Mitgliederbereich",
+    "toEvents": "Zu den Events",
+    "toHome": "Zur Startseite",
+    "retry": "Erneut versuchen"
+  },
+  "MyPayments": {
+    "title": "Meine Zahlungen",
+    "description": "Mitgliederbeiträge, Bestellungen und Spenden, mit ihren Quittungen.",
+    "back": "Mitgliederbereich",
+    "empty": "Noch keine Zahlungen.",
+    "order": "Bestellung:",
+    "receipt": "Quittung {number}",
+    "creditNote": "Gutschrift {number} · {amount}",
+    "kinds": {
+      "dues": "Mitgliederbeitrag",
+      "shop": "Shop",
+      "donation": "Spende"
+    },
+    "status": {
+      "refunded": "Zurückerstattet",
+      "partiallyRefunded": "Teilweise zurückerstattet",
+      "processing": "In Bearbeitung"
+    },
+    "orderStatus": {
+      "paid": "in Vorbereitung",
+      "ready": "abholbereit",
+      "handed_over": "übergeben",
+      "shipped": "verschickt",
+      "canceled": "storniert",
+      "pending": "Zahlung ausstehend"
+    }
+  },
+  "Support": {
+    "title": "Club unterstützen",
+    "intro": "Der Club lebt von seinen Mitgliedern und allen, die ihn lieben. Jede Spende hilft, PSG in Zürich lebendig zu halten.",
+    "uses": {
+      "events": "Immer schönere Watch Partys",
+      "travel": "Günstigere Auswärtsfahrten",
+      "tifo": "Blachen, Fahnen und Choreos im Stadion"
+    },
+    "taxNote": "Der Club ist ein Fanverein: Spenden sind nicht steuerlich abzugsfähig.",
+    "amount": "Betrag",
+    "customAmount": "Anderer Betrag",
+    "amountRange": "Zwischen {min} und {max}.",
+    "name": "Name",
+    "email": "E-Mail",
+    "emailHint": "Für die Quittung.",
+    "message": "Ein Wort an den Club (optional)",
+    "messagePlaceholder": "Allez Paris!",
+    "anonymous": "Anonyme Spende",
+    "anonymousHint": "Dein Name wird nie öffentlich angezeigt.",
+    "give": "{amount} spenden",
+    "giveNoAmount": "Spenden",
+    "sheetTitle": "Spende",
+    "line": "Spende an den Club",
+    "unavailable": "Online-Spenden kommen bald. Schreib uns bis dahin an {email}."
+  },
+  "AdminFinances": {
+    "title": "Finanzen",
+    "year": "Geschäftsjahr {year}",
+    "description": "Alles, was rein- und rausgeht, im Journal: Beiträge, Shop, Spenden, Rückerstattungen und Zahlungsgebühren.",
+    "descriptionManual": "Online-Zahlung noch nicht aktiviert: vom Vorstand erfasste Zahlungen erscheinen hier.",
+    "exportCsv": "CSV-Export",
+    "report": "PDF-Bericht",
+    "kpiIncome": "Eingenommen",
+    "kpiIncomeHint": "Beiträge, Shop, Versand und Spenden",
+    "kpiRefunds": "Zurückerstattet",
+    "kpiRefundsHint": "Ausgestellte Gutschriften",
+    "kpiFees": "Gebühren",
+    "kpiFeesHint": "Vom Zahlungsanbieter abgezogen",
+    "kpiResult": "Ergebnis",
+    "kpiResultHint": "Eingenommen − zurückerstattet − Gebühren",
+    "byAccount": "Nach Konto",
+    "result": "Jahresergebnis",
+    "ledgerNote": "Das Journal wird nie gelöscht: eine Korrektur ist eine Gegenbuchung. Belege 10 Jahre aufbewahrt (Art. 958f OR).",
+    "tabs": {
+      "label": "Bereiche der Finanzen",
+      "overview": "Übersicht",
+      "payments": "Zahlungen",
+      "orders": "Bestellungen",
+      "shop": "Shop",
+      "payouts": "Auszahlungen",
+      "settings": "Tarife"
+    },
+    "paymentsTitle": "Zahlungen",
+    "paymentsDescription": "Jede Zahlung mit Quittung, Journalzeilen und Verlauf.",
+    "pickTitle": "Zahlung wählen",
+    "pickBody": "Details, Quittung und Rückerstattungen öffnen sich hier.",
+    "filters": {
+      "paid": "Eingegangen",
+      "refunds": "Zurückerstattet",
+      "open": "In Bearbeitung"
+    },
+    "kinds": {
+      "dues": "Beitrag",
+      "shop": "Shop",
+      "donation": "Spende"
+    },
+    "search": "Name, P-000123 oder Q-2026-0001",
+    "none": "Keine Zahlungen hier.",
+    "anonymous": "anonym",
+    "status": {
+      "succeeded": "Bezahlt",
+      "processing": "In Bearbeitung",
+      "pending": "Unbezahlt",
+      "failed": "Abgelehnt",
+      "refunded": "Zurückerstattet",
+      "partially_refunded": "Teilweise zurückerstattet",
+      "canceled": "Abgebrochen"
+    },
+    "refund": "Zurückerstatten",
+    "refundTitle": "Zurückerstatten",
+    "refundDescription": "Bis {amount}. Eine nummerierte Gutschrift wird ausgestellt und dem Zahler geschickt.",
+    "cancel": "Abbrechen",
+    "refunding": "Wird erstattet…",
+    "refundConfirm": "{amount} zurückerstatten",
+    "refundAmount": "Betrag (CHF)",
+    "refundReason": "Grund",
+    "refundReasonHint": "z. B. Grösse ausverkauft, doppelt bezahlt…",
+    "refundNote": "Online-Zahlung: das Geld geht auf die Karte oder das TWINT-Konto zurück (einige Tage). Manuelle Zahlung: gib das Geld selbst zurück, die Gutschrift hält es fest. Ein voll erstatteter Beitrag gilt nicht mehr als bezahlt.",
+    "refundError": "Die Rückerstattung war nicht möglich.",
+    "refundDone": "Zurückerstattet · Gutschrift {number}",
+    "refundPending": "Rückerstattung beantragt: sie wird in Kürze bestätigt.",
+    "detail": {
+      "status": "Status",
+      "method": "Zahlungsart",
+      "payer": "E-Mail",
+      "paidAt": "Bezahlt am",
+      "fees": "Gebühren",
+      "net": "netto",
+      "recordedBy": "Erfasst von",
+      "message": "Nachricht",
+      "lines": "Positionen",
+      "order": "Bestellung:",
+      "refunds": "Rückerstattungen",
+      "books": "Journal",
+      "noBooks": "Nichts im Journal: die Zahlung ist nicht durchgegangen.",
+      "trail": "Verlauf",
+      "started": "Zahlung begonnen"
+    },
+    "orderStatus": {
+      "pending": "Zahlung ausstehend",
+      "paid": "vorzubereiten",
+      "ready": "bereit",
+      "handed_over": "übergeben",
+      "shipped": "verschickt",
+      "canceled": "storniert"
+    },
+    "refundStatus": {
+      "pending": "In Bearbeitung",
+      "succeeded": "Erledigt",
+      "failed": "Fehlgeschlagen"
+    },
+    "ordersTitle": "Bestellungen",
+    "ordersDescription": "Vorzubereiten, abholbereit, übergeben oder verschickt. Der Käufer wird bei jedem Schritt informiert.",
+    "orderError": "Die Bestellung konnte nicht aktualisiert werden.",
+    "orderMoved": {
+      "ready": "Bestellung bereit: der Käufer ist informiert.",
+      "handed_over": "Bestellung übergeben.",
+      "shipped": "Bestellung verschickt: der Käufer hat die Sendungsnummer.",
+      "paid": "Bestellung wieder vorzubereiten."
+    },
+    "orderGroups": {
+      "toPrepare": "Vorzubereiten",
+      "ready": "Abholbereit",
+      "done": "Übergeben und verschickt"
+    },
+    "noOrders": "Noch keine Bestellungen.",
+    "pickup": "Abholung an einem Event",
+    "shipTo": "Versand an",
+    "markReady": "Bereit",
+    "markShipped": "Verschickt",
+    "markHandedOver": "Übergeben",
+    "tracking": "Sendungsnummer der Post",
+    "trackingHint": "Optional: der Käufer erhält den Link zur Sendungsverfolgung.",
+    "payoutsTitle": "Auszahlungen",
+    "payoutsDescription": "Jede Überweisung des Anbieters aufs Clubkonto, mit den enthaltenen Zahlungen: zum Abgleich mit dem Kontoauszug.",
+    "noPayouts": "Noch keine Auszahlungen.",
+    "payoutLine": "{count, plural, one {# Zahlung} other {# Zahlungen}} · Gebühren {fees}",
+    "settingsTitle": "Tarife",
+    "settingsDescription": "Beitrag jeder Saison (von der GV beschlossen) und Versandkosten des Shops.",
+    "ratesTitle": "Beitrag {season}",
+    "ratesSet": "Vom Vorstand festgelegt.",
+    "ratesDefault": "Noch nicht festgelegt: Tarif der Statuten gilt.",
+    "adult": "Erwachsene",
+    "junior": "Junior (unter 18)",
+    "save": "Speichern",
+    "saved": "Gespeichert.",
+    "saveError": "Speichern fehlgeschlagen.",
+    "shippingTitle": "Postversand",
+    "shippingBody": "In der Schweiz angeboten, neben der kostenlosen Abholung an einem Event.",
+    "shippingEnabled": "Postversand anbieten",
+    "shippingFee": "Versandkosten",
+    "shopTitle": "Shop",
+    "shopDescription": "Die Artikel des Clubs, ihre Grössen und ihr Bestand. Nur sichtbare Artikel erscheinen im Shop.",
+    "newProduct": "Neuer Artikel",
+    "editProduct": "Artikel bearbeiten",
+    "noProducts": "Noch keine Artikel.",
+    "hidden": "Versteckt",
+    "uploadError": "Das Foto konnte nicht hochgeladen werden.",
+    "slugTaken": "Diese Adresse ist bereits vergeben.",
+    "productError": "Der Artikel konnte nicht gespeichert werden.",
+    "deleteProduct": "Artikel löschen?",
+    "deleteProductBody": "Nur möglich, wenn er nie verkauft wurde; sonst verstecken.",
+    "delete": "Löschen",
+    "hasSales": "Dieser Artikel wurde verkauft: lieber verstecken.",
+    "photos": "Fotos",
+    "cover": "Titelbild",
+    "removePhoto": "Foto entfernen",
+    "addPhoto": "Fotos hinzufügen",
+    "productName": "Name",
+    "productDescription": "Beschreibung",
+    "price": "Preis (CHF)",
+    "slug": "Adresse",
+    "sizes": "Grössen und Bestand",
+    "sizeLabel": "Grösse",
+    "stock": "Bestand",
+    "removeSize": "Grösse entfernen",
+    "addSize": "Grösse hinzufügen",
+    "sizesHint": "Nur eine Grösse? Nenne sie «Einheitsgrösse». Der Bestand sinkt mit jedem bezahlten Verkauf.",
+    "active": "Im Shop sichtbar",
+    "activeHint": "Nicht angehakt bleibt der Artikel im Admin und im Verlauf."
+  },
+  "Shop": {
+    "eyebrow": "PSG Zurich · Kollektion",
+    "title": "Shop",
+    "intro": "Für den Club entworfene Stücke in kleinen Serien. Für Mitglieder, abzuholen an einer Watch Party oder in die Schweiz geliefert.",
+    "soon": "Die Kollektion kommt bald.",
+    "soldOut": "Ausverkauft",
+    "soldOutLong": "Derzeit ausverkauft. Schau bald wieder vorbei.",
+    "chooseSize": "Grösse",
+    "fewLeft": "{count, plural, one {Nur noch ein Stück} other {Nur noch # Stück}}",
+    "less": "Weniger",
+    "more": "Mehr",
+    "addToBag": "In den Warenkorb",
+    "pickSizeFirst": "Grösse wählen",
+    "buyNow": "Kaufen",
+    "added": "In den Warenkorb gelegt.",
+    "cart": "Warenkorb",
+    "openCart": "Warenkorb öffnen ({count})",
+    "emptyCart": "Dein Warenkorb ist leer.",
+    "remove": "Entfernen",
+    "size": "Grösse {size}",
+    "delivery": "Erhalt",
+    "pickupTitle": "Abholung an einer Watch Party",
+    "pickupBody": "Wir melden uns, wenn sie bereit ist; zeig deine Mitgliederkarte.",
+    "free": "Gratis",
+    "shippingTitle": "Postversand in der Schweiz",
+    "shippingBody": "Von der Post innert weniger Tage geliefert, mit Sendungsverfolgung.",
+    "name": "Name",
+    "street": "Strasse und Nummer",
+    "postcode": "PLZ",
+    "city": "Ort",
+    "switzerlandOnly": "Versand nur innerhalb der Schweiz.",
+    "total": "Total",
+    "checkout": "Bestellen · {amount}",
+    "order": "Bestellung",
+    "membersOnly": "Nur für Mitglieder",
+    "membersOnlyBody": "Der Shop ist für Clubmitglieder.",
+    "pendingTitle": "Mitgliedschaft wird geprüft",
+    "pendingBody": "Du kannst bestellen, sobald der Vorstand deine Mitgliedschaft angenommen hat.",
+    "join": "Mitglied werden",
+    "signIn": "Ich habe schon ein Konto",
+    "perkPickup": "Gratis-Abholung an der nächsten Watch Party",
+    "perkShipping": "Oder Postversand in der Schweiz",
+    "perkReceipt": "Quittung per E-Mail, Zahlung mit TWINT, Apple Pay oder Karte"
   }
 }

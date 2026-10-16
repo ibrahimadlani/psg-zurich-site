@@ -1,7 +1,7 @@
 import "server-only";
-import { and, asc, count, eq, gte, inArray, lt, lte, ne } from "drizzle-orm";
+import { and, asc, count, eq, gte, inArray, lt, lte, ne, notLike } from "drizzle-orm";
 import { db } from "@/db";
-import { auditLog, contactThreads, emailCampaigns, emailJobs, members, type EmailJobStatus } from "@/db/schema";
+import { auditLog, contactThreads, emailCampaigns, emailJobs, members, receipts, type EmailJobStatus } from "@/db/schema";
 import { sendMail } from "@/lib/mail";
 import { stillRelevant } from "@/lib/mailing/guards";
 import { getMailingSettings } from "@/lib/mailing/queue";
@@ -30,13 +30,21 @@ async function consents(job: Job) {
 const finish = (id: string, status: EmailJobStatus, extra: Partial<Job> = {}) =>
   db.update(emailJobs).set({ status, ...extra }).where(eq(emailJobs.id, id));
 
+async function receiptPdf(number: string) {
+  const [row] = await db.select({ pdf: receipts.pdf }).from(receipts).where(eq(receipts.number, number));
+  return row ? { filename: `${number}.pdf`, content: row.pdf, contentType: "application/pdf" } : null;
+}
+
 /** Sends one job (already locked as "sending"). */
 export async function deliver(job: Job) {
   if (!(await consents(job)) || !(await stillRelevant(job))) return finish(job.id, "skipped");
   try {
     const email = await renderJob(job);
     if (!email) return finish(job.id, "skipped", { lastError: "no texts" });
-    await sendMail({ to: job.toEmail, ...email });
+    // Receipts and credit notes go along as PDF (as issued, never redrawn).
+    const attachment = job.payload.attachment ? await receiptPdf(job.payload.attachment) : null;
+    if (job.payload.attachment && !attachment) throw new Error(`document ${job.payload.attachment} not issued yet`);
+    await sendMail({ to: job.toEmail, ...email, attachments: attachment ? [attachment] : undefined });
     await finish(job.id, "sent", { sentAt: new Date(), attempts: job.attempts + 1 });
   } catch (error) {
     const attempts = job.attempts + 1;
@@ -109,9 +117,11 @@ export async function cleanUpJobs() {
     .set({ status: "pending" })
     .where(and(eq(emailJobs.status, "sending"), lt(emailJobs.sendAfter, new Date(Date.now() - 15 * 60_000))));
   await db.delete(emailJobs).where(lt(emailJobs.createdAt, new Date(Date.now() - 90 * DAY)));
-  // Except the sign-up line: it proves consent to the statutes and the privacy policy, kept as
-  // long as the account exists.
-  await db.delete(auditLog).where(and(lt(auditLog.createdAt, new Date(Date.now() - 730 * DAY)), ne(auditLog.action, "member.signup")));
+  // Except the sign-up line (it proves consent to the statutes and the privacy policy, kept as
+  // long as the account exists) and the money lines, kept 10 years with the books (CO 958f).
+  await db
+    .delete(auditLog)
+    .where(and(lt(auditLog.createdAt, new Date(Date.now() - 730 * DAY)), ne(auditLog.action, "member.signup"), notLike(auditLog.action, "payment.%"), notLike(auditLog.action, "refund.%")));
   // Contact messages: 2 years after the last word of a finished conversation, spam after 30 days.
   await db
     .delete(contactThreads)

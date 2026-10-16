@@ -14,6 +14,8 @@ import { LEGAL } from "@/lib/legal";
 import { can } from "@/lib/roles";
 import { NewCampaignButton } from "@/components/mailing/mailing-actions";
 import { adminButton } from "@/components/admin/ui/styles";
+import { formatChf } from "@/lib/money";
+import { yearTotals } from "@/lib/payments/ledger";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminDues");
@@ -29,6 +31,7 @@ async function Dues() {
   const end = seasonEnd();
   const paid = rows.filter((row) => row.paid).length;
   const season = `${Number(end.slice(0, 4)) - 1}/${end.slice(2, 4)}`;
+  const dues = await yearTotals(season);
 
   return (
     <>
@@ -52,9 +55,9 @@ async function Dues() {
               gauge={rows.length ? paid / rows.length : 0}
               hint={t("kpiPaidHint", { paid, total: rows.length })}
             />
-            <Kpi label={t("kpiAmount")} value="—" hint={t("kpiAmountHint")} />
+            <Kpi label={t("kpiAmount")} value={formatChf(dues.byAccount.dues)} hint={t("kpiAmountHint")} />
           </div>
-          {/* Online payment is planned: the fee will then be recorded by itself. */}
+          {/* Online fees record themselves; this page records the others (with a receipt too). */}
           <p className="flex gap-2.5 rounded-[12px] border border-dashed p-3.5 text-[13px] text-pretty text-muted-foreground">
             <CreditCard className="mt-0.5 size-4 shrink-0" aria-hidden />
             {t("onlineSoon")}

@@ -298,6 +298,7 @@ const privacy: Record<Locale, LegalDocument> = {
               "Carte de membre : un code aléatoire, imprimé dans le QR code, qui permet au comité de vérifier votre adhésion à l'entrée. Il ne contient aucune donnée personnelle et peut être renouvelé.",
               "Newsletter : adresse e-mail et langue, si vous vous y abonnez sans être membre.",
               "Messages de contact : nom, adresse e-mail, sujet, organisation éventuelle, le texte de vos messages et les réponses du comité. Pour un problème sur le site, la page concernée et le type de navigateur.",
+              "Paiements (cotisation, boutique, dons) : nom, adresse e-mail, montant, ce qui est payé, date, moyen utilisé (par exemple « Visa •••• 4242 » ou « TWINT », jamais le numéro complet), adresse de livraison pour un envoi postal, message et choix d'anonymat pour un don, et les quittances et avoirs émis.",
               "Consentement : date et heure auxquelles vous avez accepté les statuts et la présente politique.",
               "Sécurité : adresse IP et type de navigateur liés à vos sessions de connexion et à votre inscription.",
             ],
@@ -355,6 +356,9 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             p: "Les résultats et calendriers des matchs proviennent de football-data.org : aucune donnée vous concernant ne lui est envoyée.",
           },
+          {
+            p: "Les paiements en ligne (carte, TWINT, Apple Pay, Google Pay) sont traités par Stripe Payments Europe Ltd. (Irlande), prestataire certifié PCI DSS. Le numéro de carte est saisi dans ses champs sécurisés et ne passe jamais par le club. Stripe reçoit le montant, votre nom, votre adresse e-mail et l'adresse IP du paiement, pour l'exécuter et prévenir la fraude. Le club ne conserve que le moyen utilisé et les 4 derniers chiffres d'une carte, pour vous la proposer à nouveau.",
+          },
         ],
       },
       {
@@ -365,7 +369,8 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               `Données de membre, inscriptions, présences, pronostics et votes : pendant toute la durée de l'adhésion, puis ${LEGAL.retentionAfterMembership} au plus.`,
               "Demandes d'adhésion refusées : conservées jusqu'à l'assemblée générale suivante (droit de recours), puis supprimées sur demande.",
-              "Journal d'audit des actions du comité : 2 ans.",
+              "Journal d'audit des actions du comité : 2 ans (10 ans pour les opérations financières).",
+              "Paiements, quittances, avoirs et journal comptable : 10 ans, obligation légale de tenir les livres (art. 958f CO), y compris après la suppression de votre compte : votre nom et votre adresse e-mail restent alors sur ces pièces.",
               "Messages de contact : 2 ans après la fin de l'échange (30 jours pour les messages classés comme spam), et supprimés avec votre compte. Si vous écrivez sans compte, un lien personnel, envoyé par e-mail, vous permet de suivre l'échange.",
               "Sessions de connexion : 7 jours après la dernière activité.",
               "Historique des e-mails envoyés (destinataire, type, date) : 90 jours.",
@@ -382,7 +387,7 @@ const privacy: Record<Locale, LegalDocument> = {
             p: "Le site n'utilise qu'un seul cookie, indispensable : celui qui vous garde connecté. Votre navigateur retient aussi votre choix de thème (clair ou sombre), les annonces que vous avez fermées, le brouillon d'un message de contact en cours d'écriture et, pour le comité, l'affichage du menu d'administration.",
           },
           {
-            p: "Aucun outil de mesure d'audience, aucune publicité. Les polices de caractères sont servies par le site lui-même. Seules les pages qui affichent une carte Google (Contact, événements) peuvent laisser Google déposer ses propres cookies. Le scanner de cartes du comité utilise la caméra du téléphone uniquement pendant le scan : aucune image n'est enregistrée ni envoyée.",
+            p: "Aucun outil de mesure d'audience, aucune publicité. Les polices de caractères sont servies par le site lui-même. Seules les pages qui affichent une carte Google (Contact, événements) peuvent laisser Google déposer ses propres cookies. Le scanner de cartes du comité utilise la caméra du téléphone uniquement pendant le scan : aucune image n'est enregistrée ni envoyée. Le panier de la boutique est gardé dans votre navigateur. Quand un formulaire de paiement s'ouvre, le script de Stripe se charge et peut déposer ses propres cookies, uniquement pour la sécurité du paiement et la prévention de la fraude.",
           },
         ],
       },
@@ -450,6 +455,7 @@ const privacy: Record<Locale, LegalDocument> = {
               "Member card: a random code, printed in the QR code, that lets the committee check your membership at the door. It holds no personal data and can be renewed.",
               "Newsletter: email address and language, if you subscribe without being a member.",
               "Contact messages: name, email address, topic, any organisation, the text of your messages and the committee's replies. For a problem with the site, the page concerned and the type of browser.",
+              "Payments (fee, shop, donations): name, email address, amount, what is paid for, date, method used (for example “Visa •••• 4242” or “TWINT”, never the full number), delivery address for shipping, message and anonymity choice for a donation, and the receipts and credit notes issued.",
               "Consent: date and time at which you accepted the statutes and this policy.",
               "Security: IP address and browser type linked to your sign-in sessions and your sign-up.",
             ],
@@ -507,6 +513,9 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             p: "Match results and fixtures come from football-data.org: no data about you is sent to it.",
           },
+          {
+            p: "Online payments (card, TWINT, Apple Pay, Google Pay) are processed by Stripe Payments Europe Ltd. (Ireland), a PCI DSS certified provider. The card number is typed into its secure fields and never passes through the club. Stripe receives the amount, your name, your email address and the IP address of the payment, to carry it out and prevent fraud. The club keeps only the method used and the last 4 digits of a card, to offer it to you again.",
+          },
         ],
       },
       {
@@ -517,7 +526,8 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               `Member data, sign-ups, attendance, predictions and votes: for the duration of the membership, then ${LEGAL.retentionAfterMembership} at most.`,
               "Refused membership requests: kept until the next general assembly (right of appeal), then deleted on request.",
-              "Audit log of committee actions: 2 years.",
+              "Audit log of committee actions: 2 years (10 years for financial operations).",
+              "Payments, receipts, credit notes and the accounting journal: 10 years, as the law requires for bookkeeping (art. 958f CO), including after your account is deleted: your name and email address then stay on these records.",
               "Contact messages: 2 years after the conversation ends (30 days for messages marked as spam), and deleted with your account. If you write without an account, a personal link sent by email lets you follow the conversation.",
               "Sign-in sessions: 7 days after the last activity.",
               "History of sent emails (recipient, type, date): 90 days.",
@@ -534,7 +544,7 @@ const privacy: Record<Locale, LegalDocument> = {
             p: "The website uses a single, essential cookie: the one that keeps you signed in. Your browser also remembers your theme (light or dark), the announcements you closed, the draft of a contact message you are writing and, for the committee, how the admin menu is displayed.",
           },
           {
-            p: "No analytics, no advertising. Fonts are served by the website itself. Only pages that display a Google map (Contact, events) may let Google set its own cookies. The committee's card scanner uses the phone's camera only while scanning: no image is recorded or sent.",
+            p: "No analytics, no advertising. Fonts are served by the website itself. Only pages that display a Google map (Contact, events) may let Google set its own cookies. The committee's card scanner uses the phone's camera only while scanning: no image is recorded or sent. The shop's bag is kept in your browser. When a payment form opens, Stripe's script loads and may set its own cookies, only for the security of the payment and fraud prevention.",
           },
         ],
       },
@@ -602,6 +612,7 @@ const privacy: Record<Locale, LegalDocument> = {
               "Mitgliederkarte: ein zufälliger Code im QR-Code, mit dem der Vorstand deine Mitgliedschaft am Eingang prüft. Er enthält keine Personendaten und kann erneuert werden.",
               "Newsletter: E-Mail-Adresse und Sprache, wenn du dich ohne Mitgliedschaft anmeldest.",
               "Kontaktnachrichten: Name, E-Mail-Adresse, Thema, allfällige Organisation, der Text deiner Nachrichten und die Antworten des Vorstands. Bei einem Problem mit der Website die betroffene Seite und der Browsertyp.",
+              "Zahlungen (Beitrag, Shop, Spenden): Name, E-Mail-Adresse, Betrag, Zahlungszweck, Datum, verwendetes Zahlungsmittel (zum Beispiel «Visa •••• 4242» oder «TWINT», nie die vollständige Nummer), Lieferadresse beim Postversand, Nachricht und Anonymitätswunsch bei einer Spende, sowie die ausgestellten Quittungen und Gutschriften.",
               "Einwilligung: Datum und Uhrzeit, zu denen du die Statuten und diese Erklärung akzeptiert hast.",
               "Sicherheit: IP-Adresse und Browsertyp im Zusammenhang mit deinen Anmeldesitzungen und deiner Registrierung.",
             ],
@@ -659,6 +670,9 @@ const privacy: Record<Locale, LegalDocument> = {
           {
             p: "Spielresultate und Spielpläne stammen von football-data.org: Es werden keine Daten über dich dorthin gesendet.",
           },
+          {
+            p: "Online-Zahlungen (Karte, TWINT, Apple Pay, Google Pay) werden von Stripe Payments Europe Ltd. (Irland) abgewickelt, einem PCI-DSS-zertifizierten Anbieter. Die Kartennummer wird in dessen sichere Felder eingegeben und geht nie über den Club. Stripe erhält den Betrag, deinen Namen, deine E-Mail-Adresse und die IP-Adresse der Zahlung, um sie auszuführen und Betrug zu verhindern. Der Club speichert nur das Zahlungsmittel und die letzten 4 Ziffern einer Karte, um sie dir wieder anzubieten.",
+          },
         ],
       },
       {
@@ -669,7 +683,8 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               `Mitgliederdaten, Anmeldungen, Anwesenheiten, Tipps und Stimmen: für die Dauer der Mitgliedschaft, danach höchstens ${LEGAL.retentionAfterMembership}.`,
               "Abgelehnte Mitgliedsanträge: bis zur nächsten Generalversammlung (Rekursrecht), danach auf Anfrage gelöscht.",
-              "Audit-Protokoll der Vorstandsaktionen: 2 Jahre.",
+              "Audit-Protokoll der Vorstandsaktionen: 2 Jahre (10 Jahre für finanzielle Vorgänge).",
+              "Zahlungen, Quittungen, Gutschriften und Buchhaltungsjournal: 10 Jahre, gesetzliche Aufbewahrungspflicht (Art. 958f OR), auch nach Löschung deines Kontos: dein Name und deine E-Mail-Adresse bleiben dann auf diesen Belegen.",
               "Kontaktnachrichten: 2 Jahre nach Abschluss des Austauschs (30 Tage für als Spam markierte Nachrichten), und mit deinem Konto gelöscht. Schreibst du ohne Konto, kannst du den Austausch über einen persönlichen Link aus der E-Mail verfolgen.",
               "Anmeldesitzungen: 7 Tage nach der letzten Aktivität.",
               "Verlauf der gesendeten E-Mails (Empfänger, Art, Datum): 90 Tage.",
@@ -686,7 +701,7 @@ const privacy: Record<Locale, LegalDocument> = {
             p: "Die Website verwendet nur ein einziges, notwendiges Cookie: jenes, das dich angemeldet hält. Dein Browser speichert ausserdem dein Farbschema (hell oder dunkel), die geschlossenen Hinweise, den Entwurf einer Kontaktnachricht und, für den Vorstand, die Darstellung des Admin-Menüs.",
           },
           {
-            p: "Keine Analyse-Tools, keine Werbung. Die Schriften werden von der Website selbst ausgeliefert. Nur Seiten mit einer Google-Karte (Kontakt, Veranstaltungen) können Google eigene Cookies setzen lassen. Der Kartenscanner des Vorstands nutzt die Handykamera nur während des Scans: Es wird kein Bild gespeichert oder gesendet.",
+            p: "Keine Analyse-Tools, keine Werbung. Die Schriften werden von der Website selbst ausgeliefert. Nur Seiten mit einer Google-Karte (Kontakt, Veranstaltungen) können Google eigene Cookies setzen lassen. Der Kartenscanner des Vorstands nutzt die Handykamera nur während des Scans: Es wird kein Bild gespeichert oder gesendet. Der Warenkorb des Shops bleibt in deinem Browser. Öffnet sich ein Zahlungsformular, lädt das Skript von Stripe und kann eigene Cookies setzen, nur für die Sicherheit der Zahlung und die Betrugsprävention.",
           },
         ],
       },

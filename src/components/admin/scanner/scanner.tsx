@@ -1,6 +1,6 @@
 "use client";
 
-import { CameraOff, Check, CircleAlert, Clock, ScanLine, Search, UserRound, X } from "lucide-react";
+import { CameraOff, Check, CircleAlert, Clock, ScanLine, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { toast } from "sonner";
@@ -20,6 +20,7 @@ type ScannedMember = {
   junior: boolean;
   photoConsent: boolean;
   signUp: { status: string; checkedInAt: string | null } | null;
+  pickups: { id: string; reference: string; status: string; items: { description: string; quantity: number }[] }[];
 };
 type ScanData = { events: EventOption[]; count: Count | null; member: ScannedMember | null; unknown?: boolean };
 type Result = { member: ScannedMember; token: string | null } | { unknown: true };
@@ -215,6 +216,20 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
     next();
   };
 
+  /** A shop order taken home: marked handed over, and gone from the sheet. */
+  const handOver = async (orderId: string) => {
+    if (!result || "unknown" in result) return;
+    setBusy(true);
+    const response = await fetch(`/api/v1/admin/orders/${orderId}`, { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ status: "handed_over" }) });
+    setBusy(false);
+    if (!response.ok) {
+      toast.error(t("error"));
+      return;
+    }
+    toast.success(t("handedOver"));
+    setResult({ ...result, member: { ...result.member, pickups: result.member.pickups.filter((pickup) => pickup.id !== orderId) } });
+  };
+
   // Camera access exists (https or localhost, a browser that has it); assumed until the browser says.
   const supported = useSyncExternalStore(
     () => () => {},
@@ -383,6 +398,24 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
                           : t("notRegistered")}
                   </StatusPill>
                 </div>
+                {/* Shop orders waiting for this member: handed over in one tap. */}
+                {member.pickups.length ? (
+                  <ul className="space-y-2 rounded-[12px] border border-psg-blue/30 bg-psg-blue/5 p-3">
+                    <li className={adminLabel}>{t("pickups")}</li>
+                    {member.pickups.map((pickup) => (
+                      <li key={pickup.id} className="flex items-center gap-3">
+                        <ShoppingBag className="size-4 shrink-0 text-psg-blue dark:text-foreground" aria-hidden />
+                        <span className="min-w-0 flex-1 text-[14px]">
+                          {pickup.items.map((item) => `${item.quantity} × ${item.description}`).join(", ")}
+                          <span className="block font-mono text-[11px] text-muted-foreground">{pickup.reference}</span>
+                        </span>
+                        <button type="button" disabled={busy} onClick={() => handOver(pickup.id)} className={adminButton("primary", "sm")}>
+                          {t("handOver")}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
                 <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-2">
                   <button type="button" onClick={next} className={adminButton("secondary")}>
                     {t("skip")}

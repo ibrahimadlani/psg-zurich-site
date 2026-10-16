@@ -47,12 +47,14 @@ export async function onAccountDeleted(email: string, locale: Locale) {
 }
 
 /** Fee recorded by the committee. */
-export async function onFeeRecorded(memberId: string, expiresOn: string) {
+export async function onFeeRecorded(memberId: string, expiresOn: string, receipt?: string) {
   const recipients = await memberRecipients(eq(members.id, memberId));
   await enqueue("fee.receipt", recipients, (recipient) => ({
     values: { until: emailDate(new Date(`${expiresOn}T12:00:00Z`), recipient.locale, false) },
     path: "/espace-membre",
-    dedupe: `fee.receipt:${memberId}:${expiresOn}`,
+    attachment: receipt,
+    // One per receipt: a fee cancelled then paid again gets its own email.
+    dedupe: `fee.receipt:${memberId}:${expiresOn}${receipt ? `:${receipt}` : ""}`,
   }));
 }
 

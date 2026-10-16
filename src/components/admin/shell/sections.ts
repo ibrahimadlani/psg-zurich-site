@@ -13,15 +13,16 @@ import {
   Trophy,
   Users,
   Vote,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import type { Capability } from "@/lib/roles";
 
 /** Counters shown next to a section (from /api/v1/admin/summary). */
-export type AdminBadge = "requests" | "unpaid" | "failedEmails" | "messages";
+export type AdminBadge = "requests" | "unpaid" | "failedEmails" | "messages" | "orders";
 
 export type AdminSection = {
-  key: "home" | "members" | "messages" | "dues" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "polls" | "documents" | "settings" | "journal";
+  key: "home" | "members" | "messages" | "dues" | "finances" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "polls" | "documents" | "settings" | "journal";
   href: string;
   icon: LucideIcon;
   capability: Capability;
@@ -36,6 +37,7 @@ export const ADMIN_SECTIONS: AdminSection[] = [
   { key: "members", href: "/admin/membres", icon: Users, capability: "members.read", group: "club", badge: "requests", tab: true },
   { key: "messages", href: "/admin/messages", icon: Inbox, capability: "messages", group: "club", badge: "messages" },
   { key: "dues", href: "/admin/cotisations", icon: Banknote, capability: "members.write", group: "club", badge: "unpaid" },
+  { key: "finances", href: "/admin/finances", icon: Wallet, capability: "finances", group: "club", badge: "orders" },
   // Phone bar order: home, members, the scanner in the middle, events.
   { key: "scanner", href: "/admin/scanner", icon: ScanLine, capability: "scan", group: "programme", tab: true },
   { key: "events", href: "/admin/evenements", icon: CalendarDays, capability: "events", group: "programme", tab: true },

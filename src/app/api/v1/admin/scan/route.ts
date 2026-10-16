@@ -6,6 +6,7 @@ import { attendance, events, members, user } from "@/db/schema";
 import { apiHandler, ok, parseQuery } from "@/lib/api";
 import { isDuesPaid, isJunior } from "@/lib/dues";
 import { memberByCardToken } from "@/lib/member-card";
+import { pickupsFor } from "@/lib/payments/orders";
 import { requireCapability } from "@/lib/permissions";
 
 const HOUR = 60 * 60 * 1000;
@@ -71,6 +72,8 @@ export const GET = apiHandler(async (request) => {
       junior: isJunior(found.birthDate),
       photoConsent: found.photoConsent === true,
       signUp: signUp ? { status: signUp.status, checkedInAt: signUp.checkedInAt } : null,
+      // Shop orders to hand over at the door.
+      pickups: await pickupsFor(found.id),
     },
   });
 });

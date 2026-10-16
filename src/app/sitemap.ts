@@ -12,6 +12,8 @@ const PAGES = [
   { path: "/actualites", priority: 0.9, changeFrequency: "daily" },
   { path: "/matchs", priority: 0.8, changeFrequency: "daily" },
   { path: "/evenements", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/boutique", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/soutenir", priority: 0.4, changeFrequency: "yearly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
   { path: "/adhesion", priority: 0.7, changeFrequency: "yearly" },
 ] as const;

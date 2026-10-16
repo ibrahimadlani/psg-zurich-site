@@ -32,6 +32,14 @@ export const SAMPLE_VALUES: Record<string, string> = {
   organisation: "Bar Le Parisien",
   followUp: "no",
   references: "C-0040, C-0041",
+  amount: "CHF 50.–",
+  what: "votre commande P-000123",
+  receipt: "Q-2026-0001",
+  payment: "P-000123",
+  items: "Écharpe PSG Zurich × 1, T-shirt Hechter (M) × 1",
+  pickup: "Watch party PSG – Lens, samedi 17 octobre",
+  tracking: "99.00.123456.12345678",
+  delivery: "Retrait à un événement",
 };
 
 /** Someone's message, for the preview of the emails that quote one (contact). */

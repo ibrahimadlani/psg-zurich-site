@@ -38,5 +38,5 @@ export default async function proxy(request: NextRequest) {
 export const config = {
   // Everything except API routes, Next internals and the real static files of public/ and app/.
   // Other paths (even "/xyz.txt") get a locale prefix, then the localized 404.
-  matcher: "/((?!api|_next|_vercel|brand/|robots\\.txt|sitemap\\.xml|icon\\.svg|favicon\\.ico).*)",
+  matcher: "/((?!api|_next|_vercel|brand/|\\.well-known/|robots\\.txt|sitemap\\.xml|icon\\.svg|favicon\\.ico).*)",
 };

@@ -72,6 +72,7 @@ function VisitorFooter() {
       links: [
         { href: "/adhesion", label: tNav("membership") },
         { href: "/connexion", label: tLogin("submit") },
+        { href: "/soutenir", label: t("support") },
       ],
     },
   ];

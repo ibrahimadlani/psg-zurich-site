@@ -6,7 +6,7 @@
 
 /** Who may turn it off: transactional emails always go out. */
 export type MailCategory = "transactional" | "events" | "reminders" | "results" | "news";
-export type MailGroup = "membership" | "fee" | "events" | "predictions" | "contact";
+export type MailGroup = "membership" | "fee" | "events" | "predictions" | "contact" | "payments";
 
 export type AutomationDef = {
   key: string;
@@ -60,10 +60,16 @@ export const AUTOMATIONS = [
   def("contact.toCommittee", { group: "contact", category: "transactional", messages: "contactToCommittee", delay: 0, audience: "committee", variables: ["reference", "topic", "name", "email", "organisation", "followUp"], trigger: "event" }),
   def("contact.reply", { group: "contact", category: "transactional", messages: "contactReply", delay: 0, audience: "member", variables: ["reference", "topic"], trigger: "event" }),
   def("contact.reminder", { group: "contact", category: "transactional", messages: "contactReminder", delay: 0, audience: "committee", variables: ["count", "references"], trigger: "schedule" }),
+  // Payments (shop, donations; the fee's receipt goes with fee.receipt)
+  def("payment.receipt", { group: "payments", category: "transactional", messages: "paymentReceipt", delay: 0, audience: "member", variables: ["amount", "what", "receipt", "payment"], trigger: "event" }),
+  def("payment.refunded", { group: "payments", category: "transactional", messages: "paymentRefunded", delay: 0, audience: "member", variables: ["amount", "receipt", "payment"], trigger: "event" }),
+  def("shop.ready", { group: "payments", category: "transactional", messages: "shopReady", delay: 0, audience: "member", variables: ["payment", "items", "pickup"], trigger: "event" }),
+  def("shop.shipped", { group: "payments", category: "transactional", messages: "shopShipped", delay: 0, audience: "member", variables: ["payment", "items", "tracking"], trigger: "event" }),
+  def("shop.newOrder", { group: "payments", category: "transactional", messages: "shopNewOrder", delay: 0, audience: "committee", variables: ["payment", "name", "amount", "items", "delivery"], trigger: "event" }),
 ] as const satisfies readonly AutomationDef[];
 
 export type AutomationKey = (typeof AUTOMATIONS)[number]["key"];
 
 export const automation = (key: string) => AUTOMATIONS.find((item) => item.key === key) as AutomationDef | undefined;
 
-export const MAIL_GROUPS: MailGroup[] = ["membership", "fee", "events", "predictions", "contact"];
+export const MAIL_GROUPS: MailGroup[] = ["membership", "fee", "events", "predictions", "contact", "payments"];

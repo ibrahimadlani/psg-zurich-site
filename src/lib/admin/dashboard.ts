@@ -7,6 +7,7 @@ import { can } from "@/lib/roles";
 import type { Role } from "@/db/schema";
 import { inboxCounts } from "@/lib/admin/messages-query";
 import { visibleTopics } from "@/lib/contact";
+import { ordersToPrepare } from "@/lib/admin/finances-query";
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -38,8 +39,10 @@ export async function adminCounters(role: Role) {
       : null,
   ]);
   const messages = can(role, "messages") ? (await inboxCounts(role)).toHandle : 0;
+  const orders = can(role, "finances") ? await ordersToPrepare() : 0;
   return {
     messages,
+    orders,
     requests: requests?.[0]?.value ?? 0,
     unpaid: unpaid?.[0]?.value ?? 0,
     failedEmails: failed?.[0]?.value ?? 0,
