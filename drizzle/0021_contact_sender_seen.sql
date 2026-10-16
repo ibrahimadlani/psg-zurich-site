@@ -1,0 +1,1 @@
+ALTER TABLE `contact_threads` ADD `sender_seen_at` datetime(3);

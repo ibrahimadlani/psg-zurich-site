@@ -148,6 +148,13 @@
       "when": 1792156086258,
       "tag": "0020_contact_messages",
       "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "5",
+      "when": 1792170292134,
+      "tag": "0021_contact_sender_seen",
+      "breakpoints": true
     }
   ]
 }
