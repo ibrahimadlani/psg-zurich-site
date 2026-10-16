@@ -1,7 +1,7 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
 R.c("server/chunks/ssr/node_modules_next_dist_esm_build_templates_app-page_0ns6neau7m6mt.js")
 R.c("server/chunks/ssr/node_modules_0gxlxpuufujz9._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__073e274yedex9._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1-kno0ebnagqe._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_compiled_@edge-runtime_cookies_index_1kiz_an963mbg.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0janj0i6dqko7._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__01pprqwppej2f._.js")

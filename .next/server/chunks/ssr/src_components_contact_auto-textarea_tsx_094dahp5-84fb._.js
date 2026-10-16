@@ -1,0 +1,3 @@
+module.exports=[779192,a=>{"use strict";var b=a.i(187924),c=a.i(572131),d=a.i(13983);a.s(["f",0,function({minRows:a=3,maxRows:e=12,className:f,value:g,...h}){let i=(0,c.useRef)(null);return(0,c.useLayoutEffect)(()=>{let b=i.current;if(!b)return;let c=getComputedStyle(b),d=parseFloat(c.lineHeight)||24,f=parseFloat(c.paddingTop)+parseFloat(c.paddingBottom);b.style.height="auto";let g=b.offsetHeight-b.clientHeight,h=Math.min(Math.max(b.scrollHeight,a*d+f),e*d+f);b.style.height=`${h+g}px`},[g,a,e]),(0,b.jsx)("textarea",{ref:i,value:g,rows:a,className:(0,d.f)("resize-none",f),...h})}])}];
+
+//# sourceMappingURL=src_components_contact_auto-textarea_tsx_094dahp5-84fb._.js.map

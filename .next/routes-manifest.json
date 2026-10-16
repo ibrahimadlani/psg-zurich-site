@@ -63,6 +63,30 @@
       "namedRegex": "^/api/v1/admin/messages/(?<nxtPid>[^/]+?)/reply(?:/)?$"
     },
     {
+      "page": "/api/v1/admin/orders/[id]",
+      "regex": "^/api/v1/admin/orders/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/admin/orders/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/admin/payments/[id]/refund",
+      "regex": "^/api/v1/admin/payments/([^/]+?)/refund(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/admin/payments/(?<nxtPid>[^/]+?)/refund(?:/)?$"
+    },
+    {
+      "page": "/api/v1/admin/products/[id]",
+      "regex": "^/api/v1/admin/products/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/admin/products/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/v1/announcements/[id]",
       "regex": "^/api/v1/announcements/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -215,6 +239,14 @@
       "namedRegex": "^/api/v1/members/(?<nxtPid>[^/]+?)/dues(?:/)?$"
     },
     {
+      "page": "/api/v1/payments/[reference]",
+      "regex": "^/api/v1/payments/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPreference": "nxtPreference"
+      },
+      "namedRegex": "^/api/v1/payments/(?<nxtPreference>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/api/v1/polls/[id]",
       "regex": "^/api/v1/polls/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -237,6 +269,14 @@
         "nxtPid": "nxtPid"
       },
       "namedRegex": "^/api/v1/posts/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/receipts/[number]",
+      "regex": "^/api/v1/receipts/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPnumber": "nxtPnumber"
+      },
+      "namedRegex": "^/api/v1/receipts/(?<nxtPnumber>[^/]+?)(?:/)?$"
     },
     {
       "page": "/[locale]",
@@ -632,6 +672,184 @@
           "routeKeys": {
             "nxtPlocale": "nxtPlocale",
             "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/finances",
+      "regex": "^/([^/]+?)/admin/finances(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/finances(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/finances.segments/$d$locale/!KGFkbWluKQ/admin/finances$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/finances\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/finances/boutique",
+      "regex": "^/([^/]+?)/admin/finances/boutique(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/finances/boutique(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/finances/boutique.segments/$d$locale/!KGFkbWluKQ/admin/finances/boutique$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/finances/boutique\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/boutique(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/finances/commandes",
+      "regex": "^/([^/]+?)/admin/finances/commandes(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/finances/commandes(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/finances/commandes.segments/$d$locale/!KGFkbWluKQ/admin/finances/commandes$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/finances/commandes\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/commandes(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/finances/paiements",
+      "regex": "^/([^/]+?)/admin/finances/paiements(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/finances/paiements(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/finances/paiements.segments/$d$locale/!KGFkbWluKQ/admin/finances/paiements$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/finances/paiements\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/paiements(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/finances/paiements/[id]",
+      "page": "/de/admin/finances/paiements/[id]",
+      "regex": "^/de/admin/finances/paiements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/de/admin/finances/paiements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/admin/finances/paiements/[id].segments/$d$locale/!KGFkbWluKQ/admin/finances/paiements/$d$id$segment",
+          "source": "^/de/admin/finances/paiements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/paiements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/finances/paiements/[id]",
+      "page": "/en/admin/finances/paiements/[id]",
+      "regex": "^/en/admin/finances/paiements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/en/admin/finances/paiements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/admin/finances/paiements/[id].segments/$d$locale/!KGFkbWluKQ/admin/finances/paiements/$d$id$segment",
+          "source": "^/en/admin/finances/paiements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/paiements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/finances/paiements/[id]",
+      "page": "/fr/admin/finances/paiements/[id]",
+      "regex": "^/fr/admin/finances/paiements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/fr/admin/finances/paiements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/admin/finances/paiements/[id].segments/$d$locale/!KGFkbWluKQ/admin/finances/paiements/$d$id$segment",
+          "source": "^/fr/admin/finances/paiements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/paiements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/finances/paiements/[id]",
+      "regex": "^/([^/]+?)/admin/finances/paiements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/finances/paiements/(?<nxtPid>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/finances/paiements/[id].segments/$d$locale/!KGFkbWluKQ/admin/finances/paiements/$d$id$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/finances/paiements/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/paiements/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/finances/reglages",
+      "regex": "^/([^/]+?)/admin/finances/reglages(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/finances/reglages(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/finances/reglages.segments/$d$locale/!KGFkbWluKQ/admin/finances/reglages$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/finances/reglages\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/reglages(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/finances/versements",
+      "regex": "^/([^/]+?)/admin/finances/versements(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/finances/versements(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/finances/versements.segments/$d$locale/!KGFkbWluKQ/admin/finances/versements$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/finances/versements\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/finances/versements(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
           }
         }
       ]
@@ -1170,6 +1388,99 @@
       ]
     },
     {
+      "page": "/[locale]/boutique",
+      "regex": "^/([^/]+?)/boutique(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/boutique(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/boutique.segments/$d$locale/!KHNpdGUp/boutique$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/boutique\\.segments/\\$d\\$locale/!KHNpdGUp/boutique(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/boutique/[slug]",
+      "page": "/de/boutique/[slug]",
+      "regex": "^/de/boutique/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/de/boutique/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/boutique/[slug].segments/$d$locale/!KHNpdGUp/boutique/$d$slug$segment",
+          "source": "^/de/boutique/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/boutique/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/boutique/[slug]",
+      "page": "/en/boutique/[slug]",
+      "regex": "^/en/boutique/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/en/boutique/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/boutique/[slug].segments/$d$locale/!KHNpdGUp/boutique/$d$slug$segment",
+          "source": "^/en/boutique/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/boutique/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/boutique/[slug]",
+      "page": "/fr/boutique/[slug]",
+      "regex": "^/fr/boutique/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/fr/boutique/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/boutique/[slug].segments/$d$locale/!KHNpdGUp/boutique/$d$slug$segment",
+          "source": "^/fr/boutique/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/boutique/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/boutique/[slug]",
+      "regex": "^/([^/]+?)/boutique/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/boutique/(?<nxtPslug>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/boutique/[slug].segments/$d$locale/!KHNpdGUp/boutique/$d$slug$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/boutique/(?<nxtPslug>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/boutique/\\$d\\$slug(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPslug": "nxtPslug"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/confidentialite",
       "regex": "^/([^/]+?)/confidentialite(?:/)?$",
       "routeKeys": {
@@ -1475,6 +1786,23 @@
       ]
     },
     {
+      "page": "/[locale]/espace-membre/paiements",
+      "regex": "^/([^/]+?)/espace\\-membre/paiements(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/paiements(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/espace-membre/paiements.segments/$d$locale/!KHNpdGUp/espace-membre/paiements$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/paiements\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre/paiements(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/evenements",
       "regex": "^/([^/]+?)/evenements(?:/)?$",
       "routeKeys": {
@@ -1695,6 +2023,82 @@
       ]
     },
     {
+      "sourcePage": "/[locale]/paiement/[reference]",
+      "page": "/de/paiement/[reference]",
+      "regex": "^/de/paiement/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPreference": "nxtPreference"
+      },
+      "namedRegex": "^/de/paiement/(?<nxtPreference>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/paiement/[reference].segments/$d$locale/!KHNpdGUp/paiement/$d$reference$segment",
+          "source": "^/de/paiement/(?<nxtPreference>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/paiement/\\$d\\$reference(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPreference": "nxtPreference"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/paiement/[reference]",
+      "page": "/en/paiement/[reference]",
+      "regex": "^/en/paiement/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPreference": "nxtPreference"
+      },
+      "namedRegex": "^/en/paiement/(?<nxtPreference>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/paiement/[reference].segments/$d$locale/!KHNpdGUp/paiement/$d$reference$segment",
+          "source": "^/en/paiement/(?<nxtPreference>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/paiement/\\$d\\$reference(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPreference": "nxtPreference"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/paiement/[reference]",
+      "page": "/fr/paiement/[reference]",
+      "regex": "^/fr/paiement/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPreference": "nxtPreference"
+      },
+      "namedRegex": "^/fr/paiement/(?<nxtPreference>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/paiement/[reference].segments/$d$locale/!KHNpdGUp/paiement/$d$reference$segment",
+          "source": "^/fr/paiement/(?<nxtPreference>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/paiement/\\$d\\$reference(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPreference": "nxtPreference"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/paiement/[reference]",
+      "regex": "^/([^/]+?)/paiement/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPreference": "nxtPreference"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/paiement/(?<nxtPreference>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/paiement/[reference].segments/$d$locale/!KHNpdGUp/paiement/$d$reference$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/paiement/(?<nxtPreference>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/paiement/\\$d\\$reference(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPreference": "nxtPreference"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/parametres",
       "regex": "^/([^/]+?)/parametres(?:/)?$",
       "routeKeys": {
@@ -1790,6 +2194,23 @@
         {
           "destination": "/[locale]/parametres/profil.segments/$d$locale/!KHNpdGUp/parametres/profil$segment",
           "source": "^/(?<nxtPlocale>[^/]+?)/parametres/profil\\.segments/\\$d\\$locale/!KHNpdGUp/parametres/profil(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/soutenir",
+      "regex": "^/([^/]+?)/soutenir(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/soutenir(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/soutenir.segments/$d$locale/!KHNpdGUp/soutenir$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/soutenir\\.segments/\\$d\\$locale/!KHNpdGUp/soutenir(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -1922,6 +2343,18 @@
       "namedRegex": "^/api/unsubscribe(?:/)?$"
     },
     {
+      "page": "/api/v1/admin/finances/export",
+      "regex": "^/api/v1/admin/finances/export(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/admin/finances/export(?:/)?$"
+    },
+    {
+      "page": "/api/v1/admin/finances/settings",
+      "regex": "^/api/v1/admin/finances/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/admin/finances/settings(?:/)?$"
+    },
+    {
       "page": "/api/v1/admin/members",
       "regex": "^/api/v1/admin/members(?:/)?$",
       "routeKeys": {},
@@ -1932,6 +2365,12 @@
       "regex": "^/api/v1/admin/prediction\\-rewards(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/admin/prediction\\-rewards(?:/)?$"
+    },
+    {
+      "page": "/api/v1/admin/products",
+      "regex": "^/api/v1/admin/products(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/admin/products(?:/)?$"
     },
     {
       "page": "/api/v1/admin/scan",
@@ -2112,6 +2551,18 @@
       "regex": "^/api/v1/menu(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/menu(?:/)?$"
+    },
+    {
+      "page": "/api/v1/payments",
+      "regex": "^/api/v1/payments(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/payments(?:/)?$"
+    },
+    {
+      "page": "/api/v1/payments/webhook",
+      "regex": "^/api/v1/payments/webhook(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/payments/webhook(?:/)?$"
     },
     {
       "page": "/api/v1/polls",

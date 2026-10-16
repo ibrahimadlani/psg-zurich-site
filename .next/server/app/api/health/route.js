@@ -1,5 +1,5 @@
 var R=require("../../../chunks/[turbopack]_runtime.js")("server/app/api/health/route.js")
-R.c("server/chunks/[root-of-the-server]__1cy0_-jzd2--d._.js")
+R.c("server/chunks/[root-of-the-server]__0vbah9ljmijvi._.js")
 R.c("server/chunks/_1y5_49ip8l9oe._.js")
 R.c("server/chunks/node_modules_next_dist_182yaz9b1ql64._.js")
 R.c("server/chunks/[root-of-the-server]__02_2sm-ocfxhk._.js")

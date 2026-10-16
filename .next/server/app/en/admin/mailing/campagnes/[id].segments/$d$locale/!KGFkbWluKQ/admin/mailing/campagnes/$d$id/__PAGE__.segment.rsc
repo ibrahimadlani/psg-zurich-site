@@ -4,9 +4,9 @@
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
-9:"/_next/static/chunks/3kajoy3l6rwky.js"
+9:"/_next/static/chunks/0tge7_ve7csv2.js"
 a:"/_next/static/chunks/21s7mgjvwpstx.js"
-b:"/_next/static/chunks/0mkfr2hbim57l.js"
+b:"/_next/static/chunks/3ryknuy94zfq5.js"
 c:I[868132,["$4","$5","$6","$7","$8","$9","$a","$b"],"AdminShell"]
 d:"/_next/static/chunks/095g8usnrcprg.js"
 e:I[339756,["$d"],"default"]
@@ -35,13 +35,13 @@ f:I[837457,["$d"],"default"]
 18:[["children",{"s":"campagnes","h":57442,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@19","v":"$15","s":"$12"},"c":"$Q1a"}]]
 16:[["children",{"s":"mailing","h":57442,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@17","v":"$15","s":"$12"},"c":"$Q18"}]]
 13:[["children",{"s":"admin","h":57442,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@14","v":"$15","s":"$12"},"c":"$Q16"}]]
-2:[["children",{"s":"(admin)","h":57410,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3kajoy3l6rwky.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0mkfr2hbim57l.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
+2:[["children",{"s":"(admin)","h":57410,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0tge7_ve7csv2.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/3ryknuy94zfq5.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":57394,"c":"$Q2"}]]
 2c:X
 2c:C
 2f:X
 2f:T6,locale2f:C
-0:{"t":{"t":{"s":"","h":57426,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$20",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mailing · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$12"}},"a":"$@2d","u":"$@2e","b":"o_-TY8I_xiZvPWeYvJQ_j","r":"$2f"}
+0:{"t":{"t":{"s":"","h":57426,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$20",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Mailing · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$12"}},"a":"$@2d","u":"$@2e","b":"51y33kF0FinLKglUubey2","r":"$2f"}
 23:null
 2e:false
 2d:null

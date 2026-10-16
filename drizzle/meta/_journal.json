@@ -162,6 +162,20 @@
       "when": 1792180500998,
       "tag": "0022_notifications_clear",
       "breakpoints": true
+    },
+    {
+      "idx": 23,
+      "version": "5",
+      "when": 1792190121858,
+      "tag": "0023_payments",
+      "breakpoints": true
+    },
+    {
+      "idx": 24,
+      "version": "5",
+      "when": 1792192277903,
+      "tag": "0024_orders_pending",
+      "breakpoints": true
     }
   ]
 }
