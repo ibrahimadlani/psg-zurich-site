@@ -7,13 +7,13 @@ c:"/_next/static/chunks/2dc_yxrg-hsid.js"
 d:"/_next/static/chunks/41-n4vk_ai0th.js"
 e:"/_next/static/chunks/2__g39ioof7sf.js"
 f:"/_next/static/chunks/10zmr2c54oho9.js"
-10:"/_next/static/chunks/3ti5-744heujp.js"
+10:"/_next/static/chunks/1m8oox7crfg_h.js"
 11:"/_next/static/chunks/21s7mgjvwpstx.js"
-12:"/_next/static/chunks/0m2qak0qhz60n.js"
-13:"/_next/static/chunks/2zx8837tzc9a8.js"
-14:"/_next/static/chunks/0ktenso5zbzz6.js"
-15:"/_next/static/chunks/2htx0opipb7qz.js"
-16:"/_next/static/chunks/2qhd8kia6n8_n.js"
+12:"/_next/static/chunks/32y9ly8umnhod.js"
+13:"/_next/static/chunks/0ktenso5zbzz6.js"
+14:"/_next/static/chunks/2htx0opipb7qz.js"
+15:"/_next/static/chunks/2zx8837tzc9a8.js"
+16:"/_next/static/chunks/2i77zu3oh1wj_.js"
 17:I[77105,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15","$16"],"default"]
 18:I[505014,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15","$16"],"default"]
 19:I[605500,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15","$16"],"Image"]
@@ -41,15 +41,15 @@ a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$
 2f:C
 32:X
 32:T6,locale32:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L29",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Sign in · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2d","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2e","v":"$2f","s":"$9"}},"a":"$@30","u":"$@31","b":"pdCkvVkmU_kzzt0mXlbl5","r":"$32"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L29",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Sign in · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2d","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2e","v":"$2f","s":"$9"}},"a":"$@30","u":"$@31","b":"VPX3AlbUZusej7RzKrgKg","r":"$32"}
 33:I[897367,["$4"],"OutletBoundary"]
-1e:["$","script","script-0",{"src":"/_next/static/chunks/3ti5-744heujp.js","async":true}]
+1e:["$","script","script-0",{"src":"/_next/static/chunks/1m8oox7crfg_h.js","async":true}]
 1f:["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}]
-20:["$","script","script-2",{"src":"/_next/static/chunks/0m2qak0qhz60n.js","async":true}]
-21:["$","script","script-3",{"src":"/_next/static/chunks/2zx8837tzc9a8.js","async":true}]
-22:["$","script","script-4",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
-23:["$","script","script-5",{"src":"/_next/static/chunks/2htx0opipb7qz.js","async":true}]
-24:["$","script","script-6",{"src":"/_next/static/chunks/2qhd8kia6n8_n.js","async":true}]
+20:["$","script","script-2",{"src":"/_next/static/chunks/32y9ly8umnhod.js","async":true}]
+21:["$","script","script-3",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
+22:["$","script","script-4",{"src":"/_next/static/chunks/2htx0opipb7qz.js","async":true}]
+23:["$","script","script-5",{"src":"/_next/static/chunks/2zx8837tzc9a8.js","async":true}]
+24:["$","script","script-6",{"src":"/_next/static/chunks/2i77zu3oh1wj_.js","async":true}]
 25:["$","$L33",null,{"children":["$","$2c",null,{"name":"Next.MetadataOutlet","children":"$@34"}]}]
 31:false
 34:null
