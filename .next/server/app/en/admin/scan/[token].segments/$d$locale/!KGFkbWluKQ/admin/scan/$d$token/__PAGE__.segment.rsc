@@ -1,12 +1,12 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/0tq1h0sac681q.js"
+4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
 5:"/_next/static/chunks/2dc_yxrg-hsid.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
-9:"/_next/static/chunks/2m1eu18j1--2w.js"
+9:"/_next/static/chunks/0uqh6cl15ii1t.js"
 a:"/_next/static/chunks/21s7mgjvwpstx.js"
-b:"/_next/static/chunks/3z5bdiqe_zq-c.js"
+b:"/_next/static/chunks/3lekdctuys1sl.js"
 c:I[868132,["$4","$5","$6","$7","$8","$9","$a","$b"],"AdminShell"]
 d:"/_next/static/chunks/095g8usnrcprg.js"
 e:I[339756,["$d"],"default"]
@@ -28,11 +28,11 @@ f:I[837457,["$d"],"default"]
 18:[["children",{"s":{"n":"token","t":"d","k":null,"s":[]},"h":24674,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@19","v":"$15","s":"$12"},"c":"$Q1a"}]]
 16:[["children",{"s":"scan","h":24674,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@17","v":"$15","s":"$12"},"c":"$Q18"}]]
 13:[["children",{"s":"admin","h":24674,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@14","v":"$15","s":"$12"},"c":"$Q16"}]]
-2:[["children",{"s":"(admin)","h":24642,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/2m1eu18j1--2w.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/3z5bdiqe_zq-c.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
+2:[["children",{"s":"(admin)","h":24642,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0uqh6cl15ii1t.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/3lekdctuys1sl.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":24626,"c":"$Q2"}]]
 27:X
 2a:X
-2a:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$12"}},"a":"$@28","u":"$@29","b":"loY2dTEn87hJT6Md6qwnC","r":"$2a"}
+2a:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$12"}},"a":"$@28","u":"$@29","b":"0_mbaP5lqWPrHjFtLNtEZ","r":"$2a"}
 1e:null
 12:C
 27:C

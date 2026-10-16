@@ -47,6 +47,22 @@
       "namedRegex": "^/api/calendar/match/(?<nxtPid>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/api/v1/admin/messages/[id]",
+      "regex": "^/api/v1/admin/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/admin/messages/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/v1/admin/messages/[id]/reply",
+      "regex": "^/api/v1/admin/messages/([^/]+?)/reply(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/v1/admin/messages/(?<nxtPid>[^/]+?)/reply(?:/)?$"
+    },
+    {
       "page": "/api/v1/announcements/[id]",
       "regex": "^/api/v1/announcements/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -917,6 +933,99 @@
       ]
     },
     {
+      "page": "/[locale]/admin/messages",
+      "regex": "^/([^/]+?)/admin/messages(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/messages(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/messages.segments/$d$locale/!KGFkbWluKQ/admin/messages$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/messages\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/messages(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/messages/[id]",
+      "page": "/de/admin/messages/[id]",
+      "regex": "^/de/admin/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/de/admin/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/admin/messages/[id].segments/$d$locale/!KGFkbWluKQ/admin/messages/$d$id$segment",
+          "source": "^/de/admin/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/messages/[id]",
+      "page": "/en/admin/messages/[id]",
+      "regex": "^/en/admin/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/en/admin/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/admin/messages/[id].segments/$d$locale/!KGFkbWluKQ/admin/messages/$d$id$segment",
+          "source": "^/en/admin/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/admin/messages/[id]",
+      "page": "/fr/admin/messages/[id]",
+      "regex": "^/fr/admin/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/fr/admin/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/admin/messages/[id].segments/$d$locale/!KGFkbWluKQ/admin/messages/$d$id$segment",
+          "source": "^/fr/admin/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/admin/messages/[id]",
+      "regex": "^/([^/]+?)/admin/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/admin/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/admin/messages/[id].segments/$d$locale/!KGFkbWluKQ/admin/messages/$d$id$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/admin/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KGFkbWluKQ/admin/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/admin/reglages",
       "regex": "^/([^/]+?)/admin/reglages(?:/)?$",
       "routeKeys": {
@@ -1146,6 +1255,82 @@
       ]
     },
     {
+      "sourcePage": "/[locale]/contact/suivi/[token]",
+      "page": "/de/contact/suivi/[token]",
+      "regex": "^/de/contact/suivi/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtoken": "nxtPtoken"
+      },
+      "namedRegex": "^/de/contact/suivi/(?<nxtPtoken>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/contact/suivi/[token].segments/$d$locale/!KHNpdGUp/contact/suivi/$d$token$segment",
+          "source": "^/de/contact/suivi/(?<nxtPtoken>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/contact/suivi/\\$d\\$token(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPtoken": "nxtPtoken"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/contact/suivi/[token]",
+      "page": "/en/contact/suivi/[token]",
+      "regex": "^/en/contact/suivi/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtoken": "nxtPtoken"
+      },
+      "namedRegex": "^/en/contact/suivi/(?<nxtPtoken>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/contact/suivi/[token].segments/$d$locale/!KHNpdGUp/contact/suivi/$d$token$segment",
+          "source": "^/en/contact/suivi/(?<nxtPtoken>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/contact/suivi/\\$d\\$token(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPtoken": "nxtPtoken"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/contact/suivi/[token]",
+      "page": "/fr/contact/suivi/[token]",
+      "regex": "^/fr/contact/suivi/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtoken": "nxtPtoken"
+      },
+      "namedRegex": "^/fr/contact/suivi/(?<nxtPtoken>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/contact/suivi/[token].segments/$d$locale/!KHNpdGUp/contact/suivi/$d$token$segment",
+          "source": "^/fr/contact/suivi/(?<nxtPtoken>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/contact/suivi/\\$d\\$token(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPtoken": "nxtPtoken"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/contact/suivi/[token]",
+      "regex": "^/([^/]+?)/contact/suivi/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPtoken": "nxtPtoken"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/contact/suivi/(?<nxtPtoken>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/contact/suivi/[token].segments/$d$locale/!KHNpdGUp/contact/suivi/$d$token$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/contact/suivi/(?<nxtPtoken>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/contact/suivi/\\$d\\$token(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPtoken": "nxtPtoken"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/cotisation",
       "regex": "^/([^/]+?)/cotisation(?:/)?$",
       "routeKeys": {
@@ -1192,6 +1377,99 @@
           "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/espace-membre/messages",
+      "regex": "^/([^/]+?)/espace\\-membre/messages(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/messages(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/espace-membre/messages.segments/$d$locale/!KHNpdGUp/espace-membre/messages$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/messages\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre/messages(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/espace-membre/messages/[id]",
+      "page": "/de/espace-membre/messages/[id]",
+      "regex": "^/de/espace\\-membre/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/de/espace\\-membre/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/de/espace-membre/messages/[id].segments/$d$locale/!KHNpdGUp/espace-membre/messages/$d$id$segment",
+          "source": "^/de/espace\\-membre/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/espace-membre/messages/[id]",
+      "page": "/en/espace-membre/messages/[id]",
+      "regex": "^/en/espace\\-membre/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/en/espace\\-membre/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/en/espace-membre/messages/[id].segments/$d$locale/!KHNpdGUp/espace-membre/messages/$d$id$segment",
+          "source": "^/en/espace\\-membre/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "sourcePage": "/[locale]/espace-membre/messages/[id]",
+      "page": "/fr/espace-membre/messages/[id]",
+      "regex": "^/fr/espace\\-membre/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/fr/espace\\-membre/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "skipInternalRouting": true,
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/fr/espace-membre/messages/[id].segments/$d$locale/!KHNpdGUp/espace-membre/messages/$d$id$segment",
+          "source": "^/fr/espace\\-membre/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPid": "nxtPid"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/espace-membre/messages/[id]",
+      "regex": "^/([^/]+?)/espace\\-membre/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale",
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/messages/(?<nxtPid>[^/]+?)(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/espace-membre/messages/[id].segments/$d$locale/!KHNpdGUp/espace-membre/messages/$d$id$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/messages/(?<nxtPid>[^/]+?)\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre/messages/\\$d\\$id(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale",
+            "nxtPid": "nxtPid"
           }
         }
       ]
@@ -1680,6 +1958,18 @@
       "namedRegex": "^/api/v1/announcements(?:/)?$"
     },
     {
+      "page": "/api/v1/contact",
+      "regex": "^/api/v1/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/contact(?:/)?$"
+    },
+    {
+      "page": "/api/v1/contact/reply",
+      "regex": "^/api/v1/contact/reply(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/contact/reply(?:/)?$"
+    },
+    {
       "page": "/api/v1/documents",
       "regex": "^/api/v1/documents(?:/)?$",
       "routeKeys": {},
@@ -1840,6 +2130,12 @@
       "regex": "^/api/v1/subscribers(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/subscribers(?:/)?$"
+    },
+    {
+      "page": "/api/v1/users/committee-title",
+      "regex": "^/api/v1/users/committee\\-title(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/users/committee\\-title(?:/)?$"
     },
     {
       "page": "/api/v1/users/role",

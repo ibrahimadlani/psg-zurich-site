@@ -1,5 +1,5 @@
 var R=require("./chunks/[turbopack]_runtime.js")("server/middleware.js")
-R.c("server/chunks/[root-of-the-server]__05-8vizibi3de._.js")
+R.c("server/chunks/[root-of-the-server]__03vbo80neez43._.js")
 R.c("server/chunks/node_modules_@better-auth_1me4gml084kft._.js")
 R.c("server/chunks/[root-of-the-server]__0w3uyy26cs6or._.js")
 R.c("server/chunks/node_modules_0ozb2aebbg_yq._.js")

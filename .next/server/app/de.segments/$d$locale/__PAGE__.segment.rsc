@@ -1,13 +1,13 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/0tq1h0sac681q.js"
+4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
 5:"/_next/static/chunks/2dc_yxrg-hsid.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
-9:"/_next/static/chunks/0pzjzs94mej71.js"
+9:"/_next/static/chunks/39c0xgf__p41-.js"
 a:"/_next/static/chunks/21s7mgjvwpstx.js"
 b:"/_next/static/chunks/2htx0opipb7qz.js"
-c:"/_next/static/chunks/39q3rkc_u3whd.js"
+c:"/_next/static/chunks/2jjb7gljyg9lh.js"
 d:I[77105,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"default"]
 e:I[605500,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"Image"]
 f:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
@@ -32,7 +32,7 @@ f:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
 2c:C
 2f:X
 2f:T6,locale2f:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L26",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L28",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$29",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$23"}},"a":"$@2d","u":"$@2e","b":"loY2dTEn87hJT6Md6qwnC","r":"$2f"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L26",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L28",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$29",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$23"}},"a":"$@2d","u":"$@2e","b":"0_mbaP5lqWPrHjFtLNtEZ","r":"$2f"}
 30:I[658068,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"SiteFooter"]
 31:I[897367,["$24"],"OutletBoundary"]
 13:["$","defs",null,{"children":["$","clipPath",null,{"id":"cone-right","children":["$","path",null,{"d":"M10.5 3.4Q12 0.6 13.5 3.4L16.8 17.2Q17.1 18.5 15.9 18.9Q12 20.1 8.1 18.9Q6.9 18.5 7.2 17.2Z"}]}]}]
@@ -44,10 +44,10 @@ f:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
 19:["$","p",null,{"className":"text-[17px] leading-[1.55] text-pretty text-muted-foreground","children":"Die Website des offiziellen Fanclubs von Paris Saint-Germain in Zürich ist bald da. Bis dahin schreib uns:"}]
 1a:["$","a",null,{"href":"mailto:contact@psg-zurich.ch","className":"mt-3 border-b pb-[3px] font-wide text-[15px] tracking-[0.02em] text-foreground transition-colors hover:border-brand-red","children":"contact@psg-zurich.ch"}]
 1b:["$","$L30",null,{}]
-1c:["$","script","script-0",{"src":"/_next/static/chunks/0pzjzs94mej71.js","async":true}]
+1c:["$","script","script-0",{"src":"/_next/static/chunks/39c0xgf__p41-.js","async":true}]
 1d:["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}]
 1e:["$","script","script-2",{"src":"/_next/static/chunks/2htx0opipb7qz.js","async":true}]
-1f:["$","script","script-3",{"src":"/_next/static/chunks/39q3rkc_u3whd.js","async":true}]
+1f:["$","script","script-3",{"src":"/_next/static/chunks/2jjb7gljyg9lh.js","async":true}]
 20:["$","$L31",null,{"children":["$","$29",null,{"name":"Next.MetadataOutlet","children":"$@32"}]}]
 2e:false
 32:null
