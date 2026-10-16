@@ -225,8 +225,8 @@ async function closePredictionSeason() {
 }
 
 /**
- * Every day from 9 a.m.: the contact messages waiting for over 48 hours, to the committee
- * members who read their topic (the page promises an answer within 48 hours).
+ * Every day from 9 a.m.: the contact messages waiting for over 24 hours, to the committee
+ * members who read their topic (the page promises an answer within 24 hours).
  */
 async function contactReminders() {
   const { hour } = zurich();
@@ -234,7 +234,7 @@ async function contactReminders() {
   const waiting = await db
     .select({ id: contactThreads.id, reference: contactThreads.reference, topic: contactThreads.topic })
     .from(contactThreads)
-    .where(and(inArray(contactThreads.status, ["new", "open"]), lt(contactThreads.lastMessageAt, ago(2 * DAY))));
+    .where(and(inArray(contactThreads.status, ["new", "open"]), lt(contactThreads.lastMessageAt, ago(DAY))));
   if (waiting.length === 0) return;
   const byReader = new Map<string, { recipient: Recipient; references: string[] }>();
   for (const topic of new Set(waiting.map((thread) => thread.topic))) {

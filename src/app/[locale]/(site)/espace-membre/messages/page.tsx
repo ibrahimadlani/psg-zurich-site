@@ -5,7 +5,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { PageHeader } from "@/components/page-header";
 import { Link, redirect } from "@/i18n/navigation";
-import { formatReference, memberThreads } from "@/lib/contact";
+import { formatReference, memberThreads, unreadThreadIds } from "@/lib/contact";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { cn } from "@/lib/utils";
@@ -29,7 +29,8 @@ async function Threads() {
   const session = await getSession();
   if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
   const member = await getCurrentMember();
-  const threads = (member ? await memberThreads(member.id) : []).filter((thread) => thread.status !== "spam");
+  const [all, unread] = member ? await Promise.all([memberThreads(member.id), unreadThreadIds(member.id)]) : [[], new Set<string>()];
+  const threads = all.filter((thread) => thread.status !== "spam");
   return (
     <div className="space-y-4">
       {threads.length ? (
@@ -40,7 +41,12 @@ async function Threads() {
               <li key={thread.id}>
                 <Link href={`/espace-membre/messages/${thread.id}`} prefetch={false} className="flex min-h-16 items-center gap-3 px-4 py-3 transition-colors hover:bg-foreground/[0.03]">
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[15px] font-semibold">{tTopics(`${thread.topic}.label`)}</span>
+                    <span className="flex items-center gap-2">
+                      <span className="min-w-0 truncate text-[15px] font-semibold">{tTopics(`${thread.topic}.label`)}</span>
+                      {unread.has(thread.id) ? (
+                        <span className="inline-flex h-5 shrink-0 items-center rounded-full bg-psg-red px-2 text-[11px] font-bold text-white">{t("newReply")}</span>
+                      ) : null}
+                    </span>
                     <span className="block text-[12px] text-muted-foreground">
                       <span className="font-mono">{formatReference(thread.reference)}</span> · {format.dateTime(thread.lastMessageAt, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
                     </span>

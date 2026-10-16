@@ -2,8 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/brand-logo";
+import { InstagramIcon } from "@/components/instagram-icon";
 import { Link } from "@/i18n/navigation";
 import { useSession } from "@/lib/auth-client";
+import { INSTAGRAM } from "@/lib/social";
 
 const EMAIL = "contact@psg-zurich.ch";
 
@@ -33,6 +35,9 @@ function LegalLinks() {
       <Link href="/confidentialite" className="transition-colors hover:text-foreground">
         {t("privacy")}
       </Link>
+      <a href={INSTAGRAM.url} target="_blank" rel="noreferrer" aria-label={t("instagram")} title={t("instagram")} className="transition-colors hover:text-foreground">
+        <InstagramIcon className="size-3.5" />
+      </a>
     </span>
   );
 }
@@ -97,6 +102,10 @@ function VisitorFooter() {
           <h2 className={heading}>{t("contact")}</h2>
           <a href={`mailto:${EMAIL}`} className={link}>
             {EMAIL}
+          </a>
+          <a href={INSTAGRAM.url} target="_blank" rel="noreferrer" className={`${link} inline-flex items-center gap-1.5`}>
+            <InstagramIcon className="size-3.5" />
+            {INSTAGRAM.handle}
           </a>
           <p className="text-[14px] text-muted-foreground">{t("location")}</p>
         </div>

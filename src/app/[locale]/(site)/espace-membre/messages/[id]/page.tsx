@@ -6,7 +6,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { SenderThread } from "@/components/contact/sender-thread";
 import { Link, redirect } from "@/i18n/navigation";
-import { senderView } from "@/lib/contact";
+import { markSeenBySender, senderView } from "@/lib/contact";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 
@@ -24,6 +24,8 @@ async function MemberThread({ id }: { id: string }) {
   const member = await getCurrentMember();
   const view = member ? await senderView({ memberId: member.id, id }) : null;
   if (!view || !member) notFound();
+  // Opened: the committee's replies are no longer new (red badge on "My messages").
+  await markSeenBySender(view.thread.id);
   return <SenderThread view={view} sender={{ name: `${member.firstName} ${member.lastName}`, email: session.user.email, image: session.user.image }} />;
 }
 

@@ -63,8 +63,8 @@
     "title": "Contact",
     "hello": "Hello {name}",
     "intro": "A question about the club, membership, an away trip or a partnership? Write to us, the committee will reply.",
-    "memberIntro": "Sort it in one tap below, or write to the committee.",
-    "promise": "Reply within 48 h",
+    "memberIntro": "A question for the committee? Pick the topic, we'll get back to you.",
+    "promise": "Reply within 24 h",
     "copy": "Copy address",
     "copied": "Address copied",
     "byEmail": "Or by email",
@@ -73,13 +73,6 @@
     "openMap": "Open in Google Maps",
     "committeeBanner": "{count, plural, one {# contact message is waiting for the committee.} other {# contact messages are waiting for the committee.}}",
     "committeeBannerLink": "Open the inbox",
-    "shortcutsTitle": "In one tap",
-    "shortcuts": {
-      "fee": "My fee",
-      "card": "My card",
-      "events": "My sign-ups",
-      "data": "My data"
-    },
     "myMessages": "My messages",
     "myMessagesOpen": "{count, plural, =0 {No open request} one {# open request} other {# open requests}}",
     "pickTitle": "You're writing about…",
@@ -131,12 +124,12 @@
       "reference": "Reference",
       "steps": {
         "email": "An acknowledgement is on its way to {email}.",
-        "answer": "The committee replies within 48 h.",
+        "answer": "The committee replies within 24 h.",
         "follow": "Follow the conversation and reply from your personal link."
       },
       "stepsMember": {
         "email": "An acknowledgement is on its way to your address.",
-        "answer": "The committee replies within 48 h.",
+        "answer": "The committee replies within 24 h.",
         "follow": "The reply arrives by email and in \"My messages\"."
       },
       "follow": "Follow my request",
@@ -172,7 +165,11 @@
       }
     ],
     "committeeTitle": "The committee",
-    "committeeIntro": "Volunteer supporters who read every message."
+    "committeeIntro": "Volunteer supporters who read every message.",
+    "newReplies": "{count, plural, one {# new reply} other {# new replies}}",
+    "followTitle": "Follow us",
+    "followBody": "Photos and the atmosphere of our watch parties.",
+    "emailBody": "Write to us from your mail app."
   },
   "Onboarding": {
     "pageTitle": "Welcome",
@@ -523,7 +520,8 @@
       "title": "Complete your profile",
       "body": "Four questions, one minute: date of birth, interests, tickets and photos."
     },
-    "messagesLink": "My messages"
+    "messagesLink": "My messages",
+    "newReplies": "{count, plural, one {# new reply} other {# new replies}}"
   },
   "Admin": {
     "title": "Administration",
@@ -934,7 +932,8 @@
     "imprint": "Legal notice",
     "privacy": "Privacy",
     "statutes": "Statutes",
-    "legal": "Official documents"
+    "legal": "Official documents",
+    "instagram": "Instagram"
   },
   "Emails": {
     "resetPassword": {
@@ -1148,9 +1147,9 @@
     },
     "contactReceived": {
       "subject": "Message received · {reference}",
-      "preview": "The committee replies within 48 hours",
+      "preview": "The committee replies within 24 hours",
       "heading": "We've received your message",
-      "body": "Hello {firstName},\n\nThanks for your message ({topic, select, join {joining} events {events and away trips} fees {fee and card} partnership {partnership, press} website {problem with the site} account {personal data} other {other question}}). The committee replies within 48 hours. Your reference: **{reference}**.\n\nAs a reminder, here is what you wrote:",
+      "body": "Hello {firstName},\n\nThanks for your message ({topic, select, join {joining} events {events and away trips} fees {fee and card} partnership {partnership, press} website {problem with the site} account {personal data} other {other question}}). The committee replies within 24 hours. Your reference: **{reference}**.\n\nAs a reminder, here is what you wrote:",
       "cta": "Follow my request",
       "footer": "You're receiving this email because you wrote to PSG Zurich from the Contact page."
     },
@@ -1171,10 +1170,10 @@
       "footer": "To reply, use the button above: your answer goes straight to the committee."
     },
     "contactReminder": {
-      "subject": "{count, plural, one {# message has} other {# messages have}} been waiting over 48 h",
+      "subject": "{count, plural, one {# message has} other {# messages have}} been waiting over 24 h",
       "preview": "{references}",
       "heading": "Messages waiting",
-      "body": "{count, plural, one {This request has} other {These requests have}} been waiting for a reply for over 48 hours: **{references}**.\n\nThe Contact page promises a reply within 48 h.",
+      "body": "{count, plural, one {This request has} other {These requests have}} been waiting for a reply for over 24 hours: **{references}**.\n\nThe Contact page promises a reply within 24 h.",
       "cta": "Open the inbox",
       "footer": "Daily reminder while messages are waiting."
     }
@@ -2409,8 +2408,8 @@
         "when": "When the committee replies from the admin"
       },
       "contact_reminder": {
-        "name": "48 h reminder",
-        "when": "Every day at 9 am, if messages have waited over 48 h"
+        "name": "24 h reminder",
+        "when": "Every day at 9 am, if messages have waited over 24 h"
       }
     }
   },
@@ -2480,7 +2479,8 @@
     "closedNote": "This conversation is closed. Replying reopens it.",
     "trackingNote": "This link is personal: keep it to follow your request.",
     "notFound": "This link is no longer valid.",
-    "back": "My messages"
+    "back": "My messages",
+    "newReply": "New reply"
   },
   "AdminMessages": {
     "title": "Messages",

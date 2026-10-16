@@ -4,7 +4,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { SenderThread } from "@/components/contact/sender-thread";
 import { Link } from "@/i18n/navigation";
-import { senderView } from "@/lib/contact";
+import { markSeenBySender, senderView } from "@/lib/contact";
 
 // Private links only exist at runtime.
 export const instant = false;
@@ -31,6 +31,7 @@ async function Tracking({ token }: { token: string }) {
       </div>
     );
   }
+  await markSeenBySender(view.thread.id);
   return <SenderThread view={view} sender={{ name: view.thread.name, email: view.thread.email }} token={token} />;
 }
 

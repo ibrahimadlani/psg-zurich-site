@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, CalendarCheck, CreditCard, IdCard, Inbox, Mail, MapPin, MessagesSquare, ShieldCheck, type LucideIcon } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Inbox, Mail, MapPin, MessagesSquare } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
@@ -7,13 +7,15 @@ import { CommitteeList } from "@/components/contact/committee-list";
 import { ContactComposer } from "@/components/contact/contact-composer";
 import { ContactFaq } from "@/components/contact/contact-faq";
 import { CopyEmailButton } from "@/components/contact/copy-email-button";
+import { InstagramIcon } from "@/components/instagram-icon";
 import { LazyVisible } from "@/components/contact/lazy-visible";
 import { MAPS_URL, ZurichMap } from "@/components/contact/zurich-map";
 import { CONTACT_TOPICS, type ContactTopic } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { inboxCounts } from "@/lib/admin/messages-query";
-import { committeeMembers, memberThreads } from "@/lib/contact";
+import { committeeMembers, memberThreads, unreadThreadIds } from "@/lib/contact";
 import { LEGAL } from "@/lib/legal";
+import { INSTAGRAM } from "@/lib/social";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
@@ -41,13 +43,6 @@ const TOPIC_ALIASES: Record<string, ContactTopic> = {
   autre: "other",
 };
 
-const SHORTCUTS: { key: "fee" | "card" | "events" | "data"; href: string; icon: LucideIcon }[] = [
-  { key: "fee", href: "/cotisation", icon: CreditCard },
-  { key: "card", href: "/espace-membre", icon: IdCard },
-  { key: "events", href: "/evenements", icon: CalendarCheck },
-  { key: "data", href: "/parametres/confidentialite", icon: ShieldCheck },
-];
-
 const asideTitle = "font-wide text-[11px] font-semibold tracking-[0.08em] uppercase";
 
 async function ContactContent({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
@@ -65,8 +60,9 @@ async function ContactContent({ searchParams }: { searchParams: Promise<Record<s
   const requested = (CONTACT_TOPICS as readonly string[]).includes(asked) ? (asked as ContactTopic) : TOPIC_ALIASES[asked];
   const initialTopic = requested && topics.includes(requested) ? requested : null;
 
-  const [threads, inbox] = await Promise.all([
+  const [threads, unread, inbox] = await Promise.all([
     member ? memberThreads(member.id) : [],
+    member ? unreadThreadIds(member.id) : new Set<string>(),
     session && can(session.user.role, "messages") ? inboxCounts(session.user.role) : null,
   ]);
   const open = threads.filter((thread) => thread.status !== "closed" && thread.status !== "spam").length;
@@ -79,10 +75,32 @@ async function ContactContent({ searchParams }: { searchParams: Promise<Record<s
           {view === "member" && member ? t("hello", { name: member.firstName }) : t("title")}
         </h1>
         <p className="max-w-[36rem] text-base leading-normal text-pretty text-muted-foreground">{view === "member" ? t("memberIntro") : t("intro")}</p>
-        <span className="inline-flex h-7 items-center gap-1.5 self-start rounded-full bg-ok/12 px-3 text-[12px] font-semibold text-ok">
-          <span aria-hidden className="size-1.5 rounded-full bg-ok" />
-          {t("promise")}
-        </span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="inline-flex h-7 items-center gap-1.5 rounded-full bg-ok/12 px-3 text-[12px] font-semibold text-ok">
+            <span aria-hidden className="size-1.5 rounded-full bg-ok" />
+            {t("promise")}
+          </span>
+          {view === "member" ? (
+            <Link
+              href="/espace-membre/messages"
+              prefetch={false}
+              className="inline-flex h-7 items-center gap-1.5 rounded-full border bg-card px-3 text-[12px] transition-colors hover:border-foreground/30"
+            >
+              <MessagesSquare className="size-3.5 shrink-0 text-muted-foreground" aria-hidden />
+              <span className="font-semibold">{t("myMessages")}</span>
+              {/* New replies from the committee: a red count, like the bell. */}
+              {unread.size ? (
+                <span className="grid h-[18px] min-w-[18px] place-items-center rounded-full bg-psg-red px-1 text-[10px] leading-none font-bold text-white tabular-nums">
+                  <span className="sr-only">{t("newReplies", { count: unread.size })}</span>
+                  <span aria-hidden>{unread.size > 9 ? "9+" : unread.size}</span>
+                </span>
+              ) : open ? (
+                <span className="text-muted-foreground">· {t("myMessagesOpen", { count: open })}</span>
+              ) : null}
+              <ArrowRight className="size-3 shrink-0 text-muted-foreground" aria-hidden />
+            </Link>
+          ) : null}
+        </div>
       </header>
 
       {/* The committee: messages waiting, one tap to the inbox. */}
@@ -100,39 +118,6 @@ async function ContactContent({ searchParams }: { searchParams: Promise<Record<s
 
       <div className="grid items-start gap-[clamp(28px,4vw,40px)] lg:grid-cols-[minmax(0,1fr)_20rem]">
         <div className="flex min-w-0 flex-col gap-[clamp(28px,4vw,40px)]">
-          {view === "member" ? (
-            <section aria-labelledby="contact-shortcuts" className="space-y-3">
-              <h2 id="contact-shortcuts" className="sr-only">
-                {t("shortcutsTitle")}
-              </h2>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
-                {SHORTCUTS.map(({ key, href, icon: Icon }) => (
-                  <Link
-                    key={key}
-                    href={href}
-                    prefetch={false}
-                    className="flex min-h-14 items-center gap-2.5 rounded-[12px] border bg-card px-3 py-2.5 text-[14px] font-semibold transition-[border-color,transform] hover:border-foreground/30 active:scale-[0.98]"
-                  >
-                    <Icon className="size-4 shrink-0 text-psg-blue dark:text-foreground" aria-hidden />
-                    <span className="min-w-0 leading-tight">{t(`shortcuts.${key}`)}</span>
-                  </Link>
-                ))}
-              </div>
-              <Link
-                href="/espace-membre/messages"
-                prefetch={false}
-                className="flex min-h-14 items-center gap-3 rounded-[12px] border bg-card px-3.5 py-2.5 transition-colors hover:border-foreground/30"
-              >
-                <MessagesSquare className="size-5 shrink-0 text-psg-blue dark:text-foreground" aria-hidden />
-                <span className="min-w-0 flex-1">
-                  <span className="block text-[14px] font-semibold">{t("myMessages")}</span>
-                  <span className="block text-[12px] text-muted-foreground">{t("myMessagesOpen", { count: open })}</span>
-                </span>
-                <ArrowRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-              </Link>
-            </section>
-          ) : null}
-
           <ContactComposer
             view={view}
             identity={view === "member" && member && session ? { name: `${member.firstName} ${member.lastName}`.trim(), email: session.user.email } : undefined}
@@ -144,15 +129,49 @@ async function ContactContent({ searchParams }: { searchParams: Promise<Record<s
         </div>
 
         <aside className="flex min-w-0 flex-col gap-[clamp(24px,3vw,32px)] lg:sticky lg:top-6">
-          <section className="flex flex-col gap-3 rounded-[14px] border bg-card p-4 shadow-brand">
-            <h2 className={asideTitle}>{t("byEmail")}</h2>
-            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 font-narrow text-[22px] leading-none font-extrabold break-all italic underline-offset-4 hover:underline">
-              <Mail className="size-4 shrink-0 not-italic" aria-hidden />
-              {email}
-            </a>
-            <div>
-              <CopyEmailButton email={email} />
+          {/* Title above the card, level with "You're writing about…" on the left. */}
+          <section aria-labelledby="contact-email" className="flex flex-col gap-3">
+            <h2 id="contact-email" className={asideTitle}>
+              {t("byEmail")}
+            </h2>
+            {/* Same card as "Follow us": the whole card opens the mail app, the copy button sits on
+                its right, outside the link. */}
+            <div className="relative">
+              <a
+                href={`mailto:${email}`}
+                className="group flex items-center gap-3 rounded-[14px] border bg-card p-4 pr-16 shadow-brand transition-colors hover:border-foreground/30"
+              >
+                <span className="grid size-10 shrink-0 place-items-center rounded-full bg-psg-blue text-white dark:bg-white dark:text-psg-blue">
+                  <Mail className="size-5" aria-hidden />
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block truncate text-[15px] font-semibold">{email}</span>
+                  <span className="block text-[13px] text-muted-foreground">{t("emailBody")}</span>
+                </span>
+              </a>
+              <CopyEmailButton email={email} iconOnly className="absolute top-1/2 right-3 -translate-y-1/2" />
             </div>
+          </section>
+
+          <section aria-labelledby="contact-follow" className="flex flex-col gap-3">
+            <h2 id="contact-follow" className={asideTitle}>
+              {t("followTitle")}
+            </h2>
+            <a
+              href={INSTAGRAM.url}
+              target="_blank"
+              rel="noreferrer"
+              className="group flex items-center gap-3 rounded-[14px] border bg-card p-4 shadow-brand transition-colors hover:border-foreground/30"
+            >
+              <span className="grid size-10 shrink-0 place-items-center rounded-full bg-psg-blue text-white dark:bg-white dark:text-psg-blue">
+                <InstagramIcon className="size-5" />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[15px] font-semibold">{INSTAGRAM.handle}</span>
+                <span className="block text-[13px] text-muted-foreground">{t("followBody")}</span>
+              </span>
+              <ArrowUpRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+            </a>
           </section>
 
           <CommitteeList people={people} />

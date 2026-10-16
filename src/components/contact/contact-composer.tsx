@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import { toast } from "sonner";
 import { AutoTextarea } from "@/components/contact/auto-textarea";
 import type { ContactTopic } from "@/db/schema";
@@ -56,6 +57,17 @@ function writeDraft(draft: Draft | null) {
   }
 }
 
+/**
+ * Animates a change of what is shown (tiles ↔ chosen topic) with the browser's view transitions:
+ * the chosen tile turns into the card's header, the rest fades. Instant without support or with
+ * reduced motion.
+ */
+function morph(update: () => void) {
+  const doc = document as Document & { startViewTransition?: (callback: () => void) => unknown };
+  if (!doc.startViewTransition || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return update();
+  doc.startViewTransition(() => flushSync(update));
+}
+
 const field =
   "h-12 w-full min-w-0 rounded-[10px] border border-input bg-background px-3.5 text-base outline-none transition-[border-color,box-shadow] placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 lg:h-11 lg:text-[15px] dark:bg-input/30";
 const labelClass = "text-[13px] font-semibold";
@@ -83,7 +95,7 @@ export function ContactComposer({
   const keyboard = useKeyboardInset();
   const ids = useId();
   const startedAt = useRef(0);
-  const formRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLElement>(null);
   const successRef = useRef<HTMLHeadingElement>(null);
 
   const [topic, setTopic] = useState<ContactTopic | null>(initialTopic);
@@ -129,9 +141,11 @@ export function ContactComposer({
   const save = (patch: Partial<Draft>) => writeDraft({ topic, name, email, organisation, body, ...patch });
 
   const choose = (next: ContactTopic) => {
-    setTopic(next);
-    setQuestion(false);
-    setFailure(null);
+    morph(() => {
+      setTopic(next);
+      setQuestion(false);
+      setFailure(null);
+    });
     save({ topic: next });
     // Keep the URL shareable (?sujet=…) without a navigation.
     try {
@@ -272,78 +286,91 @@ export function ContactComposer({
   const remaining = MIN_BODY - body.trim().length;
 
   return (
-    <div className="space-y-5">
-      {/* Topics: tiles until one is picked, then a compact line to change it. */}
+    // Topics: tiles until one is picked; then one card holds the chosen topic, what to know
+    // first and the form. The title stays above both.
+    <section ref={formRef} aria-labelledby={`${ids}-pick`} className="scroll-mt-24 space-y-3">
+      <h2 id={`${ids}-pick`} className="font-wide text-[11px] font-semibold tracking-[0.08em] uppercase">
+        {t("pickTitle")}
+      </h2>
       {topic === null ? (
-        <section aria-labelledby={`${ids}-pick`} className="space-y-3">
-          <h2 id={`${ids}-pick`} className="font-wide text-[11px] font-semibold tracking-[0.08em] uppercase">
-            {t("pickTitle")}
-          </h2>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-            {topics.map((value) => {
-              const Icon = ICONS[value];
-              return (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => choose(value)}
-                  className="group flex min-h-[88px] cursor-pointer flex-col items-start gap-2 rounded-[14px] border bg-card p-3.5 text-left transition-[border-color,transform,box-shadow] hover:border-foreground/30 hover:shadow-brand active:scale-[0.98] sm:min-h-[96px]"
-                >
-                  <span className="grid size-8 place-items-center rounded-full bg-psg-blue text-white transition-colors group-hover:bg-psg-red dark:bg-white dark:text-psg-blue">
-                    <Icon className="size-4" aria-hidden />
-                  </span>
-                  <span className="text-[14px] leading-tight font-semibold text-balance">{tTopics(`${value}.label`)}</span>
-                  <span className="hidden text-[12px] leading-snug text-muted-foreground sm:block">{tTopics(`${value}.hint`)}</span>
-                </button>
-              );
-            })}
-          </div>
-        </section>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
+          {topics.map((value) => {
+            const Icon = ICONS[value];
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => choose(value)}
+                style={{ viewTransitionName: `contact-topic-${value}` }}
+                className="group flex min-h-[88px] cursor-pointer flex-col items-start gap-2 rounded-[14px] border bg-card p-3.5 text-left transition-[border-color,transform,box-shadow] duration-200 hover:border-foreground/30 hover:shadow-brand active:scale-[0.98] sm:min-h-[96px]"
+              >
+                <span className="grid size-8 place-items-center rounded-full bg-psg-blue text-white transition-colors group-hover:bg-psg-red dark:bg-white dark:text-psg-blue">
+                  <Icon className="size-4" aria-hidden />
+                </span>
+                <span className="text-[14px] leading-tight font-semibold text-balance">{tTopics(`${value}.label`)}</span>
+                <span className="hidden text-[12px] leading-snug text-muted-foreground sm:block">{tTopics(`${value}.hint`)}</span>
+              </button>
+            );
+          })}
+        </div>
       ) : (
-        <div ref={formRef} className="flex scroll-mt-24 items-center gap-3 rounded-[14px] border bg-card p-3">
-          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-psg-blue text-white dark:bg-white dark:text-psg-blue">
-            {(() => {
-              const Icon = ICONS[topic];
-              return <Icon className="size-4" aria-hidden />;
-            })()}
-          </span>
-          <span className="min-w-0 flex-1 text-[15px] leading-tight font-semibold">{tTopics(`${topic}.label`)}</span>
-          <button
-            type="button"
-            onClick={() => {
-              setTopic(null);
-              save({ topic: null });
-            }}
-            className="h-10 shrink-0 cursor-pointer rounded-full px-3 text-[13px] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
-          >
-            {t("form.changeTopic")}
-          </button>
-        </div>
-      )}
+        <div className="rounded-[14px] border bg-card shadow-brand">
+          <div className="flex items-center gap-3 p-3 sm:p-3.5" style={{ viewTransitionName: `contact-topic-${topic}` }}>
+            <span className="grid size-9 shrink-0 place-items-center rounded-full bg-psg-blue text-white dark:bg-white dark:text-psg-blue">
+              {(() => {
+                const Icon = ICONS[topic];
+                return <Icon className="size-4" aria-hidden />;
+              })()}
+            </span>
+            <span className="min-w-0 flex-1 text-[15px] leading-tight font-semibold">{tTopics(`${topic}.label`)}</span>
+            <button
+              type="button"
+              onClick={() => {
+                morph(() => setTopic(null));
+                save({ topic: null });
+                try {
+                  const url = new URL(window.location.href);
+                  url.searchParams.delete("sujet");
+                  window.history.replaceState(null, "", url);
+                } catch {
+                  // Not important.
+                }
+              }}
+              className="h-10 shrink-0 cursor-pointer rounded-full px-3 text-[13px] text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+            >
+              {t("form.changeTopic")}
+            </button>
+          </div>
 
-      {help ? (
-        <div className="rounded-[14px] border border-dashed bg-background/60 p-4">
-          <p className="text-[15px] leading-relaxed text-pretty">{t(help.text)}</p>
-          {help.cta || (topic === "join" && view === "visitor" && !question) ? (
-            <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
-              {help.cta ? (
-                <Link href={help.cta.href} className="inline-flex h-11 items-center justify-center gap-2 rounded-[10px] bg-psg-blue px-4 font-wide text-[10.5px] font-semibold tracking-[0.06em] text-white uppercase dark:bg-white dark:text-psg-blue">
-                  {t(help.cta.label)}
-                  <ArrowRight className="size-4" aria-hidden />
-                </Link>
-              ) : null}
-              {topic === "join" && view === "visitor" && !question ? (
-                <button type="button" onClick={() => setQuestion(true)} className="inline-flex h-11 cursor-pointer items-center justify-center rounded-[10px] border px-4 text-[14px] transition-colors hover:bg-foreground/5">
-                  {t("help.joinQuestion")}
-                </button>
-              ) : null}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+          <div className="space-y-5 border-t p-4 sm:p-5">
+            {help ? (
+              <div className="animate-in fade-in-0 slide-in-from-bottom-1 duration-300 motion-reduce:animate-none">
+                <p className="text-[15px] leading-relaxed text-pretty">{t(help.text)}</p>
+                {help.cta || (topic === "join" && view === "visitor" && !question) ? (
+                  <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+                    {help.cta ? (
+                      <Link href={help.cta.href} className="inline-flex h-11 items-center justify-center gap-2 rounded-[10px] bg-psg-blue px-4 font-wide text-[10.5px] font-semibold tracking-[0.06em] text-white uppercase dark:bg-white dark:text-psg-blue">
+                        {t(help.cta.label)}
+                        <ArrowRight className="size-4" aria-hidden />
+                      </Link>
+                    ) : null}
+                    {topic === "join" && view === "visitor" && !question ? (
+                      <button type="button" onClick={() => setQuestion(true)} className="inline-flex h-11 cursor-pointer items-center justify-center rounded-[10px] border px-4 text-[14px] transition-colors hover:bg-foreground/5">
+                        {t("help.joinQuestion")}
+                      </button>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
 
       {showForm ? (
-        <form onSubmit={submit} noValidate className="space-y-4" aria-describedby={failure ? `${ids}-failure` : undefined}>
+        <form
+          onSubmit={submit}
+          noValidate
+          className="animate-in space-y-4 border-t pt-5 fade-in-0 slide-in-from-bottom-2 duration-300 [animation-delay:60ms] [animation-fill-mode:backwards] motion-reduce:animate-none"
+          aria-describedby={failure ? `${ids}-failure` : undefined}
+        >
           {/* Only robots fill this. */}
           <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
             <label>
@@ -497,7 +524,7 @@ export function ContactComposer({
           {/* Phones: stuck to the bottom of the screen, and above the keyboard while typing. */}
           <div
             style={keyboard ? { bottom: keyboard } : undefined}
-            className="sticky bottom-0 z-20 -mx-4 border-t bg-background/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none"
+            className="sticky bottom-0 z-20 -mx-4 border-t bg-card/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md sm:static sm:mx-0 sm:border-0 sm:bg-transparent sm:p-0 sm:backdrop-blur-none"
           >
             <button
               type="submit"
@@ -510,7 +537,10 @@ export function ContactComposer({
           </div>
         </form>
       ) : null}
-    </div>
+          </div>
+        </div>
+      )}
+    </section>
   );
 }
 

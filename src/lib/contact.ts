@@ -1,6 +1,6 @@
 import "server-only";
 import { createHash, createHmac } from "node:crypto";
-import { and, desc, eq, inArray, isNotNull, max } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNotNull, isNull, max, or } from "drizzle-orm";
 import { db } from "@/db";
 import {
   CONTACT_TOPICS,
@@ -217,4 +217,25 @@ export async function committeeMembers() {
     .filter((row) => row.title?.trim())
     .sort((a, b) => (order[a.role] ?? 3) - (order[b.role] ?? 3) || a.firstName.localeCompare(b.firstName))
     .map(({ role: _role, ...row }) => row);
+}
+
+/** The member's conversations with a committee reply they haven't opened yet. */
+export async function unreadThreadIds(memberId: string) {
+  const rows = await db
+    .selectDistinct({ id: contactThreads.id })
+    .from(contactMessages)
+    .innerJoin(contactThreads, eq(contactThreads.id, contactMessages.threadId))
+    .where(
+      and(
+        eq(contactThreads.memberId, memberId),
+        eq(contactMessages.author, "committee"),
+        or(isNull(contactThreads.senderSeenAt), gt(contactMessages.createdAt, contactThreads.senderSeenAt)),
+      ),
+    );
+  return new Set(rows.map((row) => row.id));
+}
+
+/** The sender opened the conversation: its replies are no longer new. */
+export async function markSeenBySender(threadId: string) {
+  await db.update(contactThreads).set({ senderSeenAt: new Date() }).where(eq(contactThreads.id, threadId));
 }

@@ -1,4 +1,5 @@
 import { Body, Button, Column, Container, Head, Heading, Html, Img, Link, Preview, Row, Section, Text } from "react-email";
+import { INSTAGRAM } from "@/lib/social";
 
 /*
  * The frame of every email, drawn after the site: the club logo on the light page background,
@@ -248,6 +249,10 @@ export function EmailLayout({
               &nbsp;&nbsp;·&nbsp;&nbsp;
               <Link href={`${SITE}/${locale}/confidentialite`} style={{ color: colors.muted, textDecoration: "underline" }}>
                 {footer.privacy}
+              </Link>
+              &nbsp;&nbsp;·&nbsp;&nbsp;
+              <Link href={INSTAGRAM.url} style={{ color: colors.muted, textDecoration: "underline" }}>
+                Instagram
               </Link>
               {unsubscribe ? (
                 <>

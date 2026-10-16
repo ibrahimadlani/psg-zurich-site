@@ -681,6 +681,8 @@ export const contactThreads = mysqlTable(
     firstReplyAt: dateTime3("first_reply_at"),
     /** Last "waiting for an answer" reminder to the committee. */
     remindedAt: dateTime3("reminded_at"),
+    /** When the sender last opened the conversation: committee replies after it are new to them. */
+    senderSeenAt: dateTime3("sender_seen_at"),
     ...timestamps(),
   },
   (t) => [

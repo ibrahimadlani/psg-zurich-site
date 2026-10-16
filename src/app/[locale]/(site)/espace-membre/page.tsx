@@ -11,6 +11,7 @@ import { MyRegistrations } from "@/components/member-area/my-registrations";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Link, redirect } from "@/i18n/navigation";
+import { unreadThreadIds } from "@/lib/contact";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { memberPolls } from "@/lib/polls";
@@ -31,6 +32,8 @@ async function MemberPanel() {
 
   const { user } = session;
   const member = await getCurrentMember();
+  // Committee replies the member hasn't opened yet: red count on "My messages".
+  const unread = member ? (await unreadThreadIds(member.id)).size : 0;
   const name = member ? `${member.firstName} ${member.lastName}` : user.name || user.email;
 
   // Signed up before the profile questions existed, or skipped them: a quiet nudge.
@@ -71,6 +74,12 @@ async function MemberPanel() {
             <Link href="/espace-membre/messages" prefetch={false}>
               <MessagesSquare aria-hidden />
               {t("messagesLink")}
+              {unread ? (
+                <span className="grid h-[18px] min-w-[18px] place-items-center rounded-full bg-psg-red px-1 text-[10px] leading-none font-bold text-white tabular-nums">
+                  <span className="sr-only">{t("newReplies", { count: unread })}</span>
+                  <span aria-hidden>{unread > 9 ? "9+" : unread}</span>
+                </span>
+              ) : null}
             </Link>
           </Button>
         ) : null}

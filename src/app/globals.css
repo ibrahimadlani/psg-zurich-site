@@ -256,3 +256,13 @@
 @media (prefers-reduced-motion: reduce) {
   .skeleton::after { animation: none; display: none; }
 }
+
+/* View transitions (contact topics: the chosen tile becomes the header of the form card). */
+::view-transition-group(*) {
+  animation-duration: 0.38s;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.28s;
+}

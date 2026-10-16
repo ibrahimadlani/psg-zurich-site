@@ -63,8 +63,8 @@
     "title": "Kontakt",
     "hello": "Hallo {name}",
     "intro": "Eine Frage zum Club, zur Mitgliedschaft, zu einer Auswärtsfahrt oder einer Partnerschaft? Schreib uns, der Vorstand antwortet.",
-    "memberIntro": "Erledige es unten mit einem Klick, oder schreib dem Vorstand.",
-    "promise": "Antwort innert 48 h",
+    "memberIntro": "Eine Frage an den Vorstand? Wähl das Thema, wir antworten dir.",
+    "promise": "Antwort innert 24 h",
     "copy": "Adresse kopieren",
     "copied": "Adresse kopiert",
     "byEmail": "Oder per E-Mail",
@@ -73,13 +73,6 @@
     "openMap": "In Google Maps öffnen",
     "committeeBanner": "{count, plural, one {# Kontaktnachricht wartet auf den Vorstand.} other {# Kontaktnachrichten warten auf den Vorstand.}}",
     "committeeBannerLink": "Posteingang öffnen",
-    "shortcutsTitle": "Mit einem Klick",
-    "shortcuts": {
-      "fee": "Mein Beitrag",
-      "card": "Meine Karte",
-      "events": "Meine Anmeldungen",
-      "data": "Meine Daten"
-    },
     "myMessages": "Meine Nachrichten",
     "myMessagesOpen": "{count, plural, =0 {Keine offene Anfrage} one {# offene Anfrage} other {# offene Anfragen}}",
     "pickTitle": "Du schreibst uns wegen…",
@@ -131,12 +124,12 @@
       "reference": "Referenz",
       "steps": {
         "email": "Eine Eingangsbestätigung geht an {email}.",
-        "answer": "Der Vorstand antwortet innert 48 h.",
+        "answer": "Der Vorstand antwortet innert 24 h.",
         "follow": "Verfolge die Anfrage und antworte über deinen persönlichen Link."
       },
       "stepsMember": {
         "email": "Eine Eingangsbestätigung geht an deine Adresse.",
-        "answer": "Der Vorstand antwortet innert 48 h.",
+        "answer": "Der Vorstand antwortet innert 24 h.",
         "follow": "Die Antwort kommt per E-Mail und unter «Meine Nachrichten»."
       },
       "follow": "Anfrage verfolgen",
@@ -172,7 +165,11 @@
       }
     ],
     "committeeTitle": "Der Vorstand",
-    "committeeIntro": "Ehrenamtliche Fans, die jede Nachricht lesen."
+    "committeeIntro": "Ehrenamtliche Fans, die jede Nachricht lesen.",
+    "newReplies": "{count, plural, one {# neue Antwort} other {# neue Antworten}}",
+    "followTitle": "Folg uns",
+    "followBody": "Fotos und Stimmung unserer Watch-Partys.",
+    "emailBody": "Schreib uns aus deinem Mailprogramm."
   },
   "Onboarding": {
     "pageTitle": "Willkommen",
@@ -523,7 +520,8 @@
       "title": "Profil vervollständigen",
       "body": "Vier Fragen, eine Minute: Geburtsdatum, Interessen, Tickets und Fotos."
     },
-    "messagesLink": "Meine Nachrichten"
+    "messagesLink": "Meine Nachrichten",
+    "newReplies": "{count, plural, one {# neue Antwort} other {# neue Antworten}}"
   },
   "Admin": {
     "title": "Administration",
@@ -934,7 +932,8 @@
     "imprint": "Impressum",
     "privacy": "Datenschutz",
     "statutes": "Statuten",
-    "legal": "Offizielle Dokumente"
+    "legal": "Offizielle Dokumente",
+    "instagram": "Instagram"
   },
   "Emails": {
     "resetPassword": {
@@ -1148,9 +1147,9 @@
     },
     "contactReceived": {
       "subject": "Nachricht erhalten · {reference}",
-      "preview": "Der Vorstand antwortet innert 48 Stunden",
+      "preview": "Der Vorstand antwortet innert 24 Stunden",
       "heading": "Wir haben deine Nachricht erhalten",
-      "body": "Hallo {firstName}\n\nDanke für deine Nachricht ({topic, select, join {Mitgliedschaft} events {Events und Auswärtsfahrten} fees {Beitrag und Karte} partnership {Partnerschaft, Presse} website {Problem mit der Website} account {Persönliche Daten} other {andere Frage}}). Der Vorstand antwortet innert 48 Stunden. Deine Referenz: **{reference}**.\n\nZur Erinnerung, das hast du uns geschrieben:",
+      "body": "Hallo {firstName}\n\nDanke für deine Nachricht ({topic, select, join {Mitgliedschaft} events {Events und Auswärtsfahrten} fees {Beitrag und Karte} partnership {Partnerschaft, Presse} website {Problem mit der Website} account {Persönliche Daten} other {andere Frage}}). Der Vorstand antwortet innert 24 Stunden. Deine Referenz: **{reference}**.\n\nZur Erinnerung, das hast du uns geschrieben:",
       "cta": "Anfrage verfolgen",
       "footer": "Du erhältst diese E-Mail, weil du PSG Zurich über die Kontaktseite geschrieben hast."
     },
@@ -1171,10 +1170,10 @@
       "footer": "Um zu antworten, nutze den Button oben: Deine Antwort geht direkt an den Vorstand."
     },
     "contactReminder": {
-      "subject": "{count, plural, one {# Nachricht wartet} other {# Nachrichten warten}} seit über 48 h",
+      "subject": "{count, plural, one {# Nachricht wartet} other {# Nachrichten warten}} seit über 24 h",
       "preview": "{references}",
       "heading": "Wartende Nachrichten",
-      "body": "{count, plural, one {Diese Anfrage wartet} other {Diese Anfragen warten}} seit über 48 Stunden auf eine Antwort: **{references}**.\n\nDie Kontaktseite verspricht eine Antwort innert 48 h.",
+      "body": "{count, plural, one {Diese Anfrage wartet} other {Diese Anfragen warten}} seit über 24 Stunden auf eine Antwort: **{references}**.\n\nDie Kontaktseite verspricht eine Antwort innert 24 h.",
       "cta": "Posteingang öffnen",
       "footer": "Tägliche Erinnerung, solange Nachrichten warten."
     }
@@ -2409,8 +2408,8 @@
         "when": "Wenn der Vorstand im Admin antwortet"
       },
       "contact_reminder": {
-        "name": "Erinnerung nach 48 h",
-        "when": "Täglich um 9 Uhr, falls Nachrichten seit über 48 h warten"
+        "name": "Erinnerung nach 24 h",
+        "when": "Täglich um 9 Uhr, falls Nachrichten seit über 24 h warten"
       }
     }
   },
@@ -2480,7 +2479,8 @@
     "closedNote": "Dieser Austausch ist abgeschlossen. Mit einer Antwort öffnest du ihn wieder.",
     "trackingNote": "Dieser Link ist persönlich: Bewahre ihn auf, um deine Anfrage zu verfolgen.",
     "notFound": "Dieser Link ist nicht mehr gültig.",
-    "back": "Meine Nachrichten"
+    "back": "Meine Nachrichten",
+    "newReply": "Neue Antwort"
   },
   "AdminMessages": {
     "title": "Nachrichten",

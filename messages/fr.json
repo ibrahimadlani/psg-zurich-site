@@ -63,8 +63,8 @@
     "title": "Contact",
     "hello": "Bonjour {name}",
     "intro": "Une question sur le club, l'adhésion, un déplacement ou un partenariat ? Écrivez-nous, le comité vous répond.",
-    "memberIntro": "Réglez-le en un clic ci-dessous, ou écrivez au comité.",
-    "promise": "Réponse sous 48 h",
+    "memberIntro": "Une question pour le comité ? Choisissez le sujet, on vous répond.",
+    "promise": "Réponse sous 24 h",
     "copy": "Copier l'adresse",
     "copied": "Adresse copiée",
     "byEmail": "Ou par e-mail",
@@ -73,13 +73,6 @@
     "openMap": "Ouvrir dans Google Maps",
     "committeeBanner": "{count, plural, one {# message de contact attend le comité.} other {# messages de contact attendent le comité.}}",
     "committeeBannerLink": "Ouvrir la boîte de réception",
-    "shortcutsTitle": "En un clic",
-    "shortcuts": {
-      "fee": "Ma cotisation",
-      "card": "Ma carte",
-      "events": "Mes inscriptions",
-      "data": "Mes données"
-    },
     "myMessages": "Mes messages",
     "myMessagesOpen": "{count, plural, =0 {Aucune demande en cours} one {# demande en cours} other {# demandes en cours}}",
     "pickTitle": "Vous nous écrivez pour…",
@@ -131,12 +124,12 @@
       "reference": "Référence",
       "steps": {
         "email": "Un accusé de réception part à {email}.",
-        "answer": "Le comité vous répond sous 48 h.",
+        "answer": "Le comité vous répond sous 24 h.",
         "follow": "Suivez l'échange et répondez depuis votre lien personnel."
       },
       "stepsMember": {
         "email": "Un accusé de réception part à votre adresse.",
-        "answer": "Le comité vous répond sous 48 h.",
+        "answer": "Le comité vous répond sous 24 h.",
         "follow": "La réponse arrive par e-mail et dans « Mes messages »."
       },
       "follow": "Suivre ma demande",
@@ -172,7 +165,11 @@
       }
     ],
     "committeeTitle": "Le comité",
-    "committeeIntro": "Des supporters bénévoles, qui lisent chaque message."
+    "committeeIntro": "Des supporters bénévoles, qui lisent chaque message.",
+    "newReplies": "{count, plural, one {# nouvelle réponse} other {# nouvelles réponses}}",
+    "followTitle": "Suivez-nous",
+    "followBody": "Photos et ambiance des watch parties.",
+    "emailBody": "Écrivez-nous depuis votre messagerie."
   },
   "Onboarding": {
     "pageTitle": "Bienvenue",
@@ -523,7 +520,8 @@
       "title": "Complétez votre profil",
       "body": "Quatre questions, une minute : date de naissance, centres d'intérêt, billetterie et photos."
     },
-    "messagesLink": "Mes messages"
+    "messagesLink": "Mes messages",
+    "newReplies": "{count, plural, one {# nouvelle réponse} other {# nouvelles réponses}}"
   },
   "Admin": {
     "title": "Administration",
@@ -934,7 +932,8 @@
     "imprint": "Mentions légales",
     "privacy": "Confidentialité",
     "statutes": "Statuts",
-    "legal": "Documents officiels"
+    "legal": "Documents officiels",
+    "instagram": "Instagram"
   },
   "Emails": {
     "resetPassword": {
@@ -1148,9 +1147,9 @@
     },
     "contactReceived": {
       "subject": "Message reçu · {reference}",
-      "preview": "Le comité vous répond sous 48 heures",
+      "preview": "Le comité vous répond sous 24 heures",
       "heading": "Nous avons bien reçu votre message",
-      "body": "Bonjour {firstName},\n\nMerci pour votre message ({topic, select, join {adhésion} events {événements et déplacements} fees {cotisation et carte} partnership {partenariat, presse} website {problème sur le site} account {données personnelles} other {autre question}}). Le comité vous répond sous 48 heures. Votre référence : **{reference}**.\n\nPour rappel, voici ce que vous nous avez écrit :",
+      "body": "Bonjour {firstName},\n\nMerci pour votre message ({topic, select, join {adhésion} events {événements et déplacements} fees {cotisation et carte} partnership {partenariat, presse} website {problème sur le site} account {données personnelles} other {autre question}}). Le comité vous répond sous 24 heures. Votre référence : **{reference}**.\n\nPour rappel, voici ce que vous nous avez écrit :",
       "cta": "Suivre ma demande",
       "footer": "Vous recevez cet e-mail parce que vous avez écrit au PSG Zurich depuis la page Contact."
     },
@@ -1171,10 +1170,10 @@
       "footer": "Pour nous répondre, utilisez le bouton ci-dessus : votre réponse arrive directement au comité."
     },
     "contactReminder": {
-      "subject": "{count, plural, one {# message attend} other {# messages attendent}} depuis plus de 48 h",
+      "subject": "{count, plural, one {# message attend} other {# messages attendent}} depuis plus de 24 h",
       "preview": "{references}",
       "heading": "Messages en attente",
-      "body": "{count, plural, one {Cette demande attend} other {Ces demandes attendent}} une réponse depuis plus de 48 heures : **{references}**.\n\nLa page Contact promet une réponse sous 48 h.",
+      "body": "{count, plural, one {Cette demande attend} other {Ces demandes attendent}} une réponse depuis plus de 24 heures : **{references}**.\n\nLa page Contact promet une réponse sous 24 h.",
       "cta": "Ouvrir la boîte de réception",
       "footer": "Rappel quotidien tant que des messages attendent."
     }
@@ -2409,8 +2408,8 @@
         "when": "Quand le comité répond depuis l'admin"
       },
       "contact_reminder": {
-        "name": "Relance 48 h",
-        "when": "Chaque jour à 9 h, s'il reste des messages sans réponse depuis 48 h"
+        "name": "Relance 24 h",
+        "when": "Chaque jour à 9 h, s'il reste des messages sans réponse depuis 24 h"
       }
     }
   },
@@ -2480,7 +2479,8 @@
     "closedNote": "Cet échange est clôturé. Répondre le rouvre.",
     "trackingNote": "Ce lien est personnel : gardez-le pour suivre votre demande.",
     "notFound": "Ce lien n'est plus valable.",
-    "back": "Mes messages"
+    "back": "Mes messages",
+    "newReply": "Nouvelle réponse"
   },
   "AdminMessages": {
     "title": "Messages",

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { BrandShell } from "@/components/brand-shell";
+import { InstagramIcon } from "@/components/instagram-icon";
+import { INSTAGRAM } from "@/lib/social";
 
 export async function generateMetadata(): Promise<Metadata> {
   const [t, site] = await Promise.all([getTranslations("ComingSoon"), getTranslations("Metadata")]);
@@ -56,6 +58,15 @@ export default async function ComingSoonPage() {
           className="mt-3 border-b pb-[3px] font-wide text-[15px] tracking-[0.02em] text-foreground transition-colors hover:border-brand-red"
         >
           contact@psg-zurich.ch
+        </a>
+        <a
+          href={INSTAGRAM.url}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 text-[14px] text-muted-foreground transition-colors hover:text-foreground"
+        >
+          <InstagramIcon />
+          {INSTAGRAM.handle}
         </a>
       </div>
     </BrandShell>
