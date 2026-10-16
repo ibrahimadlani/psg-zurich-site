@@ -10,6 +10,7 @@ import { readThemePreference, setThemePreference, type ThemePreference } from "@
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { UserAvatar } from "@/components/user-avatar";
 import { useSignOut } from "@/components/user-nav";
+import { SignInLink } from "@/components/auth/sign-in-link";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useSession } from "@/lib/auth-client";
@@ -358,13 +359,11 @@ function AccountBlock({ motionIndex }: { motionIndex: number }) {
           </Link>
         ) : null}
         {signIn ? (
-          <Link
-            href="/connexion"
-            prefetch={false}
+          <SignInLink
             className="flex h-11 items-center justify-center rounded-[8px] border bg-card font-wide text-[11px] font-semibold tracking-[0.06em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98]"
           >
             {t("drawer.signIn")}
-          </Link>
+          </SignInLink>
         ) : null}
       </div>
     );

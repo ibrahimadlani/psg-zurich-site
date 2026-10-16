@@ -45,7 +45,7 @@ async function MemberDetail({ id }: { id: string }) {
     getTranslations("LocaleSwitcher"),
     getFormatter(),
   ]);
-  const session = await adminPage("members.read", `/admin/membres/${id}`);
+  const session = await adminPage("members.read");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const detail = await memberDetail(id);
   if (!detail) notFound();

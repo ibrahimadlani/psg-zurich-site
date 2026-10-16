@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function Banner() {
   await connection();
-  const session = await adminPage("news", "/admin/banniere");
+  const session = await adminPage("news");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   return <AnnouncementsAdmin />;
 }

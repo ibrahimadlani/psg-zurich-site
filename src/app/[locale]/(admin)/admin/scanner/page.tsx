@@ -16,7 +16,7 @@ async function ScannerFrame({ searchParams }: { searchParams: Promise<Record<str
   await connection();
   const { evenement, carte } = await searchParams;
   const card = typeof carte === "string" ? carte : null;
-  const session = await adminPage("scan", card ? `/admin/scanner?carte=${encodeURIComponent(card)}` : "/admin/scanner");
+  const session = await adminPage("scan");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   return <Scanner initialEvent={typeof evenement === "string" ? evenement : null} initialCard={card} />;
 }

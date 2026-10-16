@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, MapPin } from "lucide-react";
+import { SignInLink } from "@/components/auth/sign-in-link";
 import { useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/brand-logo";
 import { InstagramIcon } from "@/components/instagram-icon";
@@ -88,9 +89,14 @@ function VisitorFooter() {
             <ul className="flex flex-col gap-2">
               {links.map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} prefetch={guestOnly.has(href) ? false : undefined} className={link}>
-                    {label}
-                  </Link>
+                  {/* Sign in: back to this page afterwards. */}
+                  {href === "/connexion" ? (
+                    <SignInLink className={link}>{label}</SignInLink>
+                  ) : (
+                    <Link href={href} prefetch={guestOnly.has(href) ? false : undefined} className={link}>
+                      {label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

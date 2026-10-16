@@ -1,12 +1,13 @@
 import { ArrowLeft, ChevronRight, PenLine } from "lucide-react";
 import type { Metadata } from "next";
-import { getFormatter, getLocale, getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { PageHeader } from "@/components/page-header";
-import { Link, redirect } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { formatReference, memberThreads, unreadThreadIds } from "@/lib/contact";
 import { getCurrentMember } from "@/lib/members";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +28,7 @@ async function Threads() {
   await connection();
   const [t, tTopics, format] = await Promise.all([getTranslations("ContactThread"), getTranslations("ContactTopics"), getFormatter()]);
   const session = await getSession();
-  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
+  if (!session) return redirectToSignIn();
   const member = await getCurrentMember();
   const [all, unread] = member ? await Promise.all([memberThreads(member.id), unreadThreadIds(member.id)]) : [[], new Set<string>()];
   const threads = all.filter((thread) => thread.status !== "spam");

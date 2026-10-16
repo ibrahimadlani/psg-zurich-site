@@ -82,6 +82,7 @@
     --ring: oklch(0.366 0.098 248);
     --brand-red: oklch(0.58 0.215 29);
     --pattern: oklch(0.366 0.098 248 / 0.13);
+    --pattern-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M-5 5L5-5M0 20L20 0M15 25L25 15' stroke='%230b416f' stroke-opacity='.13'/%3E%3C/svg%3E");
     /* Selected item of a segmented control (language switcher) */
     --segment: oklch(0.366 0.098 248);
     --segment-foreground: oklch(0.985 0 0);
@@ -124,6 +125,7 @@
     --ring: oklch(0.62 0.13 248);
     --brand-red: oklch(0.64 0.2 29);
     --pattern: oklch(0.62 0.13 248 / 0.16);
+    --pattern-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Cpath d='M-5 5L5-5M0 20L20 0M15 25L25 15' stroke='%234a8bd0' stroke-opacity='.16'/%3E%3C/svg%3E");
     --segment: oklch(0.985 0 0);
     --segment-foreground: oklch(0.145 0 0);
     --brand-shadow: 0 1px 2px oklch(0 0 0 / 0.3), 0 16px 40px -12px oklch(0 0 0 / 0.6);
@@ -175,9 +177,12 @@
   }
 }
 
-/* Diagonal-line backdrop fading out from the centre of the page. */
+/* Diagonal-line backdrop fading out from the centre of the page. The lines are an SVG tile, not
+   a repeating gradient: Safari draws hard gradient stops without smoothing, so the lines came out
+   uneven and shimmered while scrolling. */
 @utility bg-diagonal {
-  background-image: repeating-linear-gradient(135deg, var(--pattern) 0 1px, transparent 1px 14px);
+  background-image: var(--pattern-tile);
+  background-size: 20px 20px;
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 100%);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 20%, transparent 100%);
 }

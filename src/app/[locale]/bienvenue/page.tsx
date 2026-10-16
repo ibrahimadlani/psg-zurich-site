@@ -7,16 +7,14 @@ import { OnboardingFlow } from "@/components/onboarding/onboarding-flow";
 import { db } from "@/db";
 import { members } from "@/db/schema";
 import { redirect } from "@/i18n/navigation";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
+import { safeReturnPath } from "@/lib/return-to";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Onboarding");
   return { title: t("pageTitle"), robots: { index: false } };
 }
-
-/** Where to go next: `?suite=/…` from the sign-in form (paths of this site only), else home. */
-const nextPath = (suite: string | string[] | undefined) =>
-  typeof suite === "string" && /^\/(?![/\\])/.test(suite) ? suite : "/";
 
 /**
  * Welcome steps, once: right after the email is confirmed (the confirmation link signs in and
@@ -25,11 +23,11 @@ const nextPath = (suite: string | string[] | undefined) =>
  */
 async function Welcome({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const locale = await getLocale();
-  const session = await getSession();
-  if (!session) return redirect({ href: "/connexion", locale });
-  const params = await searchParams;
+  const [session, params] = await Promise.all([getSession(), searchParams]);
+  if (!session) return redirectToSignIn(safeReturnPath(params.suite));
   const resume = params.reprendre === "1";
-  const next = nextPath(params.suite ?? (resume ? "/espace-membre" : undefined));
+  // Where to go next: the page the sign-in was for (`?suite=`), else home.
+  const next = safeReturnPath(params.suite) ?? (resume ? "/espace-membre" : "/");
   const [member] = await db
     .select({
       firstName: members.firstName,

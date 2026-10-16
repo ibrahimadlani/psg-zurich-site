@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function Documents() {
   await connection();
   const [t, tShell, format] = await Promise.all([getTranslations("AdminDocuments"), getTranslations("AdminShell"), getFormatter()]);
-  const session = await adminPage("documents", "/admin/documents");
+  const session = await adminPage("documents");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const rows = await listDocuments(["public", "members", "admins"]);
   const categories = [...new Set(rows.map((row) => row.category).filter((value): value is string => Boolean(value)))].sort();

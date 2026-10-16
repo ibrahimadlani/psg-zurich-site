@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function EventAdminDetail({ id }: { id: string }) {
   await connection();
   const [t, tEvents, format, now] = await Promise.all([getTranslations("AdminEvents"), getTranslations("Events"), getFormatter(), getNow()]);
-  const session = await adminPage("events", `/admin/evenements/${id}`);
+  const session = await adminPage("events");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const [detail, options] = await Promise.all([adminEventDetail(id), matchOptions((date) => format.dateTime(date, { day: "numeric", month: "short" }))]);
   if (!detail) notFound();

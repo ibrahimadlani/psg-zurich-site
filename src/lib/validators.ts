@@ -309,6 +309,9 @@ export const membershipSignupSchema = z.object({
   locale: z.enum(LOCALES).default("fr"),
   // Honeypot: hidden from people, filled in by robots.
   website: z.string().max(200).optional(),
+  // Page the visitor wanted before joining (`?suite=`): the welcome step ends there. Checked
+  // with safeReturnPath before use.
+  next: z.string().max(512).optional(),
 });
 
 

@@ -58,7 +58,7 @@ const SHORTCUTS: { key: "scanner" | "newEvent" | "newPost" | "banner" | "campaig
 async function Home() {
   await connection();
   const [t, format, now] = await Promise.all([getTranslations("AdminHome"), getFormatter(), getNow()]);
-  const session = await adminPage("area", "/admin");
+  const session = await adminPage("area");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const role = session.user.role;
 

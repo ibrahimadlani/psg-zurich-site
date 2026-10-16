@@ -1,19 +1,19 @@
 import "server-only";
 import { asc, desc, eq, gte } from "drizzle-orm";
-import { getFormatter, getLocale } from "next-intl/server";
+import { getFormatter } from "next-intl/server";
 import { db } from "@/db";
 import { events, matches, posts } from "@/db/schema";
-import { redirect } from "@/i18n/navigation";
 import { parseBlocks } from "@/lib/article-blocks";
 import { getEventsWithAttendance } from "@/lib/events";
 import { matchTitle } from "@/lib/matches";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 
 /** Moderators and up; visitors go to sign-in, members get null (the page shows "forbidden"). */
 export async function requireCmsAccess() {
   const session = await getSession();
-  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
+  if (!session) return redirectToSignIn();
   return can(session.user.role, "news") ? session : null;
 }
 

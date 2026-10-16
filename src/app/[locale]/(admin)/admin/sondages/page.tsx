@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function Polls() {
   await connection();
   const [t, format] = await Promise.all([getTranslations("AdminPolls"), getFormatter()]);
-  const session = await adminPage("polls", "/admin/sondages");
+  const session = await adminPage("polls");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const polls = await adminPolls();
 

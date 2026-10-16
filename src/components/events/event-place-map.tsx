@@ -53,8 +53,10 @@ export function EventPlaceMap({
       >
         <div className="min-h-0 overflow-hidden" inert={!open}>
           <div className="space-y-2 pt-3">
-            <div className="aspect-[16/9] overflow-hidden rounded-[12px] border bg-psg-blue/10 sm:aspect-[21/9]">
-              {loaded ? <PlaceMap latitude={latitude} longitude={longitude} label={label} /> : null}
+            {/* Height from the width by padding, not aspect-ratio: Safari sizes an aspect-ratio
+                box inside the folding grid row wrongly and the map opened half-way. */}
+            <div className="relative overflow-hidden rounded-[12px] border bg-psg-blue/10 pt-[56.25%] sm:pt-[42.857%]">
+              <div className="absolute inset-0">{loaded ? <PlaceMap latitude={latitude} longitude={longitude} label={label} /> : null}</div>
             </div>
             <div className="flex items-center justify-between gap-3">
               {directionsUrl ? (

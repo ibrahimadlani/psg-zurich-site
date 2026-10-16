@@ -13,7 +13,7 @@ import { listAdminEvents, matchOptions } from "@/lib/admin/events-query";
 async function EventsFrame({ children }: { children: React.ReactNode }) {
   await connection();
   const [t, format] = await Promise.all([getTranslations("AdminShell"), getFormatter()]);
-  const session = await adminPage("events", "/admin/evenements");
+  const session = await adminPage("events");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const [rows, options] = await Promise.all([listAdminEvents(), matchOptions((date) => format.dateTime(date, { day: "numeric", month: "short" }))]);
   return (

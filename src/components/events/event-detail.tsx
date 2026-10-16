@@ -23,6 +23,7 @@ import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { directionsLink, homeAddress, routeTimesEnabled } from "@/lib/route-time";
+import { withReturn } from "@/lib/return-to";
 
 // Phones: label + action on the first line, the value full width below. From sm: three columns.
 const rowClass =
@@ -46,8 +47,11 @@ export async function EventDetail({ id }: { id: string }) {
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
   const access: Access = !session ? "guest" : member?.status === "active" ? "member" : "inactive";
 
-  // Events are for members whose fee is paid: anyone else lands on the showcase.
-  if (!isDuesPaid(member)) redirect({ href: "/evenements", locale: await getLocale() });
+  // Events are for members whose fee is paid: anyone else lands on the showcase. A visitor
+  // comes back to this event once signed in.
+  if (!isDuesPaid(member)) {
+    redirect({ href: session ? "/evenements" : withReturn("/evenements", `/evenements/${id}`), locale: await getLocale() });
+  }
   const [event] = await getEventsWithAttendance(eq(events.id, id), member?.id ?? null);
   if (!event) notFound();
   const [match, participants, [myPrediction]] = await Promise.all([

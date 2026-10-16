@@ -20,7 +20,8 @@ const KINDS = [
  * /evenements for everyone who isn't an accepted member: what the club does, illustrated,
  * then a locked sample event with the way in. The programme itself is for members whose fee is paid.
  */
-export function EventsShowcase({ access }: { access: Exclude<EventAccess, "full"> }) {
+/** `next`: the event a visitor tried to open, to come back to once signed in. */
+export function EventsShowcase({ access, next = "/evenements" }: { access: Exclude<EventAccess, "full">; next?: string }) {
   const t = useTranslations("EventsShowcase");
   const types = useTranslations("Events.types");
 
@@ -43,7 +44,7 @@ export function EventsShowcase({ access }: { access: Exclude<EventAccess, "full"
       </ul>
 
       {/* What a member would see here: a sample event, locked, with this visitor's next step. */}
-      <LockedCard access={access} feature="events" next="/evenements" preview={<EventPreview />} />
+      <LockedCard access={access} feature="events" next={next} preview={<EventPreview />} />
     </div>
   );
 }

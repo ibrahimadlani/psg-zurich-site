@@ -49,7 +49,7 @@ function formValues(match: Match): MatchFormValues {
 async function Matches() {
   await connection();
   const [t, tShell, format, now] = await Promise.all([getTranslations("AdminMatches"), getTranslations("AdminShell"), getFormatter(), getNow()]);
-  const session = await adminPage("events", "/admin/matchs");
+  const session = await adminPage("events");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const [rows, synced, closed] = await Promise.all([listAdminMatches(), lastMatchSync(), closedSeasons()]);
   // Podiums of the closed prediction seasons, newest first, with the prizes still to hand over.

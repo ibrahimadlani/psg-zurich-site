@@ -1,13 +1,14 @@
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
-import { getFormatter, getLocale, getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { LeaderboardTable, Podium } from "@/components/matches/leaderboard-table";
 import { MatchTabs } from "@/components/matches/match-tabs";
 import { PageHeader } from "@/components/page-header";
-import { Link, redirect } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { closedSeasons, frozenBoard, getLeaderboard, seasonLabel, seasonOf, trophiesOf } from "@/lib/leaderboard";
 import { getCurrentMember } from "@/lib/members";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { TableSkeleton } from "@/components/skeletons";
 import { cn } from "@/lib/utils";
@@ -26,7 +27,7 @@ const chip = (on: boolean) =>
 // Members only: names of other members are personal data.
 async function LeaderboardContent({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const session = await getSession();
-  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
+  if (!session) return redirectToSignIn();
   const [t, format, member, closed, params] = await Promise.all([
     getTranslations("Leaderboard"),
     getFormatter(),

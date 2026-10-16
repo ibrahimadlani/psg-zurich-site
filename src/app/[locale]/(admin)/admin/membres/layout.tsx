@@ -13,7 +13,7 @@ import { can } from "@/lib/roles";
 async function MembersFrame({ children }: { children: React.ReactNode }) {
   await connection();
   const t = await getTranslations("AdminMembers");
-  const session = await adminPage("members.read", "/admin/membres");
+  const session = await adminPage("members.read");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const rows = await listMembers();
   return (

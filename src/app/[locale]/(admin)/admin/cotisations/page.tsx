@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function Dues() {
   await connection();
   const [t, format] = await Promise.all([getTranslations("AdminDues"), getFormatter()]);
-  const session = await adminPage("members.write", "/admin/cotisations");
+  const session = await adminPage("members.write");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const rows = (await listMembers()).filter((row) => row.status === "active");
   const end = seasonEnd();

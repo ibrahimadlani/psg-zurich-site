@@ -2,6 +2,7 @@ import { Lock } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { EventAccess } from "@/lib/dues";
+import { signInHref, withReturn } from "@/lib/return-to";
 import { cn } from "@/lib/utils";
 
 const primary =
@@ -21,7 +22,7 @@ export function LockedCard({
   /** Never "full": full members get the real thing. */
   access: Exclude<EventAccess, "full">;
   feature: "predictions" | "events";
-  /** Page to come back to after signing in. */
+  /** Page to come back to after signing in (or joining). */
   next: string;
   preview: React.ReactNode;
   className?: string;
@@ -46,14 +47,14 @@ export function LockedCard({
         </div>
         {access === "guest" ? (
           <div className="flex flex-col items-center gap-2">
-            <Link href="/adhesion" prefetch={false} className={primary}>
+            <Link href={withReturn("/adhesion", next)} prefetch={false} className={primary}>
               {t("join")}
             </Link>
             <p className="text-[12px] text-muted-foreground">
               {t.rich("signIn", {
                 link: (chunks) => (
                   <Link
-                    href={`/connexion?suite=${encodeURIComponent(next)}`}
+                    href={signInHref(next)}
                     prefetch={false}
                     className="border-b pb-0.5 text-foreground transition-colors hover:border-brand-red"
                   >

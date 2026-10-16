@@ -2,8 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import { useTransition } from "react";
+import { SignInLink } from "@/components/auth/sign-in-link";
 import { Button } from "@/components/ui/button";
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { sendAttendance } from "@/lib/event-attendance";
 
 type Props = {
@@ -24,9 +25,7 @@ export function EventSignup({ eventId, status, full, access }: Props) {
   if (access === "guest") {
     return (
       <Button asChild size="sm" variant="outline">
-        <Link href="/connexion" prefetch={false}>
-          {t("signInToJoin")}
-        </Link>
+        <SignInLink next={`/evenements/${eventId}`}>{t("signInToJoin")}</SignInLink>
       </Button>
     );
   }

@@ -13,6 +13,7 @@ import { upcomingEvents } from "@/lib/events";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { asc } from "drizzle-orm";
+import { RETURN_PARAM, safeReturnPath } from "@/lib/return-to";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Events");
@@ -23,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
  * Members whose fee is paid: the list is in the layout; here, on a computer, the next event
  * opens on the right. Everyone else: the illustrated showcase.
  */
-async function EventsContent() {
+async function EventsContent({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   await connection();
   const t = await getTranslations("Events");
   const [session, member] = await Promise.all([getSession(), getCurrentMember()]);
@@ -32,7 +33,8 @@ async function EventsContent() {
     return (
       <>
         <PageHeader title={t("title")} description={t("description")} />
-        <EventsShowcase access={access} />
+        {/* Sent here from an event's page: signing in leads back to that event. */}
+        <EventsShowcase access={access} next={safeReturnPath((await searchParams)[RETURN_PARAM]) ?? undefined} />
       </>
     );
   }
@@ -44,10 +46,10 @@ async function EventsContent() {
   ) : null;
 }
 
-export default function EventsPage() {
+export default function EventsPage({ searchParams }: PageProps<"/[locale]/evenements">) {
   return (
     <Suspense fallback={<EventDetailSkeleton />}>
-      <EventsContent />
+      <EventsContent searchParams={searchParams} />
     </Suspense>
   );
 }

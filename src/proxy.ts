@@ -1,8 +1,9 @@
 import { getSessionCookie } from "better-auth/cookies";
 import createMiddleware from "next-intl/middleware";
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { routing } from "@/i18n/routing";
 import { getAuth } from "@/lib/auth";
+import { RETURN_PARAM, RETURN_PATH_HEADER, safeReturnPath } from "@/lib/return-to";
 
 const intl = createMiddleware(routing);
 
@@ -19,9 +20,19 @@ export default async function proxy(request: NextRequest) {
     const session = await getAuth()
       .api.getSession({ headers: request.headers })
       .catch(() => null);
-    if (session) return NextResponse.redirect(new URL(`/${match[1]}`, request.url));
+    if (session) {
+      // Already signed in: straight to the page the sign-in was for.
+      const next = safeReturnPath(request.nextUrl.searchParams.get(RETURN_PARAM)) ?? "";
+      return NextResponse.redirect(new URL(`/${match[1]}${next === "/" ? "" : next}`, request.url));
+    }
   }
-  return intl(request);
+  // The page asked for, for the login walls of the pages (lib/auth-redirect.ts). next-intl
+  // passes the request headers on to the app.
+  const headers = new Headers(request.headers);
+  const asked = safeReturnPath(`${request.nextUrl.pathname}${request.nextUrl.search}`);
+  if (asked) headers.set(RETURN_PATH_HEADER, asked);
+  else headers.delete(RETURN_PATH_HEADER);
+  return intl(new NextRequest(request, { headers }));
 }
 
 export const config = {

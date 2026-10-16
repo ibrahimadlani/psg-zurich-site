@@ -1,6 +1,6 @@
 import { ArrowRight, LayoutDashboard, MessagesSquare, Settings } from "lucide-react";
 import type { Metadata } from "next";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { MemberCard } from "@/components/member-area/member-card";
@@ -10,9 +10,10 @@ import { MemberPolls } from "@/components/member-area/member-polls";
 import { MyRegistrations } from "@/components/member-area/my-registrations";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
-import { Link, redirect } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { unreadThreadIds } from "@/lib/contact";
 import { getCurrentMember } from "@/lib/members";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { memberPolls } from "@/lib/polls";
 import { hasRole } from "@/lib/roles";
@@ -28,7 +29,7 @@ async function MemberPanel() {
   const t = await getTranslations("MemberArea");
   const tNav = await getTranslations("Nav");
   const session = await getSession();
-  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
+  if (!session) return redirectToSignIn();
 
   const { user } = session;
   const member = await getCurrentMember();

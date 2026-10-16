@@ -24,7 +24,7 @@ const ORDER = { superadmin: 0, admin: 1, moderator: 2, member: 3 } as const;
 async function Settings() {
   await connection();
   const [t, tShell] = await Promise.all([getTranslations("AdminRoles"), getTranslations("AdminShell")]);
-  const session = await adminPage("roles", "/admin/reglages");
+  const session = await adminPage("roles");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const team = (
     await db

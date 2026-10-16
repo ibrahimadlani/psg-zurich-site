@@ -34,7 +34,7 @@ const TONE: Record<ContactStatus, PillTone> = { new: "danger", open: "warn", ans
 async function ThreadDetail({ id }: { id: string }) {
   await connection();
   const [t, tTopics] = await Promise.all([getTranslations("AdminMessages"), getTranslations("ContactTopics")]);
-  const session = await adminPage("messages", `/admin/messages/${id}`);
+  const session = await adminPage("messages");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const detail = await inboxDetail(id, session.user.role);
   if (!detail) notFound();

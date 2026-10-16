@@ -9,7 +9,9 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { FieldError, inlineLinkClass, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
 import { PasswordInput } from "@/components/auth/password-input";
+import { useReturnPath } from "@/hooks/use-return-path";
 import { Link, useRouter } from "@/i18n/navigation";
+import { signInHref } from "@/lib/return-to";
 import { cn } from "@/lib/utils";
 
 const schema = z.object({
@@ -31,6 +33,8 @@ export function MembershipForm() {
   const t = useTranslations("Membership");
   const router = useRouter();
   const locale = useLocale();
+  // The page wanted before joining (`?suite=`): kept through the confirmation email.
+  const next = useReturnPath();
   const [sentTo, setSentTo] = useState<string | null>(null);
   const {
     register,
@@ -53,11 +57,11 @@ export function MembershipForm() {
       method: "POST",
       headers: { "content-type": "application/json" },
       // Honeypot: only robots fill the hidden "website" field.
-      body: JSON.stringify({ ...values, locale, website: form ? new FormData(form).get("website") : "" }),
+      body: JSON.stringify({ ...values, locale, next, website: form ? new FormData(form).get("website") : "" }),
     });
     if (!response.ok) {
       if (response.status === 409) {
-        toast.error(t("emailTaken"), { action: { label: t("signIn"), onClick: () => router.push("/connexion") } });
+        toast.error(t("emailTaken"), { action: { label: t("signIn"), onClick: () => router.push(signInHref(next)) } });
       } else toast.error(t(response.status === 429 ? "tooManyRequests" : "error"));
       return;
     }
@@ -106,7 +110,7 @@ export function MembershipForm() {
         </div>
         <p className="text-[13px] leading-[1.45] text-pretty text-muted-foreground">{t("sentHint")}</p>
         <p className="text-center text-[14px]">
-          <Link href="/connexion" prefetch={false} className={inlineLinkClass}>
+          <Link href={signInHref(next)} prefetch={false} className={inlineLinkClass}>
             {t("backToLogin")}
           </Link>
         </p>
@@ -182,7 +186,7 @@ export function MembershipForm() {
           </form>
           <p className="text-center text-[14px] text-muted-foreground">
             {t("haveAccount")}{" "}
-            <Link href="/connexion" prefetch={false} className={inlineLinkClass}>
+            <Link href={signInHref(next)} prefetch={false} className={inlineLinkClass}>
               {t("signIn")}
             </Link>
           </p>

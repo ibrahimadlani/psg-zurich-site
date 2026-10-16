@@ -3,6 +3,7 @@
 import { ArrowRight, Check, Hourglass } from "lucide-react";
 import { useFormatter, useNow, useTimeZone, useTranslations } from "next-intl";
 import { useTransition } from "react";
+import { SignInLink } from "@/components/auth/sign-in-link";
 import { Link, useRouter } from "@/i18n/navigation";
 import { dayIn } from "@/lib/human-date";
 import { sendAttendance } from "@/lib/event-attendance";
@@ -41,10 +42,10 @@ export function EventRegistration({ eventId, status, full, access, phase, starts
 
   if (access === "guest") {
     return (
-      <Link href="/connexion" prefetch={false} className={primaryButton}>
+      <SignInLink next={`/evenements/${eventId}`} className={primaryButton}>
         {t("signInToJoin")}
         <ArrowRight aria-hidden />
-      </Link>
+      </SignInLink>
     );
   }
   if (access === "inactive") return <p className="text-[15px] text-muted-foreground">{t("membersOnlySignup")}</p>;

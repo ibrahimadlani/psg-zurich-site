@@ -6,6 +6,7 @@ import { apiHandler, fail, ok, parseBody } from "@/lib/api";
 import { getClientIp, getProxiedClientIp, writeAuditLog } from "@/lib/audit";
 import { getAuth } from "@/lib/auth";
 import { rateLimit } from "@/lib/rate-limit";
+import { withReturn } from "@/lib/return-to";
 import { membershipSignupSchema } from "@/lib/validators";
 
 /**
@@ -38,8 +39,9 @@ export const POST = apiHandler(async (request) => {
         name: `${input.firstName} ${input.lastName}`,
         email: input.email,
         password: input.password,
-        // The confirmation link signs in and lands on the welcome step (also sets the email's language).
-        callbackURL: `/${input.locale}/bienvenue`,
+        // The confirmation link signs in and lands on the welcome step (also sets the email's
+        // language), which then goes on to the page wanted before joining.
+        callbackURL: withReturn(`/${input.locale}/bienvenue`, input.next),
       },
       headers: request.headers,
     });

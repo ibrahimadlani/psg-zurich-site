@@ -16,7 +16,9 @@ import {
   submitClass,
 } from "@/components/auth/auth-ui";
 import { Link } from "@/i18n/navigation";
+import { useReturnPath } from "@/hooks/use-return-path";
 import { requestPasswordReset } from "@/lib/auth-client";
+import { signInHref, withReturn } from "@/lib/return-to";
 
 const schema = z.object({ email: z.email() });
 type Values = z.infer<typeof schema>;
@@ -26,6 +28,8 @@ export function ForgotPasswordPanel() {
   const t = useTranslations("ForgotPassword");
   const tLogin = useTranslations("Login");
   const locale = useLocale();
+  // Kept through the email link, so the new sign-in still leads to the page wanted.
+  const next = useReturnPath();
   const [sentTo, setSentTo] = useState<string | null>(null);
   const {
     register,
@@ -36,7 +40,7 @@ export function ForgotPasswordPanel() {
   async function onSubmit({ email }: Values) {
     const { error } = await requestPasswordReset({
       email,
-      redirectTo: `/${locale}/connexion/nouveau-mot-de-passe`,
+      redirectTo: withReturn(`/${locale}/connexion/nouveau-mot-de-passe`, next),
     });
     if (error) {
       toast.error(tLogin("error"));
@@ -48,7 +52,7 @@ export function ForgotPasswordPanel() {
 
   const backToLogin = (
     <p className="text-center text-[14px]">
-      <Link href="/connexion" prefetch={false} className={inlineLinkClass}>
+      <Link href={signInHref(next)} prefetch={false} className={inlineLinkClass}>
         {t("backToLogin")}
       </Link>
     </p>

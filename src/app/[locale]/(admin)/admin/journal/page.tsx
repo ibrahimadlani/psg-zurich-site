@@ -26,7 +26,7 @@ const chip = (on: boolean) =>
 async function Journal({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   await connection();
   const [t, format, now] = await Promise.all([getTranslations("AdminAudit"), getFormatter(), getNow()]);
-  const session = await adminPage("audit", "/admin/journal");
+  const session = await adminPage("audit");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const params = await searchParams;
   const domain = (AUDIT_DOMAINS as readonly string[]).includes(String(params.domaine)) ? (params.domaine as AuditDomain) : null;

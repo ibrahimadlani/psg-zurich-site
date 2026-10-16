@@ -1,12 +1,12 @@
 import { CircleCheck, Clock } from "lucide-react";
 import type { Metadata } from "next";
-import { getFormatter, getLocale, getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { CopyText } from "@/components/membership/copy-text";
-import { redirect } from "@/i18n/navigation";
 import { isDuesPaid, seasonEnd } from "@/lib/dues";
 import { LEGAL } from "@/lib/legal";
 import { getCurrentMember } from "@/lib/members";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { PanelSkeleton } from "@/components/skeletons";
 
@@ -20,9 +20,9 @@ const term = "font-wide text-[10px] font-semibold tracking-[0.06em] text-muted-f
 
 /** The season's fee: status, amount, and how to pay it (bank transfer or TWINT). */
 async function DuesContent() {
-  const [t, format, locale] = await Promise.all([getTranslations("Dues"), getFormatter(), getLocale()]);
+  const [t, format] = await Promise.all([getTranslations("Dues"), getFormatter()]);
   const session = await getSession();
-  if (!session) return redirect({ href: "/connexion?suite=%2Fcotisation", locale });
+  if (!session) return redirectToSignIn();
   const member = await getCurrentMember();
   const day = (value: string) => format.dateTime(new Date(`${value}T12:00:00Z`), { dateStyle: "long" });
 

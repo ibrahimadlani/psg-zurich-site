@@ -89,7 +89,9 @@ export function FlipCard({
             flipped ? "[--flip:180deg]" : "[--flip:0deg]",
           )}
         >
-          <div className="absolute inset-0 overflow-hidden rounded-[18px] shadow-brand [backface-visibility:hidden]">
+          {/* Each face: prefixed backface-visibility, its own stacking context and 1 px of depth,
+              or Safari lets a z-indexed child (the "Active" badge) show through the other side. */}
+          <div className="absolute inset-0 isolate overflow-hidden rounded-[18px] shadow-brand [-webkit-backface-visibility:hidden] [backface-visibility:hidden] [transform:translateZ(1px)]">
             {front}
             {/* Sheen that follows the pointer. */}
             <span
@@ -97,7 +99,7 @@ export function FlipCard({
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_var(--px,30%)_var(--py,20%),rgb(255_255_255/0.22),transparent_45%)] mix-blend-soft-light"
             />
           </div>
-          <div className="absolute inset-0 overflow-hidden rounded-[18px] shadow-brand [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          <div className="absolute inset-0 isolate overflow-hidden rounded-[18px] shadow-brand [-webkit-backface-visibility:hidden] [backface-visibility:hidden] [transform:rotateY(180deg)_translateZ(1px)]">
             {back}
           </div>
         </div>

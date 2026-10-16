@@ -1,12 +1,11 @@
 import "server-only";
-import { getLocale } from "next-intl/server";
-import { redirect } from "@/i18n/navigation";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 
-/** Session + member profile of the settings pages; visitors go to the sign-in page. */
+/** Session + member profile of the settings pages; visitors go to the sign-in page, then back. */
 export async function getSettingsContext() {
   const session = await getSession();
-  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
+  if (!session) return redirectToSignIn();
   return { session, member: await getCurrentMember() };
 }

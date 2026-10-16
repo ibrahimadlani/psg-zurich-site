@@ -11,6 +11,7 @@ import { FieldError, FormMessage, inlineLinkClass, labelClass, submitClass } fro
 import { PasswordInput } from "@/components/auth/password-input";
 import { Link, useRouter } from "@/i18n/navigation";
 import { resetPassword } from "@/lib/auth-client";
+import { RETURN_PARAM, signInHref, withReturn } from "@/lib/return-to";
 
 const schema = z
   .object({ password: z.string().min(8), confirm: z.string() })
@@ -35,7 +36,8 @@ export function ResetPasswordForm() {
     const { error } = await resetPassword({ newPassword: password, token: token ?? "" });
     if (!error) {
       toast.success(t("done"));
-      router.push("/connexion");
+      // Then sign in, and on to the page the reset started from.
+      router.push(signInHref(params.get(RETURN_PARAM)));
     } else if (error.code === "INVALID_TOKEN") setResult("invalidLink");
     else toast.error(t("error"));
   }
@@ -44,7 +46,7 @@ export function ResetPasswordForm() {
     return (
       <div className="flex flex-col items-center gap-4 text-center">
         <FormMessage tone="error">{t(result)}</FormMessage>
-        <Link href="/connexion/mot-de-passe-oublie" className={`text-[14px] ${inlineLinkClass}`}>
+        <Link href={withReturn("/connexion/mot-de-passe-oublie", params.get(RETURN_PARAM))} className={`text-[14px] ${inlineLinkClass}`}>
           {t("requestNew")}
         </Link>
       </div>

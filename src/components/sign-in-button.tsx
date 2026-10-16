@@ -2,17 +2,17 @@
 
 import { ArrowRight, LogIn } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { SignInLink } from "@/components/auth/sign-in-link";
+import { usePathname } from "@/i18n/navigation";
 
-/** Header call to action. Goes to the member area, which sends signed-out visitors to /connexion. */
+/** Header call to action: the sign-in page, then back to this page (from home: the member area). */
 export function SignInButton() {
   const t = useTranslations("Login");
   const pathname = usePathname();
   if (pathname.startsWith("/connexion")) return null;
 
   return (
-    <Link
-      href="/espace-membre" prefetch={false}
+    <SignInLink
       aria-label={t("submit")}
       className="group ml-1.5 inline-flex h-8 items-center gap-1.5 rounded-[7px] bg-segment px-2.5 font-wide text-[10px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand [transition:opacity_.2s,transform_.15s] hover:opacity-90 active:scale-[0.96] sm:px-3"
     >
@@ -22,6 +22,6 @@ export function SignInButton() {
         className="hidden size-3 transition-transform duration-200 group-hover:translate-x-0.5 sm:block"
         aria-hidden
       />
-    </Link>
+    </SignInLink>
   );
 }

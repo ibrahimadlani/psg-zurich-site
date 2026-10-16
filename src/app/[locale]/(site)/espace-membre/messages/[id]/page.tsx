@@ -1,13 +1,14 @@
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
 import { SenderThread } from "@/components/contact/sender-thread";
-import { Link, redirect } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { markSeenBySender, senderView } from "@/lib/contact";
 import { getCurrentMember } from "@/lib/members";
+import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 
 export const instant = false;
@@ -20,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
 async function MemberThread({ id }: { id: string }) {
   await connection();
   const session = await getSession();
-  if (!session) return redirect({ href: "/connexion", locale: await getLocale() });
+  if (!session) return redirectToSignIn();
   const member = await getCurrentMember();
   const view = member ? await senderView({ memberId: member.id, id }) : null;
   if (!view || !member) notFound();

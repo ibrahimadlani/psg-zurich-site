@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
+import { useReturnPath } from "@/hooks/use-return-path";
 import { authClient, useSession } from "@/lib/auth-client";
 
 /**
@@ -13,13 +14,15 @@ import { authClient, useSession } from "@/lib/auth-client";
 export function GuestOnly({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { data } = useSession();
+  // Members who land here on their way somewhere (`?suite=`) go on there.
+  const next = useReturnPath();
   const [confirmedGuest, setConfirmedGuest] = useState(false);
 
   useEffect(() => {
     let active = true;
     authClient.getSession().then(({ data: fresh }) => {
       if (!active) return;
-      if (fresh) router.replace("/");
+      if (fresh) router.replace(next ?? "/");
       else setConfirmedGuest(true);
     });
     return () => {
@@ -27,7 +30,7 @@ export function GuestOnly({ children }: { children: React.ReactNode }) {
       // Kept in the router cache (Activity): check again next time the page shows.
       setConfirmedGuest(false);
     };
-  }, [router]);
+  }, [router, next]);
 
   // Hidden while a (possibly stale) session says "signed in" and the server hasn't answered.
   // (Signing in on the page itself: the login form navigates home.)

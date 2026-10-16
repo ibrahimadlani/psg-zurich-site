@@ -13,7 +13,7 @@ import { visibleTopics } from "@/lib/contact";
 async function MessagesFrame({ children }: { children: React.ReactNode }) {
   await connection();
   const t = await getTranslations("AdminMessages");
-  const session = await adminPage("messages", "/admin/messages");
+  const session = await adminPage("messages");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const rows = await listInbox(session.user.role);
   return (
