@@ -9,7 +9,7 @@ f:"/_next/static/chunks/41-n4vk_ai0th.js"
 11:"/_next/static/chunks/10zmr2c54oho9.js"
 12:"/_next/static/chunks/07pk23nmq1xz3.js"
 13:"/_next/static/chunks/2zx8837tzc9a8.js"
-14:"/_next/static/chunks/32y9ly8umnhod.js"
+14:"/_next/static/chunks/06mlgrgh40osi.js"
 15:"/_next/static/chunks/0ktenso5zbzz6.js"
 16:"/_next/static/chunks/2htx0opipb7qz.js"
 17:"/_next/static/chunks/2i77zu3oh1wj_.js"
@@ -40,14 +40,14 @@ a:[["children",{"s":"nouveau-mot-de-passe","h":49250,"d":{"r":["$","$3","c",{"ch
 30:C
 33:X
 33:T6,locale33:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2d",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2e","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2f","v":"$30","s":"$9"}},"a":"$@31","u":"$@32","b":"VPX3AlbUZusej7RzKrgKg","r":"$33"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2b",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2d",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2e","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2f","v":"$30","s":"$9"}},"a":"$@31","u":"$@32","b":"o_-TY8I_xiZvPWeYvJQ_j","r":"$33"}
 34:"ResetPasswordForm"
 35:I[300806,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17","$18"],"$34"]
 36:I[897367,["$4"],"OutletBoundary"]
 1f:["$","$L35",null,{}]
 20:["$","script","script-0",{"src":"/_next/static/chunks/07pk23nmq1xz3.js","async":true}]
 21:["$","script","script-1",{"src":"/_next/static/chunks/2zx8837tzc9a8.js","async":true}]
-22:["$","script","script-2",{"src":"/_next/static/chunks/32y9ly8umnhod.js","async":true}]
+22:["$","script","script-2",{"src":"/_next/static/chunks/06mlgrgh40osi.js","async":true}]
 23:["$","script","script-3",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
 24:["$","script","script-4",{"src":"/_next/static/chunks/2htx0opipb7qz.js","async":true}]
 25:["$","script","script-5",{"src":"/_next/static/chunks/2i77zu3oh1wj_.js","async":true}]
