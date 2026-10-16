@@ -642,6 +642,78 @@
       }
     }
   },
+  "/[locale]/confidentialite": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/mentions-legales": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/statuts": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]/actualites/[slug]": {
     "hints": 49216,
     "slots": {
@@ -672,30 +744,6 @@
     }
   },
   "/[locale]/actualites": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49312,
-                    "slots": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/confidentialite": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -926,30 +974,6 @@
       }
     }
   },
-  "/[locale]/mentions-legales": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49312,
-                    "slots": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
   "/[locale]/parametres/compte": {
     "hints": 64,
     "slots": {
@@ -1110,30 +1134,6 @@
                         "slots": null
                       }
                     }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/statuts": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49312,
-                    "slots": null
                   }
                 }
               }
