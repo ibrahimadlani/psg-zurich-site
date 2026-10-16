@@ -47,7 +47,7 @@ f:"/_next/static/chunks/0cd-0p692_bzx.js"
 35:C
 38:X
 38:T6,locale38:C
-0:{"t":{"t":{"s":"","h":8274,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L30",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L32",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1f",null,{"name":"Next.Metadata","children":"$L33"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@34","v":"$35","s":"$1d"}},"a":"$@36","u":"$@37","b":"51y33kF0FinLKglUubey2","r":"$38"}
+0:{"t":{"t":{"s":"","h":8274,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L30",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L32",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1f",null,{"name":"Next.Metadata","children":"$L33"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@34","v":"$35","s":"$1d"}},"a":"$@36","u":"$@37","b":"MI74tEddN1b3Js13Y4fbb","r":"$38"}
 3a:I[897367,["$17"],"OutletBoundary"]
 20:["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"55%"}}]
 21:["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"40%"}}]
