@@ -12,6 +12,7 @@ import {
   pollOptions,
   polls,
   pollVotes,
+  predictionStandings,
   predictions,
   session as sessionTable,
   subscribers,
@@ -58,7 +59,7 @@ export const GET = apiHandler(async () => {
   const email = account[0]?.email ?? session.user.email;
   const memberId = profile?.id ?? null;
 
-  const [signUps, myPredictions, votes, history, emails, newsletter] = await Promise.all([
+  const [signUps, myPredictions, votes, history, emails, newsletter, finalTables] = await Promise.all([
     memberId
       ? db
           .select({ event: events.title, startsAt: events.startsAt, status: attendance.status, signedUpAt: attendance.createdAt, checkedInAt: attendance.checkedInAt })
@@ -106,6 +107,14 @@ export const GET = apiHandler(async () => {
       .where(memberId ? or(eq(emailJobs.memberId, memberId), eq(emailJobs.toEmail, email)) : eq(emailJobs.toEmail, email))
       .orderBy(desc(emailJobs.createdAt)),
     db.select({ email: subscribers.email, locale: subscribers.locale, status: subscribers.status, consentedAt: subscribers.consentedAt, createdAt: subscribers.createdAt }).from(subscribers).where(eq(subscribers.email, email)),
+    // Frozen tables of past seasons (rank, points, prize handed over).
+    memberId
+      ? db
+          .select({ season: predictionStandings.season, rank: predictionStandings.rank, points: predictionStandings.points, exact: predictionStandings.exact, played: predictionStandings.played, prizeHandedOverAt: predictionStandings.rewardGivenAt })
+          .from(predictionStandings)
+          .where(eq(predictionStandings.memberId, memberId))
+          .orderBy(desc(predictionStandings.season))
+      : [],
   ]);
 
   const body = {
@@ -146,6 +155,7 @@ export const GET = apiHandler(async () => {
       : null,
     eventSignUps: signUps,
     predictions: myPredictions.map(({ opponent, venue, ...row }) => ({ match: matchTitle({ opponent, venue }, "PSG"), ...row })),
+    predictionSeasons: finalTables.map((row) => ({ ...row, season: `${row.season}-${row.season + 1}` })),
     pollVotes: votes,
     newsletter: newsletter[0] ?? null,
     emailsSent: emails.map((row) => ({ type: row.type ?? (row.campaign ? "campaign" : null), status: row.status, queuedAt: row.createdAt, sentAt: row.sentAt })),

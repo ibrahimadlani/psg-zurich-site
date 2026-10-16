@@ -415,7 +415,8 @@
       "result": "Resultat {psg} – {opponent}",
       "pending": "ausstehend",
       "empty": "Du hast noch nicht getippt.",
-      "browse": "Spiele ansehen"
+      "browse": "Spiele ansehen",
+      "trophies": "Deine Trophäen"
     },
     "completeProfile": {
       "title": "Profil vervollständigen",
@@ -672,7 +673,9 @@
       "mailing_run": "hat den Versand gestartet",
       "user_role_change": "hat eine Rolle geändert",
       "user_delete": "Konto gelöscht",
-      "subscriber_create": "neuer Newsletter-Abonnent"
+      "subscriber_create": "neuer Newsletter-Abonnent",
+      "prediction_reward": "hat einen Tipp-Preis übergeben",
+      "prediction_rewardUndo": "hat eine Preisübergabe rückgängig gemacht"
     }
   },
   "AdminShell": {
@@ -1002,6 +1005,21 @@
       "heading": "Lange nicht gesehen!",
       "body": "Die Tipps laufen weiter, neue Veranstaltungen stehen an und der Club hat Neuigkeiten. Schau wieder vorbei!",
       "cta": "Zurück zur Website"
+    },
+    "seasonWinner": {
+      "subject": "{rank, select, 1 {Tipp-Champion {season}!} other {Auf dem Tipp-Podest {season}!}}",
+      "preview": "Platz {rank} der Schlussrangliste, {points} Punkte",
+      "heading": "{rank, select, 1 {Saison-Champion} 2 {Platz 2 der Saison} other {Platz 3 der Saison}}",
+      "body": "Die Saison {season} ist vorbei und die Tipp-Rangliste steht fest: Du beendest sie auf **Platz {rank}** mit **{points, plural, one {# Punkt} other {# Punkten}}**. Gratulation! Deine Trophäe steht jetzt neben deinem Namen auf der Website, und der Vorstand meldet sich für die Übergabe deines Preises.",
+      "cta": "Schlussrangliste ansehen"
+    },
+    "seasonPodium": {
+      "subject": "Tipps {season}: das Schlusspodest",
+      "preview": "{podium}",
+      "heading": "Saison {season} abgeschlossen",
+      "body": "Die Tipp-Rangliste {season} steht fest. Dieses Podest ist zu belohnen: **{podium}**. Markiere jede Übergabe im Admin unter Spiele.",
+      "cta": "Podeste öffnen",
+      "footer": "Einmalig beim Saisonabschluss versendet."
     }
   },
   "Legal": {
@@ -1431,7 +1449,14 @@
     "you": "(du)",
     "empty": "Noch keine bewerteten Tipps.",
     "backToMatches": "Alle Spiele",
-    "youHidden": "(du · für andere ausgeblendet)"
+    "youHidden": "(du · für andere ausgeblendet)",
+    "seasonOf": "Saison {season}",
+    "final": "Schlussrangliste",
+    "liveNote": "Die Saisonrangliste wird am 30. Juni eingefroren: Die ersten drei werden vom Vorstand belohnt.",
+    "frozenNote": "Rangliste eingefroren am {date}. Sie ändert sich nicht mehr.",
+    "seasons": "Saisons",
+    "trophy": "{rank, select, 1 {Tipp-Champion {season}} 2 {Platz 2 der Tipps {season}} other {Platz 3 der Tipps {season}}}",
+    "podium": "Podest"
   },
   "Events": {
     "title": "Events",
@@ -1655,7 +1680,16 @@
     "neverSynced": "Noch nicht mit football-data.org synchronisiert.",
     "upcoming": "Kommend",
     "recent": "Letzter Monat",
-    "noUpcoming": "Kein kommendes Match. Starte eine Synchronisierung."
+    "noUpcoming": "Kein kommendes Match. Starte eine Synchronisierung.",
+    "podiums": "Tipp-Podeste",
+    "podiumsHint": "Saisons werden am 1. Juli automatisch abgeschlossen. Markiere übergebene Preise.",
+    "rewardGiven": "Übergeben",
+    "markGiven": "Preis übergeben",
+    "unmark": "Rückgängig",
+    "rewardSaved": "Preis als übergeben markiert",
+    "rewardUndone": "Übergabe rückgängig gemacht",
+    "rewardError": "Der Preis konnte nicht gespeichert werden.",
+    "points": "{count, plural, one {# Pkt.} other {# Pkt.}}"
   },
   "Unsubscribe": {
     "title": "Abmelden",
@@ -2191,6 +2225,14 @@
       "engagement_inactive": {
         "name": "Inaktivitäts-Erinnerung",
         "when": "60 Tage ohne Besuch, höchstens alle 90 Tage"
+      },
+      "leaderboard_seasonWinner": {
+        "name": "Saisonpodest",
+        "when": "Am 1. Juli, an die ersten drei der Schlussrangliste"
+      },
+      "leaderboard_seasonPodium": {
+        "name": "Podest belohnen",
+        "when": "Am 1. Juli, an den Vorstand, mit den Namen des Podests"
       }
     }
   },

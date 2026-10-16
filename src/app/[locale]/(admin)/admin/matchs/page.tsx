@@ -4,16 +4,19 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import type { MatchFormValues } from "@/components/admin/match-form";
 import { MatchRowActions, MatchSyncButton, NewMatchButton } from "@/components/admin/matches/match-admin-controls";
+import { RewardToggle } from "@/components/admin/matches/reward-toggle";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { StatusPill } from "@/components/admin/ui/status-pill";
 import { adminLabel } from "@/components/admin/ui/styles";
 import { CompetitionLabel } from "@/components/matches/match-row";
 import { sides } from "@/components/matches/match-utils";
 import { TeamCrest } from "@/components/matches/team-crest";
+import { UserAvatar } from "@/components/user-avatar";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
 import { adminPage } from "@/lib/admin/guard";
 import { lastMatchSync, listAdminMatches, toLocalInput } from "@/lib/admin/events-query";
+import { closedSeasons, frozenBoard, seasonLabel } from "@/lib/leaderboard";
 import { matchTitle, type Match } from "@/lib/matches";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -48,7 +51,11 @@ async function Matches() {
   const [t, tShell, format, now] = await Promise.all([getTranslations("AdminMatches"), getTranslations("AdminShell"), getFormatter(), getNow()]);
   const session = await adminPage("events", "/admin/matchs");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
-  const [rows, synced] = await Promise.all([listAdminMatches(), lastMatchSync()]);
+  const [rows, synced, closed] = await Promise.all([listAdminMatches(), lastMatchSync(), closedSeasons()]);
+  // Podiums of the closed prediction seasons, newest first, with the prizes still to hand over.
+  const podiums = await Promise.all(
+    closed.map(async ({ season }) => ({ season, rows: (await frozenBoard(season, null, true)).filter((row) => row.rank <= 3) })),
+  );
   const upcoming = rows.filter(({ match }) => match.status === "scheduled" || match.status === "live" || match.kickoffAt >= now);
   const recent = rows.filter((row) => !upcoming.includes(row)).reverse();
 
@@ -128,6 +135,32 @@ async function Matches() {
           <section className="space-y-3">
             <h2 className={adminLabel}>{t("recent")}</h2>
             {list(recent)}
+          </section>
+        ) : null}
+        {podiums.length ? (
+          <section className="space-y-3">
+            <div>
+              <h2 className={adminLabel}>{t("podiums")}</h2>
+              <p className="mt-1 text-[13px] text-muted-foreground">{t("podiumsHint")}</p>
+            </div>
+            {podiums.map(({ season, rows: podium }) => (
+              <div key={season} className="overflow-hidden rounded-[14px] border bg-card">
+                <p className="border-b px-3.5 py-2.5 font-wide text-[10px] font-semibold tracking-[0.08em] uppercase">{seasonLabel(season)}</p>
+                <ul className="divide-y">
+                  {podium.map((row) => (
+                    <li key={row.memberId} className="flex flex-wrap items-center gap-3 px-3.5 py-3">
+                      <span className="w-6 text-center text-lg">{["🥇", "🥈", "🥉"][row.rank - 1]}</span>
+                      <UserAvatar name={row.name} email={row.email} image={row.image} className="size-8 text-[10px]" />
+                      <Link href={`/admin/membres/${row.memberId}`} prefetch={false} className="min-w-0 flex-1 truncate text-[14px] font-semibold hover:underline">
+                        {row.firstName} {row.lastName}
+                        <span className="ml-1.5 font-normal text-muted-foreground tabular-nums">{t("points", { count: row.points })}</span>
+                      </Link>
+                      <RewardToggle season={season} memberId={row.memberId} given={row.rewardGivenAt !== null} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </section>
         ) : null}
       </div>

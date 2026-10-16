@@ -3,14 +3,15 @@ import { getTranslations } from "next-intl/server";
 import { db } from "@/db";
 import { matches, predictions } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
-import { getLeaderboard } from "@/lib/leaderboard";
+import { TrophyChips } from "@/components/matches/leaderboard-table";
+import { getLeaderboard, trophiesOf } from "@/lib/leaderboard";
 import { matchTitle } from "@/lib/matches";
 import { cn } from "@/lib/utils";
 
 /** My rank (season, month) and my latest predictions with their points. */
 export async function MyPredictions({ memberId }: { memberId: string }) {
   const t = await getTranslations("MemberArea");
-  const [season, month, history] = await Promise.all([
+  const [season, month, history, trophies] = await Promise.all([
     getLeaderboard("season", memberId),
     getLeaderboard("month", memberId),
     db
@@ -30,7 +31,9 @@ export async function MyPredictions({ memberId }: { memberId: string }) {
       .where(eq(predictions.memberId, memberId))
       .orderBy(desc(matches.kickoffAt))
       .limit(10),
+    trophiesOf([memberId]),
   ]);
+  const myTrophies = trophies.get(memberId) ?? [];
   const mine = (rows: typeof season) => rows.find((row) => row.memberId === memberId);
   const stats = [
     { label: t("predictions.rankSeason"), row: mine(season), total: season.length },
@@ -56,6 +59,12 @@ export async function MyPredictions({ memberId }: { memberId: string }) {
           </div>
         ))}
       </div>
+      {myTrophies.length ? (
+        <div className="flex flex-wrap items-center gap-2 rounded-[12px] border bg-card/70 px-4 py-3">
+          <span className="text-xs text-muted-foreground">{t("predictions.trophies")}</span>
+          <TrophyChips trophies={myTrophies} />
+        </div>
+      ) : null}
       {history.length > 0 ? (
         <ul className="divide-y overflow-hidden rounded-[12px] border bg-card/70 text-sm">
           {history.map((row) => (

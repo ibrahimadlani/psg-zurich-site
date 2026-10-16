@@ -417,6 +417,40 @@ export const predictions = mysqlTable(
   ],
 );
 
+/**
+ * A prediction season once closed (1 July, for the season that ended on 30 June): its table is
+ * frozen in `prediction_standings` and no longer moves. `season` is the starting year
+ * (2026 = 2026-2027, like the club and fee seasons).
+ */
+export const predictionSeasons = mysqlTable("prediction_seasons", {
+  season: int("season").primaryKey(),
+  closedAt: dateTime3("closed_at").notNull(),
+});
+
+/** Final table of a closed season, one row per ranked member; the top 3 are rewarded. */
+export const predictionStandings = mysqlTable(
+  "prediction_standings",
+  {
+    id: id(),
+    season: int("season")
+      .notNull()
+      .references(() => predictionSeasons.season, { onDelete: "cascade" }),
+    memberId: fk("member_id")
+      .notNull()
+      .references(() => members.id, { onDelete: "cascade" }),
+    rank: int("rank").notNull(),
+    points: int("points").notNull(),
+    exact: int("exact").notNull(),
+    played: int("played").notNull(),
+    /** When the committee handed over the prize (podium only). */
+    rewardGivenAt: dateTime3("reward_given_at"),
+  },
+  (t) => [
+    uniqueIndex("prediction_standings_season_member_uq").on(t.season, t.memberId),
+    index("prediction_standings_member_idx").on(t.memberId),
+  ],
+);
+
 /* -------------------------------------------------------------------------- */
 /*                                 Newsletter                                 */
 /* -------------------------------------------------------------------------- */

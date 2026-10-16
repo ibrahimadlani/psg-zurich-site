@@ -3,7 +3,7 @@ import { and, eq, gte, inArray, isNotNull, isNull, lt, lte, notInArray, or, type
 import { db } from "@/db";
 import { attendance, events, matches, members, predictions, user } from "@/db/schema";
 import { seasonEnd, todayInZurich } from "@/lib/dues";
-import { currentMonthBounds, getLeaderboard } from "@/lib/leaderboard";
+import { closeSeason, currentMonthBounds, getLeaderboard, seasonLabel, seasonOf } from "@/lib/leaderboard";
 import { LEGAL } from "@/lib/legal";
 import { launchScheduledCampaigns } from "@/lib/mailing/campaigns";
 import { committeeRecipients, emailDate, enqueue, memberRecipients } from "@/lib/mailing/queue";
@@ -192,6 +192,35 @@ async function monthlyLeaderboard() {
   });
 }
 
+/**
+ * From 1 July: the prediction table of the season that ended on 30 June is frozen. The podium
+ * is congratulated and the committee told who gets the prizes.
+ */
+async function closePredictionSeason() {
+  const season = seasonOf() - 1;
+  const podium = await closeSeason(season);
+  if (!podium?.length) return;
+  const label = seasonLabel(season);
+  const byMember = new Map(podium.map((row) => [row.memberId, row]));
+  const winners = await memberRecipients(and(eq(members.status, "active"), inArrayList([...byMember.keys()]))!);
+  await enqueue("leaderboard.seasonWinner", winners, (recipient) => {
+    const row = byMember.get(recipient.memberId!)!;
+    return {
+      values: { season: label, rank: String(row.rank), points: String(row.points) },
+      path: `/matchs/classement?saison=${season}`,
+      dedupe: `leaderboard.seasonWinner:${season}:${recipient.memberId}`,
+    };
+  });
+  await enqueue("leaderboard.seasonPodium", await committeeRecipients(), (recipient) => ({
+    values: {
+      season: label,
+      podium: podium.map((row) => `${row.rank}. ${row.firstName} ${row.lastName} (${row.points} pts)`).join(" · "),
+    },
+    path: "/admin/matchs",
+    dedupe: `leaderboard.seasonPodium:${season}:${recipient.email}`,
+  }));
+}
+
 /** No visit for 60 days: a friendly nudge, at most once every 90 days. */
 async function inactive() {
   const period = Math.floor(Date.now() / (90 * DAY));
@@ -215,6 +244,7 @@ export async function runSchedules() {
     eventReminders,
     eventThanks,
     monthlyLeaderboard,
+    closePredictionSeason,
     inactive,
     launchScheduledCampaigns,
   ]) {

@@ -51,6 +51,8 @@ export const AUTOMATIONS = [
   // Predictions & engagement
   def("prediction.reminder", { group: "predictions", category: "reminders", messages: "predictionReminder", delay: 0, audience: "member", variables: ["match", "competition", "time"], trigger: "schedule" }),
   def("prediction.result", { group: "predictions", category: "results", messages: "predictionResult", delay: 0, audience: "member", variables: ["match", "score", "prediction", "points"], trigger: "event" }),
+  def("leaderboard.seasonWinner", { group: "predictions", category: "transactional", messages: "seasonWinner", delay: 0, audience: "member", variables: ["season", "rank", "points"], trigger: "schedule" }),
+  def("leaderboard.seasonPodium", { group: "predictions", category: "transactional", messages: "seasonPodium", delay: 0, audience: "committee", variables: ["season", "podium"], trigger: "schedule" }),
   def("leaderboard.monthly", { group: "predictions", category: "results", messages: "leaderboardMonthly", delay: 0, audience: "member", variables: ["month", "rank", "total", "points"], trigger: "schedule" }),
   def("engagement.inactive", { group: "predictions", category: "news", messages: "inactive", delay: 0, audience: "member", variables: [], trigger: "schedule" }),
 ] as const satisfies readonly AutomationDef[];

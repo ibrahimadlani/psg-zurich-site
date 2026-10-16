@@ -415,7 +415,8 @@
       "result": "result {psg} – {opponent}",
       "pending": "pending",
       "empty": "You haven't made a prediction yet.",
-      "browse": "See the matches"
+      "browse": "See the matches",
+      "trophies": "Your trophies"
     },
     "completeProfile": {
       "title": "Complete your profile",
@@ -672,7 +673,9 @@
       "mailing_run": "ran the sending",
       "user_role_change": "changed a role",
       "user_delete": "account deleted",
-      "subscriber_create": "new newsletter subscriber"
+      "subscriber_create": "new newsletter subscriber",
+      "prediction_reward": "handed over a predictions prize",
+      "prediction_rewardUndo": "undid a predictions prize hand-over"
     }
   },
   "AdminShell": {
@@ -1002,6 +1005,21 @@
       "heading": "It's been a while!",
       "body": "Predictions go on, new events are coming and the club has news to share. Come and see us again!",
       "cta": "Back to the site"
+    },
+    "seasonWinner": {
+      "subject": "{rank, select, 1 {{season} predictions champion!} other {On the {season} predictions podium!}}",
+      "preview": "#{rank} in the final table, {points} points",
+      "heading": "{rank, select, 1 {Season champion} 2 {2nd of the season} other {3rd of the season}}",
+      "body": "The {season} season is over and the predictions table is now final: you finish **#{rank}** with **{points, plural, one {# point} other {# points}}**. Well done! Your trophy now shows next to your name on the site, and the committee will be in touch to hand over your prize.",
+      "cta": "See the final table"
+    },
+    "seasonPodium": {
+      "subject": "{season} predictions: the final podium",
+      "preview": "{podium}",
+      "heading": "Season {season} closed",
+      "body": "The {season} predictions table is final. Here is the podium to reward: **{podium}**. Mark each prize as handed over in the admin, under Matches.",
+      "cta": "Open the podiums",
+      "footer": "Sent once, when the season closes."
     }
   },
   "Legal": {
@@ -1431,7 +1449,14 @@
     "you": "(you)",
     "empty": "No scored predictions yet.",
     "backToMatches": "All matches",
-    "youHidden": "(you · hidden from others)"
+    "youHidden": "(you · hidden from others)",
+    "seasonOf": "Season {season}",
+    "final": "Final table",
+    "liveNote": "The season table is frozen on 30 June: the top three are rewarded by the committee.",
+    "frozenNote": "Table frozen on {date}. It no longer changes.",
+    "seasons": "Seasons",
+    "trophy": "{rank, select, 1 {{season} predictions champion} 2 {2nd in {season} predictions} other {3rd in {season} predictions}}",
+    "podium": "Podium"
   },
   "Events": {
     "title": "Events",
@@ -1655,7 +1680,16 @@
     "neverSynced": "Not synced with football-data.org yet.",
     "upcoming": "Upcoming",
     "recent": "Past month",
-    "noUpcoming": "No upcoming match. Run a sync."
+    "noUpcoming": "No upcoming match. Run a sync.",
+    "podiums": "Predictions podiums",
+    "podiumsHint": "Seasons close automatically on 1 July. Mark prizes once handed over.",
+    "rewardGiven": "Handed over",
+    "markGiven": "Prize handed over",
+    "unmark": "Undo",
+    "rewardSaved": "Prize marked as handed over",
+    "rewardUndone": "Hand-over undone",
+    "rewardError": "The prize could not be saved.",
+    "points": "{count, plural, one {# pt} other {# pts}}"
   },
   "Unsubscribe": {
     "title": "Unsubscribe",
@@ -2191,6 +2225,14 @@
       "engagement_inactive": {
         "name": "Inactivity nudge",
         "when": "60 days without a visit, at most every 90 days"
+      },
+      "leaderboard_seasonWinner": {
+        "name": "Season podium",
+        "when": "On 1 July, to the top three of the final table"
+      },
+      "leaderboard_seasonPodium": {
+        "name": "Podium to reward",
+        "when": "On 1 July, to the committee, with the podium names"
       }
     }
   },

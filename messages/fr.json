@@ -415,7 +415,8 @@
       "result": "résultat {psg} – {opponent}",
       "pending": "en attente",
       "empty": "Vous n'avez pas encore pronostiqué.",
-      "browse": "Voir les matchs"
+      "browse": "Voir les matchs",
+      "trophies": "Vos trophées"
     },
     "completeProfile": {
       "title": "Complétez votre profil",
@@ -672,7 +673,9 @@
       "mailing_run": "a lancé l'envoi",
       "user_role_change": "a changé un rôle",
       "user_delete": "compte supprimé",
-      "subscriber_create": "nouvel abonné newsletter"
+      "subscriber_create": "nouvel abonné newsletter",
+      "prediction_reward": "a remis une récompense des pronostics",
+      "prediction_rewardUndo": "a annulé la remise d'une récompense"
     }
   },
   "AdminShell": {
@@ -1002,6 +1005,21 @@
       "heading": "Ça fait un moment !",
       "body": "Les pronostics continuent, de nouveaux événements arrivent et le club a des nouvelles à partager. Repassez nous voir !",
       "cta": "Revenir sur le site"
+    },
+    "seasonWinner": {
+      "subject": "{rank, select, 1 {Champion des pronostics {season} !} other {Sur le podium des pronostics {season} !}}",
+      "preview": "{rank}e du classement final, {points} points",
+      "heading": "{rank, select, 1 {Champion de la saison} 2 {2e de la saison} other {3e de la saison}}",
+      "body": "La saison {season} est terminée et le classement des pronostics est désormais figé : vous finissez **{rank, select, 1 {1er} other {{rank}e}}** avec **{points, plural, one {# point} other {# points}}**. Bravo ! Votre trophée apparaît maintenant à côté de votre nom sur le site, et le comité vous contactera pour la remise de votre récompense.",
+      "cta": "Voir le classement final"
+    },
+    "seasonPodium": {
+      "subject": "Pronostics {season} : le podium final",
+      "preview": "{podium}",
+      "heading": "Saison {season} clôturée",
+      "body": "Le classement des pronostics {season} est figé. Voici le podium à récompenser : **{podium}**. Marquez chaque récompense comme remise dans l'admin, rubrique Matchs.",
+      "cta": "Ouvrir les podiums",
+      "footer": "Envoyé une fois, à la clôture de la saison."
     }
   },
   "Legal": {
@@ -1431,7 +1449,14 @@
     "you": "(vous)",
     "empty": "Aucun pronostic noté pour l'instant.",
     "backToMatches": "Tous les matchs",
-    "youHidden": "(vous · masqué pour les autres)"
+    "youHidden": "(vous · masqué pour les autres)",
+    "seasonOf": "Saison {season}",
+    "final": "Classement final",
+    "liveNote": "Le classement de la saison se fige le 30 juin : les trois premiers sont récompensés par le comité.",
+    "frozenNote": "Classement figé le {date}. Il ne bouge plus.",
+    "seasons": "Saisons",
+    "trophy": "{rank, select, 1 {Champion des pronostics {season}} 2 {2e des pronostics {season}} other {3e des pronostics {season}}}",
+    "podium": "Podium"
   },
   "Events": {
     "title": "Événements",
@@ -1655,7 +1680,16 @@
     "neverSynced": "Pas encore synchronisé avec football-data.org.",
     "upcoming": "À venir",
     "recent": "Ce dernier mois",
-    "noUpcoming": "Aucun match à venir. Lancez une synchronisation."
+    "noUpcoming": "Aucun match à venir. Lancez une synchronisation.",
+    "podiums": "Podiums des pronostics",
+    "podiumsHint": "Les saisons se clôturent automatiquement le 1er juillet. Marquez les récompenses remises.",
+    "rewardGiven": "Remise",
+    "markGiven": "Récompense remise",
+    "unmark": "Annuler",
+    "rewardSaved": "Récompense marquée comme remise",
+    "rewardUndone": "Remise annulée",
+    "rewardError": "La récompense n'a pas pu être enregistrée.",
+    "points": "{count, plural, one {# pt} other {# pts}}"
   },
   "Unsubscribe": {
     "title": "Se désabonner",
@@ -2191,6 +2225,14 @@
       "engagement_inactive": {
         "name": "Relance d'inactivité",
         "when": "60 jours sans visite, au plus tous les 90 jours"
+      },
+      "leaderboard_seasonWinner": {
+        "name": "Podium de la saison",
+        "when": "Le 1er juillet, aux trois premiers du classement figé"
+      },
+      "leaderboard_seasonPodium": {
+        "name": "Podium à récompenser",
+        "when": "Le 1er juillet, au comité, avec les noms du podium"
       }
     }
   },
