@@ -1,13 +1,17 @@
 import "server-only";
-import { and, asc, desc, eq, gt, gte, isNotNull, lte } from "drizzle-orm";
+import { and, asc, desc, eq, gt, gte, inArray, isNotNull, lte, max, count } from "drizzle-orm";
 import { db } from "@/db";
 import {
+  contactMessages,
+  contactThreads,
   events,
   matches,
   members,
   predictions,
+  user,
   type Locale,
 } from "@/db/schema";
+import { formatReference, visibleTopics } from "@/lib/contact";
 import { isDuesPaid } from "@/lib/dues";
 import { getNewsList } from "@/lib/news";
 
@@ -35,7 +39,11 @@ export type NotificationItem =
       opponent: string;
       points: number;
     }
-  | { id: string; kind: "membership"; at: string; href: string };
+  | { id: string; kind: "membership"; at: string; href: string }
+  /** Committee: contact messages nobody opened yet. */
+  | { id: string; kind: "contactInbox"; at: string; href: string; count: number }
+  /** Member: the committee answered one of their messages. */
+  | { id: string; kind: "contactReply"; at: string; href: string; reference: string };
 
 const DAY = 24 * 60 * 60 * 1000;
 /** How far back the feed looks. */
@@ -61,9 +69,11 @@ export async function getNotifications(userId: string, locale: Locale) {
     .from(members)
     .where(eq(members.userId, userId));
   const active = member?.status === "active";
+  const [account] = await db.select({ role: user.role }).from(user).where(eq(user.id, userId));
+  const topics = visibleTopics(account?.role);
   const paid = isDuesPaid(member);
 
-  const [news, newEvents, nextMatches, scored] = await Promise.all([
+  const [news, newEvents, nextMatches, scored, inbox, replies] = await Promise.all([
     getNewsList(locale),
     // Club events are for members whose fee is paid.
     paid
@@ -122,6 +132,20 @@ export async function getNotifications(userId: string, locale: Locale) {
           )
           .orderBy(desc(matches.kickoffAt))
       : [],
+    topics.length
+      ? db
+          .select({ value: count(), at: max(contactThreads.lastMessageAt) })
+          .from(contactThreads)
+          .where(and(eq(contactThreads.status, "new"), inArray(contactThreads.topic, topics)))
+      : [],
+    member
+      ? db
+          .select({ id: contactMessages.id, threadId: contactThreads.id, reference: contactThreads.reference, createdAt: contactMessages.createdAt })
+          .from(contactMessages)
+          .innerJoin(contactThreads, eq(contactThreads.id, contactMessages.threadId))
+          .where(and(eq(contactThreads.memberId, member.id), eq(contactMessages.author, "committee"), gte(contactMessages.createdAt, since)))
+          .orderBy(desc(contactMessages.createdAt))
+      : [],
   ]);
 
   const items: NotificationItem[] = [
@@ -166,6 +190,24 @@ export async function getNotifications(userId: string, locale: Locale) {
       points: match.points ?? 0,
     })),
   ];
+
+  const waiting = inbox[0];
+  if (waiting?.value && waiting.at) {
+    items.push({ id: `contact-inbox:${waiting.at.getTime()}`, kind: "contactInbox", at: waiting.at.toISOString(), href: "/admin/messages", count: waiting.value });
+  }
+  // The latest answer of each conversation.
+  const answered = new Set<string>();
+  for (const reply of replies) {
+    if (answered.has(reply.threadId)) continue;
+    answered.add(reply.threadId);
+    items.push({
+      id: `contact-reply:${reply.id}`,
+      kind: "contactReply",
+      at: reply.createdAt.toISOString(),
+      href: `/espace-membre/messages/${reply.threadId}`,
+      reference: formatReference(reply.reference),
+    });
+  }
 
   if (active && member.joinedOn) {
     const joined = new Date(`${member.joinedOn}T00:00:00Z`);

@@ -1,10 +1,12 @@
 import "server-only";
-import { and, asc, count, desc, eq, gt, gte, inArray, isNull, lt, lte, or, sql } from "drizzle-orm";
+import { and, asc, count, desc, eq, gt, gte, inArray, isNotNull, isNull, lt, lte, or, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { attendance, emailJobs, events, matches, members, posts, predictions, subscribers, user } from "@/db/schema";
+import { attendance, contactThreads, emailJobs, events, matches, members, posts, predictions, subscribers, user } from "@/db/schema";
 import { seasonEnd, todayInZurich } from "@/lib/dues";
 import { can } from "@/lib/roles";
 import type { Role } from "@/db/schema";
+import { inboxCounts } from "@/lib/admin/messages-query";
+import { visibleTopics } from "@/lib/contact";
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -35,7 +37,9 @@ export async function adminCounters(role: Role) {
           .where(and(eq(emailJobs.status, "failed"), gte(emailJobs.createdAt, new Date(Date.now() - 7 * DAY))))
       : null,
   ]);
+  const messages = can(role, "messages") ? (await inboxCounts(role)).toHandle : 0;
   return {
+    messages,
     requests: requests?.[0]?.value ?? 0,
     unpaid: unpaid?.[0]?.value ?? 0,
     failedEmails: failed?.[0]?.value ?? 0,
@@ -152,4 +156,21 @@ export async function audienceStats() {
     predictionShare: lastMatch && active?.value ? Math.min(1, (predicted?.value ?? 0) / active.value) : null,
     predicted: predicted?.value ?? 0,
   };
+}
+
+/** Contact messages: how many wait, and the median time to a first reply over 90 days (hours). */
+export async function contactStats(role: Role) {
+  const topics = visibleTopics(role);
+  const [{ toHandle }, replied] = await Promise.all([
+    inboxCounts(role),
+    topics.length
+      ? db
+          .select({ createdAt: contactThreads.createdAt, firstReplyAt: contactThreads.firstReplyAt })
+          .from(contactThreads)
+          .where(and(inArray(contactThreads.topic, topics), isNotNull(contactThreads.firstReplyAt), gte(contactThreads.createdAt, new Date(Date.now() - 90 * DAY))))
+      : [],
+  ]);
+  const delays = replied.map((row) => row.firstReplyAt!.getTime() - row.createdAt.getTime()).sort((a, b) => a - b);
+  const median = delays.length ? delays[Math.floor(delays.length / 2)]! : null;
+  return { toHandle, medianHours: median === null ? null : Math.floor(median / (60 * 60 * 1000)) };
 }

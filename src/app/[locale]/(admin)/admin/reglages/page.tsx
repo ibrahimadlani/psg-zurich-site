@@ -1,9 +1,9 @@
-import { asc, inArray } from "drizzle-orm";
+import { asc, eq, inArray } from "drizzle-orm";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
-import { AddTeamMemberForm, TeamRoleControls } from "@/components/admin/team/team-controls";
+import { AddTeamMemberForm, CommitteeTitleField, TeamRoleControls } from "@/components/admin/team/team-controls";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { StatusPill } from "@/components/admin/ui/status-pill";
 import { adminCard, adminLabel } from "@/components/admin/ui/styles";
@@ -11,7 +11,7 @@ import { DeploymentStatus } from "@/components/deployment-status";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { UserAvatar } from "@/components/user-avatar";
 import { db } from "@/db";
-import { user } from "@/db/schema";
+import { members, user } from "@/db/schema";
 import { adminPage } from "@/lib/admin/guard";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,8 +28,9 @@ async function Settings() {
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const team = (
     await db
-      .select({ id: user.id, name: user.name, email: user.email, image: user.image, role: user.role })
+      .select({ id: user.id, name: user.name, email: user.email, image: user.image, role: user.role, committeeTitle: members.committeeTitle })
       .from(user)
+      .leftJoin(members, eq(members.userId, user.id))
       .where(inArray(user.role, ["moderator", "admin", "superadmin"]))
       .orderBy(asc(user.name))
   ).sort((a, b) => ORDER[a.role] - ORDER[b.role]);
@@ -55,6 +56,7 @@ async function Settings() {
                   <span className="block truncate text-[13px] text-muted-foreground">{member.email}</span>
                 </span>
               </div>
+              <CommitteeTitleField userId={member.id} title={member.committeeTitle} />
               {member.role === "superadmin" || member.id === session.user.id ? (
                 <StatusPill tone="brand">{t(`roles.${member.role === "member" ? "moderator" : member.role}`)}</StatusPill>
               ) : (
@@ -63,6 +65,7 @@ async function Settings() {
             </li>
           ))}
         </ul>
+        <p className="text-[13px] text-pretty text-muted-foreground">{t("committeeTitleHint")}</p>
         <AddTeamMemberForm />
         <dl className="grid gap-2 pt-2 text-[13px] text-muted-foreground sm:grid-cols-2">
           <div className={`${adminCard} p-3.5`}>

@@ -1,10 +1,12 @@
-import { and, desc, eq, or } from "drizzle-orm";
+import { and, desc, eq, inArray, or } from "drizzle-orm";
 import { NextResponse } from "next/server";
 import { db } from "@/db";
 import {
   attendance,
   auditLog,
   avatars,
+  contactMessages,
+  contactThreads,
   emailJobs,
   events,
   matches,
@@ -59,7 +61,7 @@ export const GET = apiHandler(async () => {
   const email = account[0]?.email ?? session.user.email;
   const memberId = profile?.id ?? null;
 
-  const [signUps, myPredictions, votes, history, emails, newsletter, finalTables] = await Promise.all([
+  const [signUps, myPredictions, votes, history, emails, newsletter, finalTables, conversations] = await Promise.all([
     memberId
       ? db
           .select({ event: events.title, startsAt: events.startsAt, status: attendance.status, signedUpAt: attendance.createdAt, checkedInAt: attendance.checkedInAt })
@@ -115,6 +117,24 @@ export const GET = apiHandler(async () => {
           .where(eq(predictionStandings.memberId, memberId))
           .orderBy(desc(predictionStandings.season))
       : [],
+    // Contact messages (the committee's internal notes are not personal data of the sender).
+    memberId
+      ? db
+          .select({
+            threadId: contactThreads.id,
+            reference: contactThreads.reference,
+            topic: contactThreads.topic,
+            status: contactThreads.status,
+            startedAt: contactThreads.createdAt,
+            author: contactMessages.author,
+            body: contactMessages.body,
+            at: contactMessages.createdAt,
+          })
+          .from(contactThreads)
+          .innerJoin(contactMessages, eq(contactMessages.threadId, contactThreads.id))
+          .where(and(eq(contactThreads.memberId, memberId), inArray(contactMessages.author, ["contact", "committee"])))
+          .orderBy(contactThreads.createdAt, contactMessages.createdAt)
+      : [],
   ]);
 
   const body = {
@@ -156,6 +176,13 @@ export const GET = apiHandler(async () => {
     eventSignUps: signUps,
     predictions: myPredictions.map(({ opponent, venue, ...row }) => ({ match: matchTitle({ opponent, venue }, "PSG"), ...row })),
     predictionSeasons: finalTables.map((row) => ({ ...row, season: `${row.season}-${row.season + 1}` })),
+    contactMessages: Object.values(
+      conversations.reduce<Record<string, { reference: string; topic: string; status: string; startedAt: Date; messages: { from: "you" | "committee"; text: string; at: Date }[] }>>((all, row) => {
+        all[row.threadId] ??= { reference: `C-${String(row.reference).padStart(4, "0")}`, topic: row.topic, status: row.status, startedAt: row.startedAt, messages: [] };
+        all[row.threadId]!.messages.push({ from: row.author === "contact" ? "you" : "committee", text: row.body, at: row.at });
+        return all;
+      }, {}),
+    ),
     pollVotes: votes,
     newsletter: newsletter[0] ?? null,
     emailsSent: emails.map((row) => ({ type: row.type ?? (row.campaign ? "campaign" : null), status: row.status, queuedAt: row.createdAt, sentAt: row.sentAt })),

@@ -110,3 +110,40 @@ export function AddTeamMemberForm() {
     </form>
   );
 }
+
+/** The member's role title in the committee, saved when the field is left (empty: not on the contact page). */
+export function CommitteeTitleField({ userId, title }: { userId: string; title: string | null }) {
+  const t = useTranslations("AdminRoles");
+  const router = useRouter();
+  const [value, setValue] = useState(title ?? "");
+  const [pending, startTransition] = useTransition();
+  const save = () => {
+    if (value.trim() === (title ?? "")) return;
+    startTransition(async () => {
+      const response = await fetch("/api/v1/users/committee-title", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ userId, title: value.trim() }),
+      });
+      if (!response.ok) return void toast.error(t("errors.error"));
+      toast.success(t("committeeTitleSaved"));
+      router.refresh();
+    });
+  };
+  return (
+    <input
+      value={value}
+      disabled={pending}
+      maxLength={60}
+      onChange={(event) => setValue(event.target.value)}
+      onBlur={save}
+      onKeyDown={(event) => {
+        if (event.key === "Enter") event.currentTarget.blur();
+      }}
+      enterKeyHint="done"
+      placeholder={t("committeeTitlePlaceholder")}
+      aria-label={t("committeeTitle")}
+      className={`${adminInput} sm:w-48`}
+    />
+  );
+}

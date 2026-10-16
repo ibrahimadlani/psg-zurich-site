@@ -3,6 +3,7 @@ import {
   CalendarDays,
   FileText,
   House,
+  Inbox,
   Mail,
   Megaphone,
   Newspaper,
@@ -17,10 +18,10 @@ import {
 import type { Capability } from "@/lib/roles";
 
 /** Counters shown next to a section (from /api/v1/admin/summary). */
-export type AdminBadge = "requests" | "unpaid" | "failedEmails";
+export type AdminBadge = "requests" | "unpaid" | "failedEmails" | "messages";
 
 export type AdminSection = {
-  key: "home" | "members" | "dues" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "polls" | "documents" | "settings" | "journal";
+  key: "home" | "members" | "messages" | "dues" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "polls" | "documents" | "settings" | "journal";
   href: string;
   icon: LucideIcon;
   capability: Capability;
@@ -33,6 +34,7 @@ export type AdminSection = {
 export const ADMIN_SECTIONS: AdminSection[] = [
   { key: "home", href: "/admin", icon: House, capability: "area", group: "club", tab: true },
   { key: "members", href: "/admin/membres", icon: Users, capability: "members.read", group: "club", badge: "requests", tab: true },
+  { key: "messages", href: "/admin/messages", icon: Inbox, capability: "messages", group: "club", badge: "messages" },
   { key: "dues", href: "/admin/cotisations", icon: Banknote, capability: "members.write", group: "club", badge: "unpaid" },
   // Phone bar order: home, members, the scanner in the middle, events.
   { key: "scanner", href: "/admin/scanner", icon: ScanLine, capability: "scan", group: "programme", tab: true },

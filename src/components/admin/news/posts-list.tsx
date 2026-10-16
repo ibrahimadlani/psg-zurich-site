@@ -151,7 +151,8 @@ export function PostsList({ groups }: { groups: PostGroup[] }) {
                     <span className="block text-[15px] leading-snug font-semibold text-pretty group-hover:underline">{post.title || t("untitled")}</span>
                     <span className="flex flex-wrap items-center gap-1.5 text-[12px] text-muted-foreground">
                       <StatusPill tone={stateTone[post.state]}>{t(`states.${post.state}`)}</StatusPill>
-                      {when}
+                      {/* "il y a 3 min" moves between the server's render and the browser's. */}
+                      <span suppressHydrationWarning>{when}</span>
                     </span>
                   </span>
                 </Link>

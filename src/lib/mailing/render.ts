@@ -3,13 +3,14 @@ import { and, eq } from "drizzle-orm";
 import { createTranslator } from "next-intl";
 import { createElement } from "react";
 import { db } from "@/db";
-import { emailCampaigns, emailJobs, emailTemplates, type Locale } from "@/db/schema";
+import { EVENT_TYPES, emailCampaigns, emailJobs, emailTemplates, type Locale } from "@/db/schema";
 import { ClubEmail } from "@/emails/club-email";
 import { loadMessages } from "@/i18n/messages";
 import { LEGAL } from "@/lib/legal";
 import { automation, type MailCategory } from "@/lib/mailing/registry";
 import { siteUrl } from "@/lib/mailing/queue";
 import { unsubscribeUrl, type NotificationType } from "@/lib/unsubscribe";
+import { SAMPLE_EVENT, SAMPLE_QUOTE } from "@/lib/mailing/samples";
 
 type Job = typeof emailJobs.$inferSelect;
 export type Texts = { subject: string; preview: string; heading: string; body: string; cta?: string; footer?: string };
@@ -105,13 +106,26 @@ async function unsubscribeLabel(locale: Locale) {
   return t("unsubscribe");
 }
 
-function element(locale: Locale, texts: Texts, target: string | undefined, info: string | undefined, unsubscribe?: { label: string; url: string }) {
+type Extras = { info?: string; quote?: string; unsubscribe?: { label: string; url: string }; eyebrow?: { badge: string; date: string } };
+
+/** Event emails: the kind of event and its date, above the heading as on the event page. */
+async function eventEyebrow(meta: { type: string; startsAt: string } | undefined, locale: Locale) {
+  if (!meta) return undefined;
+  const t = createTranslator({ locale, messages: await loadMessages(locale), namespace: "Events" });
+  const type = (EVENT_TYPES as readonly string[]).includes(meta.type) ? meta.type : "other";
+  const date = new Intl.DateTimeFormat(locale, { timeZone: "Europe/Zurich", weekday: "short", day: "numeric", month: "short" }).format(new Date(meta.startsAt));
+  return { badge: t(`types.${type}` as never), date };
+}
+
+function element(locale: Locale, texts: Texts, target: string | undefined, { info, quote, unsubscribe, eyebrow }: Extras = {}) {
   return createElement(ClubEmail, {
     locale,
     preview: texts.preview,
     heading: texts.heading,
     body: texts.body,
     info,
+    quote,
+    eyebrow,
     cta: target && texts.cta ? { label: texts.cta, url: target } : undefined,
     footer: texts.footer,
     unsubscribe,
@@ -133,7 +147,13 @@ export async function renderJob(job: Job) {
   return {
     subject: texts.subject,
     unsubscribeUrl: url,
-    react: element(job.locale, texts, target, job.payload.info, url ? { label: await unsubscribeLabel(job.locale), url } : undefined),
+    replyTo: job.payload.replyTo,
+    react: element(job.locale, texts, target, {
+      info: job.payload.info,
+      quote: job.payload.quote,
+      unsubscribe: url ? { label: await unsubscribeLabel(job.locale), url } : undefined,
+      eyebrow: await eventEyebrow(job.payload.event, job.locale),
+    }),
   };
 }
 
@@ -175,5 +195,9 @@ export async function renderDraft({
     category !== "transactional"
       ? { label: await unsubscribeLabel(locale), url: `${siteUrl()}/${locale}/parametres/notifications` }
       : undefined;
-  return { subject: texts.subject, react: element(locale, texts, target, undefined, unsubscribe) };
+  // Contact emails carry the sender's own words: show an example of them.
+  const quote = ownerType === "automation" && ["contact.received", "contact.toCommittee", "contact.reply"].includes(ownerId) ? SAMPLE_QUOTE[locale] : undefined;
+  // Event emails: an example kind and date above the heading.
+  const eyebrow = ownerType === "automation" && ownerId.startsWith("event.") ? await eventEyebrow(SAMPLE_EVENT, locale) : undefined;
+  return { subject: texts.subject, react: element(locale, texts, target, { unsubscribe, quote, eyebrow }) };
 }

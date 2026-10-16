@@ -297,6 +297,7 @@ const privacy: Record<Locale, LegalDocument> = {
               "Vie du club : vos inscriptions aux événements (y compris la liste d'attente), votre présence le jour même quand votre carte de membre est scannée à l'entrée (date et heure), vos pronostics et le pseudo éventuel du classement, et vos réponses aux sondages du club.",
               "Carte de membre : un code aléatoire, imprimé dans le QR code, qui permet au comité de vérifier votre adhésion à l'entrée. Il ne contient aucune donnée personnelle et peut être renouvelé.",
               "Newsletter : adresse e-mail et langue, si vous vous y abonnez sans être membre.",
+              "Messages de contact : nom, adresse e-mail, sujet, organisation éventuelle, le texte de vos messages et les réponses du comité. Pour un problème sur le site, la page concernée et le type de navigateur.",
               "Consentement : date et heure auxquelles vous avez accepté les statuts et la présente politique.",
               "Sécurité : adresse IP et type de navigateur liés à vos sessions de connexion et à votre inscription.",
             ],
@@ -332,6 +333,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Administrateurs (membres du comité) : l'ensemble des données de membre, pour gérer les adhésions, les cotisations, les e-mails et les exports nécessaires à l'organisation (liste des inscrits d'un déplacement, par exemple).",
               "Modérateurs (bénévoles désignés par le comité) : l'annuaire des membres en lecture seule (coordonnées, profil, cotisation) et les données des événements (inscriptions, présence), pour l'organisation et l'accueil. Ils ne peuvent ni modifier les adhésions ni exporter la liste des membres.",
+              "Messages de contact : les administrateurs lisent tous les sujets, les modérateurs uniquement « Événements et déplacements » et « Problème sur le site ». Une copie de chaque message arrive dans la boîte e-mail du club. Les notes internes du comité ne sont visibles que par lui.",
               "Les autres membres voient seulement votre nom et votre photo dans la liste « Avec qui ? » des événements auxquels vous êtes inscrit, et votre place au classement des pronostics (sauf si vous vous en masquez).",
             ],
           },
@@ -364,6 +366,7 @@ const privacy: Record<Locale, LegalDocument> = {
               `Données de membre, inscriptions, présences, pronostics et votes : pendant toute la durée de l'adhésion, puis ${LEGAL.retentionAfterMembership} au plus.`,
               "Demandes d'adhésion refusées : conservées jusqu'à l'assemblée générale suivante (droit de recours), puis supprimées sur demande.",
               "Journal d'audit des actions du comité : 2 ans.",
+              "Messages de contact : 2 ans après la fin de l'échange (30 jours pour les messages classés comme spam), et supprimés avec votre compte. Si vous écrivez sans compte, un lien personnel, envoyé par e-mail, vous permet de suivre l'échange.",
               "Sessions de connexion : 7 jours après la dernière activité.",
               "Historique des e-mails envoyés (destinataire, type, date) : 90 jours.",
               "Liens envoyés par e-mail : 24 heures pour la confirmation d'adresse, 1 heure pour le mot de passe.",
@@ -376,7 +379,7 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Cookies et stockage local",
         blocks: [
           {
-            p: "Le site n'utilise qu'un seul cookie, indispensable : celui qui vous garde connecté. Votre navigateur retient aussi votre choix de thème (clair ou sombre), les annonces que vous avez fermées et, pour le comité, l'affichage du menu d'administration.",
+            p: "Le site n'utilise qu'un seul cookie, indispensable : celui qui vous garde connecté. Votre navigateur retient aussi votre choix de thème (clair ou sombre), les annonces que vous avez fermées, le brouillon d'un message de contact en cours d'écriture et, pour le comité, l'affichage du menu d'administration.",
           },
           {
             p: "Aucun outil de mesure d'audience, aucune publicité. Les polices de caractères sont servies par le site lui-même. Seules les pages qui affichent une carte Google (Contact, événements) peuvent laisser Google déposer ses propres cookies. Le scanner de cartes du comité utilise la caméra du téléphone uniquement pendant le scan : aucune image n'est enregistrée ni envoyée.",
@@ -446,6 +449,7 @@ const privacy: Record<Locale, LegalDocument> = {
               "Club life: your event sign-ups (waiting list included), your attendance on the day when your member card is scanned at the door (date and time), your predictions and any leaderboard nickname, and your answers to the club's polls.",
               "Member card: a random code, printed in the QR code, that lets the committee check your membership at the door. It holds no personal data and can be renewed.",
               "Newsletter: email address and language, if you subscribe without being a member.",
+              "Contact messages: name, email address, topic, any organisation, the text of your messages and the committee's replies. For a problem with the site, the page concerned and the type of browser.",
               "Consent: date and time at which you accepted the statutes and this policy.",
               "Security: IP address and browser type linked to your sign-in sessions and your sign-up.",
             ],
@@ -481,6 +485,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Administrators (committee members): all member data, to manage memberships, fees, emails and the exports the organisation needs (the sign-up list of an away trip, for instance).",
               "Moderators (volunteers appointed by the committee): the member list, read only (contact details, profile, fee), and event data (sign-ups, attendance), for organising and welcoming people. They can neither change memberships nor export the member list.",
+              "Contact messages: admins read every topic, moderators only “Events and away trips” and “Problem with the site”. A copy of each message reaches the club's mailbox. The committee's internal notes are visible to the committee only.",
               "Other members only see your name and picture in the “Who's going?” list of the events you signed up for, and your place in the predictions leaderboard (unless you hide yourself).",
             ],
           },
@@ -513,6 +518,7 @@ const privacy: Record<Locale, LegalDocument> = {
               `Member data, sign-ups, attendance, predictions and votes: for the duration of the membership, then ${LEGAL.retentionAfterMembership} at most.`,
               "Refused membership requests: kept until the next general assembly (right of appeal), then deleted on request.",
               "Audit log of committee actions: 2 years.",
+              "Contact messages: 2 years after the conversation ends (30 days for messages marked as spam), and deleted with your account. If you write without an account, a personal link sent by email lets you follow the conversation.",
               "Sign-in sessions: 7 days after the last activity.",
               "History of sent emails (recipient, type, date): 90 days.",
               "Links sent by email: 24 hours for address confirmation, 1 hour for passwords.",
@@ -525,7 +531,7 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Cookies and local storage",
         blocks: [
           {
-            p: "The website uses a single, essential cookie: the one that keeps you signed in. Your browser also remembers your theme (light or dark), the announcements you closed and, for the committee, how the admin menu is displayed.",
+            p: "The website uses a single, essential cookie: the one that keeps you signed in. Your browser also remembers your theme (light or dark), the announcements you closed, the draft of a contact message you are writing and, for the committee, how the admin menu is displayed.",
           },
           {
             p: "No analytics, no advertising. Fonts are served by the website itself. Only pages that display a Google map (Contact, events) may let Google set its own cookies. The committee's card scanner uses the phone's camera only while scanning: no image is recorded or sent.",
@@ -595,6 +601,7 @@ const privacy: Record<Locale, LegalDocument> = {
               "Vereinsleben: deine Anmeldungen zu Veranstaltungen (inkl. Warteliste), deine Anwesenheit am Tag selbst, wenn deine Mitgliederkarte am Eingang gescannt wird (Datum und Uhrzeit), deine Tipps und ein allfälliger Spitzname in der Rangliste sowie deine Antworten auf die Umfragen des Clubs.",
               "Mitgliederkarte: ein zufälliger Code im QR-Code, mit dem der Vorstand deine Mitgliedschaft am Eingang prüft. Er enthält keine Personendaten und kann erneuert werden.",
               "Newsletter: E-Mail-Adresse und Sprache, wenn du dich ohne Mitgliedschaft anmeldest.",
+              "Kontaktnachrichten: Name, E-Mail-Adresse, Thema, allfällige Organisation, der Text deiner Nachrichten und die Antworten des Vorstands. Bei einem Problem mit der Website die betroffene Seite und der Browsertyp.",
               "Einwilligung: Datum und Uhrzeit, zu denen du die Statuten und diese Erklärung akzeptiert hast.",
               "Sicherheit: IP-Adresse und Browsertyp im Zusammenhang mit deinen Anmeldesitzungen und deiner Registrierung.",
             ],
@@ -630,6 +637,7 @@ const privacy: Record<Locale, LegalDocument> = {
             ul: [
               "Administratoren (Vorstandsmitglieder): alle Mitgliederdaten, um Mitgliedschaften, Beiträge, E-Mails und die für die Organisation nötigen Exporte zu verwalten (z. B. die Anmeldeliste einer Auswärtsfahrt).",
               "Moderatoren (vom Vorstand bestimmte Freiwillige): die Mitgliederliste nur zum Lesen (Kontaktdaten, Profil, Beitrag) und die Daten der Veranstaltungen (Anmeldungen, Anwesenheit), für Organisation und Einlass. Sie können weder Mitgliedschaften ändern noch die Mitgliederliste exportieren.",
+              "Kontaktnachrichten: Admins lesen alle Themen, Moderatoren nur «Events und Auswärtsfahrten» und «Problem mit der Website». Eine Kopie jeder Nachricht geht an das E-Mail-Postfach des Clubs. Interne Notizen des Vorstands sieht nur der Vorstand.",
               "Andere Mitglieder sehen nur deinen Namen und dein Bild in der Liste «Mit wem?» der Veranstaltungen, für die du angemeldet bist, und deinen Platz in der Tipp-Rangliste (ausser du blendest dich aus).",
             ],
           },
@@ -662,6 +670,7 @@ const privacy: Record<Locale, LegalDocument> = {
               `Mitgliederdaten, Anmeldungen, Anwesenheiten, Tipps und Stimmen: für die Dauer der Mitgliedschaft, danach höchstens ${LEGAL.retentionAfterMembership}.`,
               "Abgelehnte Mitgliedsanträge: bis zur nächsten Generalversammlung (Rekursrecht), danach auf Anfrage gelöscht.",
               "Audit-Protokoll der Vorstandsaktionen: 2 Jahre.",
+              "Kontaktnachrichten: 2 Jahre nach Abschluss des Austauschs (30 Tage für als Spam markierte Nachrichten), und mit deinem Konto gelöscht. Schreibst du ohne Konto, kannst du den Austausch über einen persönlichen Link aus der E-Mail verfolgen.",
               "Anmeldesitzungen: 7 Tage nach der letzten Aktivität.",
               "Verlauf der gesendeten E-Mails (Empfänger, Art, Datum): 90 Tage.",
               "Per E-Mail gesendete Links: 24 Stunden für die Adressbestätigung, 1 Stunde für das Passwort.",
@@ -674,7 +683,7 @@ const privacy: Record<Locale, LegalDocument> = {
         title: "Cookies und lokaler Speicher",
         blocks: [
           {
-            p: "Die Website verwendet nur ein einziges, notwendiges Cookie: jenes, das dich angemeldet hält. Dein Browser speichert ausserdem dein Farbschema (hell oder dunkel), die geschlossenen Hinweise und, für den Vorstand, die Darstellung des Admin-Menüs.",
+            p: "Die Website verwendet nur ein einziges, notwendiges Cookie: jenes, das dich angemeldet hält. Dein Browser speichert ausserdem dein Farbschema (hell oder dunkel), die geschlossenen Hinweise, den Entwurf einer Kontaktnachricht und, für den Vorstand, die Darstellung des Admin-Menüs.",
           },
           {
             p: "Keine Analyse-Tools, keine Werbung. Die Schriften werden von der Website selbst ausgeliefert. Nur Seiten mit einer Google-Karte (Kontakt, Veranstaltungen) können Google eigene Cookies setzen lassen. Der Kartenscanner des Vorstands nutzt die Handykamera nur während des Scans: Es wird kein Bild gespeichert oder gesendet.",

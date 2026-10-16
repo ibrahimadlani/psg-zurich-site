@@ -172,6 +172,8 @@ export const members = mysqlTable(
     nickname: varchar("nickname", { length: 32 }).unique(),
     /** Still ranked, but only visible to themselves in the leaderboard. */
     hideFromLeaderboard: boolean("hide_from_leaderboard").default(false).notNull(),
+    /** Role in the committee ("Président", "Trésorière"…), shown on the contact page when set. */
+    committeeTitle: varchar("committee_title", { length: 60 }),
     notifyEvents: boolean("notify_events").default(true).notNull(),
     notifyPredictionReminders: boolean("notify_prediction_reminders").default(true).notNull(),
     /** Points after each match and the monthly leaderboard recap. */
@@ -644,6 +646,67 @@ export const routeTimes = mysqlTable("route_times", {
 });
 
 /* -------------------------------------------------------------------------- */
+/*                                   Contact                                  */
+/* -------------------------------------------------------------------------- */
+
+// Order = MySQL enum order: append only.
+export const CONTACT_TOPICS = ["join", "events", "fees", "partnership", "website", "account", "other"] as const;
+export type ContactTopic = (typeof CONTACT_TOPICS)[number];
+/** new: nobody opened it · open: being handled · answered: waiting for the sender · closed · spam. */
+export const CONTACT_STATUSES = ["new", "open", "answered", "closed", "spam"] as const;
+export type ContactStatus = (typeof CONTACT_STATUSES)[number];
+export const CONTACT_AUTHORS = ["contact", "committee", "note"] as const;
+
+/** A conversation started from the contact page, by a visitor or a member. */
+export const contactThreads = mysqlTable(
+  "contact_threads",
+  {
+    id: id(),
+    /** Shown as "C-0042" to the sender and in the admin. */
+    reference: int("reference").notNull().unique(),
+    topic: mysqlEnum("topic", CONTACT_TOPICS).notNull(),
+    status: mysqlEnum("status", CONTACT_STATUSES).default("new").notNull(),
+    /** Set when a member wrote; the conversation goes with their account. */
+    memberId: fk("member_id").references(() => members.id, { onDelete: "cascade" }),
+    name: varchar("name", { length: 120 }).notNull(),
+    email: varchar("email", { length: 255 }).notNull(),
+    locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
+    organisation: varchar("organisation", { length: 160 }),
+    /** Website problems only: the page concerned and the browser. */
+    context: json<{ page?: string; userAgent?: string }>("context"),
+    assignedToId: fk("assigned_to_id").references(() => user.id, { onDelete: "set null" }),
+    /** sha256 of the visitor's private follow-up link. */
+    trackingTokenHash: varchar("tracking_token_hash", { length: 64 }).unique(),
+    lastMessageAt: dateTime3("last_message_at").notNull(),
+    firstReplyAt: dateTime3("first_reply_at"),
+    /** Last "waiting for an answer" reminder to the committee. */
+    remindedAt: dateTime3("reminded_at"),
+    ...timestamps(),
+  },
+  (t) => [
+    index("contact_threads_status_idx").on(t.status, t.lastMessageAt),
+    index("contact_threads_email_idx").on(t.email),
+    index("contact_threads_member_idx").on(t.memberId),
+  ],
+);
+
+/** The messages of a conversation; "note" ones are internal to the committee. */
+export const contactMessages = mysqlTable(
+  "contact_messages",
+  {
+    id: id(),
+    threadId: fk("thread_id")
+      .notNull()
+      .references(() => contactThreads.id, { onDelete: "cascade" }),
+    author: mysqlEnum("author", CONTACT_AUTHORS).notNull(),
+    authorUserId: fk("author_user_id").references(() => user.id, { onDelete: "set null" }),
+    body: text("body").notNull(),
+    createdAt: createdAt(),
+  },
+  (t) => [index("contact_messages_thread_idx").on(t.threadId, t.createdAt)],
+);
+
+/* -------------------------------------------------------------------------- */
 /*                                   Mailing                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -709,7 +772,7 @@ export const emailJobs = mysqlTable(
     toEmail: varchar("to_email", { length: 255 }).notNull(),
     locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
     /** Variables of the texts, the button link and the info line, fixed when queued. */
-    payload: json<{ values: Record<string, string>; path?: string; url?: string; info?: string }>("payload").notNull(),
+    payload: json<{ values: Record<string, string>; path?: string; url?: string; info?: string; quote?: string; replyTo?: string; event?: { type: string; startsAt: string } }>("payload").notNull(),
     /** Same key = same email: never queued twice (NULL for test sends). */
     dedupeKey: varchar("dedupe_key", { length: 191 }).unique(),
     status: mysqlEnum("status", EMAIL_JOB_STATUSES).default("pending").notNull(),

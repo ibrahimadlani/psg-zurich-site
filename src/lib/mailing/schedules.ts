@@ -1,12 +1,13 @@
 import "server-only";
 import { and, eq, gte, inArray, isNotNull, isNull, lt, lte, notInArray, or, type SQLWrapper } from "drizzle-orm";
 import { db } from "@/db";
-import { attendance, events, matches, members, predictions, user } from "@/db/schema";
+import { attendance, contactThreads, events, matches, members, predictions, user } from "@/db/schema";
 import { seasonEnd, todayInZurich } from "@/lib/dues";
 import { closeSeason, currentMonthBounds, getLeaderboard, seasonLabel, seasonOf } from "@/lib/leaderboard";
 import { LEGAL } from "@/lib/legal";
 import { launchScheduledCampaigns } from "@/lib/mailing/campaigns";
-import { committeeRecipients, emailDate, enqueue, memberRecipients } from "@/lib/mailing/queue";
+import { formatReference, topicReaders } from "@/lib/contact";
+import { committeeRecipients, emailDate, enqueue, memberRecipients, type Recipient } from "@/lib/mailing/queue";
 import { matchTitle } from "@/lib/matches";
 
 /*
@@ -142,6 +143,7 @@ async function eventReminders() {
     const recipients = await memberRecipients(and(eq(members.status, "active"), inArraySubquery(signedUp))!);
     await enqueue("event.reminder", recipients, (recipient) => ({
       values: { eventId: event.id, event: event.title, date: emailDate(event.startsAt, recipient.locale), place: event.location ?? event.address ?? "—" },
+      event: { type: event.type, startsAt: event.startsAt.toISOString() },
       path: `/evenements/${event.id}`,
       info: `${emailDate(event.startsAt, recipient.locale)} · ${event.location ?? event.address ?? ""}`,
       dedupe: `event.reminder:${event.id}:${recipient.memberId}`,
@@ -160,6 +162,7 @@ async function eventThanks() {
     const recipients = await memberRecipients(inArraySubquery(present));
     await enqueue("event.thanks", recipients, (recipient) => ({
       values: { eventId: event.id, event: event.title },
+      event: { type: event.type, startsAt: event.startsAt.toISOString() },
       path: "/actualites",
       dedupe: `event.thanks:${event.id}:${recipient.memberId}`,
     }));
@@ -221,6 +224,39 @@ async function closePredictionSeason() {
   }));
 }
 
+/**
+ * Every day from 9 a.m.: the contact messages waiting for over 48 hours, to the committee
+ * members who read their topic (the page promises an answer within 48 hours).
+ */
+async function contactReminders() {
+  const { hour } = zurich();
+  if (hour < 9) return;
+  const waiting = await db
+    .select({ id: contactThreads.id, reference: contactThreads.reference, topic: contactThreads.topic })
+    .from(contactThreads)
+    .where(and(inArray(contactThreads.status, ["new", "open"]), lt(contactThreads.lastMessageAt, ago(2 * DAY))));
+  if (waiting.length === 0) return;
+  const byReader = new Map<string, { recipient: Recipient; references: string[] }>();
+  for (const topic of new Set(waiting.map((thread) => thread.topic))) {
+    const references = waiting.filter((thread) => thread.topic === topic).map((thread) => formatReference(thread.reference));
+    for (const recipient of await topicReaders(topic)) {
+      const key = recipient.email.toLowerCase();
+      const entry = byReader.get(key) ?? { recipient, references: [] };
+      entry.references.push(...references);
+      byReader.set(key, entry);
+    }
+  }
+  const today = todayInZurich();
+  for (const { recipient, references } of byReader.values()) {
+    await enqueue("contact.reminder", [recipient], () => ({
+      values: { count: String(references.length), references: references.sort().join(", ") },
+      path: "/admin/messages",
+      dedupe: `contact.reminder:${today}:${recipient.email.toLowerCase()}`,
+    }));
+  }
+  await db.update(contactThreads).set({ remindedAt: new Date() }).where(inArray(contactThreads.id, waiting.map((thread) => thread.id)));
+}
+
 /** No visit for 60 days: a friendly nudge, at most once every 90 days. */
 async function inactive() {
   const period = Math.floor(Date.now() / (90 * DAY));
@@ -245,6 +281,7 @@ export async function runSchedules() {
     eventThanks,
     monthlyLeaderboard,
     closePredictionSeason,
+    contactReminders,
     inactive,
     launchScheduledCampaigns,
   ]) {

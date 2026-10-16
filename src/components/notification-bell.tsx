@@ -1,6 +1,6 @@
 "use client";
 
-import { BadgeCheck, Bell, CalendarDays, Newspaper, Target, Trophy, type LucideIcon } from "lucide-react";
+import { BadgeCheck, Bell, CalendarDays, Inbox, MessageSquareReply, Newspaper, Target, Trophy, type LucideIcon } from "lucide-react";
 import { useFormatter, useLocale, useNow, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { headerIconButtonClass } from "@/components/header-icon-button";
@@ -26,6 +26,8 @@ const ICONS: Record<Item["kind"], LucideIcon> = {
   prediction: Target,
   points: Trophy,
   membership: BadgeCheck,
+  contactInbox: Inbox,
+  contactReply: MessageSquareReply,
 };
 
 /** Bell of the header for signed-in members: unread badge, latest news of the club in a menu. */
@@ -73,6 +75,10 @@ export function NotificationBell() {
         return { label: t("kinds.points"), body: t("pointsBody", { count: item.points, opponent: item.opponent }) };
       case "membership":
         return { label: t("kinds.membership"), body: t("membershipBody") };
+      case "contactInbox":
+        return { label: t("kinds.contactInbox"), body: t("contactInboxBody", { count: item.count }) };
+      case "contactReply":
+        return { label: t("kinds.contactReply"), body: t("contactReplyBody", { reference: item.reference }) };
     }
   }
 

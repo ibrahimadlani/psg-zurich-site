@@ -63,6 +63,9 @@ const eventValues = (event: typeof events.$inferSelect, locale: Locale) => ({
   place: event.location ?? event.address ?? "—",
 });
 
+/** Kind and date of an event, for the badge above the heading (kept in the email: the event may be gone). */
+const eventMeta = (event: typeof events.$inferSelect) => ({ type: event.type, startsAt: event.startsAt.toISOString() });
+
 /** New event (when the admin asked to tell the members): members whose fee is paid. */
 export async function onEventCreated(eventId: string) {
   const [event] = await db.select().from(events).where(eq(events.id, eventId));
@@ -70,6 +73,7 @@ export async function onEventCreated(eventId: string) {
   const recipients = await memberRecipients(paidMembers()!);
   await enqueue("event.new", recipients, (recipient) => ({
     values: eventValues(event, recipient.locale),
+    event: eventMeta(event),
     path: `/evenements/${event.id}`,
     info: `${emailDate(event.startsAt, recipient.locale)} · ${event.location ?? event.address ?? ""}`,
     dedupe: `event.new:${event.id}:${recipient.memberId}`,
@@ -82,6 +86,7 @@ export async function onEventCancelled(event: typeof events.$inferSelect, member
   const recipients = await memberRecipients(inArray(members.id, memberIds));
   await enqueue("event.cancelled", recipients, (recipient) => ({
     values: eventValues(event, recipient.locale),
+    event: eventMeta(event),
     path: "/evenements",
     dedupe: `event.cancelled:${event.id}:${recipient.memberId}`,
   }));
@@ -93,6 +98,7 @@ export async function onWaitlistPromoted(memberId: string, eventId: string) {
   if (!event) return;
   await enqueue("event.waitlistPromoted", await memberRecipients(eq(members.id, memberId)), (recipient) => ({
     values: eventValues(event, recipient.locale),
+    event: eventMeta(event),
     path: `/evenements/${eventId}`,
     dedupe: `event.waitlistPromoted:${eventId}:${memberId}`,
   }));
@@ -115,6 +121,7 @@ export async function onSignUp(eventId: string) {
   );
   await enqueue("event.almostFull", recipients, (recipient) => ({
     values: { ...eventValues(event, recipient.locale), left: String(left) },
+    event: eventMeta(event),
     path: `/evenements/${event.id}`,
     dedupe: `event.almostFull:${event.id}:${recipient.memberId}`,
   }));

@@ -28,9 +28,11 @@ type SendMailOptions = {
   react: ReactElement;
   /** One-click unsubscribe link (RFC 8058): mail clients show their own "Unsubscribe" button. */
   unsubscribeUrl?: string;
+  /** Answers go there instead of the club's address. */
+  replyTo?: string;
 };
 
-export async function sendMail({ to, subject, react, unsubscribeUrl }: SendMailOptions) {
+export async function sendMail({ to, subject, react, unsubscribeUrl, replyTo }: SendMailOptions) {
   const [html, text] = await Promise.all([
     render(react),
     render(react, { plainText: true }),
@@ -41,13 +43,13 @@ export async function sendMail({ to, subject, react, unsubscribeUrl }: SendMailO
     if (process.env.NODE_ENV === "production") {
       throw new Error("SMTP is not configured (SMTP_HOST is missing).");
     }
-    console.info(`[mail] SMTP not configured, email not sent.\nTo: ${to}\nSubject: ${subject}\n\n${text}`);
+    console.info(`[mail] SMTP not configured, email not sent.\nTo: ${to}${replyTo ? `\nReply-To: ${replyTo}` : ""}\nSubject: ${subject}\n\n${text}`);
     return;
   }
 
   await smtp.sendMail({
     from: process.env.MAIL_FROM ?? "PSG Zurich <noreply@psg-zurich.ch>",
-    replyTo: process.env.MAIL_REPLY_TO ?? "contact@psg-zurich.ch",
+    replyTo: replyTo ?? process.env.MAIL_REPLY_TO ?? "contact@psg-zurich.ch",
     to,
     subject,
     html,

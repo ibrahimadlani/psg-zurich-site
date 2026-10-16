@@ -17,6 +17,8 @@ export const CAPABILITIES = {
   events: "moderator",
   news: "moderator",
   "members.read": "moderator",
+  /** Contact messages; moderators only see some topics (lib/contact.ts). */
+  messages: "moderator",
   "members.write": "admin",
   mailing: "admin",
   polls: "admin",

@@ -8,7 +8,7 @@ import { Kpi } from "@/components/admin/ui/kpi";
 import { adminCard, adminLabel } from "@/components/admin/ui/styles";
 import { AdminHomeSkeleton } from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
-import { adminCounters, audienceStats, memberStats, nextEventFill, scheduledPosts, unverifiedRequests } from "@/lib/admin/dashboard";
+import { adminCounters, contactStats, audienceStats, memberStats, nextEventFill, scheduledPosts, unverifiedRequests } from "@/lib/admin/dashboard";
 import { eventStats } from "@/lib/admin/events-query";
 import { matchTitle } from "@/lib/matches";
 import { adminPage } from "@/lib/admin/guard";
@@ -62,7 +62,7 @@ async function Home() {
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const role = session.user.role;
 
-  const [counters, members, nextEvent, unverified, scheduled, eventsSeason, audience] = await Promise.all([
+  const [counters, members, nextEvent, unverified, scheduled, eventsSeason, audience, contact] = await Promise.all([
     adminCounters(role),
     can(role, "members.read") ? memberStats() : null,
     can(role, "events") ? nextEventFill() : null,
@@ -70,11 +70,15 @@ async function Home() {
     can(role, "news") ? scheduledPosts() : [],
     can(role, "events") ? eventStats() : null,
     can(role, "mailing") ? audienceStats() : null,
+    can(role, "messages") ? contactStats(role) : null,
   ]);
 
   const tasks: Task[] = [];
   if (counters.requests) {
     tasks.push({ key: "requests", value: String(counters.requests), label: t("tasks.requests", { count: counters.requests }), href: "/admin/membres", tone: "urgent" });
+  }
+  if (counters.messages) {
+    tasks.push({ key: "messages", value: String(counters.messages), label: t("tasks.messages", { count: counters.messages }), href: "/admin/messages", tone: "urgent" });
   }
   if (counters.unpaid) {
     tasks.push({ key: "unpaid", value: String(counters.unpaid), label: t("tasks.unpaid", { count: counters.unpaid }), href: "/admin/cotisations" });
@@ -225,6 +229,22 @@ async function Home() {
               value={audience.predictionShare === null ? "—" : `${Math.round(audience.predictionShare * 100)}%`}
               gauge={audience.predictionShare ?? 0}
               hint={audience.lastMatch ? t("kpi.predictionsHint", { count: audience.predicted, match: matchTitle(audience.lastMatch, "PSG") }) : t("kpi.noMatch")}
+            />
+          </div>
+        </section>
+      ) : null}
+
+      {contact ? (
+        <section className="mt-10 space-y-3" aria-labelledby="contact-stats">
+          <h2 id="contact-stats" className={adminLabel}>
+            {t("contactTitle")}
+          </h2>
+          <div className="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-3">
+            <Kpi label={t("kpi.toHandle")} value={contact.toHandle} hint={t("kpi.toHandleHint")} />
+            <Kpi
+              label={t("kpi.firstReply")}
+              value={contact.medianHours === null ? "—" : t("kpi.firstReplyValue", { hours: contact.medianHours })}
+              hint={contact.medianHours === null ? t("kpi.firstReplyNone") : t("kpi.firstReplyHint")}
             />
           </div>
         </section>

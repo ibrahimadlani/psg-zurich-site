@@ -141,6 +141,13 @@
       "when": 1792152244836,
       "tag": "0019_prediction_seasons",
       "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "5",
+      "when": 1792156086258,
+      "tag": "0020_contact_messages",
+      "breakpoints": true
     }
   ]
 }

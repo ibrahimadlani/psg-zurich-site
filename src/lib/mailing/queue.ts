@@ -16,6 +16,12 @@ export type JobContent = {
   /** Or a full address. */
   url?: string;
   info?: string;
+  /** Someone's own words (a contact message, a reply), quoted as written. */
+  quote?: string;
+  /** Answers go to this address instead of the club's (committee alerts: the sender). */
+  replyTo?: string;
+  /** Event emails: its kind and date, shown above the heading like on the event page. */
+  event?: { type: string; startsAt: string };
   /** Same key = same email, never queued twice; null for one-off sends (tests). */
   dedupe: string | null;
 };
@@ -77,6 +83,9 @@ export async function enqueue(key: string, recipients: Recipient[], build: (reci
           path: content.path,
           url: content.url,
           info: content.info,
+          quote: content.quote,
+          replyTo: content.replyTo,
+          event: content.event,
         },
         dedupeKey: content.dedupe,
         sendAfter,

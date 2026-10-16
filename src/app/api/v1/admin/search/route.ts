@@ -1,11 +1,12 @@
-import { and, desc, eq, like, or } from "drizzle-orm";
+import { and, desc, eq, inArray, like, or } from "drizzle-orm";
 import { connection } from "next/server";
 import { z } from "zod";
 import { db } from "@/db";
-import { events, members, posts, user } from "@/db/schema";
+import { contactThreads, events, members, posts, user } from "@/db/schema";
 import { apiHandler, ok, parseQuery } from "@/lib/api";
 import { requireCapability } from "@/lib/permissions";
 import { can } from "@/lib/roles";
+import { formatReference, visibleTopics } from "@/lib/contact";
 
 /** `%word%` with the LIKE wildcards of the word itself escaped. */
 const pattern = (word: string) => `%${word.replace(/[%_\\]/g, "\\$&")}%`;
@@ -21,7 +22,10 @@ export const GET = apiHandler(async (request) => {
   const { q } = parseQuery(request, z.object({ q: z.string().trim().min(2).max(80) }));
   const words = q.split(/\s+/).slice(0, 3);
 
-  const [memberRows, eventRows, postRows] = await Promise.all([
+  const topics = visibleTopics(role);
+  // "C-0042", "c42" or "42" find a conversation by its reference.
+  const referenceNumber = Number(q.replace(/^c-?/i, ""));
+  const [memberRows, eventRows, postRows, messageRows] = await Promise.all([
     can(role, "members.read")
       ? db
           .select({ id: members.id, firstName: members.firstName, lastName: members.lastName, memberNumber: members.memberNumber, status: members.status, email: user.email, image: user.image })
@@ -46,11 +50,27 @@ export const GET = apiHandler(async (request) => {
           .orderBy(desc(posts.updatedAt))
           .limit(5)
       : [],
+    topics.length
+      ? db
+          .select({ id: contactThreads.id, reference: contactThreads.reference, name: contactThreads.name, topic: contactThreads.topic })
+          .from(contactThreads)
+          .where(
+            and(
+              inArray(contactThreads.topic, topics),
+              Number.isInteger(referenceNumber) && referenceNumber > 0
+                ? eq(contactThreads.reference, referenceNumber)
+                : and(...words.map((word) => or(like(contactThreads.name, pattern(word)), like(contactThreads.email, pattern(word)), like(contactThreads.organisation, pattern(word))))),
+            ),
+          )
+          .orderBy(desc(contactThreads.lastMessageAt))
+          .limit(5)
+      : [],
   ]);
 
   return ok({
     members: memberRows.map((row) => ({ ...row, name: `${row.firstName} ${row.lastName}`.trim() })),
     events: eventRows,
     posts: postRows,
+    messages: messageRows.map((row) => ({ id: row.id, name: row.name, reference: formatReference(row.reference) })),
   });
 });

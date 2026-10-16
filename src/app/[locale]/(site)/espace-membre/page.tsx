@@ -1,4 +1,4 @@
-import { ArrowRight, LayoutDashboard, Settings } from "lucide-react";
+import { ArrowRight, LayoutDashboard, MessagesSquare, Settings } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
@@ -66,6 +66,14 @@ async function MemberPanel() {
             {tNav("settings")}
           </Link>
         </Button>
+        {member ? (
+          <Button variant="outline" asChild>
+            <Link href="/espace-membre/messages" prefetch={false}>
+              <MessagesSquare aria-hidden />
+              {t("messagesLink")}
+            </Link>
+          </Button>
+        ) : null}
         {hasRole(user.role, "moderator") ? (
           <Button variant="outline" asChild>
             <Link href="/admin" prefetch={false}>

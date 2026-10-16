@@ -5,7 +5,7 @@ import { announcements, auditLog, documents, events, matches, members, polls, po
 import { matchTitle } from "@/lib/matches";
 
 /** The journal's filters: the first part of the action ("member.approve" → member). */
-export const AUDIT_DOMAINS = ["member", "event", "match", "post", "announcement", "poll", "document", "mailing", "user"] as const;
+export const AUDIT_DOMAINS = ["member", "contact", "event", "match", "post", "announcement", "poll", "document", "mailing", "user"] as const;
 export type AuditDomain = (typeof AUDIT_DOMAINS)[number];
 
 export const AUDIT_PAGE = 50;
@@ -21,6 +21,7 @@ function entityHref(type: string, id: string | null) {
   if (type === "document") return "/admin/documents";
   if (type === "announcement") return "/admin/banniere";
   if (type === "email_campaign") return `/admin/mailing/campagnes/${id}`;
+  if (type === "contact") return `/admin/messages/${id}`;
   return null;
 }
 
@@ -81,7 +82,14 @@ export async function auditPage(domain: AuditDomain | null, page: number) {
     entries: list.map((row) => {
       const metadata = row.metadata ?? {};
       // Deleted things keep the name written at the time, when there is one.
-      const fallback = typeof metadata.title === "string" ? metadata.title : typeof metadata.question === "string" ? metadata.question : null;
+      const fallback =
+        typeof metadata.title === "string"
+          ? metadata.title
+          : typeof metadata.question === "string"
+            ? metadata.question
+            : typeof metadata.reference === "string"
+              ? `${metadata.reference}${typeof metadata.name === "string" ? ` · ${metadata.name}` : ""}`
+              : null;
       const memberId = typeof metadata.memberId === "string" ? metadata.memberId : null;
       return {
         id: row.id,

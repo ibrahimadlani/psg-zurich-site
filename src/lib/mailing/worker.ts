@@ -1,7 +1,7 @@
 import "server-only";
-import { and, asc, count, eq, gte, lt, lte, ne } from "drizzle-orm";
+import { and, asc, count, eq, gte, inArray, lt, lte, ne } from "drizzle-orm";
 import { db } from "@/db";
-import { auditLog, emailCampaigns, emailJobs, members, type EmailJobStatus } from "@/db/schema";
+import { auditLog, contactThreads, emailCampaigns, emailJobs, members, type EmailJobStatus } from "@/db/schema";
 import { sendMail } from "@/lib/mail";
 import { stillRelevant } from "@/lib/mailing/guards";
 import { getMailingSettings } from "@/lib/mailing/queue";
@@ -112,4 +112,9 @@ export async function cleanUpJobs() {
   // Except the sign-up line: it proves consent to the statutes and the privacy policy, kept as
   // long as the account exists.
   await db.delete(auditLog).where(and(lt(auditLog.createdAt, new Date(Date.now() - 730 * DAY)), ne(auditLog.action, "member.signup")));
+  // Contact messages: 2 years after the last word of a finished conversation, spam after 30 days.
+  await db
+    .delete(contactThreads)
+    .where(and(inArray(contactThreads.status, ["closed", "answered"]), lt(contactThreads.lastMessageAt, new Date(Date.now() - 730 * DAY))));
+  await db.delete(contactThreads).where(and(eq(contactThreads.status, "spam"), lt(contactThreads.createdAt, new Date(Date.now() - 30 * DAY))));
 }

@@ -61,21 +61,118 @@
   },
   "Contact": {
     "title": "Kontakt",
+    "hello": "Hallo {name}",
     "intro": "Eine Frage zum Club, zur Mitgliedschaft, zu einer Auswärtsfahrt oder einer Partnerschaft? Schreib uns, der Vorstand antwortet.",
-    "writeTitle": "Schreib uns",
-    "writeBody": "Der Vorstand antwortet in der Regel innerhalb von 48 Stunden.",
+    "memberIntro": "Erledige es unten mit einem Klick, oder schreib dem Vorstand.",
+    "promise": "Antwort innert 48 h",
     "copy": "Adresse kopieren",
     "copied": "Adresse kopiert",
-    "joinTitle": "Mitglied werden",
-    "joinBody": "Alle Infos und das Beitrittsformular findest du online.",
-    "joinLink": "Beitreten",
-    "partnersTitle": "Partnerschaften und Presse",
-    "partnersBody": "Bars, Sponsoren, Medien: Lass uns über ein Projekt sprechen.",
-    "partnersLink": "Schreib uns",
-    "partnersSubject": "Partnerschaft / Presse",
+    "byEmail": "Oder per E-Mail",
     "mapLabel": "Karte von Zürich",
     "location": "Zürich, Schweiz",
-    "openMap": "In Google Maps öffnen"
+    "openMap": "In Google Maps öffnen",
+    "committeeBanner": "{count, plural, one {# Kontaktnachricht wartet auf den Vorstand.} other {# Kontaktnachrichten warten auf den Vorstand.}}",
+    "committeeBannerLink": "Posteingang öffnen",
+    "shortcutsTitle": "Mit einem Klick",
+    "shortcuts": {
+      "fee": "Mein Beitrag",
+      "card": "Meine Karte",
+      "events": "Meine Anmeldungen",
+      "data": "Meine Daten"
+    },
+    "myMessages": "Meine Nachrichten",
+    "myMessagesOpen": "{count, plural, =0 {Keine offene Anfrage} one {# offene Anfrage} other {# offene Anfragen}}",
+    "pickTitle": "Du schreibst uns wegen…",
+    "help": {
+      "join": "Die Mitgliedschaft läuft online und dauert 3 Minuten: Formular ausfüllen, dann bestätigt der Vorstand.",
+      "joinCta": "Jetzt beitreten",
+      "joinQuestion": "Ich habe vorher eine Frage",
+      "eventsVisitor": "Watch-Partys und Auswärtsfahrten sind für Mitglieder. Eine Frage vor dem Beitritt? Schreib uns.",
+      "eventsMember": "Anmelden kannst du dich direkt auf der Seite jedes Events.",
+      "eventsMemberCta": "Zu den Events",
+      "fees": "Betrag, Zahlungsarten und der Stand deines Beitrags stehen auf deiner Beitragsseite.",
+      "feesCta": "Mein Beitrag",
+      "account": "Du kannst alle deine Daten herunterladen oder dein Konto selbst löschen, in deinen Einstellungen.",
+      "accountCta": "Meine Einstellungen",
+      "website": "Schreib uns, was du gemacht hast und was passiert ist. Die betroffene Seite und dein Browser werden mitgeschickt.",
+      "partnership": "Bar, Sponsor, Medium oder anderer Club: Stell uns dein Projekt vor, wir melden uns rasch.",
+      "other": "Stell deine Frage, der Vorstand antwortet.",
+      "accountVisitor": "Auskunft, Berichtigung oder Löschung deiner Personendaten: Beschreib dein Anliegen, der Vorstand antwortet innert der gesetzlichen Fristen."
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Vorname Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "du@beispiel.ch",
+      "organisation": "Organisation",
+      "organisationPlaceholder": "Bar, Firma, Medium…",
+      "page": "Betroffene Seite",
+      "message": "Nachricht",
+      "messagePlaceholder": "Deine Nachricht…",
+      "chars": "{count} / 5000",
+      "tooShort": "Noch mindestens {count, plural, one {# Zeichen} other {# Zeichen}}.",
+      "required": "Pflichtfeld.",
+      "invalidEmail": "Ungültige E-Mail-Adresse.",
+      "sentAs": "Gesendet als {name} · {email}",
+      "privacy": "Deine Nachricht wird vom Vorstand gelesen und höchstens 2 Jahre nach Abschluss aufbewahrt. <link>Datenschutz</link>",
+      "send": "Senden",
+      "sending": "Wird gesendet…",
+      "changeTopic": "Thema ändern",
+      "draftRestored": "Entwurf wiederhergestellt",
+      "errors": {
+        "generic": "Die Nachricht wurde nicht gesendet. Dein Text bleibt erhalten: versuch es nochmals.",
+        "tooFast": "Einen Moment… lies deine Nachricht nochmals und sende sie dann.",
+        "tooMany": "Zu viele Nachrichten gesendet. Versuch es in einer Stunde wieder.",
+        "retry": "Nochmals versuchen"
+      }
+    },
+    "success": {
+      "title": "Nachricht gesendet",
+      "reference": "Referenz",
+      "steps": {
+        "email": "Eine Eingangsbestätigung geht an {email}.",
+        "answer": "Der Vorstand antwortet innert 48 h.",
+        "follow": "Verfolge die Anfrage und antworte über deinen persönlichen Link."
+      },
+      "stepsMember": {
+        "email": "Eine Eingangsbestätigung geht an deine Adresse.",
+        "answer": "Der Vorstand antwortet innert 48 h.",
+        "follow": "Die Antwort kommt per E-Mail und unter «Meine Nachrichten»."
+      },
+      "follow": "Anfrage verfolgen",
+      "copyLink": "Link kopieren",
+      "linkCopied": "Link kopiert",
+      "another": "Weitere Nachricht schreiben"
+    },
+    "faqTitle": "Häufige Fragen",
+    "faq": [
+      {
+        "q": "Was kostet die Mitgliedschaft?",
+        "a": "Der Jahresbeitrag beträgt {fee} ({juniorFee} für unter 18-Jährige). Er gilt für die Saison vom 1. Juli bis 30. Juni."
+      },
+      {
+        "q": "Verkauft der Club Tickets für PSG-Spiele?",
+        "a": "Nein. Tickets gibt es bei der offiziellen Ticketplattform von PSG. Der Club organisiert Auswärtsfahrten und teilt Tipps mit den Mitgliedern."
+      },
+      {
+        "q": "Wie laufen die Watch-Partys ab?",
+        "a": "Mitglieder melden sich online an und zeigen am Eingang ihre Mitgliederkarte. Die Daten stehen in der Event-Agenda."
+      },
+      {
+        "q": "Muss ich für Auswärtsfahrten Mitglied sein?",
+        "a": "Ja: Auswärtsfahrten und Events sind für Mitglieder mit bezahltem Beitrag."
+      },
+      {
+        "q": "Wer kann Mitglied werden?",
+        "a": "Alle PSG-Fans, die in der Schweiz leben oder einen Bezug zur Schweiz haben. Du trittst online bei, der Vorstand bestätigt."
+      },
+      {
+        "q": "Wie erhalte oder lösche ich meine Daten?",
+        "a": "In deinen Einstellungen: Du kannst alle Daten herunterladen oder dein Konto löschen, ohne uns zu fragen."
+      }
+    ],
+    "committeeTitle": "Der Vorstand",
+    "committeeIntro": "Ehrenamtliche Fans, die jede Nachricht lesen."
   },
   "Onboarding": {
     "pageTitle": "Willkommen",
@@ -183,8 +280,12 @@
       "event": "Neue Veranstaltung",
       "prediction": "Tipp abgeben",
       "points": "Ergebnis deines Tipps",
-      "membership": "Mitgliedschaft"
-    }
+      "membership": "Mitgliedschaft",
+      "contactInbox": "Kontaktnachrichten",
+      "contactReply": "Antwort des Vorstands"
+    },
+    "contactInboxBody": "{count, plural, one {# Nachricht offen} other {# Nachrichten offen}}",
+    "contactReplyBody": "Der Vorstand hat auf deine Anfrage {reference} geantwortet."
   },
   "LocaleSwitcher": {
     "label": "Sprache",
@@ -421,7 +522,8 @@
     "completeProfile": {
       "title": "Profil vervollständigen",
       "body": "Vier Fragen, eine Minute: Geburtsdatum, Interessen, Tickets und Fotos."
-    }
+    },
+    "messagesLink": "Meine Nachrichten"
   },
   "Admin": {
     "title": "Administration",
@@ -441,7 +543,8 @@
       "event": "angemeldet für «{title}», {when}{waitlisted, plural, =0 {} other {, # auf der Warteliste}}",
       "failedEmails": "{count, plural, one {E-Mail diese Woche fehlgeschlagen} other {E-Mails diese Woche fehlgeschlagen}}",
       "scheduled": "Geplanter Artikel: «{title}», {time}",
-      "unverified": "{count, plural, one {Antrag wartet auf die E-Mail-Bestätigung} other {Anträge warten auf die E-Mail-Bestätigung}}"
+      "unverified": "{count, plural, one {Antrag wartet auf die E-Mail-Bestätigung} other {Anträge warten auf die E-Mail-Bestätigung}}",
+      "messages": "{count, plural, one {Kontaktnachricht offen} other {Kontaktnachrichten offen}}"
     },
     "shortcutsTitle": "Abkürzungen",
     "shortcuts": {
@@ -451,7 +554,8 @@
       "campaign": "E-Mail-Kampagne",
       "dues": "Beiträge",
       "requests": "Mitgliedsanträge",
-      "scanner": "Karten scannen"
+      "scanner": "Karten scannen",
+      "messages": "Posteingang"
     },
     "season": "Saison {season}",
     "kpi": {
@@ -481,10 +585,17 @@
       "articlesHint": "Diese Saison veröffentlicht",
       "predictions": "Tipps",
       "predictionsHint": "{count} Mitglieder zu {match}",
-      "noMatch": "Noch kein Match gespielt"
+      "noMatch": "Noch kein Match gespielt",
+      "firstReply": "Erste Antwort",
+      "firstReplyHint": "Median, letzte 90 Tage",
+      "firstReplyValue": "{hours, plural, =0 {< 1 h} other {# h}}",
+      "firstReplyNone": "Noch keine Antworten",
+      "toHandle": "Offen",
+      "toHandleHint": "Neue oder laufende Nachrichten"
     },
     "eventsTitle": "{count, plural, =0 {Veranstaltungen der Saison} one {Veranstaltungen der Saison · # vorbei} other {Veranstaltungen der Saison · # vorbei}}",
-    "audienceTitle": "Reichweite"
+    "audienceTitle": "Reichweite",
+    "contactTitle": "Kontakt"
   },
   "AdminScanner": {
     "title": "Scanner",
@@ -613,7 +724,8 @@
       "poll": "Umfragen",
       "document": "Dokumente",
       "mailing": "Mailing",
-      "user": "Konten"
+      "user": "Konten",
+      "contact": "Nachrichten"
     },
     "system": "Automatisch",
     "count": "{count, plural, one {# Eintrag} other {# Einträge}}",
@@ -675,7 +787,17 @@
       "user_delete": "Konto gelöscht",
       "subscriber_create": "neuer Newsletter-Abonnent",
       "prediction_reward": "hat einen Tipp-Preis übergeben",
-      "prediction_rewardUndo": "hat eine Preisübergabe rückgängig gemacht"
+      "prediction_rewardUndo": "hat eine Preisübergabe rückgängig gemacht",
+      "contact_reply": "hat auf die Nachricht geantwortet",
+      "contact_note": "hat eine interne Notiz hinzugefügt",
+      "contact_assign": "hat die Nachricht zugewiesen",
+      "contact_closed": "hat die Nachricht abgeschlossen",
+      "contact_open": "hat die Nachricht übernommen",
+      "contact_answered": "hat die Nachricht als beantwortet markiert",
+      "contact_spam": "hat die Nachricht als Spam markiert",
+      "contact_new": "hat die Nachricht wieder geöffnet",
+      "contact_delete": "hat die Nachricht gelöscht",
+      "member_committeeTitle": "hat eine Vorstandsrolle geändert"
     }
   },
   "AdminShell": {
@@ -706,7 +828,8 @@
       "scanner": "Scanner",
       "polls": "Umfragen",
       "documents": "Dokumente",
-      "journal": "Protokoll"
+      "journal": "Protokoll",
+      "messages": "Nachrichten"
     },
     "tabs": {
       "home": "Start",
@@ -721,7 +844,8 @@
       "scanner": "Scan",
       "polls": "Umfragen",
       "documents": "Doks",
-      "journal": "Protokoll"
+      "journal": "Protokoll",
+      "messages": "Nachrichten"
     },
     "roles": {
       "member": "Mitglied",
@@ -739,7 +863,8 @@
       "short": "Suchen…",
       "placeholder": "Mitglied, Veranstaltung, Artikel, Bereich…",
       "sections": "Bereiche",
-      "empty": "Keine Treffer."
+      "empty": "Keine Treffer.",
+      "messages": "Nachrichten"
     }
   },
   "AdminBanner": {
@@ -1020,6 +1145,38 @@
       "body": "Die Tipp-Rangliste {season} steht fest. Dieses Podest ist zu belohnen: **{podium}**. Markiere jede Übergabe im Admin unter Spiele.",
       "cta": "Podeste öffnen",
       "footer": "Einmalig beim Saisonabschluss versendet."
+    },
+    "contactReceived": {
+      "subject": "Nachricht erhalten · {reference}",
+      "preview": "Der Vorstand antwortet innert 48 Stunden",
+      "heading": "Wir haben deine Nachricht erhalten",
+      "body": "Hallo {firstName}\n\nDanke für deine Nachricht ({topic, select, join {Mitgliedschaft} events {Events und Auswärtsfahrten} fees {Beitrag und Karte} partnership {Partnerschaft, Presse} website {Problem mit der Website} account {Persönliche Daten} other {andere Frage}}). Der Vorstand antwortet innert 48 Stunden. Deine Referenz: **{reference}**.\n\nZur Erinnerung, das hast du uns geschrieben:",
+      "cta": "Anfrage verfolgen",
+      "footer": "Du erhältst diese E-Mail, weil du PSG Zurich über die Kontaktseite geschrieben hast."
+    },
+    "contactToCommittee": {
+      "subject": "{followUp, select, yes {Neue Antwort} other {Neue Nachricht}} · {reference} · {name}",
+      "preview": "{topic, select, join {Mitgliedschaft} events {Events und Auswärtsfahrten} fees {Beitrag und Karte} partnership {Partnerschaft, Presse} website {Problem mit der Website} account {Persönliche Daten} other {andere Frage}}",
+      "heading": "{followUp, select, yes {{name} hat geantwortet} other {Neue Nachricht von {name}}}",
+      "body": "**{name}** ({email}) {followUp, select, yes {hat in der Anfrage} other {hat dem Club geschrieben, Anfrage}} **{reference}**{followUp, select, yes { geantwortet} other {}}, Thema: {topic, select, join {Mitgliedschaft} events {Events und Auswärtsfahrten} fees {Beitrag und Karte} partnership {Partnerschaft, Presse} website {Problem mit der Website} account {Persönliche Daten} other {andere Frage}}.\n\nAntworte im Admin, damit der Austausch nachvollziehbar bleibt. Eine direkte Antwort auf diese E-Mail geht an {email}, wird aber nicht im Admin gespeichert.",
+      "cta": "Im Admin antworten",
+      "footer": "Gesendet an die Vorstandsmitglieder, die dieses Thema lesen."
+    },
+    "contactReply": {
+      "subject": "Der Vorstand hat geantwortet · {reference}",
+      "preview": "Antwort auf deine Anfrage {reference}",
+      "heading": "Antwort des Vorstands",
+      "body": "Hallo {firstName}\n\nHier ist die Antwort des Vorstands auf deine Anfrage **{reference}**:",
+      "cta": "Ansehen und antworten",
+      "footer": "Um zu antworten, nutze den Button oben: Deine Antwort geht direkt an den Vorstand."
+    },
+    "contactReminder": {
+      "subject": "{count, plural, one {# Nachricht wartet} other {# Nachrichten warten}} seit über 48 h",
+      "preview": "{references}",
+      "heading": "Wartende Nachrichten",
+      "body": "{count, plural, one {Diese Anfrage wartet} other {Diese Anfragen warten}} seit über 48 Stunden auf eine Antwort: **{references}**.\n\nDie Kontaktseite verspricht eine Antwort innert 48 h.",
+      "cta": "Posteingang öffnen",
+      "footer": "Tägliche Erinnerung, solange Nachrichten warten."
     }
   },
   "Legal": {
@@ -1268,7 +1425,11 @@
       "self": "Du kannst deine eigene Rolle nicht ändern.",
       "superadmin": "Superadmins werden direkt in der Datenbank verwaltet.",
       "error": "Hat nicht geklappt. Versuch es später nochmal."
-    }
+    },
+    "committeeTitle": "Rolle im Vorstand",
+    "committeeTitlePlaceholder": "Präsident, Kassierin…",
+    "committeeTitleHint": "Wird mit Foto und Vorname auf der Kontaktseite gezeigt. Leer: nicht angezeigt.",
+    "committeeTitleSaved": "Rolle gespeichert"
   },
   "Matches": {
     "title": "Spiele",
@@ -2029,7 +2190,8 @@
       "membership": "Mitgliedschaft",
       "fee": "Beitrag",
       "events": "Veranstaltungen",
-      "predictions": "Tipps & Engagement"
+      "predictions": "Tipps & Engagement",
+      "contact": "Kontakt"
     },
     "categories": {
       "transactional": "Unerlässlich",
@@ -2233,6 +2395,22 @@
       "leaderboard_seasonPodium": {
         "name": "Podest belohnen",
         "when": "Am 1. Juli, an den Vorstand, mit den Namen des Podests"
+      },
+      "contact_received": {
+        "name": "Eingangsbestätigung",
+        "when": "Bei jeder Nachricht über die Kontaktseite"
+      },
+      "contact_toCommittee": {
+        "name": "Hinweis an den Vorstand",
+        "when": "Bei jeder Nachricht oder Antwort, an die Leser des Themas"
+      },
+      "contact_reply": {
+        "name": "Antwort des Vorstands",
+        "when": "Wenn der Vorstand im Admin antwortet"
+      },
+      "contact_reminder": {
+        "name": "Erinnerung nach 48 h",
+        "when": "Täglich um 9 Uhr, falls Nachrichten seit über 48 h warten"
       }
     }
   },
@@ -2250,5 +2428,138 @@
   "Documents": {
     "title": "Dokumente des Clubs",
     "other": "Weitere"
+  },
+  "ContactTopics": {
+    "join": {
+      "label": "Mitglied werden",
+      "hint": "Bedingungen, Beitrag, Ablauf"
+    },
+    "events": {
+      "label": "Events und Auswärtsfahrten",
+      "hint": "Watch-Partys, Reisen, Anmeldungen"
+    },
+    "fees": {
+      "label": "Beitrag und Karte",
+      "hint": "Zahlung, Mitgliederkarte"
+    },
+    "partnership": {
+      "label": "Partnerschaft, Presse",
+      "hint": "Bars, Sponsoren, Medien"
+    },
+    "website": {
+      "label": "Problem mit der Website",
+      "hint": "Ein Fehler, eine Seite, die nicht geht"
+    },
+    "account": {
+      "label": "Meine Daten",
+      "hint": "Auskunft, Korrektur, Löschung"
+    },
+    "other": {
+      "label": "Andere Frage",
+      "hint": "Alles andere"
+    }
+  },
+  "ContactThread": {
+    "title": "Anfrage {reference}",
+    "listTitle": "Meine Nachrichten",
+    "listDescription": "Dein Austausch mit dem Vorstand.",
+    "empty": "Noch keine Nachrichten.",
+    "write": "Dem Vorstand schreiben",
+    "you": "Du",
+    "committee": "Der Vorstand",
+    "statuses": {
+      "new": "Gesendet",
+      "open": "In Bearbeitung",
+      "answered": "Beantwortet",
+      "closed": "Abgeschlossen"
+    },
+    "replyPlaceholder": "Deine Antwort…",
+    "send": "Senden",
+    "sent": "Antwort gesendet",
+    "error": "Die Antwort wurde nicht gesendet. Versuch es nochmals.",
+    "closedNote": "Dieser Austausch ist abgeschlossen. Mit einer Antwort öffnest du ihn wieder.",
+    "trackingNote": "Dieser Link ist persönlich: Bewahre ihn auf, um deine Anfrage zu verfolgen.",
+    "notFound": "Dieser Link ist nicht mehr gültig.",
+    "back": "Meine Nachrichten"
+  },
+  "AdminMessages": {
+    "title": "Nachrichten",
+    "description": "Nachrichten von der Kontaktseite.",
+    "pickTitle": "Wähle eine Nachricht",
+    "pickBody": "Offene Nachrichten stehen oben in der Liste.",
+    "folders": {
+      "todo": "Offen",
+      "answered": "Wartet",
+      "closed": "Abgeschlossen",
+      "spam": "Spam"
+    },
+    "mine": "Mir zugewiesen",
+    "allTopics": "Alle Themen",
+    "search": "Name, E-Mail, Referenz…",
+    "empty": "Keine Nachrichten hier.",
+    "member": "Mitglied",
+    "unread": "Ungelesen",
+    "statuses": {
+      "new": "Neu",
+      "open": "Offen",
+      "answered": "Beantwortet",
+      "closed": "Abgeschlossen",
+      "spam": "Spam"
+    },
+    "back": "Nachrichten",
+    "writtenIn": "Auf {language} geschrieben",
+    "memberFile": "Mitgliedsprofil",
+    "memberStatus": "Nr. {number} · {paid, select, yes {Beitrag bezahlt} other {Beitrag offen}}",
+    "context": "Seite: {page}",
+    "note": "Interne Notiz",
+    "noteHint": "Nur für den Vorstand sichtbar",
+    "you": "Du",
+    "sender": "Kontakt",
+    "assignee": "Zuständig",
+    "nobody": "Niemand",
+    "status": "Status",
+    "markSpam": "Spam",
+    "notSpam": "Kein Spam",
+    "delete": "Löschen",
+    "deleteTitle": "Diese Nachricht löschen?",
+    "deleteBody": "Die Unterhaltung {reference} wird endgültig gelöscht.",
+    "deleted": "Nachricht gelöscht",
+    "reply": "Antworten",
+    "replyPlaceholder": "Deine Antwort, per E-Mail an {name}…",
+    "notePlaceholder": "Notiz für den Vorstand…",
+    "templates": "Textvorlagen",
+    "send": "Senden",
+    "sendClose": "Senden und abschliessen",
+    "addNote": "Notiz hinzufügen",
+    "sent": "Antwort an {email} gesendet",
+    "noteSaved": "Notiz hinzugefügt",
+    "saved": "Gespeichert",
+    "undo": "Rückgängig",
+    "error": "Das hat nicht geklappt.",
+    "copyEmail": "E-Mail kopieren",
+    "emailCopied": "E-Mail kopiert",
+    "actions": "Aktionen",
+    "languages": {
+      "fr": "Französisch",
+      "de": "Deutsch",
+      "en": "Englisch"
+    },
+    "templateList": {
+      "thanks": "Danke, notiert",
+      "topic": "Vorlage zum Thema"
+    },
+    "close": "Abschliessen"
+  },
+  "ContactTemplates": {
+    "greeting": "Hallo {name}",
+    "signature": "Sportliche Grüsse\nDer Vorstand von PSG Zurich",
+    "thanks": "Danke für deine Nachricht, wir haben sie notiert. Wir melden uns, falls nötig.",
+    "join": "Danke für dein Interesse! Die Mitgliedschaft läuft online über psg-zurich.ch/adhesion: Der Vorstand bestätigt deinen Antrag danach, meist innert weniger Tage.",
+    "events": "Danke für deine Nachricht. Anmelden kannst du dich auf der Seite jedes Events, in der Agenda der Website.",
+    "fees": "Danke für deine Nachricht. Betrag und Zahlungsarten findest du auf deiner Beitragsseite; wir aktualisieren deinen Status, sobald die Zahlung eingegangen ist.",
+    "partnership": "Danke für deinen Vorschlag, er interessiert uns. Kannst du uns etwas mehr erzählen (Daten, Format, Gegenleistungen)? Wir besprechen es im Vorstand und melden uns.",
+    "website": "Danke für die Meldung. Wir schauen uns das Problem an und melden uns, sobald es behoben ist.",
+    "account": "Wir haben deine Anfrage zu deinen Daten erhalten. Zur Erinnerung: In deinen Einstellungen kannst du sie auch herunterladen oder dein Konto selbst löschen.",
+    "other": "Danke für deine Nachricht."
   }
 }

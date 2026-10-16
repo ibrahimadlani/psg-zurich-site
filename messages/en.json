@@ -61,21 +61,118 @@
   },
   "Contact": {
     "title": "Contact",
+    "hello": "Hello {name}",
     "intro": "A question about the club, membership, an away trip or a partnership? Write to us, the committee will reply.",
-    "writeTitle": "Write to us",
-    "writeBody": "The committee usually replies within 48 hours.",
+    "memberIntro": "Sort it in one tap below, or write to the committee.",
+    "promise": "Reply within 48 h",
     "copy": "Copy address",
     "copied": "Address copied",
-    "joinTitle": "Join the club",
-    "joinBody": "All the details and the membership form are online.",
-    "joinLink": "Join",
-    "partnersTitle": "Partnerships and press",
-    "partnersBody": "Bars, sponsors, media: let's talk about a project together.",
-    "partnersLink": "Write to us",
-    "partnersSubject": "Partnership / press",
+    "byEmail": "Or by email",
     "mapLabel": "Map of Zurich",
     "location": "Zurich, Switzerland",
-    "openMap": "Open in Google Maps"
+    "openMap": "Open in Google Maps",
+    "committeeBanner": "{count, plural, one {# contact message is waiting for the committee.} other {# contact messages are waiting for the committee.}}",
+    "committeeBannerLink": "Open the inbox",
+    "shortcutsTitle": "In one tap",
+    "shortcuts": {
+      "fee": "My fee",
+      "card": "My card",
+      "events": "My sign-ups",
+      "data": "My data"
+    },
+    "myMessages": "My messages",
+    "myMessagesOpen": "{count, plural, =0 {No open request} one {# open request} other {# open requests}}",
+    "pickTitle": "You're writing about…",
+    "help": {
+      "join": "Membership is online and takes 3 minutes: fill in the form, then the committee approves it.",
+      "joinCta": "Join now",
+      "joinQuestion": "I have a question before joining",
+      "eventsVisitor": "Watch parties and away trips are for members. A question before you join? Write to us.",
+      "eventsMember": "Sign-ups happen directly on each event's page.",
+      "eventsMemberCta": "See the events",
+      "fees": "The amount, how to pay and the state of your fee are on your fee page.",
+      "feesCta": "My fee",
+      "account": "You can download all your data or delete your account yourself, in your settings.",
+      "accountCta": "My settings",
+      "website": "Tell us what you were doing and what happened. The page concerned and your browser are attached to the message.",
+      "partnership": "Bar, sponsor, media or another club: tell us about your project, we'll get back to you quickly.",
+      "other": "Ask your question, the committee will reply.",
+      "accountVisitor": "Access, correction or deletion of your personal data: describe your request, the committee answers within the legal time limits."
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "First Last",
+      "email": "Email",
+      "emailPlaceholder": "you@example.ch",
+      "organisation": "Organisation",
+      "organisationPlaceholder": "Bar, company, media…",
+      "page": "Page concerned",
+      "message": "Message",
+      "messagePlaceholder": "Your message…",
+      "chars": "{count} / 5000",
+      "tooShort": "At least {count, plural, one {# more character} other {# more characters}}.",
+      "required": "Required.",
+      "invalidEmail": "Invalid email address.",
+      "sentAs": "Sent as {name} · {email}",
+      "privacy": "Your message is read by the committee and kept for at most 2 years after the conversation ends. <link>Privacy</link>",
+      "send": "Send",
+      "sending": "Sending…",
+      "changeTopic": "Change topic",
+      "draftRestored": "Draft restored",
+      "errors": {
+        "generic": "The message didn't go through. Your text is kept: try again.",
+        "tooFast": "One moment… read your message again, then send it.",
+        "tooMany": "Too many messages sent. Try again in an hour.",
+        "retry": "Try again"
+      }
+    },
+    "success": {
+      "title": "Message sent",
+      "reference": "Reference",
+      "steps": {
+        "email": "An acknowledgement is on its way to {email}.",
+        "answer": "The committee replies within 48 h.",
+        "follow": "Follow the conversation and reply from your personal link."
+      },
+      "stepsMember": {
+        "email": "An acknowledgement is on its way to your address.",
+        "answer": "The committee replies within 48 h.",
+        "follow": "The reply arrives by email and in \"My messages\"."
+      },
+      "follow": "Follow my request",
+      "copyLink": "Copy link",
+      "linkCopied": "Link copied",
+      "another": "Write another message"
+    },
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "How much is membership?",
+        "a": "The annual fee is {fee} ({juniorFee} for under-18s). It covers the season, from 1 July to 30 June."
+      },
+      {
+        "q": "Does the club sell tickets for PSG games?",
+        "a": "No. Tickets are sold by PSG's official ticket office. The club organises away trips and shares tips with its members."
+      },
+      {
+        "q": "How do watch parties work?",
+        "a": "Members sign up online, then show their member card at the door. Dates are in the events calendar."
+      },
+      {
+        "q": "Do I need to be a member for away trips?",
+        "a": "Yes: away trips and events are for members whose fee is paid."
+      },
+      {
+        "q": "Who can join?",
+        "a": "Any PSG supporter living in or connected to Switzerland. You apply online and the committee approves it."
+      },
+      {
+        "q": "How do I get or delete my data?",
+        "a": "From your settings: you can download all your data or delete your account, without going through us."
+      }
+    ],
+    "committeeTitle": "The committee",
+    "committeeIntro": "Volunteer supporters who read every message."
   },
   "Onboarding": {
     "pageTitle": "Welcome",
@@ -183,8 +280,12 @@
       "event": "New event",
       "prediction": "Prediction to make",
       "points": "Your prediction result",
-      "membership": "Membership"
-    }
+      "membership": "Membership",
+      "contactInbox": "Contact messages",
+      "contactReply": "Committee's reply"
+    },
+    "contactInboxBody": "{count, plural, one {# message to handle} other {# messages to handle}}",
+    "contactReplyBody": "The committee replied to your request {reference}."
   },
   "LocaleSwitcher": {
     "label": "Language",
@@ -421,7 +522,8 @@
     "completeProfile": {
       "title": "Complete your profile",
       "body": "Four questions, one minute: date of birth, interests, tickets and photos."
-    }
+    },
+    "messagesLink": "My messages"
   },
   "Admin": {
     "title": "Administration",
@@ -441,7 +543,8 @@
       "event": "signed up for “{title}”, {when}{waitlisted, plural, =0 {} other {, # on the waiting list}}",
       "failedEmails": "{count, plural, one {email failed this week} other {emails failed this week}}",
       "scheduled": "Scheduled article: “{title}”, {time}",
-      "unverified": "{count, plural, one {request waiting for the email to be confirmed} other {requests waiting for the email to be confirmed}}"
+      "unverified": "{count, plural, one {request waiting for the email to be confirmed} other {requests waiting for the email to be confirmed}}",
+      "messages": "{count, plural, one {contact message to handle} other {contact messages to handle}}"
     },
     "shortcutsTitle": "Shortcuts",
     "shortcuts": {
@@ -451,7 +554,8 @@
       "campaign": "Email campaign",
       "dues": "Fees",
       "requests": "Membership requests",
-      "scanner": "Scan cards"
+      "scanner": "Scan cards",
+      "messages": "Inbox"
     },
     "season": "Season {season}",
     "kpi": {
@@ -481,10 +585,17 @@
       "articlesHint": "Published this season",
       "predictions": "Predictions",
       "predictionsHint": "{count} members on {match}",
-      "noMatch": "No match played"
+      "noMatch": "No match played",
+      "firstReply": "First reply",
+      "firstReplyHint": "Median time, last 90 days",
+      "firstReplyValue": "{hours, plural, =0 {< 1 h} other {# h}}",
+      "firstReplyNone": "No replies yet",
+      "toHandle": "To handle",
+      "toHandleHint": "New or in-progress messages"
     },
     "eventsTitle": "{count, plural, =0 {Season's events} one {Season's events · # held} other {Season's events · # held}}",
-    "audienceTitle": "Audience"
+    "audienceTitle": "Audience",
+    "contactTitle": "Contact"
   },
   "AdminScanner": {
     "title": "Scanner",
@@ -613,7 +724,8 @@
       "poll": "Polls",
       "document": "Documents",
       "mailing": "Mailing",
-      "user": "Accounts"
+      "user": "Accounts",
+      "contact": "Messages"
     },
     "system": "Automatic",
     "count": "{count, plural, one {# item} other {# items}}",
@@ -675,7 +787,17 @@
       "user_delete": "account deleted",
       "subscriber_create": "new newsletter subscriber",
       "prediction_reward": "handed over a predictions prize",
-      "prediction_rewardUndo": "undid a predictions prize hand-over"
+      "prediction_rewardUndo": "undid a predictions prize hand-over",
+      "contact_reply": "replied to the message",
+      "contact_note": "added an internal note",
+      "contact_assign": "assigned the message",
+      "contact_closed": "closed the message",
+      "contact_open": "took up the message",
+      "contact_answered": "marked the message as answered",
+      "contact_spam": "marked the message as spam",
+      "contact_new": "put the message back to handle",
+      "contact_delete": "deleted the message",
+      "member_committeeTitle": "changed a committee role"
     }
   },
   "AdminShell": {
@@ -706,7 +828,8 @@
       "scanner": "Scanner",
       "polls": "Polls",
       "documents": "Documents",
-      "journal": "Log"
+      "journal": "Log",
+      "messages": "Messages"
     },
     "tabs": {
       "home": "Home",
@@ -721,7 +844,8 @@
       "scanner": "Scan",
       "polls": "Polls",
       "documents": "Docs",
-      "journal": "Log"
+      "journal": "Log",
+      "messages": "Messages"
     },
     "roles": {
       "member": "Member",
@@ -739,7 +863,8 @@
       "short": "Search…",
       "placeholder": "Member, event, article, section…",
       "sections": "Sections",
-      "empty": "No results."
+      "empty": "No results.",
+      "messages": "Messages"
     }
   },
   "AdminBanner": {
@@ -1020,6 +1145,38 @@
       "body": "The {season} predictions table is final. Here is the podium to reward: **{podium}**. Mark each prize as handed over in the admin, under Matches.",
       "cta": "Open the podiums",
       "footer": "Sent once, when the season closes."
+    },
+    "contactReceived": {
+      "subject": "Message received · {reference}",
+      "preview": "The committee replies within 48 hours",
+      "heading": "We've received your message",
+      "body": "Hello {firstName},\n\nThanks for your message ({topic, select, join {joining} events {events and away trips} fees {fee and card} partnership {partnership, press} website {problem with the site} account {personal data} other {other question}}). The committee replies within 48 hours. Your reference: **{reference}**.\n\nAs a reminder, here is what you wrote:",
+      "cta": "Follow my request",
+      "footer": "You're receiving this email because you wrote to PSG Zurich from the Contact page."
+    },
+    "contactToCommittee": {
+      "subject": "{followUp, select, yes {New reply} other {New message}} · {reference} · {name}",
+      "preview": "{topic, select, join {joining} events {events and away trips} fees {fee and card} partnership {partnership, press} website {problem with the site} account {personal data} other {other question}}",
+      "heading": "{followUp, select, yes {{name} replied} other {New message from {name}}}",
+      "body": "**{name}** ({email}) {followUp, select, yes {replied in request} other {wrote to the club, request}} **{reference}**, topic: {topic, select, join {joining} events {events and away trips} fees {fee and card} partnership {partnership, press} website {problem with the site} account {personal data} other {other question}}.\n\nReply from the admin so the conversation stays tracked. Replying to this email writes to {email} without recording it in the admin.",
+      "cta": "Reply in the admin",
+      "footer": "Sent to the committee members who read this topic."
+    },
+    "contactReply": {
+      "subject": "The committee replied · {reference}",
+      "preview": "Reply to your request {reference}",
+      "heading": "The committee's reply",
+      "body": "Hello {firstName},\n\nHere is the committee's reply to your request **{reference}**:",
+      "cta": "View and reply",
+      "footer": "To reply, use the button above: your answer goes straight to the committee."
+    },
+    "contactReminder": {
+      "subject": "{count, plural, one {# message has} other {# messages have}} been waiting over 48 h",
+      "preview": "{references}",
+      "heading": "Messages waiting",
+      "body": "{count, plural, one {This request has} other {These requests have}} been waiting for a reply for over 48 hours: **{references}**.\n\nThe Contact page promises a reply within 48 h.",
+      "cta": "Open the inbox",
+      "footer": "Daily reminder while messages are waiting."
     }
   },
   "Legal": {
@@ -1268,7 +1425,11 @@
       "self": "You can't change your own role.",
       "superadmin": "Superadmins are managed in the database.",
       "error": "That didn't work. Try again later."
-    }
+    },
+    "committeeTitle": "Committee role",
+    "committeeTitlePlaceholder": "President, treasurer…",
+    "committeeTitleHint": "Shown on the Contact page with the photo and first name. Empty: not shown.",
+    "committeeTitleSaved": "Role saved"
   },
   "Matches": {
     "title": "Matches",
@@ -2029,7 +2190,8 @@
       "membership": "Membership",
       "fee": "Membership fee",
       "events": "Events",
-      "predictions": "Predictions & engagement"
+      "predictions": "Predictions & engagement",
+      "contact": "Contact"
     },
     "categories": {
       "transactional": "Essential",
@@ -2233,6 +2395,22 @@
       "leaderboard_seasonPodium": {
         "name": "Podium to reward",
         "when": "On 1 July, to the committee, with the podium names"
+      },
+      "contact_received": {
+        "name": "Acknowledgement",
+        "when": "For every message sent from the Contact page"
+      },
+      "contact_toCommittee": {
+        "name": "Committee alert",
+        "when": "For every message or reply, to the topic's readers"
+      },
+      "contact_reply": {
+        "name": "Committee reply",
+        "when": "When the committee replies from the admin"
+      },
+      "contact_reminder": {
+        "name": "48 h reminder",
+        "when": "Every day at 9 am, if messages have waited over 48 h"
       }
     }
   },
@@ -2250,5 +2428,138 @@
   "Documents": {
     "title": "Club documents",
     "other": "Other"
+  },
+  "ContactTopics": {
+    "join": {
+      "label": "Joining the club",
+      "hint": "Conditions, fee, how to apply"
+    },
+    "events": {
+      "label": "Events and away trips",
+      "hint": "Watch parties, trips, sign-ups"
+    },
+    "fees": {
+      "label": "Fee and member card",
+      "hint": "Payment, member card"
+    },
+    "partnership": {
+      "label": "Partnership, press",
+      "hint": "Bars, sponsors, media"
+    },
+    "website": {
+      "label": "Problem with the site",
+      "hint": "A bug, a page that doesn't work"
+    },
+    "account": {
+      "label": "My data",
+      "hint": "Access, correction, deletion"
+    },
+    "other": {
+      "label": "Something else",
+      "hint": "Everything else"
+    }
+  },
+  "ContactThread": {
+    "title": "Request {reference}",
+    "listTitle": "My messages",
+    "listDescription": "Your conversations with the committee.",
+    "empty": "No messages yet.",
+    "write": "Write to the committee",
+    "you": "You",
+    "committee": "The committee",
+    "statuses": {
+      "new": "Sent",
+      "open": "In progress",
+      "answered": "Answered",
+      "closed": "Closed"
+    },
+    "replyPlaceholder": "Your reply…",
+    "send": "Send",
+    "sent": "Reply sent",
+    "error": "The reply didn't go through. Try again.",
+    "closedNote": "This conversation is closed. Replying reopens it.",
+    "trackingNote": "This link is personal: keep it to follow your request.",
+    "notFound": "This link is no longer valid.",
+    "back": "My messages"
+  },
+  "AdminMessages": {
+    "title": "Messages",
+    "description": "Messages sent from the Contact page.",
+    "pickTitle": "Pick a message",
+    "pickBody": "Messages to handle are at the top of the list.",
+    "folders": {
+      "todo": "To handle",
+      "answered": "Waiting",
+      "closed": "Closed",
+      "spam": "Spam"
+    },
+    "mine": "Assigned to me",
+    "allTopics": "All topics",
+    "search": "Name, email, reference…",
+    "empty": "No messages here.",
+    "member": "Member",
+    "unread": "Unread",
+    "statuses": {
+      "new": "New",
+      "open": "To handle",
+      "answered": "Answered",
+      "closed": "Closed",
+      "spam": "Spam"
+    },
+    "back": "Messages",
+    "writtenIn": "Written in {language}",
+    "memberFile": "Member file",
+    "memberStatus": "No. {number} · {paid, select, yes {fee paid} other {fee due}}",
+    "context": "Page: {page}",
+    "note": "Internal note",
+    "noteHint": "Visible to the committee only",
+    "you": "You",
+    "sender": "Contact",
+    "assignee": "Handled by",
+    "nobody": "Nobody",
+    "status": "Status",
+    "markSpam": "Spam",
+    "notSpam": "Not spam",
+    "delete": "Delete",
+    "deleteTitle": "Delete this message?",
+    "deleteBody": "Conversation {reference} will be erased for good.",
+    "deleted": "Message deleted",
+    "reply": "Reply",
+    "replyPlaceholder": "Your reply, emailed to {name}…",
+    "notePlaceholder": "Note for the committee…",
+    "templates": "Templates",
+    "send": "Send",
+    "sendClose": "Send and close",
+    "addNote": "Add note",
+    "sent": "Reply sent to {email}",
+    "noteSaved": "Note added",
+    "saved": "Saved",
+    "undo": "Undo",
+    "error": "That didn't work.",
+    "copyEmail": "Copy email",
+    "emailCopied": "Email copied",
+    "actions": "Actions",
+    "languages": {
+      "fr": "French",
+      "de": "German",
+      "en": "English"
+    },
+    "templateList": {
+      "thanks": "Thanks, noted",
+      "topic": "Topic template"
+    },
+    "close": "Close"
+  },
+  "ContactTemplates": {
+    "greeting": "Hello {name},",
+    "signature": "Best regards,\nThe PSG Zurich committee",
+    "thanks": "Thank you for your message, it's noted. We'll get back to you if needed.",
+    "join": "Thanks for your interest! Membership is online at psg-zurich.ch/adhesion: the committee then approves your application, usually within a few days.",
+    "events": "Thank you for your message. Sign-ups happen on each event's page, in the site's events calendar.",
+    "fees": "Thank you for your message. The amount and payment options are on your fee page; we update your status as soon as we receive it.",
+    "partnership": "Thank you for your proposal, we're interested. Could you tell us a bit more (dates, format, what you have in mind)? We'll discuss it as a committee and get back to you.",
+    "website": "Thanks for reporting this. We're looking into the problem and will let you know once it's fixed.",
+    "account": "We've received your request about your data. As a reminder, your settings also let you download it or delete your account yourself.",
+    "other": "Thank you for your message."
   }
 }

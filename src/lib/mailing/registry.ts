@@ -6,7 +6,7 @@
 
 /** Who may turn it off: transactional emails always go out. */
 export type MailCategory = "transactional" | "events" | "reminders" | "results" | "news";
-export type MailGroup = "membership" | "fee" | "events" | "predictions";
+export type MailGroup = "membership" | "fee" | "events" | "predictions" | "contact";
 
 export type AutomationDef = {
   key: string;
@@ -55,10 +55,15 @@ export const AUTOMATIONS = [
   def("leaderboard.seasonPodium", { group: "predictions", category: "transactional", messages: "seasonPodium", delay: 0, audience: "committee", variables: ["season", "podium"], trigger: "schedule" }),
   def("leaderboard.monthly", { group: "predictions", category: "results", messages: "leaderboardMonthly", delay: 0, audience: "member", variables: ["month", "rank", "total", "points"], trigger: "schedule" }),
   def("engagement.inactive", { group: "predictions", category: "news", messages: "inactive", delay: 0, audience: "member", variables: [], trigger: "schedule" }),
+  // Contact messages
+  def("contact.received", { group: "contact", category: "transactional", messages: "contactReceived", delay: 0, audience: "member", variables: ["reference", "topic"], trigger: "event" }),
+  def("contact.toCommittee", { group: "contact", category: "transactional", messages: "contactToCommittee", delay: 0, audience: "committee", variables: ["reference", "topic", "name", "email", "organisation", "followUp"], trigger: "event" }),
+  def("contact.reply", { group: "contact", category: "transactional", messages: "contactReply", delay: 0, audience: "member", variables: ["reference", "topic"], trigger: "event" }),
+  def("contact.reminder", { group: "contact", category: "transactional", messages: "contactReminder", delay: 0, audience: "committee", variables: ["count", "references"], trigger: "schedule" }),
 ] as const satisfies readonly AutomationDef[];
 
 export type AutomationKey = (typeof AUTOMATIONS)[number]["key"];
 
 export const automation = (key: string) => AUTOMATIONS.find((item) => item.key === key) as AutomationDef | undefined;
 
-export const MAIL_GROUPS: MailGroup[] = ["membership", "fee", "events", "predictions"];
+export const MAIL_GROUPS: MailGroup[] = ["membership", "fee", "events", "predictions", "contact"];

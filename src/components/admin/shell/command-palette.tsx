@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarDays, CornerDownLeft, Newspaper, Search } from "lucide-react";
+import { CalendarDays, CornerDownLeft, Inbox, Newspaper, Search } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Dialog } from "radix-ui";
 import { useEffect, useMemo, useState } from "react";
@@ -13,6 +13,7 @@ type Found = {
   members: { id: string; name: string; memberNumber: string | null; email: string; image: string | null }[];
   events: { id: string; title: string; startsAt: string }[];
   posts: { id: string; title: string; locale: string }[];
+  messages: { id: string; name: string; reference: string }[];
 };
 type Item = { key: string; href: string; group: string; label: string; hint?: string; icon: React.ReactNode };
 
@@ -100,6 +101,9 @@ export function CommandPalette({ sections }: { sections: AdminSection[] }) {
           hint: format.dateTime(new Date(event.startsAt), { day: "numeric", month: "short", year: "numeric" }),
           icon: <CalendarDays className="size-4" aria-hidden />,
         });
+      }
+      for (const message of found.messages ?? []) {
+        list.push({ key: `c-${message.id}`, href: `/admin/messages/${message.id}`, group: t("palette.messages"), label: message.name, hint: message.reference, icon: <Inbox className="size-4" aria-hidden /> });
       }
       for (const post of found.posts) {
         list.push({ key: `p-${post.id}`, href: `/admin/actualites/${post.id}`, group: t("sections.news"), label: post.title, hint: post.locale.toUpperCase(), icon: <Newspaper className="size-4" aria-hidden /> });
