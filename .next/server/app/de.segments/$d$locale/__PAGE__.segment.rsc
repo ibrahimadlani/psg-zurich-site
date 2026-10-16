@@ -4,7 +4,7 @@
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
-9:"/_next/static/chunks/0qla8-hgwn4rp.js"
+9:"/_next/static/chunks/0m2qak0qhz60n.js"
 a:"/_next/static/chunks/2qhd8kia6n8_n.js"
 b:"/_next/static/chunks/21s7mgjvwpstx.js"
 c:"/_next/static/chunks/2htx0opipb7qz.js"
@@ -32,7 +32,7 @@ f:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
 2d:C
 30:X
 30:T6,locale30:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2b","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2c","v":"$2d","s":"$24"}},"a":"$@2e","u":"$@2f","b":"Gdj6AUSH6ctH9K7HeJ_nd","r":"$30"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2b","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2c","v":"$2d","s":"$24"}},"a":"$@2e","u":"$@2f","b":"pdCkvVkmU_kzzt0mXlbl5","r":"$30"}
 31:I[658068,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"SiteFooter"]
 32:I[897367,["$25"],"OutletBoundary"]
 13:["$","defs",null,{"children":["$","clipPath",null,{"id":"cone-right","children":["$","path",null,{"d":"M10.5 3.4Q12 0.6 13.5 3.4L16.8 17.2Q17.1 18.5 15.9 18.9Q12 20.1 8.1 18.9Q6.9 18.5 7.2 17.2Z"}]}]}]
@@ -45,7 +45,7 @@ f:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
 1a:["$","a",null,{"href":"mailto:contact@psg-zurich.ch","className":"mt-3 border-b pb-[3px] font-wide text-[15px] tracking-[0.02em] text-foreground transition-colors hover:border-brand-red","children":"contact@psg-zurich.ch"}]
 1b:["$","a",null,{"href":"https://www.instagram.com/psgzurich/","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-1.5 text-[14px] text-muted-foreground transition-colors hover:text-foreground","children":[["$","svg",null,{"aria-hidden":true,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":"1.8","strokeLinecap":"round","strokeLinejoin":"round","className":"size-4 shrink-0","children":[["$","rect",null,{"x":"3","y":"3","width":"18","height":"18","rx":"5"}],["$","circle",null,{"cx":"12","cy":"12","r":"4.2"}],["$","circle",null,{"cx":"17.3","cy":"6.7","r":"0.6","fill":"currentColor"}]]}],"@psgzurich"]}]
 1c:["$","$L31",null,{}]
-1d:["$","script","script-0",{"src":"/_next/static/chunks/0qla8-hgwn4rp.js","async":true}]
+1d:["$","script","script-0",{"src":"/_next/static/chunks/0m2qak0qhz60n.js","async":true}]
 1e:["$","script","script-1",{"src":"/_next/static/chunks/2qhd8kia6n8_n.js","async":true}]
 1f:["$","script","script-2",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}]
 20:["$","script","script-3",{"src":"/_next/static/chunks/2htx0opipb7qz.js","async":true}]
