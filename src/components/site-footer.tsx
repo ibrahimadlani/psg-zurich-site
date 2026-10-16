@@ -1,5 +1,6 @@
 "use client";
 
+import { Mail, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/brand-logo";
 import { InstagramIcon } from "@/components/instagram-icon";
@@ -35,9 +36,6 @@ function LegalLinks() {
       <Link href="/confidentialite" className="transition-colors hover:text-foreground">
         {t("privacy")}
       </Link>
-      <a href={INSTAGRAM.url} target="_blank" rel="noreferrer" aria-label={t("instagram")} title={t("instagram")} className="transition-colors hover:text-foreground">
-        <InstagramIcon className="size-3.5" />
-      </a>
     </span>
   );
 }
@@ -100,14 +98,18 @@ function VisitorFooter() {
         ))}
         <div className="flex flex-col gap-3">
           <h2 className={heading}>{t("contact")}</h2>
-          <a href={`mailto:${EMAIL}`} className={link}>
+          <a href={`mailto:${EMAIL}`} className={`${link} inline-flex items-center gap-1.5`}>
+            <Mail className="size-3.5 shrink-0" aria-hidden />
             {EMAIL}
           </a>
           <a href={INSTAGRAM.url} target="_blank" rel="noreferrer" className={`${link} inline-flex items-center gap-1.5`}>
             <InstagramIcon className="size-3.5" />
             {INSTAGRAM.handle}
           </a>
-          <p className="text-[14px] text-muted-foreground">{t("location")}</p>
+          <p className="inline-flex items-center gap-1.5 text-[14px] text-muted-foreground">
+            <MapPin className="size-3.5 shrink-0" aria-hidden />
+            {t("location")}
+          </p>
         </div>
       </div>
       <div className="border-t">

@@ -1,9 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { InstagramIcon } from "@/components/instagram-icon";
 import { Link, usePathname } from "@/i18n/navigation";
-import { INSTAGRAM } from "@/lib/social";
 import { cn } from "@/lib/utils";
 
 const DOCUMENTS = [
@@ -39,9 +37,6 @@ export function LegalNav() {
               </Link>
             );
           })}
-          <a href={INSTAGRAM.url} target="_blank" rel="noreferrer" aria-label={t("instagram")} title={t("instagram")} className="transition-colors hover:text-foreground">
-            <InstagramIcon className="size-3.5" />
-          </a>
         </nav>
       </div>
     </footer>
