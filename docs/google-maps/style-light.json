@@ -1,0 +1,171 @@
+{
+  "variant": "light",
+  "backgroundColor": "#f3f4f6",
+  "styles": [
+    {
+      "id": "pointOfInterest",
+      "label": {
+        "visible": false
+      }
+    },
+    {
+      "id": "pointOfInterest.recreation.park",
+      "geometry": {
+        "fillColor": "#e3eae4"
+      }
+    },
+    {
+      "id": "pointOfInterest.other.cemetery",
+      "geometry": {
+        "fillColor": "#e3eae4"
+      }
+    },
+    {
+      "id": "political.border",
+      "geometry": {
+        "strokeColor": "#c5ccd4"
+      }
+    },
+    {
+      "id": "political.landParcel",
+      "geometry": {
+        "visible": false
+      },
+      "label": {
+        "visible": false
+      }
+    },
+    {
+      "id": "political.neighborhood",
+      "label": {
+        "textFillColor": "#a3a3a3"
+      }
+    },
+    {
+      "id": "political.sublocality",
+      "label": {
+        "textFillColor": "#a3a3a3"
+      }
+    },
+    {
+      "id": "political.city",
+      "label": {
+        "textFillColor": "#404040",
+        "textStrokeColor": "#f8f9fa"
+      }
+    },
+    {
+      "id": "natural.land",
+      "geometry": {
+        "fillColor": "#f3f4f6"
+      }
+    },
+    {
+      "id": "natural.land.landCover",
+      "geometry": {
+        "fillColor": "#eef1ef"
+      }
+    },
+    {
+      "id": "natural.water",
+      "geometry": {
+        "fillColor": "#cddbe7"
+      },
+      "label": {
+        "textFillColor": "#6b8299",
+        "textStrokeColor": "#f8f9fa"
+      }
+    },
+    {
+      "id": "infrastructure.urbanArea",
+      "geometry": {
+        "fillColor": "#eceef1"
+      }
+    },
+    {
+      "id": "infrastructure.building",
+      "geometry": {
+        "fillColor": "#e6e8ec",
+        "strokeColor": "#e6e8ec"
+      }
+    },
+    {
+      "id": "infrastructure.businessCorridor",
+      "geometry": {
+        "visible": false
+      }
+    },
+    {
+      "id": "infrastructure.roadNetwork.road",
+      "geometry": {
+        "fillColor": "#ffffff",
+        "strokeColor": "#e2e5e9"
+      },
+      "label": {
+        "textFillColor": "#737373",
+        "textStrokeColor": "#f8f9fa"
+      }
+    },
+    {
+      "id": "infrastructure.roadNetwork.road.highway",
+      "geometry": {
+        "fillColor": "#ffffff",
+        "strokeColor": "#d4dae1"
+      }
+    },
+    {
+      "id": "infrastructure.roadNetwork.road.local",
+      "geometry": {
+        "fillColor": "#fbfbfc"
+      }
+    },
+    {
+      "id": "infrastructure.roadNetwork.roadShield",
+      "label": {
+        "visible": false
+      }
+    },
+    {
+      "id": "infrastructure.roadNetwork.roadSign",
+      "label": {
+        "visible": false
+      }
+    },
+    {
+      "id": "infrastructure.roadNetwork.roadDetail",
+      "geometry": {
+        "visible": false
+      }
+    },
+    {
+      "id": "infrastructure.railwayTrack",
+      "geometry": {
+        "fillColor": "#d9dee4",
+        "strokeColor": "#d9dee4"
+      }
+    },
+    {
+      "id": "infrastructure.transitStation",
+      "label": {
+        "visible": false
+      }
+    },
+    {
+      "id": "infrastructure.transitStation.railStation",
+      "label": {
+        "visible": true,
+        "textFillColor": "#525252",
+        "textStrokeColor": "#f8f9fa",
+        "pinFillColor": "#a3a3a3",
+        "pinGlyphColor": "#ffffff",
+        "pinOutlineColor": "#a3a3a3"
+      }
+    },
+    {
+      "id": "infrastructure.transitStation.railStation.tramStation",
+      "label": {
+        "visible": false
+      }
+    }
+  ]
+}

@@ -1650,7 +1650,7 @@
     "backToEvents": "Tous les événements",
     "addToCalendar": "Ajouter à mon agenda",
     "openMap": "Voir sur la carte",
-    "directions": "Itinéraire dans Google Maps",
+    "directions": "Google Maps",
     "when": "Quand",
     "where": "Où",
     "places": "Places",
@@ -1689,8 +1689,7 @@
       "body": "Les prochaines watch parties et sorties du club apparaîtront ici. Vous recevrez un e-mail à chaque nouvel événement.",
       "cta": "Voir les matchs"
     },
-    "driveTime": "{duration} en voiture depuis chez vous · {distance}",
-    "route": "Itinéraire"
+    "driveTime": "{duration} en voiture depuis chez vous · {distance}"
   },
   "AdminEvents": {
     "created": "Événement créé.",

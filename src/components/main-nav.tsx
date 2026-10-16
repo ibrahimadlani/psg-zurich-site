@@ -4,12 +4,11 @@ import { useTranslations } from "next-intl";
 import { useLayoutEffect, useRef } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useSession } from "@/lib/auth-client";
-import { hasRole } from "@/lib/roles";
 import { cn } from "@/lib/utils";
 
 type NavItem = {
   href: string;
-  key: "home" | "news" | "matches" | "events" | "membership" | "contact" | "memberArea" | "admin";
+  key: "home" | "news" | "matches" | "events" | "membership" | "contact" | "memberArea";
   /** Key page (membership / member area): last, pushed to the right of the desktop bar. */
   featured?: boolean;
   /** Page whose answer depends on the session (redirects): never prefetched. */
@@ -24,15 +23,13 @@ const content: NavItem[] = [
 ];
 const contact: NavItem = { href: "/contact", key: "contact" };
 
-/** Links depend on who is browsing: visitor, signed-in member, or admin. */
+/** Links depend on who is browsing: visitor or signed-in member (the committee reaches the admin from its account menu). */
 export function useNavItems(): NavItem[] {
   const { data } = useSession();
   // Visitors (and the first instant while the session loads) see the public menu.
   if (!data) return [home, ...content, contact, { href: "/adhesion", key: "membership", featured: true, authDependent: true }];
   const memberArea: NavItem = { href: "/espace-membre", key: "memberArea", featured: true, authDependent: true };
-  return hasRole(data.user.role, "moderator")
-    ? [home, ...content, contact, { href: "/admin", key: "admin", authDependent: true }, memberArea]
-    : [home, ...content, contact, memberArea];
+  return [home, ...content, contact, memberArea];
 }
 
 /** Small cockade in the club colours (PSG blue, white, red), marking the key page of the bar. */

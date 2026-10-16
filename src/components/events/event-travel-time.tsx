@@ -1,26 +1,25 @@
 import { Car } from "lucide-react";
 import { getFormatter, getTranslations } from "next-intl/server";
-import { directionsLink, drivingTime } from "@/lib/route-time";
+import { drivingTime } from "@/lib/route-time";
 
-/** "1 h 05" / "25 min". */
+/** "5h58" / "25 min". */
 function duration(seconds: number) {
   const minutes = Math.max(1, Math.round(seconds / 60));
   if (minutes < 60) return `${minutes} min`;
-  return `${Math.floor(minutes / 60)} h ${String(minutes % 60).padStart(2, "0")}`;
+  return `${Math.floor(minutes / 60)}h${String(minutes % 60).padStart(2, "0")}`;
 }
 
 /**
- * Under "Where": the drive from the member's home, linking to the directions in Google Maps.
- * Streams in after the page (the first computation waits on Google); nothing when unknown.
+ * Under the event map, on the right of the Google Maps link: the drive from the member's home
+ * ("5h58 (527 km)"). Streams in after the page (the first computation waits on Google);
+ * nothing when unknown.
  */
 export async function EventTravelTime({
   origin,
   destination,
-  placeId,
 }: {
   origin: string;
   destination: { latitude: number; longitude: number };
-  placeId: string | null;
 }) {
   const route = await drivingTime(origin, destination);
   if (!route) return null;
@@ -30,18 +29,14 @@ export async function EventTravelTime({
     unit: "kilometer",
     maximumFractionDigits: route.distanceMeters < 10_000 ? 1 : 0,
   });
+  const time = duration(route.durationSeconds);
   return (
-    <a
-      href={directionsLink(origin, destination, placeId)}
-      target="_blank"
-      rel="noreferrer"
-      className="mt-2 flex items-start gap-1.5 text-[14px] text-muted-foreground transition-colors hover:text-foreground"
-    >
-      <Car className="mt-[3px] size-4 shrink-0" aria-hidden />
-      <span>
-        {t("driveTime", { duration: duration(route.durationSeconds), distance })}
-        <span className="ml-1.5 border-b">{t("route")}</span>
+    <span className="inline-flex shrink-0 items-center gap-1.5 text-[13px] whitespace-nowrap text-muted-foreground tabular-nums" title={t("driveTime", { duration: time, distance })}>
+      <Car className="size-4 shrink-0" aria-hidden />
+      <span aria-hidden>
+        {time} ({distance})
       </span>
-    </a>
+      <span className="sr-only">{t("driveTime", { duration: time, distance })}</span>
+    </span>
   );
 }

@@ -22,7 +22,7 @@ import { mapsEnabled, mapsLink } from "@/lib/google-maps";
 import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
-import { homeAddress, routeTimesEnabled } from "@/lib/route-time";
+import { directionsLink, homeAddress, routeTimesEnabled } from "@/lib/route-time";
 
 // Phones: label + action on the first line, the value full width below. From sm: three columns.
 const rowClass =
@@ -138,20 +138,23 @@ export async function EventDetail({ id }: { id: string }) {
                 {event.location && event.address ? (
                   <span className="mt-0.5 block text-[14px] text-muted-foreground">{event.address}</span>
                 ) : null}
-                {showDrive ? (
-                  <Suspense fallback={null}>
-                    <EventTravelTime origin={home!} destination={{ latitude: event.latitude!, longitude: event.longitude! }} placeId={event.placeId} />
-                  </Suspense>
-                ) : null}
               </dd>
               {located && mapsEnabled ? (
                 <EventPlaceMap
                   latitude={event.latitude!}
                   longitude={event.longitude!}
                   label={event.location || event.address || ""}
-                  directionsUrl={mapUrl}
+                  // From the member's home when we know it, else the place itself.
+                  directionsUrl={showDrive ? directionsLink(home!, { latitude: event.latitude!, longitude: event.longitude! }, event.placeId) : mapUrl}
                   buttonClassName={actionClass}
                   labels={{ show: t("openMap"), hide: t("hideMap"), directions: t("directions") }}
+                  drive={
+                    showDrive ? (
+                      <Suspense fallback={null}>
+                        <EventTravelTime origin={home!} destination={{ latitude: event.latitude!, longitude: event.longitude! }} />
+                      </Suspense>
+                    ) : null
+                  }
                 />
               ) : mapUrl ? (
                 // No coordinates (or maps off): Google Maps in a new tab, as before.

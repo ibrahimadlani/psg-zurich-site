@@ -1650,7 +1650,7 @@
     "backToEvents": "All events",
     "addToCalendar": "Add to my calendar",
     "openMap": "See on the map",
-    "directions": "Directions in Google Maps",
+    "directions": "Google Maps",
     "when": "When",
     "where": "Where",
     "places": "Places",
@@ -1689,8 +1689,7 @@
       "body": "The club's next watch parties and outings will show up here. You'll get an email for each new event.",
       "cta": "See the matches"
     },
-    "driveTime": "{duration} by car from your home · {distance}",
-    "route": "Directions"
+    "driveTime": "{duration} by car from your home · {distance}"
   },
   "AdminEvents": {
     "created": "Event created.",

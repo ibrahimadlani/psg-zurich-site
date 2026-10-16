@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { CrestPin } from "@/components/maps/crest-pin";
 import { PlaceMap } from "@/components/maps/place-map";
 import { mapsEnabled } from "@/lib/google-maps";
 
@@ -37,14 +37,8 @@ export function ZurichMap({ label }: { label: string }) {
       />
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-psg-blue/10 dark:bg-psg-blue/25" />
       {/* Crest pin, tip on the centre of the map. */}
-      <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full">
-        <span className="absolute bottom-0 left-1/2 size-16 -translate-x-1/2 translate-y-1/2 animate-ping rounded-full bg-psg-red/25 [animation-duration:2.4s] motion-reduce:hidden" />
-        <span className="relative flex flex-col items-center drop-shadow-[0_8px_14px_rgb(0_0_0/0.35)]">
-          <span className="grid size-12 place-items-center rounded-full bg-white p-1 ring-2 ring-psg-red">
-            <Image src="/brand/psg-crest.svg" alt="" width={40} height={40} className="size-10" />
-          </span>
-          <span className="-mt-1 size-3 rotate-45 rounded-[2px] bg-psg-red" />
-        </span>
+      <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-full">
+        <CrestPin large />
       </div>
     </div>
   );

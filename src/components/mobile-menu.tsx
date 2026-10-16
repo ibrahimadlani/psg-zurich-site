@@ -59,7 +59,7 @@ export function MobileMenu() {
   const [data, setData] = useState<MenuData | null>(null);
   const [newsSeen, setNewsSeen] = useState<string | null>(null);
   // Admin, member area and "Adhérer" live in the block at the bottom, not in the list.
-  const navItems = useNavItems().filter((item) => item.key !== "admin" && item.key !== "memberArea" && item.key !== "membership");
+  const navItems = useNavItems().filter((item) => item.key !== "memberArea" && item.key !== "membership");
 
   // Reading the news page counts as seeing the news.
   useEffect(() => {

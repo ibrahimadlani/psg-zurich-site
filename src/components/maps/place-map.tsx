@@ -1,11 +1,10 @@
 "use client";
 
 import { AdvancedMarker, APIProvider, ColorScheme, Map } from "@vis.gl/react-google-maps";
-import Image from "next/image";
 import { Component, useSyncExternalStore } from "react";
 import { MapPin } from "lucide-react";
+import { CrestPin } from "@/components/maps/crest-pin";
 import { MAP_ID, MAPS_API_KEY, mapsEnabled } from "@/lib/google-maps";
-import { cn } from "@/lib/utils";
 
 /** Follows the site theme (the "dark" class on <html>), not only the OS setting. */
 function subscribeTheme(onChange: () => void) {
@@ -77,29 +76,7 @@ export function PlaceMap({
           className="size-full"
         >
           <AdvancedMarker position={position} title={label}>
-            <span className="relative flex flex-col items-center drop-shadow-[0_6px_10px_rgb(0_0_0/0.35)]">
-              {large ? (
-                <span
-                  aria-hidden
-                  className="absolute bottom-0 left-1/2 size-20 -translate-x-1/2 translate-y-1/2 animate-ping rounded-full bg-psg-red/25 [animation-duration:2.4s] motion-reduce:hidden"
-                />
-              ) : null}
-              <span
-                className={cn(
-                  "relative grid place-items-center rounded-full bg-white p-0.5 ring-2 ring-psg-red",
-                  large ? "size-14" : "size-10",
-                )}
-              >
-                <Image
-                  src="/brand/psg-crest.svg"
-                  alt=""
-                  width={48}
-                  height={48}
-                  className={large ? "size-12" : "size-[34px]"}
-                />
-              </span>
-              <span className={cn("relative -mt-1 rotate-45 rounded-[2px] bg-psg-red", large ? "size-3" : "size-2.5")} />
-            </span>
+            <CrestPin large={large} />
           </AdvancedMarker>
         </Map>
       </APIProvider>

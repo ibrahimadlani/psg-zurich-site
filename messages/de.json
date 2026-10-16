@@ -1650,7 +1650,7 @@
     "backToEvents": "Alle Events",
     "addToCalendar": "Zu meinem Kalender hinzufügen",
     "openMap": "Auf der Karte ansehen",
-    "directions": "Route in Google Maps",
+    "directions": "Google Maps",
     "when": "Wann",
     "where": "Wo",
     "places": "Plätze",
@@ -1689,8 +1689,7 @@
       "body": "Die nächsten Watch-Partys und Ausflüge des Clubs erscheinen hier. Du erhältst für jeden neuen Anlass eine E-Mail.",
       "cta": "Zu den Spielen"
     },
-    "driveTime": "{duration} mit dem Auto von dir zu Hause · {distance}",
-    "route": "Route"
+    "driveTime": "{duration} mit dem Auto von dir zu Hause · {distance}"
   },
   "AdminEvents": {
     "created": "Veranstaltung erstellt.",
