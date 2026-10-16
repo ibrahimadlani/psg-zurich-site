@@ -155,6 +155,13 @@
       "when": 1792170292134,
       "tag": "0021_contact_sender_seen",
       "breakpoints": true
+    },
+    {
+      "idx": 22,
+      "version": "5",
+      "when": 1792180500998,
+      "tag": "0022_notifications_clear",
+      "breakpoints": true
     }
   ]
 }

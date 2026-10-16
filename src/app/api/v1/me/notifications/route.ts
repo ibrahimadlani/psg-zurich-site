@@ -2,7 +2,7 @@ import { and, eq, isNull, lt, or } from "drizzle-orm";
 import { db } from "@/db";
 import { LOCALES, members, type Locale } from "@/db/schema";
 import { apiHandler, ok } from "@/lib/api";
-import { getNotifications, markNotificationsSeen } from "@/lib/notification-feed";
+import { clearNotifications, dismissNotification, getNotifications, markNotificationsSeen } from "@/lib/notification-feed";
 import { requireRole } from "@/lib/permissions";
 
 /** The bell's feed for the signed-in user (`?locale=` picks the articles' language). */
@@ -23,4 +23,13 @@ export const POST = apiHandler(async () => {
   const session = await requireRole("member");
   await markNotificationsSeen(session.user.id);
   return ok({ seen: true });
+});
+
+/** Cleaning the bell: `?id=` removes one item, without it everything shown is cleared. */
+export const DELETE = apiHandler(async (request) => {
+  const session = await requireRole("member");
+  const id = request.nextUrl.searchParams.get("id");
+  if (id) await dismissNotification(session.user.id, id.slice(0, 100));
+  else await clearNotifications(session.user.id);
+  return ok({ cleared: id ?? "all" });
 });

@@ -70,7 +70,7 @@
     "byEmail": "Ou par e-mail",
     "mapLabel": "Carte de Zurich",
     "location": "Zurich, Suisse",
-    "openMap": "Ouvrir dans Google Maps",
+    "openMap": "Google Maps",
     "committeeBanner": "{count, plural, one {# message de contact attend le comité.} other {# messages de contact attendent le comité.}}",
     "committeeBannerLink": "Ouvrir la boîte de réception",
     "myMessages": "Mes messages",
@@ -266,6 +266,8 @@
   "Notifications": {
     "label": "Notifications",
     "labelUnread": "Notifications ({count} non lues)",
+    "clearAll": "Tout effacer",
+    "dismiss": "Retirer cette notification",
     "loading": "Chargement…",
     "empty": "Rien de nouveau pour l'instant.",
     "manage": "Gérer les e-mails de notification",

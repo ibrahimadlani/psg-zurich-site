@@ -18,7 +18,9 @@ import { getNewsList } from "@/lib/news";
 /*
  * The bell's feed is computed from what already exists (articles, events, matches,
  * predictions, membership); nothing is stored per notification. Items newer than
- * members.notifications_seen_at count as unread.
+ * members.notifications_seen_at count as unread. The member can clean the list: "clear all"
+ * hides everything up to that moment (notifications_cleared_at), and single items are
+ * dismissed by id (notifications_dismissed).
  */
 
 export type NotificationItem =
@@ -65,6 +67,8 @@ export async function getNotifications(userId: string, locale: Locale) {
       joinedOn: members.joinedOn,
       expiresOn: members.expiresOn,
       seenAt: members.notificationsSeenAt,
+      clearedAt: members.notificationsClearedAt,
+      dismissed: members.notificationsDismissed,
     })
     .from(members)
     .where(eq(members.userId, userId));
@@ -221,7 +225,12 @@ export async function getNotifications(userId: string, locale: Locale) {
     }
   }
 
-  const sorted = items.sort((a, b) => b.at.localeCompare(a.at)).slice(0, LIMIT);
+  const clearedAt = member?.clearedAt?.toISOString() ?? null;
+  const dismissed = new Set(member?.dismissed ?? []);
+  const sorted = items
+    .filter((item) => (!clearedAt || item.at > clearedAt) && !dismissed.has(item.id))
+    .sort((a, b) => b.at.localeCompare(a.at))
+    .slice(0, LIMIT);
   const seenAt = member?.seenAt?.toISOString() ?? null;
   return {
     items: sorted.map((item) => ({
@@ -230,6 +239,26 @@ export async function getNotifications(userId: string, locale: Locale) {
     })),
     unread: sorted.filter((item) => !seenAt || item.at > seenAt).length,
   };
+}
+
+/** Ids kept in the dismissed list: enough to cover the feed's 30 days. */
+const DISMISSED_KEPT = 100;
+
+/** "Clear all": what the bell shows now goes away (and counts as read). */
+export async function clearNotifications(userId: string) {
+  const now = new Date();
+  await db
+    .update(members)
+    .set({ notificationsClearedAt: now, notificationsSeenAt: now, notificationsDismissed: [] })
+    .where(eq(members.userId, userId));
+}
+
+/** One item removed from the bell. */
+export async function dismissNotification(userId: string, id: string) {
+  const [member] = await db.select({ dismissed: members.notificationsDismissed }).from(members).where(eq(members.userId, userId));
+  if (!member) return;
+  const kept = [id, ...(member.dismissed ?? []).filter((other) => other !== id)].slice(0, DISMISSED_KEPT);
+  await db.update(members).set({ notificationsDismissed: kept }).where(eq(members.userId, userId));
 }
 
 /** The member opened the bell: everything shown so far is now read. */

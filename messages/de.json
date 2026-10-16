@@ -70,7 +70,7 @@
     "byEmail": "Oder per E-Mail",
     "mapLabel": "Karte von Zürich",
     "location": "Zürich, Schweiz",
-    "openMap": "In Google Maps öffnen",
+    "openMap": "Google Maps",
     "committeeBanner": "{count, plural, one {# Kontaktnachricht wartet auf den Vorstand.} other {# Kontaktnachrichten warten auf den Vorstand.}}",
     "committeeBannerLink": "Posteingang öffnen",
     "myMessages": "Meine Nachrichten",
@@ -266,6 +266,8 @@
   "Notifications": {
     "label": "Benachrichtigungen",
     "labelUnread": "Benachrichtigungen ({count} ungelesen)",
+    "clearAll": "Alle löschen",
+    "dismiss": "Diese Benachrichtigung entfernen",
     "loading": "Wird geladen…",
     "empty": "Im Moment nichts Neues.",
     "manage": "Benachrichtigungs-E-Mails verwalten",

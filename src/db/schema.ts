@@ -199,6 +199,10 @@ export const members = mysqlTable(
     onboardedAt: datetime("onboarded_at", { fsp: 3 }),
     /** Last time the member opened the notification bell: newer items count as unread. */
     notificationsSeenAt: datetime("notifications_seen_at", { fsp: 3 }),
+    /** "Clear all" in the bell: items up to this moment are no longer shown. */
+    notificationsClearedAt: datetime("notifications_cleared_at", { fsp: 3 }),
+    /** Items removed one by one from the bell (their feed ids, the most recent ones only). */
+    notificationsDismissed: json<string[]>("notifications_dismissed"),
     ...timestamps(),
   },
   (t) => [index("members_status_idx").on(t.status)],
