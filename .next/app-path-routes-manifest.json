@@ -55,6 +55,7 @@
   "/api/health/route": "/api/health",
   "/api/unsubscribe/route": "/api/unsubscribe",
   "/api/v1/admin/members/route": "/api/v1/admin/members",
+  "/api/v1/admin/prediction-rewards/route": "/api/v1/admin/prediction-rewards",
   "/api/v1/admin/scan/route": "/api/v1/admin/scan",
   "/api/v1/admin/search/route": "/api/v1/admin/search",
   "/api/v1/admin/summary/route": "/api/v1/admin/summary",

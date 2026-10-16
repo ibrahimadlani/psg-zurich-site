@@ -1650,6 +1650,12 @@
       "namedRegex": "^/api/v1/admin/members(?:/)?$"
     },
     {
+      "page": "/api/v1/admin/prediction-rewards",
+      "regex": "^/api/v1/admin/prediction\\-rewards(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/admin/prediction\\-rewards(?:/)?$"
+    },
+    {
       "page": "/api/v1/admin/scan",
       "regex": "^/api/v1/admin/scan(?:/)?$",
       "routeKeys": {},
