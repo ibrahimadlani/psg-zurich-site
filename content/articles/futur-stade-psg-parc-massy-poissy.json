@@ -1,0 +1,278 @@
+{
+  "category": "club",
+  "translations": {
+    "fr": {
+      "slug": "futur-stade-psg-parc-des-princes-massy-poissy",
+      "byline": "Le comité",
+      "title": "Futur stade du PSG : Parc des Princes, Massy ou Poissy ?",
+      "excerpt": "Agrandir le Parc à 70 000 places ou bâtir un stade de 90 000 à Massy ou Poissy : où en est le dossier du futur stade du PSG, et ce qui change pour les Suisses.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Le PSG devait choisir son futur stade cet automne. Il ne le fera pas, du moins pas définitivement. Selon l'AFP, le club annoncera dans les prochaines semaines un **site « prioritaire »**, puis lancera des études de faisabilité qui peuvent durer longtemps. Trois candidats restent en lice : le Parc des Princes, agrandi, et deux terrains en grande banlieue, à Massy et à Poissy. Pour un supporter qui vient de Zurich, l'enjeu est très concret : le temps de trajet depuis la gare de Lyon et la façon de rentrer après un match du soir."
+        },
+        {
+          "type": "heading",
+          "text": "Pourquoi le PSG veut un plus grand stade"
+        },
+        {
+          "type": "paragraph",
+          "text": "Le Parc compte **48 000 places**, toutes vendues, ou presque, à chaque match. Il rapporte déjà plus de **170 millions d'euros par saison**, sur un budget d'environ 880 millions. Le club juge pourtant qu'il ne suffit plus : les droits télévisés de la Ligue 1 sont faibles, et ses concurrents européens grandissent. Barcelone et Manchester United visent plus de 100 000 places d'ici dix ans. Le PSG veut aussi être propriétaire de son stade. Il refuse d'investir massivement dans un Parc qui appartient à la Ville de Paris."
+        },
+        {
+          "type": "heading",
+          "text": "Option 1 : agrandir le Parc des Princes à 70 000 places"
+        },
+        {
+          "type": "paragraph",
+          "text": "C'est le scénario favori, « sauf surprise », selon des sources proches du dossier. Le contexte politique a changé : **Emmanuel Grégoire**, maire de Paris depuis mars, a rouvert en avril les discussions bloquées depuis 2023. Le Conseil de Paris l'a mandaté pour garder le PSG au Parc, par une vente ou par un bail de très longue durée. Côté mairie, on juge le projet d'agrandissement « techniquement crédible »."
+        },
+        {
+          "type": "paragraph",
+          "text": "Les obstacles restent réels. Passer de 48 000 à 70 000 places dans le tissu dense du 16e arrondissement est un défi d'ingénierie. Et Sophie Taillibert, fille de l'architecte Roger Taillibert, a déjà émis des réserves sur l'intégrité d'une enceinte inaugurée en 1972. Les ultras, eux, ont choisi leur camp : le Collectif Ultras Paris a déployé des banderoles pour le Parc lors du match contre Le Mans."
+        },
+        {
+          "type": "heading",
+          "text": "Option 2 : Massy, la carte des transports en commun"
+        },
+        {
+          "type": "paragraph",
+          "text": "En Essonne, au sud de Paris, le projet viserait **80 000 à 90 000 places** sur une zone commerciale d'une vingtaine d'hectares, autour d'un hypermarché. Massy est bien desservie : RER B et C, une gare TGV, le tram T12 et, à terme, la ligne 18 du Grand Paris Express. Le site est pourtant à près de vingt minutes à pied des gares RER, et plusieurs collectifs d'habitants s'opposent déjà au projet."
+        },
+        {
+          "type": "heading",
+          "text": "Option 3 : Poissy, à côté du Campus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dans les Yvelines, à l'ouest, le stade serait construit sur une partie du site de l'**usine Stellantis**, avec la même capacité qu'à Massy. Le club y a déjà installé son centre d'entraînement, le Campus PSG. Le terrain offre beaucoup de place pour les parkings. En revanche, il est loin du centre de Paris. La maire, Sandrine Berno Dos Santos, pose ses conditions : préserver l'activité industrielle, concerter les habitants, garantir l'accès et la sécurité."
+        },
+        {
+          "type": "heading",
+          "text": "Ce que chaque site change pour un supporter venu de Zurich"
+        },
+        {
+          "type": "paragraph",
+          "text": "Le TGV Lyria arrive à la gare de Lyon. De là, voici les temps de trajet indicatifs vers chaque site :"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Parc des Princes** : environ 40 minutes de métro (ligne 1 puis ligne 9). Rien ne change par rapport à aujourd'hui.",
+            "**Massy** : environ 45 minutes en RER, via Châtelet et le RER B, puis une vingtaine de minutes à pied. Massy a une gare TGV, mais les TGV Lyria venant de Suisse n'y passent pas.",
+            "**Poissy** : environ 50 minutes en RER A, direct depuis la gare de Lyon. Le prolongement du RER E vers l'ouest doit améliorer la desserte."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Le vrai problème reste le retour. Le dernier TGV Lyria direct pour Zurich part vers 18 h 22, bien avant un match à 21 h. Il faudra dormir à Paris quel que soit le site. Après un match à Massy ou à Poissy, il faudra toutefois compter une heure de plus pour rejoindre son hôtel, dans des trains bondés. Notre [guide du Parc des Princes depuis Zurich](/fr/actualites/voir-psg-parc-des-princes-depuis-zurich) détaille l'organisation actuelle."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "**En résumé.** Parc des Princes : 48 000 places aujourd'hui, 70 000 en projet, à Paris. Massy : 80 000 à 90 000 places, en Essonne, accès en RER B et C. Poissy : 80 000 à 90 000 places, dans les Yvelines, accès en RER A."
+        },
+        {
+          "type": "heading",
+          "text": "Le calendrier : rien avant plusieurs années"
+        },
+        {
+          "type": "paragraph",
+          "text": "Un comité de pilotage s'est réuni à Poissy le 13 octobre, puis un autre à Massy et à Paris le 16. L'annonce du site prioritaire est attendue entre la fin octobre et Noël, selon les sources. Viendront ensuite les permis de construire, les recours éventuels et les travaux. *L'Équipe* estime l'ensemble des procédures à **six à dix ans**. Pendant tout ce temps, le PSG continuera de jouer au Parc des Princes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Le comité suivra l'annonce et mettra cet article à jour. En attendant, rendez-vous au [calendrier des matchs](/fr/matchs) pour les prochaines affiches au Parc, et dans l'[agenda](/fr/evenements) pour les déplacements et watch parties du club. Pas encore membre ? [Rejoignez-nous](/fr/adhesion)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Informations vérifiées au 16 octobre 2026, d'après l'AFP, *L'Équipe* et la presse locale. Les capacités et les temps de trajet sont indicatifs : aucun projet n'a encore été arrêté."
+        }
+      ]
+    },
+    "de": {
+      "slug": "neues-psg-stadion-parc-des-princes-massy-poissy",
+      "byline": "Der Vorstand",
+      "title": "Neues PSG-Stadion: Parc des Princes, Massy oder Poissy?",
+      "excerpt": "Parc auf 70 000 Plätze ausbauen oder neues 90 000er-Stadion in Massy oder Poissy: Stand der PSG-Stadionfrage und was sie für Fans aus der Schweiz heisst.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Eigentlich wollte PSG diesen Herbst über sein künftiges Stadion entscheiden. Daraus wird nichts, zumindest nicht endgültig. Laut AFP will der Klub in den kommenden Wochen einen **«prioritären» Standort** bekannt geben und danach Machbarkeitsstudien starten, die lange dauern können. Drei Kandidaten sind noch im Rennen: ein ausgebauter Parc des Princes und zwei Gelände im weiten Umland, in Massy und in Poissy. Für Fans aus Zürich geht es um ganz Konkretes: die Fahrzeit ab Gare de Lyon und die Heimreise nach einem Abendspiel."
+        },
+        {
+          "type": "heading",
+          "text": "Warum PSG ein grösseres Stadion will"
+        },
+        {
+          "type": "paragraph",
+          "text": "Der Parc fasst **48 000 Plätze**, die bei fast jedem Spiel ausverkauft sind. Er bringt schon heute über **170 Millionen Euro pro Saison**, bei einem Budget von rund 880 Millionen. Dem Klub reicht das nicht: Die TV-Gelder der Ligue 1 sind tief, und die europäische Konkurrenz wächst. Barcelona und Manchester United peilen in zehn Jahren über 100 000 Plätze an. PSG will zudem Eigentümer seines Stadions werden. In einen Parc, der der Stadt Paris gehört, will der Klub nicht gross investieren."
+        },
+        {
+          "type": "heading",
+          "text": "Variante 1: den Parc auf 70 000 Plätze ausbauen"
+        },
+        {
+          "type": "paragraph",
+          "text": "Laut Quellen aus dem Umfeld des Dossiers ist das «ausser bei einer Überraschung» die bevorzugte Lösung. Das politische Umfeld hat sich geändert: **Emmanuel Grégoire**, seit März Bürgermeister von Paris, hat im April die seit 2023 blockierten Gespräche wieder aufgenommen. Der Pariser Stadtrat hat ihn beauftragt, PSG im Parc zu halten, per Verkauf oder sehr langem Baurecht. Im Rathaus hält man den Ausbau für «technisch glaubwürdig»."
+        },
+        {
+          "type": "paragraph",
+          "text": "Die Hürden bleiben. Im dicht bebauten 16. Arrondissement von 48 000 auf 70 000 Plätze zu wachsen, ist eine bauliche Herausforderung. Und Sophie Taillibert, Tochter des Architekten Roger Taillibert, hat bereits Bedenken zur Integrität des 1972 eröffneten Baus angemeldet. Die Ultras haben sich entschieden: Das Collectif Ultras Paris zeigte beim Spiel gegen Le Mans Spruchbänder für den Parc."
+        },
+        {
+          "type": "heading",
+          "text": "Variante 2: Massy, die ÖV-Lösung"
+        },
+        {
+          "type": "paragraph",
+          "text": "Im Département Essonne südlich von Paris sind **80 000 bis 90 000 Plätze** auf einem rund 20 Hektar grossen Einkaufsareal rund um einen Hypermarkt geplant. Massy ist gut erschlossen: RER B und C, ein TGV-Bahnhof, das Tram T12 und später die Linie 18 des Grand Paris Express. Allerdings liegt das Gelände fast zwanzig Gehminuten von den RER-Stationen entfernt, und mehrere Anwohnergruppen wehren sich bereits gegen das Projekt."
+        },
+        {
+          "type": "heading",
+          "text": "Variante 3: Poissy, neben dem Campus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Im Département Yvelines westlich von Paris würde das Stadion mit gleicher Kapazität auf einem Teil des **Stellantis-Werks** entstehen. Dort hat der Klub bereits sein Trainingszentrum, den Campus PSG. Das Gelände bietet viel Platz für Parkplätze, liegt aber weit vom Pariser Zentrum entfernt. Bürgermeisterin Sandrine Berno Dos Santos stellt Bedingungen: Erhalt der Industrie, Mitsprache der Bevölkerung, gesicherte Erreichbarkeit und Sicherheit."
+        },
+        {
+          "type": "heading",
+          "text": "Was jeder Standort für Fans aus Zürich bedeutet"
+        },
+        {
+          "type": "paragraph",
+          "text": "Der TGV Lyria kommt an der Gare de Lyon an. Von dort sind es ungefähr:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Parc des Princes**: rund 40 Minuten mit der Metro (Linie 1, dann Linie 9). Alles bleibt wie heute.",
+            "**Massy**: rund 45 Minuten mit dem RER über Châtelet und den RER B, dann knapp zwanzig Minuten zu Fuss. Massy hat zwar einen TGV-Bahnhof, doch die TGV Lyria aus der Schweiz halten dort nicht.",
+            "**Poissy**: rund 50 Minuten mit dem RER A, direkt ab Gare de Lyon. Die Verlängerung des RER E nach Westen soll die Anbindung verbessern."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Das eigentliche Problem bleibt die Rückfahrt. Der letzte direkte TGV Lyria nach Zürich fährt gegen 18.22 Uhr ab, lange vor einem Spiel um 21 Uhr. Übernachten müssen Sie in Paris also bei jedem Standort. Nach einem Spiel in Massy oder Poissy brauchen Sie aber eine Stunde länger bis ins Hotel, in vollen Zügen. Wie es heute läuft, steht in unserem [Ratgeber zum Parc des Princes](/de/actualites/psg-parc-des-princes-anreise-ab-zuerich)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "**Kurz gefasst.** Parc des Princes: heute 48 000 Plätze, geplant 70 000, in Paris. Massy: 80 000 bis 90 000 Plätze, Essonne, RER B und C. Poissy: 80 000 bis 90 000 Plätze, Yvelines, RER A."
+        },
+        {
+          "type": "heading",
+          "text": "Der Zeitplan: nichts vor mehreren Jahren"
+        },
+        {
+          "type": "paragraph",
+          "text": "Am 13. Oktober tagte ein Lenkungsausschuss in Poissy, am 16. Oktober in Massy und Paris. Der prioritäre Standort soll je nach Quelle zwischen Ende Oktober und Weihnachten verkündet werden. Danach folgen Baubewilligungen, allfällige Einsprachen und der Bau. Laut *L'Équipe* dauern alle Verfahren zusammen **sechs bis zehn Jahre**. So lange spielt PSG weiter im Parc des Princes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Der Vorstand verfolgt die Ankündigung und aktualisiert diesen Artikel. Bis dahin finden Sie die nächsten Heimspiele im [Spielplan](/de/matchs) und die Reisen und Watch-Partys des Klubs in der [Agenda](/de/evenements). Noch nicht Mitglied? [Jetzt beitreten](/de/adhesion)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Stand: 16. Oktober 2026, gemäss AFP, *L'Équipe* und Lokalpresse. Kapazitäten und Fahrzeiten sind Richtwerte: Noch ist kein Projekt beschlossen."
+        }
+      ]
+    },
+    "en": {
+      "slug": "new-psg-stadium-parc-des-princes-massy-poissy",
+      "byline": "The committee",
+      "title": "PSG's new stadium: Parc des Princes, Massy or Poissy?",
+      "excerpt": "Expand the Parc to 70,000 or build a 90,000-seat ground in Massy or Poissy: where PSG's stadium decision stands, and what it means for fans from Switzerland.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "PSG were meant to pick their future stadium this autumn. They won't, at least not for good. According to AFP, the club will name a **\"priority\" site** in the coming weeks, then launch feasibility studies that could take a long time. Three candidates remain: an expanded Parc des Princes and two sites in the outer suburbs, at Massy and Poissy. For a fan travelling from Zurich, the stakes are very practical: journey time from Gare de Lyon, and how to get back after an evening game."
+        },
+        {
+          "type": "heading",
+          "text": "Why PSG want a bigger stadium"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Parc holds **48,000** and sells out almost every game. It already brings in more than **€170 million a season**, out of a budget of around €880 million. The club says that is no longer enough: Ligue 1 TV money is thin and European rivals are growing. Barcelona and Manchester United are aiming for more than 100,000 seats within ten years. PSG also want to own their ground, and refuse to invest heavily in a Parc that belongs to the City of Paris."
+        },
+        {
+          "type": "heading",
+          "text": "Option 1: expand the Parc des Princes to 70,000"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sources close to the process say this is the favourite, \"barring a surprise\". The politics have shifted: **Emmanuel Grégoire**, mayor of Paris since March, reopened talks in April that had been frozen since 2023. The Paris council has mandated him to keep PSG at the Parc, through a sale or a very long lease. City Hall describes the expansion plan as \"technically credible\"."
+        },
+        {
+          "type": "paragraph",
+          "text": "The obstacles are real. Going from 48,000 to 70,000 seats in the dense 16th arrondissement is an engineering challenge. Sophie Taillibert, daughter of architect Roger Taillibert, has already raised concerns about the integrity of a stadium that opened in 1972. The ultras have picked their side: the Collectif Ultras Paris unfurled banners for the Parc during the game against Le Mans."
+        },
+        {
+          "type": "heading",
+          "text": "Option 2: Massy, the public-transport choice"
+        },
+        {
+          "type": "paragraph",
+          "text": "In Essonne, south of Paris, the plan would be **80,000 to 90,000 seats** on a 20-hectare retail park built around a hypermarket. Massy is well connected: RER B and C, a TGV station, the T12 tram and eventually Grand Paris Express line 18. The site is nonetheless almost a twenty-minute walk from the RER stations, and several residents' groups already oppose the project."
+        },
+        {
+          "type": "heading",
+          "text": "Option 3: Poissy, next to the training ground"
+        },
+        {
+          "type": "paragraph",
+          "text": "In Yvelines, west of Paris, the stadium would go on part of the **Stellantis car plant**, with the same capacity as Massy. The club's training centre, the PSG Campus, is already there. The land leaves plenty of room for car parks but is a long way from central Paris. Mayor Sandrine Berno Dos Santos has set conditions: keep the industry, consult residents, guarantee access and security."
+        },
+        {
+          "type": "heading",
+          "text": "What each site means for a fan from Zurich"
+        },
+        {
+          "type": "paragraph",
+          "text": "The TGV Lyria arrives at Gare de Lyon. From there, approximate journey times are:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Parc des Princes**: about 40 minutes by metro (line 1, then line 9). Nothing changes from today.",
+            "**Massy**: about 45 minutes by RER via Châtelet and RER B, then a walk of nearly twenty minutes. Massy has a TGV station, but TGV Lyria services from Switzerland do not stop there.",
+            "**Poissy**: about 50 minutes on RER A, direct from Gare de Lyon. The westward extension of RER E should improve access."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The real problem is still getting home. The last direct TGV Lyria to Zurich leaves around 6.22pm, long before a 9pm kick-off, so you will need a night in Paris whichever site wins. After a game at Massy or Poissy, though, add an hour to get back to your hotel, on packed trains. Our [Parc des Princes guide](/en/actualites/psg-parc-des-princes-from-zurich-guide) covers how it works today."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "**At a glance.** Parc des Princes: 48,000 seats today, 70,000 planned, in Paris. Massy: 80,000 to 90,000 seats, Essonne, RER B and C. Poissy: 80,000 to 90,000 seats, Yvelines, RER A."
+        },
+        {
+          "type": "heading",
+          "text": "The timeline: nothing for years"
+        },
+        {
+          "type": "paragraph",
+          "text": "A steering committee met in Poissy on 13 October, then in Massy and Paris on the 16th. Depending on the source, the priority site will be named between late October and Christmas. Then come planning permission, possible legal challenges and construction. *L'Équipe* puts the whole process at **six to ten years**. Until then, PSG will keep playing at the Parc des Princes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The committee will follow the announcement and update this article. Meanwhile, the next home games are on the [fixtures page](/en/matchs), and the club's trips and watch parties are in the [events calendar](/en/evenements). Not a member yet? [Join us](/en/adhesion)."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "text": "Information checked on 16 October 2026, based on AFP, *L'Équipe* and local press. Capacities and journey times are indicative: no project has been approved yet."
+        }
+      ]
+    }
+  }
+}
