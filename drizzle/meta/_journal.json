@@ -197,6 +197,13 @@
       "when": 1792244501175,
       "tag": "0027_product_details",
       "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "5",
+      "when": 1792248296255,
+      "tag": "0028_shop_enabled",
+      "breakpoints": true
     }
   ]
 }

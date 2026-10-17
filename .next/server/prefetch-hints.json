@@ -22,75 +22,7 @@
       }
     }
   },
-  "/[locale]/admin/actualites/[id]": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49248,
-                    "slots": {
-                      "children": {
-                        "hints": 49248,
-                        "slots": {
-                          "children": {
-                            "hints": 49312,
-                            "slots": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/admin/actualites/nouveau": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49248,
-                    "slots": {
-                      "children": {
-                        "hints": 49248,
-                        "slots": {
-                          "children": {
-                            "hints": 49312,
-                            "slots": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/admin/actualites": {
+  "/[locale]/admin/audit": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -119,36 +51,7 @@
       }
     }
   },
-  "/[locale]/admin/banniere": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49248,
-                    "slots": {
-                      "children": {
-                        "hints": 49312,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/admin/cotisations": {
+  "/[locale]/admin/banner": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -206,7 +109,36 @@
       }
     }
   },
-  "/[locale]/admin/evenements/[id]": {
+  "/[locale]/admin/dues": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/events/[id]": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -240,7 +172,7 @@
       }
     }
   },
-  "/[locale]/admin/evenements": {
+  "/[locale]/admin/events": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -269,41 +201,7 @@
       }
     }
   },
-  "/[locale]/admin/finances/boutique": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49248,
-                    "slots": {
-                      "children": {
-                        "hints": 49248,
-                        "slots": {
-                          "children": {
-                            "hints": 49312,
-                            "slots": null
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/admin/finances/commandes": {
+  "/[locale]/admin/finances/orders": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -366,7 +264,7 @@
       }
     }
   },
-  "/[locale]/admin/finances/paiements/[id]": {
+  "/[locale]/admin/finances/payments/[id]": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -405,7 +303,7 @@
       }
     }
   },
-  "/[locale]/admin/finances/paiements": {
+  "/[locale]/admin/finances/payments": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -439,7 +337,7 @@
       }
     }
   },
-  "/[locale]/admin/finances/reglages": {
+  "/[locale]/admin/finances/payouts": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -473,7 +371,7 @@
       }
     }
   },
-  "/[locale]/admin/finances/versements": {
+  "/[locale]/admin/finances/settings": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -507,7 +405,7 @@
       }
     }
   },
-  "/[locale]/admin/journal": {
+  "/[locale]/admin/finances/shop": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -523,8 +421,13 @@
                     "hints": 49248,
                     "slots": {
                       "children": {
-                        "hints": 49312,
-                        "slots": null
+                        "hints": 49248,
+                        "slots": {
+                          "children": {
+                            "hints": 49312,
+                            "slots": null
+                          }
+                        }
                       }
                     }
                   }
@@ -536,7 +439,7 @@
       }
     }
   },
-  "/[locale]/admin/mailing/automatisations/[key]": {
+  "/[locale]/admin/mailing/automations/[key]": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -575,7 +478,7 @@
       }
     }
   },
-  "/[locale]/admin/mailing/campagnes/[id]": {
+  "/[locale]/admin/mailing/campaigns/[id]": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -643,7 +546,7 @@
       }
     }
   },
-  "/[locale]/admin/matchs": {
+  "/[locale]/admin/matches": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -672,7 +575,7 @@
       }
     }
   },
-  "/[locale]/admin/membres/[id]": {
+  "/[locale]/admin/members/[id]": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -706,7 +609,7 @@
       }
     }
   },
-  "/[locale]/admin/membres": {
+  "/[locale]/admin/members": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -798,6 +701,103 @@
       }
     }
   },
+  "/[locale]/admin/news/[id]": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49248,
+                        "slots": {
+                          "children": {
+                            "hints": 49312,
+                            "slots": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/news/new": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49248,
+                        "slots": {
+                          "children": {
+                            "hints": 49312,
+                            "slots": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/admin/news": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]/admin": {
     "hints": 49216,
     "slots": {
@@ -822,7 +822,7 @@
       }
     }
   },
-  "/[locale]/admin/reglages": {
+  "/[locale]/admin/polls": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -914,7 +914,7 @@
       }
     }
   },
-  "/[locale]/admin/sondages": {
+  "/[locale]/admin/settings": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -943,7 +943,7 @@
       }
     }
   },
-  "/[locale]/commande": {
+  "/[locale]/checkout": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -967,7 +967,7 @@
       }
     }
   },
-  "/[locale]/confidentialite": {
+  "/[locale]/legal-notice": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -991,7 +991,7 @@
       }
     }
   },
-  "/[locale]/mentions-legales": {
+  "/[locale]/privacy": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1015,113 +1015,7 @@
       }
     }
   },
-  "/[locale]/statuts": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49312,
-                    "slots": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/actualites/[slug]": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49248,
-                    "slots": {
-                      "children": {
-                        "hints": 49312,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/actualites": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49312,
-                    "slots": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/boutique/[slug]": {
-    "hints": 16448,
-    "slots": {
-      "children": {
-        "hints": 16416,
-        "slots": {
-          "children": {
-            "hints": 16448,
-            "slots": {
-              "children": {
-                "hints": 16480,
-                "slots": {
-                  "children": {
-                    "hints": 16480,
-                    "slots": {
-                      "children": {
-                        "hints": 16544,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/boutique": {
+  "/[locale]/statutes": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1169,7 +1063,7 @@
       }
     }
   },
-  "/[locale]/contact/suivi/[token]": {
+  "/[locale]/contact/track/[token]": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -1203,7 +1097,31 @@
       }
     }
   },
-  "/[locale]/cotisation": {
+  "/[locale]/donate": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/dues": {
     "hints": 64,
     "slots": {
       "children": {
@@ -1227,23 +1145,23 @@
       }
     }
   },
-  "/[locale]/espace-membre/commandes": {
-    "hints": 49216,
+  "/[locale]/events/[id]": {
+    "hints": 64,
     "slots": {
       "children": {
-        "hints": 49184,
+        "hints": 32,
         "slots": {
           "children": {
-            "hints": 49216,
+            "hints": 64,
             "slots": {
               "children": {
-                "hints": 49248,
+                "hints": 96,
                 "slots": {
                   "children": {
-                    "hints": 49248,
+                    "hints": 96,
                     "slots": {
                       "children": {
-                        "hints": 49312,
+                        "hints": 160,
                         "slots": null
                       }
                     }
@@ -1256,7 +1174,113 @@
       }
     }
   },
-  "/[locale]/espace-membre/messages/[id]": {
+  "/[locale]/events": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/matches/[id]": {
+    "hints": 16448,
+    "slots": {
+      "children": {
+        "hints": 16416,
+        "slots": {
+          "children": {
+            "hints": 16448,
+            "slots": {
+              "children": {
+                "hints": 16480,
+                "slots": {
+                  "children": {
+                    "hints": 16480,
+                    "slots": {
+                      "children": {
+                        "hints": 16544,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/matches/leaderboard": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 32,
+        "slots": {
+          "children": {
+            "hints": 64,
+            "slots": {
+              "children": {
+                "hints": 96,
+                "slots": {
+                  "children": {
+                    "hints": 96,
+                    "slots": {
+                      "children": {
+                        "hints": 160,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/matches": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/member/messages/[id]": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -1290,7 +1314,7 @@
       }
     }
   },
-  "/[locale]/espace-membre/messages": {
+  "/[locale]/member/messages": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1319,7 +1343,36 @@
       }
     }
   },
-  "/[locale]/espace-membre": {
+  "/[locale]/member/orders": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/member": {
     "hints": 64,
     "slots": {
       "children": {
@@ -1343,7 +1396,7 @@
       }
     }
   },
-  "/[locale]/espace-membre/paiements": {
+  "/[locale]/member/payments": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1372,23 +1425,23 @@
       }
     }
   },
-  "/[locale]/evenements/[id]": {
-    "hints": 64,
+  "/[locale]/news/[slug]": {
+    "hints": 49216,
     "slots": {
       "children": {
-        "hints": 32,
+        "hints": 49184,
         "slots": {
           "children": {
-            "hints": 64,
+            "hints": 49216,
             "slots": {
               "children": {
-                "hints": 96,
+                "hints": 49248,
                 "slots": {
                   "children": {
-                    "hints": 96,
+                    "hints": 49248,
                     "slots": {
                       "children": {
-                        "hints": 160,
+                        "hints": 49312,
                         "slots": null
                       }
                     }
@@ -1401,7 +1454,7 @@
       }
     }
   },
-  "/[locale]/evenements": {
+  "/[locale]/news": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1425,7 +1478,7 @@
       }
     }
   },
-  "/[locale]/matchs/[id]": {
+  "/[locale]/payment/[reference]": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -1454,7 +1507,7 @@
       }
     }
   },
-  "/[locale]/matchs/classement": {
+  "/[locale]/settings/account": {
     "hints": 64,
     "slots": {
       "children": {
@@ -1483,7 +1536,36 @@
       }
     }
   },
-  "/[locale]/matchs": {
+  "/[locale]/settings/notifications": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 32,
+        "slots": {
+          "children": {
+            "hints": 64,
+            "slots": {
+              "children": {
+                "hints": 96,
+                "slots": {
+                  "children": {
+                    "hints": 96,
+                    "slots": {
+                      "children": {
+                        "hints": 160,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/settings": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1507,7 +1589,94 @@
       }
     }
   },
-  "/[locale]/paiement/[reference]": {
+  "/[locale]/settings/preferences": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 32,
+        "slots": {
+          "children": {
+            "hints": 64,
+            "slots": {
+              "children": {
+                "hints": 96,
+                "slots": {
+                  "children": {
+                    "hints": 96,
+                    "slots": {
+                      "children": {
+                        "hints": 160,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/settings/privacy": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 32,
+        "slots": {
+          "children": {
+            "hints": 64,
+            "slots": {
+              "children": {
+                "hints": 96,
+                "slots": {
+                  "children": {
+                    "hints": 96,
+                    "slots": {
+                      "children": {
+                        "hints": 160,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/settings/profile": {
+    "hints": 64,
+    "slots": {
+      "children": {
+        "hints": 32,
+        "slots": {
+          "children": {
+            "hints": 64,
+            "slots": {
+              "children": {
+                "hints": 96,
+                "slots": {
+                  "children": {
+                    "hints": 96,
+                    "slots": {
+                      "children": {
+                        "hints": 160,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/shop/[slug]": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -1536,176 +1705,7 @@
       }
     }
   },
-  "/[locale]/parametres/compte": {
-    "hints": 64,
-    "slots": {
-      "children": {
-        "hints": 32,
-        "slots": {
-          "children": {
-            "hints": 64,
-            "slots": {
-              "children": {
-                "hints": 96,
-                "slots": {
-                  "children": {
-                    "hints": 96,
-                    "slots": {
-                      "children": {
-                        "hints": 160,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/parametres/confidentialite": {
-    "hints": 64,
-    "slots": {
-      "children": {
-        "hints": 32,
-        "slots": {
-          "children": {
-            "hints": 64,
-            "slots": {
-              "children": {
-                "hints": 96,
-                "slots": {
-                  "children": {
-                    "hints": 96,
-                    "slots": {
-                      "children": {
-                        "hints": 160,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/parametres/notifications": {
-    "hints": 64,
-    "slots": {
-      "children": {
-        "hints": 32,
-        "slots": {
-          "children": {
-            "hints": 64,
-            "slots": {
-              "children": {
-                "hints": 96,
-                "slots": {
-                  "children": {
-                    "hints": 96,
-                    "slots": {
-                      "children": {
-                        "hints": 160,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/parametres": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49248,
-                "slots": {
-                  "children": {
-                    "hints": 49312,
-                    "slots": null
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/parametres/preferences": {
-    "hints": 64,
-    "slots": {
-      "children": {
-        "hints": 32,
-        "slots": {
-          "children": {
-            "hints": 64,
-            "slots": {
-              "children": {
-                "hints": 96,
-                "slots": {
-                  "children": {
-                    "hints": 96,
-                    "slots": {
-                      "children": {
-                        "hints": 160,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/parametres/profil": {
-    "hints": 64,
-    "slots": {
-      "children": {
-        "hints": 32,
-        "slots": {
-          "children": {
-            "hints": 64,
-            "slots": {
-              "children": {
-                "hints": 96,
-                "slots": {
-                  "children": {
-                    "hints": 96,
-                    "slots": {
-                      "children": {
-                        "hints": 160,
-                        "slots": null
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/soutenir": {
+  "/[locale]/shop": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1748,7 +1748,7 @@
       }
     }
   },
-  "/[locale]/adhesion": {
+  "/[locale]/join": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1767,26 +1767,7 @@
       }
     }
   },
-  "/[locale]/bienvenue": {
-    "hints": 64,
-    "slots": {
-      "children": {
-        "hints": 32,
-        "slots": {
-          "children": {
-            "hints": 64,
-            "slots": {
-              "children": {
-                "hints": 160,
-                "slots": null
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]/connexion/mot-de-passe-oublie": {
+  "/[locale]/login/forgot-password": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1810,7 +1791,26 @@
       }
     }
   },
-  "/[locale]/connexion/nouveau-mot-de-passe": {
+  "/[locale]/login": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49312,
+                "slots": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/login/reset-password": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1834,26 +1834,21 @@
       }
     }
   },
-  "/[locale]/connexion": {
+  "/[locale]": {
     "hints": 49216,
     "slots": {
       "children": {
         "hints": 49184,
         "slots": {
           "children": {
-            "hints": 49216,
-            "slots": {
-              "children": {
-                "hints": 49312,
-                "slots": null
-              }
-            }
+            "hints": 49280,
+            "slots": null
           }
         }
       }
     }
   },
-  "/[locale]/desabonnement": {
+  "/[locale]/unsubscribe": {
     "hints": 16448,
     "slots": {
       "children": {
@@ -1872,15 +1867,20 @@
       }
     }
   },
-  "/[locale]": {
-    "hints": 49216,
+  "/[locale]/welcome": {
+    "hints": 64,
     "slots": {
       "children": {
-        "hints": 49184,
+        "hints": 32,
         "slots": {
           "children": {
-            "hints": 49280,
-            "slots": null
+            "hints": 64,
+            "slots": {
+              "children": {
+                "hints": 160,
+                "slots": null
+              }
+            }
           }
         }
       }

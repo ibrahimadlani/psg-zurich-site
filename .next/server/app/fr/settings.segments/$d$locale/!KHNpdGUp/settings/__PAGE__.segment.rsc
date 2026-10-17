@@ -1,0 +1,64 @@
+3:"$Sreact.fragment"
+4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
+5:"/_next/static/chunks/3a0xjyr81xufq.js"
+6:"/_next/static/chunks/41-n4vk_ai0th.js"
+7:"/_next/static/chunks/2__g39ioof7sf.js"
+8:"/_next/static/chunks/10zmr2c54oho9.js"
+9:"/_next/static/chunks/21s7mgjvwpstx.js"
+a:"/_next/static/chunks/1js4pqck75qvo.js"
+b:"/_next/static/chunks/13pimb6gw3pwn.js"
+c:"/_next/static/chunks/11bulff839xw8.js"
+d:"/_next/static/chunks/21tvee7ovpcqx.js"
+e:I[77105,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d"],"default"]
+f:I[605500,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"Image"]
+10:I[428669,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"CartDrawer"]
+11:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
+12:I[268739,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"UserNav"]
+13:I[780136,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"MobileMenu"]
+14:I[508895,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"MainNav"]
+15:"/_next/static/chunks/095g8usnrcprg.js"
+16:I[339756,["$15"],"default"]
+17:I[837457,["$15"],"default"]
+18:I[658068,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"SiteFooter"]
+1d:I[186185,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d"],"SettingsNav"]
+2b:"ViewportBoundary"
+2c:I[897367,["$15"],"$2b"]
+2d:"MetadataBoundary"
+2e:I[897367,["$15"],"$2d"]
+2f:"$Sreact.suspense"
+30:I[27201,["$15"],"IconMark"]
+1a:X
+1a:C
+1b:X
+1b:300
+1b:C
+1f:X
+1f:C
+2a:X
+2a:C
+20:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[[["$","h1",null,{"className":"mb-6 text-3xl font-bold tracking-tight md:hidden","children":"Paramètres"}],["$","ul",null,{"className":"divide-y overflow-hidden rounded-[14px] border bg-card/70","children":[["$","li","profile",{"children":["$","$Le",null,{"href":"/fr/settings/profile","localeCookie":"$2:0:1:d:r:props:children:1:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"flex items-center gap-4 px-5 py-4 transition-colors hover:bg-foreground/[0.03]","children":[["$","span",null,{"className":"grid size-9 shrink-0 place-items-center rounded-full bg-foreground/5","children":"$L21"}],"$L22","$L23"]}]}],"$L24","$L25","$L26","$L27"]}]],null,"$L28"]}],"p":"$@29","v":"$2a","s":"$1b"}}]]
+1c:[["children",{"s":"settings","h":49250,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/21tvee7ovpcqx.js","async":true}]],["$","div",null,{"className":"space-y-8","children":[["$","h1",null,{"className":"hidden text-3xl font-bold tracking-tight md:block","children":"Paramètres"}],["$","div",null,{"className":"grid items-start gap-10 md:grid-cols-[13rem_minmax(0,1fr)]","children":[["$","$L1d",null,{}],["$","div",null,{"className":"min-w-0","children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","$L17",null,{}]}]}]]}]]}]]}],"p":"$@1e","v":"$1f","s":"$1b"},"c":"$Q20"}]]
+2:[["children",{"s":"(site)","h":49218,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/1js4pqck75qvo.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/13pimb6gw3pwn.js","async":true}],["$","script","script-3",{"src":"/_next/static/chunks/11bulff839xw8.js","async":true}]],["$","div",null,{"className":"flex flex-1 flex-col","children":[["$","header",null,{"className":"relative","children":[["$","div",null,{"className":"relative mx-auto flex w-full max-w-5xl items-center justify-between gap-2 px-4 py-[clamp(12px,3vw,16px)]","children":[["$","$Le",null,{"href":"/fr","localeCookie":{"name":"NEXT_LOCALE","sameSite":"lax"},"aria-label":"PSG Supporters Club Zurich","className":"flex min-w-0 items-center gap-[clamp(8px,2.5vw,12px)] text-primary dark:text-foreground","children":[["$","$Lf",null,{"src":"/brand/psg-crest.svg","alt":"","width":41,"height":41,"preload":true,"className":"block h-auto w-[clamp(34px,9.6vw,41px)] shrink-0 drop-shadow-[0_4px_8px_oklch(0.2_0.05_248/0.2)]"}],["$","span",null,{"className":"inline-flex translate-y-[clamp(1.5px,0.6vw,2.5px)] flex-col items-stretch gap-1 leading-none uppercase","children":[["$","span",null,{"aria-hidden":true,"className":"flex justify-between text-[length:clamp(19px,5.4vw,23px)] leading-none font-semibold [text-box:trim-both_cap_alphabetic]","children":[["$","span","0",{"children":"Z"}],["$","span","1",{"className":"relative","children":["U",["$","span",null,{"aria-hidden":true,"className":"absolute bottom-full left-1/2 -mb-[0.03em] flex -translate-x-1/2 gap-[0.03em] text-[#ffd21f] drop-shadow-[0_0_2px_rgb(255_200_0/0.85)] dark:drop-shadow-[0_0_3px_rgb(255_205_30/0.95)]","children":[["$","svg","0",{"viewBox":"0 0 24 24","className":"size-[0.3em] fill-current","children":["$","path",null,{"d":"M12 1.5l3.09 6.97 7.41.7-5.6 4.93 1.64 7.4L12 17.6l-6.54 3.9 1.64-7.4L1.5 9.17l7.41-.7z"}]}],["$","svg","1",{"viewBox":"0 0 24 24","className":"size-[0.3em] fill-current","children":["$","path",null,{"d":"M12 1.5l3.09 6.97 7.41.7-5.6 4.93 1.64 7.4L12 17.6l-6.54 3.9 1.64-7.4L1.5 9.17l7.41-.7z"}]}]]}]]}],["$","span","2",{"children":"R"}],["$","span","3",{"children":"I"}],["$","span","4",{"children":"C"}],["$","span","5",{"children":"H"}]]}],["$","span",null,{"className":"-mr-[0.08em] font-wide text-[length:clamp(6px,1.75vw,7.4px)] leading-none font-semibold tracking-[0.08em] whitespace-nowrap [text-box:trim-both_cap_alphabetic]","children":"Supporters Club"}]]}]]}],["$","div",null,{"className":"flex shrink-0 items-center gap-1","children":[["$","$L10",null,{}],["$","div",null,{"className":"hidden shrink-0 items-center gap-1 md:flex","children":[["$","$L11",null,{}],["$","$L12",null,{}]]}],["$","div",null,{"className":"md:hidden","children":["$","$L13",null,{}]}]]}]]}],["$","$L14",null,{}]]}],["$","main",null,{"className":"mx-auto w-full max-w-5xl flex-1 px-4 py-10","children":["$","$L16",null,{"parallelRouterKey":"children","template":["$","div",null,{"className":"animate-page-in motion-reduce:animate-none","children":["$","$L17",null,{}]}],"templateStyles":[],"templateScripts":null}]}],["$","$L18",null,{}]]}]]}],"p":"$@19","v":"$1a","s":"$1b"},"c":"$Q1c"}]]
+1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
+32:X
+32:C
+35:X
+35:T6,locale35:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Paramètres · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L30","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@31","v":"$32","s":"$1b"}},"a":"$@33","u":"$@34","b":"LjP3g8vlJMLPvin8rb3Jk","r":"$35"}
+36:I[505014,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d"],"default"]
+37:I[897367,["$15"],"OutletBoundary"]
+21:["$","$L36",null,{"icon":{"name":"user-round","size":24,"node":[["circle",{"cx":"12","cy":"8","r":"5","key":"1hypcn"}],["path",{"d":"M20 21a8 8 0 0 0-16 0","key":"rfgkzh"}]],"aliases":["user-2"]},"className":"size-4","aria-hidden":true}]
+22:["$","span",null,{"className":"min-w-0 flex-1","children":[["$","span",null,{"className":"block text-[15px] font-semibold","children":"Profil"}],["$","span",null,{"className":"block text-sm text-muted-foreground","children":"Photo, nom et pseudo du classement."}]]}]
+23:["$","$L36",null,{"icon":{"name":"chevron-right","size":24,"node":[["path",{"d":"m9 18 6-6-6-6","key":"mthhwq"}]]},"className":"size-4 shrink-0 text-muted-foreground","aria-hidden":true}]
+24:["$","li","account",{"children":["$","$Le",null,{"href":"/fr/settings/account","localeCookie":"$2:0:1:d:r:props:children:1:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"flex items-center gap-4 px-5 py-4 transition-colors hover:bg-foreground/[0.03]","children":[["$","span",null,{"className":"grid size-9 shrink-0 place-items-center rounded-full bg-foreground/5","children":["$","$L36",null,{"icon":{"name":"shield-check","size":24,"node":[["path",{"d":"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z","key":"oel41y"}],["path",{"d":"m9 12 2 2 4-4","key":"dzmm74"}]]},"className":"size-4","aria-hidden":true}]}],["$","span",null,{"className":"min-w-0 flex-1","children":[["$","span",null,{"className":"block text-[15px] font-semibold","children":"Compte et sécurité"}],["$","span",null,{"className":"block text-sm text-muted-foreground","children":"Adresse e-mail, mot de passe et appareils connectés."}]]}],["$","$L36",null,{"icon":"$23:props:icon","className":"size-4 shrink-0 text-muted-foreground","aria-hidden":true}]]}]}]
+25:["$","li","preferences",{"children":["$","$Le",null,{"href":"/fr/settings/preferences","localeCookie":"$2:0:1:d:r:props:children:1:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"flex items-center gap-4 px-5 py-4 transition-colors hover:bg-foreground/[0.03]","children":[["$","span",null,{"className":"grid size-9 shrink-0 place-items-center rounded-full bg-foreground/5","children":["$","$L36",null,{"icon":{"name":"sliders-horizontal","size":24,"node":[["path",{"d":"M10 5H3","key":"1qgfaw"}],["path",{"d":"M12 19H3","key":"yhmn1j"}],["path",{"d":"M14 3v4","key":"1sua03"}],["path",{"d":"M16 17v4","key":"1q0r14"}],["path",{"d":"M21 12h-9","key":"1o4lsq"}],["path",{"d":"M21 19h-5","key":"1rlt1p"}],["path",{"d":"M21 5h-7","key":"1oszz2"}],["path",{"d":"M8 10v4","key":"tgpxqk"}],["path",{"d":"M8 12H3","key":"a7s4jb"}]]},"className":"size-4","aria-hidden":true}]}],["$","span",null,{"className":"min-w-0 flex-1","children":[["$","span",null,{"className":"block text-[15px] font-semibold","children":"Préférences"}],["$","span",null,{"className":"block text-sm text-muted-foreground","children":"Langue du site et des e-mails, thème."}]]}],["$","$L36",null,{"icon":"$23:props:icon","className":"size-4 shrink-0 text-muted-foreground","aria-hidden":true}]]}]}]
+26:["$","li","notifications",{"children":["$","$Le",null,{"href":"/fr/settings/notifications","localeCookie":"$2:0:1:d:r:props:children:1:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"flex items-center gap-4 px-5 py-4 transition-colors hover:bg-foreground/[0.03]","children":[["$","span",null,{"className":"grid size-9 shrink-0 place-items-center rounded-full bg-foreground/5","children":["$","$L36",null,{"icon":{"name":"bell","size":24,"node":[["path",{"d":"M10.268 21a2 2 0 0 0 3.464 0","key":"vwvbt9"}],["path",{"d":"M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326","key":"11g9vi"}]]},"className":"size-4","aria-hidden":true}]}],["$","span",null,{"className":"min-w-0 flex-1","children":[["$","span",null,{"className":"block text-[15px] font-semibold","children":"Notifications"}],["$","span",null,{"className":"block text-sm text-muted-foreground","children":"Les e-mails que vous recevez du club."}]]}],["$","$L36",null,{"icon":"$23:props:icon","className":"size-4 shrink-0 text-muted-foreground","aria-hidden":true}]]}]}]
+27:["$","li","privacy",{"children":["$","$Le",null,{"href":"/fr/settings/privacy","localeCookie":"$2:0:1:d:r:props:children:1:props:children:0:props:children:0:props:children:0:props:localeCookie","className":"flex items-center gap-4 px-5 py-4 transition-colors hover:bg-foreground/[0.03]","children":[["$","span",null,{"className":"grid size-9 shrink-0 place-items-center rounded-full bg-foreground/5","children":["$","$L36",null,{"icon":{"name":"lock","size":24,"node":[["rect",{"width":"18","height":"11","x":"3","y":"11","rx":"2","ry":"2","key":"1w4ew1"}],["path",{"d":"M7 11V7a5 5 0 0 1 10 0v4","key":"fwvmzm"}]]},"className":"size-4","aria-hidden":true}]}],["$","span",null,{"className":"min-w-0 flex-1","children":[["$","span",null,{"className":"block text-[15px] font-semibold","children":"Confidentialité et données"}],["$","span",null,{"className":"block text-sm text-muted-foreground","children":"Classement, export et suppression de vos données."}]]}],["$","$L36",null,{"icon":"$23:props:icon","className":"size-4 shrink-0 text-muted-foreground","aria-hidden":true}]]}]}]
+28:["$","$L37",null,{"children":["$","$2f",null,{"name":"Next.MetadataOutlet","children":"$@38"}]}]
+34:false
+38:null
+33:null
+1e:"$undefined"
+19:"$undefined"
+31:"$undefined"
+29:"$undefined"

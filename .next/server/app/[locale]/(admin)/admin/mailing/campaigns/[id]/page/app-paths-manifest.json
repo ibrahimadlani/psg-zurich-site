@@ -1,0 +1,3 @@
+{
+  "/[locale]/(admin)/admin/mailing/campaigns/[id]/page": "app/[locale]/(admin)/admin/mailing/campaigns/[id]/page.js"
+}
