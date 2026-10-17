@@ -1481,6 +1481,23 @@
       ]
     },
     {
+      "page": "/[locale]/commande",
+      "regex": "^/([^/]+?)/commande(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/commande(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/commande.segments/$d$locale/!KGNoZWNrb3V0KQ/commande$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/commande\\.segments/\\$d\\$locale/!KGNoZWNrb3V0KQ/commande(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
       "page": "/[locale]/confidentialite",
       "regex": "^/([^/]+?)/confidentialite(?:/)?$",
       "routeKeys": {
@@ -1686,6 +1703,23 @@
         {
           "destination": "/[locale]/espace-membre.segments/$d$locale/!KHNpdGUp/espace-membre$segment",
           "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
+          "routeKeys": {
+            "nxtPlocale": "nxtPlocale"
+          }
+        }
+      ]
+    },
+    {
+      "page": "/[locale]/espace-membre/commandes",
+      "regex": "^/([^/]+?)/espace\\-membre/commandes(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/commandes(?:/)?$",
+      "prefetchSegmentDataRoutes": [
+        {
+          "destination": "/[locale]/espace-membre/commandes.segments/$d$locale/!KHNpdGUp/espace-membre/commandes$segment",
+          "source": "^/(?<nxtPlocale>[^/]+?)/espace\\-membre/commandes\\.segments/\\$d\\$locale/!KHNpdGUp/espace\\-membre/commandes(?<segment>/__PAGE__\\.segment\\.rsc|\\.segment\\.rsc)(?:/)?$",
           "routeKeys": {
             "nxtPlocale": "nxtPlocale"
           }
@@ -2581,6 +2615,12 @@
       "regex": "^/api/v1/posts(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/v1/posts(?:/)?$"
+    },
+    {
+      "page": "/api/v1/shop/cart",
+      "regex": "^/api/v1/shop/cart(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/shop/cart(?:/)?$"
     },
     {
       "page": "/api/v1/subscribers",

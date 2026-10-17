@@ -2,7 +2,7 @@ var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/v1/an
 R.c("server/chunks/src_lib_article-blocks_ts_1dx5gohmdxq6q._.js")
 R.c("server/chunks/[root-of-the-server]__0tqlk-s216iyv._.js")
 R.c("server/chunks/_1oqiqu6wphhef._.js")
-R.c("server/chunks/[root-of-the-server]__1o9lutcj13azt._.js")
+R.c("server/chunks/[root-of-the-server]__11m8iv_m7wcqp._.js")
 R.c("server/chunks/node_modules_next_1zdbrneapig6o._.js")
 R.c("server/chunks/node_modules_@better-auth_1iqndebu-57re._.js")
 R.c("server/chunks/node_modules_next_1_14bcs2pb4w8._.js")
