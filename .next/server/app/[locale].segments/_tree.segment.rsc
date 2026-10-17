@@ -10,4 +10,4 @@
 :HL["/_next/static/media/Virage_WideSemibold-s.p.0t3j1c9o65mi9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 2:[["children",{"s":"__PAGE__","h":49314}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49266,"c":"$Q2"}]]
-0:{"b":"MI74tEddN1b3Js13Y4fbb","t":{"t":{"s":"","h":49234,"c":"$Q1"}}}
+0:{"b":"corDR0GCPC6S52oVwB5Mv","t":{"t":{"s":"","h":49234,"c":"$Q1"}}}
