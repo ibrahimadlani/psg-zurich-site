@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
+import { HomeVariantPicker } from "@/components/admin/settings/home-variant-picker";
 import { AddTeamMemberForm, CommitteeTitleField, TeamRoleControls } from "@/components/admin/team/team-controls";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { StatusPill } from "@/components/admin/ui/status-pill";
@@ -13,6 +14,7 @@ import { UserAvatar } from "@/components/user-avatar";
 import { db } from "@/db";
 import { members, user } from "@/db/schema";
 import { adminPage } from "@/lib/admin/guard";
+import { getHomeSettings } from "@/lib/site-settings";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -23,7 +25,7 @@ const ORDER = { superadmin: 0, admin: 1, moderator: 2, member: 3 } as const;
 
 async function Settings() {
   await connection();
-  const [t, tShell] = await Promise.all([getTranslations("AdminRoles"), getTranslations("AdminShell")]);
+  const [t, tShell, tHome] = await Promise.all([getTranslations("AdminRoles"), getTranslations("AdminShell"), getTranslations("AdminHomeVariants")]);
   const session = await adminPage("roles");
   if (!session) return <AdminForbidden message={(await getTranslations("Admin"))("forbidden")} />;
   const team = (
@@ -38,6 +40,13 @@ async function Settings() {
   return (
     <>
       <AdminHeader title={tShell("sections.settings")} description={t("pageDescription")} />
+      <section className="mb-10 space-y-3" aria-labelledby="home">
+        <h2 id="home" className={adminLabel}>
+          {tHome("title")}
+        </h2>
+        <p className="max-w-prose text-sm text-pretty text-muted-foreground">{tHome("description")}</p>
+        <HomeVariantPicker initial={await getHomeSettings()} />
+      </section>
       <section className="space-y-3" aria-labelledby="team">
         <h2 id="team" className={adminLabel}>
           {t("title")}

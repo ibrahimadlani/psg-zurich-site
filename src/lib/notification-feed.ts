@@ -56,7 +56,8 @@ const PREDICTION_LEAD = 4 * DAY;
 const MATCH_LENGTH = 2 * 60 * 60 * 1000;
 const LIMIT = 15;
 
-export async function getNotifications(userId: string, locale: Locale) {
+/** `history`: the home page's timeline, which keeps what was cleared from the bell. */
+export async function getNotifications(userId: string, locale: Locale, { history = false }: { history?: boolean } = {}) {
   const now = new Date();
   const since = new Date(now.getTime() - WINDOW);
 
@@ -228,7 +229,7 @@ export async function getNotifications(userId: string, locale: Locale) {
   const clearedAt = member?.clearedAt?.toISOString() ?? null;
   const dismissed = new Set(member?.dismissed ?? []);
   const sorted = items
-    .filter((item) => (!clearedAt || item.at > clearedAt) && !dismissed.has(item.id))
+    .filter((item) => history || ((!clearedAt || item.at > clearedAt) && !dismissed.has(item.id)))
     .sort((a, b) => b.at.localeCompare(a.at))
     .slice(0, LIMIT);
   const seenAt = member?.seenAt?.toISOString() ?? null;

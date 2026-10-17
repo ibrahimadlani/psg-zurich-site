@@ -820,7 +820,8 @@
       "payment_product_deleted": "Item deleted",
       "refund_requested": "Refund requested",
       "refund_succeeded": "Refund made",
-      "refund_failed": "Refund failed"
+      "refund_failed": "Refund failed",
+      "user_home_settings": "Home page changed"
     }
   },
   "AdminShell": {
@@ -2964,5 +2965,171 @@
     "perkPickup": "Free pick-up at the next watch party",
     "perkShipping": "Or shipping in Switzerland",
     "perkReceipt": "Receipt by email, pay with TWINT, Apple Pay or card"
+  },
+  "Home": {
+    "countdown": {
+      "label": "Time to kick-off",
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Min",
+      "seconds": "Sec"
+    },
+    "live": "Live",
+    "noMatch": "The season's fixtures are coming soon.",
+    "nextMatch": "Next match",
+    "lastResult": "Last result",
+    "allMatches": "All matches",
+    "communityLead": "<strong>{percent}%</strong> of members see Paris winning · {count, plural, one {# prediction} other {# predictions}}",
+    "win": "Win {percent}%",
+    "draw": "Draw {percent}%",
+    "loss": "Loss {percent}%",
+    "predictTitle": "Your prediction",
+    "leaderboard": "Leaderboard",
+    "nextEvent": "Next event",
+    "allEvents": "All events",
+    "noEvent": "The next get-together is coming soon.",
+    "beFirst": "Be the first to sign up.",
+    "latestNews": "News",
+    "allNews": "All news",
+    "noNews": "The first articles are coming soon.",
+    "upToDate": "You're up to date. Nothing new since your last visit.",
+    "sinceLastVisit": "Since your last visit",
+    "chips": {
+      "article": "{count, plural, one {# article} other {# articles}}",
+      "event": "{count, plural, one {# event} other {# events}}",
+      "prediction": "{count, plural, one {# prediction to make} other {# predictions to make}}",
+      "points": "+{count, plural, one {# point} other {# points}}",
+      "membership": "Membership accepted",
+      "contactInbox": "{count, plural, one {# message} other {# messages}} to handle",
+      "contactReply": "{count, plural, one {# reply} other {# replies}} from the committee"
+    },
+    "rankTitle": "Your ranking",
+    "rankPoints": "{points, plural, one {# point} other {# points}} · {exact, plural, one {# exact score} other {# exact scores}}",
+    "rankEmpty": "Predict the next match to enter the season's leaderboard.",
+    "pts": "{points} pts",
+    "todo": {
+      "done": "All done. See you at the stadium (or the bar)!",
+      "title": "{count, plural, one {One thing to do} other {# things to do}}",
+      "predict": "Predict PSG – {opponent}",
+      "dues": "Pay your membership fee for the season",
+      "signUp": "Sign up: {title}",
+      "vote": "Vote: {title}"
+    },
+    "feedEmpty": "Your feed fills up with the club's first news.",
+    "feedLead": "{count, plural, one {One new thing} other {# new things}} since your last visit.",
+    "buckets": {
+      "today": "Today",
+      "week": "This week",
+      "earlier": "Earlier"
+    },
+    "actions": {
+      "article": "Read",
+      "event": "See and sign up",
+      "prediction": "Predict",
+      "points": "See the match",
+      "membership": "My area",
+      "contactInbox": "Reply",
+      "contactReply": "Read the reply"
+    },
+    "join": {
+      "eyebrow": "Season {season}",
+      "title": "Join the club",
+      "short": "Watch parties, predictions, membership card. Fee: {fee} per season.",
+      "cta": "Join",
+      "perkEvents": "The club's watch parties and away trips",
+      "perkPredictions": "Predictions for every match and the members' leaderboard",
+      "perkCard": "Your membership card, scanned at the door",
+      "perkShop": "The club shop, for members only",
+      "fee": "{fee} per season"
+    },
+    "figures": {
+      "members": "members",
+      "events": "get-togethers this season",
+      "predictions": "predictions played"
+    },
+    "greetMorning": "Good morning {name}",
+    "greetDay": "Hi {name}",
+    "greetEvening": "Good evening {name}",
+    "greetShort": "Allez Paris, {name}",
+    "toRead": "To read",
+    "communityTitle": "What the club thinks",
+    "watchThisMatch": "Watch it together",
+    "v1": {
+      "eyebrow": "PSG Zurich · Supporters Club",
+      "title": "Paris lives in Zurich too",
+      "predictWithUs": "Predict with us",
+      "watchTogether": "Watch it together"
+    },
+    "v2": {
+      "eyebrow": "PSG Zurich",
+      "title": "The Journal"
+    },
+    "v3": {
+      "eyebrow": "Official PSG Supporters Club",
+      "title": "Ici c'est Paris. In Zurich.",
+      "body": "The Paris Saint-Germain supporters' club in German-speaking Switzerland: we watch the matches together, travel to the Parc, predict, and feel it. Join the family.",
+      "perksTitle": "Being a member means…",
+      "faqTitle": "Frequently asked questions",
+      "perks": {
+        "watch": {
+          "title": "Watch parties",
+          "body": "Every big match on a giant screen, in a Zurich bar, among supporters."
+        },
+        "travel": {
+          "title": "Away trips",
+          "body": "The Parc des Princes and away games, organised together."
+        },
+        "play": {
+          "title": "Predictions",
+          "body": "One prediction per match, a season leaderboard and rewards."
+        },
+        "together": {
+          "title": "The family",
+          "body": "Your membership card, the club shop and get-togethers all year."
+        }
+      }
+    }
+  },
+  "AdminHomeVariants": {
+    "title": "Home page",
+    "description": "What visitors and signed-in members see when they arrive on the site. Open the preview to see each version with the real data.",
+    "visitors": "Visitors",
+    "members": "Signed-in members",
+    "preview": "Preview",
+    "save": "Save",
+    "saved": "Home page updated.",
+    "error": "Saving failed.",
+    "visitor": {
+      "coming_soon": {
+        "title": "Opening soon",
+        "body": "The current waiting page."
+      },
+      "matchday": {
+        "title": "Matchday",
+        "body": "The next match in large, its countdown, then the invitation."
+      },
+      "journal": {
+        "title": "The Journal",
+        "body": "Editorial: the lead story, the match and the club on the side."
+      },
+      "club": {
+        "title": "The Club",
+        "body": "The manifesto, the figures, what being a member means."
+      }
+    },
+    "member": {
+      "dashboard": {
+        "title": "Dashboard",
+        "body": "All on one screen: news, prediction, sign-up, rank."
+      },
+      "feed": {
+        "title": "Feed",
+        "body": "One column for the thumb: to-dos, then everything new."
+      },
+      "matchday": {
+        "title": "Matchday",
+        "body": "The next match at the centre: prediction, club opinion, watch party."
+      }
+    }
   }
 }

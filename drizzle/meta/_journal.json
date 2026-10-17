@@ -176,6 +176,13 @@
       "when": 1792192277903,
       "tag": "0024_orders_pending",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "5",
+      "when": 1792196944484,
+      "tag": "0025_site_settings",
+      "breakpoints": true
     }
   ]
 }

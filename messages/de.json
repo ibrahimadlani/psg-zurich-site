@@ -820,7 +820,8 @@
       "payment_product_deleted": "Artikel gelöscht",
       "refund_requested": "Rückerstattung beantragt",
       "refund_succeeded": "Rückerstattung erfolgt",
-      "refund_failed": "Rückerstattung fehlgeschlagen"
+      "refund_failed": "Rückerstattung fehlgeschlagen",
+      "user_home_settings": "Startseite geändert"
     }
   },
   "AdminShell": {
@@ -2964,5 +2965,171 @@
     "perkPickup": "Gratis-Abholung an der nächsten Watch Party",
     "perkShipping": "Oder Postversand in der Schweiz",
     "perkReceipt": "Quittung per E-Mail, Zahlung mit TWINT, Apple Pay oder Karte"
+  },
+  "Home": {
+    "countdown": {
+      "label": "Zeit bis zum Anpfiff",
+      "days": "Tage",
+      "hours": "Std",
+      "minutes": "Min",
+      "seconds": "Sek"
+    },
+    "live": "Live",
+    "noMatch": "Der Spielplan der Saison kommt bald.",
+    "nextMatch": "Nächstes Spiel",
+    "lastResult": "Letztes Resultat",
+    "allMatches": "Alle Spiele",
+    "communityLead": "<strong>{percent} %</strong> der Mitglieder sehen Paris gewinnen · {count, plural, one {# Tipp} other {# Tipps}}",
+    "win": "Sieg {percent} %",
+    "draw": "Remis {percent} %",
+    "loss": "Niederlage {percent} %",
+    "predictTitle": "Dein Tipp",
+    "leaderboard": "Rangliste",
+    "nextEvent": "Nächstes Event",
+    "allEvents": "Alle Events",
+    "noEvent": "Das nächste Treffen kommt bald.",
+    "beFirst": "Melde dich als Erste:r an.",
+    "latestNews": "News",
+    "allNews": "Alle News",
+    "noNews": "Die ersten Artikel kommen bald.",
+    "upToDate": "Du bist auf dem neusten Stand. Nichts Neues seit deinem letzten Besuch.",
+    "sinceLastVisit": "Seit deinem letzten Besuch",
+    "chips": {
+      "article": "{count, plural, one {# Artikel} other {# Artikel}}",
+      "event": "{count, plural, one {# Event} other {# Events}}",
+      "prediction": "{count, plural, one {# Tipp offen} other {# Tipps offen}}",
+      "points": "+{count, plural, one {# Punkt} other {# Punkte}}",
+      "membership": "Mitgliedschaft angenommen",
+      "contactInbox": "{count, plural, one {# Nachricht} other {# Nachrichten}} zu bearbeiten",
+      "contactReply": "{count, plural, one {# Antwort} other {# Antworten}} vom Vorstand"
+    },
+    "rankTitle": "Deine Rangierung",
+    "rankPoints": "{points, plural, one {# Punkt} other {# Punkte}} · {exact, plural, one {# exaktes Resultat} other {# exakte Resultate}}",
+    "rankEmpty": "Tippe das nächste Spiel, um in die Saisonrangliste zu kommen.",
+    "pts": "{points} Pkt.",
+    "todo": {
+      "done": "Alles erledigt. Bis bald im Stadion (oder in der Bar)!",
+      "title": "{count, plural, one {Eine Sache zu tun} other {# Sachen zu tun}}",
+      "predict": "Tippe PSG – {opponent}",
+      "dues": "Bezahle deinen Mitgliederbeitrag der Saison",
+      "signUp": "Melde dich an: {title}",
+      "vote": "Stimme ab: {title}"
+    },
+    "feedEmpty": "Dein Feed füllt sich mit den ersten Club-News.",
+    "feedLead": "{count, plural, one {Eine Neuigkeit} other {# Neuigkeiten}} seit deinem letzten Besuch.",
+    "buckets": {
+      "today": "Heute",
+      "week": "Diese Woche",
+      "earlier": "Früher"
+    },
+    "actions": {
+      "article": "Lesen",
+      "event": "Ansehen und anmelden",
+      "prediction": "Tippen",
+      "points": "Zum Spiel",
+      "membership": "Mein Bereich",
+      "contactInbox": "Antworten",
+      "contactReply": "Antwort lesen"
+    },
+    "join": {
+      "eyebrow": "Saison {season}",
+      "title": "Werde Mitglied",
+      "short": "Watch Partys, Tipps, Mitgliederkarte. Beitrag: {fee} pro Saison.",
+      "cta": "Mitglied werden",
+      "perkEvents": "Die Watch Partys und Auswärtsfahrten des Clubs",
+      "perkPredictions": "Tipps zu jedem Spiel und die Mitgliederrangliste",
+      "perkCard": "Deine Mitgliederkarte, am Eingang gescannt",
+      "perkShop": "Der Clubshop, nur für Mitglieder",
+      "fee": "{fee} pro Saison"
+    },
+    "figures": {
+      "members": "Mitglieder",
+      "events": "Treffen diese Saison",
+      "predictions": "abgegebene Tipps"
+    },
+    "greetMorning": "Guten Morgen {name}",
+    "greetDay": "Hallo {name}",
+    "greetEvening": "Guten Abend {name}",
+    "greetShort": "Allez Paris, {name}",
+    "toRead": "Zum Lesen",
+    "communityTitle": "Die Meinung des Clubs",
+    "watchThisMatch": "Gemeinsam schauen",
+    "v1": {
+      "eyebrow": "PSG Zurich · Supporters Club",
+      "title": "Paris lebt auch in Zürich",
+      "predictWithUs": "Tippe mit uns",
+      "watchTogether": "Gemeinsam schauen"
+    },
+    "v2": {
+      "eyebrow": "PSG Zurich",
+      "title": "Das Journal"
+    },
+    "v3": {
+      "eyebrow": "Offizieller PSG Supporters Club",
+      "title": "Ici c'est Paris. In Zürich.",
+      "body": "Der Fanclub von Paris Saint-Germain in der Deutschschweiz: Wir schauen die Spiele zusammen, fahren in den Parc, tippen und fiebern mit. Werde Teil der Familie.",
+      "perksTitle": "Mitglied sein heisst…",
+      "faqTitle": "Häufige Fragen",
+      "perks": {
+        "watch": {
+          "title": "Watch Partys",
+          "body": "Jedes grosse Spiel auf Grossleinwand, in einer Zürcher Bar, unter Fans."
+        },
+        "travel": {
+          "title": "Auswärtsfahrten",
+          "body": "Der Parc des Princes und Auswärtsspiele, gemeinsam organisiert."
+        },
+        "play": {
+          "title": "Tipps",
+          "body": "Ein Tipp pro Spiel, eine Saisonrangliste und Preise."
+        },
+        "together": {
+          "title": "Die Familie",
+          "body": "Deine Mitgliederkarte, der Clubshop und Treffen das ganze Jahr."
+        }
+      }
+    }
+  },
+  "AdminHomeVariants": {
+    "title": "Startseite",
+    "description": "Was Besucher und angemeldete Mitglieder beim Öffnen der Website sehen. Öffne die Vorschau, um jede Version mit echten Daten zu sehen.",
+    "visitors": "Besucher",
+    "members": "Angemeldete Mitglieder",
+    "preview": "Vorschau",
+    "save": "Speichern",
+    "saved": "Startseite aktualisiert.",
+    "error": "Speichern fehlgeschlagen.",
+    "visitor": {
+      "coming_soon": {
+        "title": "Bald offen",
+        "body": "Die aktuelle Warteseite."
+      },
+      "matchday": {
+        "title": "Matchday",
+        "body": "Das nächste Spiel gross, der Countdown, dann die Einladung."
+      },
+      "journal": {
+        "title": "Das Journal",
+        "body": "Redaktionell: der Aufmacher, Spiel und Club an der Seite."
+      },
+      "club": {
+        "title": "Der Club",
+        "body": "Das Manifest, die Zahlen, was Mitglied sein heisst."
+      }
+    },
+    "member": {
+      "dashboard": {
+        "title": "Dashboard",
+        "body": "Alles auf einem Bildschirm: News, Tipp, Anmeldung, Rang."
+      },
+      "feed": {
+        "title": "Feed",
+        "body": "Eine Spalte für den Daumen: To-dos, dann alles Neue."
+      },
+      "matchday": {
+        "title": "Matchday",
+        "body": "Das nächste Spiel im Zentrum: Tipp, Meinung des Clubs, Watch Party."
+      }
+    }
   }
 }

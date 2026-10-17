@@ -12,7 +12,7 @@ import { isPredictionOpen, type Match } from "@/lib/matches";
 export type Access = "member" | "guest" | "inactive";
 
 /** Distribution of the community's predictions (shown once predictions are closed). */
-async function communityStats(matchId: string) {
+export async function communityStats(matchId: string) {
   const rows = await db
     .select({ psg: predictions.psgScore, other: predictions.opponentScore })
     .from(predictions)

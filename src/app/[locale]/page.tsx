@@ -1,74 +1,98 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { BrandShell } from "@/components/brand-shell";
-import { InstagramIcon } from "@/components/instagram-icon";
-import { INSTAGRAM } from "@/lib/social";
+import { getLocale, getTranslations } from "next-intl/server";
+import { connection } from "next/server";
+import { Suspense } from "react";
+import { MemberDashboard, MemberFeed, MemberMatchday, VisitorClub, VisitorJournal, VisitorMatchday } from "@/components/home/variants";
+import { WaitingPage } from "@/components/home/waiting-page";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { HOME_MEMBER_VARIANTS, HOME_VISITOR_VARIANTS, type HomeMemberVariant, type HomeVisitorVariant, type Locale } from "@/db/schema";
+import { clubFigures, homeBasics, homeMemberExtras, homeViewer } from "@/lib/home";
+import { getSession } from "@/lib/permissions";
+import { can } from "@/lib/roles";
+import { getHomeSettings } from "@/lib/site-settings";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const [t, site] = await Promise.all([getTranslations("ComingSoon"), getTranslations("Metadata")]);
-  // The layout's title template only applies to child segments, not to this page.
-  return { title: { absolute: `${t("title")} · ${site("title")}` } };
-}
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
 /**
- * Small isometric traffic cone: slab base, two-tone cone (lit left, shaded right), white bands.
- * `mirrored`: the one on the right, flipped so the pair frames the text.
+ * Which home this request gets: the committee's choice (Admin › Settings) for visitors or for
+ * members; the committee itself can preview any variant with ?variante=… (and see the
+ * visitors' side with ?vue=visiteur).
  */
-function TrafficCone({ id, mirrored = false }: { id: string; mirrored?: boolean }) {
+async function choose(searchParams: SearchParams) {
+  const [viewer, settings, params] = await Promise.all([homeViewer(), getHomeSettings(), searchParams]);
+  const committee = Boolean(viewer.session && can(viewer.session.user.role, "area"));
+  const asked = committee && typeof params.variante === "string" ? params.variante : null;
+  const asVisitor = !viewer.session || (committee && params.vue === "visiteur") || (asked !== null && (HOME_VISITOR_VARIANTS as readonly string[]).includes(asked) && !(HOME_MEMBER_VARIANTS as readonly string[]).includes(asked));
+  if (asVisitor) {
+    const variant: HomeVisitorVariant = asked && (HOME_VISITOR_VARIANTS as readonly string[]).includes(asked) ? (asked as HomeVisitorVariant) : settings.visitor;
+    // A member previewing the visitors' page sees it as a visitor would.
+    return { side: "visitor" as const, variant, viewer: viewer.session ? { ...viewer, session: null, member: null, access: "guest" as const } : viewer };
+  }
+  const variant: HomeMemberVariant = asked && (HOME_MEMBER_VARIANTS as readonly string[]).includes(asked) ? (asked as HomeMemberVariant) : settings.member;
+  return { side: "member" as const, variant, viewer };
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  // Depends on the visitor and the committee's setting: decided at request time.
+  await connection();
+  const [settings, session, waiting, site] = await Promise.all([getHomeSettings(), getSession(), getTranslations("ComingSoon"), getTranslations("Metadata")]);
+  // The layout's title template only applies to child segments, not to this page.
+  if (!session && settings.visitor === "coming_soon") return { title: { absolute: `${waiting("title")} · ${site("title")}` } };
+  return { title: { absolute: site("title") }, description: site("description") };
+}
+
+async function Home({ searchParams }: { searchParams: SearchParams }) {
+  await connection();
+  const [choice, locale] = await Promise.all([choose(searchParams), getLocale()]);
+  if (choice.side === "visitor" && choice.variant === "coming_soon") return <WaitingPage />;
+
+  const basics = await homeBasics(choice.viewer, locale as Locale);
+  let content: React.ReactNode;
+  if (choice.side === "visitor") {
+    content =
+      choice.variant === "journal" ? (
+        <VisitorJournal basics={basics} viewer={choice.viewer} />
+      ) : choice.variant === "club" ? (
+        <VisitorClub basics={basics} viewer={choice.viewer} figures={await clubFigures()} />
+      ) : (
+        <VisitorMatchday basics={basics} viewer={choice.viewer} />
+      );
+  } else {
+    const extras = await homeMemberExtras(choice.viewer, locale as Locale, basics);
+    if (!extras) return null;
+    const props = { basics, viewer: choice.viewer, extras };
+    content = choice.variant === "feed" ? <MemberFeed {...props} /> : choice.variant === "matchday" ? <MemberMatchday {...props} /> : <MemberDashboard {...props} />;
+  }
+
+  // The site's own frame (as the pages of the (site) group have).
   return (
-    <svg aria-hidden viewBox="0 0 24 24" className={`size-[18px] shrink-0 overflow-visible ${mirrored ? "-scale-x-100" : ""}`}>
-      <defs>
-        <clipPath id={id}>
-          <path d="M10.5 3.4Q12 0.6 13.5 3.4L16.8 17.2Q17.1 18.5 15.9 18.9Q12 20.1 8.1 18.9Q6.9 18.5 7.2 17.2Z" />
-        </clipPath>
-      </defs>
-      {/* Base slab: top face, then the two visible sides (same-colour round strokes soften the corners). */}
-      <path d="M2.5 18.6 12 15 21.5 18.6 12 22.2Z" fill="#f97316" stroke="#f97316" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M2.5 18.6 12 22.2V23.8L2.5 20.2Z" fill="#c2410c" stroke="#c2410c" strokeWidth="1.6" strokeLinejoin="round" />
-      <path d="M21.5 18.6 12 22.2V23.8L21.5 20.2Z" fill="#9a3412" stroke="#9a3412" strokeWidth="1.6" strokeLinejoin="round" />
-      <g clipPath={`url(#${id})`}>
-        <rect x="6" y="1" width="6" height="21" fill="#fb923c" />
-        <rect x="12" y="1" width="6" height="21" fill="#ea580c" />
-        <rect x="6" y="7" width="6" height="2.6" fill="#fff" />
-        <rect x="12" y="7" width="6" height="2.6" fill="#e2e8f0" />
-        <rect x="6" y="12.2" width="6" height="2.8" fill="#fff" />
-        <rect x="12" y="12.2" width="6" height="2.8" fill="#e2e8f0" />
-      </g>
-    </svg>
+    <div className="flex flex-1 flex-col">
+      <SiteHeader />
+      <main className="mx-auto w-full max-w-5xl flex-1 animate-page-in px-4 py-10 motion-reduce:animate-none">{content}</main>
+      <SiteFooter />
+    </div>
   );
 }
 
-export default async function ComingSoonPage() {
-  const t = await getTranslations("ComingSoon");
-
+function HomeSkeleton() {
   return (
-    <BrandShell>
-      <div className="flex max-w-[34rem] flex-col items-center gap-3 text-center">
-        <span className="flex items-center gap-2 font-wide text-[12px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-          <TrafficCone id="cone-left" />
-          {t("eyebrow")}
-          <TrafficCone id="cone-right" mirrored />
-        </span>
-        <h1 className="font-narrow text-[length:clamp(48px,9vw,88px)] leading-[0.95] font-extrabold tracking-normal text-balance uppercase italic">
-          {t("title")}
-        </h1>
-        <p className="text-[17px] leading-[1.55] text-pretty text-muted-foreground">{t("body")}</p>
-        <a
-          href="mailto:contact@psg-zurich.ch"
-          className="mt-3 border-b pb-[3px] font-wide text-[15px] tracking-[0.02em] text-foreground transition-colors hover:border-brand-red"
-        >
-          contact@psg-zurich.ch
-        </a>
-        <a
-          href={INSTAGRAM.url}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-1.5 text-[14px] text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <InstagramIcon />
-          {INSTAGRAM.handle}
-        </a>
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-24" aria-hidden>
+      <div className="skeleton mx-auto h-16 w-2/3 rounded-[12px]" />
+      <div className="skeleton h-48 rounded-[16px]" />
+      <div className="grid gap-4 sm:grid-cols-3">
+        {[0, 1, 2].map((key) => (
+          <div key={key} className="skeleton aspect-[3/2] rounded-[12px]" />
+        ))}
       </div>
-    </BrandShell>
+    </div>
+  );
+}
+
+export default function HomePage({ searchParams }: PageProps<"/[locale]">) {
+  return (
+    <Suspense fallback={<HomeSkeleton />}>
+      <Home searchParams={searchParams} />
+    </Suspense>
   );
 }

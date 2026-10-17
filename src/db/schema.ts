@@ -1075,3 +1075,22 @@ export const shopSettings = mysqlTable("shop_settings", {
   shippingEnabled: boolean("shipping_enabled").default(true).notNull(),
   updatedAt: updatedAt(),
 });
+
+/* -------------------------------------------------------------------------- */
+/*                                Site settings                               */
+/* -------------------------------------------------------------------------- */
+
+// Order = MySQL enum order: append only.
+export const HOME_VISITOR_VARIANTS = ["coming_soon", "matchday", "journal", "club"] as const;
+export type HomeVisitorVariant = (typeof HOME_VISITOR_VARIANTS)[number];
+export const HOME_MEMBER_VARIANTS = ["dashboard", "feed", "matchday"] as const;
+export type HomeMemberVariant = (typeof HOME_MEMBER_VARIANTS)[number];
+
+/** Single row (id 1): which home page visitors and signed-in members get. */
+export const siteSettings = mysqlTable("site_settings", {
+  id: int("id").primaryKey(),
+  homeVisitor: mysqlEnum("home_visitor", HOME_VISITOR_VARIANTS).default("coming_soon").notNull(),
+  homeMember: mysqlEnum("home_member", HOME_MEMBER_VARIANTS).default("dashboard").notNull(),
+  updatedById: fk("updated_by_id").references(() => user.id, { onDelete: "set null" }),
+  updatedAt: updatedAt(),
+});

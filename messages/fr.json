@@ -820,7 +820,8 @@
       "payment_product_deleted": "Article supprimé",
       "refund_requested": "Remboursement demandé",
       "refund_succeeded": "Remboursement effectué",
-      "refund_failed": "Remboursement échoué"
+      "refund_failed": "Remboursement échoué",
+      "user_home_settings": "Page d'accueil modifiée"
     }
   },
   "AdminShell": {
@@ -2964,5 +2965,171 @@
     "perkPickup": "Retrait offert à la prochaine watch party",
     "perkShipping": "Ou envoi postal en Suisse",
     "perkReceipt": "Quittance par e-mail, paiement TWINT, Apple Pay ou carte"
+  },
+  "Home": {
+    "countdown": {
+      "label": "Temps avant le coup d'envoi",
+      "days": "Jours",
+      "hours": "Heures",
+      "minutes": "Min",
+      "seconds": "Sec"
+    },
+    "live": "En direct",
+    "noMatch": "Le calendrier de la saison arrive bientôt.",
+    "nextMatch": "Prochain match",
+    "lastResult": "Dernier résultat",
+    "allMatches": "Tous les matchs",
+    "communityLead": "<strong>{percent} %</strong> des membres voient Paris gagner · {count, plural, one {# pronostic} other {# pronostics}}",
+    "win": "Victoire {percent} %",
+    "draw": "Nul {percent} %",
+    "loss": "Défaite {percent} %",
+    "predictTitle": "Ton pronostic",
+    "leaderboard": "Classement",
+    "nextEvent": "Prochain événement",
+    "allEvents": "Tous les événements",
+    "noEvent": "Le prochain rendez-vous arrive bientôt.",
+    "beFirst": "Sois le premier à t'inscrire.",
+    "latestNews": "Actualités",
+    "allNews": "Toutes les actualités",
+    "noNews": "Les premiers articles arrivent bientôt.",
+    "upToDate": "Tu es à jour. Rien de neuf depuis ta dernière visite.",
+    "sinceLastVisit": "Depuis ta dernière visite",
+    "chips": {
+      "article": "{count, plural, one {# article} other {# articles}}",
+      "event": "{count, plural, one {# événement} other {# événements}}",
+      "prediction": "{count, plural, one {# pronostic à faire} other {# pronostics à faire}}",
+      "points": "+{count, plural, one {# point} other {# points}}",
+      "membership": "Adhésion acceptée",
+      "contactInbox": "{count, plural, one {# message} other {# messages}} à traiter",
+      "contactReply": "{count, plural, one {# réponse} other {# réponses}} du comité"
+    },
+    "rankTitle": "Ton classement",
+    "rankPoints": "{points, plural, one {# point} other {# points}} · {exact, plural, one {# score exact} other {# scores exacts}}",
+    "rankEmpty": "Pronostique le prochain match pour entrer au classement de la saison.",
+    "pts": "{points} pts",
+    "todo": {
+      "done": "Tout est fait. À bientôt au stade (ou au bar) !",
+      "title": "{count, plural, one {Une chose à faire} other {# choses à faire}}",
+      "predict": "Pronostique PSG – {opponent}",
+      "dues": "Règle ta cotisation de la saison",
+      "signUp": "Inscris-toi : {title}",
+      "vote": "Vote : {title}"
+    },
+    "feedEmpty": "Le fil se remplit dès les premières actualités du club.",
+    "feedLead": "{count, plural, one {Une nouveauté} other {# nouveautés}} depuis ta dernière visite.",
+    "buckets": {
+      "today": "Aujourd'hui",
+      "week": "Cette semaine",
+      "earlier": "Plus tôt"
+    },
+    "actions": {
+      "article": "Lire",
+      "event": "Voir et s'inscrire",
+      "prediction": "Pronostiquer",
+      "points": "Voir le match",
+      "membership": "Mon espace",
+      "contactInbox": "Répondre",
+      "contactReply": "Lire la réponse"
+    },
+    "join": {
+      "eyebrow": "Saison {season}",
+      "title": "Rejoins le club",
+      "short": "Watch parties, pronostics, carte de membre. Cotisation : {fee} par saison.",
+      "cta": "Adhérer",
+      "perkEvents": "Les watch parties et les déplacements du club",
+      "perkPredictions": "Les pronostics de chaque match et le classement des membres",
+      "perkCard": "Ta carte de membre, scannée à l'entrée",
+      "perkShop": "La boutique du club, réservée aux membres",
+      "fee": "{fee} par saison"
+    },
+    "figures": {
+      "members": "membres",
+      "events": "rendez-vous cette saison",
+      "predictions": "pronostics joués"
+    },
+    "greetMorning": "Bonjour {name}",
+    "greetDay": "Salut {name}",
+    "greetEvening": "Bonsoir {name}",
+    "greetShort": "Allez Paris, {name}",
+    "toRead": "À lire",
+    "communityTitle": "L'avis du club",
+    "watchThisMatch": "Le regarder ensemble",
+    "v1": {
+      "eyebrow": "PSG Zurich · Supporters Club",
+      "title": "Paris vit aussi à Zurich",
+      "predictWithUs": "Pronostique avec nous",
+      "watchTogether": "Le regarder ensemble"
+    },
+    "v2": {
+      "eyebrow": "PSG Zurich",
+      "title": "Le Journal"
+    },
+    "v3": {
+      "eyebrow": "Supporters Club officiel du PSG",
+      "title": "Ici c'est Paris. À Zurich.",
+      "body": "Le club des supporters du Paris Saint-Germain en Suisse alémanique : on regarde les matchs ensemble, on part au Parc, on pronostique, on vibre. Rejoins la famille.",
+      "perksTitle": "Être membre, c'est…",
+      "faqTitle": "Questions fréquentes",
+      "perks": {
+        "watch": {
+          "title": "Watch parties",
+          "body": "Chaque grand match sur écran géant, dans un bar de Zurich, entre supporters."
+        },
+        "travel": {
+          "title": "Déplacements",
+          "body": "Le Parc des Princes et les matchs à l'extérieur, organisés ensemble."
+        },
+        "play": {
+          "title": "Pronostics",
+          "body": "Un pronostic par match, un classement de saison et des récompenses."
+        },
+        "together": {
+          "title": "La famille",
+          "body": "Ta carte de membre, la boutique du club et des rencontres toute l'année."
+        }
+      }
+    }
+  },
+  "AdminHomeVariants": {
+    "title": "Page d'accueil",
+    "description": "Ce que voient les visiteurs et les membres connectés en arrivant sur le site. Ouvrez l'aperçu pour voir chaque version avec les vraies données.",
+    "visitors": "Visiteurs",
+    "members": "Membres connectés",
+    "preview": "Aperçu",
+    "save": "Enregistrer",
+    "saved": "Page d'accueil mise à jour.",
+    "error": "L'enregistrement a échoué.",
+    "visitor": {
+      "coming_soon": {
+        "title": "Bientôt ouvert",
+        "body": "La page d'attente actuelle."
+      },
+      "matchday": {
+        "title": "Jour de match",
+        "body": "Le prochain match en grand, son compte à rebours, puis l'invitation."
+      },
+      "journal": {
+        "title": "Le Journal",
+        "body": "Éditorial : l'article à la une, le match et le club sur le côté."
+      },
+      "club": {
+        "title": "Le Club",
+        "body": "Le manifeste, les chiffres, ce qu'être membre veut dire."
+      }
+    },
+    "member": {
+      "dashboard": {
+        "title": "Tableau de bord",
+        "body": "Tout en un écran : nouveautés, pronostic, inscription, rang."
+      },
+      "feed": {
+        "title": "Fil",
+        "body": "Une colonne au pouce : à faire, puis tout le nouveau."
+      },
+      "matchday": {
+        "title": "Matchday",
+        "body": "Le prochain match au centre : pronostic, avis du club, watch party."
+      }
+    }
   }
 }
