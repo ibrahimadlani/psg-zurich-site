@@ -152,6 +152,15 @@ export async function onShopRefund(paymentId: string, full: boolean) {
   });
 }
 
+/** A checkout that could not start: closed at once, its pieces back on the shelf. */
+export async function abandonCheckout(paymentId: string) {
+  await db.transaction(async (tx) => {
+    await releaseHolds(tx, paymentId);
+    await tx.update(orders).set({ status: "canceled" }).where(and(eq(orders.paymentId, paymentId), eq(orders.status, "pending")));
+    await tx.update(payments).set({ status: "canceled" }).where(eq(payments.id, paymentId));
+  });
+}
+
 /** Worker: holds of checkouts left unpaid go back to the shelf, their orders are dropped. */
 export async function releaseExpiredHolds() {
   const expired = await db

@@ -7,7 +7,7 @@ import { formatPaymentReference } from "@/lib/payments/config";
 import { duesPriceFor } from "@/lib/payments/dues-price";
 import { nextNumber } from "@/lib/payments/numbering";
 import { stripe } from "@/lib/payments/stripe";
-import { holdCart, priceCart, type CartLine, type Fulfilment } from "@/lib/payments/shop";
+import { abandonCheckout, holdCart, priceCart, type CartLine, type Fulfilment } from "@/lib/payments/shop";
 import { HttpError } from "@/lib/permissions";
 
 type Member = typeof members.$inferSelect;
@@ -28,12 +28,25 @@ export type Checkout = {
   savedCard: { id: string; brand: string; last4: string } | null;
 };
 
-/** Payment customer of a member (created once), so a card can be offered again next time. */
+/**
+ * Payment customer of a member (created once), so a card can be offered again next time. One
+ * kept from the other mode (test / live keys swapped) or deleted on the provider's side is
+ * replaced instead of breaking the checkout.
+ */
 async function customerFor(member: Member, email: string) {
-  if (member.stripeCustomerId) return member.stripeCustomerId;
+  if (member.stripeCustomerId) {
+    const known = await stripe()
+      .customers.retrieve(member.stripeCustomerId)
+      .catch((error: { code?: string }) => {
+        if (error.code === "resource_missing") return null;
+        throw error;
+      });
+    if (known && !known.deleted) return known.id;
+  }
   const customer = await stripe().customers.create(
     { email, name: `${member.firstName} ${member.lastName}`.trim(), preferred_locales: [member.locale], metadata: { memberId: member.id } },
-    { idempotencyKey: `customer:${member.id}` },
+    // Keyed on the replaced id too: a new customer when the old one is gone.
+    { idempotencyKey: `customer:${member.id}:${member.stripeCustomerId ?? "first"}` },
   );
   await db.update(members).set({ stripeCustomerId: customer.id }).where(eq(members.id, member.id));
   return customer.id;
@@ -84,6 +97,9 @@ export async function createPayment(request: CheckoutRequest, { locale, ipAddres
   if (amount < 100) throw new HttpError(400, "amount_too_small", "Amount too small.");
 
   const kind: PaymentKind = request.kind;
+  // Before anything is written or set aside: a provider failure here leaves nothing behind.
+  const member = request.member;
+  const customer = member ? await customerFor(member, payer.email) : null;
   const { id, reference } = await db.transaction(async (tx) => {
     const reference = await nextNumber(tx, "P", 0);
     const id = crypto.randomUUID();
@@ -108,22 +124,26 @@ export async function createPayment(request: CheckoutRequest, { locale, ipAddres
     return { id, reference };
   });
 
-  const member = request.member;
-  const customer = member ? await customerFor(member, payer.email) : null;
   const label = formatPaymentReference(reference);
   // Card (with Apple Pay / Google Pay) and TWINT: the provider keeps those the account offers
   // for this payment and lists them in payment_method_types.
-  const intent = await stripe().paymentIntents.create(
-    {
-      amount,
-      currency: "chf",
-      allowed_payment_method_types: ["card", "twint"],
-      description: `${label} · ${lines.map((line) => line.description).join(", ")}`,
-      metadata: { paymentId: id, reference: label, kind },
-      ...(customer ? { customer, payment_method_options: { card: { setup_future_usage: "on_session" as const } } } : {}),
-    },
-    { idempotencyKey: `payment:${id}` },
-  );
+  const intent = await stripe()
+    .paymentIntents.create(
+      {
+        amount,
+        currency: "chf",
+        allowed_payment_method_types: ["card", "twint"],
+        description: `${label} · ${lines.map((line) => line.description).join(", ")}`,
+        metadata: { paymentId: id, reference: label, kind },
+        ...(customer ? { customer, payment_method_options: { card: { setup_future_usage: "on_session" as const } } } : {}),
+      },
+      { idempotencyKey: `payment:${id}` },
+    )
+    .catch(async (error: unknown) => {
+      // Refused by the provider: the checkout is closed and its pieces go back on the shelf.
+      await abandonCheckout(id);
+      throw error;
+    });
   await db.update(payments).set({ stripePaymentIntentId: intent.id }).where(eq(payments.id, id));
 
   return {
