@@ -20,8 +20,9 @@ const content: NavItem[] = [
   { href: "/actualites", key: "news" },
   { href: "/matchs", key: "matches" },
   { href: "/evenements", key: "events" },
-  { href: "/boutique", key: "shop" },
 ];
+// The shop is for members: only in the signed-in menu.
+const shop: NavItem = { href: "/boutique", key: "shop", authDependent: true };
 const contact: NavItem = { href: "/contact", key: "contact" };
 
 /** Links depend on who is browsing: visitor or signed-in member (the committee reaches the admin from its account menu). */
@@ -30,7 +31,7 @@ export function useNavItems(): NavItem[] {
   // Visitors (and the first instant while the session loads) see the public menu.
   if (!data) return [home, ...content, contact, { href: "/adhesion", key: "membership", featured: true, authDependent: true }];
   const memberArea: NavItem = { href: "/espace-membre", key: "memberArea", featured: true, authDependent: true };
-  return [home, ...content, contact, memberArea];
+  return [home, ...content, shop, contact, memberArea];
 }
 
 /** Small cockade in the club colours (PSG blue, white, red), marking the key page of the bar. */

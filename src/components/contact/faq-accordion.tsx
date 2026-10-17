@@ -8,8 +8,8 @@ import { cn } from "@/lib/utils";
  * Questions that open and close smoothly (the answer's row grows from 0fr to 1fr), one at a
  * time. Answers stay in the page for search engines and the browser's find.
  */
-export function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
-  const [open, setOpen] = useState<number | null>(null);
+export function FaqAccordion({ items, defaultOpen = null }: { items: { q: string; a: string }[]; defaultOpen?: number | null }) {
+  const [open, setOpen] = useState<number | null>(defaultOpen);
   const id = useId();
   return (
     <div className="divide-y overflow-hidden rounded-[14px] border bg-card">
@@ -43,7 +43,7 @@ export function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
               )}
             >
               <div className="overflow-hidden" inert={!expanded}>
-                <p className="px-4 pb-4 text-[15px] leading-relaxed text-pretty text-muted-foreground">{item.a}</p>
+                <p className="px-4 pb-4 text-[15px] leading-relaxed whitespace-pre-line text-pretty text-muted-foreground">{item.a}</p>
               </div>
             </div>
           </div>

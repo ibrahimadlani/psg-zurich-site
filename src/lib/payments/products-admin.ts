@@ -13,10 +13,15 @@ export const productSchema = z.object({
   slug: z.string().trim().toLowerCase().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(120),
   name: translated(120),
   description: translated(2000),
+  details: z.object({ fr: text(1000), en: text(1000), de: text(1000) }).nullable().default(null),
   price: z.number().int().min(100).max(100_000_00),
   images: z.array(z.uuid()).max(8),
   active: z.boolean(),
   sortOrder: z.number().int().min(0).max(999).default(0),
+  sizeGuide: z
+    .object({ columns: z.array(text(40)).min(1).max(8), rows: z.array(z.array(text(40)).max(8)).max(20) })
+    .nullable()
+    .default(null),
   variants: z
     .array(z.object({ id: z.uuid().optional(), label: text(40).min(1), sku: text(60).optional(), stock: z.number().int().min(0).max(100_000) }))
     .min(1)
@@ -28,7 +33,7 @@ export type ProductInput = z.infer<typeof productSchema>;
 export async function saveProduct(input: ProductInput, { id, actorId, ipAddress }: { id?: string; actorId: string; ipAddress: string | null }) {
   const productId = id ?? crypto.randomUUID();
   await db.transaction(async (tx) => {
-    const values = { slug: input.slug, name: input.name, description: input.description, price: input.price, images: input.images, active: input.active, sortOrder: input.sortOrder };
+    const values = { slug: input.slug, name: input.name, description: input.description, price: input.price, images: input.images, active: input.active, sortOrder: input.sortOrder, sizeGuide: input.sizeGuide, details: input.details };
     if (id) {
       const [existing] = await tx.select({ id: products.id }).from(products).where(eq(products.id, id));
       if (!existing) throw new HttpError(404, "not_found", "Product not found.");

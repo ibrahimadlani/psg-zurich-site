@@ -67,11 +67,11 @@ async function Payments() {
               </div>
             </div>
             {payment.order ? (
-              <p className="text-[13px]">
+              <Link href="/espace-membre/commandes" prefetch={false} className="text-[13px] underline-offset-2 hover:underline">
                 <span className="text-muted-foreground">{t("order")} </span>
                 <span className="font-semibold">{t(`orderStatus.${payment.order.status}`)}</span>
                 {payment.order.trackingNumber ? <span className="text-muted-foreground"> · {payment.order.trackingNumber}</span> : null}
-              </p>
+              </Link>
             ) : null}
             {payment.receiptNumber || payment.refunds.length ? (
               <div className="flex flex-wrap gap-2 border-t pt-3">

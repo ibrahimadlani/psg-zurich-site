@@ -20,7 +20,7 @@ type ScannedMember = {
   junior: boolean;
   photoConsent: boolean;
   signUp: { status: string; checkedInAt: string | null } | null;
-  pickups: { id: string; reference: string; status: string; items: { description: string; quantity: number }[] }[];
+  pickups: { id: string; reference: string; status: string; event: string | null; items: { description: string; quantity: number }[] }[];
 };
 type ScanData = { events: EventOption[]; count: Count | null; member: ScannedMember | null; unknown?: boolean };
 type Result = { member: ScannedMember; token: string | null } | { unknown: true };
@@ -407,7 +407,10 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
                         <ShoppingBag className="size-4 shrink-0 text-psg-blue dark:text-foreground" aria-hidden />
                         <span className="min-w-0 flex-1 text-[14px]">
                           {pickup.items.map((item) => `${item.quantity} × ${item.description}`).join(", ")}
-                          <span className="block font-mono text-[11px] text-muted-foreground">{pickup.reference}</span>
+                          <span className="block font-mono text-[11px] text-muted-foreground">
+                            {pickup.reference}
+                            {pickup.event ? ` · ${pickup.event}` : ""}
+                          </span>
                         </span>
                         <button type="button" disabled={busy} onClick={() => handOver(pickup.id)} className={adminButton("primary", "sm")}>
                           {t("handOver")}

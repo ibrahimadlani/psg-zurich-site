@@ -1,7 +1,8 @@
 import "server-only";
-import type { ShopAccess } from "@/components/shop/shop-cart";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+
+export type ShopAccess = "guest" | "pending" | "member";
 
 /** Who is in the shop: a visitor, someone waiting for the committee, or a member who can buy. */
 export async function shopVisitor() {

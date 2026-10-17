@@ -22,34 +22,42 @@ export type AdminProduct = {
   name: string;
   names: Record<Lang, string>;
   descriptions: Record<Lang, string>;
+  detailsByLocale: Record<Lang, string> | null;
   price: number;
   images: string[];
   active: boolean;
   sortOrder: number;
   sizes: { id: string; label: string; sku: string | null; stock: number; held: number; available: number }[];
+  sizeGuide: SizeGuide | null;
 };
+
+type SizeGuide = { columns: string[]; rows: string[][] };
 
 type Draft = {
   id?: string;
   slug: string;
   names: Record<Lang, string>;
   descriptions: Record<Lang, string>;
+  details: Record<Lang, string>;
   price: string;
   images: string[];
   active: boolean;
   sortOrder: number;
   variants: { id?: string; label: string; sku: string; stock: string }[];
+  sizeGuide: SizeGuide | null;
 };
 
 const empty = (): Draft => ({
   slug: "",
   names: { fr: "", en: "", de: "" },
   descriptions: { fr: "", en: "", de: "" },
+  details: { fr: "", en: "", de: "" },
   price: "",
   images: [],
   active: false,
   sortOrder: 0,
   variants: [{ label: "S", sku: "", stock: "0" }, { label: "M", sku: "", stock: "0" }, { label: "L", sku: "", stock: "0" }, { label: "XL", sku: "", stock: "0" }],
+  sizeGuide: null,
 });
 
 const fromProduct = (product: AdminProduct): Draft => ({
@@ -57,11 +65,13 @@ const fromProduct = (product: AdminProduct): Draft => ({
   slug: product.slug,
   names: product.names,
   descriptions: product.descriptions,
+  details: product.detailsByLocale ?? { fr: "", en: "", de: "" },
   price: (product.price / 100).toFixed(2),
   images: product.images,
   active: product.active,
   sortOrder: product.sortOrder,
   variants: product.sizes.map((size) => ({ id: size.id, label: size.label, sku: size.sku ?? "", stock: String(size.stock) })),
+  sizeGuide: product.sizeGuide,
 });
 
 const slugify = (text: string) =>
@@ -106,11 +116,16 @@ export function ProductsAdmin({ products }: { products: AdminProduct[] }) {
       slug: draft.slug || slugify(draft.names.fr),
       name: draft.names,
       description: draft.descriptions,
+      details: Object.values(draft.details).some((value) => value.trim()) ? draft.details : null,
       price: Math.round(Number(draft.price.replace(",", ".")) * 100),
       images: draft.images,
       active: draft.active,
       sortOrder: draft.sortOrder,
       variants: draft.variants.filter((variant) => variant.label.trim()).map((variant) => ({ id: variant.id, label: variant.label.trim(), sku: variant.sku.trim() || undefined, stock: Math.max(0, Number(variant.stock) || 0) })),
+      // Empty rows dropped; no columns left = no guide.
+      sizeGuide: draft.sizeGuide?.columns.some((column) => column.trim())
+        ? { columns: draft.sizeGuide.columns.map((column) => column.trim()), rows: draft.sizeGuide.rows.filter((row) => row.some((cell) => cell.trim())).map((row) => row.map((cell) => cell.trim())) }
+        : null,
     };
     startTransition(async () => {
       const response = await fetch(draft.id ? `/api/v1/admin/products/${draft.id}` : "/api/v1/admin/products", {
@@ -272,6 +287,18 @@ export function ProductsAdmin({ products }: { products: AdminProduct[] }) {
                 <span className={adminLabel}>{t("productDescription")}</span>
                 <textarea value={draft.descriptions[lang]} maxLength={2000} rows={4} onChange={(event) => update({ descriptions: { ...draft.descriptions, [lang]: event.target.value } })} className={`${adminInput} h-auto py-2`} />
               </label>
+              <label className="flex flex-col gap-1.5">
+                <span className={adminLabel}>{t("productDetails")}</span>
+                <textarea
+                  value={draft.details[lang]}
+                  maxLength={1000}
+                  rows={4}
+                  placeholder={t("productDetailsPlaceholder")}
+                  onChange={(event) => update({ details: { ...draft.details, [lang]: event.target.value } })}
+                  className={`${adminInput} h-auto py-2`}
+                />
+                <span className="text-[12px] text-muted-foreground">{t("productDetailsHint")}</span>
+              </label>
             </section>
 
             <section className="grid grid-cols-2 gap-3">
@@ -307,6 +334,12 @@ export function ProductsAdmin({ products }: { products: AdminProduct[] }) {
               <p className="text-[12px] text-muted-foreground">{t("sizesHint")}</p>
             </section>
 
+            <SizeGuideEditor
+              guide={draft.sizeGuide}
+              sizes={draft.variants.map((variant) => variant.label).filter(Boolean)}
+              onChange={(sizeGuide) => update({ sizeGuide })}
+            />
+
             <label className="flex cursor-pointer items-start gap-3 text-[14px]">
               <input type="checkbox" checked={draft.active} onChange={(event) => update({ active: event.target.checked })} className="mt-0.5 size-4 accent-[var(--color-psg-blue)]" />
               <span>
@@ -318,5 +351,84 @@ export function ProductsAdmin({ products }: { products: AdminProduct[] }) {
         ) : null}
       </ResponsivePanel>
     </>
+  );
+}
+
+/** The product's size chart: a small table of free cells (sizes down, measurements across). */
+function SizeGuideEditor({ guide, sizes, onChange }: { guide: SizeGuide | null; sizes: string[]; onChange: (guide: SizeGuide | null) => void }) {
+  const t = useTranslations("AdminFinances");
+  if (!guide) {
+    return (
+      <section className="space-y-2">
+        <p className={adminLabel}>{t("sizeGuide")}</p>
+        <button
+          type="button"
+          onClick={() => onChange({ columns: [t("sizeGuideSize"), t("sizeGuideChest"), t("sizeGuideLength")], rows: (sizes.length ? sizes : ["S", "M", "L"]).map((size) => [size, "", ""]) })}
+          className={adminButton("secondary", "sm")}
+        >
+          <Plus aria-hidden />
+          {t("sizeGuideAdd")}
+        </button>
+      </section>
+    );
+  }
+  const setCell = (row: number, column: number, value: string) => onChange({ ...guide, rows: guide.rows.map((cells, at) => (at === row ? guide.columns.map((_, index) => (index === column ? value : (cells[index] ?? ""))) : cells)) });
+  return (
+    <section className="space-y-2">
+      <div className="flex items-center justify-between gap-2">
+        <p className={adminLabel}>{t("sizeGuide")}</p>
+        <button type="button" onClick={() => onChange(null)} className={adminButton("ghost", "sm")}>
+          {t("sizeGuideRemove")}
+        </button>
+      </div>
+      <div className="overflow-x-auto rounded-[10px] border">
+        <table className="w-full text-[13px]">
+          <thead>
+            <tr>
+              {guide.columns.map((column, index) => (
+                <th key={index} className="border-b p-1">
+                  <input
+                    aria-label={t("sizeGuideColumn")}
+                    value={column}
+                    maxLength={40}
+                    onChange={(event) => onChange({ ...guide, columns: guide.columns.map((value, at) => (at === index ? event.target.value : value)) })}
+                    className={cn(adminInput, "h-9 font-semibold lg:h-8")}
+                  />
+                </th>
+              ))}
+              <th className="w-10 border-b p-1">
+                {guide.columns.length < 8 ? (
+                  <button type="button" aria-label={t("sizeGuideAddColumn")} onClick={() => onChange({ columns: [...guide.columns, ""], rows: guide.rows.map((row) => [...row, ""]) })} className={adminButton("ghost", "icon")}>
+                    <Plus aria-hidden />
+                  </button>
+                ) : null}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {guide.rows.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {guide.columns.map((_, columnIndex) => (
+                  <td key={columnIndex} className="p-1">
+                    <input aria-label={t("sizeGuideCell")} value={row[columnIndex] ?? ""} maxLength={40} onChange={(event) => setCell(rowIndex, columnIndex, event.target.value)} className={cn(adminInput, "h-9 tabular-nums lg:h-8")} />
+                  </td>
+                ))}
+                <td className="p-1">
+                  <button type="button" aria-label={t("sizeGuideRemoveRow")} onClick={() => onChange({ ...guide, rows: guide.rows.filter((_, at) => at !== rowIndex) })} className={adminButton("ghost", "icon")}>
+                    <X aria-hidden />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {guide.rows.length < 20 ? (
+        <button type="button" onClick={() => onChange({ ...guide, rows: [...guide.rows, guide.columns.map(() => "")] })} className={adminButton("secondary", "sm")}>
+          <Plus aria-hidden />
+          {t("sizeGuideAddRow")}
+        </button>
+      ) : null}
+    </section>
   );
 }

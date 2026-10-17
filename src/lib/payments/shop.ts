@@ -1,7 +1,7 @@
 import "server-only";
-import { and, asc, eq, inArray, lt, sql } from "drizzle-orm";
+import { and, asc, eq, gt, inArray, lt, sql } from "drizzle-orm";
 import { db } from "@/db";
-import { orders, paymentItems, payments, productVariants, products, shopSettings, stockHolds, type Locale } from "@/db/schema";
+import { events, orders, paymentItems, payments, productVariants, products, shopSettings, stockHolds, type Locale } from "@/db/schema";
 import { HttpError } from "@/lib/permissions";
 
 /*
@@ -14,6 +14,9 @@ type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
 
 /** How long pieces stay set aside for a checkout in progress. */
 const HOLD_MINUTES = 30;
+/** "New" for a month after it is added; "last pieces" from 5 left down. */
+const NEW_DAYS = 30;
+const FEW_LEFT = 5;
 
 export type ShopProduct = Awaited<ReturnType<typeof shopProducts>>[number];
 
@@ -34,6 +37,7 @@ export async function shopProducts(locale: Locale, { all = false }: { all?: bool
     const sizes = variants
       .filter((variant) => variant.productId === product.id)
       .map((variant) => ({ id: variant.id, label: variant.label, sku: variant.sku, stock: variant.stock, held: variant.held, available: Math.max(0, variant.stock - variant.held) }));
+    const available = sizes.reduce((sum, size) => sum + size.available, 0);
     return {
       id: product.id,
       slug: product.slug,
@@ -45,8 +49,18 @@ export async function shopProducts(locale: Locale, { all = false }: { all?: bool
       images: product.images,
       active: product.active,
       sortOrder: product.sortOrder,
+      sizeGuide: product.sizeGuide,
+      details: (product.details?.[locale] || product.details?.fr || "")
+        .split("\n")
+        .map((line) => line.replace(/^[-•*]\s*/, "").trim())
+        .filter(Boolean),
+      detailsByLocale: product.details,
+      createdAt: product.createdAt,
       sizes,
-      soldOut: sizes.every((size) => size.available === 0),
+      available,
+      soldOut: available === 0,
+      isNew: Date.now() - product.createdAt.getTime() < NEW_DAYS * 24 * 60 * 60 * 1000,
+      fewLeft: available > 0 && available <= FEW_LEFT,
     };
   });
 }
@@ -61,7 +75,46 @@ export async function getShopSettings() {
 }
 
 export type CartLine = { variantId: string; quantity: number };
-export type Fulfilment = { kind: "pickup" } | { kind: "shipping"; address: { name: string; street: string; postcode: string; city: string } };
+export type Fulfilment = { kind: "pickup"; eventId: string } | { kind: "shipping"; address: { name: string; street: string; postcode: string; city: string } };
+
+/** Club events an order can be picked up at: the coming ones, soonest first. */
+export async function pickupEvents(limit = 6) {
+  return db
+    .select({ id: events.id, title: events.title, type: events.type, startsAt: events.startsAt, location: events.location })
+    .from(events)
+    .where(gt(events.startsAt, new Date()))
+    .orderBy(asc(events.startsAt))
+    .limit(limit);
+}
+
+/**
+ * A cart as the browser keeps it, checked against the shop: each line with today's name, price,
+ * photo and what is left (the checkout page corrects the cart with it).
+ */
+export async function checkCart(cart: CartLine[], locale: Locale) {
+  if (cart.length === 0) return [];
+  const rows = await db
+    .select({ variant: productVariants, product: products })
+    .from(productVariants)
+    .innerJoin(products, eq(products.id, productVariants.productId))
+    .where(inArray(productVariants.id, cart.map((line) => line.variantId)));
+  return cart.map((line) => {
+    const row = rows.find((item) => item.variant.id === line.variantId);
+    if (!row || !row.product.active) return { variantId: line.variantId, quantity: line.quantity, available: 0, gone: true as const };
+    const single = /^(unique|one size|einheitsgrösse|-)$/i.test(row.variant.label);
+    return {
+      variantId: line.variantId,
+      quantity: line.quantity,
+      gone: false as const,
+      slug: row.product.slug,
+      name: row.product.name[locale] || row.product.name.fr,
+      size: single ? "" : row.variant.label,
+      price: row.product.price,
+      image: row.product.images[0] ?? null,
+      available: Math.max(0, row.variant.stock - row.variant.held),
+    };
+  });
+}
 
 /** The lines of a cart, priced from the database ("Écharpe · M"; "Unique" sizes are not named). */
 export async function priceCart(cart: CartLine[], fulfilment: Fulfilment, locale: Locale) {
@@ -85,6 +138,10 @@ export async function priceCart(cart: CartLine[], fulfilment: Fulfilment, locale
       variantId: variant.id,
     };
   });
+  if (fulfilment.kind === "pickup") {
+    const [event] = await db.select({ id: events.id }).from(events).where(and(eq(events.id, fulfilment.eventId), gt(events.startsAt, new Date())));
+    if (!event) throw new HttpError(409, "pickup_unavailable", "This event is no longer open for pick-up.");
+  }
   if (fulfilment.kind === "shipping") {
     const settings = await getShopSettings();
     if (!settings.shippingEnabled) throw new HttpError(409, "shipping_unavailable", "Shipping is not offered.");
@@ -113,6 +170,7 @@ export async function holdCart(tx: Tx, paymentId: string, memberId: string, line
     paymentId,
     memberId,
     fulfilment: fulfilment.kind,
+    pickupEventId: fulfilment.kind === "pickup" ? fulfilment.eventId : null,
     shippingAddress: fulfilment.kind === "shipping" ? { ...fulfilment.address, country: "CH" as const } : null,
   });
 }

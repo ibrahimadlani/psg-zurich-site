@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, Clock, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { formatChf } from "@/lib/money";
@@ -9,7 +9,15 @@ import { cart } from "@/components/shop/cart-store";
 import { recallSecret } from "@/lib/payments/stripe-js";
 import { cn } from "@/lib/utils";
 
-type Status = { status: string; kind: "dues" | "shop" | "donation"; amount: number; receiptNumber: string | null; method: string | null };
+type Status = {
+  status: string;
+  kind: "dues" | "shop" | "donation";
+  amount: number;
+  receiptNumber: string | null;
+  method: string | null;
+  order?: { fulfilment: "pickup" | "shipping"; event: string | null; eventAt: string | null; city: string | null } | null;
+  items?: { description: string; quantity: number }[];
+};
 
 const POLL_MS = 1500;
 const POLL_FOR_MS = 45_000;
@@ -20,6 +28,7 @@ const POLL_FOR_MS = 45_000;
  */
 export function PaymentStatusView({ reference }: { reference: string }) {
   const t = useTranslations("PaymentStatus");
+  const format = useFormatter();
   const [state, setState] = useState<Status | "missing" | null>(null);
 
   useEffect(() => {
@@ -71,10 +80,30 @@ export function PaymentStatusView({ reference }: { reference: string }) {
 
   if (state.status === "succeeded" || state.status === "partially_refunded" || state.status === "refunded") {
     const next =
-      state.kind === "dues" ? { href: "/evenements", label: t("toEvents") } : state.kind === "shop" ? { href: "/espace-membre", label: t("toMemberArea") } : { href: "/", label: t("toHome") };
+      state.kind === "dues" ? { href: "/evenements", label: t("toEvents") } : state.kind === "shop" ? { href: "/espace-membre/commandes", label: t("trackOrder") } : { href: "/", label: t("toHome") };
     return (
       <Panel tone="ok" icon={<Check className="size-7" strokeWidth={2.5} aria-hidden />} title={t("succeededTitle")} reference={reference}>
         <p className="text-[15px] text-pretty text-muted-foreground">{t(`${state.kind}Body`)}</p>
+        {state.kind === "shop" && state.items?.length ? (
+          <div className="w-full rounded-[12px] border bg-card p-4 text-left text-[14px]">
+            <ul className="space-y-1">
+              {state.items.map((item) => (
+                <li key={item.description}>
+                  <span className="font-semibold tabular-nums">{item.quantity} ×</span> {item.description}
+                </li>
+              ))}
+            </ul>
+            {state.order ? (
+              <p className="mt-3 border-t pt-3 text-[13px] text-muted-foreground">
+                {state.order.fulfilment === "pickup"
+                  ? state.order.event
+                    ? t("pickupAt", { event: state.order.event, date: format.dateTime(new Date(state.order.eventAt!), { weekday: "short", day: "numeric", month: "short" }) })
+                    : t("pickupNext")
+                  : t("shippedTo", { city: state.order.city ?? "" })}
+              </p>
+            ) : null}
+          </div>
+        ) : null}
         <dl className="grid w-full grid-cols-2 gap-3 rounded-[12px] border bg-card p-4 text-left text-[14px]">
           <div>
             <dt className={term}>{t("amount")}</dt>

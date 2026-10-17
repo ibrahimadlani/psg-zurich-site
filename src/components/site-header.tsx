@@ -1,4 +1,5 @@
 import { BrandLogo } from "@/components/brand-logo";
+import { CartDrawer } from "@/components/shop/cart-drawer";
 import { HeaderTools } from "@/components/header-tools";
 import { MainNav } from "@/components/main-nav";
 import { MobileMenu } from "@/components/mobile-menu";
@@ -6,7 +7,9 @@ import { UserNav } from "@/components/user-nav";
 
 export function HeaderActions() {
   return (
-    <>
+    <div className="flex shrink-0 items-center gap-1">
+      {/* The shop's bag, on every screen size. */}
+      <CartDrawer />
       <div className="hidden shrink-0 items-center gap-1 md:flex">
         <HeaderTools />
         <UserNav />
@@ -15,7 +18,7 @@ export function HeaderActions() {
       <div className="md:hidden">
         <MobileMenu />
       </div>
-    </>
+    </div>
   );
 }
 

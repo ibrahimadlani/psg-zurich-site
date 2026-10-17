@@ -1006,6 +1006,10 @@ export const products = mysqlTable("products", {
   price: int("price").notNull(),
   /** Article images (media ids), first one on the grid. */
   images: json<string[]>("images").notNull(),
+  /** Short facts shown as bullets under "Details" (material, origin…), one per line, per language. */
+  details: json<Record<Locale, string>>("details"),
+  /** Optional size chart shown on the product page ("Size | Chest (cm) | Length (cm)"). */
+  sizeGuide: json<{ columns: string[]; rows: string[][] }>("size_guide"),
   active: boolean("active").default(false).notNull(),
   sortOrder: int("sort_order").default(0).notNull(),
   ...timestamps(),
@@ -1056,6 +1060,8 @@ export const orders = mysqlTable(
       .references(() => payments.id, { onDelete: "restrict" }),
     memberId: fk("member_id").references(() => members.id, { onDelete: "set null" }),
     fulfilment: mysqlEnum("fulfilment", ORDER_FULFILMENTS).notNull(),
+    /** Pick-up: the club event the buyer chose to collect the order at. */
+    pickupEventId: fk("pickup_event_id").references(() => events.id, { onDelete: "set null" }),
     /** Shipping: the address as given at checkout. */
     shippingAddress: json<{ name: string; street: string; postcode: string; city: string; country: "CH" }>("shipping_address"),
     status: mysqlEnum("status", ORDER_STATUSES).default("pending").notNull(),

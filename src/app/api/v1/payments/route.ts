@@ -16,7 +16,7 @@ const schema = z.discriminatedUnion("kind", [
     locale: z.enum(LOCALES).default("fr"),
     items: z.array(z.object({ variantId: z.uuid(), quantity: z.number().int().min(1).max(10) })).min(1).max(20),
     fulfilment: z.discriminatedUnion("kind", [
-      z.object({ kind: z.literal("pickup") }),
+      z.object({ kind: z.literal("pickup"), eventId: z.string().min(1).max(36) }),
       z.object({
         kind: z.literal("shipping"),
         address: z.object({ name: z.string().trim().min(1).max(200), street: z.string().trim().min(3).max(255), postcode: z.string().trim().regex(/^\d{4}$/), city: z.string().trim().min(1).max(100) }),

@@ -526,7 +526,8 @@
     "messagesLink": "My messages",
     "newReplies": "{count, plural, one {# new reply} other {# new replies}}",
     "paymentsLink": "My payments",
-    "supportLink": "Support the club"
+    "supportLink": "Support the club",
+    "ordersLink": "My orders"
   },
   "Admin": {
     "title": "Administration",
@@ -2702,7 +2703,11 @@
     "toMemberArea": "My member area",
     "toEvents": "See the events",
     "toHome": "Back to home",
-    "retry": "Try again"
+    "retry": "Try again",
+    "trackOrder": "Track my order",
+    "pickupAt": "To pick up at: {event}, {date}",
+    "pickupNext": "To pick up at the club's next event.",
+    "shippedTo": "Shipping to {city}."
   },
   "MyPayments": {
     "title": "My payments",
@@ -2920,7 +2925,23 @@
     "addSize": "Add a size",
     "sizesHint": "Only one size? Call it \"One size\". Stock goes down with each paid sale.",
     "active": "Visible in the shop",
-    "activeHint": "Unticked, the item stays in the admin and in the history."
+    "activeHint": "Unticked, the item stays in the admin and in the history.",
+    "bucketShipping": "Parcels to post",
+    "bucketNext": "Next event",
+    "sizeGuide": "Size guide",
+    "sizeGuideAdd": "Add a size guide",
+    "sizeGuideRemove": "Remove the guide",
+    "sizeGuideSize": "Size",
+    "sizeGuideChest": "Chest (cm)",
+    "sizeGuideLength": "Length (cm)",
+    "sizeGuideColumn": "Column title",
+    "sizeGuideCell": "Measurement",
+    "sizeGuideAddColumn": "Add a column",
+    "sizeGuideAddRow": "Add a row",
+    "sizeGuideRemoveRow": "Remove the row",
+    "productDetails": "Details",
+    "productDetailsPlaceholder": "Material: 100% cotton\nMade in Portugal\nWash at 30 °C",
+    "productDetailsHint": "One line per point: they show as a list under “Details”."
   },
   "Shop": {
     "eyebrow": "PSG Zurich · Collection",
@@ -2935,7 +2956,7 @@
     "more": "More",
     "addToBag": "Add to bag",
     "pickSizeFirst": "Pick a size",
-    "buyNow": "Buy",
+    "buyNow": "Buy now",
     "added": "Added to your bag.",
     "cart": "Bag",
     "openCart": "Open the bag ({count})",
@@ -2964,7 +2985,42 @@
     "signIn": "I already have an account",
     "perkPickup": "Free pick-up at the next watch party",
     "perkShipping": "Or shipping in Switzerland",
-    "perkReceipt": "Receipt by email, pay with TWINT, Apple Pay or card"
+    "perkReceipt": "Receipt by email, pay with TWINT, Apple Pay or card",
+    "itemCount": "{count, plural, one {# item} other {# items}}",
+    "close": "Close",
+    "seeCollection": "See the collection",
+    "subtotal": "Subtotal",
+    "deliveryNext": "Delivery chosen at the next step · free pick-up at an event.",
+    "photo": "Photo {index}",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "sizeGuide": "Size guide",
+    "sizeGuideHint": "Measurements in centimetres, taken flat. Between two sizes, take the larger one.",
+    "inStock": "In stock",
+    "add": "Add",
+    "lastPieces": "Last pieces",
+    "new": "New",
+    "productCount": "{count, plural, one {# item} other {# items}}",
+    "sortLabel": "Sort",
+    "sort": {
+      "new": "Newest",
+      "priceAsc": "Price, low to high",
+      "priceDesc": "Price, high to low"
+    },
+    "breadcrumb": "Breadcrumb",
+    "details": {
+      "description": "Description",
+      "delivery": "Delivery and pick-up",
+      "deliveryBody": "Free pick-up at the event of your choice: you pick the watch party or get-together when ordering, and we tell you when it is ready.\nOr shipping in Switzerland for {fee}, with Swiss Post tracking.",
+      "deliveryPickupOnly": "Free pick-up at the event of your choice: you pick it when ordering, and we tell you when it is ready.",
+      "exchange": "Exchange",
+      "exchangeBody": "Wrong size? Write to us within 14 days from the Contact page: we swap it at the next event, depending on stock.",
+      "details": "Details",
+      "shipping": "Shipping",
+      "pickupBullet": "Free pick-up at the event of your choice: we tell you when it is ready.",
+      "postBullet": "Shipping in Switzerland for {fee}, sent within 3 working days with Swiss Post tracking.",
+      "exchangeBullet": "Wrong size? Exchange within 14 days at the next event, depending on stock."
+    }
   },
   "Home": {
     "countdown": {
@@ -3131,5 +3187,58 @@
         "body": "The next match at the centre: prediction, club opinion, watch party."
       }
     }
+  },
+  "Checkout": {
+    "title": "Checkout",
+    "summary": "Summary",
+    "showSummary": "Show the summary",
+    "hideSummary": "Hide the summary",
+    "subtotal": "Subtotal",
+    "postage": "Shipping",
+    "pickup": "Pick-up",
+    "free": "Free",
+    "total": "Total",
+    "contactTitle": "Contact",
+    "contactHint": "The receipt and order updates go to this address.",
+    "deliveryTitle": "Delivery",
+    "pickupTitle": "Pick-up at an event",
+    "pickupBody": "You collect it there by showing your membership card.",
+    "shippingTitle": "Shipping in Switzerland",
+    "shippingBody": "Delivered by Swiss Post within a few days, with tracking.",
+    "pickupWhere": "At which event?",
+    "noDelivery": "No delivery option is open right now. Come back soon.",
+    "name": "Full name",
+    "street": "Street and number",
+    "postcode": "Postcode",
+    "city": "Town",
+    "switzerlandOnly": "Shipping within Switzerland only.",
+    "paymentTitle": "Payment",
+    "pay": "Pay {amount}",
+    "payTitle": "Order",
+    "paymentHint": "Secure payment · TWINT, Apple Pay, Google Pay or card. The receipt comes by email.",
+    "emptyTitle": "Empty bag",
+    "backToShop": "Back to the shop",
+    "noticeGone": "{name} is no longer available: removed from the bag.",
+    "noticeFewer": "{name}: {count, plural, one {only one left} other {only # left}}, quantity adjusted.",
+    "noticePrice": "{name}: the price is now {price}."
+  },
+  "Orders": {
+    "title": "My orders",
+    "description": "Where your shop orders stand.",
+    "back": "Member area",
+    "empty": "No orders yet.",
+    "toShop": "Discover the shop",
+    "steps": {
+      "paid": "Paid",
+      "ready": "Ready",
+      "shipped": "Shipped",
+      "handedOver": "Handed over"
+    },
+    "inProgress": "In progress",
+    "canceled": "Order cancelled and refunded.",
+    "pickupAt": "To pick up at: {event}, {date}",
+    "pickupNext": "To pick up at the club's next event.",
+    "shipTo": "Shipping to: {address}",
+    "track": "Track parcel {number}"
   }
 }

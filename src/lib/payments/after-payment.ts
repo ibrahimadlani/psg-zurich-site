@@ -67,7 +67,7 @@ export async function afterPayment(paymentId: string, actor: { actorId: string |
       receipt: payment.receiptNumber!,
       payment: reference,
     },
-    path: payment.memberId ? "/espace-membre/paiements" : undefined,
+    path: payment.kind === "shop" ? "/espace-membre/commandes" : payment.memberId ? "/espace-membre/paiements" : undefined,
     attachment: payment.receiptNumber!,
     dedupe: `payment.receipt:${payment.id}`,
   }));

@@ -1,4 +1,4 @@
-import { ArrowRight, HeartHandshake, LayoutDashboard, MessagesSquare, Receipt, Settings } from "lucide-react";
+import { ArrowRight, HeartHandshake, LayoutDashboard, MessagesSquare, Package, Receipt, Settings } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
@@ -89,6 +89,14 @@ async function MemberPanel() {
             <Link href="/espace-membre/paiements" prefetch={false}>
               <Receipt aria-hidden />
               {t("paymentsLink")}
+            </Link>
+          </Button>
+        ) : null}
+        {member ? (
+          <Button variant="outline" asChild>
+            <Link href="/espace-membre/commandes" prefetch={false}>
+              <Package aria-hidden />
+              {t("ordersLink")}
             </Link>
           </Button>
         ) : null}

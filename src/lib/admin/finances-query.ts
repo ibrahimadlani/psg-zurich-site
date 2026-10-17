@@ -1,7 +1,7 @@
 import "server-only";
 import { and, desc, eq, inArray, like, or, sql, type SQL } from "drizzle-orm";
 import { db } from "@/db";
-import { auditLog, ledgerEntries, orders, paymentItems, payments, refunds, stripeEvents, stripePayouts, user, type OrderStatus, type PaymentKind, type PaymentState } from "@/db/schema";
+import { auditLog, events, ledgerEntries, orders, paymentItems, payments, refunds, stripeEvents, stripePayouts, user, type OrderStatus, type PaymentKind, type PaymentState } from "@/db/schema";
 import { parsePaymentReference } from "@/lib/payments/config";
 
 export type PaymentFilters = { kind?: PaymentKind; status?: "all" | "paid" | "refunds" | "open"; q?: string };
@@ -78,16 +78,18 @@ export async function paymentDetail(id: string) {
 /** Orders of the shop by state (paid first: they wait for the committee). */
 export async function listOrders(statuses: OrderStatus[] = ["paid", "ready", "handed_over", "shipped"]) {
   const rows = await db
-    .select({ order: orders, payment: payments })
+    .select({ order: orders, payment: payments, eventTitle: events.title, eventAt: events.startsAt })
     .from(orders)
     .innerJoin(payments, eq(payments.id, orders.paymentId))
+    .leftJoin(events, eq(events.id, orders.pickupEventId))
     .where(inArray(orders.status, statuses))
     .orderBy(desc(payments.paidAt))
     .limit(200);
   if (rows.length === 0) return [];
   const items = await db.select().from(paymentItems).where(inArray(paymentItems.paymentId, rows.map((row) => row.payment.id)));
-  return rows.map(({ order, payment }) => ({
+  return rows.map(({ order, payment, eventTitle, eventAt }) => ({
     ...order,
+    event: eventTitle && eventAt ? { title: eventTitle, startsAt: eventAt } : null,
     reference: payment.reference,
     payerName: payment.payerName,
     payerEmail: payment.payerEmail,

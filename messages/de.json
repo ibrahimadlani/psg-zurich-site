@@ -526,7 +526,8 @@
     "messagesLink": "Meine Nachrichten",
     "newReplies": "{count, plural, one {# neue Antwort} other {# neue Antworten}}",
     "paymentsLink": "Meine Zahlungen",
-    "supportLink": "Club unterstützen"
+    "supportLink": "Club unterstützen",
+    "ordersLink": "Meine Bestellungen"
   },
   "Admin": {
     "title": "Administration",
@@ -2702,7 +2703,11 @@
     "toMemberArea": "Mein Mitgliederbereich",
     "toEvents": "Zu den Events",
     "toHome": "Zur Startseite",
-    "retry": "Erneut versuchen"
+    "retry": "Erneut versuchen",
+    "trackOrder": "Bestellung verfolgen",
+    "pickupAt": "Abholung: {event}, {date}",
+    "pickupNext": "Abholung am nächsten Clubanlass.",
+    "shippedTo": "Postversand nach {city}."
   },
   "MyPayments": {
     "title": "Meine Zahlungen",
@@ -2920,7 +2925,23 @@
     "addSize": "Grösse hinzufügen",
     "sizesHint": "Nur eine Grösse? Nenne sie «Einheitsgrösse». Der Bestand sinkt mit jedem bezahlten Verkauf.",
     "active": "Im Shop sichtbar",
-    "activeHint": "Nicht angehakt bleibt der Artikel im Admin und im Verlauf."
+    "activeHint": "Nicht angehakt bleibt der Artikel im Admin und im Verlauf.",
+    "bucketShipping": "Pakete zu verschicken",
+    "bucketNext": "Nächstes Event",
+    "sizeGuide": "Grössentabelle",
+    "sizeGuideAdd": "Grössentabelle hinzufügen",
+    "sizeGuideRemove": "Tabelle entfernen",
+    "sizeGuideSize": "Grösse",
+    "sizeGuideChest": "Brust (cm)",
+    "sizeGuideLength": "Länge (cm)",
+    "sizeGuideColumn": "Spaltentitel",
+    "sizeGuideCell": "Mass",
+    "sizeGuideAddColumn": "Spalte hinzufügen",
+    "sizeGuideAddRow": "Zeile hinzufügen",
+    "sizeGuideRemoveRow": "Zeile entfernen",
+    "productDetails": "Details",
+    "productDetailsPlaceholder": "Material: 100 % Baumwolle\nHergestellt in Portugal\nWaschen bei 30 °C",
+    "productDetailsHint": "Eine Zeile pro Punkt: sie erscheinen als Liste unter «Details»."
   },
   "Shop": {
     "eyebrow": "PSG Zurich · Kollektion",
@@ -2935,7 +2956,7 @@
     "more": "Mehr",
     "addToBag": "In den Warenkorb",
     "pickSizeFirst": "Grösse wählen",
-    "buyNow": "Kaufen",
+    "buyNow": "Jetzt kaufen",
     "added": "In den Warenkorb gelegt.",
     "cart": "Warenkorb",
     "openCart": "Warenkorb öffnen ({count})",
@@ -2964,7 +2985,42 @@
     "signIn": "Ich habe schon ein Konto",
     "perkPickup": "Gratis-Abholung an der nächsten Watch Party",
     "perkShipping": "Oder Postversand in der Schweiz",
-    "perkReceipt": "Quittung per E-Mail, Zahlung mit TWINT, Apple Pay oder Karte"
+    "perkReceipt": "Quittung per E-Mail, Zahlung mit TWINT, Apple Pay oder Karte",
+    "itemCount": "{count, plural, one {# Artikel} other {# Artikel}}",
+    "close": "Schliessen",
+    "seeCollection": "Zur Kollektion",
+    "subtotal": "Zwischensumme",
+    "deliveryNext": "Erhalt im nächsten Schritt wählen · Gratis-Abholung an einem Event.",
+    "photo": "Foto {index}",
+    "previous": "Vorheriges Foto",
+    "next": "Nächstes Foto",
+    "sizeGuide": "Grössentabelle",
+    "sizeGuideHint": "Masse in Zentimetern, flach gemessen. Zwischen zwei Grössen die grössere nehmen.",
+    "inStock": "An Lager",
+    "add": "Hinzufügen",
+    "lastPieces": "Letzte Stücke",
+    "new": "Neu",
+    "productCount": "{count, plural, one {# Artikel} other {# Artikel}}",
+    "sortLabel": "Sortieren",
+    "sort": {
+      "new": "Neuheiten",
+      "priceAsc": "Preis aufsteigend",
+      "priceDesc": "Preis absteigend"
+    },
+    "breadcrumb": "Brotkrumen",
+    "details": {
+      "description": "Beschreibung",
+      "delivery": "Lieferung und Abholung",
+      "deliveryBody": "Gratis-Abholung am Event deiner Wahl: du wählst die Watch Party oder das Treffen bei der Bestellung, und wir melden uns, wenn sie bereit ist.\nOder Postversand in der Schweiz für {fee}, mit Sendungsverfolgung.",
+      "deliveryPickupOnly": "Gratis-Abholung am Event deiner Wahl: du wählst es bei der Bestellung, und wir melden uns, wenn sie bereit ist.",
+      "exchange": "Umtausch",
+      "exchangeBody": "Falsche Grösse? Schreib uns innert 14 Tagen über die Kontaktseite: wir tauschen am nächsten Event um, je nach Bestand.",
+      "details": "Details",
+      "shipping": "Versand",
+      "pickupBullet": "Gratis-Abholung am Event deiner Wahl: wir melden uns, wenn sie bereit ist.",
+      "postBullet": "Postversand in der Schweiz für {fee}, Versand innert 3 Werktagen mit Sendungsverfolgung.",
+      "exchangeBullet": "Falsche Grösse? Umtausch innert 14 Tagen am nächsten Event, je nach Bestand."
+    }
   },
   "Home": {
     "countdown": {
@@ -3131,5 +3187,58 @@
         "body": "Das nächste Spiel im Zentrum: Tipp, Meinung des Clubs, Watch Party."
       }
     }
+  },
+  "Checkout": {
+    "title": "Bestellung",
+    "summary": "Übersicht",
+    "showSummary": "Übersicht anzeigen",
+    "hideSummary": "Übersicht ausblenden",
+    "subtotal": "Zwischensumme",
+    "postage": "Postversand",
+    "pickup": "Abholung",
+    "free": "Gratis",
+    "total": "Total",
+    "contactTitle": "Kontakt",
+    "contactHint": "Die Quittung und die Updates zur Bestellung gehen an diese Adresse.",
+    "deliveryTitle": "Erhalt",
+    "pickupTitle": "Abholung an einem Event",
+    "pickupBody": "Du holst sie vor Ort ab, mit deiner Mitgliederkarte.",
+    "shippingTitle": "Postversand in der Schweiz",
+    "shippingBody": "Von der Post innert weniger Tage geliefert, mit Sendungsverfolgung.",
+    "pickupWhere": "An welchem Event?",
+    "noDelivery": "Derzeit ist keine Erhaltsart offen. Schau bald wieder vorbei.",
+    "name": "Vor- und Nachname",
+    "street": "Strasse und Nummer",
+    "postcode": "PLZ",
+    "city": "Ort",
+    "switzerlandOnly": "Versand nur innerhalb der Schweiz.",
+    "paymentTitle": "Zahlung",
+    "pay": "{amount} bezahlen",
+    "payTitle": "Bestellung",
+    "paymentHint": "Sichere Zahlung · TWINT, Apple Pay, Google Pay oder Karte. Die Quittung kommt per E-Mail.",
+    "emptyTitle": "Leerer Warenkorb",
+    "backToShop": "Zurück zum Shop",
+    "noticeGone": "{name} ist nicht mehr erhältlich: aus dem Warenkorb entfernt.",
+    "noticeFewer": "{name}: {count, plural, one {nur noch ein Stück} other {nur noch # Stück}}, Menge angepasst.",
+    "noticePrice": "{name}: der Preis ist jetzt {price}."
+  },
+  "Orders": {
+    "title": "Meine Bestellungen",
+    "description": "Wo deine Shop-Bestellungen stehen.",
+    "back": "Mitgliederbereich",
+    "empty": "Noch keine Bestellungen.",
+    "toShop": "Shop entdecken",
+    "steps": {
+      "paid": "Bezahlt",
+      "ready": "Bereit",
+      "shipped": "Verschickt",
+      "handedOver": "Übergeben"
+    },
+    "inProgress": "In Arbeit",
+    "canceled": "Bestellung storniert und erstattet.",
+    "pickupAt": "Abholung: {event}, {date}",
+    "pickupNext": "Abholung am nächsten Clubanlass.",
+    "shipTo": "Versand an: {address}",
+    "track": "Paket {number} verfolgen"
   }
 }

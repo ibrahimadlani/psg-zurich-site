@@ -1,11 +1,12 @@
 "use client";
 
-import { Check, Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { toast } from "sonner";
-import { cart } from "@/components/shop/cart-store";
-import { openCart, type ShopAccess } from "@/components/shop/shop-cart";
+import { useEffect, useRef, useState } from "react";
+import { cart, openCart } from "@/components/shop/cart-store";
+import { SizeGuide } from "@/components/shop/size-guide";
+import { useRouter } from "@/i18n/navigation";
+import { formatChf } from "@/lib/money";
 import { cn } from "@/lib/utils";
 
 type Size = { id: string; label: string; available: number };
@@ -17,38 +18,59 @@ const secondary =
 
 const single = (label: string) => /^(unique|one size|einheitsgrösse|-)$/i.test(label);
 
-/** Size pills (sold-out ones struck through), quantity, then "Add to bag" or "Buy now". */
+/**
+ * Sizes (sold-out ones struck through), what is left, quantity, then "Add to bag" (opens the bag
+ * on the new line) or "Buy now" (straight to checkout). On a phone, a bar with the price and
+ * "Add" stays at the bottom once these buttons are scrolled away.
+ */
 export function ProductBuy({
   product,
-  access,
 }: {
-  product: { slug: string; name: string; price: number; image: string | null; sizes: Size[] };
-  access: ShopAccess;
+  product: { slug: string; name: string; price: number; image: string | null; sizes: Size[]; sizeGuide: { columns: string[]; rows: string[][] } | null };
 }) {
   const t = useTranslations("Shop");
+  const router = useRouter();
   const onlyOne = product.sizes.length === 1 && single(product.sizes[0]!.label);
   const [size, setSize] = useState<string | null>(onlyOne ? product.sizes[0]!.id : null);
   const [quantity, setQuantity] = useState(1);
-  const [added, setAdded] = useState(false);
+  const [missingSize, setMissingSize] = useState(false);
+  const [barVisible, setBarVisible] = useState(false);
+  const buttons = useRef<HTMLDivElement>(null);
   const chosen = product.sizes.find((item) => item.id === size);
   const max = Math.min(10, chosen?.available ?? 10);
 
-  function add(andOpen: boolean) {
-    if (!chosen) return;
-    cart.add({ variantId: chosen.id, slug: product.slug, name: product.name, size: onlyOne ? "" : chosen.label, price: product.price, image: product.image }, quantity);
-    if (andOpen) openCart();
-    else {
-      setAdded(true);
-      toast.success(t("added"), { action: { label: t("cart"), onClick: openCart } });
-      window.setTimeout(() => setAdded(false), 1600);
+  // The phone bar appears once the main buttons have scrolled out of view.
+  useEffect(() => {
+    const element = buttons.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setBarVisible(!entry!.isIntersecting && entry!.boundingClientRect.top < 0), { threshold: 0 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  function add(then: "bag" | "checkout") {
+    if (!chosen) {
+      setMissingSize(true);
+      buttons.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+      return;
     }
+    cart.add({ variantId: chosen.id, slug: product.slug, name: product.name, size: onlyOne ? "" : chosen.label, price: product.price, image: product.image, max: chosen.available }, quantity);
+    if (then === "checkout") router.push("/commande");
+    else openCart(chosen.id);
   }
+
+  const stock = chosen ? (chosen.available <= 3 ? t("fewLeft", { count: chosen.available }) : t("inStock")) : null;
 
   return (
     <div className="flex flex-col gap-5">
       {onlyOne ? null : (
         <fieldset className="flex flex-col gap-2.5">
-          <legend className="mb-2.5 font-wide text-[10px] font-semibold tracking-[0.06em] text-muted-foreground uppercase">{t("chooseSize")}</legend>
+          <div className="mb-2.5 flex items-baseline justify-between gap-3">
+            <legend className={cn("font-wide text-[10px] font-semibold tracking-[0.06em] uppercase", missingSize ? "text-psg-red" : "text-muted-foreground")}>
+              {missingSize ? t("pickSizeFirst") : t("chooseSize")}
+            </legend>
+            {product.sizeGuide ? <SizeGuide guide={product.sizeGuide} name={product.name} /> : null}
+          </div>
           <div className="flex flex-wrap gap-2">
             {product.sizes.map((item) => {
               const out = item.available === 0;
@@ -61,10 +83,12 @@ export function ProductBuy({
                   onClick={() => {
                     setSize(item.id);
                     setQuantity(1);
+                    setMissingSize(false);
                   }}
                   className={cn(
-                    "h-12 min-w-14 cursor-pointer rounded-[10px] border px-4 text-[15px] font-semibold transition-[border-color,background-color,color]",
+                    "h-12 min-w-14 cursor-pointer rounded-[10px] border px-4 text-[15px] font-semibold transition-[border-color,background-color,color,transform] active:scale-[0.97]",
                     size === item.id ? "border-segment bg-segment text-segment-foreground" : "bg-card hover:border-foreground/40",
+                    missingSize && "border-psg-red/50",
                     out && "cursor-default text-muted-foreground line-through opacity-50",
                   )}
                 >
@@ -73,11 +97,10 @@ export function ProductBuy({
               );
             })}
           </div>
-          {chosen && chosen.available <= 3 ? <p className="text-[13px] text-psg-red">{t("fewLeft", { count: chosen.available })}</p> : null}
         </fieldset>
       )}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between gap-3">
         <div className="inline-flex items-center rounded-full border">
           <button type="button" aria-label={t("less")} disabled={quantity <= 1} onClick={() => setQuantity((value) => Math.max(1, value - 1))} className="grid size-11 cursor-pointer place-items-center disabled:opacity-40">
             <Minus className="size-4" aria-hidden />
@@ -89,17 +112,42 @@ export function ProductBuy({
             <Plus className="size-4" aria-hidden />
           </button>
         </div>
-        {access !== "member" ? <p className="text-[13px] text-muted-foreground">{t("membersOnly")}</p> : null}
+        {stock ? (
+          <p className={cn("flex items-center gap-1.5 text-[13px]", chosen && chosen.available <= 3 ? "text-psg-red" : "text-muted-foreground")}>
+            <span aria-hidden className={cn("size-1.5 rounded-full", chosen && chosen.available <= 3 ? "bg-psg-red" : "bg-ok")} />
+            {stock}
+          </p>
+        ) : null}
       </div>
 
-      <div className="flex flex-col gap-2 sm:flex-row">
-        <button type="button" disabled={!chosen} onClick={() => add(false)} className={secondary}>
-          {added ? <Check className="size-4" aria-hidden /> : null}
-          {chosen ? t("addToBag") : t("pickSizeFirst")}
+      <div ref={buttons} className="flex flex-col gap-2 sm:flex-row">
+        <button type="button" onClick={() => add("bag")} className={secondary}>
+          {t("addToBag")}
         </button>
-        <button type="button" disabled={!chosen} onClick={() => add(true)} className={primary}>
+        <button type="button" onClick={() => add("checkout")} className={primary}>
           {t("buyNow")}
         </button>
+      </div>
+
+      {/* Phone: the buttons follow the scroll. */}
+      <div
+        data-visible={barVisible || undefined}
+        className="fixed inset-x-0 bottom-0 z-40 translate-y-full border-t bg-background/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur transition-transform duration-300 ease-out data-[visible]:translate-y-0 lg:hidden motion-reduce:transition-none"
+        aria-hidden={!barVisible}
+        inert={!barVisible}
+      >
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[13px] font-semibold">{product.name}</p>
+            <p className="text-[13px] text-muted-foreground tabular-nums">
+              {formatChf(product.price)}
+              {chosen && !onlyOne ? ` · ${chosen.label}` : ""}
+            </p>
+          </div>
+          <button type="button" onClick={() => add("bag")} className={cn(primary, "h-11 flex-none px-5")}>
+            {chosen || onlyOne ? t("add") : t("chooseSize")}
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -20,6 +20,7 @@ type Order = {
   fulfilment: "pickup" | "shipping";
   shippingAddress: { name: string; street: string; postcode: string; city: string } | null;
   trackingNumber: string | null;
+  event: { title: string; startsAt: Date } | null;
   payerName: string;
   amount: number;
   paidAt: Date | null;
@@ -54,11 +55,26 @@ export function OrdersBoard({ orders }: { orders: Order[] }) {
       router.refresh();
     });
 
+  // To prepare: one bag per event (pick-ups), and the parcels to post.
+  const toPrepare = orders.filter((order) => order.status === "paid");
+  const buckets = new Map<string, { label: string; at: number; orders: Order[] }>();
+  for (const order of toPrepare) {
+    const key = order.fulfilment === "shipping" ? "shipping" : (order.event?.title ?? "next") + (order.event ? new Date(order.event.startsAt).toISOString() : "");
+    const label =
+      order.fulfilment === "shipping"
+        ? t("bucketShipping")
+        : order.event
+          ? `${order.event.title} · ${format.dateTime(new Date(order.event.startsAt), { weekday: "short", day: "numeric", month: "short" })}`
+          : t("bucketNext");
+    const bucket = buckets.get(key) ?? { label, at: order.event ? new Date(order.event.startsAt).getTime() : Number.MAX_SAFE_INTEGER, orders: [] };
+    bucket.orders.push(order);
+    buckets.set(key, bucket);
+  }
   const groups = [
-    { key: "toPrepare", orders: orders.filter((order) => order.status === "paid") },
-    { key: "ready", orders: orders.filter((order) => order.status === "ready") },
-    { key: "done", orders: orders.filter((order) => order.status === "handed_over" || order.status === "shipped") },
-  ] as const;
+    ...[...buckets.values()].sort((a, b) => a.at - b.at).map((bucket) => ({ key: "toPrepare" as const, label: bucket.label, orders: bucket.orders })),
+    { key: "ready" as const, label: null, orders: orders.filter((order) => order.status === "ready") },
+    { key: "done" as const, label: null, orders: orders.filter((order) => order.status === "handed_over" || order.status === "shipped") },
+  ];
 
   if (orders.length === 0) return <p className="rounded-[12px] border border-dashed px-4 py-10 text-center text-[14px] text-muted-foreground">{t("noOrders")}</p>;
 
@@ -66,9 +82,10 @@ export function OrdersBoard({ orders }: { orders: Order[] }) {
     <div className="flex flex-col gap-8">
       {groups.map((group) =>
         group.orders.length ? (
-          <section key={group.key} className="space-y-3">
+          <section key={`${group.key}-${group.label ?? ""}`} className="space-y-3">
             <h2 className={adminLabel}>
-              {t(`orderGroups.${group.key}`)} · {group.orders.length}
+              {t(`orderGroups.${group.key}`)}
+              {group.label ? ` · ${group.label}` : ""} · {group.orders.length}
             </h2>
             <ul className="grid gap-2 lg:grid-cols-2">
               {group.orders.map((order) => (
@@ -94,7 +111,9 @@ export function OrdersBoard({ orders }: { orders: Order[] }) {
                   </ul>
                   <p className="text-[13px] text-muted-foreground">
                     {order.fulfilment === "pickup"
-                      ? t("pickup")
+                      ? order.event
+                        ? `${t("pickup")} · ${order.event.title}`
+                        : t("pickup")
                       : `${t("shipTo")} ${order.shippingAddress?.name}, ${order.shippingAddress?.street}, ${order.shippingAddress?.postcode} ${order.shippingAddress?.city}`}
                     {order.trackingNumber ? ` · ${order.trackingNumber}` : ""}
                   </p>
