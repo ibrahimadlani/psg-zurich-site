@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
 4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
-5:"/_next/static/chunks/2dc_yxrg-hsid.js"
+5:"/_next/static/chunks/3a0xjyr81xufq.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
@@ -32,7 +32,7 @@ f:I[837457,["$d"],"default"]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":24626,"c":"$Q2"}]]
 27:X
 2a:X
-2a:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$12"}},"a":"$@28","u":"$@29","b":"bSl5jteIbv5S82ChU9m6l","r":"$2a"}
+2a:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$12"}},"a":"$@28","u":"$@29","b":"ICwh6BWM6vgLDL-g6Ko_Y","r":"$2a"}
 1e:null
 12:C
 27:C

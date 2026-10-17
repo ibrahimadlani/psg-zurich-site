@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
 4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
-5:"/_next/static/chunks/2dc_yxrg-hsid.js"
+5:"/_next/static/chunks/3a0xjyr81xufq.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
@@ -38,7 +38,7 @@ f:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":24626,"c":"$Q2"}]]
 2c:X
 2f:X
-2f:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$22",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Zahlung · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"referrer","content":"no-referrer"}],["$","meta","3",{"name":"robots","content":"noindex, nofollow"}],["$","link","4",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","5",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$19"}},"a":"$@2d","u":"$@2e","b":"bSl5jteIbv5S82ChU9m6l","r":"$2f"}
+2f:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L27",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L29",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$22",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Zahlung · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"referrer","content":"no-referrer"}],["$","meta","3",{"name":"robots","content":"noindex, nofollow"}],["$","link","4",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","5",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$19"}},"a":"$@2d","u":"$@2e","b":"ICwh6BWM6vgLDL-g6Ko_Y","r":"$2f"}
 23:null
 19:C
 2c:C

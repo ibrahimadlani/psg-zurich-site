@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
 4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
-5:"/_next/static/chunks/2dc_yxrg-hsid.js"
+5:"/_next/static/chunks/3a0xjyr81xufq.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
@@ -10,8 +10,8 @@ b:"/_next/static/chunks/2htx0opipb7qz.js"
 c:"/_next/static/chunks/0svlh3oxqpq-e.js"
 d:"/_next/static/chunks/1hfom33bm3w2v.js"
 e:"/_next/static/chunks/0sq-ww0s5slum.js"
-f:"/_next/static/chunks/0cd-0p692_bzx.js"
-10:"/_next/static/chunks/32tchlhl58_33.js"
+f:"/_next/static/chunks/32tchlhl58_33.js"
+10:"/_next/static/chunks/0cd-0p692_bzx.js"
 11:I[77105,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d","$e","$f","$10"],"default"]
 12:I[605500,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"Image"]
 13:I[669746,["$4","$5","$6","$7","$8","$9","$a","$b","$c"],"HeaderTools"]
@@ -45,13 +45,13 @@ f:"/_next/static/chunks/0cd-0p692_bzx.js"
 31:C
 34:X
 34:T6,locale34:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Events · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch-Partys, Auswärtsfahrten und Treffen der Mitglieder."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2f","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$1d"}},"a":"$@32","u":"$@33","b":"bSl5jteIbv5S82ChU9m6l","r":"$34"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Events · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch-Partys, Auswärtsfahrten und Treffen der Mitglieder."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2f","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$1d"}},"a":"$@32","u":"$@33","b":"ICwh6BWM6vgLDL-g6Ko_Y","r":"$34"}
 36:I[897367,["$17"],"OutletBoundary"]
 20:["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"55%"}}]
 21:["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"40%"}}]
 22:["$","div",null,{"aria-hidden":true,"className":"skeleton h-9 w-32 rounded-[8px]"}]
 23:["$","div","2",{"className":"flex flex-col gap-4 rounded-[12px] border bg-card/70 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5","children":[["$","div",null,{"className":"flex-1 space-y-2.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-5 w-24 rounded-full"}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"55%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"40%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-9 w-32 rounded-[8px]"}]]}]
-28:["$","$3","c",{"children":[["$","$1f",null,{"fallback":["$","div",null,{"role":"status","aria-busy":"true","aria-label":"Wird geladen…","className":"animate-skeleton-in mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]","children":[["$","div",null,{"className":"space-y-5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-5 w-24 rounded-full"}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-10 w-3/4 rounded-[10px]"}],["$","div",null,{"className":"space-y-2","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"100%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"92%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"60%"}}]]}]]}],["$","div",null,{"className":"space-y-4","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-40 w-full rounded-[14px]"}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-11 w-full rounded-[8px]"}]]}]]}],"children":"$L35"}],[["$","script","script-0",{"src":"/_next/static/chunks/0sq-ww0s5slum.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0cd-0p692_bzx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/32tchlhl58_33.js","async":true}]],["$","$L36",null,{"children":["$","$1f",null,{"name":"Next.MetadataOutlet","children":"$@37"}]}]]}]
+28:["$","$3","c",{"children":[["$","$1f",null,{"fallback":["$","div",null,{"role":"status","aria-busy":"true","aria-label":"Wird geladen…","className":"animate-skeleton-in mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]","children":[["$","div",null,{"className":"space-y-5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-5 w-24 rounded-full"}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-10 w-3/4 rounded-[10px]"}],["$","div",null,{"className":"space-y-2","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"100%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"92%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"60%"}}]]}]]}],["$","div",null,{"className":"space-y-4","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-40 w-full rounded-[14px]"}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-11 w-full rounded-[8px]"}]]}]]}],"children":"$L35"}],[["$","script","script-0",{"src":"/_next/static/chunks/0sq-ww0s5slum.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/32tchlhl58_33.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0cd-0p692_bzx.js","async":true}]],["$","$L36",null,{"children":["$","$1f",null,{"name":"Next.MetadataOutlet","children":"$@37"}]}]]}]
 33:false
 37:null
 32:null

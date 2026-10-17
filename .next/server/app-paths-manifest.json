@@ -83,6 +83,7 @@
   "/api/v1/admin/products/route": "app/api/v1/admin/products/route.js",
   "/api/v1/admin/scan/route": "app/api/v1/admin/scan/route.js",
   "/api/v1/admin/search/route": "app/api/v1/admin/search/route.js",
+  "/api/v1/admin/site-settings/route": "app/api/v1/admin/site-settings/route.js",
   "/api/v1/admin/summary/route": "app/api/v1/admin/summary/route.js",
   "/api/v1/announcements/[id]/route": "app/api/v1/announcements/[id]/route.js",
   "/api/v1/announcements/route": "app/api/v1/announcements/route.js",

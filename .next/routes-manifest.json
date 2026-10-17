@@ -2385,6 +2385,12 @@
       "namedRegex": "^/api/v1/admin/search(?:/)?$"
     },
     {
+      "page": "/api/v1/admin/site-settings",
+      "regex": "^/api/v1/admin/site\\-settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/v1/admin/site\\-settings(?:/)?$"
+    },
+    {
       "page": "/api/v1/admin/summary",
       "regex": "^/api/v1/admin/summary(?:/)?$",
       "routeKeys": {},

@@ -83,6 +83,7 @@
   "/api/v1/admin/products/route": "/api/v1/admin/products",
   "/api/v1/admin/scan/route": "/api/v1/admin/scan",
   "/api/v1/admin/search/route": "/api/v1/admin/search",
+  "/api/v1/admin/site-settings/route": "/api/v1/admin/site-settings",
   "/api/v1/admin/summary/route": "/api/v1/admin/summary",
   "/api/v1/announcements/[id]/route": "/api/v1/announcements/[id]",
   "/api/v1/announcements/route": "/api/v1/announcements",

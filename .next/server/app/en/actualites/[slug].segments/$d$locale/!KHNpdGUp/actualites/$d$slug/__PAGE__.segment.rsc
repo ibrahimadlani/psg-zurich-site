@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
 4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
-5:"/_next/static/chunks/2dc_yxrg-hsid.js"
+5:"/_next/static/chunks/3a0xjyr81xufq.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
@@ -42,7 +42,7 @@ f:I[605500,["$4","$5","$6","$7","$8","$9","$a","$b","$c","$d"],"Image"]
 31:C
 34:X
 34:T6,locale34:C
-0:{"t":{"t":{"s":"","h":57426,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$21",null,{"name":"Next.Metadata","children":"$L2f"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$1a"}},"a":"$@32","u":"$@33","b":"bSl5jteIbv5S82ChU9m6l","r":"$34"}
+0:{"t":{"t":{"s":"","h":57426,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$21",null,{"name":"Next.Metadata","children":"$L2f"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$1a"}},"a":"$@32","u":"$@33","b":"ICwh6BWM6vgLDL-g6Ko_Y","r":"$34"}
 35:I[897367,["$14"],"OutletBoundary"]
 22:["$","div",null,{"className":"space-y-2.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"100%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"75%"}}]]}]
 23:["$","div",null,{"className":"flex items-center gap-2.5 border-t pt-5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-8 rounded-full"}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"8rem"}}]]}]

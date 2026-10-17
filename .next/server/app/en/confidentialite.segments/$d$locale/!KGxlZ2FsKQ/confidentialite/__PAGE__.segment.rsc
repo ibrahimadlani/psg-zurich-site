@@ -1,6 +1,6 @@
 3:"$Sreact.fragment"
 4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
-5:"/_next/static/chunks/2dc_yxrg-hsid.js"
+5:"/_next/static/chunks/3a0xjyr81xufq.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
@@ -39,7 +39,7 @@ f:I[371371,["$4","$5","$6","$7","$8","$9","$a","$b"],"LocaleSwitcher"]
 29:C
 2c:X
 2c:T6,locale2c:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Privacy · PSG Zurich"}],["$","meta","1",{"name":"description","content":"What data we collect, why, who can access it, how long we keep it and how to exercise your rights, under the Swiss Federal Act on Data Protection (FADP)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L27","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@28","v":"$29","s":"$17"}},"a":"$@2a","u":"$@2b","b":"bSl5jteIbv5S82ChU9m6l","r":"$2c"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L23",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L25",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$26",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Privacy · PSG Zurich"}],["$","meta","1",{"name":"description","content":"What data we collect, why, who can access it, how long we keep it and how to exercise your rights, under the Swiss Federal Act on Data Protection (FADP)."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L27","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@28","v":"$29","s":"$17"}},"a":"$@2a","u":"$@2b","b":"ICwh6BWM6vgLDL-g6Ko_Y","r":"$2c"}
 2f:I[897367,["$11"],"OutletBoundary"]
 1c:["$","p",null,{"className":"max-w-[60ch] text-[16px] leading-relaxed text-pretty text-muted-foreground","children":"What data we collect, why, who can access it, how long we keep it and how to exercise your rights, under the Swiss Federal Act on Data Protection (FADP)."}]
 1d:["$","p",null,{"className":"text-[13px] text-muted-foreground","children":"Updated October 17, 2026"}]
