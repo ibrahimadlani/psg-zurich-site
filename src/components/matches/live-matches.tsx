@@ -33,7 +33,7 @@ export function LiveMatches({ initial }: { initial: MatchView[] }) {
   return (
     <div className="space-y-4">
       {matches.map((match) => (
-        <Link key={match.id} href={`/matchs/${match.id}`} className="block transition-opacity hover:opacity-90">
+        <Link key={match.id} href={`/matches/${match.id}`} className="block transition-opacity hover:opacity-90">
           <Scoreboard match={match} />
         </Link>
       ))}

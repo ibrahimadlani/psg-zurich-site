@@ -17,11 +17,11 @@ const KINDS = [
 ] as const;
 
 /**
- * /evenements for everyone who isn't an accepted member: what the club does, illustrated,
+ * /events for everyone who isn't an accepted member: what the club does, illustrated,
  * then a locked sample event with the way in. The programme itself is for members whose fee is paid.
  */
 /** `next`: the event a visitor tried to open, to come back to once signed in. */
-export function EventsShowcase({ access, next = "/evenements" }: { access: Exclude<EventAccess, "full">; next?: string }) {
+export function EventsShowcase({ access, next = "/events" }: { access: Exclude<EventAccess, "full">; next?: string }) {
   const t = useTranslations("EventsShowcase");
   const types = useTranslations("Events.types");
 

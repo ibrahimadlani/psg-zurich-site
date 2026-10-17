@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 
 const TABS = [
   { key: "overview", href: "/admin/finances" },
-  { key: "payments", href: "/admin/finances/paiements" },
-  { key: "orders", href: "/admin/finances/commandes" },
-  { key: "shop", href: "/admin/finances/boutique" },
-  { key: "payouts", href: "/admin/finances/versements" },
-  { key: "settings", href: "/admin/finances/reglages" },
+  { key: "payments", href: "/admin/finances/payments" },
+  { key: "orders", href: "/admin/finances/orders" },
+  { key: "shop", href: "/admin/finances/shop" },
+  { key: "payouts", href: "/admin/finances/payouts" },
+  { key: "settings", href: "/admin/finances/settings" },
 ] as const;
 
 /** The parts of Finances, as chips that scroll sideways on a phone. */

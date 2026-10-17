@@ -19,12 +19,12 @@ export function EventListLink({
   className?: string;
   children: React.ReactNode;
 }) {
-  // The [id] segment under /evenements: the open event, or null on the list page.
+  // The [id] segment under /events: the open event, or null on the list page.
   const segment = useSelectedLayoutSegment();
   const selected = segment === id;
   return (
     <Link
-      href={`/evenements/${id}`}
+      href={`/events/${id}`}
       aria-current={selected ? "page" : undefined}
       data-selected={selected || undefined}
       data-default={(segment === null && isDefault) || undefined}

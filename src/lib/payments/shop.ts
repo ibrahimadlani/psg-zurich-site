@@ -71,7 +71,18 @@ export async function shopProduct(slug: string, locale: Locale) {
 
 export async function getShopSettings() {
   const [row] = await db.select().from(shopSettings).where(eq(shopSettings.id, 1));
-  return row ?? { id: 1, shippingFee: 900, shippingEnabled: true, updatedAt: new Date() };
+  return row ?? { id: 1, shippingFee: 900, shippingEnabled: true, shopEnabled: true, updatedAt: new Date() };
+}
+
+export async function activeProductCount() {
+  const [row] = await db.select({ value: sql<number>`count(*)` }).from(products).where(eq(products.active, true));
+  return Number(row?.value ?? 0);
+}
+
+/** The shop shows (menu, pages, checkout) when the committee opened it and something is on sale. */
+export async function shopIsOpen() {
+  const [settings, count] = await Promise.all([getShopSettings(), activeProductCount()]);
+  return settings.shopEnabled && count > 0;
 }
 
 export type CartLine = { variantId: string; quantity: number };

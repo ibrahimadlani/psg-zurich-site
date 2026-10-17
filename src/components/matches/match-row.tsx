@@ -71,7 +71,7 @@ export function MatchRow({
 
   return (
     <Link
-      href={`/matchs/${match.id}`}
+      href={`/matches/${match.id}`}
       className="group grid grid-cols-[4.5rem_1fr_auto] items-center gap-3 rounded-[10px] border bg-card/60 p-3 transition-colors hover:border-foreground/30 sm:grid-cols-[6rem_1fr_auto] sm:gap-5 sm:p-4"
     >
       <span className="flex flex-col text-xs leading-tight">

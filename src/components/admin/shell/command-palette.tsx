@@ -86,7 +86,7 @@ export function CommandPalette({ sections }: { sections: AdminSection[] }) {
       for (const member of found.members) {
         list.push({
           key: `m-${member.id}`,
-          href: `/admin/membres/${member.id}`,
+          href: `/admin/members/${member.id}`,
           group: t("sections.members"),
           label: member.name || member.email,
           hint: member.memberNumber ?? member.email,
@@ -96,7 +96,7 @@ export function CommandPalette({ sections }: { sections: AdminSection[] }) {
       for (const event of found.events) {
         list.push({
           key: `e-${event.id}`,
-          href: `/admin/evenements/${event.id}`,
+          href: `/admin/events/${event.id}`,
           group: t("sections.events"),
           label: event.title,
           hint: format.dateTime(new Date(event.startsAt), { day: "numeric", month: "short", year: "numeric" }),
@@ -104,13 +104,13 @@ export function CommandPalette({ sections }: { sections: AdminSection[] }) {
         });
       }
       for (const payment of found.payments ?? []) {
-        list.push({ key: `p-${payment.id}`, href: `/admin/finances/paiements/${payment.id}`, group: t("palette.payments"), label: payment.name, hint: `${payment.reference} · ${payment.amount}`, icon: <Receipt className="size-4" aria-hidden /> });
+        list.push({ key: `p-${payment.id}`, href: `/admin/finances/payments/${payment.id}`, group: t("palette.payments"), label: payment.name, hint: `${payment.reference} · ${payment.amount}`, icon: <Receipt className="size-4" aria-hidden /> });
       }
       for (const message of found.messages ?? []) {
         list.push({ key: `c-${message.id}`, href: `/admin/messages/${message.id}`, group: t("palette.messages"), label: message.name, hint: message.reference, icon: <Inbox className="size-4" aria-hidden /> });
       }
       for (const post of found.posts) {
-        list.push({ key: `p-${post.id}`, href: `/admin/actualites/${post.id}`, group: t("sections.news"), label: post.title, hint: post.locale.toUpperCase(), icon: <Newspaper className="size-4" aria-hidden /> });
+        list.push({ key: `p-${post.id}`, href: `/admin/news/${post.id}`, group: t("sections.news"), label: post.title, hint: post.locale.toUpperCase(), icon: <Newspaper className="size-4" aria-hidden /> });
       }
     }
     return list;

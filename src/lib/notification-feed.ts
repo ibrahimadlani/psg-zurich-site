@@ -160,14 +160,14 @@ export async function getNotifications(userId: string, locale: Locale, { history
         id: `article:${post.id}`,
         kind: "article" as const,
         at: post.publishedAt!.toISOString(),
-        href: `/actualites/${post.slug}`,
+        href: `/news/${post.slug}`,
         title: post.title,
       })),
     ...newEvents.map((event) => ({
       id: `event:${event.id}`,
       kind: "event" as const,
       at: event.createdAt.toISOString(),
-      href: `/evenements/${event.id}`,
+      href: `/events/${event.id}`,
       title: event.title,
     })),
     ...nextMatches
@@ -181,7 +181,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
             since.getTime(),
           ),
         ).toISOString(),
-        href: `/matchs/${match.id}`,
+        href: `/matches/${match.id}`,
         opponent: match.opponent,
       })),
     ...scored.map((match) => ({
@@ -190,7 +190,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
       at: new Date(
         Math.min(match.kickoffAt.getTime() + MATCH_LENGTH, now.getTime()),
       ).toISOString(),
-      href: `/matchs/${match.id}`,
+      href: `/matches/${match.id}`,
       opponent: match.opponent,
       points: match.points ?? 0,
     })),
@@ -209,7 +209,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
       id: `contact-reply:${reply.id}`,
       kind: "contactReply",
       at: reply.createdAt.toISOString(),
-      href: `/espace-membre/messages/${reply.threadId}`,
+      href: `/member/messages/${reply.threadId}`,
       reference: formatReference(reply.reference),
     });
   }
@@ -221,7 +221,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
         id: "membership",
         kind: "membership",
         at: joined.toISOString(),
-        href: "/espace-membre",
+        href: "/member",
       });
     }
   }

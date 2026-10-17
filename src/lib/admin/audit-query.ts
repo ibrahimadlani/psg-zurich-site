@@ -13,18 +13,18 @@ export const AUDIT_PAGE = 50;
 /** Where an entry leads in the admin. */
 function entityHref(type: string, id: string | null) {
   if (!id) return null;
-  if (type === "member") return `/admin/membres/${id}`;
-  if (type === "event") return `/admin/evenements/${id}`;
-  if (type === "post") return `/admin/actualites/${id}`;
-  if (type === "match") return "/admin/matchs";
-  if (type === "poll") return "/admin/sondages";
+  if (type === "member") return `/admin/members/${id}`;
+  if (type === "event") return `/admin/events/${id}`;
+  if (type === "post") return `/admin/news/${id}`;
+  if (type === "match") return "/admin/matches";
+  if (type === "poll") return "/admin/polls";
   if (type === "document") return "/admin/documents";
-  if (type === "announcement") return "/admin/banniere";
-  if (type === "email_campaign") return `/admin/mailing/campagnes/${id}`;
+  if (type === "announcement") return "/admin/banner";
+  if (type === "email_campaign") return `/admin/mailing/campaigns/${id}`;
   if (type === "contact") return `/admin/messages/${id}`;
-  if (type === "payment") return `/admin/finances/paiements/${id}`;
-  if (type === "product") return "/admin/finances/boutique";
-  if (type === "payout") return "/admin/finances/versements";
+  if (type === "payment") return `/admin/finances/payments/${id}`;
+  if (type === "product") return "/admin/finances/shop";
+  if (type === "payout") return "/admin/finances/payouts";
   return null;
 }
 

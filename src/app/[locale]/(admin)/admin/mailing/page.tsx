@@ -59,7 +59,7 @@ async function Automations() {
                     <div className="flex flex-wrap items-center gap-3">
                       <AutomationControls automationKey={item.key} enabled={item.enabled} delayMinutes={item.delayMinutes} />
                       <Link
-                        href={`/admin/mailing/automatisations/${item.key}`}
+                        href={`/admin/mailing/automations/${item.key}`}
                         className="inline-flex items-center gap-1 text-sm font-medium hover:underline"
                       >
                         {t("editTexts")}
@@ -87,7 +87,7 @@ async function Campaigns() {
         <ul className={cn(card, "divide-y")}>
           {list.map((campaign) => (
             <li key={campaign.id}>
-              <Link href={`/admin/mailing/campagnes/${campaign.id}`} className="flex items-center gap-3 p-4 hover:bg-foreground/[0.03]">
+              <Link href={`/admin/mailing/campaigns/${campaign.id}`} className="flex items-center gap-3 p-4 hover:bg-foreground/[0.03]">
                 <div className="min-w-0 flex-1">
                   <p className="truncate font-semibold">{campaign.name}</p>
                   <p className="text-sm text-muted-foreground">

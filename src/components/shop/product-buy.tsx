@@ -12,9 +12,12 @@ import { cn } from "@/lib/utils";
 type Size = { id: string; label: string; available: number };
 
 const primary =
-  "inline-flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-[10px] bg-segment px-6 font-wide text-[12px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand [transition:opacity_.2s,transform_.15s] hover:opacity-90 active:scale-[0.98] disabled:cursor-default disabled:opacity-40";
+  "inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-[10px] bg-segment px-6 font-wide text-[12px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand [transition:opacity_.2s,transform_.15s] hover:opacity-90 active:scale-[0.98] disabled:cursor-default disabled:opacity-40";
 const secondary =
-  "inline-flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-[10px] border bg-card px-6 font-wide text-[12px] font-semibold tracking-[0.06em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98] disabled:cursor-default disabled:opacity-40";
+  "inline-flex h-12 min-w-0 flex-1 cursor-pointer items-center justify-center gap-2 rounded-[10px] border bg-card px-4 font-wide text-[12px] font-semibold tracking-[0.06em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98] disabled:cursor-default disabled:opacity-40";
+
+const stepper =
+  "grid size-10 cursor-pointer place-items-center rounded-[7px] text-muted-foreground transition-[background-color,color,transform] hover:bg-foreground/5 hover:text-foreground active:scale-[0.92] disabled:cursor-default disabled:opacity-35 disabled:hover:bg-transparent";
 
 const single = (label: string) => /^(unique|one size|einheitsgrösse|-)$/i.test(label);
 
@@ -55,7 +58,7 @@ export function ProductBuy({
       return;
     }
     cart.add({ variantId: chosen.id, slug: product.slug, name: product.name, size: onlyOne ? "" : chosen.label, price: product.price, image: product.image, max: chosen.available }, quantity);
-    if (then === "checkout") router.push("/commande");
+    if (then === "checkout") router.push("/checkout");
     else openCart(chosen.id);
   }
 
@@ -100,31 +103,32 @@ export function ProductBuy({
         </fieldset>
       )}
 
-      <div className="flex items-center justify-between gap-3">
-        <div className="inline-flex items-center rounded-full border">
-          <button type="button" aria-label={t("less")} disabled={quantity <= 1} onClick={() => setQuantity((value) => Math.max(1, value - 1))} className="grid size-11 cursor-pointer place-items-center disabled:opacity-40">
-            <Minus className="size-4" aria-hidden />
-          </button>
-          <span className="w-7 text-center text-[16px] tabular-nums" aria-live="polite">
-            {quantity}
-          </span>
-          <button type="button" aria-label={t("more")} disabled={quantity >= max} onClick={() => setQuantity((value) => Math.min(max, value + 1))} className="grid size-11 cursor-pointer place-items-center disabled:opacity-40">
-            <Plus className="size-4" aria-hidden />
+      {stock ? (
+        <p className={cn("-mt-1 flex items-center gap-1.5 text-[13px]", chosen && chosen.available <= 3 ? "text-psg-red" : "text-muted-foreground")}>
+          <span aria-hidden className={cn("size-1.5 rounded-full", chosen && chosen.available <= 3 ? "bg-psg-red" : "bg-ok")} />
+          {stock}
+        </p>
+      ) : null}
+
+      {/* Quantity next to "Add to bag", same height and corners; "Buy now" on its own line below. */}
+      <div ref={buttons} className="flex flex-col gap-2">
+        <div className="flex gap-2">
+          <div role="group" aria-label={t("quantity")} className="inline-flex h-12 shrink-0 items-center rounded-[10px] border bg-card p-1">
+            <button type="button" aria-label={t("less")} disabled={quantity <= 1} onClick={() => setQuantity((value) => Math.max(1, value - 1))} className={stepper}>
+              <Minus className="size-3.5" aria-hidden />
+            </button>
+            <span className="w-8 text-center text-[15px] font-semibold tabular-nums" aria-live="polite">
+              {quantity}
+            </span>
+            <button type="button" aria-label={t("more")} disabled={quantity >= max} onClick={() => setQuantity((value) => Math.min(max, value + 1))} className={stepper}>
+              <Plus className="size-3.5" aria-hidden />
+            </button>
+          </div>
+          <button type="button" onClick={() => add("bag")} className={secondary}>
+            {t("addToBag")}
           </button>
         </div>
-        {stock ? (
-          <p className={cn("flex items-center gap-1.5 text-[13px]", chosen && chosen.available <= 3 ? "text-psg-red" : "text-muted-foreground")}>
-            <span aria-hidden className={cn("size-1.5 rounded-full", chosen && chosen.available <= 3 ? "bg-psg-red" : "bg-ok")} />
-            {stock}
-          </p>
-        ) : null}
-      </div>
-
-      <div ref={buttons} className="flex flex-col gap-2 sm:flex-row">
-        <button type="button" onClick={() => add("bag")} className={secondary}>
-          {t("addToBag")}
-        </button>
-        <button type="button" onClick={() => add("checkout")} className={primary}>
+        <button type="button" onClick={() => add("checkout")} className={cn(primary, "w-full")}>
           {t("buyNow")}
         </button>
       </div>

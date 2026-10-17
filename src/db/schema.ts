@@ -215,7 +215,7 @@ export const members = mysqlTable(
 /* -------------------------------------------------------------------------- */
 
 export const POST_STATUSES = ["draft", "published"] as const;
-/** Fixed news categories (tabs of /actualites). Order = MySQL enum order: append only. */
+/** Fixed news categories (tabs of /news). Order = MySQL enum order: append only. */
 export const POST_CATEGORIES = ["club", "trips", "events"] as const;
 export type PostCategory = (typeof POST_CATEGORIES)[number];
 
@@ -1079,6 +1079,8 @@ export const shopSettings = mysqlTable("shop_settings", {
   /** Flat postage within Switzerland, in centimes. */
   shippingFee: int("shipping_fee").default(900).notNull(),
   shippingEnabled: boolean("shipping_enabled").default(true).notNull(),
+  /** The shop is open to members (still hidden while it has no product on sale). */
+  shopEnabled: boolean("shop_enabled").default(true).notNull(),
   updatedAt: updatedAt(),
 });
 

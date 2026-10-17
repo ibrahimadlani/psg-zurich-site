@@ -508,7 +508,7 @@ export function ContactComposer({
           <p className="text-[12px] leading-relaxed text-muted-foreground">
             {t.rich("form.privacy", {
               link: (chunks) => (
-                <Link href="/confidentialite" className="underline underline-offset-2 hover:text-foreground">
+                <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground">
                   {chunks}
                 </Link>
               ),
@@ -550,13 +550,13 @@ type Help = { text: Parameters<ReturnType<typeof useTranslations<"Contact">>>[0]
 function helpFor(topic: ContactTopic, view: "visitor" | "member"): Help {
   switch (topic) {
     case "join":
-      return { text: "help.join", cta: { href: "/adhesion", label: "help.joinCta" } };
+      return { text: "help.join", cta: { href: "/join", label: "help.joinCta" } };
     case "events":
-      return view === "member" ? { text: "help.eventsMember", cta: { href: "/evenements", label: "help.eventsMemberCta" } } : { text: "help.eventsVisitor" };
+      return view === "member" ? { text: "help.eventsMember", cta: { href: "/events", label: "help.eventsMemberCta" } } : { text: "help.eventsVisitor" };
     case "fees":
-      return { text: "help.fees", cta: { href: "/cotisation", label: "help.feesCta" } };
+      return { text: "help.fees", cta: { href: "/dues", label: "help.feesCta" } };
     case "account":
-      return view === "member" ? { text: "help.account", cta: { href: "/parametres/confidentialite", label: "help.accountCta" } } : { text: "help.accountVisitor" };
+      return view === "member" ? { text: "help.account", cta: { href: "/settings/privacy", label: "help.accountCta" } } : { text: "help.accountVisitor" };
     case "website":
       return { text: "help.website" };
     case "partnership":

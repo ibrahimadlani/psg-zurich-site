@@ -105,7 +105,7 @@ export async function PredictionCardBody({
       <LockedCard
         access={access === "guest" ? "guest" : "pending"}
         feature="predictions"
-        next={`/matchs/${match.id}`}
+        next={`/matches/${match.id}`}
         preview={<PredictionPreview opponent={match.opponent} opponentLogo={match.opponentLogo} psgHome={match.venue !== "away"} />}
       />
     );

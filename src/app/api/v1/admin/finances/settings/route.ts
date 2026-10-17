@@ -15,6 +15,7 @@ export const PUT = apiHandler(async (request) => {
     z.object({
       rates: z.object({ season: z.string().regex(/^\d{4}\/\d{2}$/), adult: centimes, junior: centimes }).optional(),
       shipping: z.object({ fee: centimes, enabled: z.boolean() }).optional(),
+      shop: z.object({ enabled: z.boolean() }).optional(),
     }),
   );
   const ipAddress = getClientIp(request.headers);
@@ -32,6 +33,10 @@ export const PUT = apiHandler(async (request) => {
       .values({ id: 1, shippingFee: input.shipping.fee, shippingEnabled: input.shipping.enabled })
       .onDuplicateKeyUpdate({ set: { shippingFee: input.shipping.fee, shippingEnabled: input.shipping.enabled } });
     await writeAuditLog({ actorId: session.user.id, action: "payment.shipping", entityType: "shop_settings", entityId: null, metadata: input.shipping, ipAddress });
+  }
+  if (input.shop) {
+    await db.insert(shopSettings).values({ id: 1, shopEnabled: input.shop.enabled }).onDuplicateKeyUpdate({ set: { shopEnabled: input.shop.enabled } });
+    await writeAuditLog({ actorId: session.user.id, action: "payment.shop_open", entityType: "shop_settings", entityId: null, metadata: input.shop, ipAddress });
   }
   return ok({ saved: true });
 });

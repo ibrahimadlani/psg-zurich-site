@@ -54,7 +54,7 @@ export function NewCampaignButton({
           const response = await send("/api/v1/mailing/campaigns", "POST", { name: name || defaultName, audience, audienceEventId: eventId });
           if (!response.ok) return void toast.error(t("error"));
           const { data } = (await response.json()) as { data: { id: string } };
-          router.push(`/admin/mailing/campagnes/${data.id}`);
+          router.push(`/admin/mailing/campaigns/${data.id}`);
         });
       }}
     >

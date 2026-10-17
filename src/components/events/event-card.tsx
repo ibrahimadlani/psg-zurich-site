@@ -27,7 +27,7 @@ export function EventCard({
           <Badge variant="secondary">{t(`types.${event.type}`)}</Badge>
         </div>
         <h3 className="text-base font-semibold">
-          <Link href={`/evenements/${event.id}`} className="underline-offset-2 hover:underline">
+          <Link href={`/events/${event.id}`} className="underline-offset-2 hover:underline">
             {event.title}
           </Link>
         </h3>
@@ -42,7 +42,7 @@ export function EventCard({
         ) : null}
         {event.description ? <p className="text-sm whitespace-pre-line">{event.description}</p> : null}
         {showMatch && event.match ? (
-          <Link href={`/matchs/${event.match.id}`} className="inline-block text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground">
+          <Link href={`/matches/${event.match.id}`} className="inline-block text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground">
             {t("linkedMatch", { opponent: event.match.opponent })}
           </Link>
         ) : null}

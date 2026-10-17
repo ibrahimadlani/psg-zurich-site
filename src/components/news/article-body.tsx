@@ -20,7 +20,7 @@ function EventTeaser({ type }: { type: (typeof EVENT_TYPES)[number] }) {
   const t = useTranslations("Events");
   return (
     <Link
-      href="/evenements"
+      href="/events"
       className="group flex items-center gap-3 rounded-[12px] border bg-card/70 p-4 text-sm transition-colors hover:border-foreground/25"
     >
       <span className="grid size-9 shrink-0 place-items-center rounded-full bg-foreground/5 text-muted-foreground">

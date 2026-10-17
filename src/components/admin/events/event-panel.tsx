@@ -40,7 +40,7 @@ export function EventPanel({
           matchOptions={matchOptions}
           onDone={(id) => {
             onOpenChange(false);
-            if (!eventId && id) router.push(`/admin/evenements/${id}`);
+            if (!eventId && id) router.push(`/admin/events/${id}`);
           }}
         />
       ) : null}

@@ -40,7 +40,7 @@ export function ForgotPasswordPanel() {
   async function onSubmit({ email }: Values) {
     const { error } = await requestPasswordReset({
       email,
-      redirectTo: withReturn(`/${locale}/connexion/nouveau-mot-de-passe`, next),
+      redirectTo: withReturn(`/${locale}/login/reset-password`, next),
     });
     if (error) {
       toast.error(tLogin("error"));

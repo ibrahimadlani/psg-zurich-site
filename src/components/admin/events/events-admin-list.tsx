@@ -46,7 +46,7 @@ function EventRowLink({ row }: { row: AdminEventRow }) {
   const selected = segment === row.id;
   return (
     <Link
-      href={`/admin/evenements/${row.id}`}
+      href={`/admin/events/${row.id}`}
       prefetch={false}
       aria-current={selected ? "page" : undefined}
       className="group relative flex items-center gap-3.5 rounded-[12px] border bg-card/70 p-3.5 transition-[border-color,background-color,transform] hover:border-foreground/30 active:scale-[0.99] aria-[current=page]:border-foreground/40 aria-[current=page]:bg-card"
@@ -70,7 +70,7 @@ function EventRowLink({ row }: { row: AdminEventRow }) {
   );
 }
 
-/** Left column of /admin/evenements: what is coming (soonest first) or what happened (latest first). */
+/** Left column of /admin/events: what is coming (soonest first) or what happened (latest first). */
 export function EventsAdminList({ rows }: { rows: AdminEventRow[] }) {
   const t = useTranslations("AdminEvents");
   const now = useNow({ updateInterval: 60_000 });

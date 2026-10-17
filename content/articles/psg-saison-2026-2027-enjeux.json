@@ -22,7 +22,7 @@
         { "type": "callout", "tone": "info", "text": "**L'homme en forme : Ferran Torres.** Il a déjà marqué sept buts, quatre en Ligue 1 et un triplé contre le Slovan Bratislava en Ligue des champions. C'est le meilleur départ parmi les recrues." },
         { "type": "heading", "text": "Ligue 1 : un départ poussif, puis la réaction" },
         { "type": "paragraph", "text": "Les premières semaines ont rappelé que le titre ne se gagne pas sur le nom. Après le Trophée des champions perdu contre Lens (0-1) et une Supercoupe d'Europe gagnée contre Aston Villa (2-1), Paris a concédé deux nuls (2-2 à Rennes puis à Lille) avant de tomber au Parc contre Monaco (1-2). Le PSG a ensuite enchaîné trois victoires : à Brest (1-0), au Vélodrome contre Marseille (2-1), puis contre Le Mans (3-1)." },
-        { "type": "paragraph", "text": "Après six journées, Paris est **6e avec 11 points**, à trois longueurs de Monaco, leader. Rien d'alarmant à ce stade de la saison, mais l'écart ne pardonnera plus en cas de nouveau faux pas. Le [classement de Ligue 1 est à suivre en direct sur le site](/fr/matchs)." },
+        { "type": "paragraph", "text": "Après six journées, Paris est **6e avec 11 points**, à trois longueurs de Monaco, leader. Rien d'alarmant à ce stade de la saison, mais l'écart ne pardonnera plus en cas de nouveau faux pas. Le [classement de Ligue 1 est à suivre en direct sur le site](/fr/matches)." },
         { "type": "heading", "text": "Ligue des champions : un calendrier piégé" },
         { "type": "paragraph", "text": "La phase de ligue a bien commencé, avec un 6-1 contre le Slovan Bratislava le 9 septembre (doublé de Dembélé, triplé de Ferran Torres). Le tirage n'a cependant pas épargné le double tenant du titre : Barcelone, Manchester City, la Roma et Aston Villa figurent parmi ses adversaires. Seuls les **huit premiers** du classement à 36 équipes se qualifient directement pour les huitièmes de finale, et les équipes classées de la 9e à la 24e place passent par des barrages. Les sept matchs restants :" },
         { "type": "list", "ordered": false, "items": [
@@ -52,7 +52,7 @@
         ] },
         { "type": "paragraph", "text": "Les dates de Ligue 1 peuvent encore bouger : la Ligue fixe les jours et horaires définitifs quelques semaines à l'avance, en fonction des matchs européens." },
         { "type": "heading", "text": "Vivre la saison depuis Zurich" },
-        { "type": "paragraph", "text": "Le [calendrier des matchs](/fr/matchs) du site est mis à jour automatiquement, avec les scores en direct et les classements de Ligue 1 et de Ligue des champions. Les membres du club peuvent aussi pronostiquer chaque match et se retrouver aux watch parties annoncées dans l'[agenda](/fr/evenements). Pour en faire partie : [adhérer au PSG Zurich Supporters Club](/fr/adhesion)." },
+        { "type": "paragraph", "text": "Le [calendrier des matchs](/fr/matches) du site est mis à jour automatiquement, avec les scores en direct et les classements de Ligue 1 et de Ligue des champions. Les membres du club peuvent aussi pronostiquer chaque match et se retrouver aux watch parties annoncées dans l'[agenda](/fr/events). Pour en faire partie : [adhérer au PSG Zurich Supporters Club](/fr/join)." },
         { "type": "callout", "tone": "info", "text": "Résultats et classement arrêtés au 13 octobre 2026, à la veille de Manchester City – PSG." }
       ]
     },
@@ -77,7 +77,7 @@
         { "type": "callout", "tone": "info", "text": "**Der Mann der Stunde: Ferran Torres.** Bereits sieben Tore, vier in der Ligue 1 und ein Hattrick gegen Slovan Bratislava in der Champions League. Kein anderer Neuzugang ist so gut gestartet." },
         { "type": "heading", "text": "Ligue 1: harziger Start, dann die Reaktion" },
         { "type": "paragraph", "text": "Die ersten Wochen zeigten, dass der Titel kein Selbstläufer ist. Nach der Niederlage in der Trophée des Champions gegen Lens (0:1) und dem Sieg im UEFA-Supercup gegen Aston Villa (2:1) spielte Paris zweimal 2:2, in Rennes und in Lille, und verlor dann zu Hause gegen Monaco (1:2). Danach folgten drei Siege: in Brest (1:0), im Vélodrome gegen Marseille (2:1) und gegen Le Mans (3:1)." },
-        { "type": "paragraph", "text": "Nach sechs Runden liegt PSG mit **11 Punkten auf Rang 6**, drei Zähler hinter Leader Monaco. Noch kein Grund zur Sorge, aber viel Spielraum für weitere Ausrutscher bleibt nicht. Die [Ligue-1-Tabelle gibt es live auf unserer Website](/de/matchs)." },
+        { "type": "paragraph", "text": "Nach sechs Runden liegt PSG mit **11 Punkten auf Rang 6**, drei Zähler hinter Leader Monaco. Noch kein Grund zur Sorge, aber viel Spielraum für weitere Ausrutscher bleibt nicht. Die [Ligue-1-Tabelle gibt es live auf unserer Website](/de/matches)." },
         { "type": "heading", "text": "Champions League: ein tückisches Programm" },
         { "type": "paragraph", "text": "Die Ligaphase begann mit einem 6:1 gegen Slovan Bratislava am 9. September (Doppelpack Dembélé, Hattrick Ferran Torres). Die Auslosung hat den Titelverteidiger aber nicht geschont: Barcelona, Manchester City, die Roma und Aston Villa stehen auf dem Programm. Nur die **ersten acht** der 36er-Tabelle ziehen direkt in die Achtelfinals ein, die Teams auf den Plätzen 9 bis 24 müssen in die Playoffs. Die restlichen sieben Spiele:" },
         { "type": "list", "ordered": false, "items": [
@@ -107,7 +107,7 @@
         ] },
         { "type": "paragraph", "text": "Die Ligue-1-Termine können sich noch verschieben: Die Liga legt Tage und Anstosszeiten einige Wochen im Voraus fest, abhängig von den Europacup-Spielen." },
         { "type": "heading", "text": "Die Saison in Zürich erleben" },
-        { "type": "paragraph", "text": "Der [Spielplan](/de/matchs) auf unserer Website wird automatisch aktualisiert, mit Liveresultaten und den Tabellen der Ligue 1 und der Champions League. Mitglieder können zudem jedes Spiel tippen und sich an den Watch-Partys treffen, die in der [Agenda](/de/evenements) angekündigt werden. Dabei sein: [Mitglied im PSG Zurich Supporters Club werden](/de/adhesion)." },
+        { "type": "paragraph", "text": "Der [Spielplan](/de/matches) auf unserer Website wird automatisch aktualisiert, mit Liveresultaten und den Tabellen der Ligue 1 und der Champions League. Mitglieder können zudem jedes Spiel tippen und sich an den Watch-Partys treffen, die in der [Agenda](/de/events) angekündigt werden. Dabei sein: [Mitglied im PSG Zurich Supporters Club werden](/de/join)." },
         { "type": "callout", "tone": "info", "text": "Resultate und Tabelle: Stand 13. Oktober 2026, am Vorabend von Manchester City – PSG." }
       ]
     },
@@ -132,7 +132,7 @@
         { "type": "callout", "tone": "info", "text": "**Man in form: Ferran Torres.** Seven goals already, four in Ligue 1 and a hat-trick against Slovan Bratislava in the Champions League. No other new signing has started better." },
         { "type": "heading", "text": "Ligue 1: a sluggish start, then a response" },
         { "type": "paragraph", "text": "The opening weeks were a reminder that titles are not won on reputation. After losing the Trophée des Champions to Lens (0-1) and winning the UEFA Super Cup against Aston Villa (2-1), Paris drew 2-2 at Rennes and again at Lille, then lost at home to Monaco (1-2). Three wins followed: at Brest (1-0), against Marseille at the Vélodrome (2-1) and against Le Mans (3-1)." },
-        { "type": "paragraph", "text": "After six rounds PSG are **6th on 11 points**, three behind leaders Monaco. No cause for alarm yet, but there is little room left for further slips. You can follow the [live Ligue 1 table on our site](/en/matchs)." },
+        { "type": "paragraph", "text": "After six rounds PSG are **6th on 11 points**, three behind leaders Monaco. No cause for alarm yet, but there is little room left for further slips. You can follow the [live Ligue 1 table on our site](/en/matches)." },
         { "type": "heading", "text": "Champions League: a tricky draw" },
         { "type": "paragraph", "text": "The league phase began with a 6-1 win over Slovan Bratislava on 9 September (a Dembélé double and a Ferran Torres hat-trick). The draw was not kind to the holders, though: Barcelona, Manchester City, Roma and Aston Villa are all on the list. Only the **top eight** in the 36-team table go straight into the round of 16, while teams from 9th to 24th go into the play-offs. The remaining seven games:" },
         { "type": "list", "ordered": false, "items": [
@@ -162,7 +162,7 @@
         ] },
         { "type": "paragraph", "text": "Ligue 1 dates can still move: the league sets final days and kick-off times a few weeks ahead, around the European fixtures." },
         { "type": "heading", "text": "Following the season from Zurich" },
-        { "type": "paragraph", "text": "The [fixture list](/en/matchs) on our site updates automatically, with live scores and the Ligue 1 and Champions League tables. Members can also predict every match and meet up at the watch parties announced in the [events calendar](/en/evenements). To be part of it, [join PSG Zurich Supporters Club](/en/adhesion)." },
+        { "type": "paragraph", "text": "The [fixture list](/en/matches) on our site updates automatically, with live scores and the Ligue 1 and Champions League tables. Members can also predict every match and meet up at the watch parties announced in the [events calendar](/en/events). To be part of it, [join PSG Zurich Supporters Club](/en/join)." },
         { "type": "callout", "tone": "info", "text": "Results and table as of 13 October 2026, on the eve of Manchester City v PSG." }
       ]
     }

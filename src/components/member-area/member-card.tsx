@@ -118,7 +118,7 @@ export async function MemberCard({ member, name }: { member: Member | null; name
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-[12px] border border-psg-red/30 bg-psg-red/5 p-3.5">
             <p className="text-sm">{t("membership.feeDue")}</p>
             <Link
-              href="/cotisation"
+              href="/dues"
               prefetch={false}
               className="inline-flex h-9 items-center rounded-[8px] bg-segment px-4 font-wide text-[11px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90"
             >

@@ -209,7 +209,7 @@ export function NotificationBell() {
         )}
         <DropdownMenuSeparator className="my-0" />
         <DropdownMenuItem asChild className="justify-center rounded-none px-4 py-2.5 text-[12px] text-muted-foreground">
-          <Link href="/parametres/notifications" prefetch={false}>
+          <Link href="/settings/notifications" prefetch={false}>
             {t("manage")}
           </Link>
         </DropdownMenuItem>

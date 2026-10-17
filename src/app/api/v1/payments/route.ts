@@ -5,6 +5,7 @@ import { getProxiedClientIp } from "@/lib/audit";
 import { getCurrentMember, requireActiveMember } from "@/lib/members";
 import { createPayment } from "@/lib/payments/checkout";
 import { DONATION_MAX, DONATION_MIN } from "@/lib/payments/config";
+import { shopIsOpen } from "@/lib/payments/shop";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { getSession, HttpError } from "@/lib/permissions";
 import { rateLimit } from "@/lib/rate-limit";
@@ -48,8 +49,9 @@ export const POST = apiHandler(async (request) => {
     return ok(await createPayment({ kind: "dues", member, email: session.user.email }, context), { status: 201 });
   }
 
-  // The shop is for accepted members.
+  // The shop is for accepted members, while it is open.
   if (input.kind === "shop") {
+    if (!(await shopIsOpen())) throw new HttpError(409, "shop_closed", "The shop is closed.");
     const { session, member } = await requireActiveMember();
     return ok(await createPayment({ kind: "shop", member, email: session.user.email, cart: input.items, fulfilment: input.fulfilment }, context), { status: 201 });
   }

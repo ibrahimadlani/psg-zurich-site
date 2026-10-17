@@ -247,7 +247,7 @@ export function EmailLayout({
                 psg-zurich.ch
               </Link>
               &nbsp;&nbsp;·&nbsp;&nbsp;
-              <Link href={`${SITE}/${locale}/confidentialite`} style={{ color: colors.muted, textDecoration: "underline" }}>
+              <Link href={`${SITE}/${locale}/privacy`} style={{ color: colors.muted, textDecoration: "underline" }}>
                 {footer.privacy}
               </Link>
               &nbsp;&nbsp;·&nbsp;&nbsp;

@@ -3,6 +3,7 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "@/i18n/routing";
 import { getAuth } from "@/lib/auth";
+import { englishPath } from "@/lib/legacy-paths";
 import { RETURN_PARAM, RETURN_PATH_HEADER, safeReturnPath } from "@/lib/return-to";
 
 const intl = createMiddleware(routing);
@@ -10,10 +11,17 @@ const intl = createMiddleware(routing);
 // Pages for visitors only: sign-in, forgot password, membership sign-up.
 // (The new-password page stays reachable: it is opened from an email.)
 const GUEST_ONLY = new RegExp(
-  `^/(${routing.locales.join("|")})/(connexion(/mot-de-passe-oublie)?|adhesion)/?$`,
+  `^/(${routing.locales.join("|")})/(login(/forgot-password)?|join)/?$`,
 );
 
 export default async function proxy(request: NextRequest) {
+  // Old French addresses: once, for good, to the English page.
+  const english = englishPath(request.nextUrl.pathname);
+  if (english) {
+    const url = request.nextUrl.clone();
+    url.pathname = english;
+    return NextResponse.redirect(url, 308);
+  }
   const match = GUEST_ONLY.exec(request.nextUrl.pathname);
   // Cookie check first: guests never hit the database here.
   if (match && getSessionCookie(request)) {

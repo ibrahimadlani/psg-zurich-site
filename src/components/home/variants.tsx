@@ -49,7 +49,7 @@ export async function VisitorMatchday({ basics, viewer }: VisitorProps) {
         {basics.stats?.total ? (
           <div className={cn(card, "mx-auto flex w-full max-w-xl flex-col gap-4 p-5")}>
             <CommunitySplit stats={basics.stats} locked />
-            <Link href="/adhesion" className="inline-flex items-center gap-1.5 self-start border-b border-psg-red pb-0.5 text-[14px] font-semibold">
+            <Link href="/join" className="inline-flex items-center gap-1.5 self-start border-b border-psg-red pb-0.5 text-[14px] font-semibold">
               {t("v1.predictWithUs")}
               <ArrowRight className="size-3.5" aria-hidden />
             </Link>
@@ -87,7 +87,7 @@ export async function VisitorJournal({ basics, viewer }: VisitorProps) {
               <NewsCard key={post.id} post={post} />
             ))}
           </div>
-          <Link href="/actualites" className="inline-flex items-center gap-1.5 self-center border-b pb-0.5 text-[14px] font-semibold">
+          <Link href="/news" className="inline-flex items-center gap-1.5 self-center border-b pb-0.5 text-[14px] font-semibold">
             {t("allNews")}
             <ArrowRight className="size-3.5" aria-hidden />
           </Link>
@@ -95,7 +95,7 @@ export async function VisitorJournal({ basics, viewer }: VisitorProps) {
         <aside className="flex flex-col gap-6 lg:sticky lg:top-6">
           {basics.focus ? (
             <section className="space-y-3">
-              <BlockTitle title={basics.focus.status === "live" ? t("live") : basics.focus.status === "scheduled" ? t("nextMatch") : t("lastResult")} href="/matchs" more={t("allMatches")} />
+              <BlockTitle title={basics.focus.status === "live" ? t("live") : basics.focus.status === "scheduled" ? t("nextMatch") : t("lastResult")} href="/matches" more={t("allMatches")} />
               <MatchMiniCard match={basics.focus} />
             </section>
           ) : null}
@@ -111,10 +111,10 @@ export async function VisitorJournal({ basics, viewer }: VisitorProps) {
 export async function VisitorClub({ basics, figures }: VisitorProps & { figures: { members: number; events: number; predictions: number } }) {
   const t = await getTranslations("Home");
   const perks = [
-    { key: "watch", Illustration: WatchPartyIllustration, href: "/evenements" },
-    { key: "travel", Illustration: AwayTripIllustration, href: "/evenements" },
-    { key: "play", Illustration: MembersMatchIllustration, href: "/evenements" },
-    { key: "together", Illustration: SocialIllustration, href: "/adhesion" },
+    { key: "watch", Illustration: WatchPartyIllustration, href: "/events" },
+    { key: "travel", Illustration: AwayTripIllustration, href: "/events" },
+    { key: "play", Illustration: MembersMatchIllustration, href: "/events" },
+    { key: "together", Illustration: SocialIllustration, href: "/join" },
   ] as const;
   return (
     <div className="flex flex-col gap-[clamp(48px,8vw,88px)]">
@@ -123,7 +123,7 @@ export async function VisitorClub({ basics, figures }: VisitorProps & { figures:
           <p className={eyebrow}>{t("v3.eyebrow")}</p>
           <h1 className={cn(display, "text-[length:clamp(52px,12vw,120px)]")}>{t("v3.title")}</h1>
           <p className="max-w-[34rem] text-[17px] leading-relaxed text-pretty text-muted-foreground">{t("v3.body")}</p>
-          <Link href="/adhesion" className="inline-flex h-12 items-center gap-2 rounded-[10px] bg-segment px-6 font-wide text-[12px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90">
+          <Link href="/join" className="inline-flex h-12 items-center gap-2 rounded-[10px] bg-segment px-6 font-wide text-[12px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand transition-opacity hover:opacity-90">
             {t("join.cta")}
             <ArrowRight className="size-3.5" aria-hidden />
           </Link>
@@ -157,13 +157,13 @@ export async function VisitorClub({ basics, figures }: VisitorProps & { figures:
       <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
         {basics.news[0] ? (
           <section className="space-y-4">
-            <BlockTitle title={t("latestNews")} href="/actualites" more={t("allNews")} />
+            <BlockTitle title={t("latestNews")} href="/news" more={t("allNews")} />
             <FeaturedNews post={basics.news[0]} />
           </section>
         ) : null}
         {basics.focus ? (
           <section className="space-y-3">
-            <BlockTitle title={basics.focus.status === "live" ? t("live") : basics.focus.status === "scheduled" ? t("nextMatch") : t("lastResult")} href="/matchs" more={t("allMatches")} />
+            <BlockTitle title={basics.focus.status === "live" ? t("live") : basics.focus.status === "scheduled" ? t("nextMatch") : t("lastResult")} href="/matches" more={t("allMatches")} />
             <MatchMiniCard match={basics.focus} />
           </section>
         ) : null}

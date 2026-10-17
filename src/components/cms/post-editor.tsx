@@ -124,7 +124,7 @@ export function PostEditor({
       }
       setSaved(JSON.stringify(current));
       toast.success(current.mode === "draft" ? t("savedDraft") : current.mode === "schedule" ? t("savedScheduled") : t("savedPublished"));
-      if (!postId && body?.data) router.replace(`/admin/actualites/${body.data.id}`);
+      if (!postId && body?.data) router.replace(`/admin/news/${body.data.id}`);
       else router.refresh();
     });
 
@@ -138,7 +138,7 @@ export function PostEditor({
       }
       toast.success(t("deleted"));
       setSaved(JSON.stringify(current));
-      router.replace("/admin/actualites");
+      router.replace("/admin/news");
     });
   };
 
@@ -228,7 +228,7 @@ export function PostEditor({
                     set("slug", slugify(event.target.value));
                   }}
                 />
-                <p className="truncate text-xs text-muted-foreground">/actualites/{current.slug || "…"}</p>
+                <p className="truncate text-xs text-muted-foreground">/news/{current.slug || "…"}</p>
               </div>
             </div>
 

@@ -18,7 +18,7 @@ const localeOf = (value: string | null) =>
 /** Link from an email: never acts on GET (mail scanners open links), shows the confirmation page. */
 export function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
-  const page = new URL(`/${localeOf(params.get("l"))}/desabonnement`, request.url);
+  const page = new URL(`/${localeOf(params.get("l"))}/unsubscribe`, request.url);
   for (const name of ["m", "t", "s"]) page.searchParams.set(name, params.get(name) ?? "");
   return NextResponse.redirect(page, 303);
 }
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 
   // Mail clients post "List-Unsubscribe=One-Click" and only need a 2xx.
   if (form?.get("List-Unsubscribe") === "One-Click") return new NextResponse("Unsubscribed");
-  const done = new URL(`/${localeOf(field("l"))}/desabonnement`, request.url);
+  const done = new URL(`/${localeOf(field("l"))}/unsubscribe`, request.url);
   done.searchParams.set("done", type);
   return NextResponse.redirect(done, 303);
 }

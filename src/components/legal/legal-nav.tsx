@@ -5,9 +5,9 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 const DOCUMENTS = [
-  { href: "/statuts", key: "statutes" },
-  { href: "/mentions-legales", key: "imprint" },
-  { href: "/confidentialite", key: "privacy" },
+  { href: "/statutes", key: "statutes" },
+  { href: "/legal-notice", key: "imprint" },
+  { href: "/privacy", key: "privacy" },
 ] as const;
 
 /** At the foot of the legal pages: the three documents (the current one marked) and the club line. */

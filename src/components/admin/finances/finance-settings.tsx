@@ -28,7 +28,15 @@ async function save(body: unknown) {
 }
 
 /** Fee of each season (as voted by the assembly), junior rate, and the shop's postage. */
-export function FinanceSettings({ seasons, shipping }: { seasons: { season: string; adult: number; junior: number; set: boolean }[]; shipping: { fee: number; enabled: boolean } }) {
+export function FinanceSettings({
+  seasons,
+  shipping,
+  shop,
+}: {
+  seasons: { season: string; adult: number; junior: number; set: boolean }[];
+  shipping: { fee: number; enabled: boolean };
+  shop: { enabled: boolean; products: number };
+}) {
   const t = useTranslations("AdminFinances");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
@@ -49,6 +57,28 @@ export function FinanceSettings({ seasons, shipping }: { seasons: { season: stri
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
+      {/* Open or close the shop for members (it stays hidden while nothing is on sale). */}
+      <section className={cn(adminCard, "flex flex-col gap-4 p-5 lg:col-span-2")}>
+        <div className="flex items-start justify-between gap-4">
+          <div className="space-y-1">
+            <h2 className="font-semibold">{t("shopOpenTitle")}</h2>
+            <p className="text-[13px] text-pretty text-muted-foreground">
+              {shop.enabled ? (shop.products ? t("shopOpenOn") : t("shopOpenEmpty")) : t("shopOpenOff")}
+            </p>
+          </div>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={shop.enabled}
+            aria-label={t("shopOpenTitle")}
+            disabled={pending}
+            onClick={() => run({ shop: { enabled: !shop.enabled } })}
+            className={cn("relative h-7 w-12 shrink-0 cursor-pointer rounded-full transition-colors", shop.enabled ? "bg-ok" : "bg-foreground/20")}
+          >
+            <span className={cn("absolute top-1 left-1 size-5 rounded-full bg-white shadow transition-transform", shop.enabled && "translate-x-5")} />
+          </button>
+        </div>
+      </section>
       {rates.map((rate, index) => (
         <section key={rate.season} className={cn(adminCard, "flex flex-col gap-4 p-5")}>
           <div className="space-y-1">

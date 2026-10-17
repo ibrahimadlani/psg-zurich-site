@@ -105,7 +105,7 @@ export async function settleRefund(refundId: string, actor: { actorId: string | 
   }
   await enqueue("payment.refunded", [await payerRecipient(payment)], () => ({
     values: { amount: formatChf(refund.amount), receipt: refund.creditNoteNumber, payment: formatPaymentReference(payment.reference) },
-    path: payment.memberId ? "/espace-membre/paiements" : undefined,
+    path: payment.memberId ? "/member/payments" : undefined,
     attachment: refund.creditNoteNumber,
     dedupe: `payment.refunded:${refundId}`,
   }));

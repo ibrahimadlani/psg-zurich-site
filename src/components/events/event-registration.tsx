@@ -42,7 +42,7 @@ export function EventRegistration({ eventId, status, full, access, phase, starts
 
   if (access === "guest") {
     return (
-      <SignInLink next={`/evenements/${eventId}`} className={primaryButton}>
+      <SignInLink next={`/events/${eventId}`} className={primaryButton}>
         {t("signInToJoin")}
         <ArrowRight aria-hidden />
       </SignInLink>
@@ -111,7 +111,7 @@ function Confirmation({
               ? t("confirmation.waitlistedBody")
               : t.rich("confirmation.registeredBody", {
                   card: (chunks) => (
-                    <Link href="/espace-membre#carte" prefetch={false} className="border-b text-foreground transition-colors hover:border-psg-red">
+                    <Link href="/member#carte" prefetch={false} className="border-b text-foreground transition-colors hover:border-psg-red">
                       {chunks}
                     </Link>
                   ),

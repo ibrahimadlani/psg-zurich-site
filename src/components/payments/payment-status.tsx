@@ -80,7 +80,7 @@ export function PaymentStatusView({ reference }: { reference: string }) {
 
   if (state.status === "succeeded" || state.status === "partially_refunded" || state.status === "refunded") {
     const next =
-      state.kind === "dues" ? { href: "/evenements", label: t("toEvents") } : state.kind === "shop" ? { href: "/espace-membre/commandes", label: t("trackOrder") } : { href: "/", label: t("toHome") };
+      state.kind === "dues" ? { href: "/events", label: t("toEvents") } : state.kind === "shop" ? { href: "/member/orders", label: t("trackOrder") } : { href: "/", label: t("toHome") };
     return (
       <Panel tone="ok" icon={<Check className="size-7" strokeWidth={2.5} aria-hidden />} title={t("succeededTitle")} reference={reference}>
         <p className="text-[15px] text-pretty text-muted-foreground">{t(`${state.kind}Body`)}</p>
@@ -126,7 +126,7 @@ export function PaymentStatusView({ reference }: { reference: string }) {
   return (
     <Panel tone="error" icon={<X className="size-6" aria-hidden />} title={state.status === "canceled" ? t("canceledTitle") : t("failedTitle")} reference={reference}>
       <p className="text-[15px] text-pretty text-muted-foreground">{t("failedBody")}</p>
-      <Link href={state.kind === "dues" ? "/cotisation" : state.kind === "donation" ? "/soutenir" : "/boutique"} className={primary}>
+      <Link href={state.kind === "dues" ? "/dues" : state.kind === "donation" ? "/donate" : "/shop"} className={primary}>
         {t("retry")}
       </Link>
     </Panel>

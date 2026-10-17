@@ -149,7 +149,7 @@ export function DuesBoard({ rows }: { rows: MemberRow[] }) {
                     className="size-[18px] shrink-0 accent-psg-blue"
                   />
                   <UserAvatar name={name} email={row.email} image={row.image} className="size-9 rounded-[9px] text-[10px] max-sm:hidden" />
-                  <Link href={`/admin/membres/${row.id}`} prefetch={false} className="min-w-0 flex-1 hover:underline">
+                  <Link href={`/admin/members/${row.id}`} prefetch={false} className="min-w-0 flex-1 hover:underline">
                     <span className="block truncate text-[15px] font-semibold">{name}</span>
                     <span className="block truncate text-[12px] text-muted-foreground">{row.memberNumber ?? row.email}</span>
                   </Link>

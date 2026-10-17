@@ -10,7 +10,7 @@ export default async function CheckoutLayout({ children }: LayoutProps<"/[locale
   const t = await getTranslations("Shop");
   return (
     <div data-bare-page="" className="relative flex flex-1 flex-col leading-[normal]">
-      <BareTopBar back={{ href: "/boutique", label: t("title") }} />
+      <BareTopBar back={{ href: "/shop", label: t("title") }} />
       <main className="mx-auto w-full max-w-5xl flex-1 animate-page-in px-4 pt-6 pb-10 motion-reduce:animate-none">{children}</main>
       <LegalNav />
     </div>

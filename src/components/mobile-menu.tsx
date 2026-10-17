@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ChevronUp, LayoutDashboard, LogOut, Monitor, Moon, Settings, Sun } from "lucide-react";
+import { ArrowRight, ChevronUp, LogOut, Monitor, Moon, Sun } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
@@ -9,12 +9,13 @@ import { Cockade, useNavItems } from "@/components/main-nav";
 import { readThemePreference, setThemePreference, type ThemePreference } from "@/components/theme-toggle";
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { UserAvatar } from "@/components/user-avatar";
-import { useSignOut } from "@/components/user-nav";
+import { isCurrent, useAccountLinks, useSignOut } from "@/components/user-nav";
 import { SignInLink } from "@/components/auth/sign-in-link";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useSession } from "@/lib/auth-client";
 import type { EventAccess } from "@/lib/dues";
+import type { Role } from "@/db/schema";
 import { hasRole } from "@/lib/roles";
 import { cn } from "@/lib/utils";
 
@@ -64,7 +65,7 @@ export function MobileMenu() {
 
   // Reading the news page counts as seeing the news.
   useEffect(() => {
-    if (!pathname.startsWith("/actualites")) return;
+    if (!pathname.startsWith("/news")) return;
     try {
       localStorage.setItem(NEWS_SEEN_KEY, new Date().toISOString());
     } catch {
@@ -255,25 +256,13 @@ export function MobileMenu() {
           </nav>
         </div>
 
-        {/* Signed in: the member area (and admin area) on its own, above the footer, framed by two cockades as in the desktop bar. */}
+        {/* Signed in: the member area on its own (admin and the rest are in the account menu), above the footer, framed by two cockades as in the desktop bar. */}
         {session ? (
           <div className="grid gap-2 px-4 pb-4">
-            {/* Admins: the admin area just above. */}
-            {hasRole(session.user.role, "moderator") ? (
-              <Link
-                href="/admin"
-                prefetch={false}
-                aria-current={pathname.startsWith("/admin") ? "page" : undefined}
-                className="flex h-11 items-center justify-center gap-2.5 rounded-[8px] border bg-card font-wide text-[11px] font-semibold tracking-[0.08em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98] aria-[current=page]:text-psg-blue dark:aria-[current=page]:text-foreground"
-              >
-                <LayoutDashboard className="size-3.5 text-muted-foreground" aria-hidden />
-                {t("admin")}
-              </Link>
-            ) : null}
             <Link
-              href="/espace-membre"
+              href="/member"
               prefetch={false}
-              aria-current={pathname.startsWith("/espace-membre") ? "page" : undefined}
+              aria-current={pathname.startsWith("/member") ? "page" : undefined}
               className="flex h-11 items-center justify-center gap-2.5 rounded-[8px] border bg-card font-wide text-[11px] font-semibold tracking-[0.08em] uppercase transition-[background-color,transform] hover:bg-foreground/5 active:scale-[0.98] aria-[current=page]:text-psg-blue dark:aria-[current=page]:text-foreground"
             >
               <Cockade />
@@ -342,13 +331,13 @@ function AccountBlock({ motionIndex }: { motionIndex: number }) {
 
   if (!data) {
     // Visitors: join (the call to action, in PSG blue with the shirt's bands) above sign in. On either page, only the other.
-    const join = !pathname.startsWith("/adhesion");
-    const signIn = !pathname.startsWith("/connexion");
+    const join = !pathname.startsWith("/join");
+    const signIn = !pathname.startsWith("/login");
     return (
       <div className={cn(motion.className, "grid gap-2")} style={motion.style}>
         {join ? (
           <Link
-            href="/adhesion"
+            href="/join"
             prefetch={false}
             className="group relative flex h-11 items-center justify-center gap-2 overflow-hidden rounded-[8px] bg-psg-blue font-wide text-[11px] font-semibold tracking-[0.06em] text-white uppercase shadow-brand transition-[opacity,transform] hover:opacity-90 active:scale-[0.98]"
           >
@@ -438,20 +427,21 @@ function Preferences() {
 }
 
 const navUserItem =
-  "flex h-10 w-full cursor-pointer items-center gap-2.5 rounded-[8px] px-2.5 text-[14px] transition-colors hover:bg-foreground/5 [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground";
+  "flex h-10 w-full cursor-pointer items-center gap-2.5 rounded-[8px] px-2.5 text-[14px] transition-colors hover:bg-foreground/5 aria-[current=page]:bg-foreground/5 aria-[current=page]:font-semibold [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-muted-foreground";
 
 /**
  * The signed-in account, shadcn "nav-user" style: avatar, name and email on one row with a
- * caret; tapping it unfolds the account links above (accordion, upwards).
+ * caret; tapping it unfolds the account links above (accordion, upwards), grouped as in the header menu.
  */
 function NavUser({
   user,
   onSignOut,
 }: {
-  user: { name: string; email: string; image?: string | null };
+  user: { name: string; email: string; image?: string | null; role?: Role | null };
   onSignOut: () => void;
 }) {
-  const t = useTranslations("Nav");
+  const groups = useAccountLinks(user.role);
+  const pathname = usePathname();
   const tMember = useTranslations("MemberArea");
   const [open, setOpen] = useState(false);
   const panel = useId();
@@ -464,15 +454,24 @@ function NavUser({
         className="grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] data-[open]:grid-rows-[1fr] data-[open]:opacity-100 motion-reduce:transition-none"
       >
         <div className="min-h-0 overflow-hidden" inert={!open}>
-          <div className="mb-2 flex flex-col gap-0.5 border-b pb-2">
-            <Link href="/parametres" prefetch={false} className={navUserItem}>
-              <Settings aria-hidden />
-              {t("settings")}
-            </Link>
-            <button type="button" data-close-menu onClick={onSignOut} className={navUserItem}>
-              <LogOut aria-hidden />
-              {tMember("signOut")}
-            </button>
+          {/* The header's account menu, in the same groups. */}
+          <div className="mb-2 flex flex-col border-b pb-2">
+            {groups.map((group, index) => (
+              <div key={index} className={cn("flex flex-col gap-0.5", index > 0 && "mt-1.5 border-t pt-1.5")}>
+                {group.map(({ href, label, icon: Icon }) => (
+                  <Link key={href} href={href} prefetch={false} aria-current={isCurrent(pathname, href) ? "page" : undefined} className={navUserItem}>
+                    <Icon aria-hidden />
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            ))}
+            <div className="mt-1.5 border-t pt-1.5">
+              <button type="button" data-close-menu onClick={onSignOut} className={navUserItem}>
+                <LogOut aria-hidden />
+                {tMember("signOut")}
+              </button>
+            </div>
           </div>
         </div>
       </div>

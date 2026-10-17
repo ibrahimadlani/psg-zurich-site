@@ -42,7 +42,7 @@
           "Horaires des trains vérifiés sur sbb.ch la veille"
         ] },
         { "type": "heading", "text": "Suivre le dossier avec le club" },
-        { "type": "paragraph", "text": "Le comité suit l'ouverture des ventes et relaiera les informations utiles aux membres. Si un déplacement groupé est organisé, il sera annoncé dans l'[agenda des événements](/fr/evenements). En attendant, le [calendrier des matchs](/fr/matchs) affiche le classement de la phase de ligue en direct. Pas encore membre ? [Adhérez en ligne](/fr/adhesion)." },
+        { "type": "paragraph", "text": "Le comité suit l'ouverture des ventes et relaiera les informations utiles aux membres. Si un déplacement groupé est organisé, il sera annoncé dans l'[agenda des événements](/fr/events). En attendant, le [calendrier des matchs](/fr/matches) affiche le classement de la phase de ligue en direct. Pas encore membre ? [Adhérez en ligne](/fr/join)." },
         { "type": "callout", "tone": "info", "text": "Informations vérifiées au 13 octobre 2026. L'heure du coup d'envoi, les conditions de vente et les horaires de train peuvent encore changer : vérifiez-les auprès de la [billetterie du PSG](https://billetterie.psg.fr) et sur [sbb.ch](https://www.sbb.ch)." }
       ]
     },
@@ -87,7 +87,7 @@
           "Zugverbindungen am Vortag auf sbb.ch prüfen"
         ] },
         { "type": "heading", "text": "Mit dem Klub auf dem Laufenden bleiben" },
-        { "type": "paragraph", "text": "Der Vorstand verfolgt den Ticketverkauf und informiert die Mitglieder. Falls eine gemeinsame Reise organisiert wird, erscheint sie in der [Agenda](/de/evenements). Den aktuellen Stand der Ligaphase zeigt der [Spielplan](/de/matchs) live. Noch kein Mitglied? [Hier anmelden](/de/adhesion)." },
+        { "type": "paragraph", "text": "Der Vorstand verfolgt den Ticketverkauf und informiert die Mitglieder. Falls eine gemeinsame Reise organisiert wird, erscheint sie in der [Agenda](/de/events). Den aktuellen Stand der Ligaphase zeigt der [Spielplan](/de/matches) live. Noch kein Mitglied? [Hier anmelden](/de/join)." },
         { "type": "callout", "tone": "info", "text": "Stand: 13. Oktober 2026. Anstosszeit, Verkaufsbedingungen und Fahrpläne können sich noch ändern. Prüfen Sie sie auf der [PSG-Ticketseite](https://billetterie.psg.fr) und auf [sbb.ch](https://www.sbb.ch)." }
       ]
     },
@@ -132,7 +132,7 @@
           "Train times checked on sbb.ch the day before"
         ] },
         { "type": "heading", "text": "Following it with the club" },
-        { "type": "paragraph", "text": "The committee is keeping an eye on ticket sales and will pass on what members need to know. If a group trip is organised, it will appear in the [events calendar](/en/evenements). Meanwhile, the [fixture list](/en/matchs) shows the league-phase table live. Not a member yet? [Join online](/en/adhesion)." },
+        { "type": "paragraph", "text": "The committee is keeping an eye on ticket sales and will pass on what members need to know. If a group trip is organised, it will appear in the [events calendar](/en/events). Meanwhile, the [fixture list](/en/matches) shows the league-phase table live. Not a member yet? [Join online](/en/join)." },
         { "type": "callout", "tone": "info", "text": "Information checked on 13 October 2026. Kick-off time, sale conditions and train times may still change, so check them on [PSG's ticketing site](https://billetterie.psg.fr) and [sbb.ch](https://www.sbb.ch)." }
       ]
     }

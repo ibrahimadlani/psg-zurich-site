@@ -46,7 +46,7 @@ export function ResetPasswordForm() {
     return (
       <div className="flex flex-col items-center gap-4 text-center">
         <FormMessage tone="error">{t(result)}</FormMessage>
-        <Link href={withReturn("/connexion/mot-de-passe-oublie", params.get(RETURN_PARAM))} className={`text-[14px] ${inlineLinkClass}`}>
+        <Link href={withReturn("/login/forgot-password", params.get(RETURN_PARAM))} className={`text-[14px] ${inlineLinkClass}`}>
           {t("requestNew")}
         </Link>
       </div>

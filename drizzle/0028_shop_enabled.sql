@@ -1,0 +1,1 @@
+ALTER TABLE `shop_settings` ADD `shop_enabled` boolean DEFAULT true NOT NULL;

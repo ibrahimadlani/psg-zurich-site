@@ -15,7 +15,7 @@ export function EventsEmpty() {
         <p className="text-sm text-pretty text-muted-foreground">{t("body")}</p>
       </div>
       <Link
-        href="/matchs"
+        href="/matches"
         className="group inline-flex items-center gap-1.5 font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase transition-colors hover:text-foreground"
       >
         {t("cta")}

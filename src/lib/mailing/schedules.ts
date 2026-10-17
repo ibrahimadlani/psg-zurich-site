@@ -48,7 +48,7 @@ async function predictionReminders() {
         competition: match.competition,
         time: emailDate(match.kickoffAt, recipient.locale),
       },
-      path: `/matchs/${match.id}`,
+      path: `/matches/${match.id}`,
       dedupe: `prediction.reminder:${match.id}:${recipient.memberId}`,
     }));
   }
@@ -60,7 +60,7 @@ async function verifyReminders() {
     and(eq(members.status, "pending"), eq(user.emailVerified, false), lte(user.createdAt, ago(2 * DAY)), gte(user.createdAt, ago(7 * DAY)))!,
   );
   await enqueue("membership.verifyReminder", recipients, (recipient) => ({
-    path: "/connexion",
+    path: "/login",
     dedupe: `membership.verifyReminder:${recipient.memberId}`,
   }));
 }
@@ -78,7 +78,7 @@ async function committeeDigest() {
   const today = todayInZurich();
   await enqueue("membership.committeeDigest", await committeeRecipients(), (recipient) => ({
     values: { count: String(waiting.length), names: waiting.map((row) => `${row.firstName} ${row.lastName}`).join(", ") },
-    path: "/admin/membres",
+    path: "/admin/members",
     dedupe: `membership.committeeDigest:${today}:${recipient.email}`,
   }));
 }
@@ -89,7 +89,7 @@ async function completeProfile() {
     and(eq(members.status, "active"), isNull(members.phone), isNull(members.address), lte(members.joinedOn, dateDaysAgo(3)), gte(members.joinedOn, dateDaysAgo(30)))!,
   );
   await enqueue("membership.completeProfile", recipients, (recipient) => ({
-    path: "/parametres/profil",
+    path: "/settings/profile",
     dedupe: `membership.completeProfile:${recipient.memberId}`,
   }));
 }
@@ -104,7 +104,7 @@ async function feeReminders() {
     );
     await enqueue("fee.reminder", recipients, (recipient) => ({
       values: { fee: LEGAL.statutes.fee },
-      path: "/cotisation",
+      path: "/dues",
       dedupe: `fee.reminder:${recipient.memberId}:${end}:${days}`,
     }));
   }
@@ -118,7 +118,7 @@ async function feeSeason() {
     const recipients = await memberRecipients(and(eq(members.status, "active"), eq(members.expiresOn, until))!);
     await enqueue("fee.renewal", recipients, (recipient) => ({
       values: { until: emailDate(new Date(`${until}T12:00:00Z`), recipient.locale, false), fee: LEGAL.statutes.fee },
-      path: "/cotisation",
+      path: "/dues",
       dedupe: `fee.renewal:${recipient.memberId}:${year}`,
     }));
   }
@@ -126,7 +126,7 @@ async function feeSeason() {
     const recipients = await memberRecipients(and(eq(members.status, "active"), eq(members.expiresOn, `${year}-06-30`))!);
     await enqueue("fee.expired", recipients, (recipient) => ({
       values: { fee: LEGAL.statutes.fee },
-      path: "/cotisation",
+      path: "/dues",
       dedupe: `fee.expired:${recipient.memberId}:${year}`,
     }));
   }
@@ -144,7 +144,7 @@ async function eventReminders() {
     await enqueue("event.reminder", recipients, (recipient) => ({
       values: { eventId: event.id, event: event.title, date: emailDate(event.startsAt, recipient.locale), place: event.location ?? event.address ?? "—" },
       event: { type: event.type, startsAt: event.startsAt.toISOString() },
-      path: `/evenements/${event.id}`,
+      path: `/events/${event.id}`,
       info: `${emailDate(event.startsAt, recipient.locale)} · ${event.location ?? event.address ?? ""}`,
       dedupe: `event.reminder:${event.id}:${recipient.memberId}`,
     }));
@@ -163,7 +163,7 @@ async function eventThanks() {
     await enqueue("event.thanks", recipients, (recipient) => ({
       values: { eventId: event.id, event: event.title },
       event: { type: event.type, startsAt: event.startsAt.toISOString() },
-      path: "/actualites",
+      path: "/news",
       dedupe: `event.thanks:${event.id}:${recipient.memberId}`,
     }));
   }
@@ -189,7 +189,7 @@ async function monthlyLeaderboard() {
         total: String(board.length),
         points: String(row.points),
       },
-      path: "/matchs/classement",
+      path: "/matches/leaderboard",
       dedupe: `leaderboard.monthly:${month}:${recipient.memberId}`,
     };
   });
@@ -210,7 +210,7 @@ async function closePredictionSeason() {
     const row = byMember.get(recipient.memberId!)!;
     return {
       values: { season: label, rank: String(row.rank), points: String(row.points) },
-      path: `/matchs/classement?saison=${season}`,
+      path: `/matches/leaderboard?saison=${season}`,
       dedupe: `leaderboard.seasonWinner:${season}:${recipient.memberId}`,
     };
   });
@@ -219,7 +219,7 @@ async function closePredictionSeason() {
       season: label,
       podium: podium.map((row) => `${row.rank}. ${row.firstName} ${row.lastName} (${row.points} pts)`).join(" · "),
     },
-    path: "/admin/matchs",
+    path: "/admin/matches",
     dedupe: `leaderboard.seasonPodium:${season}:${recipient.email}`,
   }));
 }

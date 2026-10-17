@@ -46,7 +46,7 @@ export function NewsCard({ post, withExcerpt = true }: { post: Post; withExcerpt
   const line = useMeta(post);
   return (
     <article className="min-w-0">
-      <Link href={`/actualites/${post.slug}`} className="group flex flex-col gap-3.5">
+      <Link href={`/news/${post.slug}`} className="group flex flex-col gap-3.5">
         <NewsCover post={post} className="aspect-[3/2] rounded-[12px]" />
         <span className="flex flex-col gap-2">
           <span className={meta}>{line}</span>
@@ -69,7 +69,7 @@ export function FeaturedNews({ post }: { post: Post }) {
   return (
     <article className="border-b pb-[clamp(28px,4vw,40px)]">
       <Link
-        href={`/actualites/${post.slug}`}
+        href={`/news/${post.slug}`}
         className="group grid grid-cols-[repeat(auto-fit,minmax(min(100%,340px),1fr))] items-center gap-[clamp(20px,4vw,40px)]"
       >
         <NewsCover post={post} priority className="aspect-[16/10] rounded-[14px]" />

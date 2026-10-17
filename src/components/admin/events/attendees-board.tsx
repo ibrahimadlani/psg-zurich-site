@@ -137,7 +137,7 @@ export function AttendeesBoard({ eventId, attendees, capacity }: { eventId: stri
     return (
       <li key={person.memberId} className="flex items-center gap-3 py-2.5">
         <UserAvatar name={name} email={person.email} image={person.image} className="size-9 rounded-[9px] text-[10px]" />
-        <Link href={`/admin/membres/${person.memberId}`} prefetch={false} className="min-w-0 flex-1">
+        <Link href={`/admin/members/${person.memberId}`} prefetch={false} className="min-w-0 flex-1">
           <span className="block truncate text-[15px] font-semibold hover:underline">{name}</span>
           <span className="flex flex-wrap items-center gap-x-2 text-[12px] text-muted-foreground">
             {person.memberNumber ? <span>{person.memberNumber}</span> : null}

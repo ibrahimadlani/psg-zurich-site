@@ -28,7 +28,7 @@ export function ChangeEmailForm({ current }: { current: string }) {
     }
     startTransition(async () => {
       // The links in both emails come back to this page, in this language.
-      const { error } = await authClient.changeEmail({ newEmail, callbackURL: `/${locale}/parametres/compte` });
+      const { error } = await authClient.changeEmail({ newEmail, callbackURL: `/${locale}/settings/account` });
       if (error) {
         toast.error(t("emailError"));
         return;

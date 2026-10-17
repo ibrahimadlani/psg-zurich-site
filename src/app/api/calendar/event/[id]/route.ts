@@ -26,7 +26,7 @@ export async function GET(request: Request, { params }: RouteContext<"/api/calen
         summary: `PSG Zurich · ${event.title}`,
         description: event.description,
         location: event.location,
-        url: `${origin}/fr/evenements/${event.id}`,
+        url: `${origin}/fr/events/${event.id}`,
         updatedAt: event.updatedAt,
       },
     ],

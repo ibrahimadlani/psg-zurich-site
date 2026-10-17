@@ -14,7 +14,7 @@ export function SettingsNav() {
     <nav aria-label={t("label")} className="sticky top-6 hidden md:block">
       <ul className="flex flex-col gap-0.5 border-l">
         {SETTINGS_SECTIONS.map(({ slug, key, icon: Icon }) => {
-          const href = `/parametres/${slug}`;
+          const href = `/settings/${slug}`;
           const active = pathname === href;
           return (
             <li key={slug}>
@@ -43,7 +43,7 @@ export function SettingsNav() {
 export function SettingsBackLink() {
   const t = useTranslations("Settings");
   return (
-    <Link href="/parametres" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground md:hidden">
+    <Link href="/settings" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground md:hidden">
       <ArrowLeft className="size-3.5" aria-hidden />
       {t("title")}
     </Link>

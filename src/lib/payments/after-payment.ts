@@ -67,7 +67,7 @@ export async function afterPayment(paymentId: string, actor: { actorId: string |
       receipt: payment.receiptNumber!,
       payment: reference,
     },
-    path: payment.kind === "shop" ? "/espace-membre/commandes" : payment.memberId ? "/espace-membre/paiements" : undefined,
+    path: payment.kind === "shop" ? "/member/orders" : payment.memberId ? "/member/payments" : undefined,
     attachment: payment.receiptNumber!,
     dedupe: `payment.receipt:${payment.id}`,
   }));
@@ -83,7 +83,7 @@ export async function afterPayment(paymentId: string, actor: { actorId: string |
         items,
         delivery: order?.fulfilment === "shipping" ? { fr: "Envoi postal", en: "Shipping", de: "Postversand" }[committee.locale] : { fr: "Retrait à un événement", en: "Pick-up at an event", de: "Abholung an einem Event" }[committee.locale],
       },
-      path: "/admin/finances/commandes",
+      path: "/admin/finances/orders",
       dedupe: `shop.newOrder:${payment.id}:${committee.email}`,
     }));
   }

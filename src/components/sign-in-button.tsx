@@ -9,7 +9,7 @@ import { usePathname } from "@/i18n/navigation";
 export function SignInButton() {
   const t = useTranslations("Login");
   const pathname = usePathname();
-  if (pathname.startsWith("/connexion")) return null;
+  if (pathname.startsWith("/login")) return null;
 
   return (
     <SignInLink

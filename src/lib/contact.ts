@@ -48,8 +48,8 @@ type Thread = typeof contactThreads.$inferSelect;
 /** Where the sender reads the conversation: the member area, or the visitor's private link. */
 export function senderLink(thread: Pick<Thread, "id" | "memberId" | "locale">) {
   return thread.memberId
-    ? { path: `/espace-membre/messages/${thread.id}` }
-    : { url: `${siteUrl()}/${thread.locale}/contact/suivi/${trackingToken(thread.id)}` };
+    ? { path: `/member/messages/${thread.id}` }
+    : { url: `${siteUrl()}/${thread.locale}/contact/track/${trackingToken(thread.id)}` };
 }
 
 const isDuplicate = (error: unknown): boolean =>

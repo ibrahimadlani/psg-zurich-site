@@ -4,10 +4,12 @@ import { ArrowRight, Minus, Plus, ShoppingBag, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useIsDesktop } from "@/components/admin/ui/responsive-panel";
+import { headerIconButtonClass } from "@/components/header-icon-button";
 import { RollingNumber } from "@/components/shop/rolling-number";
 import { cart, cartCount, cartTotal, OPEN_CART_EVENT, useCart, type CartItem } from "@/components/shop/cart-store";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { Link, usePathname } from "@/i18n/navigation";
+import { useShopOpen } from "@/components/shop/use-shop-open";
 import { useSession } from "@/lib/auth-client";
 import { formatChf } from "@/lib/money";
 import { cn } from "@/lib/utils";
@@ -37,7 +39,7 @@ function Line({ item, highlighted, onNavigate }: { item: CartItem; highlighted: 
             "transition-colors duration-700",
           )}
         >
-          <Link href={`/boutique/${item.slug}`} onClick={onNavigate} className="size-16 shrink-0 overflow-hidden rounded-[10px] bg-foreground/[0.05]">
+          <Link href={`/shop/${item.slug}`} onClick={onNavigate} className="size-16 shrink-0 overflow-hidden rounded-[10px] bg-foreground/[0.05]">
             {item.image ? (
               // eslint-disable-next-line @next/next/no-img-element -- stored media
               <img src={`/api/v1/media/${item.image}`} alt="" className="size-full object-cover" />
@@ -45,7 +47,7 @@ function Line({ item, highlighted, onNavigate }: { item: CartItem; highlighted: 
           </Link>
           <div className="flex min-w-0 flex-1 flex-col gap-1">
             <div className="flex items-start justify-between gap-2">
-              <Link href={`/boutique/${item.slug}`} onClick={onNavigate} className="min-w-0 text-[14px] leading-snug font-semibold hover:underline">
+              <Link href={`/shop/${item.slug}`} onClick={onNavigate} className="min-w-0 text-[14px] leading-snug font-semibold hover:underline">
                 {item.name}
               </Link>
               <button type="button" aria-label={t("remove")} onClick={remove} className="-mt-1.5 -mr-1.5 grid size-8 shrink-0 cursor-pointer place-items-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground">
@@ -81,7 +83,7 @@ function Line({ item, highlighted, onNavigate }: { item: CartItem; highlighted: 
 
 /**
  * The bag, and only the bag: a panel from the right on a computer, a sheet from the bottom on a
- * phone. Lines slide in, fold away when removed, figures roll; the order is finished on /commande.
+ * phone. Lines slide in, fold away when removed, figures roll; the order is finished on /checkout.
  */
 export function CartDrawer() {
   const t = useTranslations("Shop");
@@ -89,6 +91,7 @@ export function CartDrawer() {
   const desktop = useIsDesktop();
   const pathname = usePathname();
   const session = useSession();
+  const shopOpen = useShopOpen();
   const [open, setOpen] = useState(false);
   const [highlight, setHighlight] = useState<string | null>(null);
 
@@ -112,7 +115,7 @@ export function CartDrawer() {
   const subtotal = cartTotal(items);
   // Members only (the shop is theirs), and only once something is in the bag; but kept while
   // the bag is open (emptying it shows its empty state). At checkout the bag is the page's summary.
-  if (!session.data || pathname.startsWith("/commande") || (count === 0 && !open)) return null;
+  if (!session.data || !shopOpen || pathname.startsWith("/checkout") || (count === 0 && !open)) return null;
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -120,9 +123,9 @@ export function CartDrawer() {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={t("openCart", { count })}
-        className="relative grid size-8 cursor-pointer place-items-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/5 hover:text-foreground"
+        className={cn(headerIconButtonClass, "relative")}
       >
-        <ShoppingBag className="size-[15px]" aria-hidden />
+        <ShoppingBag className="size-3.5" aria-hidden />
         {count ? (
           <span
             key={count}
@@ -162,7 +165,7 @@ export function CartDrawer() {
             </span>
             <p className="text-[15px] text-muted-foreground">{t("emptyCart")}</p>
             <SheetClose asChild>
-              <Link href="/boutique" className="inline-flex items-center gap-1.5 border-b border-psg-red pb-0.5 text-[14px] font-semibold">
+              <Link href="/shop" className="inline-flex items-center gap-1.5 border-b border-psg-red pb-0.5 text-[14px] font-semibold">
                 {t("seeCollection")}
                 <ArrowRight className="size-3.5" aria-hidden />
               </Link>
@@ -185,7 +188,7 @@ export function CartDrawer() {
               <p className="text-[12px] text-muted-foreground">{t("deliveryNext")}</p>
               <SheetClose asChild>
                 <Link
-                  href="/commande"
+                  href="/checkout"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-[10px] bg-segment px-6 font-wide text-[12px] font-semibold tracking-[0.06em] text-segment-foreground uppercase shadow-brand [transition:opacity_.2s,transform_.15s] hover:opacity-90 active:scale-[0.98]"
                 >
                   {t("checkout", { amount: formatChf(subtotal) })}

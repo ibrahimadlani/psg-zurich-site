@@ -34,21 +34,21 @@ export type AdminSection = {
 
 export const ADMIN_SECTIONS: AdminSection[] = [
   { key: "home", href: "/admin", icon: House, capability: "area", group: "club", tab: true },
-  { key: "members", href: "/admin/membres", icon: Users, capability: "members.read", group: "club", badge: "requests", tab: true },
+  { key: "members", href: "/admin/members", icon: Users, capability: "members.read", group: "club", badge: "requests", tab: true },
   { key: "messages", href: "/admin/messages", icon: Inbox, capability: "messages", group: "club", badge: "messages" },
-  { key: "dues", href: "/admin/cotisations", icon: Banknote, capability: "members.write", group: "club", badge: "unpaid" },
+  { key: "dues", href: "/admin/dues", icon: Banknote, capability: "members.write", group: "club", badge: "unpaid" },
   { key: "finances", href: "/admin/finances", icon: Wallet, capability: "finances", group: "club", badge: "orders" },
   // Phone bar order: home, members, the scanner in the middle, events.
   { key: "scanner", href: "/admin/scanner", icon: ScanLine, capability: "scan", group: "programme", tab: true },
-  { key: "events", href: "/admin/evenements", icon: CalendarDays, capability: "events", group: "programme", tab: true },
-  { key: "matches", href: "/admin/matchs", icon: Trophy, capability: "events", group: "programme" },
-  { key: "news", href: "/admin/actualites", icon: Newspaper, capability: "news", group: "content" },
+  { key: "events", href: "/admin/events", icon: CalendarDays, capability: "events", group: "programme", tab: true },
+  { key: "matches", href: "/admin/matches", icon: Trophy, capability: "events", group: "programme" },
+  { key: "news", href: "/admin/news", icon: Newspaper, capability: "news", group: "content" },
   { key: "mailing", href: "/admin/mailing", icon: Mail, capability: "mailing", group: "content", badge: "failedEmails" },
-  { key: "banner", href: "/admin/banniere", icon: Megaphone, capability: "news", group: "content" },
-  { key: "polls", href: "/admin/sondages", icon: Vote, capability: "polls", group: "content" },
+  { key: "banner", href: "/admin/banner", icon: Megaphone, capability: "news", group: "content" },
+  { key: "polls", href: "/admin/polls", icon: Vote, capability: "polls", group: "content" },
   { key: "documents", href: "/admin/documents", icon: FileText, capability: "documents", group: "content" },
-  { key: "settings", href: "/admin/reglages", icon: Settings2, capability: "roles", group: "team" },
-  { key: "journal", href: "/admin/journal", icon: ScrollText, capability: "audit", group: "team" },
+  { key: "settings", href: "/admin/settings", icon: Settings2, capability: "roles", group: "team" },
+  { key: "journal", href: "/admin/audit", icon: ScrollText, capability: "audit", group: "team" },
 ];
 
 export const ADMIN_GROUPS = ["club", "programme", "content", "team"] as const;

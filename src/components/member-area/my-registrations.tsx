@@ -30,7 +30,7 @@ export async function MyRegistrations({ memberId }: { memberId: string }) {
         <ul className="divide-y overflow-hidden rounded-[12px] border bg-card/70">
           {rows.map((row) => (
             <li key={row.id}>
-              <Link href={`/evenements/${row.id}`} className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-foreground/[0.03]">
+              <Link href={`/events/${row.id}`} className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-foreground/[0.03]">
                 <span className="min-w-0 flex-1">
                   <span className="block truncate text-[15px] font-medium">{row.title}</span>
                   <span className="block text-xs text-muted-foreground first-letter:uppercase">
@@ -48,7 +48,7 @@ export async function MyRegistrations({ memberId }: { memberId: string }) {
       ) : (
         <p className="rounded-[12px] border border-dashed p-5 text-sm text-muted-foreground">
           {t("registrations.empty")}{" "}
-          <Link href="/evenements" className="text-foreground underline underline-offset-2">
+          <Link href="/events" className="text-foreground underline underline-offset-2">
             {t("registrations.browse")}
           </Link>
         </p>

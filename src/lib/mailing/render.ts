@@ -193,7 +193,7 @@ export async function renderDraft({
   const texts = format(raw, locale, values);
   const unsubscribe =
     category !== "transactional"
-      ? { label: await unsubscribeLabel(locale), url: `${siteUrl()}/${locale}/parametres/notifications` }
+      ? { label: await unsubscribeLabel(locale), url: `${siteUrl()}/${locale}/settings/notifications` }
       : undefined;
   // Contact emails carry the sender's own words: show an example of them.
   const quote = ownerType === "automation" && ["contact.received", "contact.toCommittee", "contact.reply"].includes(ownerId) ? SAMPLE_QUOTE[locale] : undefined;

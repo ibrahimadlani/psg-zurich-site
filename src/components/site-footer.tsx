@@ -12,7 +12,7 @@ import { INSTAGRAM } from "@/lib/social";
 const EMAIL = "contact@psg-zurich.ch";
 
 // Their answer depends on the session (redirect when signed in): never prefetched.
-const guestOnly = new Set(["/adhesion", "/connexion"]);
+const guestOnly = new Set(["/join", "/login"]);
 
 const heading = "font-wide text-[10px] font-semibold tracking-[0.08em] text-foreground uppercase";
 const link = "text-[14px] text-muted-foreground transition-colors hover:text-foreground";
@@ -28,13 +28,13 @@ function LegalLinks() {
   const t = useTranslations("Footer");
   return (
     <span className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-      <Link href="/statuts" className="transition-colors hover:text-foreground">
+      <Link href="/statutes" className="transition-colors hover:text-foreground">
         {t("statutes")}
       </Link>
-      <Link href="/mentions-legales" className="transition-colors hover:text-foreground">
+      <Link href="/legal-notice" className="transition-colors hover:text-foreground">
         {t("imprint")}
       </Link>
-      <Link href="/confidentialite" className="transition-colors hover:text-foreground">
+      <Link href="/privacy" className="transition-colors hover:text-foreground">
         {t("privacy")}
       </Link>
     </span>
@@ -62,17 +62,17 @@ function VisitorFooter() {
     {
       title: t("club"),
       links: [
-        { href: "/actualites", label: tNav("news") },
-        { href: "/matchs", label: tNav("matches") },
-        { href: "/evenements", label: tNav("events") },
+        { href: "/news", label: tNav("news") },
+        { href: "/matches", label: tNav("matches") },
+        { href: "/events", label: tNav("events") },
       ],
     },
     {
       title: t("join"),
       links: [
-        { href: "/adhesion", label: tNav("membership") },
-        { href: "/connexion", label: tLogin("submit") },
-        { href: "/soutenir", label: t("support") },
+        { href: "/join", label: tNav("membership") },
+        { href: "/login", label: tLogin("submit") },
+        { href: "/donate", label: t("support") },
       ],
     },
   ];
@@ -91,7 +91,7 @@ function VisitorFooter() {
               {links.map(({ href, label }) => (
                 <li key={href}>
                   {/* Sign in: back to this page afterwards. */}
-                  {href === "/connexion" ? (
+                  {href === "/login" ? (
                     <SignInLink className={link}>{label}</SignInLink>
                   ) : (
                     <Link href={href} prefetch={guestOnly.has(href) ? false : undefined} className={link}>

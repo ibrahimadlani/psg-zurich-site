@@ -108,7 +108,7 @@ async function ThreadDetail({ id }: { id: string }) {
             ) : null}
             {member ? (
               <li>
-                <Link href={`/admin/membres/${member.id}`} prefetch={false} className="inline-flex items-center gap-2 rounded-[10px] border bg-card px-3 py-2 text-[13px] transition-colors hover:border-foreground/30">
+                <Link href={`/admin/members/${member.id}`} prefetch={false} className="inline-flex items-center gap-2 rounded-[10px] border bg-card px-3 py-2 text-[13px] transition-colors hover:border-foreground/30">
                   <span className="font-semibold">{t("memberFile")}</span>
                   <span className="text-muted-foreground">{t("memberStatus", { number: member.memberNumber ?? "—", paid: isDuesPaid(member) ? "yes" : "no" })}</span>
                 </Link>

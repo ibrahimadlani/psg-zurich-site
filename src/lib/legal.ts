@@ -1,5 +1,5 @@
 /**
- * Facts shown on the legal pages (/mentions-legales, /confidentialite).
+ * Facts shown on the legal pages (/legal-notice, /privacy).
  * Values in [brackets] are placeholders: replace them before opening sign-ups.
  */
 export const LEGAL = {
@@ -18,7 +18,7 @@ export const LEGAL = {
   retentionAfterMembership: "[2 ans]",
   /** Date of the current version of both documents (YYYY-MM-DD). */
   updatedAt: "2026-10-17",
-  /** Statutes (/statuts). */
+  /** Statutes (/statutes). */
   statutes: {
     foundedAt: "[JJ mois AAAA]",
     adoptedAt: "[JJ mois AAAA]",
@@ -34,7 +34,7 @@ export const LEGAL = {
     assemblyBy: "[fin septembre]",
     fiscalYearEnd: "[30 juin]",
   },
-  /** How to pay the fee (/cotisation); the committee then records it in the admin. */
+  /** How to pay the fee (/dues); the committee then records it in the admin. */
   payment: {
     accountHolder: "[PSG Zurich Supporters Club]",
     iban: "[CH00 0000 0000 0000 0000 0]",

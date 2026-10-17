@@ -53,12 +53,12 @@ export async function updateOrder(orderId: string, status: OrderStatus, { actorI
       const pickup = next
         ? `${next.title}, ${emailDate(next.startsAt, payment.locale)}`
         : { fr: "à la prochaine activité du club", en: "at the club's next event", de: "am nächsten Clubanlass" }[payment.locale];
-      await enqueue("shop.ready", [recipient], () => ({ values: { payment: reference, items, pickup }, path: "/espace-membre/commandes", dedupe: `shop.ready:${order.id}` }));
+      await enqueue("shop.ready", [recipient], () => ({ values: { payment: reference, items, pickup }, path: "/member/orders", dedupe: `shop.ready:${order.id}` }));
     } else {
       await enqueue("shop.shipped", [recipient], () => ({
         values: { payment: reference, items, tracking: trackingNumber || "—" },
         url: trackingNumber ? `https://service.post.ch/ekp-web/ui/entry/shipment/${encodeURIComponent(trackingNumber)}` : undefined,
-        path: trackingNumber ? undefined : "/espace-membre/commandes",
+        path: trackingNumber ? undefined : "/member/orders",
         dedupe: `shop.shipped:${order.id}`,
       }));
     }

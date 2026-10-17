@@ -1,7 +1,7 @@
 import { routing } from "@/i18n/routing";
 
 /*
- * Where to go back after signing in. A login wall sends visitors to /connexion?suite=/the/page;
+ * Where to go back after signing in. A login wall sends visitors to /login?suite=/the/page;
  * the sign-in form, the welcome step, the membership and password-reset flows carry it along,
  * and the member lands on the page they wanted. Paths are kept without the language prefix:
  * the redirect puts the current one back.
@@ -12,7 +12,7 @@ export const RETURN_PARAM = "suite";
 export const RETURN_PATH_HEADER = "x-return-path";
 
 /** Pages that would send the member round in circles. */
-const LOOPS = /^\/(connexion|adhesion|bienvenue)(\/|$)/;
+const LOOPS = /^\/(login|join|welcome)(\/|$)/;
 const LOCALE_PREFIX = new RegExp(`^/(${routing.locales.join("|")})(?=/|$)`);
 const BASE = "http://x";
 
@@ -45,4 +45,4 @@ export function withReturn(href: string, path: string | null | undefined) {
 }
 
 /** The sign-in page, coming back to `path` afterwards. */
-export const signInHref = (path?: string | null) => withReturn("/connexion", path);
+export const signInHref = (path?: string | null) => withReturn("/login", path);

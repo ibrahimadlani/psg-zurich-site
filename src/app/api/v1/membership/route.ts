@@ -41,7 +41,7 @@ export const POST = apiHandler(async (request) => {
         password: input.password,
         // The confirmation link signs in and lands on the welcome step (also sets the email's
         // language), which then goes on to the page wanted before joining.
-        callbackURL: withReturn(`/${input.locale}/bienvenue`, input.next),
+        callbackURL: withReturn(`/${input.locale}/welcome`, input.next),
       },
       headers: request.headers,
     });

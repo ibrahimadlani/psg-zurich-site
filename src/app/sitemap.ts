@@ -9,12 +9,12 @@ import { localeAlternates, publicSiteUrl } from "@/lib/seo";
 // Public pages, in every language (member, admin and auth pages are left out).
 const PAGES = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
-  { path: "/actualites", priority: 0.9, changeFrequency: "daily" },
-  { path: "/matchs", priority: 0.8, changeFrequency: "daily" },
-  { path: "/evenements", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/soutenir", priority: 0.4, changeFrequency: "yearly" },
+  { path: "/news", priority: 0.9, changeFrequency: "daily" },
+  { path: "/matches", priority: 0.8, changeFrequency: "daily" },
+  { path: "/events", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/donate", priority: 0.4, changeFrequency: "yearly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
-  { path: "/adhesion", priority: 0.7, changeFrequency: "yearly" },
+  { path: "/join", priority: 0.7, changeFrequency: "yearly" },
 ] as const;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -41,13 +41,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articles = published.map((post) => {
     const versions = groups.get(post.group ?? post.slug) ?? [];
     return {
-      url: `${site}/${post.locale}/actualites/${post.slug}`,
+      url: `${site}/${post.locale}/news/${post.slug}`,
       lastModified: post.updatedAt,
       changeFrequency: "monthly" as const,
       priority: 0.7,
       alternates:
         versions.length > 1
-          ? { languages: Object.fromEntries(versions.map((version) => [version.locale, `${site}/${version.locale}/actualites/${version.slug}`])) }
+          ? { languages: Object.fromEntries(versions.map((version) => [version.locale, `${site}/${version.locale}/news/${version.slug}`])) }
           : undefined,
     };
   });

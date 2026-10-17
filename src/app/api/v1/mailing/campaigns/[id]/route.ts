@@ -11,7 +11,7 @@ const schema = z.object({
   name: z.string().trim().min(1).max(120),
   audience: z.enum(CAMPAIGN_AUDIENCES),
   audienceEventId: z.string().max(36).nullable(),
-  // A page of the site ("/evenements") or a web address.
+  // A page of the site ("/events") or a web address.
   ctaUrl: z
     .string()
     .trim()

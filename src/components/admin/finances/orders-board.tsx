@@ -94,7 +94,7 @@ export function OrdersBoard({ orders }: { orders: Order[] }) {
                     <div className="min-w-0">
                       <p className="font-semibold">{order.payerName}</p>
                       <p className="text-[12px] text-muted-foreground">
-                        <Link href={`/admin/finances/paiements/${order.paymentId}`} className="font-mono underline-offset-2 hover:underline">
+                        <Link href={`/admin/finances/payments/${order.paymentId}`} className="font-mono underline-offset-2 hover:underline">
                           {formatPaymentReference(order.reference)}
                         </Link>
                         {order.paidAt ? ` · ${format.dateTime(new Date(order.paidAt), { dateStyle: "medium" })}` : ""} · {formatChf(order.amount)}

@@ -50,7 +50,21 @@
         "system": "System"
       }
     },
-    "shop": "Shop"
+    "shop": "Shop",
+    "support": "Support",
+    "userMenu": {
+      "messages": "My messages",
+      "payments": "My payments",
+      "orders": "My orders",
+      "account": "Account",
+      "titles": {
+        "member": "Member",
+        "nonMember": "Non-member",
+        "moderator": "Moderator",
+        "admin": "Administrator",
+        "superadmin": "Superadmin"
+      }
+    }
   },
   "EventsShowcase": {
     "kinds": {
@@ -170,7 +184,8 @@
     "newReplies": "{count, plural, one {# new reply} other {# new replies}}",
     "followTitle": "Follow us",
     "followBody": "Photos and the atmosphere of our watch parties.",
-    "emailBody": "Write to us from your mail app."
+    "emailBody": "Write to us from your mail app.",
+    "supportTitle": "Support"
   },
   "Onboarding": {
     "pageTitle": "Welcome",
@@ -822,7 +837,8 @@
       "refund_requested": "Refund requested",
       "refund_succeeded": "Refund made",
       "refund_failed": "Refund failed",
-      "user_home_settings": "Home page changed"
+      "user_home_settings": "Home page changed",
+      "payment_shop_open": "Shop opened / closed"
     }
   },
   "AdminShell": {
@@ -2326,7 +2342,7 @@
       },
       "event": "Event",
       "ctaUrl": "Button link",
-      "ctaUrlHint": "A page of the site (/evenements) or a web address; empty = no button.",
+      "ctaUrlHint": "A page of the site (/events) or a web address; empty = no button.",
       "count": "{count, plural, =0 {Nobody} one {# member} other {# members}} (with “Club news” on)",
       "saveSettings": "Save settings",
       "sendNow": "Send now",
@@ -2680,7 +2696,8 @@
       "already_paid": "This fee is already paid.",
       "product_unavailable": "An item in your bag is no longer available.",
       "too_many_requests": "Too many attempts. Wait a few minutes.",
-      "membership_inactive": "Your membership must first be accepted by the committee."
+      "membership_inactive": "Your membership must first be accepted by the committee.",
+      "shop_closed": "The shop is closed for now."
     }
   },
   "PaymentStatus": {
@@ -2941,12 +2958,16 @@
     "sizeGuideRemoveRow": "Remove the row",
     "productDetails": "Details",
     "productDetailsPlaceholder": "Material: 100% cotton\nMade in Portugal\nWash at 30 °C",
-    "productDetailsHint": "One line per point: they show as a list under “Details”."
+    "productDetailsHint": "One line per point: they show as a list under “Details”.",
+    "shopOpenTitle": "Shop open to members",
+    "shopOpenOn": "The shop shows in members' menu.",
+    "shopOpenEmpty": "Open, but hidden: no visible item yet.",
+    "shopOpenOff": "Closed: shop, bag and checkout are hidden (the committee can still prepare it)."
   },
   "Shop": {
     "eyebrow": "PSG Zurich · Collection",
     "title": "Shop",
-    "intro": "Pieces designed for the club, in small runs. For members, picked up at a watch party or delivered in Switzerland.",
+    "intro": "Pieces designed for the club, in small runs.",
     "soon": "The collection is coming soon.",
     "soldOut": "Sold out",
     "soldOutLong": "Sold out for now. Come back soon.",
@@ -3020,7 +3041,8 @@
       "pickupBullet": "Free pick-up at the event of your choice: we tell you when it is ready.",
       "postBullet": "Shipping in Switzerland for {fee}, sent within 3 working days with Swiss Post tracking.",
       "exchangeBullet": "Wrong size? Exchange within 14 days at the next event, depending on stock."
-    }
+    },
+    "quantity": "Quantity"
   },
   "Home": {
     "countdown": {

@@ -10,7 +10,7 @@ import { getSession } from "@/lib/permissions";
 /**
  * What the mobile menu shows besides links (read when it opens, from the database only):
  * where the visitor stands, when the latest article came out (the menu compares it with the
- * last visit to /actualites), and the number of upcoming events for members whose fee is paid.
+ * last visit to /news), and the number of upcoming events for members whose fee is paid.
  */
 export const GET = apiHandler(async () => {
   await connection();

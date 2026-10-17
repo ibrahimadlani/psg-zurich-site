@@ -84,7 +84,7 @@ export function EventAdminActions({
           {t("copyEmails")}
         </button>
       ) : null}
-      <Link href={`/evenements/${eventId}`} prefetch={false} className={adminButton("ghost")}>
+      <Link href={`/events/${eventId}`} prefetch={false} className={adminButton("ghost")}>
         <ExternalLink aria-hidden />
         {t("viewOnSite")}
       </Link>
@@ -102,7 +102,7 @@ export function EventAdminActions({
               return;
             }
             toast.success(t("deleted"));
-            router.push("/admin/evenements");
+            router.push("/admin/events");
             router.refresh();
           });
         }}

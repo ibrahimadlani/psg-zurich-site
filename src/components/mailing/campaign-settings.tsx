@@ -118,7 +118,7 @@ export function CampaignSettings({
         ) : null}
         <div className="space-y-1.5 sm:col-span-2">
           <Label htmlFor="campaign-cta">{t("campaigns.ctaUrl")}</Label>
-          <Input id="campaign-cta" value={ctaUrl} placeholder="/evenements" maxLength={255} onChange={(event) => setCtaUrl(event.target.value)} />
+          <Input id="campaign-cta" value={ctaUrl} placeholder="/events" maxLength={255} onChange={(event) => setCtaUrl(event.target.value)} />
           <p className="text-xs text-muted-foreground">{t("campaigns.ctaUrlHint")}</p>
         </div>
       </div>

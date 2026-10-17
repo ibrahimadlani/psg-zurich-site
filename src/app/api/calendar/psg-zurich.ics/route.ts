@@ -15,7 +15,7 @@ export async function GET(request: Request) {
       end: new Date(match.kickoffAt.getTime() + ESTIMATED_DURATION_MS),
       summary: `${matchScore(match) ? `${matchTitle(match)} ${matchScore(match)}` : matchTitle(match)} · ${match.competition}`,
       location: [match.stadium, match.city].filter(Boolean).join(", "),
-      url: `${origin}/fr/matchs/${match.id}`,
+      url: `${origin}/fr/matches/${match.id}`,
       updatedAt: match.updatedAt,
       cancelled: match.status === "cancelled",
     })),

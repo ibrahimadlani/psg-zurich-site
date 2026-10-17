@@ -35,7 +35,7 @@ const actionClass = `${sideClass} border-b text-[13px] whitespace-nowrap text-mu
 
 /**
  * Everything about one event (when, where, places, sign-up, map, linked match): the right-hand
- * panel of /evenements on a computer, the whole page on a phone.
+ * panel of /events on a computer, the whole page on a phone.
  */
 export async function EventDetail({ id }: { id: string }) {
   await connection();
@@ -50,7 +50,7 @@ export async function EventDetail({ id }: { id: string }) {
   // Events are for members whose fee is paid: anyone else lands on the showcase. A visitor
   // comes back to this event once signed in.
   if (!isDuesPaid(member)) {
-    redirect({ href: session ? "/evenements" : withReturn("/evenements", `/evenements/${id}`), locale: await getLocale() });
+    redirect({ href: session ? "/events" : withReturn("/events", `/events/${id}`), locale: await getLocale() });
   }
   const [event] = await getEventsWithAttendance(eq(events.id, id), member?.id ?? null);
   if (!event) notFound();

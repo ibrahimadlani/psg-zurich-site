@@ -44,7 +44,7 @@ function LanguagePills({ group }: { group: PostGroup }) {
           return (
             <Link
               key={locale}
-              href={`/admin/actualites/nouveau?traduction=${group.id}&langue=${locale}`}
+              href={`/admin/news/new?traduction=${group.id}&langue=${locale}`}
               prefetch={false}
               title={t("translateTo", { language: t(`languages.${locale}`) })}
               className="inline-flex h-7 min-w-11 items-center justify-center gap-0.5 rounded-full border border-dashed px-2 font-wide text-[9.5px] font-semibold tracking-[0.06em] text-muted-foreground uppercase transition-colors hover:border-foreground hover:text-foreground"
@@ -57,7 +57,7 @@ function LanguagePills({ group }: { group: PostGroup }) {
         return (
           <Link
             key={locale}
-            href={`/admin/actualites/${version.id}`}
+            href={`/admin/news/${version.id}`}
             prefetch={false}
             title={`${t(`languages.${locale}`)} · ${t(`states.${version.state}`)}`}
             className={cn(
@@ -137,7 +137,7 @@ export function PostsList({ groups }: { groups: PostGroup[] }) {
                 : t("updated", { date: format.relativeTime(post.updatedAt, now) });
             return (
               <li key={group.id} className="flex flex-col gap-3 p-3.5 sm:flex-row sm:items-center">
-                <Link href={`/admin/actualites/${post.id}`} prefetch={false} className="group flex min-w-0 flex-1 items-center gap-3.5">
+                <Link href={`/admin/news/${post.id}`} prefetch={false} className="group flex min-w-0 flex-1 items-center gap-3.5">
                   {post.imageUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element -- uploaded media
                     <img src={post.imageUrl} alt="" loading="lazy" className="aspect-[4/3] w-16 shrink-0 rounded-[8px] object-cover" />

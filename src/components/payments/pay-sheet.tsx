@@ -117,7 +117,7 @@ export function PaySheet({
     rememberSecret(current.reference, current.clientSecret);
     onPaid?.();
     onOpenChange(false);
-    router.push(`/paiement/${current.reference}`);
+    router.push(`/payment/${current.reference}`);
   }
 
   // Each opening (or retry) gets a number: answers of an earlier one are ignored.
@@ -164,7 +164,7 @@ export function PaySheet({
         if (stale()) return;
         started.current = false;
         // The server's refusals, said plainly (sold out, already paid, payment switched off…).
-        const known = ["payments_disabled", "out_of_stock", "already_paid", "product_unavailable", "too_many_requests", "membership_inactive"];
+        const known = ["shop_closed", "payments_disabled", "out_of_stock", "already_paid", "product_unavailable", "too_many_requests", "membership_inactive"];
         setPhase({ name: "error", message: error.code && known.includes(error.code) ? t(`errors.${error.code}` as never) : error.message || t("error") });
       });
   }
@@ -240,7 +240,7 @@ export function PaySheet({
     rememberSecret(checkout.reference, checkout.clientSecret);
     // Opens TWINT; the payer comes back to the payment's page.
     const { error } = await stripe.confirmTwintPayment(checkout.clientSecret, {
-      return_url: `${window.location.origin}/${locale}/paiement/${checkout.reference}`,
+      return_url: `${window.location.origin}/${locale}/payment/${checkout.reference}`,
     });
     if (error) failed(error);
   }

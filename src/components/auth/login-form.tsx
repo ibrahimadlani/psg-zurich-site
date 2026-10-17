@@ -50,7 +50,7 @@ export function LoginForm() {
     // callbackURL: where a re-sent confirmation link lands (and the email's language).
     const { data, error } = await signIn.email({
       ...values,
-      callbackURL: withReturn(`/${locale}/bienvenue`, next),
+      callbackURL: withReturn(`/${locale}/welcome`, next),
     });
     if (error) {
       toast.error(
@@ -66,7 +66,7 @@ export function LoginForm() {
     }
     toast.success(t("welcome", { name: data?.user.name.split(" ")[0] ?? "" }));
     // Through the welcome step, which steps aside at once when it was already done.
-    router.push(`/bienvenue?${RETURN_PARAM}=${encodeURIComponent(next ?? "/espace-membre")}`);
+    router.push(`/welcome?${RETURN_PARAM}=${encodeURIComponent(next ?? "/member")}`);
     router.refresh();
   }
 
@@ -97,7 +97,7 @@ export function LoginForm() {
             {t("password")}
           </label>
           <Link
-            href={withReturn("/connexion/mot-de-passe-oublie", next)}
+            href={withReturn("/login/forgot-password", next)}
             prefetch={false}
             className="text-[13px] text-muted-foreground hover:text-foreground"
           >

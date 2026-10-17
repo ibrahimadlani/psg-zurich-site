@@ -4,7 +4,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 /**
- * /evenements on a computer: the list on a third, the open event on the other two (each new
+ * /events on a computer: the list on a third, the open event on the other two (each new
  * one fades and slides in). On a phone: the list alone, and an event slides in from the right
  * over it; going back slides the list in from the left.
  */

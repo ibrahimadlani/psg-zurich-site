@@ -11,7 +11,7 @@ export const siteUrl = () => (process.env.BETTER_AUTH_URL || "http://localhost:3
 export type Recipient = { memberId: string | null; email: string; locale: Locale; firstName: string };
 export type JobContent = {
   values?: Record<string, string>;
-  /** Page of the site, without the locale ("/evenements/…"). */
+  /** Page of the site, without the locale ("/events/…"). */
   path?: string;
   /** Or a full address. */
   url?: string;

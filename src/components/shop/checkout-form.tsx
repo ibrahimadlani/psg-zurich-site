@@ -195,7 +195,7 @@ export function CheckoutForm({ contact, address: initialAddress, shipping, event
         </span>
         <h1 className="font-narrow text-[36px] leading-none font-extrabold uppercase italic">{t("emptyTitle")}</h1>
         {notices.length ? <p className="text-[14px] text-muted-foreground">{notices.join(" ")}</p> : null}
-        <Link href="/boutique" className="inline-flex items-center gap-1.5 border-b border-psg-red pb-0.5 text-[14px] font-semibold">
+        <Link href="/shop" className="inline-flex items-center gap-1.5 border-b border-psg-red pb-0.5 text-[14px] font-semibold">
           {t("backToShop")}
           <ArrowRight className="size-3.5" aria-hidden />
         </Link>

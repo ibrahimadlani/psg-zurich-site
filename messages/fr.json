@@ -50,7 +50,21 @@
         "system": "Système"
       }
     },
-    "shop": "Boutique"
+    "shop": "Boutique",
+    "support": "Support",
+    "userMenu": {
+      "messages": "Mes messages",
+      "payments": "Mes paiements",
+      "orders": "Mes commandes",
+      "account": "Compte",
+      "titles": {
+        "member": "Membre",
+        "nonMember": "Non-membre",
+        "moderator": "Modérateur",
+        "admin": "Administrateur",
+        "superadmin": "Superadmin"
+      }
+    }
   },
   "EventsShowcase": {
     "kinds": {
@@ -170,7 +184,8 @@
     "newReplies": "{count, plural, one {# nouvelle réponse} other {# nouvelles réponses}}",
     "followTitle": "Suivez-nous",
     "followBody": "Photos et ambiance des watch parties.",
-    "emailBody": "Écrivez-nous depuis votre messagerie."
+    "emailBody": "Écrivez-nous depuis votre messagerie.",
+    "supportTitle": "Support"
   },
   "Onboarding": {
     "pageTitle": "Bienvenue",
@@ -822,7 +837,8 @@
       "refund_requested": "Remboursement demandé",
       "refund_succeeded": "Remboursement effectué",
       "refund_failed": "Remboursement échoué",
-      "user_home_settings": "Page d'accueil modifiée"
+      "user_home_settings": "Page d'accueil modifiée",
+      "payment_shop_open": "Boutique ouverte / fermée"
     }
   },
   "AdminShell": {
@@ -2326,7 +2342,7 @@
       },
       "event": "Événement",
       "ctaUrl": "Lien du bouton",
-      "ctaUrlHint": "Une page du site (/evenements) ou une adresse web ; vide = pas de bouton.",
+      "ctaUrlHint": "Une page du site (/events) ou une adresse web ; vide = pas de bouton.",
       "count": "{count, plural, =0 {Personne} one {# membre} other {# membres}} (avec « Actualités du club » activé)",
       "saveSettings": "Enregistrer les réglages",
       "sendNow": "Envoyer maintenant",
@@ -2650,7 +2666,7 @@
     "greeting": "Bonjour {name},",
     "signature": "Sportivement,\nLe comité du PSG Zurich",
     "thanks": "Merci pour votre message, c'est bien noté. Nous revenons vers vous si nécessaire.",
-    "join": "Merci pour votre intérêt ! L'adhésion se fait en ligne sur psg-zurich.ch/adhesion : le comité valide ensuite votre demande, en général sous quelques jours.",
+    "join": "Merci pour votre intérêt ! L'adhésion se fait en ligne sur psg-zurich.ch/join : le comité valide ensuite votre demande, en général sous quelques jours.",
     "events": "Merci pour votre message. Les inscriptions se font sur la page de chaque événement, dans l'agenda du site.",
     "fees": "Merci pour votre message. Vous trouverez le montant et les moyens de paiement sur votre page cotisation ; nous mettons votre statut à jour dès réception.",
     "partnership": "Merci pour votre proposition, elle nous intéresse. Pouvez-vous nous en dire un peu plus (dates, format, contreparties) ? Nous en parlons en comité et revenons vers vous.",
@@ -2680,7 +2696,8 @@
       "already_paid": "Cette cotisation est déjà réglée.",
       "product_unavailable": "Un article de votre panier n'est plus disponible.",
       "too_many_requests": "Trop de tentatives. Patientez quelques minutes.",
-      "membership_inactive": "Votre adhésion doit d'abord être acceptée par le comité."
+      "membership_inactive": "Votre adhésion doit d'abord être acceptée par le comité.",
+      "shop_closed": "La boutique est fermée pour le moment."
     }
   },
   "PaymentStatus": {
@@ -2941,12 +2958,16 @@
     "sizeGuideRemoveRow": "Retirer la ligne",
     "productDetails": "Détails",
     "productDetailsPlaceholder": "Matière : 100 % coton\nFabriqué au Portugal\nLavage à 30 °C",
-    "productDetailsHint": "Une ligne par point : ils s'affichent en liste sous « Détails »."
+    "productDetailsHint": "Une ligne par point : ils s'affichent en liste sous « Détails ».",
+    "shopOpenTitle": "Boutique ouverte aux membres",
+    "shopOpenOn": "La boutique apparaît dans le menu des membres.",
+    "shopOpenEmpty": "Ouverte, mais cachée : aucun article visible pour l'instant.",
+    "shopOpenOff": "Fermée : la boutique, le panier et la commande sont cachés (le comité peut toujours la préparer)."
   },
   "Shop": {
     "eyebrow": "PSG Zurich · Collection",
     "title": "Boutique",
-    "intro": "Des pièces dessinées pour le club, en petites séries. Réservées aux membres, à retirer à une watch party ou livrées en Suisse.",
+    "intro": "Des pièces dessinées pour le club, en petites séries.",
     "soon": "La collection arrive bientôt.",
     "soldOut": "Épuisé",
     "soldOutLong": "Épuisé pour le moment. Revenez bientôt.",
@@ -3020,7 +3041,8 @@
       "pickupBullet": "Retrait offert à l'événement de votre choix : nous vous prévenons quand c'est prêt.",
       "postBullet": "Envoi postal en Suisse pour {fee}, expédié sous 3 jours ouvrés avec suivi La Poste.",
       "exchangeBullet": "Pas la bonne taille ? Échange sous 14 jours au prochain événement, selon le stock."
-    }
+    },
+    "quantity": "Quantité"
   },
   "Home": {
     "countdown": {

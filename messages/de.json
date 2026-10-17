@@ -50,7 +50,21 @@
         "system": "System"
       }
     },
-    "shop": "Shop"
+    "shop": "Shop",
+    "support": "Support",
+    "userMenu": {
+      "messages": "Meine Nachrichten",
+      "payments": "Meine Zahlungen",
+      "orders": "Meine Bestellungen",
+      "account": "Konto",
+      "titles": {
+        "member": "Mitglied",
+        "nonMember": "Nichtmitglied",
+        "moderator": "Moderator",
+        "admin": "Administrator",
+        "superadmin": "Superadmin"
+      }
+    }
   },
   "EventsShowcase": {
     "kinds": {
@@ -170,7 +184,8 @@
     "newReplies": "{count, plural, one {# neue Antwort} other {# neue Antworten}}",
     "followTitle": "Folg uns",
     "followBody": "Fotos und Stimmung unserer Watch-Partys.",
-    "emailBody": "Schreib uns aus deinem Mailprogramm."
+    "emailBody": "Schreib uns aus deinem Mailprogramm.",
+    "supportTitle": "Support"
   },
   "Onboarding": {
     "pageTitle": "Willkommen",
@@ -822,7 +837,8 @@
       "refund_requested": "Rückerstattung beantragt",
       "refund_succeeded": "Rückerstattung erfolgt",
       "refund_failed": "Rückerstattung fehlgeschlagen",
-      "user_home_settings": "Startseite geändert"
+      "user_home_settings": "Startseite geändert",
+      "payment_shop_open": "Shop geöffnet / geschlossen"
     }
   },
   "AdminShell": {
@@ -2326,7 +2342,7 @@
       },
       "event": "Veranstaltung",
       "ctaUrl": "Link der Schaltfläche",
-      "ctaUrlHint": "Eine Seite der Website (/evenements) oder eine Webadresse; leer = keine Schaltfläche.",
+      "ctaUrlHint": "Eine Seite der Website (/events) oder eine Webadresse; leer = keine Schaltfläche.",
       "count": "{count, plural, =0 {Niemand} one {# Mitglied} other {# Mitglieder}} (mit aktivierten «Clubneuigkeiten»)",
       "saveSettings": "Einstellungen speichern",
       "sendNow": "Jetzt senden",
@@ -2680,7 +2696,8 @@
       "already_paid": "Dieser Beitrag ist bereits bezahlt.",
       "product_unavailable": "Ein Artikel in deinem Warenkorb ist nicht mehr erhältlich.",
       "too_many_requests": "Zu viele Versuche. Warte ein paar Minuten.",
-      "membership_inactive": "Deine Mitgliedschaft muss zuerst vom Vorstand angenommen werden."
+      "membership_inactive": "Deine Mitgliedschaft muss zuerst vom Vorstand angenommen werden.",
+      "shop_closed": "Der Shop ist derzeit geschlossen."
     }
   },
   "PaymentStatus": {
@@ -2941,12 +2958,16 @@
     "sizeGuideRemoveRow": "Zeile entfernen",
     "productDetails": "Details",
     "productDetailsPlaceholder": "Material: 100 % Baumwolle\nHergestellt in Portugal\nWaschen bei 30 °C",
-    "productDetailsHint": "Eine Zeile pro Punkt: sie erscheinen als Liste unter «Details»."
+    "productDetailsHint": "Eine Zeile pro Punkt: sie erscheinen als Liste unter «Details».",
+    "shopOpenTitle": "Shop für Mitglieder geöffnet",
+    "shopOpenOn": "Der Shop erscheint im Menü der Mitglieder.",
+    "shopOpenEmpty": "Geöffnet, aber versteckt: noch kein sichtbarer Artikel.",
+    "shopOpenOff": "Geschlossen: Shop, Warenkorb und Bestellung sind versteckt (der Vorstand kann ihn trotzdem vorbereiten)."
   },
   "Shop": {
     "eyebrow": "PSG Zurich · Kollektion",
     "title": "Shop",
-    "intro": "Für den Club entworfene Stücke in kleinen Serien. Für Mitglieder, abzuholen an einer Watch Party oder in die Schweiz geliefert.",
+    "intro": "Für den Club entworfene Stücke in kleinen Serien.",
     "soon": "Die Kollektion kommt bald.",
     "soldOut": "Ausverkauft",
     "soldOutLong": "Derzeit ausverkauft. Schau bald wieder vorbei.",
@@ -3020,7 +3041,8 @@
       "pickupBullet": "Gratis-Abholung am Event deiner Wahl: wir melden uns, wenn sie bereit ist.",
       "postBullet": "Postversand in der Schweiz für {fee}, Versand innert 3 Werktagen mit Sendungsverfolgung.",
       "exchangeBullet": "Falsche Grösse? Umtausch innert 14 Tagen am nächsten Event, je nach Bestand."
-    }
+    },
+    "quantity": "Menge"
   },
   "Home": {
     "countdown": {

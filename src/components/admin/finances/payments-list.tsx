@@ -82,7 +82,7 @@ export function PaymentsList({ rows }: { rows: Row[] }) {
       ) : (
         <ul className="flex flex-col gap-1">
           {shown.map((row) => {
-            const href = `/admin/finances/paiements/${row.id}`;
+            const href = `/admin/finances/payments/${row.id}`;
             const on = pathname === href;
             return (
               <li key={row.id}>

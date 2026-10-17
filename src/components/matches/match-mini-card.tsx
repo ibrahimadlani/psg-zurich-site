@@ -34,7 +34,7 @@ export function MatchMiniCard({
           </a>
         </span>
       </div>
-      <Link href={`/matchs/${match.id}`} className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 transition-opacity hover:opacity-85">
+      <Link href={`/matches/${match.id}`} className="grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-4 transition-opacity hover:opacity-85">
         {[home, away].map((team, index) => (
           <span key={team.name} className={cn("flex flex-col items-center gap-2.5 text-center", index === 0 ? "order-1" : "order-3")}>
             <TeamCrest name={team.name} logo={team.logo} className="size-12" />

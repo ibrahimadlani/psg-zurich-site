@@ -86,12 +86,12 @@ export async function homeMemberExtras(viewer: HomeViewer, locale: Locale, basic
   const me = board.find((row) => row.memberId === member.id) ?? null;
   const event = basics.event;
   const todo = [
-    ...(active && basics.next && !myPrediction ? [{ kind: "predict" as const, href: `/matchs/${basics.next.id}`, opponent: basics.next.opponent }] : []),
-    ...(active && !isDuesPaid(member) ? [{ kind: "dues" as const, href: "/cotisation" }] : []),
+    ...(active && basics.next && !myPrediction ? [{ kind: "predict" as const, href: `/matches/${basics.next.id}`, opponent: basics.next.opponent }] : []),
+    ...(active && !isDuesPaid(member) ? [{ kind: "dues" as const, href: "/dues" }] : []),
     ...(isDuesPaid(member) && event && !event.myStatus && (event.capacity === null || event.registered < event.capacity)
-      ? [{ kind: "signUp" as const, href: `/evenements/${event.id}`, title: event.title }]
+      ? [{ kind: "signUp" as const, href: `/events/${event.id}`, title: event.title }]
       : []),
-    ...polls.filter((poll) => poll.votingOpen && !poll.myOption).map((poll) => ({ kind: "vote" as const, href: "/espace-membre", title: poll.question })),
+    ...polls.filter((poll) => poll.votingOpen && !poll.myOption).map((poll) => ({ kind: "vote" as const, href: "/member", title: poll.question })),
   ];
   return {
     // When the page was made: the feed's "today / this week" buckets count from here.

@@ -47,7 +47,7 @@ export function LockedCard({
         </div>
         {access === "guest" ? (
           <div className="flex flex-col items-center gap-2">
-            <Link href={withReturn("/adhesion", next)} prefetch={false} className={primary}>
+            <Link href={withReturn("/join", next)} prefetch={false} className={primary}>
               {t("join")}
             </Link>
             <p className="text-[12px] text-muted-foreground">
@@ -65,7 +65,7 @@ export function LockedCard({
             </p>
           </div>
         ) : access === "unpaid" ? (
-          <Link href="/cotisation" prefetch={false} className={primary}>
+          <Link href="/dues" prefetch={false} className={primary}>
             {t("pay")}
           </Link>
         ) : null}

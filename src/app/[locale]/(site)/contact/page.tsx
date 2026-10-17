@@ -21,8 +21,9 @@ import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Contact");
-  return { title: t("title"), description: t("intro") };
+  await connection();
+  const [t, session] = await Promise.all([getTranslations("Contact"), getSession()]);
+  return { title: session ? t("supportTitle") : t("title"), description: t("intro") };
 }
 
 /** Topics on offer: visitors mostly join or propose; members ask about their membership. */
@@ -72,7 +73,7 @@ async function ContactContent({ searchParams }: { searchParams: Promise<Record<s
     <div className="flex flex-col gap-[clamp(28px,4vw,40px)]">
       <header className="flex flex-col gap-3.5">
         <h1 className="font-narrow text-[length:clamp(44px,9vw,88px)] leading-[0.88] font-extrabold tracking-[-0.01em] break-words uppercase italic">
-          {view === "member" && member ? t("hello", { name: member.firstName }) : t("title")}
+          {view === "member" ? t("supportTitle") : t("title")}
         </h1>
         <p className="max-w-[36rem] text-base leading-normal text-pretty text-muted-foreground">{view === "member" ? t("memberIntro") : t("intro")}</p>
         <div className="flex flex-wrap items-center gap-2">
@@ -82,7 +83,7 @@ async function ContactContent({ searchParams }: { searchParams: Promise<Record<s
           </span>
           {view === "member" ? (
             <Link
-              href="/espace-membre/messages"
+              href="/member/messages"
               prefetch={false}
               className="inline-flex h-7 items-center gap-1.5 rounded-full border bg-card px-3 text-[12px] transition-colors hover:border-foreground/30"
             >

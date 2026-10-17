@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useLayoutEffect, useRef } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
+import { useShopOpen } from "@/components/shop/use-shop-open";
 import { useSession } from "@/lib/auth-client";
 import { cn } from "@/lib/utils";
 
@@ -17,21 +18,23 @@ type NavItem = {
 
 const home: NavItem = { href: "/", key: "home" };
 const content: NavItem[] = [
-  { href: "/actualites", key: "news" },
-  { href: "/matchs", key: "matches" },
-  { href: "/evenements", key: "events" },
+  { href: "/news", key: "news" },
+  { href: "/matches", key: "matches" },
+  { href: "/events", key: "events" },
 ];
 // The shop is for members: only in the signed-in menu.
-const shop: NavItem = { href: "/boutique", key: "shop", authDependent: true };
+const shop: NavItem = { href: "/shop", key: "shop", authDependent: true };
 const contact: NavItem = { href: "/contact", key: "contact" };
 
 /** Links depend on who is browsing: visitor or signed-in member (the committee reaches the admin from its account menu). */
 export function useNavItems(): NavItem[] {
   const { data } = useSession();
+  const shopOpen = useShopOpen();
   // Visitors (and the first instant while the session loads) see the public menu.
-  if (!data) return [home, ...content, contact, { href: "/adhesion", key: "membership", featured: true, authDependent: true }];
-  const memberArea: NavItem = { href: "/espace-membre", key: "memberArea", featured: true, authDependent: true };
-  return [home, ...content, shop, contact, memberArea];
+  if (!data) return [home, ...content, contact, { href: "/join", key: "membership", featured: true, authDependent: true }];
+  const memberArea: NavItem = { href: "/member", key: "memberArea", featured: true, authDependent: true };
+  // Signed in, support lives in the account menu: members rarely need it.
+  return [home, ...content, ...(shopOpen ? [shop] : []), memberArea];
 }
 
 /** Small cockade in the club colours (PSG blue, white, red), marking the key page of the bar. */

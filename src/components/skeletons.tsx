@@ -65,7 +65,7 @@ const TabsSkeleton = ({ count = 3 }: { count?: number }) => (
   </div>
 );
 
-/** /matchs: featured match, tabs, list. */
+/** /matches: featured match, tabs, list. */
 export function MatchesSkeleton() {
   return (
     <SkeletonGroup className="space-y-8">
@@ -89,7 +89,7 @@ export function MatchesSkeleton() {
   );
 }
 
-/** /matchs/[id]: score card, details line, two sections. */
+/** /matches/[id]: score card, details line, two sections. */
 export function MatchDetailSkeleton() {
   return (
     <SkeletonGroup className="space-y-8">
@@ -145,7 +145,7 @@ export function EventsSkeleton({ count = 3 }: { count?: number }) {
   );
 }
 
-/** /evenements/[id]: title block, facts, map card. */
+/** /events/[id]: title block, facts, map card. */
 export function EventDetailSkeleton() {
   return (
     <SkeletonGroup className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
@@ -181,7 +181,7 @@ function NewsCardSkeleton() {
   );
 }
 
-/** /actualites: title, category tabs, featured article, grid. */
+/** /news: title, category tabs, featured article, grid. */
 export function NewsListSkeleton() {
   return (
     <SkeletonGroup className="flex flex-col gap-[clamp(28px,4vw,40px)]">
@@ -217,7 +217,7 @@ export function NewsListSkeleton() {
   );
 }
 
-/** /actualites/[slug]: meta, big title, excerpt, cover, paragraphs. */
+/** /news/[slug]: meta, big title, excerpt, cover, paragraphs. */
 export function ArticleSkeleton() {
   return (
     <SkeletonGroup className="flex flex-col gap-[clamp(28px,4vw,40px)]">
@@ -250,7 +250,7 @@ export function ArticleSkeleton() {
   );
 }
 
-/** /espace-membre: member card with predictions beside it, then registrations. */
+/** /member: member card with predictions beside it, then registrations. */
 export function MemberAreaSkeleton() {
   return (
     <SkeletonGroup className="space-y-10">

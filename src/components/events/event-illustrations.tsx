@@ -1,5 +1,5 @@
 /*
- * Flat illustrations of the club's kinds of events (showcase of /evenements for visitors).
+ * Flat illustrations of the club's kinds of events (showcase of /events for visitors).
  * Drawn on PSG blue with white and red only, so they sit well in both themes.
  */
 

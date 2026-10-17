@@ -24,7 +24,7 @@ export async function GET(request: Request, { params }: RouteContext<"/api/calen
         end: new Date(match.kickoffAt.getTime() + ESTIMATED_DURATION_MS),
         summary: `${matchTitle(match)} · ${match.competition}`,
         location: [match.stadium, match.city].filter(Boolean).join(", "),
-        url: `${origin}/fr/matchs/${match.id}`,
+        url: `${origin}/fr/matches/${match.id}`,
       },
       ...clubEvents.map((event) => ({
         uid: `event-${event.id}@psg-zurich.ch`,

@@ -97,8 +97,8 @@ export async function MatchStage({ basics, big = false }: { basics: Basics; big?
   const upcoming = focus.status === "scheduled";
   return (
     <section className="space-y-3">
-      <BlockTitle title={upcoming ? t("nextMatch") : t("lastResult")} href="/matchs" more={t("allMatches")} />
-      <Link href={`/matchs/${focus.id}`} className="block transition-opacity hover:opacity-95">
+      <BlockTitle title={upcoming ? t("nextMatch") : t("lastResult")} href="/matches" more={t("allMatches")} />
+      <Link href={`/matches/${focus.id}`} className="block transition-opacity hover:opacity-95">
         <Scoreboard match={focus} />
       </Link>
       {upcoming ? <Countdown to={focus.kickoffAt.toISOString()} className={cn("pt-1", big ? "py-3" : "")} /> : null}
@@ -136,7 +136,7 @@ export async function PredictBlock({ match, access, memberId, framed = true }: {
   if (!match) return null;
   return (
     <section className="space-y-3">
-      <BlockTitle title={t("predictTitle")} href="/matchs/classement" more={t("leaderboard")} />
+      <BlockTitle title={t("predictTitle")} href="/matches/leaderboard" more={t("leaderboard")} />
       <PredictionCardBody match={match} access={access} memberId={memberId} bare={!framed} />
     </section>
   );
@@ -149,14 +149,14 @@ export async function EventBlock({ event, participants, access, memberId, title 
     return (
       <section className="space-y-3">
         <BlockTitle title={title ?? t("nextEvent")} />
-        <LockedCard access={access} feature="events" next={event ? `/evenements/${event.id}` : "/evenements"} preview={<EventPreview opponent={event?.match?.opponent} />} />
+        <LockedCard access={access} feature="events" next={event ? `/events/${event.id}` : "/events"} preview={<EventPreview opponent={event?.match?.opponent} />} />
       </section>
     );
   }
   if (!event) {
     return (
       <section className="space-y-3">
-        <BlockTitle title={title ?? t("nextEvent")} href="/evenements" more={t("allEvents")} />
+        <BlockTitle title={title ?? t("nextEvent")} href="/events" more={t("allEvents")} />
         <div className={cn(card, "grid place-items-center gap-2 px-6 py-10 text-center")}>
           <CalendarDays className="size-6 text-muted-foreground" aria-hidden />
           <p className="text-[15px] text-muted-foreground">{t("noEvent")}</p>
@@ -168,7 +168,7 @@ export async function EventBlock({ event, participants, access, memberId, title 
   const left = event.capacity === null ? null : Math.max(0, event.capacity - event.registered);
   return (
     <section className="space-y-3">
-      <BlockTitle title={title ?? t("nextEvent")} href="/evenements" more={t("allEvents")} />
+      <BlockTitle title={title ?? t("nextEvent")} href="/events" more={t("allEvents")} />
       <article className={cn(card, "flex flex-col gap-4 p-5")}>
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-flex h-[22px] items-center rounded-full bg-psg-red px-[9px] font-wide text-[9px] font-semibold tracking-[0.08em] text-white uppercase">
@@ -176,7 +176,7 @@ export async function EventBlock({ event, participants, access, memberId, title 
           </span>
           {left !== null ? <span className="text-[12px] text-muted-foreground">{full ? tEvents("full") : tEvents("placesLeft", { count: left })}</span> : null}
         </div>
-        <Link href={`/evenements/${event.id}`} className="group space-y-1.5">
+        <Link href={`/events/${event.id}`} className="group space-y-1.5">
           <h3 className={cn(display, "text-[length:clamp(26px,4vw,34px)] group-hover:opacity-80")}>{event.title}</h3>
           <p className="text-[14px] text-muted-foreground">
             <EventWhen startsAt={event.startsAt} endsAt={event.endsAt} />
@@ -203,7 +203,7 @@ export async function NewsStrip({ posts, count = 3, title }: { posts: Post[]; co
   const list = posts.slice(0, count);
   return (
     <section className="space-y-4">
-      <BlockTitle title={title ?? t("latestNews")} href="/actualites" more={t("allNews")} />
+      <BlockTitle title={title ?? t("latestNews")} href="/news" more={t("allNews")} />
       {list.length ? (
         <div className="grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((post) => (
@@ -282,7 +282,7 @@ export async function RankBlock({ extras, compact = false }: { extras: Extras; c
   const { me, top, total } = extras.board;
   return (
     <section className="space-y-3">
-      <BlockTitle title={t("rankTitle")} href="/matchs/classement" more={t("leaderboard")} />
+      <BlockTitle title={t("rankTitle")} href="/matches/leaderboard" more={t("leaderboard")} />
       <div className={cn(card, "flex flex-col gap-4 p-5")}>
         {me ? (
           <div className="flex items-end justify-between gap-3">
@@ -420,7 +420,7 @@ export async function JoinBand({ compact = false }: { compact?: boolean }) {
       <aside className="flex flex-col gap-3 rounded-[16px] bg-psg-blue p-5 text-white shadow-brand [background-image:repeating-linear-gradient(135deg,rgb(255_255_255/0.07)_0_1px,transparent_1px_14px)]">
         <p className={cn(display, "text-[28px]")}>{t("join.title")}</p>
         <p className="text-[14px] leading-snug text-white/80">{t("join.short", { fee: formatChf(rates.adult) })}</p>
-        <Link href="/adhesion" className="inline-flex h-11 items-center justify-center gap-2 rounded-[10px] bg-white font-wide text-[11px] font-semibold tracking-[0.06em] text-psg-blue uppercase transition-opacity hover:opacity-90">
+        <Link href="/join" className="inline-flex h-11 items-center justify-center gap-2 rounded-[10px] bg-white font-wide text-[11px] font-semibold tracking-[0.06em] text-psg-blue uppercase transition-opacity hover:opacity-90">
           {t("join.cta")}
           <ArrowRight className="size-3.5" aria-hidden />
         </Link>
@@ -443,7 +443,7 @@ export async function JoinBand({ compact = false }: { compact?: boolean }) {
           ))}
         </ul>
         <div className="flex flex-wrap items-center gap-4 pt-2">
-          <Link href="/adhesion" className="inline-flex h-12 items-center gap-2 rounded-[10px] bg-white px-6 font-wide text-[12px] font-semibold tracking-[0.06em] text-psg-blue uppercase transition-opacity hover:opacity-90">
+          <Link href="/join" className="inline-flex h-12 items-center gap-2 rounded-[10px] bg-white px-6 font-wide text-[12px] font-semibold tracking-[0.06em] text-psg-blue uppercase transition-opacity hover:opacity-90">
             {t("join.cta")}
             <ArrowRight className="size-3.5" aria-hidden />
           </Link>

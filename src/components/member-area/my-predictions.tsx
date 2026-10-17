@@ -44,7 +44,7 @@ export async function MyPredictions({ memberId }: { memberId: string }) {
     <section className="space-y-3">
       <div className="flex items-baseline justify-between gap-3">
         <h2 className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">{t("predictions.title")}</h2>
-        <Link href="/matchs/classement" prefetch={false} className="text-[13px] text-muted-foreground hover:text-foreground">
+        <Link href="/matches/leaderboard" prefetch={false} className="text-[13px] text-muted-foreground hover:text-foreground">
           {t("predictions.leaderboard")}
         </Link>
       </div>
@@ -69,7 +69,7 @@ export async function MyPredictions({ memberId }: { memberId: string }) {
         <ul className="divide-y overflow-hidden rounded-[12px] border bg-card/70 text-sm">
           {history.map((row) => (
             <li key={row.matchId}>
-              <Link href={`/matchs/${row.matchId}`} className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-foreground/[0.03]">
+              <Link href={`/matches/${row.matchId}`} className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-foreground/[0.03]">
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{matchTitle(row, "PSG")}</span>
                   <span className="block truncate text-xs text-muted-foreground">
@@ -92,7 +92,7 @@ export async function MyPredictions({ memberId }: { memberId: string }) {
       ) : (
         <p className="rounded-[12px] border border-dashed p-5 text-sm text-muted-foreground">
           {t("predictions.empty")}{" "}
-          <Link href="/matchs" className="text-foreground underline underline-offset-2">
+          <Link href="/matches" className="text-foreground underline underline-offset-2">
             {t("predictions.browse")}
           </Link>
         </p>

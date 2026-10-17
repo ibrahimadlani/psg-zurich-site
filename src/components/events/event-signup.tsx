@@ -25,7 +25,7 @@ export function EventSignup({ eventId, status, full, access }: Props) {
   if (access === "guest") {
     return (
       <Button asChild size="sm" variant="outline">
-        <SignInLink next={`/evenements/${eventId}`}>{t("signInToJoin")}</SignInLink>
+        <SignInLink next={`/events/${eventId}`}>{t("signInToJoin")}</SignInLink>
       </Button>
     );
   }

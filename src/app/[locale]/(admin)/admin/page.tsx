@@ -48,11 +48,11 @@ function TaskRow({ task }: { task: Task }) {
 
 const SHORTCUTS: { key: "scanner" | "newEvent" | "newPost" | "banner" | "campaign" | "dues"; href: string; icon: LucideIcon; capability: Capability }[] = [
   { key: "scanner", href: "/admin/scanner", icon: ScanLine, capability: "scan" },
-  { key: "newEvent", href: "/admin/evenements?nouveau=1", icon: CalendarPlus, capability: "events" },
-  { key: "newPost", href: "/admin/actualites/nouveau", icon: PenLine, capability: "news" },
-  { key: "banner", href: "/admin/banniere", icon: Megaphone, capability: "news" },
+  { key: "newEvent", href: "/admin/events?nouveau=1", icon: CalendarPlus, capability: "events" },
+  { key: "newPost", href: "/admin/news/new", icon: PenLine, capability: "news" },
+  { key: "banner", href: "/admin/banner", icon: Megaphone, capability: "news" },
   { key: "campaign", href: "/admin/mailing?onglet=campagnes", icon: Mail, capability: "mailing" },
-  { key: "dues", href: "/admin/cotisations", icon: Wallet, capability: "members.write" },
+  { key: "dues", href: "/admin/dues", icon: Wallet, capability: "members.write" },
 ];
 
 async function Home() {
@@ -75,13 +75,13 @@ async function Home() {
 
   const tasks: Task[] = [];
   if (counters.requests) {
-    tasks.push({ key: "requests", value: String(counters.requests), label: t("tasks.requests", { count: counters.requests }), href: "/admin/membres", tone: "urgent" });
+    tasks.push({ key: "requests", value: String(counters.requests), label: t("tasks.requests", { count: counters.requests }), href: "/admin/members", tone: "urgent" });
   }
   if (counters.messages) {
     tasks.push({ key: "messages", value: String(counters.messages), label: t("tasks.messages", { count: counters.messages }), href: "/admin/messages", tone: "urgent" });
   }
   if (counters.unpaid) {
-    tasks.push({ key: "unpaid", value: String(counters.unpaid), label: t("tasks.unpaid", { count: counters.unpaid }), href: "/admin/cotisations" });
+    tasks.push({ key: "unpaid", value: String(counters.unpaid), label: t("tasks.unpaid", { count: counters.unpaid }), href: "/admin/dues" });
   }
   if (nextEvent && nextEvent.startsAt.getTime() - now.getTime() < 14 * 24 * 60 * 60 * 1000) {
     tasks.push({
@@ -92,7 +92,7 @@ async function Home() {
         when: format.relativeTime(nextEvent.startsAt, now),
         waitlisted: nextEvent.waitlisted,
       }),
-      href: `/admin/evenements/${nextEvent.id}`,
+      href: `/admin/events/${nextEvent.id}`,
     });
   }
   if (counters.failedEmails) {
@@ -103,11 +103,11 @@ async function Home() {
       key: `post-${post.id}`,
       value: format.dateTime(post.publishedAt!, { day: "numeric", month: "short" }),
       label: t("tasks.scheduled", { title: post.title, time: format.dateTime(post.publishedAt!, { weekday: "long", hour: "2-digit", minute: "2-digit" }) }),
-      href: `/admin/actualites/${post.id}`,
+      href: `/admin/news/${post.id}`,
     });
   }
   if (unverified) {
-    tasks.push({ key: "unverified", value: String(unverified), label: t("tasks.unverified", { count: unverified }), href: "/admin/membres" });
+    tasks.push({ key: "unverified", value: String(unverified), label: t("tasks.unverified", { count: unverified }), href: "/admin/members" });
   }
 
   const shortcuts = SHORTCUTS.filter((shortcut) => can(role, shortcut.capability));

@@ -24,7 +24,7 @@ export async function onEmailVerified(userId: string) {
     .where(eq(members.id, member.memberId));
   await enqueue("membership.toCommittee", await committeeRecipients(), (recipient) => ({
     values: { name: `${details?.firstName} ${details?.lastName}`, email: member.email, city: details?.city || "—" },
-    path: "/admin/membres",
+    path: "/admin/members",
     dedupe: `membership.toCommittee:${member.memberId}:${recipient.email}`,
   }));
 }
@@ -35,7 +35,7 @@ export async function onMemberDecision(memberId: string, decision: "approved" | 
   const [number] = await db.select({ value: members.memberNumber }).from(members).where(eq(members.id, memberId));
   await enqueue(`membership.${decision}`, recipients, () => ({
     values: { number: number?.value ?? "" },
-    path: decision === "approved" ? "/espace-membre" : undefined,
+    path: decision === "approved" ? "/member" : undefined,
     // A request can be refused, then accepted on appeal: one email per decision and day.
     dedupe: `membership.${decision}:${memberId}:${todayInZurich()}`,
   }));
@@ -51,7 +51,7 @@ export async function onFeeRecorded(memberId: string, expiresOn: string, receipt
   const recipients = await memberRecipients(eq(members.id, memberId));
   await enqueue("fee.receipt", recipients, (recipient) => ({
     values: { until: emailDate(new Date(`${expiresOn}T12:00:00Z`), recipient.locale, false) },
-    path: "/espace-membre",
+    path: "/member",
     attachment: receipt,
     // One per receipt: a fee cancelled then paid again gets its own email.
     dedupe: `fee.receipt:${memberId}:${expiresOn}${receipt ? `:${receipt}` : ""}`,
@@ -76,7 +76,7 @@ export async function onEventCreated(eventId: string) {
   await enqueue("event.new", recipients, (recipient) => ({
     values: eventValues(event, recipient.locale),
     event: eventMeta(event),
-    path: `/evenements/${event.id}`,
+    path: `/events/${event.id}`,
     info: `${emailDate(event.startsAt, recipient.locale)} · ${event.location ?? event.address ?? ""}`,
     dedupe: `event.new:${event.id}:${recipient.memberId}`,
   }));
@@ -89,7 +89,7 @@ export async function onEventCancelled(event: typeof events.$inferSelect, member
   await enqueue("event.cancelled", recipients, (recipient) => ({
     values: eventValues(event, recipient.locale),
     event: eventMeta(event),
-    path: "/evenements",
+    path: "/events",
     dedupe: `event.cancelled:${event.id}:${recipient.memberId}`,
   }));
 }
@@ -101,7 +101,7 @@ export async function onWaitlistPromoted(memberId: string, eventId: string) {
   await enqueue("event.waitlistPromoted", await memberRecipients(eq(members.id, memberId)), (recipient) => ({
     values: eventValues(event, recipient.locale),
     event: eventMeta(event),
-    path: `/evenements/${eventId}`,
+    path: `/events/${eventId}`,
     dedupe: `event.waitlistPromoted:${eventId}:${memberId}`,
   }));
 }
@@ -124,7 +124,7 @@ export async function onSignUp(eventId: string) {
   await enqueue("event.almostFull", recipients, (recipient) => ({
     values: { ...eventValues(event, recipient.locale), left: String(left) },
     event: eventMeta(event),
-    path: `/evenements/${event.id}`,
+    path: `/events/${event.id}`,
     dedupe: `event.almostFull:${event.id}:${recipient.memberId}`,
   }));
 }
@@ -152,7 +152,7 @@ export async function onPredictionsScored(matchId: string) {
         prediction: score(row.psg, row.other),
         points: String(row.points ?? 0),
       },
-      path: "/matchs/classement",
+      path: "/matches/leaderboard",
       dedupe: `prediction.result:${matchId}:${recipient.memberId}`,
     };
   });
@@ -172,7 +172,7 @@ export async function userEmailLocale(userId: string) {
 export async function onVerifyReminder(memberIds: string[]) {
   const recipients = await memberRecipients(and(inArray(members.id, memberIds), eq(members.status, "pending"), eq(user.emailVerified, false))!);
   return enqueue("membership.verifyReminder", recipients, (recipient) => ({
-    path: "/connexion",
+    path: "/login",
     dedupe: `membership.verifyReminder:manual:${recipient.memberId}:${todayInZurich()}`,
   }));
 }
@@ -183,7 +183,7 @@ export async function onFeeReminder(memberIds: string[], fee: string) {
   const recipients = await memberRecipients(and(inArray(members.id, memberIds), eq(members.status, "active"))!);
   return enqueue("fee.reminder", recipients, (recipient) => ({
     values: { fee },
-    path: "/cotisation",
+    path: "/dues",
     dedupe: `fee.reminder:manual:${recipient.memberId}:${today}`,
   }));
 }

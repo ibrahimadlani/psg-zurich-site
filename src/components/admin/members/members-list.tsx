@@ -55,7 +55,7 @@ function MemberRowLink({ row }: { row: MemberRow }) {
   const sub = row.status === "pending" ? row.email : [row.memberNumber, row.city].filter(Boolean).join(" · ") || row.email;
   return (
     <Link
-      href={`/admin/membres/${row.id}`}
+      href={`/admin/members/${row.id}`}
       prefetch={false}
       aria-current={selected ? "page" : undefined}
       className="group relative flex items-center gap-3 rounded-[12px] border bg-card/70 p-3 transition-[border-color,background-color,transform] hover:border-foreground/30 active:scale-[0.99] aria-[current=page]:border-foreground/40 aria-[current=page]:bg-card"
@@ -72,7 +72,7 @@ function MemberRowLink({ row }: { row: MemberRow }) {
 }
 
 /**
- * The left column of /admin/membres: requests, members and the rest in tabs, a search on name,
+ * The left column of /admin/members: requests, members and the rest in tabs, a search on name,
  * email and number, quick filters, and the CSV export of what is shown (admins).
  */
 export function MembersList({ rows, canExport }: { rows: MemberRow[]; canExport: boolean }) {
