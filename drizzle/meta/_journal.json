@@ -204,6 +204,13 @@
       "when": 1792248296255,
       "tag": "0028_shop_enabled",
       "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "5",
+      "when": 1792272412036,
+      "tag": "0029_home_landing",
+      "breakpoints": true
     }
   ]
 }

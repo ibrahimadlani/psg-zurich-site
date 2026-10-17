@@ -655,7 +655,7 @@ export const routeTimes = mysqlTable("route_times", {
 /*                                   Contact                                  */
 /* -------------------------------------------------------------------------- */
 
-// Order = MySQL enum order: append only.
+// Order = MySQL enum order: append only (0029 replaced matchday/journal/club with landing).
 export const CONTACT_TOPICS = ["join", "events", "fees", "partnership", "website", "account", "other"] as const;
 export type ContactTopic = (typeof CONTACT_TOPICS)[number];
 /** new: nobody opened it · open: being handled · answered: waiting for the sender · closed · spam. */
@@ -819,7 +819,7 @@ export const mailingSettings = mysqlTable("mailing_settings", {
  * Amounts are integer centimes, in CHF.
  */
 
-// Order = MySQL enum order: append only.
+// Order = MySQL enum order: append only (0029 replaced matchday/journal/club with landing).
 export const PAYMENT_KINDS = ["dues", "shop", "donation"] as const;
 export type PaymentKind = (typeof PAYMENT_KINDS)[number];
 export const PAYMENT_STATES = ["pending", "processing", "succeeded", "failed", "canceled", "refunded", "partially_refunded"] as const;
@@ -1088,8 +1088,8 @@ export const shopSettings = mysqlTable("shop_settings", {
 /*                                Site settings                               */
 /* -------------------------------------------------------------------------- */
 
-// Order = MySQL enum order: append only.
-export const HOME_VISITOR_VARIANTS = ["coming_soon", "matchday", "journal", "club"] as const;
+// Order = MySQL enum order: append only (0029 replaced matchday/journal/club with landing).
+export const HOME_VISITOR_VARIANTS = ["coming_soon", "landing"] as const;
 export type HomeVisitorVariant = (typeof HOME_VISITOR_VARIANTS)[number];
 export const HOME_MEMBER_VARIANTS = ["dashboard", "feed", "matchday"] as const;
 export type HomeMemberVariant = (typeof HOME_MEMBER_VARIANTS)[number];

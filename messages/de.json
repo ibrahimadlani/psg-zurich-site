@@ -3131,42 +3131,7 @@
     "greetShort": "Allez Paris, {name}",
     "toRead": "Zum Lesen",
     "communityTitle": "Die Meinung des Clubs",
-    "watchThisMatch": "Gemeinsam schauen",
-    "v1": {
-      "eyebrow": "PSG Zurich · Supporters Club",
-      "title": "Paris lebt auch in Zürich",
-      "predictWithUs": "Tippe mit uns",
-      "watchTogether": "Gemeinsam schauen"
-    },
-    "v2": {
-      "eyebrow": "PSG Zurich",
-      "title": "Das Journal"
-    },
-    "v3": {
-      "eyebrow": "Offizieller PSG Supporters Club",
-      "title": "Ici c'est Paris. In Zürich.",
-      "body": "Der Fanclub von Paris Saint-Germain in der Deutschschweiz: Wir schauen die Spiele zusammen, fahren in den Parc, tippen und fiebern mit. Werde Teil der Familie.",
-      "perksTitle": "Mitglied sein heisst…",
-      "faqTitle": "Häufige Fragen",
-      "perks": {
-        "watch": {
-          "title": "Watch Partys",
-          "body": "Jedes grosse Spiel auf Grossleinwand, in einer Zürcher Bar, unter Fans."
-        },
-        "travel": {
-          "title": "Auswärtsfahrten",
-          "body": "Der Parc des Princes und Auswärtsspiele, gemeinsam organisiert."
-        },
-        "play": {
-          "title": "Tipps",
-          "body": "Ein Tipp pro Spiel, eine Saisonrangliste und Preise."
-        },
-        "together": {
-          "title": "Die Familie",
-          "body": "Deine Mitgliederkarte, der Clubshop und Treffen das ganze Jahr."
-        }
-      }
-    }
+    "watchThisMatch": "Gemeinsam schauen"
   },
   "AdminHomeVariants": {
     "title": "Startseite",
@@ -3182,17 +3147,9 @@
         "title": "Bald offen",
         "body": "Die aktuelle Warteseite."
       },
-      "matchday": {
-        "title": "Matchday",
-        "body": "Das nächste Spiel gross, der Countdown, dann die Einladung."
-      },
-      "journal": {
-        "title": "Das Journal",
-        "body": "Redaktionell: der Aufmacher, Spiel und Club an der Seite."
-      },
-      "club": {
-        "title": "Der Club",
-        "body": "Das Manifest, die Zahlen, was Mitglied sein heisst."
+      "landing": {
+        "title": "Landing",
+        "body": "Die Vorstellung des Vereins: der Club, seine Werte, eine Saison mit uns, wie man beitritt."
       }
     },
     "member": {
@@ -3262,5 +3219,122 @@
     "pickupNext": "Abholung am nächsten Clubanlass.",
     "shipTo": "Versand an: {address}",
     "track": "Paket {number} verfolgen"
+  },
+  "Landing": {
+    "hero": {
+      "eyebrow": "Supporters Club · Zürich",
+      "title1": "Ici c'est Paris.",
+      "title2": "In Zürich.",
+      "lead": "Der Fanclub von Paris Saint-Germain in Zürich. Wir schauen die Spiele gemeinsam, fahren in den Parc, tippen und singen, in der Schweiz wie in Paris.",
+      "join": "Mitglied werden",
+      "discover": "Den Verein entdecken",
+      "fee": "Mitgliederbeitrag {fee} pro Saison",
+      "pay": "TWINT, Karte, Apple Pay",
+      "nextMatch": "Nächstes Spiel",
+      "scroll": "Zum Verein scrollen",
+      "art": "Zürich bei Nacht vom See aus, der Eiffelturm am Horizont; am Quai schwenkt ein Fan die PSG-Fahne"
+    },
+    "marquee": [
+      "Ici c'est Paris",
+      "Züri",
+      "Allez Paris",
+      "Rot und Blau",
+      "Watch Partys",
+      "Parc des Princes"
+    ],
+    "about": {
+      "eyebrow": "Der Verein",
+      "title": "Mehr als ein Fanclub.",
+      "body1": "PSG Zurich vereint die Fans von Paris Saint-Germain, die in Zürich und Umgebung leben: Pariserinnen und Pariser in der Schweiz, Schweizer, die sich in den Club verliebt haben, Familien und Freunde.",
+      "body2": "Von Freiwilligen getragen und von einem an der Generalversammlung gewählten Vorstand geführt, organisiert der Verein das ganze Jahr Treffen, um die Leidenschaft zu teilen, weit weg vom Parc, aber nie allein.",
+      "art": "Das PSG-Wappen schwebt über dem See, dahinter die Alpen",
+      "values": {
+        "passion": {
+          "title": "Leidenschaft",
+          "body": "Jedes Spiel voll erleben, vom Anpfiff bis zum Schlusspfiff."
+        },
+        "respect": {
+          "title": "Respekt",
+          "body": "Eine festliche, herzliche Stimmung, offen für alle."
+        },
+        "family": {
+          "title": "Familie",
+          "body": "Freundschaften, die über den Fussball hinausgehen, Saison für Saison."
+        }
+      }
+    },
+    "figures": {
+      "eyebrow": "In Zahlen",
+      "title": "Ein lebendiger Club."
+    },
+    "season": {
+      "eyebrow": "Eine Saison mit uns",
+      "title": "Vom Anpfiff bis zum letzten Spiel.",
+      "lead": "Was unsere Mitglieder von August bis Mai erleben, zwischen Zürich und Paris.",
+      "steps": {
+        "watch": {
+          "title": "Watch Partys",
+          "body": "Die grossen Spiele auf Grossleinwand, in einer Zürcher Bar, unter Fans. Die Gesänge, die Schals, die Stimmung des Parc.",
+          "cta": "Zu den Events"
+        },
+        "travel": {
+          "title": "Auswärtsfahrten",
+          "body": "Der Parc des Princes und Auswärtsspiele, gemeinsam organisiert: Tickets, Reise und geteilte Erinnerungen.",
+          "cta": "Zu den Events"
+        },
+        "play": {
+          "title": "Tippspiel",
+          "body": "Ein Tipp pro Spiel, eine Saisonrangliste unter Mitgliedern und Preise für die Besten.",
+          "cta": "Zu den Spielen"
+        },
+        "family": {
+          "title": "Die Familie",
+          "body": "Deine Mitgliederkarte, der Clubshop, Treffen das ganze Jahr und eine Versammlung, in der alle mitreden.",
+          "cta": "Mitglied werden"
+        }
+      }
+    },
+    "next": {
+      "eyebrow": "Agenda",
+      "title": "Der nächste Termin."
+    },
+    "join": {
+      "eyebrow": "Mitglied werden",
+      "title": "Drei Schritte, und du bist dabei.",
+      "steps": {
+        "account": {
+          "title": "Konto erstellen",
+          "body": "Dein Name, deine E-Mail und ein paar Angaben: zwei Minuten genügen."
+        },
+        "pay": {
+          "title": "Beitrag bezahlen",
+          "body": "{fee} pro Saison, mit TWINT, per Karte, mit Apple Pay oder Google Pay."
+        },
+        "card": {
+          "title": "Karte erhalten",
+          "body": "Deine digitale Mitgliederkarte, am Eingang unserer Events gescannt."
+        }
+      },
+      "cta": "Mitglied werden",
+      "card": {
+        "club": "Supporters Club",
+        "status": "Mitglied",
+        "name": "Dein Name hier",
+        "number": "Mitglieder-Nr.",
+        "season": "Saison"
+      }
+    },
+    "faq": {
+      "eyebrow": "Fragen",
+      "title": "Eine Frage?",
+      "body": "Antworten auf die häufigsten Fragen. Für alles andere schreib uns: Wir antworten schnell.",
+      "contact": "Schreib uns"
+    },
+    "final": {
+      "title": "Werde Teil der Familie.",
+      "body": "Eine Saison voller Spiele, Reisen und Erinnerungen, unter Fans von Paris Saint-Germain.",
+      "join": "Mitglied werden",
+      "events": "Zu den Events"
+    }
   }
 }

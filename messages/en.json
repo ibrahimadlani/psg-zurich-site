@@ -3131,42 +3131,7 @@
     "greetShort": "Allez Paris, {name}",
     "toRead": "To read",
     "communityTitle": "What the club thinks",
-    "watchThisMatch": "Watch it together",
-    "v1": {
-      "eyebrow": "PSG Zurich · Supporters Club",
-      "title": "Paris lives in Zurich too",
-      "predictWithUs": "Predict with us",
-      "watchTogether": "Watch it together"
-    },
-    "v2": {
-      "eyebrow": "PSG Zurich",
-      "title": "The Journal"
-    },
-    "v3": {
-      "eyebrow": "Official PSG Supporters Club",
-      "title": "Ici c'est Paris. In Zurich.",
-      "body": "The Paris Saint-Germain supporters' club in German-speaking Switzerland: we watch the matches together, travel to the Parc, predict, and feel it. Join the family.",
-      "perksTitle": "Being a member means…",
-      "faqTitle": "Frequently asked questions",
-      "perks": {
-        "watch": {
-          "title": "Watch parties",
-          "body": "Every big match on a giant screen, in a Zurich bar, among supporters."
-        },
-        "travel": {
-          "title": "Away trips",
-          "body": "The Parc des Princes and away games, organised together."
-        },
-        "play": {
-          "title": "Predictions",
-          "body": "One prediction per match, a season leaderboard and rewards."
-        },
-        "together": {
-          "title": "The family",
-          "body": "Your membership card, the club shop and get-togethers all year."
-        }
-      }
-    }
+    "watchThisMatch": "Watch it together"
   },
   "AdminHomeVariants": {
     "title": "Home page",
@@ -3182,17 +3147,9 @@
         "title": "Opening soon",
         "body": "The current waiting page."
       },
-      "matchday": {
-        "title": "Matchday",
-        "body": "The next match in large, its countdown, then the invitation."
-      },
-      "journal": {
-        "title": "The Journal",
-        "body": "Editorial: the lead story, the match and the club on the side."
-      },
-      "club": {
-        "title": "The Club",
-        "body": "The manifesto, the figures, what being a member means."
+      "landing": {
+        "title": "Landing",
+        "body": "The association's showcase: the club, its values, a season with us, how to join."
       }
     },
     "member": {
@@ -3262,5 +3219,122 @@
     "pickupNext": "To pick up at the club's next event.",
     "shipTo": "Shipping to: {address}",
     "track": "Track parcel {number}"
+  },
+  "Landing": {
+    "hero": {
+      "eyebrow": "Supporters Club · Zurich",
+      "title1": "Ici c'est Paris.",
+      "title2": "In Zurich.",
+      "lead": "The Paris Saint-Germain supporters club in Zurich. We watch the matches together, travel to the Parc, predict the scores and sing, in Switzerland as in Paris.",
+      "join": "Join",
+      "discover": "Meet the association",
+      "fee": "Membership {fee} per season",
+      "pay": "TWINT, card, Apple Pay",
+      "nextMatch": "Next match",
+      "scroll": "Scroll down to the association",
+      "art": "Zurich at night seen from the lake, the Eiffel Tower on the horizon; on the quay, a supporter waves the PSG flag"
+    },
+    "marquee": [
+      "Ici c'est Paris",
+      "Züri",
+      "Allez Paris",
+      "Red and blue",
+      "Watch parties",
+      "Parc des Princes"
+    ],
+    "about": {
+      "eyebrow": "The association",
+      "title": "More than a supporters club.",
+      "body1": "PSG Zurich brings together the Paris Saint-Germain supporters who live in and around Zurich: Parisians settled in Switzerland, Swiss fans who fell for the club, families and friends.",
+      "body2": "Run by volunteers and led by a committee elected at the general assembly, the association organises gatherings all year long to share the passion, far from the Parc but never alone.",
+      "art": "The PSG crest floating on the lake, the Alps behind",
+      "values": {
+        "passion": {
+          "title": "Passion",
+          "body": "Every match lived to the full, from kick-off to the final whistle."
+        },
+        "respect": {
+          "title": "Respect",
+          "body": "A festive, friendly atmosphere, open to everyone."
+        },
+        "family": {
+          "title": "Family",
+          "body": "Friendships that go beyond football, season after season."
+        }
+      }
+    },
+    "figures": {
+      "eyebrow": "In numbers",
+      "title": "A club that is alive."
+    },
+    "season": {
+      "eyebrow": "A season with us",
+      "title": "From kick-off to the last match.",
+      "lead": "What our members live from August to May, between Zurich and Paris.",
+      "steps": {
+        "watch": {
+          "title": "Watch parties",
+          "body": "The big matches on a giant screen, in a Zurich bar, among supporters. The chants, the scarves, the Parc atmosphere.",
+          "cta": "See the events"
+        },
+        "travel": {
+          "title": "Trips",
+          "body": "The Parc des Princes and away matches, organised together: tickets, travel and shared memories.",
+          "cta": "See the events"
+        },
+        "play": {
+          "title": "Predictions",
+          "body": "One prediction per match, a season leaderboard among members and rewards for the best.",
+          "cta": "See the matches"
+        },
+        "family": {
+          "title": "The family",
+          "body": "Your membership card, the club shop, gatherings all year round and an assembly where everyone has a say.",
+          "cta": "Join"
+        }
+      }
+    },
+    "next": {
+      "eyebrow": "Agenda",
+      "title": "The next date."
+    },
+    "join": {
+      "eyebrow": "Join",
+      "title": "Three steps and you're one of us.",
+      "steps": {
+        "account": {
+          "title": "Create your account",
+          "body": "Your name, your email and a few details: two minutes is enough."
+        },
+        "pay": {
+          "title": "Pay your membership",
+          "body": "{fee} per season, with TWINT, by card, with Apple Pay or Google Pay."
+        },
+        "card": {
+          "title": "Get your card",
+          "body": "Your digital membership card, scanned at the door of our events."
+        }
+      },
+      "cta": "Join",
+      "card": {
+        "club": "Supporters Club",
+        "status": "Member",
+        "name": "Your name here",
+        "number": "Member no.",
+        "season": "Season"
+      }
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "A question?",
+      "body": "Answers to the questions we hear most. For anything else, write to us: we reply quickly.",
+      "contact": "Write to us"
+    },
+    "final": {
+      "title": "Join the family.",
+      "body": "A season of matches, trips and memories, among Paris Saint-Germain supporters.",
+      "join": "Join",
+      "events": "See the events"
+    }
   }
 }

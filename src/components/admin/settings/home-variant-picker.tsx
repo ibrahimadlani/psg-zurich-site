@@ -8,7 +8,7 @@ import { adminButton, adminLabel } from "@/components/admin/ui/styles";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
-type Visitor = "coming_soon" | "matchday" | "journal" | "club";
+type Visitor = "coming_soon" | "landing";
 type Member = "dashboard" | "feed" | "matchday";
 
 /** A tiny drawing of each layout (blocks only), so the choice is seen before it is read. */
@@ -28,46 +28,21 @@ function Sketch({ variant }: { variant: `v-${Visitor}` | `m-${Member}` }) {
           </div>
         </div>
       );
-    case "v-matchday":
+    case "v-landing":
       return (
-        <div className={cn(frame, "grid-rows-[auto_1fr_auto]")}>
-          <span className={cn(accent, "mx-auto h-3 w-1/2")} />
-          <span className={cn(block, "h-full")} />
-          <div className="grid grid-cols-3 gap-1">
-            <span className={cn(block, "h-3")} />
-            <span className={cn(block, "h-3")} />
-            <span className={cn(red, "h-3")} />
-          </div>
-        </div>
-      );
-    case "v-journal":
-      return (
-        <div className={cn(frame, "grid-cols-[2fr_1fr]")}>
-          <div className="grid grid-rows-[1fr_auto] gap-1">
-            <span className={cn(accent, "h-full")} />
-            <div className="grid grid-cols-2 gap-1">
-              <span className={cn(block, "h-4")} />
-              <span className={cn(block, "h-4")} />
+        <div className={cn(frame, "grid-rows-[1.4fr_auto_1fr]")}>
+          <div className="grid grid-cols-[3fr_2fr] items-end gap-1 rounded-[3px] bg-psg-blue/60 p-1 dark:bg-white/25">
+            <div className="flex flex-col gap-1">
+              <span className="h-1.5 w-3/4 rounded-[2px] bg-white/80" />
+              <span className="h-1.5 w-1/2 rounded-[2px] bg-white/50" />
             </div>
+            <span className="h-4 rounded-t-[3px] bg-white/30" />
           </div>
-          <div className="grid grid-rows-3 gap-1">
+          <span className={cn(red, "h-1.5 -rotate-2")} />
+          <div className="grid grid-cols-3 gap-1">
             <span className={cn(block)} />
             <span className={cn(block)} />
-            <span className={cn(red)} />
-          </div>
-        </div>
-      );
-    case "v-club":
-      return (
-        <div className={cn(frame, "grid-rows-[1fr_auto]")}>
-          <div className="grid grid-cols-[2fr_1fr] items-center gap-1">
-            <span className={cn(accent, "h-6")} />
-            <span className="mx-auto size-8 rounded-full bg-psg-blue/40 dark:bg-white/30" />
-          </div>
-          <div className="grid grid-cols-4 gap-1">
-            {[0, 1, 2, 3].map((key) => (
-              <span key={key} className={cn(block, "h-5")} />
-            ))}
+            <span className={cn(block)} />
           </div>
         </div>
       );
@@ -168,7 +143,7 @@ export function HomeVariantPicker({ initial }: { initial: { visitor: Visitor; me
       <div className="space-y-2.5">
         <p className={adminLabel}>{t("visitors")}</p>
         <ul className="grid grid-cols-2 gap-2 lg:grid-cols-4">
-          {(["coming_soon", "matchday", "journal", "club"] as const).map((value) => (
+          {(["coming_soon", "landing"] as const).map((value) => (
             <Option
               key={value}
               selected={visitor === value}

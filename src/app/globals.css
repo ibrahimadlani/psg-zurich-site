@@ -282,3 +282,80 @@
 ::view-transition-new(root) {
   animation-duration: 0.28s;
 }
+
+/* Visitors' landing page (components/landing): staggered entrances, the hero's night sky and
+   flag, the band that scrolls, ripples on the lake, the member card that leans. Everything
+   stands still when reduced motion is asked for. */
+@keyframes landing-rise {
+  from { opacity: 0; transform: translateY(18px); }
+}
+@keyframes landing-marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes landing-flag {
+  0%, 100% { transform: skewY(0deg) scaleX(1); }
+  50% { transform: skewY(3deg) scaleX(0.95); }
+}
+@keyframes landing-twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+@keyframes landing-window {
+  0%, 92%, 100% { fill-opacity: 0.55; }
+  95% { fill-opacity: 0.1; }
+}
+@keyframes landing-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(14px); }
+}
+@keyframes landing-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes landing-ripple {
+  from { opacity: 0.9; transform: scale(0.35); }
+  to { opacity: 0; transform: scale(1.15); }
+}
+@keyframes landing-scroll-cue {
+  0% { opacity: 0; transform: translateY(0); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+.landing-rise { animation: landing-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 90ms) backwards; }
+.landing-marquee { animation: landing-marquee 38s linear infinite; }
+.landing-flag { animation: landing-flag 3.2s ease-in-out infinite; }
+.landing-twinkle { animation: landing-twinkle 3.6s ease-in-out infinite; }
+.landing-window { animation: landing-window 7s ease-in-out infinite; }
+.landing-drift { animation: landing-drift 9s ease-in-out infinite; }
+.landing-float { animation: landing-float 6s ease-in-out infinite; transform-box: fill-box; }
+.landing-float-chip { animation: landing-float 5s ease-in-out infinite; }
+.landing-ripple { animation: landing-ripple 3.9s cubic-bezier(0, 0, 0.2, 1) infinite backwards; transform-box: fill-box; transform-origin: center; }
+.landing-scroll-cue { animation: landing-scroll-cue 1.8s ease-out infinite; }
+
+/* Scroll entrances: hidden only once armed by <Reveal> (below the fold, script running). */
+.reveal {
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+[data-armed] .reveal { opacity: 0; transform: translateY(22px); }
+
+/* The member card leans towards the mouse (<Tilt> sets --rx/--ry and the light's --gx/--gy). */
+.landing-tilt .landing-card {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.landing-tilt[data-tilting] .landing-card { transition-duration: 0.12s; }
+.landing-card-glare {
+  opacity: 0;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgb(255 255 255 / 0.28), transparent 55%);
+  transition: opacity 0.3s;
+}
+.landing-tilt[data-tilting] .landing-card-glare { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-rise, .landing-marquee, .landing-flag, .landing-twinkle, .landing-window, .landing-drift,
+  .landing-float, .landing-float-chip, .landing-ripple, .landing-scroll-cue { animation: none; }
+  .landing-ripple { opacity: 0; }
+  .reveal { transition: none; }
+}

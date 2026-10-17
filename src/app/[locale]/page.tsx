@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { Suspense } from "react";
-import { MemberDashboard, MemberFeed, MemberMatchday, VisitorClub, VisitorJournal, VisitorMatchday } from "@/components/home/variants";
+import { MemberDashboard, MemberFeed, MemberMatchday } from "@/components/home/variants";
 import { WaitingPage } from "@/components/home/waiting-page";
+import { VisitorLanding } from "@/components/landing/landing-page";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { HOME_MEMBER_VARIANTS, HOME_VISITOR_VARIANTS, type HomeMemberVariant, type HomeVisitorVariant, type Locale } from "@/db/schema";
@@ -48,22 +49,23 @@ async function Home({ searchParams }: { searchParams: SearchParams }) {
   if (choice.side === "visitor" && choice.variant === "coming_soon") return <WaitingPage />;
 
   const basics = await homeBasics(choice.viewer, locale as Locale);
-  let content: React.ReactNode;
+  // The landing page runs edge to edge: its sections set their own width.
   if (choice.side === "visitor") {
-    content =
-      choice.variant === "journal" ? (
-        <VisitorJournal basics={basics} viewer={choice.viewer} />
-      ) : choice.variant === "club" ? (
-        <VisitorClub basics={basics} viewer={choice.viewer} figures={await clubFigures()} />
-      ) : (
-        <VisitorMatchday basics={basics} viewer={choice.viewer} />
-      );
-  } else {
-    const extras = await homeMemberExtras(choice.viewer, locale as Locale, basics);
-    if (!extras) return null;
-    const props = { basics, viewer: choice.viewer, extras };
-    content = choice.variant === "feed" ? <MemberFeed {...props} /> : choice.variant === "matchday" ? <MemberMatchday {...props} /> : <MemberDashboard {...props} />;
+    return (
+      <div className="flex flex-1 flex-col">
+        <SiteHeader />
+        <main className="w-full flex-1 animate-page-in motion-reduce:animate-none">
+          <VisitorLanding basics={basics} figures={await clubFigures()} />
+        </main>
+        <SiteFooter />
+      </div>
+    );
   }
+
+  const extras = await homeMemberExtras(choice.viewer, locale as Locale, basics);
+  if (!extras) return null;
+  const props = { basics, viewer: choice.viewer, extras };
+  const content = choice.variant === "feed" ? <MemberFeed {...props} /> : choice.variant === "matchday" ? <MemberMatchday {...props} /> : <MemberDashboard {...props} />;
 
   // The site's own frame (as the pages of the (site) group have).
   return (
