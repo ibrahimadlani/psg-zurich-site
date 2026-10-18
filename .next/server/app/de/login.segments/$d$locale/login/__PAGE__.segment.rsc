@@ -2,18 +2,18 @@
 4:"/_next/static/chunks/095g8usnrcprg.js"
 5:I[339756,["$4"],"default"]
 6:I[837457,["$4"],"default"]
-b:"/_next/static/chunks/2gvx3ku2bj5_p.js"
-c:"/_next/static/chunks/3a0xjyr81xufq.js"
+b:"/_next/static/chunks/01cuqkakxc89s.js"
+c:"/_next/static/chunks/1hh85kt268qn7.js"
 d:"/_next/static/chunks/41-n4vk_ai0th.js"
 e:"/_next/static/chunks/2__g39ioof7sf.js"
 f:"/_next/static/chunks/10zmr2c54oho9.js"
-10:"/_next/static/chunks/1hbwlooj0ze-4.js"
-11:"/_next/static/chunks/1q3a8p-lwlf9s.js"
+10:"/_next/static/chunks/3k5pzrak2s0ww.js"
+11:"/_next/static/chunks/3satv_39gwpgi.js"
 12:"/_next/static/chunks/21s7mgjvwpstx.js"
 13:"/_next/static/chunks/2zx8837tzc9a8.js"
 14:"/_next/static/chunks/0ktenso5zbzz6.js"
 15:"/_next/static/chunks/11bulff839xw8.js"
-16:"/_next/static/chunks/1js4pqck75qvo.js"
+16:"/_next/static/chunks/12m_rxgi-ysub.js"
 17:I[77105,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15","$16"],"default"]
 18:I[505014,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15","$16"],"default"]
 19:I[605500,["$b","$c","$d","$e","$f","$10","$11","$12","$13","$14","$15","$16"],"Image"]
@@ -41,15 +41,15 @@ a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$
 2f:C
 32:X
 32:T6,locale32:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L29",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Anmelden · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2d","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2e","v":"$2f","s":"$9"}},"a":"$@30","u":"$@31","b":"nlGeWG3A1c2WTBX_vGeCL","r":"$32"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L29",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Anmelden · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2d","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2e","v":"$2f","s":"$9"}},"a":"$@30","u":"$@31","b":"wnCsLUVbHqWRf0GvNBbmh","r":"$32"}
 33:I[897367,["$4"],"OutletBoundary"]
-1e:["$","script","script-0",{"src":"/_next/static/chunks/1hbwlooj0ze-4.js","async":true}]
-1f:["$","script","script-1",{"src":"/_next/static/chunks/1q3a8p-lwlf9s.js","async":true}]
+1e:["$","script","script-0",{"src":"/_next/static/chunks/3k5pzrak2s0ww.js","async":true}]
+1f:["$","script","script-1",{"src":"/_next/static/chunks/3satv_39gwpgi.js","async":true}]
 20:["$","script","script-2",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}]
 21:["$","script","script-3",{"src":"/_next/static/chunks/2zx8837tzc9a8.js","async":true}]
 22:["$","script","script-4",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
 23:["$","script","script-5",{"src":"/_next/static/chunks/11bulff839xw8.js","async":true}]
-24:["$","script","script-6",{"src":"/_next/static/chunks/1js4pqck75qvo.js","async":true}]
+24:["$","script","script-6",{"src":"/_next/static/chunks/12m_rxgi-ysub.js","async":true}]
 25:["$","$L33",null,{"children":["$","$2c",null,{"name":"Next.MetadataOutlet","children":"$@34"}]}]
 31:false
 34:null

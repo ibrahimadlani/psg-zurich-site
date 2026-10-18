@@ -1,22 +1,22 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/2gvx3ku2bj5_p.js"
-5:"/_next/static/chunks/3a0xjyr81xufq.js"
+4:"/_next/static/chunks/01cuqkakxc89s.js"
+5:"/_next/static/chunks/1hh85kt268qn7.js"
 6:"/_next/static/chunks/41-n4vk_ai0th.js"
 7:"/_next/static/chunks/2__g39ioof7sf.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
 9:"/_next/static/chunks/3emh0_w52afmq.js"
 a:"/_next/static/chunks/21s7mgjvwpstx.js"
-b:"/_next/static/chunks/0d3vcqtfgl-wm.js"
+b:"/_next/static/chunks/36yi7aiyfsg_1.js"
 c:I[868132,["$4","$5","$6","$7","$8","$9","$a","$b"],"AdminShell"]
 d:"/_next/static/chunks/095g8usnrcprg.js"
 e:I[339756,["$d"],"default"]
 f:I[837457,["$d"],"default"]
 17:"$Sreact.suspense"
-1f:"ViewportBoundary"
-20:I[897367,["$d"],"$1f"]
-21:"MetadataBoundary"
-22:I[897367,["$d"],"$21"]
-23:I[27201,["$d"],"IconMark"]
+20:"ViewportBoundary"
+21:I[897367,["$d"],"$20"]
+22:"MetadataBoundary"
+23:I[897367,["$d"],"$22"]
+24:I[27201,["$d"],"IconMark"]
 11:X
 11:C
 12:X
@@ -24,28 +24,31 @@ f:I[837457,["$d"],"default"]
 12:C
 15:X
 15:C
-1a:X
-1a:C
-1e:X
-1e:C
-1b:[["children",{"s":"__PAGE__","h":49314,"d":{"r":"$L1c","p":"$@1d","v":"$1e","s":"$12"}}]]
-16:[["children",{"s":"messages","h":49250,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/06drml2aonowx.js","async":true}]],["$","$17",null,{"fallback":["$","div",null,{"role":"status","aria-busy":"true","aria-label":"Chargement…","className":"animate-skeleton-in space-y-3","children":[["$","div",null,{"className":"flex gap-1.5","children":[["$","div","0",{"aria-hidden":true,"className":"skeleton h-9 w-24 rounded-full"}],["$","div","1",{"aria-hidden":true,"className":"skeleton h-9 w-24 rounded-full"}],["$","div","2",{"aria-hidden":true,"className":"skeleton h-9 w-24 rounded-full"}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-11 w-full rounded-[8px] lg:h-9"}],["$","div",null,{"className":"space-y-2","children":[["$","div","0",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"55%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","1",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"45%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","2",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"35%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","3",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"55%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","4",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"45%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","5",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"35%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}]]}]]}],"children":"$L18"}]]}],"p":"$@19","v":"$1a","s":"$12"},"c":"$Q1b"}]]
+1b:X
+1b:C
+1f:X
+1f:C
+1c:[["children",{"s":"__PAGE__","h":49314,"d":{"r":"$L1d","p":"$@1e","v":"$1f","s":"$12"}}]]
+16:[["children",{"s":"messages","h":49250,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3b8kpn3d74k8_.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21b65w4sb69uc.js","async":true}]],["$","$17",null,{"fallback":["$","div",null,{"role":"status","aria-busy":"true","aria-label":"Chargement…","className":"animate-skeleton-in space-y-3","children":[["$","div",null,{"className":"flex gap-1.5","children":[["$","div","0",{"aria-hidden":true,"className":"skeleton h-9 w-24 rounded-full"}],["$","div","1",{"aria-hidden":true,"className":"skeleton h-9 w-24 rounded-full"}],["$","div","2",{"aria-hidden":true,"className":"skeleton h-9 w-24 rounded-full"}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-11 w-full rounded-[8px] lg:h-9"}],["$","div",null,{"className":"space-y-2","children":[["$","div","0",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"55%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","1",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"45%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","2",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"35%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","3",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"55%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","4",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"45%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]]}],["$","div","5",{"className":"flex items-center gap-3 rounded-[12px] border bg-card/70 p-3","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton size-10 rounded-[10px]"}],["$","div",null,{"className":"flex-1 space-y-1.5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"35%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-3","style":{"width":"35%"}}]]}],"$L18"]}]]}]]}],"children":"$L19"}]]}],"p":"$@1a","v":"$1b","s":"$12"},"c":"$Q1c"}]]
 13:[["children",{"s":"admin","h":49250,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@14","v":"$15","s":"$12"},"c":"$Q16"}]]
-2:[["children",{"s":"(admin)","h":49218,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3emh0_w52afmq.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/0d3vcqtfgl-wm.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
+2:[["children",{"s":"(admin)","h":49218,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3emh0_w52afmq.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/36yi7aiyfsg_1.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
-25:X
-25:C
-28:X
-28:T6,locale28:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L22",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$17",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Messages · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L23","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@24","v":"$25","s":"$12"}},"a":"$@26","u":"$@27","b":"nlGeWG3A1c2WTBX_vGeCL","r":"$28"}
-29:"/_next/static/chunks/06drml2aonowx.js"
-2a:I[505014,["$4","$5","$6","$7","$8","$9","$a","$b","$29"],"default"]
-2b:I[897367,["$d"],"OutletBoundary"]
-1c:["$","$3","c",{"children":[["$","div",null,{"className":"grid min-h-[50svh] place-items-center text-center","children":["$","div",null,{"className":"max-w-xs space-y-3","children":[["$","$L2a",null,{"icon":{"name":"inbox","size":24,"node":[["polyline",{"points":"22 12 16 12 14 15 10 15 8 12 2 12","key":"o97t9d"}],["path",{"d":"M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z","key":"oot6mr"}]]},"className":"mx-auto size-6 text-muted-foreground","aria-hidden":true}],["$","p",null,{"className":"font-narrow text-[28px] leading-none font-extrabold uppercase italic","children":"Choisissez un message"}],["$","p",null,{"className":"text-sm text-pretty text-muted-foreground","children":"Les messages à traiter sont en haut de la liste."}]]}]}],null,["$","$L2b",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@2c"}]}]]}]
-27:false
-2c:null
-26:null
+26:X
+26:C
+29:X
+29:T6,locale29:C
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L21",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L23",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$17",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Messages · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Association officielle des supporters du Paris Saint-Germain à Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L24","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@25","v":"$26","s":"$12"}},"a":"$@27","u":"$@28","b":"wnCsLUVbHqWRf0GvNBbmh","r":"$29"}
+2b:"/_next/static/chunks/3b8kpn3d74k8_.js"
+2c:"/_next/static/chunks/21b65w4sb69uc.js"
+2d:I[505014,["$4","$5","$6","$7","$8","$9","$a","$b","$2b","$2c"],"default"]
+2e:I[897367,["$d"],"OutletBoundary"]
+18:["$","div",null,{"aria-hidden":true,"className":"skeleton h-6 w-16 rounded-full"}]
+19:["$","div",null,{"className":"animate-content-in","children":"$L2a"}]
+1d:["$","$3","c",{"children":[["$","div",null,{"className":"grid min-h-[50svh] place-items-center text-center","children":["$","div",null,{"className":"max-w-xs space-y-3","children":[["$","$L2d",null,{"icon":{"name":"inbox","size":24,"node":[["polyline",{"points":"22 12 16 12 14 15 10 15 8 12 2 12","key":"o97t9d"}],["path",{"d":"M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z","key":"oot6mr"}]]},"className":"mx-auto size-6 text-muted-foreground","aria-hidden":true}],["$","p",null,{"className":"font-narrow text-[28px] leading-none font-extrabold uppercase italic","children":"Choisissez un message"}],["$","p",null,{"className":"text-sm text-pretty text-muted-foreground","children":"Les messages à traiter sont en haut de la liste."}]]}]}],null,["$","$L2e",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@2f"}]}]]}]
+28:false
+2f:null
+27:null
 14:"$undefined"
 10:"$undefined"
-24:"$undefined"
-1d:"$undefined"
+25:"$undefined"
+1e:"$undefined"
