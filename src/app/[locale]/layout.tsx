@@ -8,6 +8,7 @@ import { ThemeScript } from "@/components/theme-script";
 import { ThemeSync } from "@/components/theme-sync";
 import { Toaster } from "@/components/ui/toaster";
 import { PendingToasts } from "@/components/pending-toasts";
+import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import { publicSiteUrl } from "@/lib/seo";
@@ -48,6 +49,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
           {children}
           <Toaster />
           <PendingToasts />
+          <PageViewTracker />
         </NextIntlClientProvider>
       </body>
     </html>

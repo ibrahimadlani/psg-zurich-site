@@ -17,7 +17,7 @@ import { getSession } from "@/lib/permissions";
 import { memberPolls } from "@/lib/polls";
 import { hasRole } from "@/lib/roles";
 import { MemberAreaSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("MemberArea");

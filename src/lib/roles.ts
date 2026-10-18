@@ -25,6 +25,8 @@ export const CAPABILITIES = {
   mailing: "admin",
   polls: "admin",
   documents: "admin",
+  /** The audience page (visits, reads, API use). */
+  analytics: "admin",
   roles: "superadmin",
   audit: "superadmin",
   deploy: "superadmin",

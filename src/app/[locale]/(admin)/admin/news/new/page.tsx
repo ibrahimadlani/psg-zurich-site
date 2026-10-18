@@ -7,7 +7,7 @@ import { LOCALES, type Locale } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { editorData, loadPost, requireCmsAccess } from "@/lib/cms";
 import { AdminSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cms");

@@ -15,7 +15,7 @@ import { memberDetail } from "@/lib/admin/members-query";
 import { ageOn, isDuesPaid, isJunior } from "@/lib/dues";
 import { formatPhone } from "@/lib/phone";
 import { can } from "@/lib/roles";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Member ids only exist at runtime.
 export const instant = false;

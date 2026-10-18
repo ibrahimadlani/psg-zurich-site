@@ -13,7 +13,7 @@ import { matchTitle } from "@/lib/matches";
 import { adminPage } from "@/lib/admin/guard";
 import { can, type Capability } from "@/lib/roles";
 import { cn } from "@/lib/utils";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Admin");

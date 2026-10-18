@@ -8,7 +8,7 @@ import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 import { notFound } from "next/navigation";
 import { ShopSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 /**
  * The shop is for members: visitors go to sign-in (and come back here), accounts waiting for

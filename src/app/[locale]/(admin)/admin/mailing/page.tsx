@@ -19,7 +19,7 @@ import { getMailingSettings } from "@/lib/mailing/queue";
 import { MAIL_GROUPS } from "@/lib/mailing/registry";
 import { cn } from "@/lib/utils";
 import { AdminSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Mailing");

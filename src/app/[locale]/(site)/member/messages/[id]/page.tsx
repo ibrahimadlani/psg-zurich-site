@@ -10,7 +10,7 @@ import { getCurrentMember } from "@/lib/members";
 import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { ThreadSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export const instant = false;
 

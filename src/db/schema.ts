@@ -1102,3 +1102,83 @@ export const siteSettings = mysqlTable("site_settings", {
   updatedById: fk("updated_by_id").references(() => user.id, { onDelete: "set null" }),
   updatedAt: updatedAt(),
 });
+
+/* -------------------------------------------------------------------------- */
+/*                                  Audience                                  */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * The club's own audience measure (lib/analytics): no cookie, no IP stored. A visitor is a
+ * hash of the day's random salt, the IP and the browser — the same person on another day gets
+ * another hash, and the salts are deleted after 48 h.
+ */
+export const PAGE_CONTENT_TYPES = ["page", "article", "event", "match", "product"] as const;
+export type PageContentType = (typeof PAGE_CONTENT_TYPES)[number];
+export const DEVICES = ["mobile", "tablet", "desktop"] as const;
+
+export const pageViews = mysqlTable(
+  "page_views",
+  {
+    id: id(),
+    at: dateTime3("at").default(now).$defaultFn(() => new Date()).notNull(),
+    /** Without the language: "/news/le-classique". */
+    path: varchar("path", { length: 255 }).notNull(),
+    locale: varchar("locale", { length: 5 }).notNull(),
+    contentType: mysqlEnum("content_type", PAGE_CONTENT_TYPES).default("page").notNull(),
+    /** Article or product slug, event or match id. */
+    contentId: varchar("content_id", { length: 191 }),
+    visitor: varchar("visitor", { length: 32 }).notNull(),
+    signedIn: boolean("signed_in").default(false).notNull(),
+    /** Seen by a committee member (left out of the figures by default). */
+    staff: boolean("staff").default(false).notNull(),
+    /** First page of the visit (arrived from outside or typed the address). */
+    entry: boolean("entry").default(false).notNull(),
+    referrerHost: varchar("referrer_host", { length: 191 }),
+    utmSource: varchar("utm_source", { length: 100 }),
+    device: mysqlEnum("device", DEVICES).notNull(),
+    browser: varchar("browser", { length: 40 }).notNull(),
+  },
+  (table) => [
+    index("page_views_at_idx").on(table.at),
+    index("page_views_content_idx").on(table.contentType, table.contentId, table.at),
+    index("page_views_path_idx").on(table.path, table.at),
+  ],
+);
+
+/** Clicks worth counting (an event's card…), with what was clicked. */
+export const analyticsEvents = mysqlTable(
+  "analytics_events",
+  {
+    id: id(),
+    at: dateTime3("at").default(now).$defaultFn(() => new Date()).notNull(),
+    name: varchar("name", { length: 60 }).notNull(),
+    targetType: varchar("target_type", { length: 30 }),
+    targetId: varchar("target_id", { length: 191 }),
+    visitor: varchar("visitor", { length: 32 }).notNull(),
+    path: varchar("path", { length: 255 }).notNull(),
+    staff: boolean("staff").default(false).notNull(),
+  },
+  (table) => [index("analytics_events_name_idx").on(table.name, table.at), index("analytics_events_target_idx").on(table.targetType, table.targetId, table.at)],
+);
+
+/** Calls to the API, added up per minute and per route. */
+export const apiUsage = mysqlTable(
+  "api_usage",
+  {
+    bucket: datetime("bucket").notNull(),
+    method: varchar("method", { length: 8 }).notNull(),
+    /** "/api/v1/events/:id/attendance". */
+    route: varchar("route", { length: 191 }).notNull(),
+    statusClass: varchar("status_class", { length: 3 }).notNull(),
+    count: int("count").notNull(),
+    totalMs: int("total_ms").notNull(),
+    maxMs: int("max_ms").notNull(),
+  },
+  (table) => [uniqueIndex("api_usage_key").on(table.bucket, table.method, table.route, table.statusClass), index("api_usage_route_idx").on(table.route, table.bucket)],
+);
+
+/** The day's random salt for the visitor hash (UTC day "2026-10-18"); kept 48 h at most. */
+export const analyticsSalts = mysqlTable("analytics_salts", {
+  day: varchar("day", { length: 10 }).primaryKey(),
+  salt: varchar("salt", { length: 64 }).notNull(),
+});

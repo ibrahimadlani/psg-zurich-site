@@ -10,7 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { AUDIT_DOMAINS, auditPage, type AuditDomain } from "@/lib/admin/audit-query";
 import { adminPage } from "@/lib/admin/guard";
 import { cn } from "@/lib/utils";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");

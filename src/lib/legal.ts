@@ -17,7 +17,7 @@ export const LEGAL = {
   /** How long member data is kept after membership ends. */
   retentionAfterMembership: "[2 ans]",
   /** Date of the current version of both documents (YYYY-MM-DD). */
-  updatedAt: "2026-10-17",
+  updatedAt: "2026-10-18",
   /** Statutes (/statutes). */
   statutes: {
     foundedAt: "[JJ mois AAAA]",

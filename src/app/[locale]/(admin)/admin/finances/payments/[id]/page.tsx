@@ -16,7 +16,7 @@ import { formatPaymentReference } from "@/lib/payments/config";
 import { ACCOUNT_LABELS } from "@/lib/payments/ledger";
 import { methodLabel } from "@/lib/payments/receipts";
 import { cn } from "@/lib/utils";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export const instant = false;
 

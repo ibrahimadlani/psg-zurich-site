@@ -872,7 +872,8 @@
       "documents": "Documents",
       "journal": "Log",
       "messages": "Messages",
-      "finances": "Finances"
+      "finances": "Finances",
+      "audience": "Audience"
     },
     "tabs": {
       "home": "Home",
@@ -889,7 +890,8 @@
       "documents": "Docs",
       "journal": "Log",
       "messages": "Messages",
-      "finances": "Finances"
+      "finances": "Finances",
+      "audience": "Audience"
     },
     "roles": {
       "member": "Member",
@@ -3352,5 +3354,105 @@
       "join": "Join",
       "events": "See the events"
     }
+  },
+  "AdminAudience": {
+    "title": "Audience",
+    "description": "Who visits the site, what is read, where people come from. Our own measure, cookie-free: no IP address is stored.",
+    "periods": {
+      "24h": "24 h",
+      "7d": "7 days",
+      "30d": "30 days",
+      "90d": "90 days",
+      "12m": "12 months"
+    },
+    "periodLabel": "Period",
+    "views": {
+      "overview": "Overview",
+      "content": "Content",
+      "events": "Events",
+      "sources": "Sources",
+      "api": "Technical"
+    },
+    "viewsLabel": "Tabs",
+    "includeStaff": "Include the committee",
+    "live": "{count, plural, =0 {Nobody right now} one {# visitor right now} other {# visitors right now}}",
+    "vsPrevious": "vs previous period",
+    "new": "new",
+    "same": "steady",
+    "kpi": {
+      "visitors": "Unique visitors",
+      "visitorsHint": "Unique per day, added up",
+      "views": "Page views",
+      "visits": "Visits",
+      "pagesPerVisit": "Pages per visit",
+      "members": "Views by members",
+      "signups": "Sign-ups",
+      "conversion": "{rate} of visitors"
+    },
+    "chart": {
+      "title": "Traffic",
+      "views": "Page views",
+      "visitors": "Visitors"
+    },
+    "topPages": "Most viewed pages",
+    "entrySources": "Where visitors come from",
+    "devices": "Devices",
+    "direct": "Direct",
+    "valueViews": "views",
+    "valueVisitors": "visitors",
+    "content": {
+      "articles": "Articles",
+      "products": "Shop",
+      "pick": "Pick an article to see its details.",
+      "detail": "Article details",
+      "productDetail": "Product details",
+      "sources": "Where readers came from",
+      "memberShare": "{share} members",
+      "open": "Open",
+      "close": "Close"
+    },
+    "events": {
+      "funnel": "From click to sign-up",
+      "clicks": "Card clicks",
+      "pageViewers": "Page visitors",
+      "registrations": "Sign-ups",
+      "table": "By event",
+      "event": "Event",
+      "matches": "Most viewed matches"
+    },
+    "sources": {
+      "referrers": "Referring sites",
+      "campaigns": "Campaigns (utm_source)",
+      "browsers": "Browsers",
+      "languages": "Languages",
+      "audience": "Visitors and members",
+      "visitors": "Visitors",
+      "members": "Signed-in members",
+      "noCampaign": "No campaign over the period."
+    },
+    "devicesNames": {
+      "mobile": "Phone",
+      "tablet": "Tablet",
+      "desktop": "Computer"
+    },
+    "api": {
+      "calls": "API calls",
+      "errorRate": "Error rate",
+      "serverErrors": "Server errors (5xx)",
+      "avg": "Average time",
+      "chart": "Calls and errors",
+      "callsSeries": "Calls",
+      "errorsSeries": "Errors",
+      "routes": "Most used endpoints",
+      "route": "Endpoint",
+      "count": "Calls",
+      "time": "Avg / max",
+      "errors": "4xx / 5xx",
+      "ms": "{value} ms"
+    },
+    "empty": "No data for this period yet.",
+    "privacy": "Visitors are counted without cookies: an anonymous fingerprint that changes every day (IP never stored). Robots and browsers asking not to be tracked (DNT, GPC) are not counted.",
+    "visitorsCount": "{count, plural, one {# visitor} other {# visitors}}",
+    "homePage": "Home page"
   }
 }

@@ -5,7 +5,7 @@ import { AdminForbidden } from "@/components/admin/ui/admin-header";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { ordersToPrepare } from "@/lib/admin/finances-query";
 import { adminPage } from "@/lib/admin/guard";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 /** Finances: the parts as tabs above, each page below (only for the committee's admins). */
 async function FinancesFrame({ children }: { children: React.ReactNode }) {

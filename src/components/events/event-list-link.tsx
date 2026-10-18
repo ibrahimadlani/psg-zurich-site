@@ -2,6 +2,7 @@
 
 import { useSelectedLayoutSegment } from "next/navigation";
 import { Link } from "@/i18n/navigation";
+import { track } from "@/lib/analytics/client";
 import { cn } from "@/lib/utils";
 
 /**
@@ -29,6 +30,7 @@ export function EventListLink({
       data-selected={selected || undefined}
       data-default={(segment === null && isDefault) || undefined}
       className={cn("group relative block", className)}
+      onClick={() => track("event_card_click", "event", id)}
     >
       {children}
     </Link>

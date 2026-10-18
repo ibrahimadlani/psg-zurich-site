@@ -7,7 +7,7 @@ import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { listInbox } from "@/lib/admin/messages-query";
 import { visibleTopics } from "@/lib/contact";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 /** The inbox stays on the left (folder, filters and search kept) while conversations open on the right. */
 async function MessagesFrame({ children }: { children: React.ReactNode }) {

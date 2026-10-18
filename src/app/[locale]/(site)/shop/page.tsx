@@ -8,7 +8,7 @@ import { formatChf } from "@/lib/money";
 import { shopProducts, type ShopProduct } from "@/lib/payments/shop";
 import { cn } from "@/lib/utils";
 import { ShopCollectionSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Members only: decided at request time (a visitor is sent to sign-in).
 export const instant = false;

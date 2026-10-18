@@ -1,6 +1,7 @@
 import {
   Banknote,
   CalendarDays,
+  ChartLine,
   FileText,
   House,
   Inbox,
@@ -22,7 +23,7 @@ import type { Capability } from "@/lib/roles";
 export type AdminBadge = "requests" | "unpaid" | "failedEmails" | "messages" | "orders";
 
 export type AdminSection = {
-  key: "home" | "members" | "messages" | "dues" | "finances" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "polls" | "documents" | "settings" | "journal";
+  key: "home" | "audience" | "members" | "messages" | "dues" | "finances" | "events" | "matches" | "scanner" | "news" | "mailing" | "banner" | "polls" | "documents" | "settings" | "journal";
   href: string;
   icon: LucideIcon;
   capability: Capability;
@@ -34,6 +35,7 @@ export type AdminSection = {
 
 export const ADMIN_SECTIONS: AdminSection[] = [
   { key: "home", href: "/admin", icon: House, capability: "area", group: "club", tab: true },
+  { key: "audience", href: "/admin/audience", icon: ChartLine, capability: "analytics", group: "club" },
   { key: "members", href: "/admin/members", icon: Users, capability: "members.read", group: "club", badge: "requests", tab: true },
   { key: "messages", href: "/admin/messages", icon: Inbox, capability: "messages", group: "club", badge: "messages" },
   { key: "dues", href: "/admin/dues", icon: Banknote, capability: "members.write", group: "club", badge: "unpaid" },

@@ -13,7 +13,7 @@ import { methodLabel } from "@/lib/payments/receipts";
 import { getSession } from "@/lib/permissions";
 import { cn } from "@/lib/utils";
 import { PaymentsSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("MyPayments");

@@ -6,7 +6,7 @@ import { AnnouncementsAdmin } from "@/components/announcements/announcements-adm
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { AdminSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");

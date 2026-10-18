@@ -9,7 +9,7 @@ import { getShopSettings, pickupEvents, shopIsOpen } from "@/lib/payments/shop";
 import { shopVisitor } from "@/lib/payments/shop-access";
 import { getSession } from "@/lib/permissions";
 import { CheckoutSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export const instant = false;
 

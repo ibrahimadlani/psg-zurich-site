@@ -1,5 +1,6 @@
 import { MapPin, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { TrackedLink } from "@/components/analytics/tracked-link";
 import { EventSignup } from "@/components/events/event-signup";
 import { Badge } from "@/components/ui/badge";
 import { EventWhen } from "@/components/events/event-when";
@@ -27,9 +28,9 @@ export function EventCard({
           <Badge variant="secondary">{t(`types.${event.type}`)}</Badge>
         </div>
         <h3 className="text-base font-semibold">
-          <Link href={`/events/${event.id}`} className="underline-offset-2 hover:underline">
+          <TrackedLink href={`/events/${event.id}`} event="event_card_click" countAs={{ type: "event", id: event.id }} className="underline-offset-2 hover:underline">
             {event.title}
-          </Link>
+          </TrackedLink>
         </h3>
         <p className="text-sm text-muted-foreground">
           <EventWhen startsAt={event.startsAt} endsAt={event.endsAt} />

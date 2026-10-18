@@ -12,7 +12,7 @@ import { Link } from "@/i18n/navigation";
 import { formatChf } from "@/lib/money";
 import { getShopSettings, shopProduct } from "@/lib/payments/shop";
 import { ProductSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export const instant = false;
 

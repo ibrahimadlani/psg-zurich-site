@@ -14,7 +14,7 @@ import { db } from "@/db";
 import { members, user } from "@/db/schema";
 import { adminPage } from "@/lib/admin/guard";
 import { getHomeSettings } from "@/lib/site-settings";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");

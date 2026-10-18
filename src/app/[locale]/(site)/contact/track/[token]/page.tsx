@@ -5,7 +5,7 @@ import { SenderThread } from "@/components/contact/sender-thread";
 import { Link } from "@/i18n/navigation";
 import { markSeenBySender, senderView } from "@/lib/contact";
 import { ThreadSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Private links only exist at runtime.
 export const instant = false;

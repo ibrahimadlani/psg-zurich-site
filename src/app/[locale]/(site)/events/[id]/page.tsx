@@ -9,7 +9,7 @@ import { events } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
 import { getCurrentMember } from "@/lib/members";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Event ids only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;

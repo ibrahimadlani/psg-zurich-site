@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { Suspense } from "react";
 import { cn } from "@/lib/utils";
 
 /*
@@ -23,17 +22,5 @@ export function SkeletonGroup({ className, children, label }: { className?: stri
     <div role="status" aria-busy="true" aria-label={label ?? t("loading")} className={cn("animate-skeleton-in", className)}>
       {children}
     </div>
-  );
-}
-
-/**
- * A Suspense boundary whose content, once streamed, fades in where the placeholder was.
- * `className`: classes of the content's wrapper (e.g. when it is a grid item).
- */
-export function Streamed({ fallback, children, className }: { fallback: React.ReactNode; children: React.ReactNode; className?: string }) {
-  return (
-    <Suspense fallback={fallback}>
-      <div className={cn("animate-content-in", className)}>{children}</div>
-    </Suspense>
   );
 }

@@ -15,7 +15,7 @@ import { NewCampaignButton } from "@/components/mailing/mailing-actions";
 import { adminButton } from "@/components/admin/ui/styles";
 import { formatChf } from "@/lib/money";
 import { yearTotals } from "@/lib/payments/ledger";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminDues");

@@ -7,7 +7,7 @@ import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { listMembers } from "@/lib/admin/members-query";
 import { can } from "@/lib/roles";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 /** The member list stays on the left (search and filters kept) while members open on the right. */
 async function MembersFrame({ children }: { children: React.ReactNode }) {

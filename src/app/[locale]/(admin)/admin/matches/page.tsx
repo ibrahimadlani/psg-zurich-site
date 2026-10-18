@@ -17,7 +17,7 @@ import { adminPage } from "@/lib/admin/guard";
 import { lastMatchSync, listAdminMatches, toLocalInput } from "@/lib/admin/events-query";
 import { closedSeasons, frozenBoard, seasonLabel } from "@/lib/leaderboard";
 import { matchTitle, type Match } from "@/lib/matches";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");

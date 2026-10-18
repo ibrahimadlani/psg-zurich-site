@@ -11,7 +11,7 @@ import { postState, requireCmsAccess } from "@/lib/cms";
 import { AdminSkeleton } from "@/components/skeletons";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { adminButton } from "@/components/admin/ui/styles";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cms");

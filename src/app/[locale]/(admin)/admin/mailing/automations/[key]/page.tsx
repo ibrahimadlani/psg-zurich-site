@@ -9,7 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { automationMessageKey, defaultTemplates, requireMailingAdmin, savedTemplates } from "@/lib/mailing/admin-data";
 import { automation } from "@/lib/mailing/registry";
 import { AdminSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Automation keys are known at runtime only here: rendered at request time.
 export const instant = false;

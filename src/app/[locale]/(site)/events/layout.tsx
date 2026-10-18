@@ -7,7 +7,7 @@ import { eventAccess } from "@/lib/dues";
 import { getEventsWithAttendance, upcomingEvents } from "@/lib/events";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 /**
  * Members whose fee is paid get the list beside the open event (it stays put, scroll included,

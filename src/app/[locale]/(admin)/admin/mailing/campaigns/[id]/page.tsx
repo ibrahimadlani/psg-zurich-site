@@ -13,7 +13,7 @@ import { Link } from "@/i18n/navigation";
 import { requireMailingAdmin, savedTemplates } from "@/lib/mailing/admin-data";
 import { recentEventsSince } from "@/lib/mailing/time";
 import { AdminSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Campaign ids exist at runtime only: rendered at request time.
 export const instant = false;

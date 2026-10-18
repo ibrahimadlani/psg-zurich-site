@@ -19,7 +19,7 @@ import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 import { ContactSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   await connection();

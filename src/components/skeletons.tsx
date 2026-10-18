@@ -623,47 +623,275 @@ export function CheckoutSkeleton() {
 
 /* Contact & home ---------------------------------------------------------------- */
 
-/** /contact: title, line and the reply-time chips, then the topic tiles. */
+/** A card of the contact aside (email, Instagram): round icon, two lines. */
+const ContactCardSkeleton = () => (
+  <div className="flex items-center gap-3 rounded-[14px] border bg-card p-4 shadow-brand">
+    <Skeleton className="size-10 shrink-0 rounded-full" />
+    <div className="flex-1 space-y-2">
+      <Line w="75%" className="h-4" />
+      <Line w="90%" className="h-3" />
+      <Line w="45%" className="h-3" />
+    </div>
+  </div>
+);
+
+/** The small uppercase title of a contact block ("Pick a subject", "By email"…). */
+const ContactTitle = ({ w }: { w: string }) => <Line w={w} className="h-3" />;
+
+/**
+ * /contact: the header (title, intro, reply-time chip), then the six subject tiles and the
+ * questions on the left; email, Instagram, the committee and the map on the right.
+ */
 export function ContactSkeleton() {
   return (
     <SkeletonGroup className="flex flex-col gap-[clamp(28px,4vw,40px)]">
       <div className="flex flex-col gap-3.5">
-        <PageTitleSkeleton />
-        <div className="flex gap-2">
-          <Skeleton className="h-7 w-36 rounded-full" />
-          <Skeleton className="h-7 w-28 rounded-full" />
+        <Skeleton className="h-[clamp(39px,7.9vw,77px)] w-[min(16rem,70%)] rounded-[10px]" />
+        {/* The intro runs over two lines (three on a phone). */}
+        <div className="max-w-[36rem] space-y-2.5">
+          <Line className="h-4" />
+          <Line w="55%" className="h-4" />
+          <Line w="40%" className="h-4 sm:hidden" />
         </div>
+        <Skeleton className="h-7 w-36 rounded-full" />
       </div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {times(6).map((index) => (
-          <Skeleton key={index} className="h-[88px] rounded-[14px]" />
-        ))}
+
+      <div className="grid items-start gap-[clamp(28px,4vw,40px)] lg:grid-cols-[minmax(0,1fr)_20rem]">
+        <div className="flex min-w-0 flex-col gap-[clamp(28px,4vw,40px)]">
+          <div className="space-y-3">
+            <ContactTitle w="9rem" />
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
+              {times(6).map((index) => (
+                <div key={index} className="flex min-h-[88px] flex-col items-start gap-2 rounded-[14px] border bg-card p-3.5 sm:min-h-[96px]">
+                  <Skeleton className="size-8 rounded-full" />
+                  <Line w={`${75 - (index % 3) * 12}%`} className="h-4" />
+                  {/* The hint, two short lines, from sm. */}
+                  <div className="hidden w-full space-y-1.5 sm:block">
+                    <Line w="90%" className="h-3" />
+                    <Line w="60%" className="h-3" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-3">
+            <ContactTitle w="11rem" />
+            <div className="divide-y overflow-hidden rounded-[14px] border bg-card">
+              {times(6).map((index) => (
+                <div key={index} className="flex min-h-14 items-center gap-3 px-4 py-3">
+                  <Line w={`${68 - (index % 3) * 14}%`} className="h-4" />
+                  <Skeleton className="ml-auto size-4 rounded-full" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex min-w-0 flex-col gap-[clamp(24px,3vw,32px)]">
+          <div className="flex flex-col gap-3">
+            <ContactTitle w="6rem" />
+            <ContactCardSkeleton />
+          </div>
+          <div className="flex flex-col gap-3">
+            <ContactTitle w="7rem" />
+            <ContactCardSkeleton />
+          </div>
+          <div className="space-y-3">
+            <div className="space-y-1.5">
+              <ContactTitle w="6rem" />
+              <Line w="80%" className="h-3" />
+            </div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2">
+              {times(4).map((index) => (
+                <div key={index} className="flex items-center gap-2.5 rounded-[12px] border bg-card p-2.5">
+                  <Skeleton className="size-10 shrink-0 rounded-full" />
+                  <div className="flex-1 space-y-1.5">
+                    <Line w="70%" />
+                    <Line w="50%" className="h-2.5" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="flex flex-col gap-3">
+            <Skeleton className="aspect-[4/3] rounded-[14px] sm:aspect-[16/9] lg:aspect-[4/3]" />
+            <div className="flex items-center justify-between px-1">
+              <Line w="7rem" />
+              <Line w="6rem" />
+            </div>
+          </div>
+        </div>
       </div>
     </SkeletonGroup>
   );
 }
 
+/** The site's diagonal lines over the blue panels (same as the landing's). */
+const hatching = "[background-image:repeating-linear-gradient(135deg,rgb(255_255_255/0.07)_0_1px,transparent_1px_14px)]";
+/** A light shape on the blue hero. */
+const LightLine = ({ w = "100%", className }: { w?: string; className?: string }) => (
+  <Skeleton className={cn("skeleton-light h-3.5 rounded-full", className)} style={{ width: w }} />
+);
+
 /**
- * The home page while the right version is chosen (it draws its own header): the header's
- * place, a large first block, then three cards — close to every version.
+ * The visitors' landing while it loads: the blue hero already in place (title, lead, buttons,
+ * the skyline's outline), the red band, then the association's block — the real page's sizes.
  */
-export function HomeSkeleton() {
+export function LandingSkeleton() {
   return (
-    <SkeletonGroup className="flex flex-1 flex-col">
-      <div className="mx-auto w-full max-w-5xl px-4">
-        <div className="flex items-center justify-between py-[clamp(12px,3vw,16px)]">
-          <Skeleton className="h-10 w-40 rounded-[10px]" />
-          <Skeleton className="h-8 w-28 rounded-[8px]" />
+    <SkeletonGroup className="flex flex-col gap-[clamp(80px,12vw,140px)] overflow-x-clip pt-[clamp(12px,2.5vw,24px)]">
+      <div className="flex flex-col">
+        <div className={cn("relative mx-2 overflow-hidden rounded-[24px] bg-psg-blue shadow-brand sm:mx-4 sm:rounded-[32px]", hatching)}>
+          <div className="mx-auto grid w-full max-w-5xl items-end gap-4 px-4 pt-[clamp(32px,5vw,64px)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-8">
+            <div className="flex flex-col gap-6 lg:pb-[clamp(56px,6vw,80px)]">
+              <Skeleton className="skeleton-light h-[30px] w-60 rounded-full" />
+              {/* The three lines of "Ici c'est Paris. À Zurich." */}
+              <div className="flex flex-col gap-[clamp(6px,1vw,10px)]">
+                {["82%", "62%", "88%"].map((w) => (
+                  <Skeleton key={w} className="skeleton-light h-[clamp(44px,7.4vw,92px)] rounded-[12px]" style={{ width: w }} />
+                ))}
+              </div>
+              {/* The lead: four lines on a computer, five on a phone. */}
+              <div className="max-w-[30rem] space-y-3">
+                <LightLine className="h-4" />
+                <LightLine w="94%" className="h-4" />
+                <LightLine w="97%" className="h-4" />
+                <LightLine w="88%" className="h-4 sm:hidden" />
+                <LightLine w="22%" className="h-4" />
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="h-12 rounded-[10px] bg-white/85 sm:w-36" />
+                <Skeleton className="skeleton-light h-12 rounded-[10px] sm:w-56" />
+              </div>
+              <div className="space-y-2">
+                <LightLine w="16rem" className="h-3" />
+                <LightLine w="10rem" className="h-3 sm:hidden" />
+              </div>
+            </div>
+            {/* The skyline: moon, town and quay, as faint shapes. */}
+            <div className="relative -mx-4 aspect-[600/520] sm:mx-0">
+              <span className="absolute top-[12%] right-[16%] size-[13%] rounded-full bg-white/15" />
+              <span className="absolute inset-x-[4%] bottom-[30%] h-[20%] rounded-t-[10px] bg-white/[0.07] [clip-path:polygon(0_60%,10%_40%,20%_55%,32%_20%,40%_45%,52%_0,60%_35%,70%_10%,80%_40%,90%_25%,100%_45%,100%_100%,0_100%)]" />
+            </div>
+          </div>
+          {/* The quay, across the whole panel, as on the real hero. */}
+          <span aria-hidden className="absolute inset-x-0 bottom-0 h-[clamp(24px,3vw,40px)] bg-black/25" />
         </div>
-        <div className="hidden h-10 border-y md:block" />
+        {/* The red band, like the shirt's (its words come with the page). */}
+        <div aria-hidden className="relative -mt-5 overflow-hidden py-6">
+          <div className="-mx-8 h-[60px] -rotate-[1.6deg] border-y-[5px] border-white bg-psg-red/90 dark:border-white/90" />
+        </div>
       </div>
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-10">
-        <Skeleton className="h-[min(60svh,30rem)] w-full rounded-[24px]" />
-        <div className="grid gap-4 sm:grid-cols-3">
-          {times(3).map((index) => (
-            <Skeleton key={index} className="aspect-[3/2] rounded-[12px]" />
+
+      {/* The association: kicker, title, text and values beside the crest on the lake. */}
+      <div className="mx-auto grid w-full max-w-5xl items-center gap-12 px-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
+            <Line w="7rem" className="h-3" />
+            <div className="space-y-2">
+              {/* "Plus qu'un club de supporters.": three lines on a computer, two on a phone. */}
+              {["90%", "70%", "84%"].map((w, index) => (
+                <Skeleton key={w} className={cn("h-[clamp(36px,6.2vw,68px)] rounded-[10px]", index === 2 && "hidden lg:block")} style={{ width: w }} />
+              ))}
+            </div>
+          </div>
+          <div className="space-y-2.5">
+            {["100%", "96%", "88%", "100%", "92%", "60%"].map((w, index) => (
+              <Line key={index} w={w} className="h-4" />
+            ))}
+          </div>
+          <div className="flex flex-col gap-2.5">
+            {times(3).map((index) => (
+              <div key={index} className="flex items-center gap-4 rounded-[16px] border bg-card p-4 shadow-brand">
+                <Skeleton className="size-11 shrink-0 rounded-[12px]" />
+                <div className="flex-1 space-y-2">
+                  <Line w="6rem" className="h-4" />
+                  <Line w="85%" className="h-3" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <Skeleton className="aspect-square w-full rounded-[28px]" />
+      </div>
+    </SkeletonGroup>
+  );
+}
+
+/** The members' home while it loads: greeting, then the match and event beside prediction and rank. */
+export function MemberHomeSkeleton() {
+  return (
+    <SkeletonGroup className="mx-auto flex w-full max-w-5xl flex-col gap-[clamp(32px,5vw,48px)] px-4 py-10">
+      <div className="flex flex-col gap-4">
+        <Skeleton className="h-[clamp(36px,7vw,68px)] w-[min(26rem,85%)] rounded-[10px]" />
+        <Line w="18rem" />
+      </div>
+      <div className="grid items-start gap-[clamp(24px,4vw,36px)] lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+        <div className="flex flex-col gap-9">
+          <div className="space-y-3">
+            <Label w="7rem" />
+            <ScoreboardSkeleton />
+          </div>
+          <div className="space-y-3">
+            <Label w="8rem" />
+            <Skeleton className="h-44 w-full rounded-[16px]" />
+          </div>
+        </div>
+        <div className="flex flex-col gap-9">
+          <div className="space-y-3">
+            <Label w="6rem" />
+            <Skeleton className="h-52 w-full rounded-[16px]" />
+          </div>
+          <div className="space-y-3">
+            <Label w="7rem" />
+            <Skeleton className="h-40 w-full rounded-[16px]" />
+          </div>
+        </div>
+      </div>
+    </SkeletonGroup>
+  );
+}
+
+/** /admin/audience: period chips, tabs, the six figures, the big chart, two lists. */
+export function AudienceSkeleton() {
+  return (
+    <SkeletonGroup className="flex flex-col gap-5">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex gap-1.5">
+          {times(5).map((index) => (
+            <Skeleton key={index} className="h-9 w-20 rounded-full lg:h-8" />
           ))}
         </div>
+        <Skeleton className="h-8 w-48 rounded-full" />
+      </div>
+      <div className="flex gap-6 border-b pb-3">
+        {times(5).map((index) => (
+          <Line key={index} w="5rem" className="h-3" />
+        ))}
+      </div>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3 lg:gap-4">
+        {times(6).map((index) => (
+          <div key={index} className="flex flex-col gap-2.5 rounded-[14px] border bg-card p-4 lg:p-5">
+            <Line w="6rem" className="h-2.5" />
+            <Skeleton className="h-9 w-20 rounded-[8px]" />
+            <Skeleton className="h-7 w-full rounded-[6px]" />
+            <Line w="4rem" className="h-3" />
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-4 rounded-[14px] border bg-card p-4 lg:p-5">
+        <Line w="7rem" className="h-2.5" />
+        <Skeleton className="h-[220px] w-full rounded-[10px] sm:h-[260px]" />
+      </div>
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-5">
+        {times(2).map((card) => (
+          <div key={card} className="flex flex-col gap-2 rounded-[14px] border bg-card p-4 lg:p-5">
+            <Line w="8rem" className="h-2.5" />
+            {times(5).map((index) => (
+              <Skeleton key={index} className="h-10 rounded-[8px]" style={{ width: `${90 - index * 14}%` }} />
+            ))}
+          </div>
+        ))}
       </div>
     </SkeletonGroup>
   );

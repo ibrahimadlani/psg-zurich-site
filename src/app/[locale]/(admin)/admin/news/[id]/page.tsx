@@ -7,7 +7,7 @@ import { PostEditor } from "@/components/cms/post-editor";
 import { Link } from "@/i18n/navigation";
 import { editorData, loadPost, postState, requireCmsAccess, toLocalInput } from "@/lib/cms";
 import { AdminSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Post ids only exist at runtime.
 export const instant = false;

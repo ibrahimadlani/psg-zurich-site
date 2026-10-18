@@ -19,7 +19,7 @@ import { getStandings } from "@/lib/football/standings";
 import { closestMatch, getSeasonMatches } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { MatchesSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Matches");

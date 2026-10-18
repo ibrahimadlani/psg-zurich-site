@@ -12,7 +12,7 @@ import { formatPaymentReference } from "@/lib/payments/config";
 import { memberOrders } from "@/lib/payments/history";
 import { getSession } from "@/lib/permissions";
 import { OrdersSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Orders");

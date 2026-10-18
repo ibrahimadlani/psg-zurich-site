@@ -15,7 +15,7 @@ import { adminPage } from "@/lib/admin/guard";
 import { adminEventDetail, matchOptions } from "@/lib/admin/events-query";
 import { matchTitle } from "@/lib/matches";
 import { can } from "@/lib/roles";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Event ids only exist at runtime.
 export const instant = false;

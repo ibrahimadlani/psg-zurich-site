@@ -19,7 +19,7 @@ import { inboxDetail } from "@/lib/admin/messages-query";
 import { formatReference } from "@/lib/contact";
 import { isDuesPaid } from "@/lib/dues";
 import { hasRole } from "@/lib/roles";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Conversations only exist at runtime.
 export const instant = false;

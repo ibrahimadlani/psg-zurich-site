@@ -2,6 +2,7 @@ import "server-only";
 import { unstable_rethrow } from "next/navigation";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
+import { recordApiCall } from "@/lib/analytics/api-usage";
 import { HttpError } from "@/lib/permissions";
 
 export type ApiError = { code: string; message: string; details?: unknown };
@@ -20,26 +21,36 @@ export function fail(status: number, code: string, message: string, details?: un
   );
 }
 
-/** Wraps a route handler so every error ends up as a `{ data: null, error }` JSON response. */
+/**
+ * Wraps a route handler so every error ends up as a `{ data: null, error }` JSON response; each
+ * call is also counted (route, status, time) for the admin's audience page.
+ */
 export function apiHandler<Context = unknown>(
   handler: (request: NextRequest, context: Context) => Promise<Response>,
 ) {
   return async (request: NextRequest, context: Context) => {
-    try {
-      return await handler(request, context);
-    } catch (error) {
-      // Next.js control flow (prerender bail-out, redirect, notFound) is not an API error.
-      unstable_rethrow(error);
-      if (error instanceof HttpError) return fail(error.status, error.code, error.message);
-      if (error instanceof z.ZodError) {
-        return fail(400, "validation_error", "Invalid request.", z.flattenError(error));
-      }
-      if (error instanceof SyntaxError) return fail(400, "invalid_json", "Malformed JSON body.");
-      if (isDuplicateEntry(error)) return fail(409, "conflict", "Resource already exists.");
-      console.error(error);
-      return fail(500, "internal_error", "Internal server error.");
-    }
+    const started = performance.now();
+    const response = await handle(handler, request, context);
+    recordApiCall(request.method, request.nextUrl.pathname, response.status, performance.now() - started);
+    return response;
   };
+}
+
+async function handle<Context>(handler: (request: NextRequest, context: Context) => Promise<Response>, request: NextRequest, context: Context) {
+  try {
+    return await handler(request, context);
+  } catch (error) {
+    // Next.js control flow (prerender bail-out, redirect, notFound) is not an API error.
+    unstable_rethrow(error);
+    if (error instanceof HttpError) return fail(error.status, error.code, error.message);
+    if (error instanceof z.ZodError) {
+      return fail(400, "validation_error", "Invalid request.", z.flattenError(error));
+    }
+    if (error instanceof SyntaxError) return fail(400, "invalid_json", "Malformed JSON body.");
+    if (isDuplicateEntry(error)) return fail(409, "conflict", "Resource already exists.");
+    console.error(error);
+    return fail(500, "internal_error", "Internal server error.");
+  }
 }
 
 function isDuplicateEntry(error: unknown) {

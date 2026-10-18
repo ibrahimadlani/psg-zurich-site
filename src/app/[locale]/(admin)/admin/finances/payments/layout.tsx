@@ -5,7 +5,7 @@ import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { MasterDetail } from "@/components/admin/ui/master-detail";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { listPayments } from "@/lib/admin/finances-query";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 /** The payments stay on the left (filters kept) while one opens on the right. */
 async function PaymentsFrame({ children }: { children: React.ReactNode }) {

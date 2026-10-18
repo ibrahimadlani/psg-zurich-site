@@ -11,7 +11,7 @@ import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { TableSkeleton } from "@/components/skeletons";
 import { cn } from "@/lib/utils";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Leaderboard");

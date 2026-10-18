@@ -6,7 +6,7 @@ import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { AdminListSkeleton } from "@/components/skeletons";
 import type { Locale } from "@/db/schema";
 import { shopProducts } from "@/lib/payments/shop";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");

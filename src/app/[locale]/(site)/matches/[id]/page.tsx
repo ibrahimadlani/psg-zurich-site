@@ -22,7 +22,7 @@ import { getMatch, isPredictionOpen, matchTitle } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { MatchDetailSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Match ids only exist at runtime: rendered on the server at navigation time (no static shell,
 // whose header needs the pathname).

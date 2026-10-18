@@ -23,7 +23,7 @@ import {
 } from "@/lib/news";
 import { publicSiteUrl } from "@/lib/seo";
 import { ArticleSkeleton } from "@/components/skeletons";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 // Slugs only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;

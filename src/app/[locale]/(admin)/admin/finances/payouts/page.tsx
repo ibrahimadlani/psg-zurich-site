@@ -8,7 +8,7 @@ import { listPayouts, payoutPayments } from "@/lib/admin/finances-query";
 import { formatChf } from "@/lib/money";
 import { formatPaymentReference } from "@/lib/payments/config";
 import { cn } from "@/lib/utils";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");

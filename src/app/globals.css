@@ -273,6 +273,13 @@
   background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--background) 45%, transparent), transparent);
   animation: skeleton-sheen 1.6s ease-in-out infinite;
 }
+/* On the club's blue panels (landing hero): light shapes and a light sheen. */
+.skeleton.skeleton-light {
+  background: rgb(255 255 255 / 0.13);
+}
+.skeleton.skeleton-light::after {
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.16), transparent);
+}
 @media (prefers-reduced-motion: reduce) {
   .skeleton::after { animation: none; display: none; }
 }

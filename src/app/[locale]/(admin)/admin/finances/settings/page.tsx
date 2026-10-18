@@ -6,7 +6,7 @@ import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { currentSeason, seasonRates } from "@/lib/payments/dues-price";
 import { activeProductCount, getShopSettings } from "@/lib/payments/shop";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");

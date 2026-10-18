@@ -12,7 +12,7 @@ import { formatChf } from "@/lib/money";
 import { ACCOUNT_LABELS, RESULT_ACCOUNTS, fiscalYears, yearTotals } from "@/lib/payments/ledger";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { cn } from "@/lib/utils";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");

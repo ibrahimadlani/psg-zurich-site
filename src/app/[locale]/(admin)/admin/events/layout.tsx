@@ -7,7 +7,7 @@ import { MasterDetail } from "@/components/admin/ui/master-detail";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { listAdminEvents, matchOptions } from "@/lib/admin/events-query";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 /** The events on the left (what is coming, what happened), the one opened on the right. */
 async function EventsFrame({ children }: { children: React.ReactNode }) {

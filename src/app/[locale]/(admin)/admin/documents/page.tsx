@@ -10,7 +10,7 @@ import { fileSize } from "@/components/member-area/club-documents";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { documentUrl, listDocuments, type DocumentRow } from "@/lib/documents";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");

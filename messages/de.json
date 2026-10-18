@@ -872,7 +872,8 @@
       "documents": "Dokumente",
       "journal": "Protokoll",
       "messages": "Nachrichten",
-      "finances": "Finanzen"
+      "finances": "Finanzen",
+      "audience": "Publikum"
     },
     "tabs": {
       "home": "Start",
@@ -889,7 +890,8 @@
       "documents": "Doks",
       "journal": "Protokoll",
       "messages": "Nachrichten",
-      "finances": "Finanzen"
+      "finances": "Finanzen",
+      "audience": "Publikum"
     },
     "roles": {
       "member": "Mitglied",
@@ -3352,5 +3354,105 @@
       "join": "Mitglied werden",
       "events": "Zu den Events"
     }
+  },
+  "AdminAudience": {
+    "title": "Publikum",
+    "description": "Wer die Website besucht, was gelesen wird, woher die Leute kommen. Eigene Messung ohne Cookies: Es wird keine IP-Adresse gespeichert.",
+    "periods": {
+      "24h": "24 Std.",
+      "7d": "7 Tage",
+      "30d": "30 Tage",
+      "90d": "90 Tage",
+      "12m": "12 Monate"
+    },
+    "periodLabel": "Zeitraum",
+    "views": {
+      "overview": "Überblick",
+      "content": "Inhalte",
+      "events": "Events",
+      "sources": "Quellen",
+      "api": "Technik"
+    },
+    "viewsLabel": "Tabs",
+    "includeStaff": "Vorstand einbeziehen",
+    "live": "{count, plural, =0 {Gerade niemand} one {# Besucher gerade} other {# Besucher gerade}}",
+    "vsPrevious": "vs. vorheriger Zeitraum",
+    "new": "neu",
+    "same": "stabil",
+    "kpi": {
+      "visitors": "Eindeutige Besucher",
+      "visitorsHint": "Eindeutig pro Tag, aufsummiert",
+      "views": "Seitenaufrufe",
+      "visits": "Besuche",
+      "pagesPerVisit": "Seiten pro Besuch",
+      "members": "Aufrufe von Mitgliedern",
+      "signups": "Beitritte",
+      "conversion": "{rate} der Besucher"
+    },
+    "chart": {
+      "title": "Besucherzahlen",
+      "views": "Seitenaufrufe",
+      "visitors": "Besucher"
+    },
+    "topPages": "Meistbesuchte Seiten",
+    "entrySources": "Woher die Besucher kommen",
+    "devices": "Geräte",
+    "direct": "Direkt",
+    "valueViews": "Aufrufe",
+    "valueVisitors": "Besucher",
+    "content": {
+      "articles": "Artikel",
+      "products": "Shop",
+      "pick": "Wähle einen Artikel, um die Details zu sehen.",
+      "detail": "Artikeldetails",
+      "productDetail": "Produktdetails",
+      "sources": "Woher die Leser kamen",
+      "memberShare": "{share} Mitglieder",
+      "open": "Öffnen",
+      "close": "Schliessen"
+    },
+    "events": {
+      "funnel": "Vom Klick zur Anmeldung",
+      "clicks": "Klicks auf Karten",
+      "pageViewers": "Besucher der Seite",
+      "registrations": "Anmeldungen",
+      "table": "Pro Event",
+      "event": "Event",
+      "matches": "Meistbesuchte Spiele"
+    },
+    "sources": {
+      "referrers": "Verweisende Websites",
+      "campaigns": "Kampagnen (utm_source)",
+      "browsers": "Browser",
+      "languages": "Sprachen",
+      "audience": "Besucher und Mitglieder",
+      "visitors": "Besucher",
+      "members": "Angemeldete Mitglieder",
+      "noCampaign": "Keine Kampagne im Zeitraum."
+    },
+    "devicesNames": {
+      "mobile": "Handy",
+      "tablet": "Tablet",
+      "desktop": "Computer"
+    },
+    "api": {
+      "calls": "API-Aufrufe",
+      "errorRate": "Fehlerquote",
+      "serverErrors": "Serverfehler (5xx)",
+      "avg": "Mittlere Zeit",
+      "chart": "Aufrufe und Fehler",
+      "callsSeries": "Aufrufe",
+      "errorsSeries": "Fehler",
+      "routes": "Meistgenutzte Endpunkte",
+      "route": "Endpunkt",
+      "count": "Aufrufe",
+      "time": "Mittel / max",
+      "errors": "4xx / 5xx",
+      "ms": "{value} ms"
+    },
+    "empty": "Noch keine Daten für diesen Zeitraum.",
+    "privacy": "Besucher werden ohne Cookies gezählt: ein anonymer Fingerabdruck, der sich jeden Tag ändert (IP wird nie gespeichert). Bots und Browser, die nicht verfolgt werden wollen (DNT, GPC), werden nicht gezählt.",
+    "visitorsCount": "{count, plural, one {# Besucher} other {# Besucher}}",
+    "homePage": "Startseite"
   }
 }

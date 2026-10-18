@@ -6,7 +6,7 @@ import { PanelSkeleton } from "@/components/skeletons";
 import { getSession } from "@/lib/permissions";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { LEGAL } from "@/lib/legal";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Support");

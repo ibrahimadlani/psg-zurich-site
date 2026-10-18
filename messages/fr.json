@@ -872,7 +872,8 @@
       "documents": "Documents",
       "journal": "Journal",
       "messages": "Messages",
-      "finances": "Finances"
+      "finances": "Finances",
+      "audience": "Audience"
     },
     "tabs": {
       "home": "Accueil",
@@ -889,7 +890,8 @@
       "documents": "Docs",
       "journal": "Journal",
       "messages": "Messages",
-      "finances": "Finances"
+      "finances": "Finances",
+      "audience": "Audience"
     },
     "roles": {
       "member": "Membre",
@@ -3352,5 +3354,105 @@
       "join": "Adhérer",
       "events": "Voir les événements"
     }
+  },
+  "AdminAudience": {
+    "title": "Audience",
+    "description": "Qui visite le site, ce qu'on lit, d'où l'on vient. Mesure interne, sans cookie : aucune adresse IP n'est enregistrée.",
+    "periods": {
+      "24h": "24 h",
+      "7d": "7 jours",
+      "30d": "30 jours",
+      "90d": "90 jours",
+      "12m": "12 mois"
+    },
+    "periodLabel": "Période",
+    "views": {
+      "overview": "Vue d'ensemble",
+      "content": "Contenus",
+      "events": "Événements",
+      "sources": "Sources",
+      "api": "Technique"
+    },
+    "viewsLabel": "Onglets",
+    "includeStaff": "Inclure le comité",
+    "live": "{count, plural, =0 {Personne en ce moment} one {# visiteur en ce moment} other {# visiteurs en ce moment}}",
+    "vsPrevious": "vs période précédente",
+    "new": "nouveau",
+    "same": "stable",
+    "kpi": {
+      "visitors": "Visiteurs uniques",
+      "visitorsHint": "Uniques par jour, cumulés",
+      "views": "Pages vues",
+      "visits": "Visites",
+      "pagesPerVisit": "Pages par visite",
+      "members": "Vues par des membres",
+      "signups": "Adhésions",
+      "conversion": "{rate} des visiteurs"
+    },
+    "chart": {
+      "title": "Fréquentation",
+      "views": "Pages vues",
+      "visitors": "Visiteurs"
+    },
+    "topPages": "Pages les plus vues",
+    "entrySources": "D'où arrivent les visiteurs",
+    "devices": "Appareils",
+    "direct": "Accès direct",
+    "valueViews": "vues",
+    "valueVisitors": "visiteurs",
+    "content": {
+      "articles": "Articles",
+      "products": "Boutique",
+      "pick": "Choisissez un article pour voir son détail.",
+      "detail": "Détail de l'article",
+      "productDetail": "Détail du produit",
+      "sources": "Sources des lecteurs",
+      "memberShare": "{share} membres",
+      "open": "Ouvrir",
+      "close": "Fermer"
+    },
+    "events": {
+      "funnel": "Du clic à l'inscription",
+      "clicks": "Clics sur les cartes",
+      "pageViewers": "Visiteurs de la page",
+      "registrations": "Inscriptions",
+      "table": "Par événement",
+      "event": "Événement",
+      "matches": "Matchs les plus consultés"
+    },
+    "sources": {
+      "referrers": "Sites référents",
+      "campaigns": "Campagnes (utm_source)",
+      "browsers": "Navigateurs",
+      "languages": "Langues",
+      "audience": "Visiteurs et membres",
+      "visitors": "Visiteurs",
+      "members": "Membres connectés",
+      "noCampaign": "Aucune campagne sur la période."
+    },
+    "devicesNames": {
+      "mobile": "Téléphone",
+      "tablet": "Tablette",
+      "desktop": "Ordinateur"
+    },
+    "api": {
+      "calls": "Appels d'API",
+      "errorRate": "Taux d'erreur",
+      "serverErrors": "Erreurs serveur (5xx)",
+      "avg": "Temps moyen",
+      "chart": "Appels et erreurs",
+      "callsSeries": "Appels",
+      "errorsSeries": "Erreurs",
+      "routes": "Endpoints les plus utilisés",
+      "route": "Endpoint",
+      "count": "Appels",
+      "time": "Moy. / max",
+      "errors": "4xx / 5xx",
+      "ms": "{value} ms"
+    },
+    "empty": "Pas encore de données sur cette période.",
+    "privacy": "Visiteurs comptés sans cookie : une empreinte anonyme qui change chaque jour (IP jamais enregistrée). Les robots et les navigateurs qui demandent à ne pas être suivis (DNT, GPC) ne sont pas comptés.",
+    "visitorsCount": "{count, plural, one {# visiteur} other {# visiteurs}}",
+    "homePage": "Accueil"
   }
 }

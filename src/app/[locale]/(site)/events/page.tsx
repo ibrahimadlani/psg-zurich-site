@@ -13,7 +13,7 @@ import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { asc } from "drizzle-orm";
 import { RETURN_PARAM, safeReturnPath } from "@/lib/return-to";
-import { Streamed } from "@/components/ui/skeleton";
+import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Events");
