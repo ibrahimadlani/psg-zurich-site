@@ -40,10 +40,11 @@ export function StandingsTable({ rows, compact = false }: { rows: StandingRow[] 
           </tr>
         </thead>
         <tbody className="divide-y">
-          {rows.map((row) => {
+          {rows.map((row, index) => {
             const psg = row.teamId === PSG_TEAM_ID;
             return (
-              <tr key={row.teamId} className={cn(psg && "bg-psg-blue/8 font-semibold dark:bg-foreground/8")}>
+              // --row: the rows come in one after the other when the table is widened (globals.css).
+              <tr key={row.teamId} style={{ "--row": index } as React.CSSProperties} className={cn(psg && "bg-psg-blue/8 font-semibold dark:bg-foreground/8")}>
                 <td className="relative py-2 pr-1 pl-3 text-center tabular-nums">
                   {/* PSG's row: the shirt's banner at the left edge, sized to the row. */}
                   {psg ? <PsgBanner className="absolute top-1/2 left-1.5 h-5 w-[7px] -translate-y-1/2" /> : null}

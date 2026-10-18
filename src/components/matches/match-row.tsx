@@ -3,6 +3,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { HumanDate } from "@/components/human-date";
 import { CompetitionLogo, hasLocalLogo } from "@/components/matches/competition-logos";
 import { outcome, roundInfo, sides, toDate, type MatchView } from "@/components/matches/match-utils";
+import { RivalryBadge, rivalryFrame, rivalryOf } from "@/components/matches/rivalry";
 import { ShortName } from "@/components/matches/short-name";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
@@ -68,11 +69,16 @@ export function MatchRow({
   const [home, away] = sides(match);
   const result = outcome(match);
   const played = match.status === "finished" || match.status === "live";
+  const rivalry = rivalryOf(match);
 
   return (
     <Link
       href={`/matches/${match.id}`}
-      className="group grid grid-cols-[4.5rem_1fr_auto] items-center gap-3 rounded-[10px] border bg-card/60 p-3 transition-colors hover:border-foreground/30 sm:grid-cols-[6rem_1fr_auto] sm:gap-5 sm:p-4"
+      className={cn(
+        "group grid grid-cols-[4.5rem_1fr_auto] items-center gap-3 rounded-[10px] border bg-card/60 p-3 transition-colors hover:border-foreground/30 sm:grid-cols-[6rem_1fr_auto] sm:gap-5 sm:p-4",
+        rivalryFrame(rivalry, home.isPsg ? "top" : "bottom"),
+        rivalry && "rivalry-raised",
+      )}
     >
       <span className="flex flex-col text-xs leading-tight">
         <HumanDate
@@ -85,7 +91,10 @@ export function MatchRow({
       </span>
 
       <span className="flex min-w-0 flex-col gap-1.5">
-        <CompetitionLabel match={match} />
+        <span className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
+          <CompetitionLabel match={match} />
+          {rivalry ? <RivalryBadge rivalry={rivalry} /> : null}
+        </span>
         <span className="flex min-w-0 flex-col gap-1 text-sm sm:text-[15px]">
           {[home, away].map((team) => (
             <span key={team.name} className="flex min-w-0 items-center gap-2">

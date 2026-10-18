@@ -359,3 +359,142 @@
   .landing-ripple { opacity: 0; }
   .reveal { transition: none; }
 }
+
+/* Matches page: widening the league table (components/matches/fixtures-and-tables.tsx). The table
+   and the fixtures glide to their new place and size; their pictures are pinned to the top left,
+   unstretched, and revealed by the moving box, so the text never squashes. Then the wide table's
+   rows come in one after the other. */
+::view-transition-group(standings),
+::view-transition-group(fixtures) {
+  overflow: clip;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 12px;
+}
+::view-transition-old(standings),
+::view-transition-new(standings),
+::view-transition-old(fixtures),
+::view-transition-new(fixtures) {
+  height: auto;
+  width: auto;
+  object-fit: none;
+  object-position: left top;
+  animation-duration: 0.35s;
+}
+@keyframes standings-row-in {
+  from { opacity: 0; transform: translateX(-10px); }
+}
+.standings-aside[data-wide] tbody tr {
+  animation: standings-row-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) calc(0.12s + var(--row, 0) * 22ms) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .standings-aside[data-wide] tbody tr { animation: none; }
+}
+
+/* Le Classique (Marseille) and the Paris derby (Paris FC): components/matches/rivalry.tsx.
+   The card's border takes both clubs' colours, each on its own club's side, with a glint of light
+   going round (an animated angle), over a neutral domed fill; the badge carries them
+   too, with a light sweeping across. */
+@property --rivalry-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes rivalry-spin {
+  to { --rivalry-angle: 360deg; }
+}
+@keyframes rivalry-sweep {
+  0%, 55% { transform: translateX(-120%) skewX(-20deg); }
+  85%, 100% { transform: translateX(220%) skewX(-20deg); }
+}
+.rivalry-frame {
+  border-color: transparent;
+  border-width: 2px;
+  background:
+    /* A neutral light-to-shade fill (no colour): the card looks slightly domed. */
+    linear-gradient(180deg, rgb(255 255 255 / 0.09) 0%, rgb(255 255 255 / 0.02) 38%, transparent 55%, rgb(0 0 0 / 0.14) 100%) padding-box,
+    linear-gradient(var(--card), var(--card)) padding-box,
+    /* A glint of light travelling round the edge… */
+    conic-gradient(from var(--rivalry-angle), transparent 0 78%, rgb(255 255 255 / 0.95) 88%, transparent 96%) border-box,
+    /* …over each club's colours, fixed on its own side. */
+    linear-gradient(var(--rivalry-dir), var(--rivalry-ring)) border-box;
+  box-shadow: 0 12px 28px -16px rgb(0 0 0 / 0.5);
+  animation: rivalry-spin 5s linear infinite;
+  transition: box-shadow 0.3s;
+}
+.rivalry-frame:hover {
+  box-shadow: 0 16px 34px -14px rgb(0 0 0 / 0.55);
+}
+/* In the match list: inner shadows too, so the domed card stands out from the flat ones around it. */
+.rivalry-raised {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.14),
+    inset 0 -14px 22px -14px rgb(0 0 0 / 0.35),
+    0 10px 24px -16px rgb(0 0 0 / 0.55);
+}
+.rivalry-raised:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.18),
+    inset 0 -14px 22px -14px rgb(0 0 0 / 0.38),
+    0 14px 30px -14px rgb(0 0 0 / 0.6);
+}
+:root:not(.dark) .rivalry-frame {
+  /* Light mode: the shade does the work (white on white would not show). */
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.9) 0%, transparent 45%, rgb(0 0 0 / 0.06) 100%) padding-box,
+    linear-gradient(var(--card), var(--card)) padding-box,
+    conic-gradient(from var(--rivalry-angle), transparent 0 78%, rgb(255 255 255 / 0.95) 88%, transparent 96%) border-box,
+    linear-gradient(var(--rivalry-dir), var(--rivalry-ring)) border-box;
+}
+/* Where Paris stands on the card: its colours start from that side. */
+.rivalry-psg-left { --rivalry-dir: 90deg; }
+.rivalry-psg-right { --rivalry-dir: 270deg; }
+.rivalry-psg-top { --rivalry-dir: 180deg; }
+.rivalry-psg-bottom { --rivalry-dir: 0deg; }
+.rivalry-classique {
+  /* Paris blue and red, then Marseille's sky blue and white. */
+  --rivalry-ring: #2a6cb5 0%, #da291c 30%, #2a6cb5 46%, #7fd0f2 58%, #2faee0 80%, #e8f7fd 100%;
+}
+.rivalry-derby {
+  /* Paris Saint-Germain blue and red, then Paris FC's sky blue and navy. */
+  --rivalry-ring: #2a6cb5 0%, #da291c 30%, #2a6cb5 46%, #8ccff2 60%, #5b7cc0 80%, #2c4a86 100%;
+}
+/* The badge: a dark, glossy chip (no colour inside), ringed in both clubs' colours, with the two
+   clubs' marks side by side and a light sweeping across. Same chip in light and dark mode. */
+.rivalry-badge {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.1), transparent 55%) padding-box,
+    linear-gradient(180deg, #232a37, #0c1018) padding-box,
+    linear-gradient(90deg, var(--rivalry-badge-ring)) border-box;
+  box-shadow: 0 4px 12px -6px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.12);
+  text-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
+}
+.rivalry-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.22), transparent);
+  animation: rivalry-sweep 5s ease-in-out infinite;
+}
+.rivalry-badge-classique { --rivalry-badge-ring: #2a6cb5, #da291c 40%, #2faee0 70%, #e8f7fd; }
+.rivalry-badge-derby { --rivalry-badge-ring: #2a6cb5, #da291c 40%, #8ccff2 70%, #3b5a9e; }
+@media (prefers-reduced-motion: reduce) {
+  .rivalry-frame, .rivalry-badge::after { animation: none; }
+  .rivalry-badge::after { display: none; }
+}
+
+/* The clubs' bookmark ribbons on a rivalry's match card: they unroll from the top edge. */
+@keyframes rivalry-ribbon-drop {
+  from { transform: scaleY(0.2) translateY(-12px); opacity: 0; }
+  60% { opacity: 1; }
+}
+.rivalry-ribbon {
+  transform-origin: top;
+  filter: drop-shadow(0 6px 6px rgb(0 0 0 / 0.28));
+  animation: rivalry-ribbon-drop 0.7s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rivalry-ribbon { animation: none; }
+}

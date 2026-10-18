@@ -8,7 +8,8 @@ import { ChampionsLeagueLogo, Ligue1Logo } from "@/components/matches/competitio
 import { LazyList } from "@/components/lazy-list";
 import { LiveMatches } from "@/components/matches/live-matches";
 import { MatchRow, type PredictionView } from "@/components/matches/match-row";
-import { MatchTabs, PanelTabs } from "@/components/matches/match-tabs";
+import { FixturesAndTables } from "@/components/matches/fixtures-and-tables";
+import { MatchTabs, panelTitle } from "@/components/matches/match-tabs";
 import { Scoreboard } from "@/components/matches/scoreboard";
 import { StandingsTable } from "@/components/matches/standings-table";
 import { db } from "@/db";
@@ -78,6 +79,7 @@ async function MatchesContent() {
   const tables = (compact: boolean) => [
     {
       id: "ligue1",
+      title: t("titles.ligue1"),
       label: (
         <>
           <Ligue1Logo className="size-3 text-current" />
@@ -88,6 +90,7 @@ async function MatchesContent() {
     },
     {
       id: "championsLeague",
+      title: t("titles.championsLeague"),
       label: (
         <>
           <ChampionsLeagueLogo className="size-3.5 text-current dark:text-current" />
@@ -106,7 +109,7 @@ async function MatchesContent() {
       <section className="space-y-2.5">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           {heading ? (
-            <h2 className="font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">{heading}</h2>
+            <h2 className={panelTitle}>{heading}</h2>
           ) : (
             <span />
           )}
@@ -130,22 +133,51 @@ async function MatchesContent() {
           </Link>
         ) : null}
       </section>
-      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
-        <MatchTabs
-          labels={{ upcoming: t("upcoming"), results: t("results") }}
-          upcoming={list(upcoming, t("noUpcoming"))}
-          results={list(results, t("noResults"))}
-          extra={tables(false)}
-          extraClassName="lg:hidden"
-        />
-        {/* Computer: the tables beside the fixtures, following the scroll. */}
-        <aside aria-label={t("standings.title")} className="hidden lg:sticky lg:top-6 lg:block">
-          <PanelTabs panels={tables(true)} />
-        </aside>
-      </div>
+      <FixturesAndTables
+        fixtures={
+          <MatchTabs
+            labels={{ upcoming: t("upcoming"), results: t("results") }}
+            titles={{ upcoming: t("titles.upcoming"), results: t("titles.results") }}
+            upcoming={list(upcoming, t("noUpcoming"))}
+            results={list(results, t("noResults"))}
+            extra={tables(false)}
+            extraClassName="lg:hidden"
+            filters={[
+              {
+                id: "ligue1",
+                label: (
+                  <>
+                    <Ligue1Logo className="size-3 text-current" />
+                    {t("standings.ligue1")}
+                  </>
+                ),
+                upcoming: list(upcoming.filter(isLigue1), t("noUpcoming")),
+                results: list(results.filter(isLigue1), t("noResults")),
+              },
+              {
+                id: "championsLeague",
+                label: (
+                  <>
+                    <ChampionsLeagueLogo className="size-3.5 text-current dark:text-current" />
+                    {t("standings.championsLeague")}
+                  </>
+                ),
+                upcoming: list(upcoming.filter(isChampionsLeague), t("noUpcoming")),
+                results: list(results.filter(isChampionsLeague), t("noResults")),
+              },
+            ]}
+          />
+        }
+        compact={tables(true)}
+        full={tables(false)}
+        labels={{ aside: t("standings.title"), expand: t("standings.expand"), collapse: t("standings.collapse") }}
+      />
     </div>
   );
 }
+
+const isLigue1 = (match: { competition: string }) => match.competition === "Ligue 1";
+const isChampionsLeague = (match: { competition: string }) => /champions league/i.test(match.competition);
 
 const quietLink = "inline-flex items-center gap-1.5 transition-colors hover:text-foreground";
 

@@ -4,16 +4,20 @@ import { CompetitionLabel, liveLabel } from "@/components/matches/match-row";
 import { MatchTimeline } from "@/components/matches/match-timeline";
 import { sides, toDate, type MatchView } from "@/components/matches/match-utils";
 import { ShortName } from "@/components/matches/short-name";
+import { RivalryBadge, RivalryRibbon, ribbonClub, rivalryFrame, rivalryOf } from "@/components/matches/rivalry";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { cn } from "@/lib/utils";
 
 /** Big score block: crests, score (or kick-off time), live minute, penalties, goal timeline. */
-export function Scoreboard({ match, className }: { match: MatchView; className?: string }) {
+/** `ribbons`: on the match page, Le Classique and the Paris derby hang each club's bookmark ribbon. */
+export function Scoreboard({ match, className, ribbons = false }: { match: MatchView; className?: string; ribbons?: boolean }) {
   const t = useTranslations("Matches");
   const format = useFormatter();
   const [home, away] = sides(match);
   const live = match.status === "live";
   const played = live || match.status === "finished";
+  const rivalry = rivalryOf(match);
+  const withRibbons = ribbons && rivalry !== null;
 
   const centre = played ? (
     <span className="font-narrow text-[length:clamp(44px,9vw,64px)] leading-none font-extrabold tabular-nums italic">
@@ -28,9 +32,18 @@ export function Scoreboard({ match, className }: { match: MatchView; className?:
   );
 
   return (
-    <div className={cn("rounded-[14px] border bg-card/70 p-5 sm:p-7", className)}>
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
-        <CompetitionLabel match={match} className="text-[13px]" />
+    <div className={cn("relative rounded-[14px] border bg-card/70 p-5 sm:p-7", rivalryFrame(rivalry, home.isPsg ? "left" : "right"), className)}>
+      {withRibbons
+        ? [home, away].map((team, index) => (
+            <RivalryRibbon key={team.name} club={ribbonClub(team, rivalry)} side={index ? "right" : "left"} delay={index * 120} />
+          ))
+        : null}
+      {/* With ribbons, the top line keeps clear of them (they hang over its two ends). */}
+      <div className={cn("mb-5 flex flex-wrap items-center justify-between gap-2", withRibbons && "px-8 sm:px-10")}>
+        <span className="flex min-w-0 flex-wrap items-center gap-x-2.5 gap-y-1.5">
+          <CompetitionLabel match={match} className="text-[13px]" />
+          {rivalry ? <RivalryBadge rivalry={rivalry} size="md" /> : null}
+        </span>
         {live ? (
           <span className="inline-flex items-center gap-1.5 rounded-full bg-psg-red px-2.5 py-1 text-[11px] font-semibold text-white uppercase">
             <span className="size-1.5 animate-pulse rounded-full bg-white" aria-hidden />

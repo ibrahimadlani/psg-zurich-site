@@ -66,7 +66,7 @@ async function MatchContent({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     <div className="space-y-6">
-      <Scoreboard match={match} />
+      <Scoreboard match={match} ribbons />
 
       <a
         href={`/api/calendar/match/${match.id}`}
