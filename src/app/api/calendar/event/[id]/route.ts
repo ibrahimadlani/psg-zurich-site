@@ -6,6 +6,7 @@ import { buildCalendar, icsResponse } from "@/lib/ics";
 import { ESTIMATED_DURATION_MS } from "@/lib/matches";
 import { isDuesPaid } from "@/lib/dues";
 import { getCurrentMember } from "@/lib/members";
+import { publicOrigin } from "@/lib/public-origin";
 
 /** One club event as a .ics file ("Add to my calendar"), for members whose fee is paid. */
 export async function GET(request: Request, { params }: RouteContext<"/api/calendar/event/[id]">) {
@@ -15,7 +16,7 @@ export async function GET(request: Request, { params }: RouteContext<"/api/calen
   const [event] = isDuesPaid(member) ? await db.select().from(events).where(eq(events.id, id)) : [];
   if (!event) return new Response("Not found", { status: 404 });
 
-  const origin = new URL(request.url).origin;
+  const origin = publicOrigin(request);
   const body = buildCalendar({
     name: event.title,
     events: [

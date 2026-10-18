@@ -50,6 +50,12 @@ export function Cockade() {
   );
 }
 
+/*
+ * Where the underline was when its bar went away. The home page renders its own header, so going
+ * to or from it mounts a new bar: the new one starts from here and slides on, instead of appearing.
+ */
+let lastSlide: { left: number; width: number; at: number } | null = null;
+
 /** Desktop navigation bar: same width as the content, hairlines above and below. */
 export function MainNav() {
   const t = useTranslations("Nav");
@@ -57,6 +63,7 @@ export function MainNav() {
   const items = useNavItems();
   const listRef = useRef<HTMLUListElement>(null);
   const barRef = useRef<HTMLSpanElement>(null);
+  const mounted = useRef(false);
 
   // One underline for the whole bar, slid under the active tab (CSS transition on transform/width).
   // It only slides when a tab is clicked; every other placement (first paint, fonts arriving,
@@ -86,12 +93,33 @@ export function MainNav() {
     const list = listRef.current;
     if (!list) return;
     const place = () => moveBar(list.querySelector<HTMLElement>('a[aria-current="page"]'));
-    place();
+    const active = list.querySelector<HTMLElement>('a[aria-current="page"]');
+    const slide = lastSlide;
+    lastSlide = null;
+    if (!mounted.current && active && slide && Date.now() - slide.at < 1000) {
+      // A new bar right after the old one left: start where it was (mid-slide or arrived), then slide.
+      moveBar({ offsetLeft: slide.left, offsetWidth: slide.width } as HTMLElement);
+      moveBar(active, true);
+    } else place();
+    mounted.current = true;
     // Fonts loading or the window resizing change the link widths.
     const observer = new ResizeObserver(place);
     observer.observe(list);
     return () => observer.disconnect();
   }, [pathname, items.length]);
+
+  // Leaving (the home page swaps headers; a page kept hidden by the router counts too): remember
+  // where the underline is right now, and slide in from there when this bar shows again.
+  useLayoutEffect(() => {
+    const bar = barRef.current;
+    return () => {
+      mounted.current = false;
+      if (!bar || bar.style.opacity !== "1") return;
+      const style = getComputedStyle(bar);
+      const moving = style.transform !== "none" ? style.transform : bar.style.transform;
+      lastSlide = { left: new DOMMatrix(moving).m41, width: parseFloat(style.width) || parseFloat(bar.style.width) || 0, at: Date.now() };
+    };
+  }, []);
 
   return (
     <nav aria-label={t("label")} className="mx-auto hidden w-full max-w-5xl px-4 md:block">

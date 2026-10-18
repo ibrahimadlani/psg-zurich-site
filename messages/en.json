@@ -1597,7 +1597,8 @@
       "goalDifferenceLong": "Goal difference",
       "form": "Form",
       "points": "Pts",
-      "unavailable": "Table unavailable right now."
+      "unavailable": "Table unavailable right now.",
+      "title": "Standings"
     },
     "details": {
       "sheet": "Match facts sheet",

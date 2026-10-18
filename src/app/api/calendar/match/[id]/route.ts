@@ -3,6 +3,7 @@ import { buildCalendar, icsResponse } from "@/lib/ics";
 import { isDuesPaid } from "@/lib/dues";
 import { getCurrentMember } from "@/lib/members";
 import { ESTIMATED_DURATION_MS, getEventsForMatches, getMatch, matchTitle } from "@/lib/matches";
+import { publicOrigin } from "@/lib/public-origin";
 
 /** One match and its club events, as a .ics file ("Add to my calendar"). */
 export async function GET(request: Request, { params }: RouteContext<"/api/calendar/match/[id]">) {
@@ -10,7 +11,7 @@ export async function GET(request: Request, { params }: RouteContext<"/api/calen
   const { id } = await params;
   const match = await getMatch(id);
   if (!match) return new Response("Not found", { status: 404 });
-  const origin = new URL(request.url).origin;
+  const origin = publicOrigin(request);
   // Club events are for members whose fee is paid.
   const member = await getCurrentMember();
   const clubEvents = isDuesPaid(member) ? await getEventsForMatches([id]) : [];

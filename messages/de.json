@@ -1597,7 +1597,8 @@
       "goalDifferenceLong": "Tordifferenz",
       "form": "Form",
       "points": "Pkt.",
-      "unavailable": "Tabelle derzeit nicht verfügbar."
+      "unavailable": "Tabelle derzeit nicht verfügbar.",
+      "title": "Tabellen"
     },
     "details": {
       "sheet": "Spielinfos",

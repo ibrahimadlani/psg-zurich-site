@@ -1,11 +1,12 @@
 import { connection } from "next/server";
 import { buildCalendar, icsResponse, type IcsEvent } from "@/lib/ics";
 import { ESTIMATED_DURATION_MS, getSeasonMatches, matchScore, matchTitle } from "@/lib/matches";
+import { publicOrigin } from "@/lib/public-origin";
 
 /** Subscribable calendar: PSG matches of the season (club events are for members only). */
 export async function GET(request: Request) {
   await connection();
-  const origin = new URL(request.url).origin;
+  const origin = publicOrigin(request);
   const seasonMatches = await getSeasonMatches();
 
   const entries: IcsEvent[] = [

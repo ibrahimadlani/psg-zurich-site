@@ -5,6 +5,7 @@ import { ContactFaq } from "@/components/contact/contact-faq";
 import { AwayTripIllustration, MembersMatchIllustration, SocialIllustration, WatchPartyIllustration } from "@/components/events/event-illustrations";
 import { type Basics, EventBlock, MatchStage, NewsStrip, display, primaryButton } from "@/components/home/blocks";
 import { CrestLake, HeroSkyline, StandArt } from "@/components/landing/illustrations";
+import { TeamCrest } from "@/components/matches/team-crest";
 import { CountUp, Parallax, Reveal, Tilt } from "@/components/landing/motion";
 import { SeasonStory } from "@/components/landing/season-story";
 import { Link } from "@/i18n/navigation";
@@ -113,9 +114,16 @@ export async function VisitorLanding({ basics, figures }: { basics: Basics; figu
                   href={`/matches/${next.id}`}
                   className="landing-float-chip absolute top-0 left-4 z-10 flex max-w-[calc(100%-2rem)] items-center gap-3 rounded-[14px] bg-white/10 py-2 pr-4 pl-2.5 ring-1 ring-white/25 backdrop-blur-md transition-colors ring-inset hover:bg-white/15 sm:left-0 lg:top-6"
                 >
-                  <span className="relative grid size-8 shrink-0 place-items-center rounded-[9px] bg-psg-red">
-                    <span aria-hidden className="absolute inset-0 animate-ping rounded-[9px] bg-psg-red/60 motion-reduce:hidden" />
-                    <span className="relative font-narrow text-[13px] font-extrabold italic">VS</span>
+                  {/* Both crests, home team first, slightly overlapping. */}
+                  <span aria-hidden className="flex shrink-0 items-center">
+                    {(next.venue === "away"
+                      ? [{ name: next.opponent, logo: next.opponentLogo }, { name: "PSG", logo: "/brand/psg-crest.svg" }]
+                      : [{ name: "PSG", logo: "/brand/psg-crest.svg" }, { name: next.opponent, logo: next.opponentLogo }]
+                    ).map((team, index) => (
+                      <span key={team.name} className={cn("grid size-9 place-items-center rounded-full bg-white p-1 shadow-[0_2px_8px_rgb(0_0_0/0.25)] ring-2 ring-white/20", index && "-ml-2.5")}>
+                        <TeamCrest name={team.name} logo={team.logo} className="size-full text-psg-blue" />
+                      </span>
+                    ))}
                   </span>
                   <span className="min-w-0 leading-tight">
                     <span className="block font-wide text-[9px] font-semibold tracking-[0.1em] text-white/70 uppercase">{t("hero.nextMatch")}</span>

@@ -1597,7 +1597,8 @@
       "goalDifferenceLong": "Différence de buts",
       "form": "Forme",
       "points": "Pts",
-      "unavailable": "Classement indisponible pour le moment."
+      "unavailable": "Classement indisponible pour le moment.",
+      "title": "Classements"
     },
     "details": {
       "sheet": "Fiche du match",

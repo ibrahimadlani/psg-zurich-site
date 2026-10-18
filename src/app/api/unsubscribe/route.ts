@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { members } from "@/db/schema";
 import { routing } from "@/i18n/routing";
 import { verifyUnsubscribe, type NotificationType } from "@/lib/unsubscribe";
+import { publicUrl } from "@/lib/public-origin";
 
 const COLUMN: Record<NotificationType, "notifyEvents" | "notifyPredictionReminders" | "notifyResults" | "notifyNews"> = {
   events: "notifyEvents",
@@ -18,7 +19,7 @@ const localeOf = (value: string | null) =>
 /** Link from an email: never acts on GET (mail scanners open links), shows the confirmation page. */
 export function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
-  const page = new URL(`/${localeOf(params.get("l"))}/unsubscribe`, request.url);
+  const page = publicUrl(`/${localeOf(params.get("l"))}/unsubscribe`, request);
   for (const name of ["m", "t", "s"]) page.searchParams.set(name, params.get(name) ?? "");
   return NextResponse.redirect(page, 303);
 }
@@ -36,7 +37,7 @@ export async function POST(request: NextRequest) {
 
   // Mail clients post "List-Unsubscribe=One-Click" and only need a 2xx.
   if (form?.get("List-Unsubscribe") === "One-Click") return new NextResponse("Unsubscribed");
-  const done = new URL(`/${localeOf(field("l"))}/unsubscribe`, request.url);
+  const done = publicUrl(`/${localeOf(field("l"))}/unsubscribe`, request);
   done.searchParams.set("done", type);
   return NextResponse.redirect(done, 303);
 }

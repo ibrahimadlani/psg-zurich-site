@@ -5,6 +5,7 @@ import { routing } from "@/i18n/routing";
 import { getAuth } from "@/lib/auth";
 import { englishPath } from "@/lib/legacy-paths";
 import { RETURN_PARAM, RETURN_PATH_HEADER, safeReturnPath } from "@/lib/return-to";
+import { publicUrl } from "@/lib/public-origin";
 
 const intl = createMiddleware(routing);
 
@@ -18,9 +19,7 @@ export default async function proxy(request: NextRequest) {
   // Old French addresses: once, for good, to the English page.
   const english = englishPath(request.nextUrl.pathname);
   if (english) {
-    const url = request.nextUrl.clone();
-    url.pathname = english;
-    return NextResponse.redirect(url, 308);
+    return NextResponse.redirect(publicUrl(`${english}${request.nextUrl.search}`, request), 308);
   }
   const match = GUEST_ONLY.exec(request.nextUrl.pathname);
   // Cookie check first: guests never hit the database here.
@@ -31,7 +30,7 @@ export default async function proxy(request: NextRequest) {
     if (session) {
       // Already signed in: straight to the page the sign-in was for.
       const next = safeReturnPath(request.nextUrl.searchParams.get(RETURN_PARAM)) ?? "";
-      return NextResponse.redirect(new URL(`/${match[1]}${next === "/" ? "" : next}`, request.url));
+      return NextResponse.redirect(publicUrl(`/${match[1]}${next === "/" ? "" : next}`, request));
     }
   }
   // The page asked for, for the login walls of the pages (lib/auth-redirect.ts). next-intl

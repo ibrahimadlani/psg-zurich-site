@@ -8,7 +8,7 @@ import { ChampionsLeagueLogo, Ligue1Logo } from "@/components/matches/competitio
 import { LazyList } from "@/components/lazy-list";
 import { LiveMatches } from "@/components/matches/live-matches";
 import { MatchRow, type PredictionView } from "@/components/matches/match-row";
-import { MatchTabs } from "@/components/matches/match-tabs";
+import { MatchTabs, PanelTabs } from "@/components/matches/match-tabs";
 import { Scoreboard } from "@/components/matches/scoreboard";
 import { StandingsTable } from "@/components/matches/standings-table";
 import { db } from "@/db";
@@ -75,6 +75,29 @@ async function MatchesContent() {
       <p className="rounded-[10px] border border-dashed p-8 text-center text-sm text-muted-foreground">{empty}</p>
     );
 
+  const tables = (compact: boolean) => [
+    {
+      id: "ligue1",
+      label: (
+        <>
+          <Ligue1Logo className="size-3 text-current" />
+          {t("standings.ligue1")}
+        </>
+      ),
+      content: <StandingsTable rows={ligue1} compact={compact} />,
+    },
+    {
+      id: "championsLeague",
+      label: (
+        <>
+          <ChampionsLeagueLogo className="size-3.5 text-current dark:text-current" />
+          {t("standings.championsLeague")}
+        </>
+      ),
+      content: <StandingsTable rows={championsLeague} compact={compact} />,
+    },
+  ];
+
   // A discreet label instead of a page header: what the big scoreboard shows.
   const heading = live.length > 0 ? t("live") : featured ? t(featured.kind === "next" ? "nextMatch" : "lastMatch") : null;
 
@@ -107,33 +130,19 @@ async function MatchesContent() {
           </Link>
         ) : null}
       </section>
-      <MatchTabs
-        labels={{ upcoming: t("upcoming"), results: t("results") }}
-        upcoming={list(upcoming, t("noUpcoming"))}
-        results={list(results, t("noResults"))}
-        extra={[
-          {
-            id: "ligue1",
-            label: (
-              <>
-                <Ligue1Logo className="size-3 text-current" />
-                {t("standings.ligue1")}
-              </>
-            ),
-            content: <StandingsTable rows={ligue1} />,
-          },
-          {
-            id: "championsLeague",
-            label: (
-              <>
-                <ChampionsLeagueLogo className="size-3.5 text-current dark:text-current" />
-                {t("standings.championsLeague")}
-              </>
-            ),
-            content: <StandingsTable rows={championsLeague} />,
-          },
-        ]}
-      />
+      <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+        <MatchTabs
+          labels={{ upcoming: t("upcoming"), results: t("results") }}
+          upcoming={list(upcoming, t("noUpcoming"))}
+          results={list(results, t("noResults"))}
+          extra={tables(false)}
+          extraClassName="lg:hidden"
+        />
+        {/* Computer: the tables beside the fixtures, following the scroll. */}
+        <aside aria-label={t("standings.title")} className="hidden lg:sticky lg:top-6 lg:block">
+          <PanelTabs panels={tables(true)} />
+        </aside>
+      </div>
     </div>
   );
 }
