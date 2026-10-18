@@ -311,7 +311,8 @@ export const membershipSignupSchema = z.object({
   website: z.string().max(200).optional(),
   // Page the visitor wanted before joining (`?suite=`): the welcome step ends there. Checked
   // with safeReturnPath before use.
-  next: z.string().max(512).optional(),
+  // The checked `?suite=` of the page, or null when there is none.
+  next: z.string().max(512).nullish(),
 });
 
 

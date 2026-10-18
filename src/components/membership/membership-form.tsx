@@ -57,7 +57,7 @@ export function MembershipForm() {
       method: "POST",
       headers: { "content-type": "application/json" },
       // Honeypot: only robots fill the hidden "website" field.
-      body: JSON.stringify({ ...values, locale, next, website: form ? new FormData(form).get("website") : "" }),
+      body: JSON.stringify({ ...values, locale, next: next ?? undefined, website: form ? new FormData(form).get("website") : "" }),
     });
     if (!response.ok) {
       if (response.status === 409) {
