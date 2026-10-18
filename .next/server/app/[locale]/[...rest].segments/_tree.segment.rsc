@@ -1,5 +1,5 @@
 :HL["/_next/static/chunks/27pw_oxy201rw.css","style"]
-:HL["/_next/static/chunks/3hvsxy3zdxtgp.css","style"]
+:HL["/_next/static/chunks/3o1sdzd8fncbe.css","style"]
 :HL["/_next/static/media/797e433ab948586e-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/Virage_NarrowBoldItalic-s.p.31vtg9dat24di.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/Virage_NarrowSemibold-s.p.3a6hd-9t6lqyj.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
@@ -9,6 +9,6 @@
 :HL["/_next/static/media/Virage_WideRegular-s.p.36hfo4tuc9v1s.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/Virage_WideSemibold-s.p.0t3j1c9o65mi9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 3:[["children",{"s":"__PAGE__","h":49314}]]
-2:[["children",{"s":{"n":"rest","t":"c","k":null,"s":["admin","checkout","contact","donate","dues","events","join","legal-notice","login","matches","member","news","payment","privacy","settings","shop","statutes","unsubscribe","welcome"]},"h":49250,"c":"$Q3"}]]
+2:[["children",{"s":{"n":"rest","t":"c","k":null,"s":["admin","checkout","coming-soon","contact","donate","dues","events","join","legal-notice","login","matches","member","news","payment","privacy","settings","shop","statutes","unsubscribe","welcome"]},"h":49250,"c":"$Q3"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49266,"c":"$Q2"}]]
-0:{"b":"AQia-GlLnh7uGCBvxIJSH","t":{"t":{"s":"","h":49234,"c":"$Q1"}}}
+0:{"b":"CqNext5mzP6-uTxLJgLMS","t":{"t":{"s":"","h":49234,"c":"$Q1"}}}

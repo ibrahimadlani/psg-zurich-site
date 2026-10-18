@@ -1,5 +1,5 @@
 var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/calendar/psg-zurich.ics/route.js")
-R.c("server/chunks/[root-of-the-server]__1n4qqix6-h1ix._.js")
+R.c("server/chunks/[root-of-the-server]__14zs3aabk36oj._.js")
 R.c("server/chunks/node_modules_next_dist_182yaz9b1ql64._.js")
 R.c("server/chunks/src_lib_1ysntf3tdkma_._.js")
 R.c("server/chunks/_0xmecnybc372b._.js")

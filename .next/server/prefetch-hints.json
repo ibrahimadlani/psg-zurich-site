@@ -22,6 +22,35 @@
       }
     }
   },
+  "/[locale]/admin/audience": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49248,
+                    "slots": {
+                      "children": {
+                        "hints": 49312,
+                        "slots": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]/admin/audit": {
     "hints": 49216,
     "slots": {
@@ -1478,6 +1507,25 @@
       }
     }
   },
+  "/[locale]": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49312,
+                "slots": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]/payment/[reference]": {
     "hints": 16448,
     "slots": {
@@ -1748,6 +1796,25 @@
       }
     }
   },
+  "/[locale]/coming-soon": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49312,
+                "slots": null
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]/join": {
     "hints": 49216,
     "slots": {
@@ -1829,20 +1896,6 @@
                 }
               }
             }
-          }
-        }
-      }
-    }
-  },
-  "/[locale]": {
-    "hints": 49216,
-    "slots": {
-      "children": {
-        "hints": 49184,
-        "slots": {
-          "children": {
-            "hints": 49280,
-            "slots": null
           }
         }
       }

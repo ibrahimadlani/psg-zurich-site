@@ -1,12 +1,12 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/01cuqkakxc89s.js"
+4:"/_next/static/chunks/2yqygvc63t0u0.js"
 5:"/_next/static/chunks/1hh85kt268qn7.js"
-6:"/_next/static/chunks/41-n4vk_ai0th.js"
-7:"/_next/static/chunks/2__g39ioof7sf.js"
+6:"/_next/static/chunks/2__g39ioof7sf.js"
+7:"/_next/static/chunks/41-n4vk_ai0th.js"
 8:"/_next/static/chunks/10zmr2c54oho9.js"
-9:"/_next/static/chunks/3emh0_w52afmq.js"
+9:"/_next/static/chunks/2mbgmo2i053wo.js"
 a:"/_next/static/chunks/21s7mgjvwpstx.js"
-b:"/_next/static/chunks/36yi7aiyfsg_1.js"
+b:"/_next/static/chunks/12k2rio2xrpjw.js"
 c:I[868132,["$4","$5","$6","$7","$8","$9","$a","$b"],"AdminShell"]
 d:"/_next/static/chunks/095g8usnrcprg.js"
 e:I[339756,["$d"],"default"]
@@ -30,13 +30,13 @@ f:I[837457,["$d"],"default"]
 18:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$","div",null,{"className":"mx-auto w-full max-w-xl","children":[["$","header",null,{"className":"flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between lg:mb-8 mb-5","children":[["$","div",null,{"className":"min-w-0 space-y-2","children":[null,["$","h1",null,{"className":"font-narrow text-[length:clamp(34px,6vw,52px)] leading-[0.9] font-extrabold tracking-[-0.01em] text-balance uppercase italic","children":"Scanner"}],["$","p",null,{"className":"max-w-prose text-[15px] text-pretty text-muted-foreground","children":"Scan member cards at the door. No card: search by name."}]]}],null]}],["$","$19",null,{"fallback":["$","div",null,{"role":"status","aria-busy":"true","aria-label":"Loading…","className":"animate-skeleton-in space-y-3 rounded-[14px] border bg-card p-5","children":[["$","div",null,{"aria-hidden":true,"className":"skeleton rounded-full h-4","style":{"width":"40%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"100%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton h-3.5 rounded-full","style":{"width":"80%"}}],["$","div",null,{"aria-hidden":true,"className":"skeleton mt-2 h-10 w-36 rounded-[8px]"}]]}],"children":["$","div",null,{"className":"animate-content-in","children":"$L1a"}]}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/2jn6lja1dlfyn.js","async":true}]],["$","$L1b",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1c"}]}]]}],"p":"$@1d","v":"$1e","s":"$12"}}]]
 16:[["children",{"s":"scanner","h":49250,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@17","v":"$15","s":"$12"},"c":"$Q18"}]]
 13:[["children",{"s":"admin","h":49250,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@14","v":"$15","s":"$12"},"c":"$Q16"}]]
-2:[["children",{"s":"(admin)","h":49218,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3emh0_w52afmq.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/36yi7aiyfsg_1.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
+2:[["children",{"s":"(admin)","h":49218,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/2mbgmo2i053wo.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/12k2rio2xrpjw.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":49202,"c":"$Q2"}]]
 25:X
 25:C
 28:X
 28:T6,locale28:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L22",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Scanner · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L23","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@24","v":"$25","s":"$12"}},"a":"$@26","u":"$@27","b":"AQia-GlLnh7uGCBvxIJSH","r":"$28"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L20",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L22",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$19",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Scanner · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L23","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@24","v":"$25","s":"$12"}},"a":"$@26","u":"$@27","b":"CqNext5mzP6-uTxLJgLMS","r":"$28"}
 1c:null
 27:false
 26:null

@@ -7,9 +7,9 @@ globalThis.__BUILD_MANIFEST = {
     "static/chunks/0cz1d0mv5g_q7.js"
   ],
   "lowPriorityFiles": [
-    "static/AQia-GlLnh7uGCBvxIJSH/_buildManifest.js",
-    "static/AQia-GlLnh7uGCBvxIJSH/_ssgManifest.js",
-    "static/AQia-GlLnh7uGCBvxIJSH/_clientMiddlewareManifest.js"
+    "static/CqNext5mzP6-uTxLJgLMS/_buildManifest.js",
+    "static/CqNext5mzP6-uTxLJgLMS/_ssgManifest.js",
+    "static/CqNext5mzP6-uTxLJgLMS/_clientMiddlewareManifest.js"
   ],
   "rootMainFiles": [
     "static/chunks/0o_iu04f6t0e7.js",
@@ -42,7 +42,7 @@ globalThis.__BUILD_MANIFEST = {
         494553
       ]
     },
-    "/[locale]/page": {
+    "/[locale]/(admin)/admin/page": {
       "otherChunks": [
         "static/chunks/0o_iu04f6t0e7.js",
         "static/chunks/16o-m0s0h8yj8.js",
@@ -53,7 +53,7 @@ globalThis.__BUILD_MANIFEST = {
         494553
       ]
     },
-    "/[locale]/(admin)/admin/page": {
+    "/[locale]/(admin)/admin/audience/page": {
       "otherChunks": [
         "static/chunks/0o_iu04f6t0e7.js",
         "static/chunks/16o-m0s0h8yj8.js",
@@ -416,6 +416,17 @@ globalThis.__BUILD_MANIFEST = {
         494553
       ]
     },
+    "/[locale]/(site)/page": {
+      "otherChunks": [
+        "static/chunks/0o_iu04f6t0e7.js",
+        "static/chunks/16o-m0s0h8yj8.js",
+        "static/chunks/0e2b3w4vqg-ps.js",
+        "static/chunks/29p_ss-rlgm57.js"
+      ],
+      "runtimeModuleIds": [
+        494553
+      ]
+    },
     "/[locale]/(site)/contact/page": {
       "otherChunks": [
         "static/chunks/0o_iu04f6t0e7.js",
@@ -692,6 +703,17 @@ globalThis.__BUILD_MANIFEST = {
       ]
     },
     "/[locale]/[...rest]/page": {
+      "otherChunks": [
+        "static/chunks/0o_iu04f6t0e7.js",
+        "static/chunks/16o-m0s0h8yj8.js",
+        "static/chunks/0e2b3w4vqg-ps.js",
+        "static/chunks/29p_ss-rlgm57.js"
+      ],
+      "runtimeModuleIds": [
+        494553
+      ]
+    },
+    "/[locale]/coming-soon/page": {
       "otherChunks": [
         "static/chunks/0o_iu04f6t0e7.js",
         "static/chunks/16o-m0s0h8yj8.js",

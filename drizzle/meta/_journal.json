@@ -211,6 +211,13 @@
       "when": 1792272412036,
       "tag": "0029_home_landing",
       "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "5",
+      "when": 1792337153349,
+      "tag": "0030_analytics",
+      "breakpoints": true
     }
   ]
 }

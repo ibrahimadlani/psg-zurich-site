@@ -2,10 +2,10 @@
 4:"/_next/static/chunks/095g8usnrcprg.js"
 5:I[339756,["$4"],"default"]
 6:I[837457,["$4"],"default"]
-d:"/_next/static/chunks/01cuqkakxc89s.js"
+d:"/_next/static/chunks/2yqygvc63t0u0.js"
 e:"/_next/static/chunks/1hh85kt268qn7.js"
-f:"/_next/static/chunks/41-n4vk_ai0th.js"
-10:"/_next/static/chunks/2__g39ioof7sf.js"
+f:"/_next/static/chunks/2__g39ioof7sf.js"
+10:"/_next/static/chunks/41-n4vk_ai0th.js"
 11:"/_next/static/chunks/10zmr2c54oho9.js"
 12:"/_next/static/chunks/0evdwo3t1c_hn.js"
 13:"/_next/static/chunks/3satv_39gwpgi.js"
@@ -13,7 +13,7 @@ f:"/_next/static/chunks/41-n4vk_ai0th.js"
 15:"/_next/static/chunks/0ktenso5zbzz6.js"
 16:"/_next/static/chunks/11bulff839xw8.js"
 17:"/_next/static/chunks/2zx8837tzc9a8.js"
-18:"/_next/static/chunks/12m_rxgi-ysub.js"
+18:"/_next/static/chunks/08silntkximk7.js"
 19:I[77105,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17","$18"],"default"]
 1a:I[505014,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17","$18"],"default"]
 1b:I[605500,["$d","$e","$f","$10","$11","$12","$13","$14","$15","$16","$17","$18"],"Image"]
@@ -43,9 +43,9 @@ a:[["children",{"s":"forgot-password","h":49250,"d":{"r":["$","$3","c",{"childre
 2c:C
 2f:X
 2f:T6,locale2f:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L26",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L28",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$29",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Forgot password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$9"}},"a":"$@2d","u":"$@2e","b":"AQia-GlLnh7uGCBvxIJSH","r":"$2f"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L26",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L28",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$29",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Forgot password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2a","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@2b","v":"$2c","s":"$9"}},"a":"$@2d","u":"$@2e","b":"CqNext5mzP6-uTxLJgLMS","r":"$2f"}
 30:I[897367,["$4"],"OutletBoundary"]
-21:["$","script","script-6",{"src":"/_next/static/chunks/12m_rxgi-ysub.js","async":true}]
+21:["$","script","script-6",{"src":"/_next/static/chunks/08silntkximk7.js","async":true}]
 22:["$","$L30",null,{"children":["$","$29",null,{"name":"Next.MetadataOutlet","children":"$@31"}]}]
 2e:false
 31:null
