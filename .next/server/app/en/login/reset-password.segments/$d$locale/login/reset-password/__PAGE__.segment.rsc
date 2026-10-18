@@ -8,7 +8,7 @@ f:"/_next/static/chunks/41-n4vk_ai0th.js"
 10:"/_next/static/chunks/2__g39ioof7sf.js"
 11:"/_next/static/chunks/10zmr2c54oho9.js"
 12:"/_next/static/chunks/1x20bpgo8qmx7.js"
-13:"/_next/static/chunks/13pimb6gw3pwn.js"
+13:"/_next/static/chunks/1q3a8p-lwlf9s.js"
 14:"/_next/static/chunks/21s7mgjvwpstx.js"
 15:"/_next/static/chunks/0ktenso5zbzz6.js"
 16:"/_next/static/chunks/11bulff839xw8.js"
@@ -42,10 +42,10 @@ a:[["children",{"s":"reset-password","h":49250,"d":{"r":["$","$3","c",{"children
 31:C
 34:X
 34:T6,locale34:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2f","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$9"}},"a":"$@32","u":"$@33","b":"62StMSYdDnGbcDSRpwmSl","r":"$34"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1e",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"New password · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L2f","4",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@30","v":"$31","s":"$9"}},"a":"$@32","u":"$@33","b":"cP2IcNugL8gw6eUMMKo8y","r":"$34"}
 35:I[897367,["$4"],"OutletBoundary"]
 21:["$","script","script-0",{"src":"/_next/static/chunks/1x20bpgo8qmx7.js","async":true}]
-22:["$","script","script-1",{"src":"/_next/static/chunks/13pimb6gw3pwn.js","async":true}]
+22:["$","script","script-1",{"src":"/_next/static/chunks/1q3a8p-lwlf9s.js","async":true}]
 23:["$","script","script-2",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}]
 24:["$","script","script-3",{"src":"/_next/static/chunks/0ktenso5zbzz6.js","async":true}]
 25:["$","script","script-4",{"src":"/_next/static/chunks/11bulff839xw8.js","async":true}]
