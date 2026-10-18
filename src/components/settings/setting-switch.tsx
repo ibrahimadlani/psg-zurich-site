@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -37,10 +37,10 @@ export function SettingSwitch({
       });
       if (!response.ok) {
         setChecked(!next);
-        toast.error(t("saveError"));
+        notify.error(t("saveError"));
         return;
       }
-      toast.success(t("saved"));
+      notify.success(t("saved"));
       router.refresh();
     });
   };

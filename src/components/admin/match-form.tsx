@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm, useWatch } from "react-hook-form";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { z } from "zod";
 import { adminButton, adminInput } from "@/components/admin/ui/styles";
 import { MATCH_STATUSES, MATCH_VENUES } from "@/db/schema";
@@ -96,10 +96,10 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
       }),
     });
     if (!response.ok) {
-      toast.error(t("error"));
+      notify.error(t("error"));
       return;
     }
-    toast.success(t(matchId ? "updated" : "created"));
+    notify.success(t(matchId ? "updated" : "created"));
     if (!matchId) reset(emptyMatch);
     onDone?.();
     router.refresh();
@@ -117,7 +117,7 @@ export function MatchForm({ matchId, defaults = emptyMatch, onDone }: { matchId?
     field(name, label, { inputMode: "numeric", maxLength: 2, className: "w-20 text-center tabular-nums" });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, () => toast.error(t("invalid")))} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit, () => notify.error(t("invalid")))} noValidate className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         {field("competition", t("competition"), { list: `${prefix}-competitions`, maxLength: 120, placeholder: "Coupe de France" })}
         <datalist id={`${prefix}-competitions`}>

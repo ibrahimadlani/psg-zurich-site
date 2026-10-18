@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm, useWatch } from "react-hook-form";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { z } from "zod";
 import { AddressAutocomplete } from "@/components/maps/address-autocomplete";
 import { Button } from "@/components/ui/button";
@@ -54,10 +54,10 @@ export function ProfileForm({ email, defaults, bare = false }: { email: string; 
       body: JSON.stringify(values),
     });
     if (!response.ok) {
-      toast.error(t("error"));
+      notify.error(t("error"));
       return;
     }
-    toast.success(t("saved"));
+    notify.success(t("saved"));
     reset(values);
     // The header shows the name from the session.
     refetch();

@@ -3,7 +3,7 @@
 import { Camera, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar";
 import { useRouter } from "@/i18n/navigation";
@@ -27,11 +27,11 @@ export function AvatarUploader({ name, email, image }: { name: string; email: st
         if (!response.ok) throw new Error(String(response.status));
         const { data } = (await response.json()) as { data: { image: string } };
         setCurrent(data.image);
-        toast.success(t("photoSaved"));
+        notify.success(t("photoSaved"));
         refetch();
         router.refresh();
       } catch {
-        toast.error(t("photoError"));
+        notify.error(t("photoError"));
       }
     });
 
@@ -39,11 +39,11 @@ export function AvatarUploader({ name, email, image }: { name: string; email: st
     startTransition(async () => {
       const response = await fetch("/api/v1/me/avatar", { method: "DELETE" });
       if (!response.ok) {
-        toast.error(t("photoRemoveError"));
+        notify.error(t("photoRemoveError"));
         return;
       }
       setCurrent(null);
-      toast.success(t("photoRemoved"));
+      notify.success(t("photoRemoved"));
       refetch();
       router.refresh();
     });

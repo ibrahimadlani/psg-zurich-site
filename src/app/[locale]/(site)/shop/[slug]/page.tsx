@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { ProductBadge } from "@/components/shop/product-badges";
 import { ProductBuy } from "@/components/shop/product-buy";
 import { ProductGallery } from "@/components/shop/product-gallery";
@@ -12,6 +11,8 @@ import type { Locale } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { formatChf } from "@/lib/money";
 import { getShopSettings, shopProduct } from "@/lib/payments/shop";
+import { ProductSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export const instant = false;
 
@@ -71,8 +72,8 @@ async function Product({ slug }: { slug: string }) {
 export default async function ProductPage({ params }: PageProps<"/[locale]/shop/[slug]">) {
   const { slug } = await params;
   return (
-    <Suspense fallback={<div className="skeleton aspect-[4/5] rounded-[16px] lg:w-1/2" />}>
+    <Streamed fallback={<ProductSkeleton />}>
       <Product slug={slug} />
-    </Suspense>
+    </Streamed>
   );
 }

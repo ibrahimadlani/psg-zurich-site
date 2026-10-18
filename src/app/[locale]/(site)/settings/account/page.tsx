@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 import { SecuritySection } from "@/components/member-area/security-section";
 import { ChangeEmailForm } from "@/components/settings/change-email-form";
 import { DevicesSection } from "@/components/settings/devices-section";
 import { SettingsBlock, SettingsSection } from "@/components/settings/settings-section";
 import { getSettingsContext } from "@/lib/settings";
 import { SettingsSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Settings.sections");
@@ -34,9 +34,9 @@ async function Content() {
 export default function AccountSettingsPage() {
   return (
     <SettingsSection section="account">
-      <Suspense fallback={<SettingsSkeleton />}>
+      <Streamed fallback={<SettingsSkeleton />}>
         <Content />
-      </Suspense>
+      </Streamed>
     </SettingsSection>
   );
 }

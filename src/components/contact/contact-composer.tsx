@@ -17,7 +17,7 @@ import {
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { AutoTextarea } from "@/components/contact/auto-textarea";
 import type { ContactTopic } from "@/db/schema";
 import { useKeyboardInset } from "@/hooks/use-keyboard-inset";
@@ -266,7 +266,7 @@ export function ContactComposer({
           {absolute ? (
             <button
               type="button"
-              onClick={() => void navigator.clipboard?.writeText(result.follow!).then(() => toast.success(t("success.linkCopied")))}
+              onClick={() => void navigator.clipboard?.writeText(result.follow!).then(() => notify.success(t("success.linkCopied")))}
               className="inline-flex h-12 cursor-pointer items-center justify-center gap-2 rounded-[10px] border px-5 text-[14px] transition-colors hover:bg-foreground/5"
             >
               <Copy className="size-4" aria-hidden />

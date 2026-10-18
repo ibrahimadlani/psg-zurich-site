@@ -2,7 +2,7 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -19,23 +19,23 @@ export function ChangeEmailForm({ current }: { current: string }) {
     event.preventDefault();
     const newEmail = email.trim().toLowerCase();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newEmail)) {
-      toast.error(t("emailInvalid"));
+      notify.error(t("emailInvalid"));
       return;
     }
     if (newEmail === current) {
-      toast.error(t("emailSame"));
+      notify.error(t("emailSame"));
       return;
     }
     startTransition(async () => {
       // The links in both emails come back to this page, in this language.
       const { error } = await authClient.changeEmail({ newEmail, callbackURL: `/${locale}/settings/account` });
       if (error) {
-        toast.error(t("emailError"));
+        notify.error(t("emailError"));
         return;
       }
       setEmail("");
       // Longer message: left on screen a little longer.
-      toast.success(t("emailSent", { current }), { duration: 8000 });
+      notify.success(t("emailSent", { current }), { duration: 8000 });
     });
   };
 

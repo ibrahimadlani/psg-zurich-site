@@ -7,6 +7,7 @@ import { SessionSync } from "@/components/auth/session-sync";
 import { ThemeScript } from "@/components/theme-script";
 import { ThemeSync } from "@/components/theme-sync";
 import { Toaster } from "@/components/ui/toaster";
+import { PendingToasts } from "@/components/pending-toasts";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import { publicSiteUrl } from "@/lib/seo";
@@ -46,6 +47,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
           </Suspense>
           {children}
           <Toaster />
+          <PendingToasts />
         </NextIntlClientProvider>
       </body>
     </html>

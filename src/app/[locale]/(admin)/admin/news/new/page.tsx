@@ -2,12 +2,12 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { PostEditor } from "@/components/cms/post-editor";
 import { LOCALES, type Locale } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { editorData, loadPost, requireCmsAccess } from "@/lib/cms";
 import { AdminSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cms");
@@ -57,9 +57,9 @@ export default async function NewPostPage({ searchParams }: PageProps<"/[locale]
         <ArrowLeft className="size-3" aria-hidden />
         {t("title")}
       </Link>
-      <Suspense fallback={<AdminSkeleton cards={1} />}>
+      <Streamed fallback={<AdminSkeleton cards={1} />}>
         <NewPost searchParams={searchParams} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

@@ -3,13 +3,13 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { TemplateEditor } from "@/components/mailing/template-editor";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
 import { automationMessageKey, defaultTemplates, requireMailingAdmin, savedTemplates } from "@/lib/mailing/admin-data";
 import { automation } from "@/lib/mailing/registry";
 import { AdminSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Automation keys are known at runtime only here: rendered at request time.
 export const instant = false;
@@ -51,9 +51,9 @@ export default async function AutomationPage({ params }: PageProps<"/[locale]/ad
         <ArrowLeft className="size-3.5" aria-hidden />
         {t("back")}
       </Link>
-      <Suspense fallback={<AdminSkeleton cards={2} />}>
+      <Streamed fallback={<AdminSkeleton cards={2} />}>
         <Editor params={params} />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

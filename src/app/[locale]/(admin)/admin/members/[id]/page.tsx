@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { MemberActions } from "@/components/admin/members/member-actions";
 import { AdminForbidden } from "@/components/admin/ui/admin-header";
 import { StatusPill } from "@/components/admin/ui/status-pill";
@@ -16,6 +15,7 @@ import { memberDetail } from "@/lib/admin/members-query";
 import { ageOn, isDuesPaid, isJunior } from "@/lib/dues";
 import { formatPhone } from "@/lib/phone";
 import { can } from "@/lib/roles";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Member ids only exist at runtime.
 export const instant = false;
@@ -234,9 +234,9 @@ export default async function MemberPage({ params }: PageProps<"/[locale]/admin/
         <ArrowLeft className="size-3" aria-hidden />
         {t("back")}
       </Link>
-      <Suspense fallback={<AdminDetailSkeleton />}>
+      <Streamed fallback={<AdminDetailSkeleton />}>
         <MemberDetail id={id} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

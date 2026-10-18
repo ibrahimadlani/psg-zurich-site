@@ -2,7 +2,6 @@ import { eq } from "drizzle-orm";
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 import { EventDetail } from "@/components/events/event-detail";
 import { EventDetailSkeleton } from "@/components/skeletons";
 import { db } from "@/db";
@@ -10,6 +9,7 @@ import { events } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
 import { getCurrentMember } from "@/lib/members";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Event ids only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;
@@ -36,9 +36,9 @@ export default async function EventPage({ params }: PageProps<"/[locale]/events/
         <ArrowLeft className="size-3" aria-hidden />
         {t("backToEvents")}
       </Link>
-      <Suspense fallback={<EventDetailSkeleton />}>
+      <Streamed fallback={<EventDetailSkeleton />}>
         <EventDetail id={id} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

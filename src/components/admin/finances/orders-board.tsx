@@ -3,7 +3,7 @@
 import { Check, PackageCheck, Truck } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { StatusPill, type PillTone } from "@/components/admin/ui/status-pill";
 import { adminButton, adminCard, adminInput, adminLabel } from "@/components/admin/ui/styles";
@@ -46,10 +46,10 @@ export function OrdersBoard({ orders }: { orders: Order[] }) {
         body: JSON.stringify({ status, trackingNumber }),
       });
       if (!response.ok) {
-        toast.error(t("orderError"));
+        notify.error(t("orderError"));
         return;
       }
-      toast.success(t(`orderMoved.${status}` as never));
+      notify.success(t(`orderMoved.${status}` as never));
       setShipping(null);
       setTracking("");
       router.refresh();

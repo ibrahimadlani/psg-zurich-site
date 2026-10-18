@@ -12,6 +12,7 @@ import type { ContactStatus, ContactTopic } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import type { InboxRow } from "@/lib/admin/messages-query";
 import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Folder = "todo" | "answered" | "closed" | "spam";
 const FOLDERS: Folder[] = ["todo", "answered", "closed", "spam"];
@@ -128,7 +129,7 @@ export function InboxList({ rows, me, topics }: { rows: InboxRow[]; me: string; 
         ) : null}
       </div>
       {shown.length ? (
-        <LazyList className="space-y-2" initial={30} step={30} placeholder={<span className="skeleton block h-[92px] rounded-[12px]" />} items={shown.map((row) => <Row key={row.id} row={row} />)} />
+        <LazyList className="space-y-2" initial={30} step={30} placeholder={<Skeleton className="h-[92px] rounded-[12px]" />} items={shown.map((row) => <Row key={row.id} row={row} />)} />
       ) : (
         <p className="rounded-[12px] border border-dashed p-8 text-center text-sm text-muted-foreground">{t("empty")}</p>
       )}

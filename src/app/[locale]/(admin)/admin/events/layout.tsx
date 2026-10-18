@@ -1,6 +1,5 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { EventsAdminList } from "@/components/admin/events/events-admin-list";
 import { NewEventButton } from "@/components/admin/events/event-panel";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
@@ -8,6 +7,7 @@ import { MasterDetail } from "@/components/admin/ui/master-detail";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { listAdminEvents, matchOptions } from "@/lib/admin/events-query";
+import { Streamed } from "@/components/ui/skeleton";
 
 /** The events on the left (what is coming, what happened), the one opened on the right. */
 async function EventsFrame({ children }: { children: React.ReactNode }) {
@@ -32,8 +32,8 @@ async function EventsFrame({ children }: { children: React.ReactNode }) {
 
 export default function AdminEventsLayout({ children }: LayoutProps<"/[locale]/admin/events">) {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <EventsFrame>{children}</EventsFrame>
-    </Suspense>
+    </Streamed>
   );
 }

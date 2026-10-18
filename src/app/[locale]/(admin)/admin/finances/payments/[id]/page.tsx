@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { RefundButton } from "@/components/admin/finances/refund-button";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { StatusPill } from "@/components/admin/ui/status-pill";
@@ -17,6 +16,7 @@ import { formatPaymentReference } from "@/lib/payments/config";
 import { ACCOUNT_LABELS } from "@/lib/payments/ledger";
 import { methodLabel } from "@/lib/payments/receipts";
 import { cn } from "@/lib/utils";
+import { Streamed } from "@/components/ui/skeleton";
 
 export const instant = false;
 
@@ -197,8 +197,8 @@ async function PaymentDetail({ id }: { id: string }) {
 export default async function PaymentPage({ params }: PageProps<"/[locale]/admin/finances/payments/[id]">) {
   const { id } = await params;
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <PaymentDetail id={id} />
-    </Suspense>
+    </Streamed>
   );
 }

@@ -2,7 +2,6 @@ import { FileText, Image as ImageIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { DocumentActions, UploadDocumentButton } from "@/components/admin/documents/document-admin";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { StatusPill } from "@/components/admin/ui/status-pill";
@@ -11,6 +10,7 @@ import { fileSize } from "@/components/member-area/club-documents";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { documentUrl, listDocuments, type DocumentRow } from "@/lib/documents";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -65,8 +65,8 @@ async function Documents() {
 
 export default function AdminDocumentsPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton rows={4} />}>
+    <Streamed fallback={<AdminListSkeleton rows={4} />}>
       <Documents />
-    </Suspense>
+    </Streamed>
   );
 }

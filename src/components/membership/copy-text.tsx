@@ -2,7 +2,7 @@
 
 import { Copy } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 
 /** Small "copy" button next to a payment detail (IBAN, reference…). */
 export function CopyText({ value }: { value: string }) {
@@ -15,7 +15,7 @@ export function CopyText({ value }: { value: string }) {
       onClick={async () => {
         try {
           await navigator.clipboard.writeText(value.replace(/\s+/g, value.startsWith("CH") ? "" : " "));
-          toast.success(t("copied"));
+          notify.success(t("copied"));
         } catch {
           // Copying not allowed: the value stays visible to select by hand.
         }

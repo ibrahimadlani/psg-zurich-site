@@ -1,7 +1,6 @@
 import { ChevronDown, CircleCheck, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 import { CopyText } from "@/components/membership/copy-text";
 import { DuesPayButton } from "@/components/payments/dues-pay-button";
 import { isDuesPaid, seasonEnd } from "@/lib/dues";
@@ -13,6 +12,7 @@ import { getCurrentMember } from "@/lib/members";
 import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { PanelSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Dues");
@@ -138,9 +138,9 @@ export default async function DuesPage() {
         </h1>
         <p className="max-w-[36rem] text-base text-pretty text-muted-foreground">{t("intro")}</p>
       </div>
-      <Suspense fallback={<PanelSkeleton />}>
+      <Streamed fallback={<PanelSkeleton />}>
         <DuesContent />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

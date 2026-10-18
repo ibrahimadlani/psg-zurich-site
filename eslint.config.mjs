@@ -11,6 +11,13 @@ export default defineConfig([
       "@typescript-eslint/no-unused-vars": ["warn", { ignoreRestSiblings: true }],
     },
   },
+  {
+    // Toasts go through `notify` (src/lib/notify.ts): same durations and behaviour everywhere.
+    ignores: ["src/lib/notify.ts", "src/components/ui/toaster.tsx"],
+    rules: {
+      "no-restricted-imports": ["error", { paths: [{ name: "sonner", message: "Use `notify` from @/lib/notify." }] }],
+    },
+  },
   globalIgnores([
     ".next/**",
     "out/**",

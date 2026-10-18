@@ -3,7 +3,7 @@
 import { UserPlus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { adminButton, adminInput } from "@/components/admin/ui/styles";
 import { useRouter } from "@/i18n/navigation";
@@ -23,10 +23,10 @@ function useRoleChange() {
       });
       if (!response.ok) {
         const code = ((await response.json().catch(() => null)) as { error?: { code?: string } } | null)?.error?.code;
-        toast.error(t(`errors.${code === "not_found" || code === "self" || code === "superadmin" ? code : "error"}`));
+        notify.error(t(`errors.${code === "not_found" || code === "self" || code === "superadmin" ? code : "error"}`));
         return;
       }
-      toast.success(role === "member" ? t("removed", { email }) : t("changed", { email, role: t(`roles.${role}`) }));
+      notify.success(role === "member" ? t("removed", { email }) : t("changed", { email, role: t(`roles.${role}`) }));
       onDone?.();
       router.refresh();
     });
@@ -125,8 +125,8 @@ export function CommitteeTitleField({ userId, title }: { userId: string; title: 
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ userId, title: value.trim() }),
       });
-      if (!response.ok) return void toast.error(t("errors.error"));
-      toast.success(t("committeeTitleSaved"));
+      if (!response.ok) return void notify.error(t("errors.error"));
+      notify.success(t("committeeTitleSaved"));
       router.refresh();
     });
   };

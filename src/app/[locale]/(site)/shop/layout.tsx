@@ -1,13 +1,14 @@
 import { Lock } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { redirectToSignIn } from "@/lib/auth-redirect";
 import { shopIsOpen } from "@/lib/payments/shop";
 import { shopVisitor } from "@/lib/payments/shop-access";
 import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 import { notFound } from "next/navigation";
+import { ShopSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 /**
  * The shop is for members: visitors go to sign-in (and come back here), accounts waiting for
@@ -36,8 +37,8 @@ async function ShopGate({ children }: { children: React.ReactNode }) {
 
 export default function ShopLayout({ children }: LayoutProps<"/[locale]/shop">) {
   return (
-    <Suspense fallback={<div className="skeleton mx-auto h-64 w-full max-w-5xl rounded-[16px]" aria-hidden />}>
+    <Streamed fallback={<ShopSkeleton />}>
       <ShopGate>{children}</ShopGate>
-    </Suspense>
+    </Streamed>
   );
 }

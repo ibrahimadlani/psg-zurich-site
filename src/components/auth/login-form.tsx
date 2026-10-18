@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { z } from "zod";
 import {
   FieldError,
@@ -42,7 +42,7 @@ export function LoginForm() {
   // An expired or invalid confirmation link lands here with ?error=… (set by Better Auth).
   useEffect(() => {
     if (new URLSearchParams(window.location.search).has("error")) {
-      toast.error(t("linkInvalid"), { id: "link-invalid" });
+      notify.error(t("linkInvalid"));
     }
   }, [t]);
 
@@ -53,7 +53,7 @@ export function LoginForm() {
       callbackURL: withReturn(`/${locale}/welcome`, next),
     });
     if (error) {
-      toast.error(
+      notify.error(
         t(
           error.code === "INVALID_EMAIL_OR_PASSWORD"
             ? "invalidCredentials"
@@ -64,7 +64,8 @@ export function LoginForm() {
       );
       return;
     }
-    toast.success(t("welcome", { name: data?.user.name.split(" ")[0] ?? "" }));
+    // Shown on the page the sign-in leads to, once it is loaded (not here, where it would run out).
+    notify.afterNavigation("success", t("welcome", { name: data?.user.name.split(" ")[0] ?? "" }));
     // Through the welcome step, which steps aside at once when it was already done.
     router.push(`/welcome?${RETURN_PARAM}=${encodeURIComponent(next ?? "/member")}`);
     router.refresh();

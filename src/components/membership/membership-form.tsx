@@ -5,7 +5,7 @@ import { MailCheck } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { z } from "zod";
 import { FieldError, inlineLinkClass, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
 import { PasswordInput } from "@/components/auth/password-input";
@@ -61,8 +61,8 @@ export function MembershipForm() {
     });
     if (!response.ok) {
       if (response.status === 409) {
-        toast.error(t("emailTaken"), { action: { label: t("signIn"), onClick: () => router.push(signInHref(next)) } });
-      } else toast.error(t(response.status === 429 ? "tooManyRequests" : "error"));
+        notify.error(t("emailTaken"), { action: { label: t("signIn"), onClick: () => router.push(signInHref(next)) } });
+      } else notify.error(t(response.status === 429 ? "tooManyRequests" : "error"));
       return;
     }
     setSentTo(values.email);

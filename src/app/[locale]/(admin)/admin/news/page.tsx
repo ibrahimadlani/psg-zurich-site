@@ -3,7 +3,6 @@ import { Plus } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { PostsList, type PostGroup, type PostRow } from "@/components/admin/news/posts-list";
 import { db } from "@/db";
 import { posts } from "@/db/schema";
@@ -12,6 +11,7 @@ import { postState, requireCmsAccess } from "@/lib/cms";
 import { AdminSkeleton } from "@/components/skeletons";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { adminButton } from "@/components/admin/ui/styles";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Cms");
@@ -61,9 +61,9 @@ export default async function CmsListPage() {
           </Link>
         }
       />
-      <Suspense fallback={<AdminSkeleton cards={1} />}>
+      <Streamed fallback={<AdminSkeleton cards={1} />}>
         <PostList />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

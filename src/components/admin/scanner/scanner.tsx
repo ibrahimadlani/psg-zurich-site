@@ -3,7 +3,7 @@
 import { CameraOff, Check, CircleAlert, Clock, ScanLine, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { StatusPill } from "@/components/admin/ui/status-pill";
 import { adminButton, adminInput, adminLabel } from "@/components/admin/ui/styles";
 import { UserAvatar } from "@/components/user-avatar";
@@ -75,7 +75,7 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
       setResult(data.member ? { member: data.member, token: params.token ?? null } : { unknown: true });
       navigator.vibrate?.(data.member ? 40 : [60, 60, 60]);
     } catch {
-      toast.error(t("error"));
+      notify.error(t("error"));
       paused.current = false;
     }
   };
@@ -206,11 +206,11 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
         });
     setBusy(false);
     if (!response.ok) {
-      toast.error(t("error"));
+      notify.error(t("error"));
       return;
     }
     navigator.vibrate?.([30, 40, 30]);
-    toast.success(t("checkedIn", { name: result.member.name }));
+    notify.success(t("checkedIn", { name: result.member.name }));
     const data = await load({ event: eventId }).catch(() => null);
     if (data) setCount(data.count);
     next();
@@ -223,10 +223,10 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
     const response = await fetch(`/api/v1/admin/orders/${orderId}`, { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ status: "handed_over" }) });
     setBusy(false);
     if (!response.ok) {
-      toast.error(t("error"));
+      notify.error(t("error"));
       return;
     }
-    toast.success(t("handedOver"));
+    notify.success(t("handedOver"));
     setResult({ ...result, member: { ...result.member, pickups: result.member.pickups.filter((pickup) => pickup.id !== orderId) } });
   };
 

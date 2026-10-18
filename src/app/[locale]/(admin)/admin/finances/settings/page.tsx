@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { FinanceSettings } from "@/components/admin/finances/finance-settings";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { currentSeason, seasonRates } from "@/lib/payments/dues-price";
 import { activeProductCount, getShopSettings } from "@/lib/payments/shop";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");
@@ -33,8 +33,8 @@ async function Settings() {
 
 export default function FinanceSettingsPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <Settings />
-    </Suspense>
+    </Streamed>
   );
 }

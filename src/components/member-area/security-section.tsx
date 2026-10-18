@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { PasswordInput } from "@/components/auth/password-input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,18 +20,18 @@ export function SecuritySection({ bare = false }: { bare?: boolean }) {
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
     if (newPassword.length < 8) {
-      toast.error(t("tooShort"));
+      notify.error(t("tooShort"));
       return;
     }
     startTransition(async () => {
       const { error } = await changePassword({ currentPassword, newPassword, revokeOtherSessions: true });
       if (error) {
-        toast.error(t(error.code === "INVALID_PASSWORD" ? "wrongPassword" : "error"));
+        notify.error(t(error.code === "INVALID_PASSWORD" ? "wrongPassword" : "error"));
         return;
       }
       setCurrentPassword("");
       setNewPassword("");
-      toast.success(t("changed"));
+      notify.success(t("changed"));
     });
   };
 

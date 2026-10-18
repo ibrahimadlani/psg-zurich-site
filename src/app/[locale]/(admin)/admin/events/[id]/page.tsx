@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { getFormatter, getNow, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { AttendeesBoard } from "@/components/admin/events/attendees-board";
 import { EventAdminActions } from "@/components/admin/events/event-admin-actions";
 import { AdminForbidden } from "@/components/admin/ui/admin-header";
@@ -16,6 +15,7 @@ import { adminPage } from "@/lib/admin/guard";
 import { adminEventDetail, matchOptions } from "@/lib/admin/events-query";
 import { matchTitle } from "@/lib/matches";
 import { can } from "@/lib/roles";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Event ids only exist at runtime.
 export const instant = false;
@@ -104,9 +104,9 @@ export default async function AdminEventPage({ params }: PageProps<"/[locale]/ad
         <ArrowLeft className="size-3" aria-hidden />
         {t("back")}
       </Link>
-      <Suspense fallback={<AdminDetailSkeleton />}>
+      <Streamed fallback={<AdminDetailSkeleton />}>
         <EventAdminDetail id={id} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

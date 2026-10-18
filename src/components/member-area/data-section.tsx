@@ -3,7 +3,7 @@
 import { Download } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { PasswordInput } from "@/components/auth/password-input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -25,7 +25,7 @@ export function DataSection({ canDelete, bare = false }: { canDelete: boolean; b
     startTransition(async () => {
       const { error } = await deleteUser({ password });
       if (error) {
-        toast.error(t(error.code === "INVALID_PASSWORD" ? "wrongPassword" : "error"));
+        notify.error(t(error.code === "INVALID_PASSWORD" ? "wrongPassword" : "error"));
         return;
       }
       router.replace("/");

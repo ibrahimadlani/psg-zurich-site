@@ -2,7 +2,6 @@ import { ChevronRight, PauseCircle } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { AutomationControls } from "@/components/mailing/automation-controls";
 import { JobActions, MailingSettingsForm, NewCampaignButton } from "@/components/mailing/mailing-actions";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
@@ -20,6 +19,7 @@ import { getMailingSettings } from "@/lib/mailing/queue";
 import { MAIL_GROUPS } from "@/lib/mailing/registry";
 import { cn } from "@/lib/utils";
 import { AdminSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Mailing");
@@ -210,9 +210,9 @@ export default async function MailingPage({ searchParams }: PageProps<"/[locale]
   return (
     <>
       <AdminHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<AdminSkeleton />}>
+      <Streamed fallback={<AdminSkeleton />}>
         <MailingContent searchParams={searchParams} />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

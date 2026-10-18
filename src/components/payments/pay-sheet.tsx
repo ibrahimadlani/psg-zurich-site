@@ -15,6 +15,7 @@ import {
   type StripeJs,
 } from "@/lib/payments/stripe-js";
 import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 /** What the server answers when a payment starts (lib/payments/checkout.ts). */
 export type Checkout = {
@@ -270,8 +271,8 @@ export function PaySheet({
         {!ready && phase.name !== "error" ? (
           <div className="grid gap-2" aria-busy>
             <p className="sr-only">{t("starting")}</p>
-            <div className="skeleton h-12 rounded-[10px]" />
-            <div className="skeleton h-12 rounded-[10px]" />
+            <Skeleton className="h-12 rounded-[10px]" />
+            <Skeleton className="h-12 rounded-[10px]" />
           </div>
         ) : null}
 

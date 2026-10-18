@@ -2,7 +2,6 @@ import { ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getNow, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { adminButton, adminLabel } from "@/components/admin/ui/styles";
 import { AdminListSkeleton } from "@/components/skeletons";
@@ -11,6 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { AUDIT_DOMAINS, auditPage, type AuditDomain } from "@/lib/admin/audit-query";
 import { adminPage } from "@/lib/admin/guard";
 import { cn } from "@/lib/utils";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -128,9 +128,9 @@ export default async function JournalPage({ searchParams }: PageProps<"/[locale]
   return (
     <>
       <AdminHeader title={tShell("sections.journal")} description={t("description")} />
-      <Suspense fallback={<AdminListSkeleton />}>
+      <Streamed fallback={<AdminListSkeleton />}>
         <Journal searchParams={searchParams} />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

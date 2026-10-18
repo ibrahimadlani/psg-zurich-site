@@ -3,7 +3,6 @@ import { CalendarPlus, Trophy } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { ChampionsLeagueLogo, Ligue1Logo } from "@/components/matches/competition-logos";
 import { LazyList } from "@/components/lazy-list";
 import { LiveMatches } from "@/components/matches/live-matches";
@@ -20,6 +19,7 @@ import { getStandings } from "@/lib/football/standings";
 import { closestMatch, getSeasonMatches } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { MatchesSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Matches");
@@ -187,9 +187,9 @@ export default async function MatchesPage() {
     <>
       {/* The page title stays for screen readers and the browser tab; the screen shows the match. */}
       <h1 className="sr-only">{t("title")}</h1>
-      <Suspense fallback={<MatchesSkeleton />}>
+      <Streamed fallback={<MatchesSkeleton />}>
         <MatchesContent />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

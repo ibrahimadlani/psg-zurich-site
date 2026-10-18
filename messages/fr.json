@@ -1,6 +1,7 @@
 {
   "Common": {
-    "loading": "Chargement…"
+    "loading": "Chargement…",
+    "notifications": "Notifications"
   },
   "HumanDate": {
     "now": "maintenant",

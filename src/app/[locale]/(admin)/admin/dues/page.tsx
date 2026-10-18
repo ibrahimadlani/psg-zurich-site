@@ -2,7 +2,6 @@ import { CreditCard } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { DuesBoard } from "@/components/admin/dues/dues-board";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { Kpi } from "@/components/admin/ui/kpi";
@@ -16,6 +15,7 @@ import { NewCampaignButton } from "@/components/mailing/mailing-actions";
 import { adminButton } from "@/components/admin/ui/styles";
 import { formatChf } from "@/lib/money";
 import { yearTotals } from "@/lib/payments/ledger";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminDues");
@@ -70,8 +70,8 @@ async function Dues() {
 
 export default function DuesPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <Dues />
-    </Suspense>
+    </Streamed>
   );
 }

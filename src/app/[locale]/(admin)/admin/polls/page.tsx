@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { NewPollButton, PollActions } from "@/components/admin/polls/poll-admin";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { StatusPill } from "@/components/admin/ui/status-pill";
@@ -11,6 +10,7 @@ import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { adminPolls } from "@/lib/polls";
 import { cn } from "@/lib/utils";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -60,9 +60,9 @@ export default async function AdminPollsPage() {
   return (
     <>
       <AdminHeader title={tShell("sections.polls")} description={t("description")} actions={<NewPollButton />} />
-      <Suspense fallback={<AdminListSkeleton rows={3} />}>
+      <Streamed fallback={<AdminListSkeleton rows={3} />}>
         <Polls />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

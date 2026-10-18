@@ -3,7 +3,7 @@
 import { Eye, EyeOff, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { adminButton } from "@/components/admin/ui/styles";
 import { useRouter } from "@/i18n/navigation";
@@ -26,10 +26,10 @@ export function AnnouncementActions({ id, active, expired }: { id: string; activ
     startTransition(async () => {
       const response = await toggle(id, next);
       if (!response.ok) {
-        toast.error(t("error"));
+        notify.error(t("error"));
         return;
       }
-      toast.success(t(next ? "activated" : "deactivated"), {
+      notify.success(t(next ? "activated" : "deactivated"), {
         action: { label: t("undo"), onClick: () => void toggle(id, !next).then(() => router.refresh()) },
       });
       router.refresh();
@@ -52,7 +52,7 @@ export function AnnouncementActions({ id, active, expired }: { id: string; activ
           if ((await ask({ title: t("delete"), body: t("confirmDelete"), confirmLabel: t("delete"), tone: "danger" })) === null) return;
           startTransition(async () => {
             const response = await fetch(`/api/v1/announcements/${id}`, { method: "DELETE" });
-            if (!response.ok) toast.error(t("error"));
+            if (!response.ok) notify.error(t("error"));
             router.refresh();
           });
         }}

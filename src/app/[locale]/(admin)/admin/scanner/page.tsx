@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { Scanner } from "@/components/admin/scanner/scanner";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { PanelSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -27,9 +27,9 @@ export default async function ScannerPage({ searchParams }: PageProps<"/[locale]
   return (
     <div className="mx-auto w-full max-w-xl">
       <AdminHeader title={t("title")} description={t("description")} className="mb-5" />
-      <Suspense fallback={<PanelSkeleton />}>
+      <Streamed fallback={<PanelSkeleton />}>
         <ScannerFrame searchParams={searchParams} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

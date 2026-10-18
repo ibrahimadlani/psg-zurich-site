@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { MembersList } from "@/components/admin/members/members-list";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { MasterDetail } from "@/components/admin/ui/master-detail";
@@ -8,6 +7,7 @@ import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { listMembers } from "@/lib/admin/members-query";
 import { can } from "@/lib/roles";
+import { Streamed } from "@/components/ui/skeleton";
 
 /** The member list stays on the left (search and filters kept) while members open on the right. */
 async function MembersFrame({ children }: { children: React.ReactNode }) {
@@ -32,8 +32,8 @@ async function MembersFrame({ children }: { children: React.ReactNode }) {
 
 export default function MembersLayout({ children }: LayoutProps<"/[locale]/admin/members">) {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <MembersFrame>{children}</MembersFrame>
-    </Suspense>
+    </Streamed>
   );
 }

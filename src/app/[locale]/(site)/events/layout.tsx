@@ -1,5 +1,4 @@
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { EventList } from "@/components/events/event-list";
 import { EventsEmpty } from "@/components/events/events-empty";
 import { EventsShell } from "@/components/events/events-shell";
@@ -8,6 +7,7 @@ import { eventAccess } from "@/lib/dues";
 import { getEventsWithAttendance, upcomingEvents } from "@/lib/events";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
+import { Streamed } from "@/components/ui/skeleton";
 
 /**
  * Members whose fee is paid get the list beside the open event (it stays put, scroll included,
@@ -27,8 +27,8 @@ async function EventsFrame({ children }: { children: React.ReactNode }) {
 
 export default function EventsLayout({ children }: LayoutProps<"/[locale]/events">) {
   return (
-    <Suspense fallback={<EventsSkeleton />}>
+    <Streamed fallback={<EventsSkeleton />}>
       <EventsFrame>{children}</EventsFrame>
-    </Suspense>
+    </Streamed>
   );
 }

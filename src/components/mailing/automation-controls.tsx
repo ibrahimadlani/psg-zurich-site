@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -33,10 +33,10 @@ export function AutomationControls({ automationKey, enabled, delayMinutes }: { a
       });
       if (!response.ok) {
         rollback();
-        toast.error(t("error"));
+        notify.error(t("error"));
         return;
       }
-      toast.success(t("saved"));
+      notify.success(t("saved"));
       router.refresh();
     });
 

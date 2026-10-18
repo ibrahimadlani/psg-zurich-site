@@ -4,7 +4,7 @@ import { Download, Search, SlidersHorizontal, X } from "lucide-react";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useDeferredValue, useMemo, useState } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { StatusPill } from "@/components/admin/ui/status-pill";
 import { adminButton, adminInput } from "@/components/admin/ui/styles";
 import { LazyList } from "@/components/lazy-list";
@@ -14,6 +14,7 @@ import { MEMBER_INTERESTS, PSG_TICKETING } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import type { MemberRow } from "@/lib/admin/members-query";
 import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Tab = "requests" | "members" | "others";
 type Flag = "unpaid" | "paid" | "junior" | "noPhotos" | "unverified";
@@ -130,9 +131,9 @@ export function MembersList({ rows, canExport }: { rows: MemberRow[]; canExport:
       const link = Object.assign(document.createElement("a"), { href: url, download: "membres-psg-zurich.csv" });
       link.click();
       URL.revokeObjectURL(url);
-      toast.success(t("exported", { count: shown.length }));
+      notify.success(t("exported", { count: shown.length }));
     } catch {
-      toast.error(t("error"));
+      notify.error(t("error"));
     } finally {
       setExporting(false);
     }
@@ -231,7 +232,7 @@ export function MembersList({ rows, canExport }: { rows: MemberRow[]; canExport:
           className="space-y-2"
           initial={30}
           step={30}
-          placeholder={<span className="skeleton block h-[66px] rounded-[12px]" />}
+          placeholder={<Skeleton className="h-[66px] rounded-[12px]" />}
           items={shown.map((row) => (
             <MemberRowLink key={row.id} row={row} />
           ))}

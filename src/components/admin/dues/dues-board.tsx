@@ -3,7 +3,7 @@
 import { Check, MailWarning, Search, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useDeferredValue, useMemo, useOptimistic, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { StatusPill } from "@/components/admin/ui/status-pill";
 import { adminButton, adminInput } from "@/components/admin/ui/styles";
@@ -68,20 +68,20 @@ export function DuesBoard({ rows }: { rows: MemberRow[] }) {
         const result = await post("/api/v1/members/dues", { ids, paid });
         setSelected([]);
         // Fees paid online are refunded from Finances (the money goes back), not cancelled here.
-        if (result.online?.length) toast.info(t("paidOnline", { count: result.online.length }));
-        toast.success(t(paid ? "recordedMany" : "cancelledMany", { count: ids.length }), {
+        if (result.online?.length) notify.info(t("paidOnline", { count: result.online.length }));
+        notify.success(t(paid ? "recordedMany" : "cancelledMany", { count: ids.length }), {
           action: {
             label: t("undo"),
             onClick: () =>
               startTransition(async () => {
                 setPaid({ ids, paid: !paid });
-                await post("/api/v1/members/dues", { ids, paid: !paid }).catch(() => toast.error(t("error")));
+                await post("/api/v1/members/dues", { ids, paid: !paid }).catch(() => notify.error(t("error")));
                 router.refresh();
               }),
           },
         });
       } catch {
-        toast.error(t("error"));
+        notify.error(t("error"));
       }
       router.refresh();
     });
@@ -91,9 +91,9 @@ export function DuesBoard({ rows }: { rows: MemberRow[] }) {
       try {
         const { queued = 0 } = await post("/api/v1/members/reminders", { ids, kind: "fee" });
         setSelected([]);
-        toast.success(queued ? t("reminded", { count: queued }) : t("remindedNone"));
+        notify.success(queued ? t("reminded", { count: queued }) : t("remindedNone"));
       } catch {
-        toast.error(t("error"));
+        notify.error(t("error"));
       }
     });
 

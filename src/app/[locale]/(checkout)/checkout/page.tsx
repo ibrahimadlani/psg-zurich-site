@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { CheckoutForm } from "@/components/shop/checkout-form";
 import { redirect } from "@/i18n/navigation";
 import { redirectToSignIn } from "@/lib/auth-redirect";
@@ -9,6 +8,8 @@ import { notFound } from "next/navigation";
 import { getShopSettings, pickupEvents, shopIsOpen } from "@/lib/payments/shop";
 import { shopVisitor } from "@/lib/payments/shop-access";
 import { getSession } from "@/lib/permissions";
+import { CheckoutSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export const instant = false;
 
@@ -37,8 +38,8 @@ async function Checkout() {
 
 export default function CheckoutPage() {
   return (
-    <Suspense fallback={<div className="skeleton h-96 rounded-[16px]" aria-hidden />}>
+    <Streamed fallback={<CheckoutSkeleton />}>
       <Checkout />
-    </Suspense>
+    </Streamed>
   );
 }

@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { AdminComposer } from "@/components/admin/messages/admin-composer";
 import { ThreadActionsBar } from "@/components/admin/messages/thread-actions";
 import { AdminForbidden } from "@/components/admin/ui/admin-header";
@@ -20,6 +19,7 @@ import { inboxDetail } from "@/lib/admin/messages-query";
 import { formatReference } from "@/lib/contact";
 import { isDuesPaid } from "@/lib/dues";
 import { hasRole } from "@/lib/roles";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Conversations only exist at runtime.
 export const instant = false;
@@ -137,8 +137,8 @@ async function ThreadDetail({ id }: { id: string }) {
 export default async function MessageDetailPage({ params }: PageProps<"/[locale]/admin/messages/[id]">) {
   const { id } = await params;
   return (
-    <Suspense fallback={<AdminDetailSkeleton />}>
+    <Streamed fallback={<AdminDetailSkeleton />}>
       <ThreadDetail id={id} />
-    </Suspense>
+    </Streamed>
   );
 }

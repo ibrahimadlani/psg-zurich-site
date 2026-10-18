@@ -1,7 +1,6 @@
 import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 import { LeaderboardTable, Podium } from "@/components/matches/leaderboard-table";
 import { MatchTabs } from "@/components/matches/match-tabs";
 import { PageHeader } from "@/components/page-header";
@@ -12,6 +11,7 @@ import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { TableSkeleton } from "@/components/skeletons";
 import { cn } from "@/lib/utils";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Leaderboard");
@@ -99,9 +99,9 @@ export default async function LeaderboardPage({ searchParams }: PageProps<"/[loc
         {t("backToMatches")}
       </Link>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<TableSkeleton />}>
+      <Streamed fallback={<TableSkeleton />}>
         <LeaderboardContent searchParams={searchParams} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

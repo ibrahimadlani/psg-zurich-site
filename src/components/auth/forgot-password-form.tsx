@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { z } from "zod";
 import {
   AuthPanel,
@@ -43,7 +43,7 @@ export function ForgotPasswordPanel() {
       redirectTo: withReturn(`/${locale}/login/reset-password`, next),
     });
     if (error) {
-      toast.error(tLogin("error"));
+      notify.error(tLogin("error"));
       return;
     }
     // Same answer whether or not the account exists.

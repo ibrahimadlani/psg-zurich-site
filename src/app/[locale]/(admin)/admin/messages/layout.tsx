@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { InboxList } from "@/components/admin/messages/inbox-list";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { MasterDetail } from "@/components/admin/ui/master-detail";
@@ -8,6 +7,7 @@ import { AdminListSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
 import { listInbox } from "@/lib/admin/messages-query";
 import { visibleTopics } from "@/lib/contact";
+import { Streamed } from "@/components/ui/skeleton";
 
 /** The inbox stays on the left (folder, filters and search kept) while conversations open on the right. */
 async function MessagesFrame({ children }: { children: React.ReactNode }) {
@@ -32,8 +32,8 @@ async function MessagesFrame({ children }: { children: React.ReactNode }) {
 
 export default function MessagesLayout({ children }: LayoutProps<"/[locale]/admin/messages">) {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <MessagesFrame>{children}</MessagesFrame>
-    </Suspense>
+    </Streamed>
   );
 }

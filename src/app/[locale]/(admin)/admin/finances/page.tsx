@@ -2,7 +2,6 @@ import { Download, FileText } from "lucide-react";
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { Kpi } from "@/components/admin/ui/kpi";
 import { adminButton, adminCard, adminLabel } from "@/components/admin/ui/styles";
@@ -13,6 +12,7 @@ import { formatChf } from "@/lib/money";
 import { ACCOUNT_LABELS, RESULT_ACCOUNTS, fiscalYears, yearTotals } from "@/lib/payments/ledger";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { cn } from "@/lib/utils";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");
@@ -93,8 +93,8 @@ async function Overview({ searchParams }: { searchParams: Promise<Record<string,
 
 export default function FinancesPage({ searchParams }: PageProps<"/[locale]/admin/finances">) {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <Overview searchParams={searchParams} />
-    </Suspense>
+    </Streamed>
   );
 }

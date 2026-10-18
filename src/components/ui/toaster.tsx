@@ -1,6 +1,7 @@
 "use client";
 
 import { CircleAlert, CircleCheck, Info, LoaderCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useSyncExternalStore } from "react";
 import { Toaster as Sonner } from "sonner";
 
@@ -13,17 +14,20 @@ function subscribePhone(onChange: () => void) {
 const isPhone = () => matchMedia(PHONE).matches;
 
 /*
- * The site's single toast area (mounted once in the locale layout). Every form reports its
- * outcome with sonner's `toast.success / toast.error / toast.info`: same look everywhere, in
- * the site's colours, light and dark alike (the classes use the theme tokens).
+ * The site's single toast area (mounted once in the locale layout). Toasts are raised only
+ * through `notify` (lib/notify.ts: durations, undo, toasts that wait for the next page), and
+ * look the same everywhere, in the site's colours, light and dark alike (theme tokens).
+ * Hovering or focusing a toast pauses it.
  *
  * Phones: at the top, below the notch, where the on-screen keyboard (forms!) never hides them;
  * swiped up to dismiss. Larger screens: bottom centre.
  */
 export function Toaster() {
   const phone = useSyncExternalStore(subscribePhone, isPhone, () => false);
+  const t = useTranslations("Common");
   return (
     <Sonner
+      containerAriaLabel={t("notifications")}
       position={phone ? "top-center" : "bottom-center"}
       swipeDirections={phone ? ["top"] : ["bottom", "left", "right"]}
       visibleToasts={3}
@@ -32,7 +36,6 @@ export function Toaster() {
       mobileOffset={{ top: "calc(12px + env(safe-area-inset-top))", left: 12, right: 12 }}
       toastOptions={{
         unstyled: true,
-        duration: 4000,
         classNames: {
           toast:
             "group pointer-events-auto flex w-full items-start gap-3 rounded-[12px] border bg-card px-4 py-3 text-[14px] leading-snug text-card-foreground shadow-brand sm:w-[380px]",

@@ -3,7 +3,7 @@
 import { Lock, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { AutoTextarea } from "@/components/contact/auto-textarea";
 import { adminButton } from "@/components/admin/ui/styles";
 import { useKeyboardInset } from "@/hooks/use-keyboard-inset";
@@ -71,8 +71,8 @@ export function AdminComposer({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ body: body.trim(), kind: mode, close }),
       });
-      if (!response.ok) return void toast.error(t("error"));
-      toast.success(mode === "reply" ? t("sent", { email }) : t("noteSaved"));
+      if (!response.ok) return void notify.error(t("error"));
+      notify.success(mode === "reply" ? t("sent", { email }) : t("noteSaved"));
       setBody("");
       writeDraft(id, "");
       router.refresh();

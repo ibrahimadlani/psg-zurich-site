@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { EventDetail } from "@/components/events/event-detail";
 import { EventsShowcase } from "@/components/events/events-showcase";
 import { PageHeader } from "@/components/page-header";
@@ -14,6 +13,7 @@ import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { asc } from "drizzle-orm";
 import { RETURN_PARAM, safeReturnPath } from "@/lib/return-to";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Events");
@@ -40,16 +40,16 @@ async function EventsContent({ searchParams }: { searchParams: Promise<Record<st
   }
   const [next] = await db.select({ id: events.id }).from(events).where(upcomingEvents()).orderBy(asc(events.startsAt)).limit(1);
   return next ? (
-    <Suspense fallback={<EventDetailSkeleton />}>
+    <Streamed fallback={<EventDetailSkeleton />}>
       <EventDetail id={next.id} />
-    </Suspense>
+    </Streamed>
   ) : null;
 }
 
 export default function EventsPage({ searchParams }: PageProps<"/[locale]/events">) {
   return (
-    <Suspense fallback={<EventDetailSkeleton />}>
+    <Streamed fallback={<EventDetailSkeleton />}>
       <EventsContent searchParams={searchParams} />
-    </Suspense>
+    </Streamed>
   );
 }

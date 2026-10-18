@@ -2,9 +2,7 @@ import { ArrowLeft, FileText, Receipt } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { PageHeader } from "@/components/page-header";
-import { TableSkeleton } from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
 import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getCurrentMember } from "@/lib/members";
@@ -14,6 +12,8 @@ import { memberPayments } from "@/lib/payments/history";
 import { methodLabel } from "@/lib/payments/receipts";
 import { getSession } from "@/lib/permissions";
 import { cn } from "@/lib/utils";
+import { PaymentsSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("MyPayments");
@@ -107,9 +107,9 @@ export default async function MyPaymentsPage() {
         {t("back")}
       </Link>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<TableSkeleton />}>
+      <Streamed fallback={<PaymentsSkeleton />}>
         <Payments />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

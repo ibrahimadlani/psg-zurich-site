@@ -2,7 +2,6 @@ import { CalendarPlus, ChevronRight, Mail, Megaphone, PenLine, ScanLine, Wallet,
 import type { Metadata } from "next";
 import { getFormatter, getNow, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { Kpi } from "@/components/admin/ui/kpi";
 import { adminCard, adminLabel } from "@/components/admin/ui/styles";
@@ -14,6 +13,7 @@ import { matchTitle } from "@/lib/matches";
 import { adminPage } from "@/lib/admin/guard";
 import { can, type Capability } from "@/lib/roles";
 import { cn } from "@/lib/utils";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Admin");
@@ -255,8 +255,8 @@ async function Home() {
 
 export default function AdminHomePage() {
   return (
-    <Suspense fallback={<AdminHomeSkeleton />}>
+    <Streamed fallback={<AdminHomeSkeleton />}>
       <Home />
-    </Suspense>
+    </Streamed>
   );
 }

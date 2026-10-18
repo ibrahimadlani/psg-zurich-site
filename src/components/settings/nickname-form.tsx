@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -22,7 +22,7 @@ export function NicknameForm({ initial, fallback }: { initial: string; fallback:
   const save = (event: React.FormEvent) => {
     event.preventDefault();
     if (trimmed && !PATTERN.test(trimmed)) {
-      toast.error(t("nicknameMessages.invalid"));
+      notify.error(t("nicknameMessages.invalid"));
       return;
     }
     startTransition(async () => {
@@ -32,11 +32,11 @@ export function NicknameForm({ initial, fallback }: { initial: string; fallback:
         body: JSON.stringify({ nickname: trimmed }),
       });
       if (!response.ok) {
-        toast.error(t(`nicknameMessages.${response.status === 409 ? "taken" : response.status === 400 ? "invalid" : "error"}`));
+        notify.error(t(`nicknameMessages.${response.status === 409 ? "taken" : response.status === 400 ? "invalid" : "error"}`));
         return;
       }
       setSaved(trimmed);
-      toast.success(t("nicknameMessages.saved"));
+      notify.success(t("nicknameMessages.saved"));
       router.refresh();
     });
   };

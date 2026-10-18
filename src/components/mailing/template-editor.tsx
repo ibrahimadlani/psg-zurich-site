@@ -3,7 +3,7 @@
 import { Eye, Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -60,30 +60,30 @@ export function TemplateEditor({
   const save = () =>
     startTransition(async () => {
       const response = await call("/api/v1/mailing/templates", "PUT", { ...owner, ...draft() });
-      if (!response.ok) return void toast.error(tMailing("error"));
-      toast.success(tMailing("saved"));
+      if (!response.ok) return void notify.error(tMailing("error"));
+      notify.success(tMailing("saved"));
       router.refresh();
     });
   const reset = () =>
     startTransition(async () => {
       const response = await call("/api/v1/mailing/templates", "DELETE", owner);
-      if (!response.ok) return void toast.error(tMailing("error"));
+      if (!response.ok) return void notify.error(tMailing("error"));
       setValues((all) => ({ ...all, [locale]: EMPTY }));
-      toast.success(t("resetDone"));
+      notify.success(t("resetDone"));
       router.refresh();
     });
   const showPreview = () =>
     startTransition(async () => {
       const response = await call("/api/v1/mailing/preview", "POST", { ...owner, draft: draft() });
-      if (!response.ok) return void toast.error(tMailing("error"));
+      if (!response.ok) return void notify.error(tMailing("error"));
       setPreview(((await response.json()) as { data: { subject: string; html: string } }).data);
     });
   const sendTest = () =>
     startTransition(async () => {
       const response = await call("/api/v1/mailing/test", "POST", { ...owner, draft: draft() });
-      if (!response.ok) return void toast.error(tMailing("error"));
+      if (!response.ok) return void notify.error(tMailing("error"));
       const { data } = (await response.json()) as { data: { sentTo: string } };
-      toast.success(t("testSent", { email: data.sentTo }));
+      notify.success(t("testSent", { email: data.sentTo }));
     });
 
   const field = (name: keyof TemplateFields, label: string, multiline = false) => (

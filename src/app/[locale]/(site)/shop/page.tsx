@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { ProductBadge } from "@/components/shop/product-badges";
 import type { Locale } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { formatChf } from "@/lib/money";
 import { shopProducts, type ShopProduct } from "@/lib/payments/shop";
 import { cn } from "@/lib/utils";
+import { ShopCollectionSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Members only: decided at request time (a visitor is sent to sign-in).
 export const instant = false;
@@ -112,9 +113,9 @@ export default async function ShopPage({ searchParams }: PageProps<"/[locale]/sh
         <h1 className="font-narrow text-[length:clamp(44px,9vw,88px)] leading-[0.88] font-extrabold tracking-[-0.01em] uppercase italic">{t("title")}</h1>
         <p className="max-w-[36rem] text-base leading-normal text-pretty text-muted-foreground">{t("intro")}</p>
       </header>
-      <Suspense fallback={<div className="grid grid-cols-2 gap-3 lg:grid-cols-3">{[0, 1, 2].map((key) => <div key={key} className="skeleton aspect-[4/5] rounded-[14px]" />)}</div>}>
+      <Streamed fallback={<ShopCollectionSkeleton />}>
         <Collection searchParams={searchParams} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

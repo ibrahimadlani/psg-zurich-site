@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { adminCard } from "@/components/admin/ui/styles";
 import { AdminListSkeleton } from "@/components/skeletons";
@@ -9,6 +8,7 @@ import { listPayouts, payoutPayments } from "@/lib/admin/finances-query";
 import { formatChf } from "@/lib/money";
 import { formatPaymentReference } from "@/lib/payments/config";
 import { cn } from "@/lib/utils";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");
@@ -63,8 +63,8 @@ async function Payouts() {
 
 export default function PayoutsPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <Payouts />
-    </Suspense>
+    </Streamed>
   );
 }

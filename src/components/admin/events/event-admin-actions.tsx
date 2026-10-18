@@ -3,7 +3,7 @@
 import { Copy, Download, ExternalLink, Pencil, ScanLine, Trash2, Users } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import type { EventFormValues, MatchOption } from "@/components/admin/event-form";
 import { EventPanel } from "@/components/admin/events/event-panel";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
@@ -72,9 +72,9 @@ export function EventAdminActions({
           onClick={async () => {
             try {
               await navigator.clipboard.writeText(emails.join(", "));
-              toast.success(t("emailsCopied", { count: emails.length }));
+              notify.success(t("emailsCopied", { count: emails.length }));
             } catch {
-              toast.error(t("emailsCopyFailed"));
+              notify.error(t("emailsCopyFailed"));
             }
           }}
           className={adminButton("secondary")}
@@ -98,10 +98,10 @@ export function EventAdminActions({
           startTransition(async () => {
             const response = await fetch(`/api/v1/events/${eventId}`, { method: "DELETE" });
             if (!response.ok) {
-              toast.error(t("deleteError"));
+              notify.error(t("deleteError"));
               return;
             }
-            toast.success(t("deleted"));
+            notify.afterNavigation("success", t("deleted"));
             router.push("/admin/events");
             router.refresh();
           });

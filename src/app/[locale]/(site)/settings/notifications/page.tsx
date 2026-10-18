@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 import { SettingSwitch } from "@/components/settings/setting-switch";
 import { SettingsBlock, SettingsSection } from "@/components/settings/settings-section";
 import { getSettingsContext } from "@/lib/settings";
 import { SettingsSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Settings.sections");
@@ -36,9 +36,9 @@ async function Content() {
 export default function NotificationsSettingsPage() {
   return (
     <SettingsSection section="notifications">
-      <Suspense fallback={<SettingsSkeleton blocks={4} />}>
+      <Streamed fallback={<SettingsSkeleton blocks={4} />}>
         <Content />
-      </Suspense>
+      </Streamed>
     </SettingsSection>
   );
 }

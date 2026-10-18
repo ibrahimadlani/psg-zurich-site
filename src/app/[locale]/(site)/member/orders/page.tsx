@@ -2,10 +2,8 @@ import { ArrowLeft, ExternalLink, FileText, MapPin, Package, ShoppingBag } from 
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { PageHeader } from "@/components/page-header";
 import { OrderTimeline } from "@/components/shop/order-timeline";
-import { TableSkeleton } from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
 import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getCurrentMember } from "@/lib/members";
@@ -13,6 +11,8 @@ import { formatChf } from "@/lib/money";
 import { formatPaymentReference } from "@/lib/payments/config";
 import { memberOrders } from "@/lib/payments/history";
 import { getSession } from "@/lib/permissions";
+import { OrdersSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Orders");
@@ -110,9 +110,9 @@ export default async function OrdersPage() {
         {t("back")}
       </Link>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<TableSkeleton />}>
+      <Streamed fallback={<OrdersSkeleton />}>
         <Orders />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

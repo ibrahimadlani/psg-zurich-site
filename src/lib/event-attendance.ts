@@ -1,6 +1,6 @@
 "use client";
 
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 
 type Translate = (key: "error" | "toastRegistered" | "toastWaitlisted" | "toastCancelled") => string;
 
@@ -8,11 +8,11 @@ type Translate = (key: "error" | "toastRegistered" | "toastWaitlisted" | "toastC
 export async function sendAttendance(eventId: string, method: "POST" | "DELETE", t: Translate) {
   const response = await fetch(`/api/v1/events/${eventId}/attendance`, { method });
   if (!response.ok) {
-    toast.error(t("error"));
+    notify.error(t("error"));
     return;
   }
   const { data } = (await response.json()) as { data: { status: string } };
-  toast.success(
+  notify.success(
     t(data.status === "waitlisted" ? "toastWaitlisted" : data.status === "cancelled" ? "toastCancelled" : "toastRegistered"),
   );
 }

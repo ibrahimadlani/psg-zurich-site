@@ -3,7 +3,7 @@
 import { Check, Copy } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { cn } from "@/lib/utils";
 
 /**
@@ -18,7 +18,7 @@ export function CopyEmailButton({ email, iconOnly = false, className }: { email:
     try {
       await navigator.clipboard.writeText(email);
       setCopied(true);
-      toast.success(t("copied"));
+      notify.success(t("copied"));
       setTimeout(() => setCopied(false), 2000);
     } catch {
       // Copying not allowed: the address stays visible to select by hand.

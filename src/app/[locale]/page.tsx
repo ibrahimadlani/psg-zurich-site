@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { MemberDashboard, MemberFeed, MemberMatchday } from "@/components/home/variants";
 import { WaitingPage } from "@/components/home/waiting-page";
 import { VisitorLanding } from "@/components/landing/landing-page";
@@ -12,6 +11,8 @@ import { clubFigures, homeBasics, homeMemberExtras, homeViewer } from "@/lib/hom
 import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 import { getHomeSettings } from "@/lib/site-settings";
+import { HomeSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 
@@ -54,7 +55,7 @@ async function Home({ searchParams }: { searchParams: SearchParams }) {
     return (
       <div className="flex flex-1 flex-col">
         <SiteHeader />
-        <main className="w-full flex-1 animate-page-in motion-reduce:animate-none">
+        <main className="w-full flex-1">
           <VisitorLanding basics={basics} figures={await clubFigures()} />
         </main>
         <SiteFooter />
@@ -71,30 +72,17 @@ async function Home({ searchParams }: { searchParams: SearchParams }) {
   return (
     <div className="flex flex-1 flex-col">
       <SiteHeader />
-      <main className="mx-auto w-full max-w-5xl flex-1 animate-page-in px-4 py-10 motion-reduce:animate-none">{content}</main>
+      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10">{content}</main>
       <SiteFooter />
     </div>
   );
 }
 
-function HomeSkeleton() {
-  return (
-    <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-24" aria-hidden>
-      <div className="skeleton mx-auto h-16 w-2/3 rounded-[12px]" />
-      <div className="skeleton h-48 rounded-[16px]" />
-      <div className="grid gap-4 sm:grid-cols-3">
-        {[0, 1, 2].map((key) => (
-          <div key={key} className="skeleton aspect-[3/2] rounded-[12px]" />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function HomePage({ searchParams }: PageProps<"/[locale]">) {
   return (
-    <Suspense fallback={<HomeSkeleton />}>
+    <Streamed fallback={<HomeSkeleton />} className="flex flex-1 flex-col">
       <Home searchParams={searchParams} />
-    </Suspense>
+    </Streamed>
   );
 }

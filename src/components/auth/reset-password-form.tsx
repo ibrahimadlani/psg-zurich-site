@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FieldError, FormMessage, inlineLinkClass, labelClass, submitClass } from "@/components/auth/auth-ui";
@@ -35,11 +35,11 @@ export function ResetPasswordForm() {
   async function onSubmit({ password }: Values) {
     const { error } = await resetPassword({ newPassword: password, token: token ?? "" });
     if (!error) {
-      toast.success(t("done"));
+      notify.afterNavigation("success", t("done"));
       // Then sign in, and on to the page the reset started from.
       router.push(signInHref(params.get(RETURN_PARAM)));
     } else if (error.code === "INVALID_TOKEN") setResult("invalidLink");
-    else toast.error(t("error"));
+    else notify.error(t("error"));
   }
 
   if (result === "invalidLink") {

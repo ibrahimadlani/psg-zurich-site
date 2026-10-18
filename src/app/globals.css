@@ -193,9 +193,15 @@
    position: fixed child (bars pinned to the screen) into a child of the page. */
 @theme {
   --animate-page-in: page-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  /* Content that replaces a loading placeholder (<Streamed>): it only fades, in the placeholder's
+     place (same shapes, so nothing moves) — and without stacking a second rise on the page's own. */
+  --animate-content-in: fade-in 0.32s ease-out backwards;
 
   @keyframes page-in {
     from { opacity: 0; transform: translateY(8px); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
   }
 }
 
@@ -221,7 +227,8 @@
 /* Loading placeholders (components/ui/skeleton.tsx): a faint shape with a slow sheen that
    sweeps across, shown after 150 ms so quick loads don't flash. */
 @theme {
-  --animate-skeleton-in: skeleton-in 0.3s ease-out 0.15s backwards;
+  /* Placeholders enter like the content (page-in), after 150 ms so fast loads never flash grey. */
+  --animate-skeleton-in: page-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.15s backwards;
   /* Prediction scores: the new figure rolls in (from below when it goes up), with a small bounce. */
   --animate-score-up: score-up 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   --animate-score-down: score-down 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both;
@@ -238,9 +245,6 @@
   @keyframes pin-ripple {
     from { opacity: 0.9; transform: scale(0.3); }
     to { opacity: 0; transform: scale(1.4); }
-  }
-  @keyframes skeleton-in {
-    from { opacity: 0; }
   }
   @keyframes score-up {
     from { opacity: 0; transform: translateY(55%) scale(0.85); filter: blur(2px); }
@@ -271,6 +275,10 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .skeleton::after { animation: none; display: none; }
+}
+/* Reduced motion: placeholders only fade, they do not move. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-skeleton-in { animation-name: fade-in; }
 }
 
 /* View transitions (contact topics: the chosen tile becomes the header of the form card). */

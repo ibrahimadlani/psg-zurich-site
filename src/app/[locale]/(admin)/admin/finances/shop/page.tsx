@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { ProductsAdmin } from "@/components/admin/finances/products-admin";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { AdminListSkeleton } from "@/components/skeletons";
 import type { Locale } from "@/db/schema";
 import { shopProducts } from "@/lib/payments/shop";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");
@@ -27,8 +27,8 @@ async function Products() {
 
 export default function ShopAdminPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <Products />
-    </Suspense>
+    </Streamed>
   );
 }

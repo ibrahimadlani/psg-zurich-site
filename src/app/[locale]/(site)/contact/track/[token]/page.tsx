@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { SenderThread } from "@/components/contact/sender-thread";
 import { Link } from "@/i18n/navigation";
 import { markSeenBySender, senderView } from "@/lib/contact";
+import { ThreadSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Private links only exist at runtime.
 export const instant = false;
@@ -39,8 +40,8 @@ async function Tracking({ token }: { token: string }) {
 export default async function ContactTrackingPage({ params }: PageProps<"/[locale]/contact/track/[token]">) {
   const { token } = await params;
   return (
-    <Suspense fallback={<div className="skeleton h-64 rounded-[14px]" />}>
+    <Streamed fallback={<ThreadSkeleton />}>
       <Tracking token={token} />
-    </Suspense>
+    </Streamed>
   );
 }

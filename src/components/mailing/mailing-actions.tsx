@@ -3,7 +3,7 @@
 import { Mail, Play } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { adminButton } from "@/components/admin/ui/styles";
 import { Button } from "@/components/ui/button";
@@ -52,7 +52,7 @@ export function NewCampaignButton({
         if (name === undefined) return;
         startTransition(async () => {
           const response = await send("/api/v1/mailing/campaigns", "POST", { name: name || defaultName, audience, audienceEventId: eventId });
-          if (!response.ok) return void toast.error(t("error"));
+          if (!response.ok) return void notify.error(t("error"));
           const { data } = (await response.json()) as { data: { id: string } };
           router.push(`/admin/mailing/campaigns/${data.id}`);
         });
@@ -79,8 +79,8 @@ export function JobActions({ id, status }: { id: string; status: string }) {
       onClick={() =>
         startTransition(async () => {
           const response = await send(`/api/v1/mailing/jobs/${id}`, "PATCH", { action });
-          if (!response.ok) return void toast.error(t("error"));
-          toast.success(t("journal.done"));
+          if (!response.ok) return void notify.error(t("error"));
+          notify.success(t("journal.done"));
           router.refresh();
         })
       }
@@ -101,9 +101,9 @@ export function MailingSettingsForm({ paused, dailyCap, perMinute }: { paused: b
       const response = await send("/api/v1/mailing/settings", "PATCH", body);
       if (!response.ok) {
         rollback?.();
-        return void toast.error(t("error"));
+        return void notify.error(t("error"));
       }
-      toast.success(t("saved"));
+      notify.success(t("saved"));
       router.refresh();
     });
   const number = (name: "dailyCap" | "perMinute", value: number) => (
@@ -157,8 +157,8 @@ export function MailingSettingsForm({ paused, dailyCap, perMinute }: { paused: b
           onClick={() =>
             startTransition(async () => {
               const response = await send("/api/v1/mailing/run", "POST");
-              if (!response.ok) return void toast.error(t("error"));
-              toast.success(t("settings.runDone"));
+              if (!response.ok) return void notify.error(t("error"));
+              notify.success(t("settings.runDone"));
               router.refresh();
             })
           }

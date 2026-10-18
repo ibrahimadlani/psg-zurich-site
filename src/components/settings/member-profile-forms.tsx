@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { BirthDateInput, isoFromParts, partsFromIso } from "@/components/onboarding/birth-date-input";
 import { ChoiceCards, ChoiceChips } from "@/components/onboarding/choice-controls";
 import { Button } from "@/components/ui/button";
@@ -24,8 +24,8 @@ function useSave() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(body),
       });
-      if (!response.ok) return void toast.error(t("error"));
-      toast.success(t("saved"));
+      if (!response.ok) return void notify.error(t("error"));
+      notify.success(t("saved"));
       onDone?.();
       router.refresh();
     });
@@ -45,7 +45,7 @@ export function BirthDateForm({ initial }: { initial: string | null }) {
       className="flex flex-wrap items-end gap-3"
       onSubmit={(event) => {
         event.preventDefault();
-        if (iso === null) return void toast.error(tOnboarding("invalid"));
+        if (iso === null) return void notify.error(tOnboarding("invalid"));
         save({ birthDate: iso }, () => setSaved(iso));
       }}
     >

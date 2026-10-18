@@ -3,7 +3,7 @@
 import { Undo2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { adminButton, adminInput, adminLabel } from "@/components/admin/ui/styles";
 import { useRouter } from "@/i18n/navigation";
@@ -29,10 +29,10 @@ export function RefundButton({ paymentId, refundable }: { paymentId: string; ref
       });
       const body = (await response.json().catch(() => null)) as { data?: { status: string; creditNoteNumber: string | null } } | null;
       if (!response.ok || !body?.data) {
-        toast.error(t("refundError"));
+        notify.error(t("refundError"));
         return;
       }
-      toast.success(body.data.status === "succeeded" ? t("refundDone", { number: body.data.creditNoteNumber ?? "" }) : t("refundPending"));
+      notify.success(body.data.status === "succeeded" ? t("refundDone", { number: body.data.creditNoteNumber ?? "" }) : t("refundPending"));
       setOpen(false);
       setReason("");
       router.refresh();

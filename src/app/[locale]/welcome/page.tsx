@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import { BrandShell } from "@/components/brand-shell";
+import { SkeletonGroup } from "@/components/ui/skeleton";
 import { OnboardingFlow } from "@/components/onboarding/onboarding-flow";
 import { db } from "@/db";
 import { members } from "@/db/schema";
@@ -69,7 +70,9 @@ async function Welcome({ searchParams }: { searchParams: Promise<Record<string, 
 export default function WelcomePage({ searchParams }: PageProps<"/[locale]/welcome">) {
   return (
     <BrandShell bare homeBar>
-      <Suspense fallback={null}>
+      {/* Invisible while it decides (welcome steps, or straight on): marked as loading, so a
+          toast waiting for the next page (sign-in) shows after it, not on this brief stop. */}
+      <Suspense fallback={<SkeletonGroup className="sr-only">{null}</SkeletonGroup>}>
         <Welcome searchParams={searchParams} />
       </Suspense>
     </BrandShell>

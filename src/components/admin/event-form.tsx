@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm, useWatch } from "react-hook-form";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { z } from "zod";
 import { adminButton, adminInput, adminLabel } from "@/components/admin/ui/styles";
 import { AddressAutocomplete } from "@/components/maps/address-autocomplete";
@@ -106,11 +106,11 @@ export function EventForm({
       }),
     });
     if (!response.ok) {
-      toast.error(t("error"));
+      notify.error(t("error"));
       return;
     }
     const body = (await response.json().catch(() => null)) as { data?: { id: string } } | null;
-    toast.success(t(eventId ? "updated" : "created"));
+    notify.success(t(eventId ? "updated" : "created"));
     onDone?.(body?.data?.id ?? eventId ?? "");
     router.refresh();
   }
@@ -125,7 +125,7 @@ export function EventForm({
   );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, () => toast.error(t("invalid")))} noValidate className="space-y-7">
+    <form onSubmit={handleSubmit(onSubmit, () => notify.error(t("invalid")))} noValidate className="space-y-7">
       <fieldset className="space-y-4">
         <legend className={cn(adminLabel, "mb-3")}>{t("sections.what")}</legend>
         <div className="space-y-1.5">

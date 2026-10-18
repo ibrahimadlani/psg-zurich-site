@@ -3,7 +3,7 @@
 import { FileUp, Pencil, Trash2, Upload } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useId, useRef, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { adminButton, adminInput } from "@/components/admin/ui/styles";
@@ -87,7 +87,7 @@ export function UploadDocumentButton({ categories }: { categories: string[] }) {
 
   const pick = (picked: File | undefined) => {
     if (!picked) return;
-    if (picked.size > MAX_BYTES) return void toast.error(t("tooLarge"));
+    if (picked.size > MAX_BYTES) return void notify.error(t("tooLarge"));
     setFile(picked);
     // The file name, cleaned up, as a first title.
     if (!values.title) setValues((current) => ({ ...current, title: picked.name.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ").trim() }));
@@ -104,10 +104,10 @@ export function UploadDocumentButton({ categories }: { categories: string[] }) {
       const response = await fetch("/api/v1/documents", { method: "POST", body: form });
       if (!response.ok) {
         const code = ((await response.json().catch(() => null)) as { error?: { code?: string } } | null)?.error?.code;
-        toast.error(t(code === "unsupported" ? "unsupported" : code === "too_large" ? "tooLarge" : "error"));
+        notify.error(t(code === "unsupported" ? "unsupported" : code === "too_large" ? "tooLarge" : "error"));
         return;
       }
-      toast.success(t("uploaded"));
+      notify.success(t("uploaded"));
       setOpen(false);
       setFile(null);
       setValues({ title: "", category: "", visibility: "members" });
@@ -185,8 +185,8 @@ export function DocumentActions({
   const save = () =>
     startTransition(async () => {
       const response = await fetch(`/api/v1/documents/${id}`, { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify(values) });
-      if (!response.ok) return void toast.error(t("error"));
-      toast.success(t("saved"));
+      if (!response.ok) return void notify.error(t("error"));
+      notify.success(t("saved"));
       setOpen(false);
       router.refresh();
     });
@@ -214,8 +214,8 @@ export function DocumentActions({
           if ((await ask({ title: t("deleteTitle"), body: t("deleteBody", { title: initial.title }), confirmLabel: t("delete"), tone: "danger" })) === null) return;
           startTransition(async () => {
             const response = await fetch(`/api/v1/documents/${id}`, { method: "DELETE" });
-            if (!response.ok) return void toast.error(t("error"));
-            toast.success(t("deleted"));
+            if (!response.ok) return void notify.error(t("error"));
+            notify.success(t("deleted"));
             router.refresh();
           });
         }}

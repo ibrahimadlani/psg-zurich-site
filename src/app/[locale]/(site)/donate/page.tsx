@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { DonationForm } from "@/components/payments/donation-form";
 import { PanelSkeleton } from "@/components/skeletons";
 import { getSession } from "@/lib/permissions";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { LEGAL } from "@/lib/legal";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Support");
@@ -41,9 +41,9 @@ export default async function SupportPage() {
         <p className="text-[12px] text-muted-foreground">{t("taxNote")}</p>
       </header>
       <section className="rounded-[16px] border bg-card/60 p-[clamp(18px,3vw,28px)] shadow-brand">
-        <Suspense fallback={<PanelSkeleton />}>
+        <Streamed fallback={<PanelSkeleton />}>
           <Donate />
-        </Suspense>
+        </Streamed>
       </section>
     </div>
   );

@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useId, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { adminButton, adminInput } from "@/components/admin/ui/styles";
 import { PhoneInput } from "@/components/ui/phone-input";
@@ -73,11 +73,11 @@ export function MemberEditPanel({
         // Errors come back nested under "profile": the field names are in the messages' paths.
         const raw = JSON.stringify(body?.error?.details ?? {});
         setInvalid((["firstName", "lastName", "phone", "address", "postcode", "city", "birthDate"] as const).filter((key) => raw.includes(key)));
-        toast.error(t("editError"));
+        notify.error(t("editError"));
         return;
       }
       setInvalid([]);
-      toast.success(t("saved"));
+      notify.success(t("saved"));
       onOpenChange(false);
       router.refresh();
     });

@@ -3,7 +3,7 @@
 import { Ban, Check, ChevronUp, Copy, ShieldCheck, SlidersHorizontal, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useOptimistic, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { ResponsivePanel, useIsDesktop } from "@/components/admin/ui/responsive-panel";
 import { adminButton, adminLabel } from "@/components/admin/ui/styles";
@@ -78,8 +78,9 @@ export function ThreadActions({
     startTransition(async () => {
       setShown(patch);
       const response = await fetch(`/api/v1/admin/messages/${id}`, { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify(patch) });
-      if (!response.ok) return void toast.error(t("error"));
-      toast.success(t("saved"), undo ? { action: { label: t("undo"), onClick: () => save(undo) } } : undefined);
+      if (!response.ok) return void notify.error(t("error"));
+      if (undo) notify.undo(t("saved"), { label: t("undo"), onUndo: () => save(undo) });
+      else notify.success(t("saved"));
       router.refresh();
     });
 
@@ -125,7 +126,7 @@ export function ThreadActions({
           type="button"
           className={adminButton("secondary", "sm")}
           onClick={() => {
-            void navigator.clipboard?.writeText(email).then(() => toast.success(t("emailCopied")));
+            void navigator.clipboard?.writeText(email).then(() => notify.success(t("emailCopied")));
           }}
         >
           <Copy aria-hidden />
@@ -155,8 +156,8 @@ export function ThreadActions({
               if ((await ask({ title: t("deleteTitle"), body: t("deleteBody", { reference }), confirmLabel: t("delete"), tone: "danger" })) === null) return;
               startTransition(async () => {
                 const response = await fetch(`/api/v1/admin/messages/${id}`, { method: "DELETE" });
-                if (!response.ok) return void toast.error(t("error"));
-                toast.success(t("deleted"));
+                if (!response.ok) return void notify.error(t("error"));
+                notify.afterNavigation("success", t("deleted"));
                 router.push("/admin/messages");
                 router.refresh();
               });

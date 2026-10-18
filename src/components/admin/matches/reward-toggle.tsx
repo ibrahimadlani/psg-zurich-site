@@ -3,7 +3,7 @@
 import { Check, Gift } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useOptimistic, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { adminButton } from "@/components/admin/ui/styles";
 import { useRouter } from "@/i18n/navigation";
 
@@ -22,9 +22,9 @@ export function RewardToggle({ season, memberId, given }: { season: number; memb
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ season, memberId, given: next }),
       });
-      if (!response.ok) return void toast.error(t("rewardError"));
-      if (next) toast.success(t("rewardSaved"), { action: { label: t("unmark"), onClick: () => save(false) } });
-      else toast(t("rewardUndone"));
+      if (!response.ok) return void notify.error(t("rewardError"));
+      if (next) notify.undo(t("rewardSaved"), { label: t("unmark"), onUndo: () => save(false) });
+      else notify.info(t("rewardUndone"));
       router.refresh();
     });
 

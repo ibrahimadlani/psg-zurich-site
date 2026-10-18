@@ -3,7 +3,7 @@
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useSyncExternalStore, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { readThemePreference, setThemePreference, type ThemePreference } from "@/components/theme-toggle";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -32,7 +32,7 @@ export function LanguageForm() {
         body: JSON.stringify({ locale: next }),
       });
       if (!response.ok) {
-        toast.error(t("error"));
+        notify.error(t("error"));
         return;
       }
       if (next !== locale) router.replace(pathname, { locale: next });

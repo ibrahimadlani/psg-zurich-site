@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { NewAnnouncementButton } from "@/components/announcements/announcement-form";
 import { AnnouncementsAdmin } from "@/components/announcements/announcements-admin";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
 import { AdminSkeleton } from "@/components/skeletons";
 import { adminPage } from "@/lib/admin/guard";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -26,9 +26,9 @@ export default async function AdminBannerPage() {
   return (
     <>
       <AdminHeader title={t("sections.banner")} description={tBanner("description")} actions={<NewAnnouncementButton />} />
-      <Suspense fallback={<AdminSkeleton cards={1} />}>
+      <Streamed fallback={<AdminSkeleton cards={1} />}>
         <Banner />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

@@ -3,7 +3,7 @@
 import { ArrowUp, CameraOff, Check, Search, UserMinus, UserPlus, X } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useDeferredValue, useEffect, useMemo, useOptimistic, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { StatusPill } from "@/components/admin/ui/status-pill";
 import { adminButton, adminInput, adminLabel } from "@/components/admin/ui/styles";
@@ -117,7 +117,7 @@ export function AttendeesBoard({ eventId, attendees, capacity }: { eventId: stri
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ memberId, action }),
       });
-      if (!response.ok) toast.error(t("attendeeError"));
+      if (!response.ok) notify.error(t("attendeeError"));
       else if (action === "checkin") navigator.vibrate?.(30);
       router.refresh();
     });

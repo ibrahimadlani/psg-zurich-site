@@ -5,7 +5,7 @@ import { Megaphone, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { z } from "zod";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { adminButton, adminInput, adminLabel } from "@/components/admin/ui/styles";
@@ -86,10 +86,10 @@ function AnnouncementForm({ onDone }: { onDone: () => void }) {
       }),
     });
     if (!response.ok) {
-      toast.error(t("error"));
+      notify.error(t("error"));
       return;
     }
-    toast.success(t("published"));
+    notify.success(t("published"));
     onDone();
     router.refresh();
   }
@@ -104,7 +104,7 @@ function AnnouncementForm({ onDone }: { onDone: () => void }) {
   );
 
   return (
-    <form onSubmit={handleSubmit(onSubmit, () => toast.error(t("invalid")))} noValidate className="space-y-5">
+    <form onSubmit={handleSubmit(onSubmit, () => notify.error(t("invalid")))} noValidate className="space-y-5">
       <Preview values={{ tone, titleFr, messageFr, linkUrl }} />
       <div className="space-y-1.5">
         <span className={labelClass}>{t("tone")}</span>

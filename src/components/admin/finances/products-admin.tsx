@@ -3,7 +3,7 @@
 import { ImagePlus, Plus, Trash2, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { StatusPill } from "@/components/admin/ui/status-pill";
@@ -104,7 +104,7 @@ export function ProductsAdmin({ products }: { products: AdminProduct[] }) {
       for (const file of Array.from(files)) ids.push((await uploadMedia(file, 1600)).id);
       setDraft((current) => (current ? { ...current, images: [...current.images, ...ids].slice(0, 8) } : current));
     } catch {
-      toast.error(t("uploadError"));
+      notify.error(t("uploadError"));
     } finally {
       setUploading(false);
     }
@@ -134,10 +134,10 @@ export function ProductsAdmin({ products }: { products: AdminProduct[] }) {
         body: JSON.stringify(body),
       });
       if (!response.ok) {
-        toast.error(response.status === 409 ? t("slugTaken") : t("productError"));
+        notify.error(response.status === 409 ? t("slugTaken") : t("productError"));
         return;
       }
-      toast.success(t("saved"));
+      notify.success(t("saved"));
       setDraft(null);
       router.refresh();
     });
@@ -150,7 +150,7 @@ export function ProductsAdmin({ products }: { products: AdminProduct[] }) {
     startTransition(async () => {
       const response = await fetch(`/api/v1/admin/products/${draft.id}`, { method: "DELETE" });
       if (!response.ok) {
-        toast.error(response.status === 409 ? t("hasSales") : t("productError"));
+        notify.error(response.status === 409 ? t("hasSales") : t("productError"));
         return;
       }
       setDraft(null);

@@ -3,13 +3,14 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { SenderThread } from "@/components/contact/sender-thread";
 import { Link } from "@/i18n/navigation";
 import { markSeenBySender, senderView } from "@/lib/contact";
 import { getCurrentMember } from "@/lib/members";
 import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
+import { ThreadSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export const instant = false;
 
@@ -39,9 +40,9 @@ export default async function MemberThreadPage({ params }: PageProps<"/[locale]/
         <ArrowLeft className="size-4" aria-hidden />
         {t("back")}
       </Link>
-      <Suspense fallback={<div className="skeleton h-64 rounded-[14px]" />}>
+      <Streamed fallback={<ThreadSkeleton />}>
         <MemberThread id={id} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

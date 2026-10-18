@@ -3,7 +3,7 @@
 import { Minus, Plus } from "lucide-react";
 import { useNow, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 import { TeamCrest } from "@/components/matches/team-crest";
@@ -113,11 +113,11 @@ export function PredictionForm({
         body: JSON.stringify({ psgScore: psg, opponentScore: other }),
       });
       if (!response.ok) {
-        toast.error(t(response.status === 409 ? "closed" : "error"));
+        notify.error(t(response.status === 409 ? "closed" : "error"));
         return;
       }
       setSaved({ psgScore: psg, opponentScore: other });
-      toast.success(t("toastSaved", { psg, other, opponent }));
+      notify.success(t("toastSaved", { psg, other, opponent }));
       router.refresh();
     });
 

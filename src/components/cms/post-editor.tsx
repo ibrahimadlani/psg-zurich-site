@@ -3,7 +3,7 @@
 import { Eye, PenLine, SlidersHorizontal, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { ResponsivePanel, useIsDesktop } from "@/components/admin/ui/responsive-panel";
 import { adminButton } from "@/components/admin/ui/styles";
@@ -119,13 +119,19 @@ export function PostEditor({
       });
       const body = (await response.json().catch(() => null)) as { data?: { id: string }; error?: { code: string } } | null;
       if (!response.ok) {
-        toast.error(body?.error?.code === "conflict" ? t("slugTaken") : t("saveError"));
+        notify.error(body?.error?.code === "conflict" ? t("slugTaken") : t("saveError"));
         return;
       }
       setSaved(JSON.stringify(current));
-      toast.success(current.mode === "draft" ? t("savedDraft") : current.mode === "schedule" ? t("savedScheduled") : t("savedPublished"));
-      if (!postId && body?.data) router.replace(`/admin/news/${body.data.id}`);
-      else router.refresh();
+      const savedMessage = current.mode === "draft" ? t("savedDraft") : current.mode === "schedule" ? t("savedScheduled") : t("savedPublished");
+      // A new article opens at its own address: the toast waits for that page.
+      if (!postId && body?.data) {
+        notify.afterNavigation("success", savedMessage);
+        router.replace(`/admin/news/${body.data.id}`);
+      } else {
+        notify.success(savedMessage);
+        router.refresh();
+      }
     });
 
   const remove = async () => {
@@ -133,10 +139,10 @@ export function PostEditor({
     startTransition(async () => {
       const response = await fetch(`/api/v1/posts/${postId}`, { method: "DELETE" });
       if (!response.ok) {
-        toast.error(t("deleteError"));
+        notify.error(t("deleteError"));
         return;
       }
-      toast.success(t("deleted"));
+      notify.afterNavigation("success", t("deleted"));
       setSaved(JSON.stringify(current));
       router.replace("/admin/news");
     });
@@ -148,7 +154,7 @@ export function PostEditor({
       const media = await uploadMedia(file, 1600);
       set("imageUrl", media.url);
     } catch {
-      toast.error(t("uploadError"));
+      notify.error(t("uploadError"));
     } finally {
       setCoverBusy(false);
     }

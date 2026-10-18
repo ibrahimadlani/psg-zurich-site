@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { OrdersBoard } from "@/components/admin/finances/orders-board";
 import { AdminHeader } from "@/components/admin/ui/admin-header";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { listOrders } from "@/lib/admin/finances-query";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminFinances");
@@ -26,8 +26,8 @@ async function Orders() {
 
 export default function OrdersPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <Orders />
-    </Suspense>
+    </Streamed>
   );
 }

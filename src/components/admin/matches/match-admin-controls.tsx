@@ -3,7 +3,7 @@
 import { CalendarPlus, Pencil, Plus, RefreshCw, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { emptyEvent, type MatchOption } from "@/components/admin/event-form";
 import { EventPanel } from "@/components/admin/events/event-panel";
 import { MatchForm, type MatchFormValues } from "@/components/admin/match-form";
@@ -26,8 +26,8 @@ export function MatchSyncButton() {
         startTransition(async () => {
           const response = await fetch("/api/v1/matches/sync", { method: "POST" });
           const body = (await response.json().catch(() => null)) as { data?: { fixtures: number }; error?: { code: string; message: string } } | null;
-          if (response.ok) toast.success(t("synced", { count: body?.data?.fixtures ?? 0 }));
-          else toast.error(body?.error?.code === "not_configured" ? t("syncNotConfigured") : t("syncFailed", { message: body?.error?.message ?? "" }));
+          if (response.ok) notify.success(t("synced", { count: body?.data?.fixtures ?? 0 }));
+          else notify.error(body?.error?.code === "not_configured" ? t("syncNotConfigured") : t("syncFailed", { message: body?.error?.message ?? "" }));
           router.refresh();
         })
       }
@@ -96,8 +96,8 @@ export function MatchRowActions({
               if ((await ask({ title: t("deleteTitle"), body: t("confirmDelete"), confirmLabel: t("delete"), tone: "danger" })) === null) return;
               startTransition(async () => {
                 const response = await fetch(`/api/v1/matches/${matchId}`, { method: "DELETE" });
-                if (response.ok) toast.success(t("deleted"));
-                else toast.error(t("deleteError"));
+                if (response.ok) notify.success(t("deleted"));
+                else notify.error(t("deleteError"));
                 router.refresh();
               });
             }}

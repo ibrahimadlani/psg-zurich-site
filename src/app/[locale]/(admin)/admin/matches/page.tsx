@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getFormatter, getNow, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import type { MatchFormValues } from "@/components/admin/match-form";
 import { MatchRowActions, MatchSyncButton, NewMatchButton } from "@/components/admin/matches/match-admin-controls";
 import { RewardToggle } from "@/components/admin/matches/reward-toggle";
@@ -18,6 +17,7 @@ import { adminPage } from "@/lib/admin/guard";
 import { lastMatchSync, listAdminMatches, toLocalInput } from "@/lib/admin/events-query";
 import { closedSeasons, frozenBoard, seasonLabel } from "@/lib/leaderboard";
 import { matchTitle, type Match } from "@/lib/matches";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -170,8 +170,8 @@ async function Matches() {
 
 export default function AdminMatchesPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton />}>
+    <Streamed fallback={<AdminListSkeleton />}>
       <Matches />
-    </Suspense>
+    </Streamed>
   );
 }

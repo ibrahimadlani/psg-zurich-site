@@ -3,7 +3,7 @@
 import { ArrowLeft } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useEffect, useRef, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { FieldError, inputClass, labelClass, submitClass } from "@/components/auth/auth-ui";
 import { AddressAutocomplete } from "@/components/maps/address-autocomplete";
 import { BirthDateInput, isoFromParts, partsFromIso, type DateParts } from "@/components/onboarding/birth-date-input";
@@ -134,7 +134,7 @@ export function OnboardingFlow({
     }
     if (step >= 1 && step <= QUESTIONS) {
       void save(stepPayload()).then((ok) => {
-        if (!ok) toast.error(t("error"));
+        if (!ok) notify.error(t("error"));
       });
     }
     if (fromRecap) {
@@ -146,8 +146,8 @@ export function OnboardingFlow({
   const end = () =>
     startTransition(async () => {
       const ok = await save({ ...(stepInvalid ? {} : stepPayload()), done: true });
-      if (!ok) return void toast.error(t("error"));
-      if (step === RECAP) toast.success(t("saved"));
+      if (!ok) return void notify.error(t("error"));
+      if (step === RECAP) notify.afterNavigation("success", t("saved"));
       router.replace(next);
       router.refresh();
     });

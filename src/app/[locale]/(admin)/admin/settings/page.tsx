@@ -2,7 +2,6 @@ import { asc, eq, inArray } from "drizzle-orm";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { HomeVariantPicker } from "@/components/admin/settings/home-variant-picker";
 import { AddTeamMemberForm, CommitteeTitleField, TeamRoleControls } from "@/components/admin/team/team-controls";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
@@ -15,6 +14,7 @@ import { db } from "@/db";
 import { members, user } from "@/db/schema";
 import { adminPage } from "@/lib/admin/guard";
 import { getHomeSettings } from "@/lib/site-settings";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -97,8 +97,8 @@ async function Settings() {
 
 export default function SettingsPage() {
   return (
-    <Suspense fallback={<AdminListSkeleton rows={3} />}>
+    <Streamed fallback={<AdminListSkeleton rows={3} />}>
       <Settings />
-    </Suspense>
+    </Streamed>
   );
 }

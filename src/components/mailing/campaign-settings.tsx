@@ -3,7 +3,7 @@
 import { Send } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -69,7 +69,7 @@ export function CampaignSettings({
       audienceEventId: audience === "event" ? eventId || null : null,
       ctaUrl,
     });
-    if (!response.ok) toast.error(t("error"));
+    if (!response.ok) notify.error(t("error"));
     return response.ok;
   };
   const launch = (when: string | null | undefined) =>
@@ -78,10 +78,10 @@ export function CampaignSettings({
       const response = await call(`/api/v1/mailing/campaigns/${campaign.id}/send`, "POST", { at: when });
       if (!response.ok) {
         const code = ((await response.json().catch(() => null)) as { error?: { code?: string } } | null)?.error?.code;
-        return void toast.error(code === "no_texts" ? t("campaigns.noTexts") : t("error"));
+        return void notify.error(code === "no_texts" ? t("campaigns.noTexts") : t("error"));
       }
       const { data } = (await response.json()) as { data: { queued: number } };
-      toast.success(when === undefined ? t("campaigns.queued", { count: data.queued }) : when ? t("campaigns.scheduled") : t("saved"));
+      notify.success(when === undefined ? t("campaigns.queued", { count: data.queued }) : when ? t("campaigns.scheduled") : t("saved"));
       router.refresh();
     });
 
@@ -129,7 +129,7 @@ export function CampaignSettings({
         </p>
       ) : null}
       <div className="flex flex-wrap items-end gap-2">
-        <Button variant="outline" disabled={pending} onClick={() => startTransition(async () => void ((await saveSettings()) && (toast.success(t("saved")), router.refresh())))}>
+        <Button variant="outline" disabled={pending} onClick={() => startTransition(async () => void ((await saveSettings()) && (notify.success(t("saved")), router.refresh())))}>
           {t("campaigns.saveSettings")}
         </Button>
         <Button
@@ -163,7 +163,7 @@ export function CampaignSettings({
             if ((await ask({ title: t("campaigns.delete"), body: t("campaigns.confirmDelete"), confirmLabel: t("campaigns.delete"), tone: "danger" })) === null) return;
             startTransition(async () => {
               const response = await call(`/api/v1/mailing/campaigns/${campaign.id}`, "DELETE");
-              if (!response.ok) return void toast.error(t("error"));
+              if (!response.ok) return void notify.error(t("error"));
               router.push("/admin/mailing?onglet=campagnes");
             });
           }}

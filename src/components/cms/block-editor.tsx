@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -127,7 +127,7 @@ function useUpload(maxSize: number) {
     try {
       return await Promise.all(files.map((file) => uploadMedia(file, maxSize).then((media) => media.id)));
     } catch {
-      toast.error(t("uploadFailed"));
+      notify.error(t("uploadFailed"));
       return [];
     } finally {
       setBusy(false);

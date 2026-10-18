@@ -1,7 +1,6 @@
 import { ArrowRight, HeartHandshake, LayoutDashboard, MessagesSquare, Package, Receipt, Settings } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { Suspense } from "react";
 import { SignOutButton } from "@/components/auth/sign-out-button";
 import { MemberCard } from "@/components/member-area/member-card";
 import { MyPredictions } from "@/components/member-area/my-predictions";
@@ -18,6 +17,7 @@ import { getSession } from "@/lib/permissions";
 import { memberPolls } from "@/lib/polls";
 import { hasRole } from "@/lib/roles";
 import { MemberAreaSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("MemberArea");
@@ -125,9 +125,9 @@ export default async function MemberAreaPage() {
   return (
     <>
       <PageHeader title={t("title")} description={t("description")} />
-      <Suspense fallback={<MemberAreaSkeleton />}>
+      <Streamed fallback={<MemberAreaSkeleton />}>
         <MemberPanel />
-      </Suspense>
+      </Streamed>
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { adminButton, adminCard, adminInput, adminLabel } from "@/components/admin/ui/styles";
 import { useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -48,10 +48,10 @@ export function FinanceSettings({
     startTransition(async () => {
       try {
         await save(body);
-        toast.success(t("saved"));
+        notify.success(t("saved"));
         router.refresh();
       } catch {
-        toast.error(t("saveError"));
+        notify.error(t("saveError"));
       }
     });
 

@@ -3,7 +3,7 @@
 import { ArrowDown, ArrowUp, Lock, Plus, Trash2, Unlock, Vote, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { adminButton, adminInput } from "@/components/admin/ui/styles";
@@ -35,7 +35,7 @@ function PollForm({ onDone }: { onDone: () => void }) {
 
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
-    if (!valid) return void toast.error(t("invalid"));
+    if (!valid) return void notify.error(t("invalid"));
     startTransition(async () => {
       const response = await fetch("/api/v1/polls", {
         method: "POST",
@@ -48,8 +48,8 @@ function PollForm({ onDone }: { onDone: () => void }) {
           closesAt: closesAt ? new Date(closesAt).toISOString() : undefined,
         }),
       });
-      if (!response.ok) return void toast.error(t("error"));
-      toast.success(t(openNow ? "createdOpen" : "createdDraft"));
+      if (!response.ok) return void notify.error(t("error"));
+      notify.success(t(openNow ? "createdOpen" : "createdDraft"));
       onDone();
       router.refresh();
     });
@@ -153,8 +153,8 @@ export function PollActions({ id, status, question }: { id: string; status: "dra
   const setStatus = (next: "open" | "closed") =>
     startTransition(async () => {
       const response = await fetch(`/api/v1/polls/${id}`, { method: "PATCH", headers: { "content-type": "application/json" }, body: JSON.stringify({ status: next }) });
-      if (!response.ok) return void toast.error(t("error"));
-      toast.success(t(next === "open" ? "opened" : "closed"));
+      if (!response.ok) return void notify.error(t("error"));
+      notify.success(t(next === "open" ? "opened" : "closed"));
       router.refresh();
     });
   return (
@@ -178,8 +178,8 @@ export function PollActions({ id, status, question }: { id: string; status: "dra
           if ((await ask({ title: t("deleteTitle"), body: t("deleteBody", { question }), confirmLabel: t("delete"), tone: "danger" })) === null) return;
           startTransition(async () => {
             const response = await fetch(`/api/v1/polls/${id}`, { method: "DELETE" });
-            if (!response.ok) return void toast.error(t("error"));
-            toast.success(t("deleted"));
+            if (!response.ok) return void notify.error(t("error"));
+            notify.success(t("deleted"));
             router.refresh();
           });
         }}

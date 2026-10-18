@@ -18,6 +18,7 @@ import type { EventAccess } from "@/lib/dues";
 import type { Role } from "@/db/schema";
 import { hasRole } from "@/lib/roles";
 import { cn } from "@/lib/utils";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const line = "absolute left-0 top-1/2 -mt-[1.25px] block h-[2.5px] w-full rounded-full bg-current";
 
@@ -327,7 +328,7 @@ function AccountBlock({ motionIndex }: { motionIndex: number }) {
   const handleSignOut = useSignOut();
   const motion = enter(motionIndex);
 
-  if (isPending) return <span aria-hidden className="skeleton block h-[124px] rounded-[12px]" />;
+  if (isPending) return <Skeleton className="h-[124px] rounded-[12px]" />;
 
   if (!data) {
     // Visitors: join (the call to action, in PSG blue with the shirt's bands) above sign in. On either page, only the other.

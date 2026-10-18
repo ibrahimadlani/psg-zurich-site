@@ -2,7 +2,6 @@ import { ArrowRight, ArrowUpRight, Inbox, Mail, MapPin, MessagesSquare } from "l
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { CommitteeList } from "@/components/contact/committee-list";
 import { ContactComposer } from "@/components/contact/contact-composer";
 import { ContactFaq } from "@/components/contact/contact-faq";
@@ -19,6 +18,8 @@ import { INSTAGRAM } from "@/lib/social";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
+import { ContactSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   await connection();
@@ -198,24 +199,11 @@ async function ContactContent({ searchParams }: { searchParams: Promise<Record<s
   );
 }
 
-function ContactSkeleton() {
-  return (
-    <div className="flex flex-col gap-8" aria-hidden>
-      <div className="skeleton h-20 w-2/3 rounded-[12px]" />
-      <div className="skeleton h-5 w-1/2 rounded-full" />
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {Array.from({ length: 6 }, (_, index) => (
-          <div key={index} className="skeleton h-[88px] rounded-[14px]" />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default function ContactPage({ searchParams }: PageProps<"/[locale]/contact">) {
   return (
-    <Suspense fallback={<ContactSkeleton />}>
+    <Streamed fallback={<ContactSkeleton />}>
       <ContactContent searchParams={searchParams} />
-    </Suspense>
+    </Streamed>
   );
 }

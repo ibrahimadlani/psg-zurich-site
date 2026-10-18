@@ -3,7 +3,7 @@
 import { Vote } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { PollResults } from "@/components/polls/poll-results";
 import type { PollView } from "@/lib/polls";
 import { cn } from "@/lib/utils";
@@ -26,11 +26,11 @@ function PollCard({ initial }: { initial: PollView }) {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ optionId }),
       });
-      if (!response.ok) return void toast.error(t("error"));
+      if (!response.ok) return void notify.error(t("error"));
       const { data } = (await response.json()) as { data: PollView };
       setPoll(data);
       setChanging(false);
-      toast.success(t("thanks"));
+      notify.success(t("thanks"));
     });
 
   return (

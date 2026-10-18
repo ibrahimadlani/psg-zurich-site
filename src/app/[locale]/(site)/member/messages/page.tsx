@@ -2,7 +2,6 @@ import { ArrowLeft, ChevronRight, PenLine } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { PageHeader } from "@/components/page-header";
 import { Link } from "@/i18n/navigation";
 import { formatReference, memberThreads, unreadThreadIds } from "@/lib/contact";
@@ -10,6 +9,8 @@ import { getCurrentMember } from "@/lib/members";
 import { redirectToSignIn } from "@/lib/auth-redirect";
 import { getSession } from "@/lib/permissions";
 import { cn } from "@/lib/utils";
+import { MessagesSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("ContactThread");
@@ -80,9 +81,9 @@ export default async function MemberMessagesPage() {
         {tArea("title")}
       </Link>
       <PageHeader title={t("listTitle")} description={t("listDescription")} />
-      <Suspense fallback={<div className="skeleton h-40 rounded-[14px]" />}>
+      <Streamed fallback={<MessagesSkeleton />}>
         <Threads />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

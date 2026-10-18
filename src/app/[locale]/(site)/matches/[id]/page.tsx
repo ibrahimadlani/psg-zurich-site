@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { EventCard } from "@/components/events/event-card";
 import { EventPreview } from "@/components/events/event-preview";
 import { HeadToHeadBlock, MatchFacts, MatchSheet, MembersPredictions, StandingsContext, sectionTitle } from "@/components/matches/match-details";
@@ -23,6 +22,7 @@ import { getMatch, isPredictionOpen, matchTitle } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { MatchDetailSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Match ids only exist at runtime: rendered on the server at navigation time (no static shell,
 // whose header needs the pathname).
@@ -116,9 +116,9 @@ export default async function MatchPage({ params }: PageProps<"/[locale]/matches
         <ArrowLeft className="size-4" aria-hidden />
         {t("backToMatches")}
       </Link>
-      <Suspense fallback={<MatchDetailSkeleton />}>
+      <Streamed fallback={<MatchDetailSkeleton />}>
         <MatchContent params={params} />
-      </Suspense>
+      </Streamed>
     </div>
   );
 }

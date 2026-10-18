@@ -3,7 +3,7 @@
 import { Send } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { AutoTextarea } from "@/components/contact/auto-textarea";
 import { useKeyboardInset } from "@/hooks/use-keyboard-inset";
 import { useRouter } from "@/i18n/navigation";
@@ -50,8 +50,8 @@ export function ReplyComposer({ threadId, token }: { threadId?: string; token?: 
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ ...(threadId ? { threadId } : { token }), body: body.trim() }),
       });
-      if (!response.ok) return void toast.error(t("error"));
-      toast.success(t("sent"));
+      if (!response.ok) return void notify.error(t("error"));
+      notify.success(t("sent"));
       update("");
       router.refresh();
       window.setTimeout(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" }), 400);

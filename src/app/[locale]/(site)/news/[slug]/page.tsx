@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Suspense } from "react";
 import { ArticleBody } from "@/components/news/article-body";
 import { CopyLinkButton } from "@/components/news/copy-link-button";
 import { NewsCard, NewsCover } from "@/components/news/news-cards";
@@ -24,6 +23,7 @@ import {
 } from "@/lib/news";
 import { publicSiteUrl } from "@/lib/seo";
 import { ArticleSkeleton } from "@/components/skeletons";
+import { Streamed } from "@/components/ui/skeleton";
 
 // Slugs only exist at runtime: rendered on the server at navigation time (like match pages).
 export const instant = false;
@@ -173,8 +173,8 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
 
 export default function ArticlePage({ params }: PageProps<"/[locale]/news/[slug]">) {
   return (
-    <Suspense fallback={<ArticleSkeleton />}>
+    <Streamed fallback={<ArticleSkeleton />}>
       <ArticleContent params={params} />
-    </Suspense>
+    </Streamed>
   );
 }

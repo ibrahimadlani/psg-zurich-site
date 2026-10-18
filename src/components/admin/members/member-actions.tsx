@@ -3,7 +3,7 @@
 import { Ban, Check, MailWarning, Pencil, RotateCcw, Wallet, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
-import { toast } from "sonner";
+import { notify } from "@/lib/notify";
 import { MemberEditPanel, type MemberEditValues } from "@/components/admin/members/member-edit-panel";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { adminButton } from "@/components/admin/ui/styles";
@@ -39,10 +39,11 @@ export function MemberActions({ id, name, status, emailVerified, paid, canWrite,
   const run = (work: () => Promise<boolean>, success: string, undo?: () => Promise<boolean>) =>
     startTransition(async () => {
       if (!(await work())) {
-        toast.error(t("error"));
+        notify.error(t("error"));
         return;
       }
-      toast.success(success, undo ? { action: { label: t("undo"), onClick: () => void undo().then(() => router.refresh()) } } : undefined);
+      if (undo) notify.undo(success, { label: t("undo"), onUndo: () => void undo().then(() => router.refresh()) });
+      else notify.success(success);
       router.refresh();
     });
 
