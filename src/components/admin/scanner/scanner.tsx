@@ -110,12 +110,15 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
       .catch(() => {});
   }, [eventId]);
 
-  // Camera + QR reading loop.
+  // Camera + QR reading loop. It runs for as long as the camera is wanted: going from "starting"
+  // to "on" must not restart it, its clean-up would cut the stream and leave a black picture.
+  const cameraWanted = camera === "starting" || camera === "on";
   useEffect(() => {
-    if (camera !== "starting") return;
+    if (!cameraWanted) return;
     let stream: MediaStream | null = null;
     let frame = 0;
     let stopped = false;
+    const element = video.current;
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d", { willReadFrequently: true });
 
@@ -126,16 +129,24 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
         if (!stopped) setCamera("denied");
         return;
       }
-      const element = video.current;
-      if (!element || stopped) return;
+      // Stopped while the browser was asking: nothing may keep the camera on.
+      if (!element || stopped) {
+        stream.getTracks().forEach((track) => track.stop());
+        return;
+      }
       element.srcObject = stream;
       await element.play().catch(() => {});
+      if (stopped) return;
       setCamera("on");
 
       type Detector = { detect: (source: HTMLVideoElement) => Promise<{ rawValue: string }[]> };
-      const Native = (window as unknown as { BarcodeDetector?: new (options: { formats: string[] }) => Detector }).BarcodeDetector;
-      const native = Native ? new Native({ formats: ["qr_code"] }) : null;
+      type DetectorClass = { new (options: { formats: string[] }): Detector; getSupportedFormats?: () => Promise<string[]> };
+      const Native = (window as unknown as { BarcodeDetector?: DetectorClass }).BarcodeDetector;
+      // Some phones have a detector that cannot read QR codes: they use jsQR too.
+      const formats = (await Native?.getSupportedFormats?.().catch(() => [])) ?? [];
+      const native = Native && formats.includes("qr_code") ? new Native({ formats: ["qr_code"] }) : null;
       const jsQR = native ? null : (await import("jsqr")).default;
+      if (stopped) return;
 
       let last = 0;
       const tick = async (time: number) => {
@@ -174,8 +185,9 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
       stopped = true;
       cancelAnimationFrame(frame);
       stream?.getTracks().forEach((track) => track.stop());
+      if (element) element.srcObject = null;
     };
-  }, [camera]);
+  }, [cameraWanted]);
 
   // Name search (card forgotten).
   useEffect(() => {
@@ -265,7 +277,7 @@ export function Scanner({ initialEvent, initialCard }: { initialEvent: string | 
 
       {/* The viewfinder. */}
       <div className="relative aspect-square overflow-hidden rounded-[18px] border bg-black sm:aspect-video">
-        <video ref={video} playsInline muted className={cn("size-full object-cover", camera === "on" ? "opacity-100" : "opacity-0")} />
+        <video ref={video} autoPlay playsInline muted className={cn("size-full object-cover", camera === "on" ? "opacity-100" : "opacity-0")} />
         {camera === "on" ? (
           <>
             <span aria-hidden className="pointer-events-none absolute inset-[18%] rounded-[16px] border-2 border-white/80 shadow-[0_0_0_100vmax_rgb(0_0_0/0.35)]" />
