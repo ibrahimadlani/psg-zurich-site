@@ -1,4 +1,6 @@
 User-agent: *
+# Article pictures are served from here: search engines must be able to read them.
+Allow: /api/v1/media/
 Disallow: /api/
 Disallow: /fr/admin
 Disallow: /en/admin

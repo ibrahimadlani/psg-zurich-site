@@ -1,16 +1,16 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/095g8usnrcprg.js"
+4:"/_next/static/chunks/00-f9varjmeiy.js"
 5:I[339756,["$4"],"default"]
 6:I[837457,["$4"],"default"]
-b:"/_next/static/chunks/2yqygvc63t0u0.js"
-c:"/_next/static/chunks/1hh85kt268qn7.js"
-d:"/_next/static/chunks/2__g39ioof7sf.js"
+b:"/_next/static/chunks/1z1rvrbir-xnr.js"
+c:"/_next/static/chunks/0jp7--e50ibj2.js"
+d:"/_next/static/chunks/39gvywcoeulqj.js"
 e:"/_next/static/chunks/41-n4vk_ai0th.js"
-f:"/_next/static/chunks/10zmr2c54oho9.js"
-10:"/_next/static/chunks/21s7mgjvwpstx.js"
-11:"/_next/static/chunks/3satv_39gwpgi.js"
+f:"/_next/static/chunks/3l5vp5d_vhubt.js"
+10:"/_next/static/chunks/0r__n-rrgkxm_.js"
+11:"/_next/static/chunks/087i_3banq9ws.js"
 12:"/_next/static/chunks/11bulff839xw8.js"
-13:"/_next/static/chunks/08silntkximk7.js"
+13:"/_next/static/chunks/0ovnopu-7u2my.js"
 14:I[77105,["$b","$c","$d","$e","$f","$10","$11","$12","$13"],"default"]
 15:I[605500,["$b","$c","$d","$e","$f","$10","$11","$12","$13"],"Image"]
 16:I[428669,["$b","$c","$d","$e","$f","$10","$11","$12","$13"],"CartDrawer"]
@@ -38,7 +38,7 @@ a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$
 32:C
 35:X
 35:T6,locale35:C
-0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zurich"}],["$","meta","1",{"name":"description","content":"Offizieller Fanclub von Paris Saint-Germain in Zürich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L30","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@31","v":"$32","s":"$9"}},"a":"$@33","u":"$@34","b":"CqNext5mzP6-uTxLJgLMS","r":"$35"}
+0:{"t":{"t":{"s":"","h":49234,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L2c",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L2e",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2f",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bald online · PSG Zürich"}],["$","meta","1",{"name":"description","content":"Watch-Partys in Zürich, Fahrten in den Parc, Tippspiel und Mitgliederkarte: Werde Teil der Fans von Paris Saint-Germain in der Schweiz."}],["$","meta","2",{"name":"robots","content":"noindex"}],["$","meta","3",{"property":"og:title","content":"Bald online · PSG Zürich"}],["$","meta","4",{"property":"og:description","content":"Watch-Partys in Zürich, Fahrten in den Parc, Tippspiel und Mitgliederkarte: Werde Teil der Fans von Paris Saint-Germain in der Schweiz."}],["$","meta","5",{"property":"og:site_name","content":"PSG Zürich"}],["$","meta","6",{"property":"og:locale","content":"de_CH"}],["$","meta","7",{"property":"og:image","content":"https://psg-zurich.ch/brand/og-de.png"}],["$","meta","8",{"property":"og:image:type","content":"image/png"}],["$","meta","9",{"property":"og:image:width","content":"1200"}],["$","meta","10",{"property":"og:image:height","content":"630"}],["$","meta","11",{"property":"og:type","content":"website"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"Bald online · PSG Zürich"}],["$","meta","14",{"name":"twitter:description","content":"Watch-Partys in Zürich, Fahrten in den Parc, Tippspiel und Mitgliederkarte: Werde Teil der Fans von Paris Saint-Germain in der Schweiz."}],["$","meta","15",{"name":"twitter:image","content":"https://psg-zurich.ch/brand/og-de.png"}],["$","link","16",{"rel":"icon","href":"/favicon.ico?favicon.0f16oc99vdgo0.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","17",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","link","18",{"rel":"apple-touch-icon","href":"/apple-icon.png?apple-icon.3pbv_npvu8yzg.png","sizes":"180x180","type":"image/png"}],["$","$L30","19",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@31","v":"$32","s":"$9"}},"a":"$@33","u":"$@34","b":"z56PAhizyBRyk_uGmo9TN","r":"$35"}
 36:I[658068,["$b","$c","$d","$e","$f","$10","$11","$12","$13"],"SiteFooter"]
 37:I[897367,["$4"],"OutletBoundary"]
 1b:["$","rect",null,{"x":"12","y":"7","width":"6","height":"2.6","fill":"#e2e8f0"}]
@@ -50,10 +50,10 @@ a:[["children",{"s":"__PAGE__","h":49314,"d":{"r":["$","$3","c",{"children":[["$
 21:["$","a",null,{"href":"mailto:contact@psg-zurich.ch","className":"mt-3 border-b pb-[3px] font-wide text-[15px] tracking-[0.02em] text-foreground transition-colors hover:border-brand-red","children":"contact@psg-zurich.ch"}]
 22:["$","a",null,{"href":"https://www.instagram.com/psgzurich/","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-1.5 text-[14px] text-muted-foreground transition-colors hover:text-foreground","children":[["$","svg",null,{"aria-hidden":true,"viewBox":"0 0 24 24","fill":"none","stroke":"currentColor","strokeWidth":"1.8","strokeLinecap":"round","strokeLinejoin":"round","className":"size-4 shrink-0","children":[["$","rect",null,{"x":"3","y":"3","width":"18","height":"18","rx":"5"}],["$","circle",null,{"cx":"12","cy":"12","r":"4.2"}],["$","circle",null,{"cx":"17.3","cy":"6.7","r":"0.6","fill":"currentColor"}]]}],"@psgzurich"]}]
 23:["$","$L36",null,{}]
-24:["$","script","script-0",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}]
-25:["$","script","script-1",{"src":"/_next/static/chunks/3satv_39gwpgi.js","async":true}]
+24:["$","script","script-0",{"src":"/_next/static/chunks/0r__n-rrgkxm_.js","async":true}]
+25:["$","script","script-1",{"src":"/_next/static/chunks/087i_3banq9ws.js","async":true}]
 26:["$","script","script-2",{"src":"/_next/static/chunks/11bulff839xw8.js","async":true}]
-27:["$","script","script-3",{"src":"/_next/static/chunks/08silntkximk7.js","async":true}]
+27:["$","script","script-3",{"src":"/_next/static/chunks/0ovnopu-7u2my.js","async":true}]
 28:["$","$L37",null,{"children":["$","$2f",null,{"name":"Next.MetadataOutlet","children":"$@38"}]}]
 34:false
 38:null

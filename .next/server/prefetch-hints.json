@@ -1068,6 +1068,30 @@
       }
     }
   },
+  "/[locale]/about": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "/[locale]/contact": {
     "hints": 49216,
     "slots": {
@@ -1175,22 +1199,22 @@
     }
   },
   "/[locale]/events/[id]": {
-    "hints": 64,
+    "hints": 16448,
     "slots": {
       "children": {
-        "hints": 32,
+        "hints": 16416,
         "slots": {
           "children": {
-            "hints": 64,
+            "hints": 16448,
             "slots": {
               "children": {
-                "hints": 96,
+                "hints": 16480,
                 "slots": {
                   "children": {
-                    "hints": 96,
+                    "hints": 16480,
                     "slots": {
                       "children": {
-                        "hints": 160,
+                        "hints": 16544,
                         "slots": null
                       }
                     }
@@ -1204,6 +1228,30 @@
     }
   },
   "/[locale]/events": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/guides": {
     "hints": 49216,
     "slots": {
       "children": {
@@ -1754,6 +1802,30 @@
     }
   },
   "/[locale]/shop": {
+    "hints": 49216,
+    "slots": {
+      "children": {
+        "hints": 49184,
+        "slots": {
+          "children": {
+            "hints": 49216,
+            "slots": {
+              "children": {
+                "hints": 49248,
+                "slots": {
+                  "children": {
+                    "hints": 49312,
+                    "slots": null
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/[locale]/watch-parties": {
     "hints": 49216,
     "slots": {
       "children": {

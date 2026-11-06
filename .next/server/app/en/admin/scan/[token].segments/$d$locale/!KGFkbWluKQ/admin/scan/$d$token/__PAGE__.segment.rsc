@@ -1,14 +1,14 @@
 3:"$Sreact.fragment"
-4:"/_next/static/chunks/2yqygvc63t0u0.js"
-5:"/_next/static/chunks/1hh85kt268qn7.js"
-6:"/_next/static/chunks/2__g39ioof7sf.js"
+4:"/_next/static/chunks/1z1rvrbir-xnr.js"
+5:"/_next/static/chunks/0jp7--e50ibj2.js"
+6:"/_next/static/chunks/39gvywcoeulqj.js"
 7:"/_next/static/chunks/41-n4vk_ai0th.js"
-8:"/_next/static/chunks/10zmr2c54oho9.js"
-9:"/_next/static/chunks/2mbgmo2i053wo.js"
-a:"/_next/static/chunks/21s7mgjvwpstx.js"
-b:"/_next/static/chunks/12k2rio2xrpjw.js"
+8:"/_next/static/chunks/3l5vp5d_vhubt.js"
+9:"/_next/static/chunks/25zjoojjs2l65.js"
+a:"/_next/static/chunks/0r__n-rrgkxm_.js"
+b:"/_next/static/chunks/21nhfcp6t4xqh.js"
 c:I[868132,["$4","$5","$6","$7","$8","$9","$a","$b"],"AdminShell"]
-d:"/_next/static/chunks/095g8usnrcprg.js"
+d:"/_next/static/chunks/00-f9varjmeiy.js"
 e:I[339756,["$d"],"default"]
 f:I[837457,["$d"],"default"]
 1c:I[897367,["$d"],"OutletBoundary"]
@@ -28,11 +28,11 @@ f:I[837457,["$d"],"default"]
 18:[["children",{"s":{"n":"token","t":"d","k":null,"s":[]},"h":24674,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@19","v":"$15","s":"$12"},"c":"$Q1a"}]]
 16:[["children",{"s":"scan","h":24674,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@17","v":"$15","s":"$12"},"c":"$Q18"}]]
 13:[["children",{"s":"admin","h":24674,"d":{"r":["$","$3","c",{"children":[null,["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]]}],"p":"$@14","v":"$15","s":"$12"},"c":"$Q16"}]]
-2:[["children",{"s":"(admin)","h":24642,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/2mbgmo2i053wo.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/21s7mgjvwpstx.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/12k2rio2xrpjw.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
+2:[["children",{"s":"(admin)","h":24642,"d":{"r":["$","$3","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/25zjoojjs2l65.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0r__n-rrgkxm_.js","async":true}],["$","script","script-2",{"src":"/_next/static/chunks/21nhfcp6t4xqh.js","async":true}]],["$","$Lc",null,{"children":["$","$Le",null,{"parallelRouterKey":"children","template":["$","$Lf",null,{}]}]}]]}],"p":"$@10","v":"$11","s":"$12"},"c":"$Q13"}]]
 1:[["children",{"s":{"n":"locale","t":"d","k":null,"s":["api"]},"h":24626,"c":"$Q2"}]]
 27:X
 2a:X
-2a:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"PSG Zurich"}],["$","meta","1",{"name":"description","content":"Official Paris Saint-Germain supporters club in Zurich."}],["$","link","2",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","$L25","3",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$12"}},"a":"$@28","u":"$@29","b":"CqNext5mzP6-uTxLJgLMS","r":"$2a"}
+2a:T6,locale0:{"t":{"t":{"s":"","h":24658,"c":"$Q1"},"h":{"r":["$","$3","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"PSG Zurich"}],["$","meta","1",{"name":"description","content":"Watch parties in Zurich, trips to the Parc, match predictions and a membership card: join the Paris Saint-Germain supporters in Switzerland."}],["$","meta","2",{"name":"googlebot","content":"max-video-preview:-1, max-image-preview:large, max-snippet:-1"}],["$","meta","3",{"property":"og:title","content":"PSG Zurich"}],["$","meta","4",{"property":"og:description","content":"Watch parties in Zurich, trips to the Parc, match predictions and a membership card: join the Paris Saint-Germain supporters in Switzerland."}],["$","meta","5",{"property":"og:site_name","content":"PSG Zurich"}],["$","meta","6",{"property":"og:locale","content":"en_CH"}],["$","meta","7",{"property":"og:image","content":"https://psg-zurich.ch/brand/og-en.png"}],["$","meta","8",{"property":"og:image:type","content":"image/png"}],["$","meta","9",{"property":"og:image:width","content":"1200"}],["$","meta","10",{"property":"og:image:height","content":"630"}],["$","meta","11",{"property":"og:type","content":"website"}],["$","meta","12",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","13",{"name":"twitter:title","content":"PSG Zurich"}],["$","meta","14",{"name":"twitter:description","content":"Watch parties in Zurich, trips to the Parc, match predictions and a membership card: join the Paris Saint-Germain supporters in Switzerland."}],["$","meta","15",{"name":"twitter:image","content":"https://psg-zurich.ch/brand/og-en.png"}],["$","link","16",{"rel":"icon","href":"/favicon.ico?favicon.0f16oc99vdgo0.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","17",{"rel":"icon","href":"/icon.svg?icon.21xjy7zsz1sx_.svg","sizes":"any","type":"image/svg+xml"}],["$","link","18",{"rel":"apple-touch-icon","href":"/apple-icon.png?apple-icon.3pbv_npvu8yzg.png","sizes":"180x180","type":"image/png"}],["$","$L25","19",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@26","v":"$27","s":"$12"}},"a":"$@28","u":"$@29","b":"z56PAhizyBRyk_uGmo9TN","r":"$2a"}
 1e:null
 12:C
 27:C
@@ -40,7 +40,7 @@ f:I[837457,["$d"],"default"]
 20:C
 11:C
 29:true
-28:3054
+28:4684
 19:"$undefined"
 17:"$undefined"
 14:"$undefined"

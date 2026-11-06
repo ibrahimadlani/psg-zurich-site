@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 import mysql from "mysql2/promise";
 
 const LOCALES = ["fr", "de", "en"];
-const CATEGORIES = ["club", "trips", "events"];
+const CATEGORIES = ["club", "trips", "events", "guides"];
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 // Same limits as blockSchema (src/lib/article-blocks.ts); media, match and event blocks need ids
 // from the target database, so they are not accepted here.
@@ -37,6 +37,8 @@ function check(t) {
   if (!str(t.title, 255) || !t.title.trim()) errors.push("title missing or longer than 255");
   if (t.excerpt !== undefined && !str(t.excerpt, 500)) errors.push("excerpt longer than 500");
   if (t.byline !== undefined && !str(t.byline, 80)) errors.push("byline longer than 80");
+  if (t.seoTitle !== undefined && !str(t.seoTitle, 70)) errors.push("seoTitle longer than 70");
+  if (t.seoDescription !== undefined && !str(t.seoDescription, 170)) errors.push("seoDescription longer than 170");
   if (!Array.isArray(t.blocks) || t.blocks.length === 0 || t.blocks.length > 200) errors.push("blocks: 1 to 200 expected");
   else
     t.blocks.forEach((block, index) => {
@@ -89,9 +91,9 @@ export async function importArticles({ databaseUrl = process.env.DATABASE_URL, f
         }
         const id = locale === "fr" ? group : randomUUID();
         await connection.query(
-          `INSERT INTO posts (id, slug, locale, title, excerpt, content, category, translation_group, byline, status)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'draft')`,
-          [id, t.slug, locale, t.title, t.excerpt ?? null, JSON.stringify(t.blocks), article.category, group, t.byline ?? null],
+          `INSERT INTO posts (id, slug, locale, title, excerpt, content, category, translation_group, byline, seo_title, seo_description, status)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'draft')`,
+          [id, t.slug, locale, t.title, t.excerpt ?? null, JSON.stringify(t.blocks), article.category, group, t.byline ?? null, t.seoTitle ?? null, t.seoDescription ?? null],
         );
         console.log(`[import] ${name} (${locale}): draft "${t.title}"`);
         created++;

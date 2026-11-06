@@ -1,8 +1,8 @@
 {
-  "category": "club",
+  "category": "guides",
   "translations": {
     "fr": {
-      "slug": "regarder-psg-suisse-tv-streaming-2026-2027",
+      "slug": "regarder-psg-suisse-tv-streaming",
       "byline": "Le comité",
       "title": "Regarder le PSG en Suisse en 2026-2027 : chaînes, prix, matchs gratuits",
       "excerpt": "Ligue 1 sur DAZN, Ligue des champions sur blue Sport et parfois en clair sur SRF et RTS : qui diffuse le PSG en Suisse cette saison, et combien ça coûte.",
@@ -18,7 +18,7 @@
         ] },
         { "type": "callout", "tone": "important", "text": "La formule Super Sports ne garantit pas de voir tous les matchs du PSG. Pour ne rien manquer de la saison en Ligue 1, il faut l'offre Unlimited." },
         { "type": "heading", "text": "Ligue des champions : blue Sport, et quelques soirées en clair" },
-        { "type": "paragraph", "text": "**blue Sport**, la plateforme de Swisscom, diffuse **tous les matchs** de la Ligue des champions en Suisse. Elle a prolongé ses droits jusqu'à la saison 2026-2027, qui est donc la dernière du contrat. Selon les derniers tarifs publiés, l'abonnement coûte 49,90 CHF par mois sans engagement, ou 34,90 CHF par mois avec un engagement d'un an. Pour la rentrée, blue a mis en avant une offre à 19,90 CHF par mois pendant six mois : vérifiez qu'elle est encore valable avant de souscrire." },
+        { "type": "paragraph", "text": "**blue Sport**, la plateforme de Swisscom, diffuse **tous les matchs** de la Ligue des champions en Suisse. Ses droits courent jusqu'à la saison 2026-2027 et ont été renouvelés en avril 2026 pour les saisons 2027-2028 à 2030-2031. Selon les derniers tarifs publiés, l'abonnement coûte 49,90 CHF par mois sans engagement, ou 34,90 CHF par mois avec un engagement d'un an. Pour la rentrée, blue a mis en avant une offre à 19,90 CHF par mois pendant six mois : vérifiez qu'elle est encore valable avant de souscrire." },
         { "type": "paragraph", "text": "La **SSR** (SRF, RTS et RSI) a racheté à blue Sport une sous-licence pour **17 matchs en direct par saison**, finale comprise : en principe un match par journée, le plus souvent le mercredi. Le choix revient aux chaînes, qui privilégient les clubs suisses et les plus grandes affiches. Un PSG – Barcelone ou un déplacement à Manchester City sont de bons candidats, mais rien n'est garanti. Consultez le programme de SRF, de RTS ou de Play Suisse la veille du match." },
         { "type": "heading", "text": "Les matchs européens du PSG à ne pas manquer" },
         { "type": "paragraph", "text": "Double tenant du titre, Paris a ouvert sa phase de ligue par un large succès contre le Slovan Bratislava (6-1, le 9 septembre). Les sept rencontres suivantes :" },
@@ -38,11 +38,11 @@
         { "type": "paragraph", "text": "Les droits télévisés sont vendus pays par pays : les offres prévues pour la France (Ligue 1+, Canal+, beIN Sports) ne couvrent pas la Suisse, où seuls DAZN et blue Sport sont titulaires des droits. Quant aux sites de streaming illégaux, ils exposent à des logiciels malveillants et à une image souvent médiocre, et ils privent le football des recettes qui le financent." },
         { "type": "heading", "text": "Le meilleur écran reste celui qu'on partage" },
         { "type": "paragraph", "text": "Pour les grandes soirées, le PSG Zurich Supporters Club organise des watch parties réservées à ses membres : un écran, l'ambiance du Parc et des supporters qui chantent en français, en allemand ou en anglais. Les prochaines dates sont dans l'[agenda des événements](/fr/events). [Rejoindre le club](/fr/join) prend quelques minutes." },
-        { "type": "callout", "tone": "info", "text": "Tarifs et droits vérifiés au 13 octobre 2026. Les prix des plateformes changent souvent, et les droits de la Ligue 1 comme de la Ligue des champions en Suisse seront remis en jeu à partir de 2027. Vérifiez les offres sur [dazn.com](https://www.dazn.com) et [blue.ch](https://www.blue.ch) avant de vous abonner." }
+        { "type": "callout", "tone": "info", "text": "Tarifs et droits vérifiés au 13 octobre 2026. Les prix des plateformes changent souvent. La Ligue des champions reste chez blue Sport jusqu'en 2031, et le contrat de DAZN pour la Ligue 1 court jusqu'en 2027. Vérifiez les offres sur [dazn.com](https://www.dazn.com) et [blue.ch](https://www.blue.ch) avant de vous abonner." }
       ]
     },
     "de": {
-      "slug": "psg-schauen-schweiz-tv-streaming-2026-27",
+      "slug": "psg-schauen-schweiz-tv-streaming",
       "byline": "Der Vorstand",
       "title": "PSG schauen in der Schweiz 2026/27: Sender, Preise, Gratis-Spiele",
       "excerpt": "Ligue 1 bei DAZN, Champions League bei blue Sport und teils gratis auf SRF: Wo PSG-Spiele in der Schweiz diese Saison laufen und was die Abos kosten.",
@@ -58,7 +58,7 @@
         ] },
         { "type": "callout", "tone": "important", "text": "Mit Super Sports sehen Sie nicht garantiert alle PSG-Spiele. Wer in der Ligue 1 nichts verpassen will, braucht Unlimited." },
         { "type": "heading", "text": "Champions League: blue Sport, dazu einige Spiele im Free-TV" },
-        { "type": "paragraph", "text": "**blue Sport**, die Streaming-Plattform von Swisscom, zeigt **alle Spiele** der Champions League in der Schweiz. Der Rechtevertrag läuft bis und mit Saison 2026/27, es ist also die letzte Saison des Vertrags. Laut den zuletzt veröffentlichten Preisen kostet das Abo 49,90 CHF pro Monat monatlich kündbar oder 34,90 CHF pro Monat im Jahresabo. Zum Saisonstart warb blue mit 19,90 CHF pro Monat für die ersten sechs Monate. Prüfen Sie vor dem Abschluss, ob das Angebot noch gilt." },
+        { "type": "paragraph", "text": "**blue Sport**, die Streaming-Plattform von Swisscom, zeigt **alle Spiele** der Champions League in der Schweiz. Der Vertrag läuft bis und mit Saison 2026/27 und wurde im April 2026 für die Saisons 2027/28 bis 2030/31 erneuert. Laut den zuletzt veröffentlichten Preisen kostet das Abo 49,90 CHF pro Monat monatlich kündbar oder 34,90 CHF pro Monat im Jahresabo. Zum Saisonstart warb blue mit 19,90 CHF pro Monat für die ersten sechs Monate. Prüfen Sie vor dem Abschluss, ob das Angebot noch gilt." },
         { "type": "paragraph", "text": "Die **SRG** (SRF, RTS und RSI) hat von blue Sport eine Sublizenz für **17 Live-Spiele pro Saison** inklusive Final übernommen, in der Regel ein Spiel pro Runde, meist am Mittwoch. Die Auswahl treffen die Sender, die Schweizer Klubs und die grössten Affichen bevorzugen. PSG gegen Barcelona oder das Gastspiel bei Manchester City sind gute Kandidaten, garantiert ist aber nichts. Werfen Sie am Vortag einen Blick ins Programm von SRF zwei oder auf Play Suisse." },
         { "type": "heading", "text": "Die Champions-League-Termine von PSG" },
         { "type": "paragraph", "text": "Der zweifache Titelverteidiger ist mit einem 6:1 gegen Slovan Bratislava (9. September) in die Ligaphase gestartet. Die nächsten sieben Spiele:" },
@@ -78,11 +78,11 @@
         { "type": "paragraph", "text": "TV-Rechte werden Land für Land verkauft: Angebote für Frankreich (Ligue 1+, Canal+, beIN Sports) gelten nicht für die Schweiz, wo nur DAZN und blue Sport die Rechte halten. Illegale Streaming-Seiten bringen Schadsoftware-Risiken und oft schlechte Bildqualität, und sie entziehen dem Fussball Einnahmen." },
         { "type": "heading", "text": "Am schönsten ist es gemeinsam" },
         { "type": "paragraph", "text": "Für die grossen Abende organisiert der PSG Zurich Supporters Club Watch-Partys für seine Mitglieder: Grossleinwand, Stimmung wie im Parc und Fans, die auf Französisch, Deutsch oder Englisch singen. Die nächsten Termine stehen in der [Agenda](/de/events). Die [Mitgliedschaft](/de/join) ist in wenigen Minuten beantragt." },
-        { "type": "callout", "tone": "info", "text": "Preise und Rechte: Stand 13. Oktober 2026. Die Abopreise ändern sich häufig, und die Rechte an Ligue 1 und Champions League werden in der Schweiz ab 2027 neu vergeben. Prüfen Sie die Angebote vor dem Abschluss auf [dazn.com](https://www.dazn.com) und [blue.ch](https://www.blue.ch)." }
+        { "type": "callout", "tone": "info", "text": "Preise und Rechte: Stand 13. Oktober 2026. Die Abopreise ändern sich häufig. Die Champions League bleibt bis 2031 bei blue Sport, der Ligue-1-Vertrag von DAZN läuft bis 2027. Prüfen Sie die Angebote vor dem Abschluss auf [dazn.com](https://www.dazn.com) und [blue.ch](https://www.blue.ch)." }
       ]
     },
     "en": {
-      "slug": "watch-psg-in-switzerland-tv-streaming-2026-27",
+      "slug": "watch-psg-in-switzerland-tv-streaming",
       "byline": "The committee",
       "title": "How to watch PSG in Switzerland in 2026-27: channels, prices, free games",
       "excerpt": "Ligue 1 on DAZN, the Champions League on blue Sport and some games free on SRF and RTS: who shows PSG in Switzerland this season, and what it costs.",
@@ -98,7 +98,7 @@
         ] },
         { "type": "callout", "tone": "important", "text": "Super Sports does not guarantee every PSG match. To see the whole Ligue 1 season, you need Unlimited." },
         { "type": "heading", "text": "Champions League: blue Sport, plus a few free-to-air nights" },
-        { "type": "paragraph", "text": "**blue Sport**, Swisscom's streaming platform, shows **every Champions League match** in Switzerland. Its rights run up to and including 2026-27, so this is the last season of the deal. At the most recently published prices, it costs CHF 49.90 a month with no commitment, or CHF 34.90 a month on an annual plan. For the start of the season, blue promoted an offer of CHF 19.90 a month for six months, so check it is still running before signing up." },
+        { "type": "paragraph", "text": "**blue Sport**, Swisscom's streaming platform, shows **every Champions League match** in Switzerland. Its rights run up to and including 2026-27 and were renewed in April 2026 for the seasons 2027-28 to 2030-31. At the most recently published prices, it costs CHF 49.90 a month with no commitment, or CHF 34.90 a month on an annual plan. For the start of the season, blue promoted an offer of CHF 19.90 a month for six months, so check it is still running before signing up." },
         { "type": "paragraph", "text": "The **SRG** (SRF, RTS and RSI) bought a sublicence from blue Sport for **17 live matches per season**, including the final: as a rule, one game per round, usually on a Wednesday. The broadcasters choose, and they favour Swiss clubs and the biggest fixtures. PSG v Barcelona or the trip to Manchester City are good candidates, but nothing is guaranteed. Check the SRF, RTS or Play Suisse schedule the day before." },
         { "type": "heading", "text": "PSG's European dates" },
         { "type": "paragraph", "text": "The two-time defending champions opened the league phase with a 6-1 win over Slovan Bratislava on 9 September. The next seven games:" },
@@ -118,7 +118,7 @@
         { "type": "paragraph", "text": "TV rights are sold country by country: services built for France (Ligue 1+, Canal+, beIN Sports) do not cover Switzerland, where only DAZN and blue Sport hold the rights. Illegal streaming sites come with malware risks and poor picture quality, and they take money out of the game." },
         { "type": "heading", "text": "The best screen is a shared one" },
         { "type": "paragraph", "text": "For the big nights, PSG Zurich Supporters Club holds members-only watch parties: a big screen, a taste of the Parc's atmosphere and fans singing in French, German and English. Upcoming dates are in the [events calendar](/en/events), and [joining the club](/en/join) takes a few minutes." },
-        { "type": "callout", "tone": "info", "text": "Prices and rights checked on 13 October 2026. Platform prices change often, and the Swiss rights to both Ligue 1 and the Champions League go back on the market from 2027. Check the offers on [dazn.com](https://www.dazn.com) and [blue.ch](https://www.blue.ch) before subscribing." }
+        { "type": "callout", "tone": "info", "text": "Prices and rights checked on 13 October 2026. Platform prices change often. The Champions League stays with blue Sport until 2031, and DAZN's Ligue 1 deal runs until 2027. Check the offers on [dazn.com](https://www.dazn.com) and [blue.ch](https://www.blue.ch) before subscribing." }
       ]
     }
   }
