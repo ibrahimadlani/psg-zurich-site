@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { EventWhen } from "@/components/events/event-when";
 import { Link } from "@/i18n/navigation";
 import type { EventView } from "@/lib/events";
+import { matchPath } from "@/lib/match-seo";
 
 /** A club event: type, schedule, place, places left, sign-up. */
 export function EventCard({
@@ -43,7 +44,7 @@ export function EventCard({
         ) : null}
         {event.description ? <p className="text-sm whitespace-pre-line">{event.description}</p> : null}
         {showMatch && event.match ? (
-          <Link href={`/matches/${event.match.id}`} className="inline-block text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground">
+          <Link href={matchPath(event.match)} className="inline-block text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground">
             {t("linkedMatch", { opponent: event.match.opponent })}
           </Link>
         ) : null}

@@ -4,6 +4,7 @@ import { isDuesPaid } from "@/lib/dues";
 import { getCurrentMember } from "@/lib/members";
 import { ESTIMATED_DURATION_MS, getEventsForMatches, getMatch, matchTitle } from "@/lib/matches";
 import { publicOrigin } from "@/lib/public-origin";
+import { matchPath } from "@/lib/match-seo";
 
 /** One match and its club events, as a .ics file ("Add to my calendar"). */
 export async function GET(request: Request, { params }: RouteContext<"/api/calendar/match/[id]">) {
@@ -25,7 +26,7 @@ export async function GET(request: Request, { params }: RouteContext<"/api/calen
         end: new Date(match.kickoffAt.getTime() + ESTIMATED_DURATION_MS),
         summary: `${matchTitle(match)} · ${match.competition}`,
         location: [match.stadium, match.city].filter(Boolean).join(", "),
-        url: `${origin}/fr/matches/${match.id}`,
+        url: `${origin}/fr${matchPath(match)}`,
       },
       ...clubEvents.map((event) => ({
         uid: `event-${event.id}@psg-zurich.ch`,

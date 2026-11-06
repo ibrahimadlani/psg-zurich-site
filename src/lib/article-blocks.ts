@@ -82,6 +82,16 @@ export function emptyBlock(type: BlockType): Block {
   }
 }
 
+/** Anchor of a heading, for the table of contents ("Où regarder ?" → "ou-regarder"). */
+export const headingId = (text: string) =>
+  text
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 80);
+
 /** Plain words of the body (markup removed), for the reading time. */
 export function blocksText(blocks: Block[]) {
   return blocks

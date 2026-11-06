@@ -20,11 +20,12 @@ import { getSession } from "@/lib/permissions";
 import { can } from "@/lib/roles";
 import { ContactSkeleton } from "@/components/skeletons";
 import { Streamed } from "@/components/ui/streamed";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   await connection();
   const [t, session] = await Promise.all([getTranslations("Contact"), getSession()]);
-  return { title: session ? t("supportTitle") : t("title"), description: t("intro") };
+  return pageMetadata({ path: "/contact", title: session ? t("supportTitle") : t("title"), description: t("intro") });
 }
 
 /** Topics on offer: visitors mostly join or propose; members ask about their membership. */

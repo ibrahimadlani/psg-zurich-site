@@ -14,6 +14,7 @@ import {
 import { formatReference, visibleTopics } from "@/lib/contact";
 import { isDuesPaid } from "@/lib/dues";
 import { getNewsList } from "@/lib/news";
+import { matchPath } from "@/lib/match-seo";
 
 /*
  * The bell's feed is computed from what already exists (articles, events, matches,
@@ -97,6 +98,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
           .select({
             id: matches.id,
             opponent: matches.opponent,
+            venue: matches.venue,
             kickoffAt: matches.kickoffAt,
             predicted: predictions.id,
           })
@@ -122,6 +124,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
           .select({
             id: matches.id,
             opponent: matches.opponent,
+            venue: matches.venue,
             kickoffAt: matches.kickoffAt,
             points: predictions.points,
           })
@@ -181,7 +184,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
             since.getTime(),
           ),
         ).toISOString(),
-        href: `/matches/${match.id}`,
+        href: matchPath(match),
         opponent: match.opponent,
       })),
     ...scored.map((match) => ({
@@ -190,7 +193,7 @@ export async function getNotifications(userId: string, locale: Locale, { history
       at: new Date(
         Math.min(match.kickoffAt.getTime() + MATCH_LENGTH, now.getTime()),
       ).toISOString(),
-      href: `/matches/${match.id}`,
+      href: matchPath(match),
       opponent: match.opponent,
       points: match.points ?? 0,
     })),

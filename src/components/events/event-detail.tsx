@@ -9,6 +9,7 @@ import { EventTravelTime } from "@/components/events/event-travel-time";
 import { EventWhen } from "@/components/events/event-when";
 import { HumanDate } from "@/components/human-date";
 import { EventPlaceMap } from "@/components/events/event-place-map";
+import { PublicEvent } from "@/components/events/public-event";
 import { dayIn } from "@/lib/human-date";
 import { MatchMiniCard } from "@/components/matches/match-mini-card";
 import { BackToMatch, MatchPredictionSwitch, PredictionToggle } from "@/components/matches/match-prediction-switch";
@@ -17,7 +18,7 @@ import { db } from "@/db";
 import { events, predictions } from "@/db/schema";
 import { redirect } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
-import { eventParticipants, eventPhase, getEventsWithAttendance } from "@/lib/events";
+import { eventParticipants, eventPhase, getEventsWithAttendance, publicEvent } from "@/lib/events";
 import { mapsEnabled, mapsLink } from "@/lib/google-maps";
 import { getMatch } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
@@ -49,7 +50,10 @@ export async function EventDetail({ id }: { id: string }) {
 
   // Events are for members whose fee is paid: anyone else lands on the showcase. A visitor
   // comes back to this event once signed in.
+  // An event the committee made public shows its title, date and city instead.
   if (!isDuesPaid(member)) {
+    const open = await publicEvent(id);
+    if (open) return <PublicEvent event={open} />;
     redirect({ href: session ? "/events" : withReturn("/events", `/events/${id}`), locale: await getLocale() });
   }
   const [event] = await getEventsWithAttendance(eq(events.id, id), member?.id ?? null);

@@ -3,12 +3,19 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "@/i18n/routing";
 import { getAuth } from "@/lib/auth";
+import { getMatch } from "@/lib/matches";
+import { matchPath } from "@/lib/match-seo";
+import { movedSlug } from "@/lib/post-slugs";
 import { getHomeSettings } from "@/lib/site-settings";
 import { englishPath } from "@/lib/legacy-paths";
 import { RETURN_PARAM, RETURN_PATH_HEADER, safeReturnPath } from "@/lib/return-to";
 import { publicUrl } from "@/lib/public-origin";
 
 const intl = createMiddleware(routing);
+
+const NEWS_ARTICLE = new RegExp(`^/(${routing.locales.join("|")})/news/([^/]+)/?$`);
+// A match by its bare id (old links, old e-mails): the page now has a readable address.
+const MATCH_BY_ID = new RegExp(`^/(${routing.locales.join("|")})/matches/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/?$`, "i");
 
 // The home page, "/fr" (or "/fr/"): the waiting page replaces it for visitors while the site is closed.
 const HOME = new RegExp(`^/(${routing.locales.join("|")})/?$`);
@@ -43,6 +50,17 @@ export default async function proxy(request: NextRequest) {
     url.pathname = `/${home[1]}/coming-soon`;
     return NextResponse.rewrite(url);
   }
+  // An article's former address: for good, to where it is now.
+  const article = NEWS_ARTICLE.exec(request.nextUrl.pathname);
+  if (article) {
+    const current = await movedSlug(article[2]!).catch(() => null);
+    if (current) return NextResponse.redirect(publicUrl(`/${article[1]}/news/${current}${request.nextUrl.search}`, request), 308);
+  }
+  const byId = MATCH_BY_ID.exec(request.nextUrl.pathname);
+  if (byId) {
+    const found = await getMatch(byId[2]!).catch(() => null);
+    if (found) return NextResponse.redirect(publicUrl(`/${byId[1]}${matchPath(found)}${request.nextUrl.search}`, request), 308);
+  }
   const match = GUEST_ONLY.exec(request.nextUrl.pathname);
   // Cookie check first: guests never hit the database here.
   if (match && getSessionCookie(request)) {
@@ -67,5 +85,5 @@ export default async function proxy(request: NextRequest) {
 export const config = {
   // Everything except API routes, Next internals and the real static files of public/ and app/.
   // Other paths (even "/xyz.txt") get a locale prefix, then the localized 404.
-  matcher: "/((?!api|_next|_vercel|brand/|\\.well-known/|robots\\.txt|sitemap\\.xml|icon\\.svg|favicon\\.ico).*)",
+  matcher: "/((?!api|_next|_vercel|brand/|\\.well-known/|robots\\.txt|sitemap\\.xml|icon\\.svg|apple-icon\\.png|favicon\\.ico).*)",
 };

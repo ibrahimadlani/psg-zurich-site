@@ -8,6 +8,7 @@ import { PredictionRules } from "@/components/matches/prediction-rules";
 import { db } from "@/db";
 import { predictions } from "@/db/schema";
 import { isPredictionOpen, type Match } from "@/lib/matches";
+import { matchPath } from "@/lib/match-seo";
 
 export type Access = "member" | "guest" | "inactive";
 
@@ -105,7 +106,7 @@ export async function PredictionCardBody({
       <LockedCard
         access={access === "guest" ? "guest" : "pending"}
         feature="predictions"
-        next={`/matches/${match.id}`}
+        next={matchPath(match)}
         preview={<PredictionPreview opponent={match.opponent} opponentLogo={match.opponentLogo} psgHome={match.venue !== "away"} />}
       />
     );

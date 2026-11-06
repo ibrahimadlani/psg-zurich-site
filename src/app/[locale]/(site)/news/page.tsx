@@ -8,10 +8,12 @@ import { getNewsList } from "@/lib/news";
 import { cn } from "@/lib/utils";
 import { NewsListSkeleton } from "@/components/skeletons";
 import { Streamed } from "@/components/ui/streamed";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("News");
-  return { title: t("title"), description: t("intro") };
+  const t = await getTranslations("Metadata.pages.news");
+  // ?categorie= lists the same articles: one canonical address.
+  return pageMetadata({ path: "/news", title: t("title"), description: t("description") });
 }
 
 const tabClass = (selected: boolean) =>

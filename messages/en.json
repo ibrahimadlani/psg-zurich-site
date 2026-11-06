@@ -12,7 +12,38 @@
   },
   "Metadata": {
     "title": "PSG Zurich",
-    "description": "Official Paris Saint-Germain supporters club in Zurich."
+    "description": "Watch parties in Zurich, trips to the Parc, match predictions and a membership card: join the Paris Saint-Germain supporters in Switzerland.",
+    "homeTitle": "PSG Zurich · Official PSG supporters club in Switzerland",
+    "pages": {
+      "news": {
+        "title": "PSG news and guides for fans in Switzerland",
+        "description": "Watching PSG in Switzerland, getting to the Parc des Princes from Zurich, away trips and club life: our articles and practical guides."
+      },
+      "matches": {
+        "title": "PSG fixtures and results in Swiss time",
+        "description": "Paris Saint-Germain's schedule: upcoming matches in Swiss time, results, live scores and the Ligue 1 and Champions League tables."
+      },
+      "events": {
+        "title": "PSG watch parties and away trips in Zurich",
+        "description": "Watch parties, away trips and get-togethers for PSG supporters in Zurich: see what the club organises and join us."
+      },
+      "join": {
+        "title": "Join the PSG supporters club in Zurich",
+        "description": "Become a member of the official PSG supporters club in Zurich: watch parties, away trips, match predictions and a membership card."
+      },
+      "guides": {
+        "title": "Guides for PSG fans in Switzerland",
+        "description": "Watching PSG on TV in Switzerland, getting to the Parc des Princes from Zurich, away trips: our practical guides, kept up to date."
+      },
+      "watchParties": {
+        "title": "PSG watch parties in Zurich",
+        "description": "PSG's big matches on a giant screen in Zurich, among supporters: how it works, the next dates and how to take part."
+      },
+      "about": {
+        "title": "The PSG supporters association in Zurich",
+        "description": "Who PSG Zurich are: the Paris Saint-Germain supporters club in Zurich, its values, its committee and how to join."
+      }
+    }
   },
   "Nav": {
     "label": "Main navigation",
@@ -65,7 +96,8 @@
         "admin": "Administrator",
         "superadmin": "Superadmin"
       }
-    }
+    },
+    "guides": "Guides"
   },
   "EventsShowcase": {
     "kinds": {
@@ -983,7 +1015,10 @@
     "statutes": "Statutes",
     "legal": "Official documents",
     "instagram": "Instagram",
-    "support": "Support the club"
+    "support": "Support the club",
+    "guides": "Practical guides",
+    "watch": "Watch parties",
+    "about": "The association"
   },
   "Emails": {
     "resetPassword": {
@@ -1675,6 +1710,25 @@
       "derby": "Paris derby",
       "classiqueLong": "Le Classique: Paris Saint-Germain – Olympique de Marseille",
       "derbyLong": "The capital's derby: Paris Saint-Germain – Paris FC"
+    },
+    "seo": {
+      "upcoming": "{match}, {date}: kick-off time in Switzerland",
+      "upcomingTv": "{match}, {date}: kick-off time and TV in Switzerland",
+      "finished": "{match} {score}, {date}: result and match events",
+      "other": "{match}, {competition}",
+      "descUpcoming": "{match} in the {competition}, {date} at {time} (Swiss time). How to see the match in Switzerland and watch it together with PSG Zurich.",
+      "descUpcomingTv": "{match} in the {competition}, {date} at {time} (Swiss time), on {broadcaster}. How to see the match in Switzerland and watch it together with PSG Zurich.",
+      "descFinished": "{match} {score} in the {competition}, {date}. The result, the goals and the match events, with PSG Zurich, the PSG supporters club in Switzerland.",
+      "descOther": "{match} in the {competition}. The match and what's on at PSG Zurich, the PSG supporters club in Switzerland."
+    },
+    "watch": {
+      "title": "Where to watch in Switzerland",
+      "kickoff": "Kick-off, Swiss time",
+      "channel": "Broadcaster in Switzerland",
+      "channelUnknown": "Not confirmed yet",
+      "party": "Watch party in {city}",
+      "parties": "Watch together: our watch parties",
+      "guide": "The guide to watching PSG in Switzerland"
     }
   },
   "Predictions": {
@@ -1893,7 +1947,14 @@
     "addSearch": "Name or member no.",
     "addNone": "No member found.",
     "searchAttendees": "Search signed up",
-    "writeAttendees": "Email those signed up"
+    "writeAttendees": "Email those signed up",
+    "publicFields": {
+      "city": "City",
+      "cityHint": "Shown publicly, unlike the place.",
+      "isPublic": "Visible to everyone",
+      "isPublicHint": "The title, date and city appear on the site and in Google. The place, description and participants stay for members.",
+      "title": "Public side"
+    }
   },
   "AdminMatches": {
     "created": "Match added.",
@@ -1958,7 +2019,18 @@
     "rewardSaved": "Prize marked as handed over",
     "rewardUndone": "Hand-over undone",
     "rewardError": "The prize could not be saved.",
-    "points": "{count, plural, one {# pt} other {# pts}}"
+    "points": "{count, plural, one {# pt} other {# pts}}",
+    "public": {
+      "action": "Public page",
+      "title": "The match's public page",
+      "hint": "What the committee adds to the match page, visible to everyone. Nothing is required.",
+      "broadcaster": "Broadcaster in Switzerland for this match",
+      "broadcasterHint": "Leave empty to use the competition's broadcaster (Settings). Only name a channel you have checked.",
+      "intro": "Introduction ({locale})",
+      "introHint": "A few sentences by the committee for the big matches: what's at stake, a memory, what the club is planning.",
+      "saved": "Match page saved.",
+      "error": "Could not save."
+    }
   },
   "Unsubscribe": {
     "title": "Unsubscribe",
@@ -2112,7 +2184,8 @@
     "categories": {
       "club": "Club life",
       "trips": "Away trips",
-      "events": "Events"
+      "events": "Events",
+      "guides": "Guides"
     },
     "latest": "Latest",
     "read": "Read the article",
@@ -2123,7 +2196,16 @@
     "copied": "Link copied",
     "more": "Read next",
     "seeAll": "See all",
-    "defaultByline": "The committee"
+    "defaultByline": "The committee",
+    "breadcrumb": "Breadcrumb",
+    "toc": "Contents",
+    "updated": "updated on {date}",
+    "cta": {
+      "title": "Live PSG in Zurich",
+      "body": "Watch parties, away trips, match predictions: join the Paris Saint-Germain supporters in Switzerland.",
+      "join": "Join",
+      "watch": "Watch parties"
+    }
   },
   "Cms": {
     "deleted": "Article deleted.",
@@ -2282,7 +2364,13 @@
     "search": "Search an article",
     "noMatch": "No article matches.",
     "settings": "Article settings",
-    "saveShort": "Save"
+    "saveShort": "Save",
+    "seo": {
+      "title": "Search (Google)",
+      "titleField": "Title for Google",
+      "descriptionField": "Description for Google",
+      "preview": "Preview in search results"
+    }
   },
   "Mailing": {
     "title": "Mailing",
@@ -3293,12 +3381,12 @@
         "watch": {
           "title": "Watch parties",
           "body": "The big matches on a giant screen, in a Zurich bar, among supporters. The chants, the scarves, the Parc atmosphere.",
-          "cta": "See the events"
+          "cta": "See the watch parties"
         },
         "travel": {
           "title": "Trips",
           "body": "The Parc des Princes and away matches, organised together: tickets, travel and shared memories.",
-          "cta": "See the events"
+          "cta": "See the guides"
         },
         "play": {
           "title": "Predictions",
@@ -3371,7 +3459,8 @@
       "content": "Content",
       "events": "Events",
       "sources": "Sources",
-      "api": "Technical"
+      "api": "Technical",
+      "search": "Search"
     },
     "viewsLabel": "Tabs",
     "includeStaff": "Include the committee",
@@ -3453,6 +3542,98 @@
     "empty": "No data for this period yet.",
     "privacy": "Visitors are counted without cookies: an anonymous fingerprint that changes every day (IP never stored). Robots and browsers asking not to be tracked (DNT, GPC) are not counted.",
     "visitorsCount": "{count, plural, one {# visitor} other {# visitors}}",
-    "homePage": "Home page"
+    "homePage": "Home page",
+    "search": {
+      "visits": "Visits",
+      "visitors": "Unique visitors",
+      "share": "Share of visits",
+      "join": "Went on to the join page",
+      "chart": "Arrivals from search engines",
+      "pages": "Landing pages",
+      "engines": "Engines",
+      "valueVisits": "visits",
+      "empty": "No visit from a search engine in this period yet.",
+      "queries": "Search engines never pass on the words typed: queries and positions are in",
+      "googleApp": "Google app (Android)"
+    }
+  },
+  "Guides": {
+    "title": "Guides",
+    "intro": "Everything you need to follow PSG from Switzerland: on TV, at the Parc des Princes and on the road.",
+    "practical": "Practical guides",
+    "trips": "Away trips from Zurich",
+    "empty": "Guides are coming soon."
+  },
+  "WatchParties": {
+    "title": "Watch parties in Zurich",
+    "lead": "PSG's big matches on a giant screen, in a Zurich bar, among supporters and in colours.",
+    "howTitle": "How it works",
+    "steps": [
+      {
+        "title": "Join the club",
+        "body": "Watch parties are for members whose fee is paid. You join online."
+      },
+      {
+        "title": "Sign up online",
+        "body": "The dates are in the agenda of your member area, with the place and the seats left."
+      },
+      {
+        "title": "Show your card",
+        "body": "Your digital membership card is scanned at the door. All that's left is to sing."
+      }
+    ],
+    "nextTitle": "Next dates",
+    "nextEmpty": "No date announced yet. The next watch parties will appear here.",
+    "nextHint": "The exact place is shared with members.",
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "Do I have to be a member?",
+        "a": "Yes: watch parties and the club's other events are for members whose fee is paid."
+      },
+      {
+        "q": "Where do they take place?",
+        "a": "In a bar in Zurich. The exact place of each date is shown to members in the agenda."
+      },
+      {
+        "q": "How do I sign up?",
+        "a": "Members sign up online, then show their membership card at the door."
+      }
+    ],
+    "join": "Join the club",
+    "agenda": "See the agenda",
+    "guide": "Other ways to watch PSG in Switzerland"
+  },
+  "About": {
+    "title": "The association",
+    "documents": "Official documents",
+    "statutes": "Read the statutes",
+    "contact": "Write to us",
+    "join": "Join"
+  },
+  "PublicEvent": {
+    "reserved": "For members whose fee is paid",
+    "teaser": {
+      "watch_party": "A big PSG match on a giant screen, among supporters. The place and the sign-up are in the member area.",
+      "away_trip": "An away trip organised by the club, among supporters. The details and the sign-up are in the member area.",
+      "members_match": "A match between club members. The details and the sign-up are in the member area.",
+      "social": "A get-together for club members. The place and the sign-up are in the member area.",
+      "other": "A get-together organised by the club. The place and the sign-up are in the member area."
+    },
+    "join": "Join to take part",
+    "signIn": "Already a member? Sign in",
+    "all": "All watch parties",
+    "past": "This event is over.",
+    "when": "Date",
+    "where": "City"
+  },
+  "AdminBroadcasters": {
+    "title": "Broadcasters in Switzerland",
+    "description": "The channel of each competition, shown on the match pages. While a field is empty the site names no channel: only enter what you have checked.",
+    "placeholder": "Not checked yet",
+    "save": "Save",
+    "saved": "Broadcasters saved.",
+    "error": "Could not save.",
+    "empty": "No competition yet: sync the matches."
   }
 }

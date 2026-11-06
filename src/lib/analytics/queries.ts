@@ -79,19 +79,19 @@ export async function totals(range: Range) {
 export type Totals = Awaited<ReturnType<typeof totals>>;
 
 /** Views and visitors per hour, day or month of the range (empty buckets included). */
-export async function series(range: Range) {
+export async function series(range: Range, extra?: ReturnType<typeof and>) {
   const bucket = BUCKET[range.period];
   const [viewRows, uniqueRows] = await Promise.all([
     db
       .select({ key: bucketOf(pageViews.at, bucket), views: count() })
       .from(pageViews)
-      .where(viewsIn(range))
+      .where(and(viewsIn(range), extra))
       .groupBy(bucketOf(pageViews.at, bucket)),
     // Visitors per bucket: distinct per day, then added up into hours/months as the days fall.
     db
       .select({ key: bucket === "hour" ? bucketOf(pageViews.at, "hour") : dayOf(pageViews.at), visitors: countDistinct(pageViews.visitor) })
       .from(pageViews)
-      .where(viewsIn(range))
+      .where(and(viewsIn(range), extra))
       .groupBy(bucket === "hour" ? bucketOf(pageViews.at, "hour") : dayOf(pageViews.at)),
   ]);
   const views = new Map(viewRows.map((row) => [row.key, Number(row.views)]));
@@ -125,12 +125,16 @@ export async function liveVisitors(staff: boolean) {
   return Number(row?.value ?? 0);
 }
 
+/** A match in the figures: the start of its id, as its address gives it (see contentOf). */
+const short = (id: string) => id.slice(0, 8);
+const matchKey = (column: typeof matches.id | typeof pageViews.contentId) => sql<string>`left(${column}, 8)`;
+
 /** The pages seen most, with a readable name for an article, event, match or product. */
-export async function topPages(range: Range, locale: Locale, limit = 10) {
+export async function topPages(range: Range, locale: Locale, limit = 10, extra?: ReturnType<typeof and>) {
   const rows = await db
     .select({ path: pageViews.path, type: pageViews.contentType, id: pageViews.contentId, views: count(), visitors: countDistinct(pageViews.visitor) })
     .from(pageViews)
-    .where(viewsIn(range))
+    .where(and(viewsIn(range), extra))
     .groupBy(pageViews.path, pageViews.contentType, pageViews.contentId)
     .orderBy(desc(count()))
     .limit(limit);
@@ -156,8 +160,15 @@ async function titlesOf(items: { type: string; id: string }[], locale: Locale) {
       db
         .select({ id: matches.id, opponent: matches.opponent, venue: matches.venue })
         .from(matches)
-        .where(inArray(matches.id, matchIds))
-        .then((list) => list.forEach((row) => names.set(`match:${row.id}`, row.venue === "away" ? `${row.opponent} – PSG` : `PSG – ${row.opponent}`))),
+        .where(inArray(matchKey(matches.id), matchIds.map(short)))
+        .then((list) =>
+          list.forEach((row) => {
+            const name = row.venue === "away" ? `${row.opponent} – PSG` : `PSG – ${row.opponent}`;
+            // Views from before the readable addresses carry the whole id.
+            names.set(`match:${row.id}`, name);
+            names.set(`match:${short(row.id)}`, name);
+          }),
+        ),
     productIds.length &&
       db
         .select({ slug: products.slug, name: products.name })
@@ -263,17 +274,17 @@ export async function eventFigures(range: Range, limit = 15) {
 /** The matches whose page was seen most. */
 export async function topMatches(range: Range, limit = 8) {
   const rows = await db
-    .select({ id: pageViews.contentId, views: count(), visitors: countDistinct(pageViews.visitor) })
+    .select({ id: matchKey(pageViews.contentId), views: count(), visitors: countDistinct(pageViews.visitor) })
     .from(pageViews)
     .where(and(viewsIn(range), eq(pageViews.contentType, "match"), isNotNull(pageViews.contentId)))
-    .groupBy(pageViews.contentId)
+    .groupBy(matchKey(pageViews.contentId))
     .orderBy(desc(count()))
     .limit(limit);
-  const ids = rows.map((row) => row.id!).filter(Boolean);
-  const list = ids.length ? await db.select({ id: matches.id, opponent: matches.opponent, venue: matches.venue, kickoffAt: matches.kickoffAt }).from(matches).where(inArray(matches.id, ids)) : [];
-  const byId = new Map(list.map((match) => [match.id, match]));
+  const ids = rows.map((row) => row.id).filter(Boolean);
+  const list = ids.length ? await db.select({ id: matches.id, opponent: matches.opponent, venue: matches.venue, kickoffAt: matches.kickoffAt }).from(matches).where(inArray(matchKey(matches.id), ids)) : [];
+  const byId = new Map(list.map((match) => [short(match.id), match]));
   return rows.flatMap((row) => {
-    const match = byId.get(row.id!);
+    const match = byId.get(row.id);
     return match ? [{ ...match, views: Number(row.views), visitors: Number(row.visitors) }] : [];
   });
 }
@@ -307,6 +318,34 @@ export async function sources(range: Range) {
     members: Number(split?.members ?? 0),
     total: Number(split?.total ?? 0),
   };
+}
+
+/** Search engines, as referrerHostOf writes them ("google.ch", "bing.com"; the Google app on Android). */
+const SEARCH_ENGINES = "^(google\\.[a-z.]+|com\\.google\\.android\\.googlequicksearchbox|bing\\.com|duckduckgo\\.com|search\\.brave\\.com|ecosia\\.org|qwant\\.com|([a-z]+\\.)?search\\.yahoo\\.com|yandex\\.[a-z.]+)$";
+
+/** Visits that started on a search engine: how many, on which pages, and whether they go on to join. */
+export async function organicSearch(range: Range, locale: Locale) {
+  const fromSearch = and(eq(pageViews.entry, true), sql`${pageViews.referrerHost} regexp ${SEARCH_ENGINES}`);
+  const inRange = and(viewsIn(range), fromSearch);
+  const group = async (column: typeof pageViews.locale | typeof pageViews.referrerHost) =>
+    (await db.select({ key: column, views: count() }).from(pageViews).where(inRange).groupBy(column).orderBy(desc(count())).limit(10)).map((row) => ({ key: row.key as string, views: Number(row.views) }));
+  const [[row], [all], visitors, [join], engines, locales, pages, points] = await Promise.all([
+    db.select({ visits: count() }).from(pageViews).where(inRange),
+    db.select({ visits: count() }).from(pageViews).where(and(viewsIn(range), eq(pageViews.entry, true))),
+    dailyUniques(range, fromSearch),
+    // A visitor's hash only lives one day: the same hash on /join means the same day.
+    db
+      .select({ value: countDistinct(pageViews.visitor) })
+      .from(pageViews)
+      .where(and(viewsIn(range), eq(pageViews.path, "/join"), inArray(pageViews.visitor, db.select({ visitor: pageViews.visitor }).from(pageViews).where(inRange)))),
+    group(pageViews.referrerHost),
+    group(pageViews.locale),
+    topPages(range, locale, 15, fromSearch),
+    series(range, fromSearch),
+  ]);
+  const visits = Number(row?.visits ?? 0);
+  const total = Number(all?.visits ?? 0);
+  return { visits, visitors, share: total ? visits / total : 0, joinVisitors: Number(join?.value ?? 0), engines, locales, pages, points };
 }
 
 /** The API: most called routes, errors, times — and calls per bucket. */

@@ -9,7 +9,8 @@ import { WaitingPage } from "@/components/home/waiting-page";
 
 export async function generateMetadata(): Promise<Metadata> {
   const [waiting, site] = await Promise.all([getTranslations("ComingSoon"), getTranslations("Metadata")]);
-  return { title: { absolute: `${waiting("title")} · ${site("title")}` } };
+  // Not for search results: a closed site is not indexed, and this address never should be.
+  return { title: { absolute: `${waiting("title")} · ${site("title")}` }, robots: { index: false } };
 }
 
 export default function ComingSoonPage() {

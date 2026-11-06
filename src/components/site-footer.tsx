@@ -62,7 +62,10 @@ function VisitorFooter() {
     {
       title: t("club"),
       links: [
+        { href: "/about", label: t("about") },
         { href: "/news", label: tNav("news") },
+        { href: "/guides", label: t("guides") },
+        { href: "/watch-parties", label: t("watch") },
         { href: "/matches", label: tNav("matches") },
         { href: "/events", label: tNav("events") },
       ],
@@ -86,7 +89,7 @@ function VisitorFooter() {
         </div>
         {columns.map(({ title, links }) => (
           <nav key={title} aria-label={title} className="flex flex-col gap-3">
-            <h2 className={heading}>{title}</h2>
+            <p className={heading}>{title}</p>
             <ul className="flex flex-col gap-2">
               {links.map(({ href, label }) => (
                 <li key={href}>
@@ -104,7 +107,7 @@ function VisitorFooter() {
           </nav>
         ))}
         <div className="flex flex-col gap-3">
-          <h2 className={heading}>{t("contact")}</h2>
+          <p className={heading}>{t("contact")}</p>
           <a href={`mailto:${EMAIL}`} className={`${link} inline-flex items-center gap-1.5`}>
             <Mail className="size-3.5 shrink-0" aria-hidden />
             {EMAIL}

@@ -110,3 +110,39 @@ export async function eventParticipants(eventId: string) {
     .orderBy(asc(attendance.createdAt));
   return rows.map((row) => ({ ...row, name: displayName(row.firstName, row.lastName, row.nickname) }));
 }
+
+/**
+ * Upcoming events the committee made public, for anyone: only what may be shown outside the
+ * club. Never add the place, the address, the description or the participants here.
+ */
+export async function publicUpcomingEvents(limit = 8) {
+  return db
+    .select({ id: events.id, type: events.type, title: events.title, city: events.city, startsAt: events.startsAt })
+    .from(events)
+    .where(and(eq(events.isPublic, true), upcomingEvents()))
+    .orderBy(asc(events.startsAt))
+    .limit(limit);
+}
+
+/** Over: past its end, or past its start when it has no end. */
+export const eventIsOver = (event: { startsAt: Date; endsAt: Date | null }) => (event.endsAt ?? event.startsAt).getTime() < Date.now();
+
+/** The event the committee opened to everyone for a match, if any: its city, never its place. */
+export async function publicEventForMatch(matchId: string) {
+  const [event] = await db
+    .select({ id: events.id, city: events.city })
+    .from(events)
+    .where(and(eq(events.matchId, matchId), eq(events.isPublic, true), upcomingEvents()))
+    .orderBy(asc(events.startsAt))
+    .limit(1);
+  return event ?? null;
+}
+
+/** One event as anyone may see it, or null when the committee keeps it for members. */
+export async function publicEvent(id: string) {
+  const [event] = await db
+    .select({ id: events.id, type: events.type, title: events.title, city: events.city, startsAt: events.startsAt, endsAt: events.endsAt })
+    .from(events)
+    .where(and(eq(events.id, id), eq(events.isPublic, true)));
+  return event ?? null;
+}

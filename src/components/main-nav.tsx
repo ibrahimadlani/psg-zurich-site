@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 type NavItem = {
   href: string;
-  key: "home" | "news" | "matches" | "events" | "shop" | "membership" | "contact" | "memberArea";
+  key: "home" | "news" | "guides" | "matches" | "events" | "shop" | "membership" | "contact" | "memberArea";
   /** Key page (membership / member area): last, pushed to the right of the desktop bar. */
   featured?: boolean;
   /** Page whose answer depends on the session (redirects): never prefetched. */
@@ -19,6 +19,7 @@ type NavItem = {
 const home: NavItem = { href: "/", key: "home" };
 const content: NavItem[] = [
   { href: "/news", key: "news" },
+  { href: "/guides", key: "guides" },
   { href: "/matches", key: "matches" },
   { href: "/events", key: "events" },
 ];

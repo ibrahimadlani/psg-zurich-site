@@ -25,6 +25,8 @@ export async function postValues(input: PostInput, id: string, existing: Date | 
     locale: input.locale,
     title: input.title,
     excerpt: input.excerpt || null,
+    seoTitle: input.seoTitle || null,
+    seoDescription: input.seoDescription || null,
     category: input.category,
     byline: input.byline || null,
     imageUrl: input.imageUrl ?? null,

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { db } from "@/db";
 import { matches, predictions } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
+import { matchPath } from "@/lib/match-seo";
 import { TrophyChips } from "@/components/matches/leaderboard-table";
 import { getLeaderboard, trophiesOf } from "@/lib/leaderboard";
 import { matchTitle } from "@/lib/matches";
@@ -69,7 +70,7 @@ export async function MyPredictions({ memberId }: { memberId: string }) {
         <ul className="divide-y overflow-hidden rounded-[12px] border bg-card/70 text-sm">
           {history.map((row) => (
             <li key={row.matchId}>
-              <Link href={`/matches/${row.matchId}`} className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-foreground/[0.03]">
+              <Link href={matchPath({ id: row.matchId, venue: row.venue, opponent: row.opponent })} className="flex items-center gap-3 px-4 py-3 transition-colors hover:bg-foreground/[0.03]">
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-medium">{matchTitle(row, "PSG")}</span>
                   <span className="block truncate text-xs text-muted-foreground">

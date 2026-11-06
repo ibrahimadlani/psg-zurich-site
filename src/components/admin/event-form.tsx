@@ -27,6 +27,8 @@ const schema = z
     startsAt: z.string().min(1),
     endsAt: z.string(),
     capacity: z.string().regex(/^\d*$/),
+    city: z.string().trim().min(1).max(80),
+    isPublic: z.boolean(),
     notifyMembers: z.boolean(),
   })
   .refine((v) => !v.endsAt || v.endsAt >= v.startsAt, { path: ["endsAt"] })
@@ -47,6 +49,8 @@ export const emptyEvent: EventFormValues = {
   startsAt: "",
   endsAt: "",
   capacity: "",
+  city: "Zurich",
+  isPublic: false,
   notifyMembers: true,
 };
 
@@ -72,6 +76,7 @@ export function EventForm({
   onDone?: (id: string) => void;
 }) {
   const t = useTranslations("AdminEvents");
+  const tPublic = useTranslations("AdminEvents.publicFields");
   const tEvents = useTranslations("Events");
   const router = useRouter();
   const {
@@ -102,6 +107,8 @@ export function EventForm({
         startsAt: new Date(values.startsAt).toISOString(),
         endsAt: values.endsAt ? new Date(values.endsAt).toISOString() : undefined,
         capacity: values.capacity ? Number(values.capacity) : undefined,
+        city: values.city,
+        isPublic: values.isPublic,
         notifyMembers: !eventId && values.notifyMembers,
       }),
     });
@@ -225,6 +232,22 @@ export function EventForm({
             {t("notifyMembers")}
           </label>
         )}
+      </fieldset>
+
+      {/* What people outside the club may see: the title, the date and this city, never the place. */}
+      <fieldset className="space-y-4">
+        <legend className={cn(adminLabel, "mb-3")}>{tPublic("title")}</legend>
+        <div className="space-y-1.5">
+          <div className="max-w-64">{field("city", tPublic("city"), { maxLength: 80 })}</div>
+          <p className="text-xs text-muted-foreground">{tPublic("cityHint")}</p>
+        </div>
+        <label className="flex items-start gap-2.5 text-sm">
+          <input type="checkbox" className="mt-0.5 size-[18px] accent-psg-blue" {...register("isPublic")} />
+          <span>
+            {tPublic("isPublic")}
+            <span className="mt-0.5 block text-xs text-pretty text-muted-foreground">{tPublic("isPublicHint")}</span>
+          </span>
+        </label>
       </fieldset>
 
       {/* Pinned at the bottom of the panel (its padding included). */}

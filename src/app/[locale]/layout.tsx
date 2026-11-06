@@ -11,7 +11,7 @@ import { PendingToasts } from "@/components/pending-toasts";
 import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
-import { publicSiteUrl } from "@/lib/seo";
+import { ogLocale, publicSiteUrl, shareImage } from "@/lib/seo";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -19,11 +19,16 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Metadata");
+  const [t, locale] = await Promise.all([getTranslations("Metadata"), getLocale()]);
   return {
     metadataBase: new URL(publicSiteUrl()),
     title: { default: t("title"), template: `%s · ${t("title")}` },
     description: t("description"),
+    // Large previews in Search and Discover; a page that sets its own robots replaces this.
+    robots: { googleBot: { "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+    // Default for every page without its own picture.
+    openGraph: { type: "website", siteName: t("title"), locale: ogLocale(locale), images: [shareImage(locale)] },
+    twitter: { card: "summary_large_image", images: [shareImage(locale).url] },
   };
 }
 

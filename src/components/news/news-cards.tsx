@@ -13,8 +13,10 @@ export function NewsCover({ post, className, priority = false }: { post: Post; c
         // eslint-disable-next-line @next/next/no-img-element -- uploaded media, already resized
         <img
           src={post.imageUrl}
-          alt=""
+          // The article's own picture is described; on a card the title sits right next to it.
+          alt={priority ? post.title : ""}
           loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : undefined}
           className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         />
       ) : (

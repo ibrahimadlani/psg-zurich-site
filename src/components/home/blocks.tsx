@@ -33,6 +33,7 @@ import type { Post } from "@/lib/news";
 import type { NotificationItem } from "@/lib/notification-feed";
 import { seasonRates } from "@/lib/payments/dues-price";
 import { cn } from "@/lib/utils";
+import { matchPath } from "@/lib/match-seo";
 
 /*
  * The pieces the home page variants are built from. Each one has its own empty state, so a
@@ -98,7 +99,7 @@ export async function MatchStage({ basics, big = false }: { basics: Basics; big?
   return (
     <section className="space-y-3">
       <BlockTitle title={upcoming ? t("nextMatch") : t("lastResult")} href="/matches" more={t("allMatches")} />
-      <Link href={`/matches/${focus.id}`} className="block transition-opacity hover:opacity-95">
+      <Link href={matchPath(focus)} className="block transition-opacity hover:opacity-95">
         <Scoreboard match={focus} />
       </Link>
       {upcoming ? <Countdown to={focus.kickoffAt.toISOString()} className={cn("pt-1", big ? "py-3" : "")} /> : null}

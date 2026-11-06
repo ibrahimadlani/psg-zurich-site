@@ -1,8 +1,9 @@
 import "server-only";
-import { asc, eq, inArray, max } from "drizzle-orm";
+import { asc, eq, inArray, like, max } from "drizzle-orm";
 import { db } from "@/db";
 import { events, matches } from "@/db/schema";
 import { currentSeason } from "@/lib/football/sync";
+import { matchKeyOf } from "@/lib/match-seo";
 import type { createMatchSchema } from "@/lib/validators";
 import type { z } from "zod";
 
@@ -42,6 +43,16 @@ export const isPredictionOpen = (match: Pick<Match, "status" | "kickoffAt">) =>
   match.status === "scheduled" && match.kickoffAt.getTime() > Date.now();
 
 export const ESTIMATED_DURATION_MS = 2 * 60 * 60 * 1000;
+
+/** The match of an address: "psg-barcelona-8da1ec35", or a plain id. */
+export async function getMatchBySlug(param: string) {
+  const key = matchKeyOf(param);
+  if (key && param.length !== 36) {
+    const [row] = await db.select().from(matches).where(like(matches.id, `${key}-%`));
+    if (row) return row;
+  }
+  return getMatch(param);
+}
 
 export async function getMatch(id: string) {
   const [row] = await db.select().from(matches).where(eq(matches.id, id));

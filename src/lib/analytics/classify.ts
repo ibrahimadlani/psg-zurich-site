@@ -1,5 +1,6 @@
 import type { PageContentType } from "@/db/schema";
 import { routing } from "@/i18n/routing";
+import { matchKeyOf } from "@/lib/match-seo";
 
 /*
  * Reading a visit: which page (without its language), what it shows (an article, an event…),
@@ -23,13 +24,13 @@ export function splitPath(raw: string): { locale: string; path: string } | null 
   return path.length > 255 ? null : { locale: first, path };
 }
 
-/** What a page shows: "/news/<slug>" an article, "/events/<id>" an event… */
+/** What a page shows: "/news/<slug>" an article, "/events/<id>" an event, a match by the start of its id… */
 export function contentOf(path: string): { type: PageContentType; id: string | null } {
   const [, section, id, extra] = path.split("/");
   if (id && !extra) {
     if (section === "news") return { type: "article", id };
     if (section === "events") return { type: "event", id };
-    if (section === "matches" && id !== "leaderboard") return { type: "match", id };
+    if (section === "matches" && id !== "leaderboard") return { type: "match", id: matchKeyOf(id) ?? id };
     if (section === "shop") return { type: "product", id };
   }
   return { type: "page", id: null };

@@ -19,6 +19,7 @@ import {
   contentDetail,
   eventFigures,
   liveVisitors,
+  organicSearch,
   rangeOf,
   series,
   sources,
@@ -36,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return { title: t("sections.audience"), robots: { index: false } };
 }
 
-const VIEWS = ["overview", "content", "events", "sources", "api"] as const;
+const VIEWS = ["overview", "content", "events", "sources", "search", "api"] as const;
 type View = (typeof VIEWS)[number];
 type Params = Record<string, string | string[] | undefined>;
 
@@ -149,6 +150,49 @@ async function Audience({ searchParams }: { searchParams: Promise<Params> }) {
             </Block>
           </div>
         </div>
+      </div>
+    );
+  } else if (view === "search") {
+    const [now, before] = await Promise.all([organicSearch(current, locale as Locale), organicSearch(previous, locale as Locale)]);
+    body = (
+      <div className="flex flex-col gap-4 lg:gap-5">
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+          <Kpi label={t("search.visits")} value={now.visits.toLocaleString("fr-CH")} points={now.points.map((point) => point.views)} hint={<Delta current={now.visits} previous={before.visits} labels={deltaLabels} />} />
+          <Kpi label={t("search.visitors")} value={now.visitors.toLocaleString("fr-CH")} points={now.points.map((point) => point.visitors)} hint={<Delta current={now.visitors} previous={before.visitors} labels={deltaLabels} />} />
+          <Kpi label={t("search.share")} value={percent(now.share)} gauge={now.share} hint={<Delta current={now.share} previous={before.share} labels={deltaLabels} />} />
+          <Kpi label={t("search.join")} value={now.joinVisitors.toLocaleString("fr-CH")} hint={<Delta current={now.joinVisitors} previous={before.joinVisitors} labels={deltaLabels} />} />
+        </div>
+        <Block title={t("search.chart")}>
+          <AreaChart points={now.points} bucket={bucket} labels={{ views: t("search.visits"), visitors: t("search.visitors") }} />
+        </Block>
+        <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:gap-5">
+          <Block title={t("search.pages")}>
+            <BarList
+              valueLabel={t("search.valueVisits")}
+              items={now.pages.map((page) => ({
+                key: page.path,
+                label: page.title ?? (page.path === "/" ? t("homePage") : page.path),
+                sub: page.title ? page.path : undefined,
+                value: page.views,
+              }))}
+              empty={t("search.empty")}
+            />
+          </Block>
+          <div className="flex min-w-0 flex-col gap-4 lg:gap-5">
+            <Block title={t("search.engines")}>
+              <BarList items={now.engines.map((row) => ({ key: row.key, label: row.key === "com.google.android.googlequicksearchbox" ? t("search.googleApp") : row.key, value: row.views }))} empty={t("search.empty")} />
+            </Block>
+            <Block title={t("sources.languages")}>
+              <SplitBar parts={now.locales.map((row) => ({ key: row.key, label: row.key.toUpperCase(), value: row.views }))} empty={t("search.empty")} />
+            </Block>
+          </div>
+        </div>
+        <p className="text-[13px] text-pretty text-muted-foreground">
+          {t("search.queries")}{" "}
+          <a href="https://search.google.com/search-console" target="_blank" rel="noreferrer" className="font-semibold text-foreground underline underline-offset-2">
+            Search Console
+          </a>
+        </p>
       </div>
     );
   } else if (view === "content") {

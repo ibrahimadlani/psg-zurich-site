@@ -55,6 +55,8 @@ export const createPostSchema = z.object({
   locale: z.enum(LOCALES).default("fr"),
   title: text(255),
   excerpt: optionalText(500),
+  seoTitle: optionalText(70),
+  seoDescription: optionalText(170),
   category: z.enum(POST_CATEGORIES).default("club"),
   byline: optionalText(80),
   /** Cover: /api/v1/media/<id> (or an absolute https URL). */
@@ -101,6 +103,15 @@ export const createMatchSchema = z
     path: ["psgScore"],
   });
 
+/** What the committee adds to a match's public page (imported matches included). */
+export const matchPublicSchema = z.object({
+  broadcaster: z.string().trim().max(60),
+  intro: z.object({ fr: z.string().trim().max(800), en: z.string().trim().max(800), de: z.string().trim().max(800) }),
+});
+
+/** Who shows each competition in Switzerland. */
+export const broadcastersSchema = z.record(z.string().trim().min(1).max(120), z.string().trim().max(60));
+
 /** A member's prediction: score after 90 minutes. */
 export const predictionSchema = z.object({
   psgScore: z.number().int().min(0).max(20),
@@ -126,6 +137,9 @@ export const createEventSchema = z
     capacity: z.number().int().positive().optional(),
     priceCents: z.number().int().min(0).default(0),
     membersOnly: z.boolean().default(false),
+    /** Public side: the city shown to everyone, and whether the event is shown at all. */
+    city: z.string().trim().min(1).max(80).default("Zurich"),
+    isPublic: z.boolean().default(false),
     /** Email the members about it (creation only). */
     notifyMembers: z.boolean().default(false),
   })

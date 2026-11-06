@@ -11,8 +11,39 @@
     "yesterdayAt": "gestern um {time}"
   },
   "Metadata": {
-    "title": "PSG Zurich",
-    "description": "Offizieller Fanclub von Paris Saint-Germain in Zürich."
+    "title": "PSG Zürich",
+    "description": "Watch-Partys in Zürich, Fahrten in den Parc, Tippspiel und Mitgliederkarte: Werde Teil der Fans von Paris Saint-Germain in der Schweiz.",
+    "homeTitle": "PSG Zürich · Offizieller PSG-Fanclub in der Schweiz",
+    "pages": {
+      "news": {
+        "title": "PSG-News und Guides für Fans in der Schweiz",
+        "description": "PSG in der Schweiz schauen, Anreise in den Parc des Princes ab Zürich, Auswärtsfahrten und Clubleben: unsere Artikel und praktischen Guides."
+      },
+      "matches": {
+        "title": "PSG-Spielplan und Resultate in Schweizer Zeit",
+        "description": "Der Spielplan von Paris Saint-Germain: kommende Spiele in Schweizer Zeit, Resultate, Liveticker und die Tabellen von Ligue 1 und Champions League."
+      },
+      "events": {
+        "title": "PSG-Watch-Partys und Auswärtsfahrten in Zürich",
+        "description": "Watch-Partys, Auswärtsfahrten und Treffen der PSG-Fans in Zürich: Entdecke, was der Club organisiert, und sei dabei."
+      },
+      "join": {
+        "title": "Mitglied im PSG-Fanclub Zürich werden",
+        "description": "Werde Mitglied im offiziellen PSG-Fanclub in Zürich: Watch-Partys, Auswärtsfahrten, Tippspiel und Mitgliederkarte."
+      },
+      "guides": {
+        "title": "Guides für PSG-Fans in der Schweiz",
+        "description": "PSG im Schweizer TV schauen, Anreise in den Parc des Princes ab Zürich, Auswärtsfahrten: unsere praktischen Guides, laufend aktualisiert."
+      },
+      "watchParties": {
+        "title": "PSG-Watch-Partys in Zürich",
+        "description": "Die grossen PSG-Spiele auf Grossleinwand in Zürich, unter Fans: wie es funktioniert, die nächsten Termine und wie du dabei bist."
+      },
+      "about": {
+        "title": "Der Verein der PSG-Fans in Zürich",
+        "description": "Wer PSG Zürich ist: der Fanclub von Paris Saint-Germain in Zürich, seine Werte, sein Vorstand und wie du beitrittst."
+      }
+    }
   },
   "Nav": {
     "label": "Hauptnavigation",
@@ -65,7 +96,8 @@
         "admin": "Administrator",
         "superadmin": "Superadmin"
       }
-    }
+    },
+    "guides": "Guides"
   },
   "EventsShowcase": {
     "kinds": {
@@ -983,7 +1015,10 @@
     "statutes": "Statuten",
     "legal": "Offizielle Dokumente",
     "instagram": "Instagram",
-    "support": "Club unterstützen"
+    "support": "Club unterstützen",
+    "guides": "Praktische Guides",
+    "watch": "Watch-Partys",
+    "about": "Der Verein"
   },
   "Emails": {
     "resetPassword": {
@@ -1675,6 +1710,25 @@
       "derby": "Pariser Derby",
       "classiqueLong": "Le Classique: Paris Saint-Germain – Olympique de Marseille",
       "derbyLong": "Das Hauptstadt-Derby: Paris Saint-Germain – Paris FC"
+    },
+    "seo": {
+      "upcoming": "{match}, {date}: Anstoss in der Schweiz",
+      "upcomingTv": "{match}, {date}: Anstoss und TV in der Schweiz",
+      "finished": "{match} {score}, {date}: Resultat und Spielverlauf",
+      "other": "{match}, {competition}",
+      "descUpcoming": "{match} in der {competition}, {date} um {time} Uhr (Schweizer Zeit). So siehst du das Spiel in der Schweiz und schaust es gemeinsam mit PSG Zürich.",
+      "descUpcomingTv": "{match} in der {competition}, {date} um {time} Uhr (Schweizer Zeit), auf {broadcaster}. So siehst du das Spiel in der Schweiz und schaust es gemeinsam mit PSG Zürich.",
+      "descFinished": "{match} {score} in der {competition}, {date}. Resultat, Tore und Spielverlauf, mit PSG Zürich, dem PSG-Fanclub in der Schweiz.",
+      "descOther": "{match} in der {competition}. Das Spiel und die Treffen von PSG Zürich, dem PSG-Fanclub in der Schweiz."
+    },
+    "watch": {
+      "title": "Wo in der Schweiz schauen",
+      "kickoff": "Anstoss, Schweizer Zeit",
+      "channel": "Sender in der Schweiz",
+      "channelUnknown": "Noch nicht bestätigt",
+      "party": "Watch-Party in {city}",
+      "parties": "Gemeinsam schauen: unsere Watch-Partys",
+      "guide": "Der Guide: PSG schauen in der Schweiz"
     }
   },
   "Predictions": {
@@ -1893,7 +1947,14 @@
     "addSearch": "Name oder Mitgliedsnr.",
     "addNone": "Kein Mitglied gefunden.",
     "searchAttendees": "Angemeldete suchen",
-    "writeAttendees": "Angemeldeten schreiben"
+    "writeAttendees": "Angemeldeten schreiben",
+    "publicFields": {
+      "city": "Stadt",
+      "cityHint": "Wird öffentlich angezeigt, anders als der Ort.",
+      "isPublic": "Öffentlich sichtbar",
+      "isPublicHint": "Titel, Datum und Stadt erscheinen auf der Website und bei Google. Ort, Beschreibung und Teilnehmer bleiben für Mitglieder.",
+      "title": "Öffentliche Seite"
+    }
   },
   "AdminMatches": {
     "created": "Spiel hinzugefügt.",
@@ -1958,7 +2019,18 @@
     "rewardSaved": "Preis als übergeben markiert",
     "rewardUndone": "Übergabe rückgängig gemacht",
     "rewardError": "Der Preis konnte nicht gespeichert werden.",
-    "points": "{count, plural, one {# Pkt.} other {# Pkt.}}"
+    "points": "{count, plural, one {# Pkt.} other {# Pkt.}}",
+    "public": {
+      "action": "Öffentliche Seite",
+      "title": "Öffentliche Seite des Spiels",
+      "hint": "Was das Komitee der Spielseite hinzufügt, für alle sichtbar. Nichts ist Pflicht.",
+      "broadcaster": "Sender in der Schweiz für dieses Spiel",
+      "broadcasterHint": "Leer lassen, um den Sender des Wettbewerbs zu verwenden (Einstellungen). Nur einen geprüften Sender angeben.",
+      "intro": "Einleitung ({locale})",
+      "introHint": "Ein paar Sätze vom Komitee für die grossen Spiele: worum es geht, eine Erinnerung, was der Club plant.",
+      "saved": "Spielseite gespeichert.",
+      "error": "Speichern nicht möglich."
+    }
   },
   "Unsubscribe": {
     "title": "Abmelden",
@@ -2112,7 +2184,8 @@
     "categories": {
       "club": "Vereinsleben",
       "trips": "Auswärtsfahrten",
-      "events": "Events"
+      "events": "Events",
+      "guides": "Guides"
     },
     "latest": "Neu",
     "read": "Artikel lesen",
@@ -2123,7 +2196,16 @@
     "copied": "Link kopiert",
     "more": "Weiterlesen",
     "seeAll": "Alle ansehen",
-    "defaultByline": "Der Vorstand"
+    "defaultByline": "Der Vorstand",
+    "breadcrumb": "Navigationspfad",
+    "toc": "Inhalt",
+    "updated": "aktualisiert am {date}",
+    "cta": {
+      "title": "PSG in Zürich erleben",
+      "body": "Watch-Partys, Auswärtsfahrten, Tippspiel: Werde Teil der Fans von Paris Saint-Germain in der Schweiz.",
+      "join": "Mitglied werden",
+      "watch": "Die Watch-Partys"
+    }
   },
   "Cms": {
     "deleted": "Artikel gelöscht.",
@@ -2282,7 +2364,13 @@
     "search": "Artikel suchen",
     "noMatch": "Kein Artikel passt.",
     "settings": "Artikel-Einstellungen",
-    "saveShort": "Speichern"
+    "saveShort": "Speichern",
+    "seo": {
+      "title": "Suche (Google)",
+      "titleField": "Titel für Google",
+      "descriptionField": "Beschreibung für Google",
+      "preview": "Vorschau in den Suchergebnissen"
+    }
   },
   "Mailing": {
     "title": "Mailing",
@@ -3293,12 +3381,12 @@
         "watch": {
           "title": "Watch Partys",
           "body": "Die grossen Spiele auf Grossleinwand, in einer Zürcher Bar, unter Fans. Die Gesänge, die Schals, die Stimmung des Parc.",
-          "cta": "Zu den Events"
+          "cta": "Zu den Watch-Partys"
         },
         "travel": {
           "title": "Auswärtsfahrten",
           "body": "Der Parc des Princes und Auswärtsspiele, gemeinsam organisiert: Tickets, Reise und geteilte Erinnerungen.",
-          "cta": "Zu den Events"
+          "cta": "Zu den Guides"
         },
         "play": {
           "title": "Tippspiel",
@@ -3371,7 +3459,8 @@
       "content": "Inhalte",
       "events": "Events",
       "sources": "Quellen",
-      "api": "Technik"
+      "api": "Technik",
+      "search": "Suche"
     },
     "viewsLabel": "Tabs",
     "includeStaff": "Vorstand einbeziehen",
@@ -3453,6 +3542,98 @@
     "empty": "Noch keine Daten für diesen Zeitraum.",
     "privacy": "Besucher werden ohne Cookies gezählt: ein anonymer Fingerabdruck, der sich jeden Tag ändert (IP wird nie gespeichert). Bots und Browser, die nicht verfolgt werden wollen (DNT, GPC), werden nicht gezählt.",
     "visitorsCount": "{count, plural, one {# Besucher} other {# Besucher}}",
-    "homePage": "Startseite"
+    "homePage": "Startseite",
+    "search": {
+      "visits": "Besuche",
+      "visitors": "Eindeutige Besucher",
+      "share": "Anteil der Besuche",
+      "join": "Zur Beitrittsseite weiter",
+      "chart": "Ankünfte über Suchmaschinen",
+      "pages": "Einstiegsseiten",
+      "engines": "Suchmaschinen",
+      "valueVisits": "Besuche",
+      "empty": "Noch kein Besuch über eine Suchmaschine in diesem Zeitraum.",
+      "queries": "Suchmaschinen geben die Suchbegriffe nie weiter: Suchanfragen und Positionen stehen in der",
+      "googleApp": "Google-App (Android)"
+    }
+  },
+  "Guides": {
+    "title": "Guides",
+    "intro": "Alles, was du wissen musst, um PSG aus der Schweiz zu verfolgen: im TV, im Parc des Princes und auswärts.",
+    "practical": "Praktische Guides",
+    "trips": "Auswärtsfahrten ab Zürich",
+    "empty": "Die Guides folgen bald."
+  },
+  "WatchParties": {
+    "title": "Watch-Partys in Zürich",
+    "lead": "Die grossen PSG-Spiele auf Grossleinwand, in einer Zürcher Bar, unter Fans und in den Farben des Clubs.",
+    "howTitle": "So funktioniert's",
+    "steps": [
+      {
+        "title": "Tritt dem Club bei",
+        "body": "Watch-Partys sind für Mitglieder mit bezahltem Beitrag. Der Beitritt läuft online."
+      },
+      {
+        "title": "Melde dich online an",
+        "body": "Die Termine stehen in der Agenda deines Mitgliederbereichs, mit Ort und freien Plätzen."
+      },
+      {
+        "title": "Zeig deine Karte",
+        "body": "Deine digitale Mitgliederkarte wird am Eingang gescannt. Dann heisst es nur noch singen."
+      }
+    ],
+    "nextTitle": "Die nächsten Termine",
+    "nextEmpty": "Noch kein Termin angekündigt. Die nächsten Watch-Partys erscheinen hier.",
+    "nextHint": "Der genaue Ort wird den Mitgliedern mitgeteilt.",
+    "faqTitle": "Häufige Fragen",
+    "faq": [
+      {
+        "q": "Muss ich Mitglied sein?",
+        "a": "Ja: Watch-Partys und die anderen Events sind für Mitglieder mit bezahltem Beitrag."
+      },
+      {
+        "q": "Wo finden sie statt?",
+        "a": "In einer Bar in Zürich. Den genauen Ort jedes Termins sehen Mitglieder in der Agenda."
+      },
+      {
+        "q": "Wie melde ich mich an?",
+        "a": "Mitglieder melden sich online an und zeigen am Eingang ihre Mitgliederkarte."
+      }
+    ],
+    "join": "Dem Club beitreten",
+    "agenda": "Zur Agenda",
+    "guide": "PSG sonst in der Schweiz schauen"
+  },
+  "About": {
+    "title": "Der Verein",
+    "documents": "Offizielle Dokumente",
+    "statutes": "Statuten lesen",
+    "contact": "Schreib uns",
+    "join": "Mitglied werden"
+  },
+  "PublicEvent": {
+    "reserved": "Für Mitglieder mit bezahltem Beitrag",
+    "teaser": {
+      "watch_party": "Ein grosses PSG-Spiel auf Grossleinwand, unter Fans. Ort und Anmeldung findest du im Mitgliederbereich.",
+      "away_trip": "Eine vom Club organisierte Auswärtsfahrt, unter Fans. Details und Anmeldung findest du im Mitgliederbereich.",
+      "members_match": "Ein Spiel unter Clubmitgliedern. Details und Anmeldung findest du im Mitgliederbereich.",
+      "social": "Ein Treffen für Clubmitglieder. Ort und Anmeldung findest du im Mitgliederbereich.",
+      "other": "Ein vom Club organisiertes Treffen. Ort und Anmeldung findest du im Mitgliederbereich."
+    },
+    "join": "Mitglied werden und dabei sein",
+    "signIn": "Schon Mitglied? Anmelden",
+    "all": "Alle Watch-Partys",
+    "past": "Dieses Event ist vorbei.",
+    "when": "Datum",
+    "where": "Stadt"
+  },
+  "AdminBroadcasters": {
+    "title": "Sender in der Schweiz",
+    "description": "Der Sender jedes Wettbewerbs, angezeigt auf den Spielseiten. Solange ein Feld leer ist, nennt die Website keinen Sender: nur Geprüftes eintragen.",
+    "placeholder": "Noch nicht geprüft",
+    "save": "Speichern",
+    "saved": "Sender gespeichert.",
+    "error": "Speichern nicht möglich.",
+    "empty": "Noch kein Wettbewerb: Spiele synchronisieren."
   }
 }

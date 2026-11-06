@@ -1,7 +1,7 @@
 import "server-only";
 import { and, desc, eq, inArray, lte } from "drizzle-orm";
 import { db } from "@/db";
-import { events, matches, posts, user, type Locale } from "@/db/schema";
+import { events, matches, posts, postSlugHistory, user, type Locale } from "@/db/schema";
 import { parseBlocks, readingMinutes, type Block } from "@/lib/article-blocks";
 import { getEventsWithAttendance } from "@/lib/events";
 
@@ -40,7 +40,15 @@ export async function getNewsList(locale: Locale) {
  */
 export async function getArticle(slug: string, locale: Locale) {
   const [post] = await db.select().from(posts).where(and(eq(posts.slug, slug), visible()));
-  if (!post) return null;
+  if (!post) {
+    // An address the article used to have (the proxy normally redirects before getting here).
+    const [moved] = await db
+      .select({ post: posts })
+      .from(postSlugHistory)
+      .innerJoin(posts, eq(posts.id, postSlugHistory.postId))
+      .where(and(eq(postSlugHistory.slug, slug), visible()));
+    return moved ? { post: moved.post, redirectTo: moved.post.slug } : null;
+  }
   if (post.locale !== locale && post.translationGroup) {
     const [translation] = await db
       .select({ slug: posts.slug })

@@ -1,15 +1,16 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import { getFormatter, getLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
+import { JsonLd } from "@/components/json-ld";
 import { ArticleBody } from "@/components/news/article-body";
 import { CopyLinkButton } from "@/components/news/copy-link-button";
 import { NewsCard, NewsCover } from "@/components/news/news-cards";
 import { type Locale } from "@/db/schema";
 import { Link, redirect } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
-import { parseBlocks } from "@/lib/article-blocks";
+import { parseBlocks, headingId } from "@/lib/article-blocks";
 import { getCurrentMember } from "@/lib/members";
 import {
   articleReadingMinutes,
@@ -21,7 +22,8 @@ import {
   relatedArticles,
   type Post,
 } from "@/lib/news";
-import { publicSiteUrl } from "@/lib/seo";
+import { ogLocale, publicSiteUrl, shareImage } from "@/lib/seo";
+import { breadcrumbs, clubPublisher } from "@/lib/structured-data";
 import { ArticleSkeleton } from "@/components/skeletons";
 import { Streamed } from "@/components/ui/streamed";
 
@@ -38,8 +40,8 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/news/[sl
   const languages = Object.fromEntries(versions.map((version) => [version.locale, `/${version.locale}/news/${version.slug}`]));
   const original = versions.find((version) => version.locale === "fr") ?? versions[0];
   return {
-    title: post.title,
-    description: post.excerpt ?? undefined,
+    title: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? post.excerpt ?? undefined,
     alternates: {
       canonical: `/${post.locale}/news/${post.slug}`,
       // Only when the article exists in more than one language.
@@ -47,13 +49,14 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/news/[sl
     },
     openGraph: {
       type: "article",
-      title: post.title,
-      description: post.excerpt ?? undefined,
-      locale: post.locale,
+      title: post.seoTitle ?? post.title,
+      description: post.seoDescription ?? post.excerpt ?? undefined,
+      locale: ogLocale(post.locale),
       publishedTime: post.publishedAt?.toISOString(),
       modifiedTime: post.updatedAt.toISOString(),
-      images: post.imageUrl ? [post.imageUrl] : undefined,
+      images: post.imageUrl ? [post.imageUrl] : [shareImage(post.locale)],
     },
+    twitter: { card: "summary_large_image", title: post.seoTitle ?? post.title, description: post.seoDescription ?? post.excerpt ?? undefined, images: [post.imageUrl ?? shareImage(post.locale).url] },
   };
 }
 
@@ -61,10 +64,11 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/news/[sl
 function articleJsonLd(post: Post, author: string) {
   const site = publicSiteUrl();
   const absolute = (path: string) => (path.startsWith("http") ? path : `${site}${path}`);
-  const club = { "@type": "Organization", name: "PSG Zurich Supporters Club", url: site, logo: absolute("/brand/psg-crest.svg") };
+  const club = clubPublisher();
   const data = {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
+    // A guide is kept up to date over time; everything else is news of the day.
+    "@type": post.category === "guides" ? "Article" : "NewsArticle",
     headline: post.title,
     description: post.excerpt ?? undefined,
     inLanguage: post.locale,
@@ -76,8 +80,7 @@ function articleJsonLd(post: Post, author: string) {
     publisher: club,
     mainEntityOfPage: absolute(`/${post.locale}/news/${post.slug}`),
   };
-  // "<" escaped so the text can never close the script tag.
-  return { __html: JSON.stringify(data).replace(/</g, "\\u003c") };
+  return data;
 }
 
 const initials = (name: string) =>
@@ -99,7 +102,7 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
   if (found.redirectTo) redirect({ href: `/news/${found.redirectTo}`, locale });
   const { post } = found;
 
-  const t = await getTranslations("News");
+  const [t, tNav] = await Promise.all([getTranslations("News"), getTranslations("Nav")]);
   const format = await getFormatter();
   const blocks = parseBlocks(post.content);
   const [member, all, author] = await Promise.all([
@@ -108,17 +111,34 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
     post.byline ? Promise.resolve(post.byline) : authorName(post.authorId),
   ]);
   const refs = await blockReferences(blocks, member?.id ?? null);
+  // Guides sit under their own hub; the rest under the news.
+  const section = post.category === "guides" ? { name: t("categories.guides"), href: "/guides" } : { name: tNav("news"), href: "/news" };
+  const headings = blocks.flatMap((block) => (block.type === "heading" ? [block.text] : []));
+  // Corrections on the day of publication don't count as an update.
+  const updated = post.publishedAt !== null && post.updatedAt.getTime() - post.publishedAt.getTime() > 24 * 60 * 60 * 1000;
   const related = relatedArticles(all, post);
   const signature = author ?? t("defaultByline");
 
   return (
     <article className="flex flex-col gap-[clamp(28px,4vw,40px)]">
-      <script type="application/ld+json" dangerouslySetInnerHTML={articleJsonLd(post, signature)} />
+      <JsonLd data={articleJsonLd(post, signature)} />
+      <JsonLd
+        data={breadcrumbs([
+          { name: tNav("home"), path: `/${post.locale}` },
+          { name: section.name, path: `/${post.locale}${section.href}` },
+          { name: post.title, path: `/${post.locale}/news/${post.slug}` },
+        ])}
+      />
       <div className="mx-auto flex w-full max-w-[44rem] flex-col gap-5">
-        <Link href="/news" className="inline-flex items-center gap-2 self-start text-sm text-muted-foreground hover:text-foreground">
-          <ArrowLeft className="size-3.5" aria-hidden />
-          {t("back")}
-        </Link>
+        <nav aria-label={t("breadcrumb")} className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
+          <Link href="/" className="hover:text-foreground">
+            {tNav("home")}
+          </Link>
+          <ChevronRight className="size-3.5" aria-hidden />
+          <Link href={section.href} className="hover:text-foreground">
+            {section.name}
+          </Link>
+        </nav>
         <div className="mt-2 flex flex-wrap items-center gap-2.5">
           <span className="inline-flex h-[22px] items-center rounded-full bg-psg-red px-[9px] font-wide text-[9px] font-semibold tracking-[0.08em] text-white uppercase">
             {t(`categories.${post.category}`)}
@@ -126,9 +146,10 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
           <span className={meta}>
             {post.publishedAt ? format.dateTime(post.publishedAt, { day: "numeric", month: "short", year: "numeric" }) : null} ·{" "}
             {t("readingTime", { minutes: articleReadingMinutes(post) })}
+            {updated ? ` · ${t("updated", { date: format.dateTime(post.updatedAt, { day: "numeric", month: "short", year: "numeric" }) })}` : null}
           </span>
         </div>
-        <h1 className="font-narrow text-[length:clamp(34px,6.4vw,68px)] leading-[0.92] font-extrabold tracking-[-0.01em] text-balance [overflow-wrap:anywhere] hyphens-auto uppercase italic">
+        <h1 className="font-narrow text-[length:clamp(34px,6.4vw,68px)] leading-none font-extrabold tracking-[-0.01em] text-balance [overflow-wrap:anywhere] hyphens-auto uppercase italic">
           {post.title}
         </h1>
         {post.excerpt ? (
@@ -150,7 +171,39 @@ async function ArticleContent({ params }: { params: Promise<{ slug: string }> })
 
       {post.imageUrl ? <NewsCover post={post} priority className="aspect-video w-full rounded-[14px]" /> : null}
 
+      {headings.length >= 3 ? (
+        <nav aria-label={t("toc")} className="mx-auto w-full max-w-[44rem] rounded-[14px] border bg-card/70 p-4 sm:p-5">
+          <p className={meta}>{t("toc")}</p>
+          <ol className="mt-3 flex flex-col gap-2 text-[15px]">
+            {headings.map((text) => (
+              <li key={text}>
+                <a href={`#${headingId(text)}`} className="underline-offset-2 hover:underline">
+                  {text}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      ) : null}
+
       <ArticleBody blocks={blocks} refs={refs} eventsOpen={isDuesPaid(member)} />
+
+      {/* Not a member yet: what to do next. */}
+      {member ? null : (
+        <aside className="mx-auto flex w-full max-w-[44rem] flex-col gap-3 rounded-[16px] bg-psg-blue p-5 text-white shadow-brand [background-image:repeating-linear-gradient(135deg,rgb(255_255_255/0.07)_0_1px,transparent_1px_14px)] sm:p-6">
+          <p className="font-narrow text-[28px] leading-none font-extrabold uppercase italic">{t("cta.title")}</p>
+          <p className="text-[15px] leading-relaxed text-pretty text-white/85">{t("cta.body")}</p>
+          <div className="mt-1 flex flex-wrap gap-2.5">
+            <Link href="/join" className="inline-flex h-11 items-center gap-2 rounded-[10px] bg-white px-5 font-wide text-[11px] font-semibold tracking-[0.06em] text-psg-blue uppercase transition-opacity hover:opacity-90">
+              {t("cta.join")}
+              <ArrowRight className="size-3.5" aria-hidden />
+            </Link>
+            <Link href="/watch-parties" className="inline-flex h-11 items-center rounded-[10px] px-4 font-wide text-[11px] font-semibold tracking-[0.06em] uppercase ring-1 ring-white/30 transition-colors ring-inset hover:bg-white/10">
+              {t("cta.watch")}
+            </Link>
+          </div>
+        </aside>
+      )}
 
       {related.length > 0 ? (
         <section className="mt-[clamp(24px,5vw,48px)] flex flex-col gap-6 border-t pt-[clamp(28px,4vw,40px)]">

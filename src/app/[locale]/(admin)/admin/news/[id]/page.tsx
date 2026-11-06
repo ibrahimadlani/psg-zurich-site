@@ -35,6 +35,8 @@ async function EditPost({ params }: { params: Promise<{ id: string }> }) {
       initial={{
         title: post.title,
         excerpt: post.excerpt ?? "",
+        seoTitle: post.seoTitle ?? "",
+        seoDescription: post.seoDescription ?? "",
         slug: post.slug,
         category: post.category,
         locale: post.locale,

@@ -1,0 +1,203 @@
+{
+  "category": "club",
+  "translations": {
+    "fr": {
+      "slug": "fan-club-psg-suisse",
+      "byline": "Le comité",
+      "title": "Fan club du PSG en Suisse : qui nous sommes et comment nous rejoindre",
+      "excerpt": "PSG Zurich réunit les supporters du Paris Saint-Germain à Zurich et dans la région : watch parties, déplacements, vie de club. Comment ça marche et comment adhérer.",
+      "seoTitle": "Fan club du PSG en Suisse : PSG Zurich",
+      "seoDescription": "Vous êtes fan du PSG et vous vivez en Suisse ? PSG Zurich organise des watch parties, des déplacements et une vraie vie de club. Comment nous rejoindre.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**À retirer avant publication.** À compléter par le comité : année de création, nombre de membres, photos du club, anecdote vécue. À vérifier : la mention « officiel » (présence sur la carte des supporters clubs de psg.fr), et si les membres d'autres cantons sont les bienvenus. Sans ces éléments vécus, cet article reste trop générique."
+        },
+        {
+          "type": "paragraph",
+          "text": "Vous êtes supporter du Paris Saint-Germain et vous vivez en Suisse ? **PSG Zurich** est l'association qui réunit les fans du club à Zurich et dans la région : on y regarde les grands matchs ensemble, on part en déplacement, et on se retrouve toute l'année."
+        },
+        {
+          "type": "heading",
+          "text": "Qui sommes-nous ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Des Parisiens installés en Suisse, des Suisses tombés amoureux du club, des familles et des amis. L'association est animée par des bénévoles et dirigée par un comité élu en assemblée générale. Le site et la vie du club se partagent entre le français, l'allemand et l'anglais : personne n'est laissé de côté à cause de la langue."
+        },
+        {
+          "type": "heading",
+          "text": "Ce que l'on fait ensemble"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Des [watch parties à Zurich](/fr/watch-parties)** : les grands matchs sur écran géant, dans un bar, entre supporters et en tenue.",
+            "**Des déplacements** : au Parc des Princes ([notre guide depuis Zurich](/fr/news/voir-psg-parc-des-princes-depuis-zurich)) et sur les routes d'Europe, comme [Côme – PSG](/fr/news/come-psg-2027-deplacement-depuis-zurich).",
+            "**Des rencontres entre membres** : soirées, matchs entre nous, assemblée générale.",
+            "**Des pronostics** : les membres pronostiquent chaque match et grimpent au classement de la saison."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Comment nous rejoindre ?"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Faites votre demande d'[adhésion en ligne](/fr/join), en quelques minutes.",
+            "Une fois la cotisation réglée, vous accédez à l'agenda, avec les lieux et les inscriptions.",
+            "Votre carte de membre numérique est scannée à l'entrée des événements."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Les moins de 18 ans adhèrent comme juniors, avec une cotisation réduite et l'accord de leur représentant légal. Tout est détaillé dans les [statuts](/fr/statutes)."
+        },
+        {
+          "type": "heading",
+          "text": "Et si je veux d'abord regarder le match chez moi ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Aucun souci : nos guides expliquent [où voir le PSG en Suisse](/fr/news/regarder-psg-suisse-tv-streaming), et le [calendrier du site](/fr/matches) donne les matchs à l'heure suisse. Une question avant d'adhérer ? [Écrivez-nous](/fr/contact)."
+        }
+      ]
+    },
+    "de": {
+      "slug": "psg-fanclub-schweiz",
+      "byline": "Der Vorstand",
+      "title": "PSG-Fanclub in der Schweiz: Wer wir sind und wie Sie dabei sind",
+      "excerpt": "PSG Zürich vereint die Fans von Paris Saint-Germain in Zürich und Umgebung: Watch-Partys, Auswärtsfahrten, Clubleben. So funktioniert es und so werden Sie Mitglied.",
+      "seoTitle": "PSG-Fanclub in der Schweiz: PSG Zürich",
+      "seoDescription": "Sie sind PSG-Fan und leben in der Schweiz? PSG Zürich organisiert Watch-Partys, Auswärtsfahrten und echtes Clubleben. So werden Sie Mitglied.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**Vor der Veröffentlichung entfernen.** Vom Vorstand zu ergänzen: Gründungsjahr, Anzahl Mitglieder, Fotos aus dem Club, eine echte Anekdote. Zu prüfen: die Bezeichnung «offiziell» (Eintrag auf der Fanclub-Karte von psg.fr) und ob Mitglieder aus anderen Kantonen willkommen sind. Ohne diese Angaben bleibt der Artikel zu allgemein."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sie sind Fan von Paris Saint-Germain und leben in der Schweiz? **PSG Zürich** ist der Verein, der die PSG-Fans in Zürich und Umgebung zusammenbringt: Wir schauen die grossen Spiele gemeinsam, fahren an Auswärtsspiele und treffen uns das ganze Jahr."
+        },
+        {
+          "type": "heading",
+          "text": "Wer sind wir?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pariser, die in der Schweiz leben, Schweizerinnen und Schweizer, die sich in den Club verliebt haben, Familien und Freunde. Der Verein wird von Freiwilligen getragen und von einem an der Generalversammlung gewählten Vorstand geführt. Website und Clubleben laufen auf Deutsch, Französisch und Englisch: Die Sprache ist hier kein Hindernis."
+        },
+        {
+          "type": "heading",
+          "text": "Was wir gemeinsam machen"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**[Watch-Partys in Zürich](/de/watch-parties)**: die grossen Spiele auf Grossleinwand, in einer Bar, unter Fans und in den Farben des Clubs.",
+            "**Auswärtsfahrten**: in den Parc des Princes ([unser Guide ab Zürich](/de/news/psg-parc-des-princes-anreise-ab-zuerich)) und durch Europa, etwa [Como – PSG](/de/news/como-psg-2027-auswaertsfahrt-ab-zuerich).",
+            "**Treffen unter Mitgliedern**: Abende, eigene Spiele, Generalversammlung.",
+            "**Prognosen**: Die Mitglieder tippen jedes Spiel und klettern in der Saisonrangliste."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Wie werde ich Mitglied?"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Stellen Sie Ihren [Beitrittsantrag online](/de/join), das dauert nur wenige Minuten.",
+            "Sobald der Beitrag bezahlt ist, sehen Sie die Agenda mit Orten und Anmeldungen.",
+            "Ihre digitale Mitgliederkarte wird am Eingang der Events gescannt."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Unter 18-Jährige treten als Junioren bei, mit reduziertem Beitrag und dem Einverständnis ihrer gesetzlichen Vertretung. Die Details stehen in den [Statuten](/de/statutes)."
+        },
+        {
+          "type": "heading",
+          "text": "Und wenn ich zuerst zu Hause schauen will?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kein Problem: Unsere Guides erklären, [wo PSG in der Schweiz läuft](/de/news/psg-schauen-schweiz-tv-streaming), und der [Spielplan](/de/matches) zeigt alle Spiele in Schweizer Zeit. Eine Frage vor dem Beitritt? [Schreiben Sie uns](/de/contact)."
+        }
+      ]
+    },
+    "en": {
+      "slug": "psg-fan-club-switzerland",
+      "byline": "The committee",
+      "title": "PSG fan club in Switzerland: who we are and how to join",
+      "excerpt": "PSG Zurich brings Paris Saint-Germain supporters together in Zurich and the region: watch parties, away trips, club life. How it works and how to join.",
+      "seoTitle": "PSG fan club in Switzerland: PSG Zurich",
+      "seoDescription": "A PSG fan living in Switzerland? PSG Zurich runs watch parties, away trips and a real club life. How it works and how to join.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**Remove before publishing.** For the committee to add: founding year, number of members, photos of the club, a real anecdote. To check: the word \"official\" (listing on the psg.fr supporters club map), and whether members from other cantons are welcome. Without these, the article stays too generic."
+        },
+        {
+          "type": "paragraph",
+          "text": "A Paris Saint-Germain supporter living in Switzerland? **PSG Zurich** is the association that brings the club's fans together in Zurich and the region: we watch the big matches together, go on away trips and meet up all year round."
+        },
+        {
+          "type": "heading",
+          "text": "Who are we?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Parisians who moved to Switzerland, Swiss people who fell for the club, families and friends. The association is run by volunteers and led by a committee elected at the general meeting. The website and club life are shared between French, German and English, so language is no barrier."
+        },
+        {
+          "type": "heading",
+          "text": "What we do together"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**[Watch parties in Zurich](/en/watch-parties)**: the big matches on a giant screen, in a bar, among supporters and in the club's colours.",
+            "**Away trips**: to the Parc des Princes ([our guide from Zurich](/en/news/psg-parc-des-princes-from-zurich-guide)) and across Europe, such as [Como v PSG](/en/news/como-psg-2027-away-trip-from-zurich).",
+            "**Members' get-togethers**: evenings out, our own matches, the general meeting.",
+            "**Predictions**: members predict every match and climb the season's leaderboard."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "How do I join?"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Apply to [join online](/en/join), it only takes a few minutes.",
+            "Once your fee is paid, you can see the calendar with places and sign-ups.",
+            "Your digital member card is scanned at the door of our events."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Under-18s join as juniors, with a reduced fee and the consent of a legal guardian. The details are in the [statutes](/en/statutes)."
+        },
+        {
+          "type": "heading",
+          "text": "What if I'd rather start by watching at home?"
+        },
+        {
+          "type": "paragraph",
+          "text": "No problem: our guides explain [where to watch PSG in Switzerland](/en/news/watch-psg-in-switzerland-tv-streaming), and the [fixture list](/en/matches) gives every match in Swiss time. A question before joining? [Write to us](/en/contact)."
+        }
+      ]
+    }
+  }
+}

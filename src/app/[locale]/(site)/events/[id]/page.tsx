@@ -8,6 +8,8 @@ import { db } from "@/db";
 import { events } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { isDuesPaid } from "@/lib/dues";
+import { eventIsOver, publicEvent } from "@/lib/events";
+import { pageMetadata } from "@/lib/seo";
 import { getCurrentMember } from "@/lib/members";
 import { Streamed } from "@/components/ui/streamed";
 
@@ -15,11 +17,18 @@ import { Streamed } from "@/components/ui/streamed";
 export const instant = false;
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/events/[id]">): Promise<Metadata> {
-  // Events are for members only: no title for anyone else, never indexed.
+  const { id } = await params;
   const member = await getCurrentMember();
-  if (!isDuesPaid(member)) return { robots: { index: false } };
-  const [event] = await db.select({ title: events.title }).from(events).where(eq(events.id, (await params).id));
-  return { title: event?.title, robots: { index: false } };
+  if (isDuesPaid(member)) {
+    const [event] = await db.select({ title: events.title }).from(events).where(eq(events.id, id));
+    return { title: event?.title, robots: { index: false } };
+  }
+  // Others only see what the committee made public, and search engines only until it has passed.
+  const open = await publicEvent(id);
+  if (!open) return { robots: { index: false } };
+  const t = await getTranslations("PublicEvent");
+  const metadata = await pageMetadata({ path: `/events/${id}`, title: open.title, description: t(`teaser.${open.type}`) });
+  return eventIsOver(open) ? { ...metadata, robots: { index: false } } : metadata;
 }
 
 export default async function EventPage({ params }: PageProps<"/[locale]/events/[id]">) {

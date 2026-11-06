@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { EventCard } from "@/components/events/event-card";
 import { MatchRow } from "@/components/matches/match-row";
 import { RichText } from "@/components/news/rich-text";
-import type { Block } from "@/lib/article-blocks";
+import { headingId, type Block } from "@/lib/article-blocks";
 import type { EventView } from "@/lib/events";
 import type { Match } from "@/lib/matches";
 import { Link } from "@/i18n/navigation";
@@ -44,7 +44,7 @@ function BlockView({ block, refs, eventsOpen }: { block: Block; refs: BlockRefs;
         </p>
       ) : null;
     case "heading":
-      return <h2 className="-mb-1.5 mt-[18px] text-2xl leading-tight font-semibold text-balance">{block.text}</h2>;
+      return <h2 id={headingId(block.text)} className="-mb-1.5 mt-[18px] scroll-mt-6 text-2xl leading-tight font-semibold text-balance">{block.text}</h2>;
     case "quote":
       return (
         <figure className="my-4 flex flex-col gap-3.5 border-y py-7">

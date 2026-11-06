@@ -8,6 +8,7 @@ import { ShortName } from "@/components/matches/short-name";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
+import { matchPath } from "@/lib/match-seo";
 
 export type PredictionView = { psgScore: number; opponentScore: number; points: number | null };
 
@@ -73,7 +74,7 @@ export function MatchRow({
 
   return (
     <Link
-      href={`/matches/${match.id}`}
+      href={matchPath(match)}
       className={cn(
         "group grid grid-cols-[4.5rem_1fr_auto] items-center gap-3 rounded-[10px] border bg-card/60 p-3 transition-colors hover:border-foreground/30 sm:grid-cols-[6rem_1fr_auto] sm:gap-5 sm:p-4",
         rivalryFrame(rivalry, home.isPsg ? "top" : "bottom"),

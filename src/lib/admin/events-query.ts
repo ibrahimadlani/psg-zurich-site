@@ -99,6 +99,8 @@ export async function adminEventDetail(id: string) {
     startsAt: toLocalInput(event.startsAt),
     endsAt: toLocalInput(event.endsAt),
     capacity: event.capacity?.toString() ?? "",
+    city: event.city,
+    isPublic: event.isPublic,
     notifyMembers: false,
   };
   return {

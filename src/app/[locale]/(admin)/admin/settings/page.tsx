@@ -2,6 +2,7 @@ import { asc, eq, inArray } from "drizzle-orm";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { connection } from "next/server";
+import { BroadcastersForm } from "@/components/admin/settings/broadcasters-form";
 import { HomeVariantPicker } from "@/components/admin/settings/home-variant-picker";
 import { AddTeamMemberForm, CommitteeTitleField, TeamRoleControls } from "@/components/admin/team/team-controls";
 import { AdminForbidden, AdminHeader } from "@/components/admin/ui/admin-header";
@@ -11,9 +12,9 @@ import { DeploymentStatus } from "@/components/deployment-status";
 import { AdminListSkeleton } from "@/components/skeletons";
 import { UserAvatar } from "@/components/user-avatar";
 import { db } from "@/db";
-import { members, user } from "@/db/schema";
+import { matches, members, user } from "@/db/schema";
 import { adminPage } from "@/lib/admin/guard";
-import { getHomeSettings } from "@/lib/site-settings";
+import { getBroadcasters, getHomeSettings } from "@/lib/site-settings";
 import { Streamed } from "@/components/ui/streamed";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -36,6 +37,11 @@ async function Settings() {
       .where(inArray(user.role, ["moderator", "admin", "superadmin"]))
       .orderBy(asc(user.name))
   ).sort((a, b) => ORDER[a.role] - ORDER[b.role]);
+  const tBroadcasters = await getTranslations("AdminBroadcasters");
+  const [competitions, broadcasters] = await Promise.all([
+    db.selectDistinct({ competition: matches.competition }).from(matches).orderBy(asc(matches.competition)),
+    getBroadcasters(),
+  ]);
 
   return (
     <>
@@ -46,6 +52,13 @@ async function Settings() {
         </h2>
         <p className="max-w-prose text-sm text-pretty text-muted-foreground">{tHome("description")}</p>
         <HomeVariantPicker initial={await getHomeSettings()} />
+      </section>
+      <section className="mb-10 space-y-3" aria-labelledby="broadcasters">
+        <h2 id="broadcasters" className={adminLabel}>
+          {tBroadcasters("title")}
+        </h2>
+        <p className="max-w-prose text-sm text-pretty text-muted-foreground">{tBroadcasters("description")}</p>
+        <BroadcastersForm competitions={competitions.map((row) => row.competition)} initial={broadcasters} />
       </section>
       <section className="space-y-3" aria-labelledby="team">
         <h2 id="team" className={adminLabel}>

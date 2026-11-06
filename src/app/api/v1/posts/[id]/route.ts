@@ -4,6 +4,7 @@ import { posts } from "@/db/schema";
 import { apiHandler, ok, parseBody } from "@/lib/api";
 import { getClientIp, writeAuditLog } from "@/lib/audit";
 import { HttpError, requireCapability } from "@/lib/permissions";
+import { recordSlugChange } from "@/lib/post-slugs";
 import { postValues } from "@/lib/posts";
 import { createPostSchema } from "@/lib/validators";
 
@@ -46,6 +47,8 @@ export const PATCH = apiHandler<Context>(async (request, { params }) => {
     const [row] = await tx.select().from(posts).where(eq(posts.id, id));
     return row;
   });
+  // A renamed article that was out keeps its links and its place in search results.
+  if (current.publishedAt) await recordSlugChange(id, current.slug, input.slug);
   return ok(updated);
 });
 

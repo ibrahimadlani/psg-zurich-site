@@ -28,6 +28,8 @@ async function NewPost({ searchParams }: { searchParams: Promise<Record<string, 
       initial={{
         title: "",
         excerpt: "",
+        seoTitle: "",
+        seoDescription: "",
         slug: "",
         category: original?.post.category ?? "club",
         locale,

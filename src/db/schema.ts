@@ -216,7 +216,7 @@ export const members = mysqlTable(
 
 export const POST_STATUSES = ["draft", "published"] as const;
 /** Fixed news categories (tabs of /news). Order = MySQL enum order: append only. */
-export const POST_CATEGORIES = ["club", "trips", "events"] as const;
+export const POST_CATEGORIES = ["club", "trips", "events", "guides"] as const;
 export type PostCategory = (typeof POST_CATEGORIES)[number];
 
 export const posts = mysqlTable(
@@ -227,6 +227,9 @@ export const posts = mysqlTable(
     locale: mysqlEnum("locale", LOCALES).default("fr").notNull(),
     title: varchar("title", { length: 255 }).notNull(),
     excerpt: varchar("excerpt", { length: 500 }),
+    /** For search results, when they should differ from the title and the excerpt. */
+    seoTitle: varchar("seo_title", { length: 70 }),
+    seoDescription: varchar("seo_description", { length: 170 }),
     /** JSON list of article blocks (see src/lib/article-blocks.ts). */
     content: mediumtext("content").notNull(),
     imageUrl: varchar("image_url", { length: 512 }),
@@ -290,6 +293,10 @@ export const matches = mysqlTable(
     opponentLogo: varchar("opponent_logo", { length: 255 }),
     competition: varchar("competition", { length: 120 }).notNull(),
     competitionLogo: varchar("competition_logo", { length: 255 }),
+    /** Who shows it in Switzerland, when it differs from the competition's usual channel. */
+    broadcaster: varchar("broadcaster", { length: 60 }),
+    /** A few words by the committee, per language, for the big matches. */
+    intro: json<Partial<Record<Locale, string>>>("intro"),
     /** "REGULAR_SEASON:9", "LEAGUE_STAGE:3", "LAST_16"… (stage and matchday from the API). */
     round: varchar("round", { length: 80 }),
     kickoffAt: datetime("kickoff_at").notNull(),
@@ -357,6 +364,10 @@ export const events = mysqlTable(
     capacity: int("capacity"),
     priceCents: int("price_cents").default(0).notNull(),
     membersOnly: boolean("members_only").default(false).notNull(),
+    /** Shown to everyone with the title and the date; the place itself stays for members. */
+    city: varchar("city", { length: 80 }).default("Zurich").notNull(),
+    /** Visible on the public pages (never the place, the description or who comes). */
+    isPublic: boolean("is_public").default(false).notNull(),
     ...timestamps(),
   },
   (t) => [index("events_starts_at_idx").on(t.startsAt)],
@@ -1099,8 +1110,19 @@ export const siteSettings = mysqlTable("site_settings", {
   id: int("id").primaryKey(),
   homeVisitor: mysqlEnum("home_visitor", HOME_VISITOR_VARIANTS).default("coming_soon").notNull(),
   homeMember: mysqlEnum("home_member", HOME_MEMBER_VARIANTS).default("dashboard").notNull(),
+  /** Who shows each competition in Switzerland: { "Ligue 1": "…" }, as the committee checked it. */
+  broadcasters: json<Record<string, string>>("broadcasters"),
   updatedById: fk("updated_by_id").references(() => user.id, { onDelete: "set null" }),
   updatedAt: updatedAt(),
+});
+
+/** Addresses an article used to have: they keep leading to it (308, see proxy.ts). */
+export const postSlugHistory = mysqlTable("post_slug_history", {
+  slug: varchar("slug", { length: 191 }).primaryKey(),
+  postId: fk("post_id")
+    .notNull()
+    .references(() => posts.id, { onDelete: "cascade" }),
+  createdAt: createdAt(),
 });
 
 /* -------------------------------------------------------------------------- */

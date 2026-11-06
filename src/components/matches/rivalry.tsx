@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import { rivalryOf, type Rivalry } from "@/lib/match-seo";
 import { cn } from "@/lib/utils";
 
 /*
@@ -7,13 +8,7 @@ import { cn } from "@/lib/utils";
  * and a badge (styles in globals.css, .rivalry-*).
  */
 
-export type Rivalry = "classique" | "derby";
-
-export function rivalryOf(match: { opponent: string }): Rivalry | null {
-  if (/marseille/i.test(match.opponent)) return "classique";
-  if (/^paris\s*f\.?\s*c\.?$/i.test(match.opponent.trim())) return "derby";
-  return null;
-}
+export { rivalryOf, type Rivalry };
 
 /**
  * Classes for a card: the outline in both clubs' colours, Paris's on the side Paris stands

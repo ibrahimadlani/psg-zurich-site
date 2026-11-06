@@ -1,0 +1,251 @@
+{
+  "category": "trips",
+  "translations": {
+    "fr": {
+      "slug": "nice-psg-2026-deplacement-depuis-zurich",
+      "byline": "Le comité",
+      "title": "Nice – PSG le 21 novembre 2026 : y aller depuis Zurich, billets et stade",
+      "excerpt": "Vol direct, train ou voiture, places pour les supporters parisiens, tram jusqu'à l'Allianz Riviera : ce qu'il faut savoir pour Nice – PSG en partant de Zurich.",
+      "seoTitle": "Nice – PSG 2026 depuis Zurich : trajet, billets, stade",
+      "seoDescription": "Nice – PSG le 21 novembre 2026 : vol direct, train ou voiture depuis Zurich, billets pour les supporters parisiens et accès à l'Allianz Riviera.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**À retirer avant publication.** Point bloquant : l'accès des supporters parisiens. Un site de revente affiche « Pas de supporters adverses », sans source officielle. À contrôler auprès du PSG, de l'OGC Nice et de la préfecture des Alpes-Maritimes, puis à corriger ici. À vérifier aussi : l'horaire, les vols SWISS à cette date, le temps de train sur sbb.ch, la distance en voiture."
+        },
+        {
+          "type": "paragraph",
+          "text": "Le **samedi 21 novembre 2026**, le PSG joue à Nice à l'Allianz Riviera, avec un coup d'envoi annoncé à **17 h 15**. Depuis Zurich, le plus rapide est l'avion, environ 1 h 10 sans escale. Le train prend au moins 8 h 40. Dans les deux cas, prévoyez une nuit sur place. Avant de réserver, vérifiez d'abord une chose : les places pour les supporters parisiens."
+        },
+        {
+          "type": "heading",
+          "text": "Peut-on avoir une place en tant que supporter du PSG ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Au moment d'écrire ces lignes, nous n'avons trouvé aucune annonce officielle sur la tribune visiteurs de ce match. En Ligue 1, les déplacements de supporters peuvent être limités ou interdits par arrêté préfectoral. **Ne réservez ni vol ni hôtel avant d'avoir une réponse** du [PSG](https://www.psg.fr) ou de la [billetterie de l'OGC Nice](https://billetterie.ogcnice.com)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Méfiez-vous des sites de revente : en France, revendre un billet de match sans l'accord de l'organisateur est interdit, et un billet acheté ainsi peut être refusé à l'entrée."
+        },
+        {
+          "type": "heading",
+          "text": "Avion, train ou voiture ?"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Avion** : SWISS relie Zurich à Nice sans escale, environ 1 h 10 de vol. C'est la seule option qui permet de partir le matin même sans se presser.",
+            "**Train** : pas de liaison directe. Comptez au moins 8 h 40 avec changement, généralement par Milan. À réserver tôt sur [sbb.ch](https://www.sbb.ch).",
+            "**Voiture** : environ 600 km par le Gothard, Milan et Gênes, soit près de sept heures sans bouchons, avec les péages italiens et français. À partager pour que ce soit intéressant."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Comment aller à l'Allianz Riviera ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Le stade est à l'ouest de Nice, loin du centre. Selon l'[OGC Nice](https://billetterie.ogcnice.com/en/stadium/getting-to-the-allianz-riviera) :"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Tram ligne 3** : direct depuis Port Lympia jusqu'à l'arrêt « Stade », toutes les 10 minutes avant le match, toutes les 4 à 5 minutes après.",
+            "**Train régional** : des trains spéciaux relient la gare des Chemins de fer de Provence (4 bis rue Alfred-Binet) au stade en 15 minutes environ.",
+            "**Voiture** : parkings PMIN (900 places, sortie 50 de l'A8) et P5 Arboras, ouverts trois heures avant le match, avec navettes vers le stade."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Les détails à ne pas oublier"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Une carte d'identité ou un passeport valable, et des euros.",
+            "Le match finit vers 19 h 15 : aucun retour en train le soir même, et l'avion est très juste. Comptez une nuit à Nice.",
+            "Novembre sur la Côte d'Azur reste doux : de quoi profiter de la promenade des Anglais le dimanche matin."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Vous restez en Suisse ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Le match se regarde sur DAZN, avec l'offre Unlimited pour être certain de l'avoir : voir notre [guide de la Ligue 1 en Suisse](/fr/news/ligue-1-suisse-quelle-chaine). Les dates des [watch parties](/fr/watch-parties) du club sont annoncées sur le site."
+        }
+      ]
+    },
+    "de": {
+      "slug": "nizza-psg-2026-anreise-ab-zuerich",
+      "byline": "Der Vorstand",
+      "title": "Nizza – PSG am 21. November 2026: Anreise ab Zürich, Tickets und Stadion",
+      "excerpt": "Direktflug, Zug oder Auto, Tickets für PSG-Fans, Tram zur Allianz Riviera: Was Sie für Nizza – PSG ab Zürich wissen müssen.",
+      "seoTitle": "Nizza – PSG 2026 ab Zürich: Anreise, Tickets, Stadion",
+      "seoDescription": "Nizza – PSG am 21. November 2026: Direktflug, Zug oder Auto ab Zürich, Tickets für PSG-Fans und der Weg zur Allianz Riviera.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**Vor der Veröffentlichung entfernen.** Entscheidender Punkt: der Zugang für PSG-Fans. Eine Wiederverkaufsseite zeigt «Pas de supporters adverses», ohne offizielle Quelle. Bitte bei PSG, OGC Nizza und der Präfektur Alpes-Maritimes klären und hier korrigieren. Ebenfalls prüfen: Anstosszeit, SWISS-Flüge an diesem Datum, Zugzeit auf sbb.ch, Autodistanz."
+        },
+        {
+          "type": "paragraph",
+          "text": "Am **Samstag, 21. November 2026**, spielt PSG in Nizza in der Allianz Riviera, Anstoss laut Spielplan um **17.15 Uhr**. Ab Zürich ist das Flugzeug am schnellsten, rund 1 Stunde 10 nonstop. Der Zug braucht mindestens 8 Stunden 40. So oder so sollten Sie eine Übernachtung einplanen. Vor der Buchung gilt es aber zuerst etwas anderes zu klären: die Tickets für PSG-Fans."
+        },
+        {
+          "type": "heading",
+          "text": "Gibt es Tickets für PSG-Fans?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Zum Zeitpunkt dieses Artikels haben wir keine offizielle Mitteilung zum Gästesektor dieses Spiels gefunden. In der Ligue 1 können Auswärtsfahrten von Fans per Verfügung der Präfektur eingeschränkt oder verboten werden. **Buchen Sie weder Flug noch Hotel, bevor Sie Klarheit haben**, beim [PSG](https://www.psg.fr) oder beim [Ticketing von OGC Nizza](https://billetterie.ogcnice.com)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Vorsicht bei Wiederverkaufsseiten: In Frankreich ist der Weiterverkauf von Matchtickets ohne Zustimmung des Veranstalters verboten, und solche Tickets können am Eingang abgewiesen werden."
+        },
+        {
+          "type": "heading",
+          "text": "Flugzeug, Zug oder Auto?"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Flugzeug**: SWISS fliegt nonstop von Zürich nach Nizza, rund 1 Stunde 10. Nur so können Sie am selben Morgen ohne Hektik abreisen.",
+            "**Zug**: keine Direktverbindung. Rechnen Sie mit mindestens 8 Stunden 40 mit Umsteigen, meist über Mailand. Früh buchen auf [sbb.ch](https://www.sbb.ch).",
+            "**Auto**: rund 600 km über Gotthard, Mailand und Genua, knapp sieben Stunden ohne Stau, dazu italienische und französische Maut. Lohnt sich vor allem zu mehreren."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Wie komme ich zur Allianz Riviera?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Das Stadion liegt im Westen von Nizza, weit vom Zentrum. Laut [OGC Nizza](https://billetterie.ogcnice.com/en/stadium/getting-to-the-allianz-riviera):"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Tram Linie 3**: direkt ab Port Lympia bis zur Haltestelle «Stade», vor dem Spiel alle 10 Minuten, danach alle 4 bis 5 Minuten.",
+            "**Regionalzug**: Sonderzüge fahren vom Bahnhof der Chemins de fer de Provence (4bis rue Alfred Binet) in rund 15 Minuten zum Stadion.",
+            "**Auto**: Parkplätze PMIN (900 Plätze, Ausfahrt 50 der A8) und P5 Arboras, drei Stunden vor Spielbeginn geöffnet, mit Shuttle zum Stadion."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Daran sollten Sie denken"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Gültige Identitätskarte oder Reisepass und Euro.",
+            "Das Spiel endet gegen 19.15 Uhr: Mit dem Zug kommen Sie am selben Abend nicht mehr zurück, und auch der Flug wird sehr knapp. Planen Sie eine Nacht in Nizza ein.",
+            "Der November an der Côte d'Azur ist mild: Am Sonntagmorgen bleibt Zeit für die Promenade des Anglais."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Sie bleiben in der Schweiz?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Das Spiel läuft auf DAZN, mit dem Paket Unlimited sehen Sie es sicher: siehe unseren [Guide zur Ligue 1 in der Schweiz](/de/news/ligue-1-schweiz-tv-streaming). Die Termine der [Watch-Partys](/de/watch-parties) des Clubs stehen auf der Website."
+        }
+      ]
+    },
+    "en": {
+      "slug": "nice-psg-2026-trip-from-zurich",
+      "byline": "The committee",
+      "title": "Nice v PSG on 21 November 2026: getting there from Zurich, tickets and stadium",
+      "excerpt": "Direct flight, train or car, tickets for PSG fans, the tram to the Allianz Riviera: what you need to know for Nice v PSG from Zurich.",
+      "seoTitle": "Nice v PSG 2026 from Zurich: travel, tickets, stadium",
+      "seoDescription": "Nice v PSG on 21 November 2026: direct flight, train or car from Zurich, tickets for PSG fans and how to reach the Allianz Riviera.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**Remove before publishing.** Key point: access for PSG fans. A resale site shows \"Pas de supporters adverses\" (no away fans), with no official source. Check with PSG, OGC Nice and the Alpes-Maritimes prefecture, then correct this article. Also check: kick-off time, SWISS flights on that date, train time on sbb.ch, driving distance."
+        },
+        {
+          "type": "paragraph",
+          "text": "On **Saturday 21 November 2026**, PSG play at Nice's Allianz Riviera, with kick-off listed at **5.15 pm**. From Zurich, flying is fastest, about 1 hour 10 non-stop. The train takes at least 8 hours 40. Either way, plan on a night there. But before you book anything, check one thing first: tickets for PSG fans."
+        },
+        {
+          "type": "heading",
+          "text": "Can PSG fans get a ticket?"
+        },
+        {
+          "type": "paragraph",
+          "text": "At the time of writing, we have found no official announcement about the away section for this match. In Ligue 1, away travel by fans can be restricted or banned by prefectural order. **Do not book a flight or hotel until you have an answer** from [PSG](https://www.psg.fr) or the [OGC Nice ticket office](https://billetterie.ogcnice.com)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Beware of resale sites: in France, reselling a match ticket without the organiser's consent is banned, and a ticket bought that way can be refused at the gate."
+        },
+        {
+          "type": "heading",
+          "text": "Plane, train or car?"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Plane**: SWISS flies Zurich to Nice non-stop in about 1 hour 10. It is the only option that lets you leave the same morning without rushing.",
+            "**Train**: no direct service. Allow at least 8 hours 40 with a change, usually via Milan. Book early on [sbb.ch](https://www.sbb.ch).",
+            "**Car**: about 600 km via the Gotthard, Milan and Genoa, nearly seven hours without traffic, plus Italian and French tolls. Worth it mostly if you share."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "How do you get to the Allianz Riviera?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The stadium is in the west of Nice, a long way from the centre. According to [OGC Nice](https://billetterie.ogcnice.com/en/stadium/getting-to-the-allianz-riviera):"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Tram line 3**: direct from Port Lympia to the \"Stade\" stop, every 10 minutes before the match and every 4 to 5 minutes after.",
+            "**Regional train**: special trains run from the Chemins de fer de Provence station (4bis rue Alfred Binet) to the stadium in about 15 minutes.",
+            "**Car**: PMIN car park (900 spaces, exit 50 on the A8) and P5 Arboras, open three hours before the match, with shuttles to the stadium."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Don't forget"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "A valid ID card or passport, and some euros.",
+            "The match ends around 7.15 pm: there is no train back the same evening, and a flight would be very tight. Plan on a night in Nice.",
+            "November on the Côte d'Azur is mild: you will have time for the Promenade des Anglais on Sunday morning."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Staying in Switzerland?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The match is on DAZN, and the Unlimited plan makes sure you get it: see our [guide to Ligue 1 in Switzerland](/en/news/ligue-1-switzerland-tv-streaming). The club's [watch party](/en/watch-parties) dates are on the site."
+        }
+      ]
+    }
+  }
+}

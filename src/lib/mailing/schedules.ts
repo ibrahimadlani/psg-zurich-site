@@ -9,6 +9,7 @@ import { launchScheduledCampaigns } from "@/lib/mailing/campaigns";
 import { formatReference, topicReaders } from "@/lib/contact";
 import { committeeRecipients, emailDate, enqueue, memberRecipients, type Recipient } from "@/lib/mailing/queue";
 import { matchTitle } from "@/lib/matches";
+import { matchPath } from "@/lib/match-seo";
 
 /*
  * Emails found by a periodic scan (every 5 minutes). Each one has a dedupe key and a time
@@ -48,7 +49,7 @@ async function predictionReminders() {
         competition: match.competition,
         time: emailDate(match.kickoffAt, recipient.locale),
       },
-      path: `/matches/${match.id}`,
+      path: matchPath(match),
       dedupe: `prediction.reminder:${match.id}:${recipient.memberId}`,
     }));
   }

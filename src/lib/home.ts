@@ -12,6 +12,7 @@ import { getNewsList } from "@/lib/news";
 import { getNotifications } from "@/lib/notification-feed";
 import { getSession } from "@/lib/permissions";
 import { memberPolls } from "@/lib/polls";
+import { matchPath } from "@/lib/match-seo";
 
 /*
  * Everything the home page shows, gathered in one go: the match that matters now (live, next or
@@ -86,7 +87,7 @@ export async function homeMemberExtras(viewer: HomeViewer, locale: Locale, basic
   const me = board.find((row) => row.memberId === member.id) ?? null;
   const event = basics.event;
   const todo = [
-    ...(active && basics.next && !myPrediction ? [{ kind: "predict" as const, href: `/matches/${basics.next.id}`, opponent: basics.next.opponent }] : []),
+    ...(active && basics.next && !myPrediction ? [{ kind: "predict" as const, href: matchPath(basics.next), opponent: basics.next.opponent }] : []),
     ...(active && !isDuesPaid(member) ? [{ kind: "dues" as const, href: "/dues" }] : []),
     ...(isDuesPaid(member) && event && !event.myStatus && (event.capacity === null || event.registered < event.capacity)
       ? [{ kind: "signUp" as const, href: `/events/${event.id}`, title: event.title }]

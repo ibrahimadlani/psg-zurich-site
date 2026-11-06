@@ -3,11 +3,14 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { connection } from "next/server";
 import { MemberDashboard, MemberFeed, MemberMatchday } from "@/components/home/variants";
 import { WaitingPage } from "@/components/home/waiting-page";
+import { JsonLd } from "@/components/json-ld";
 import { VisitorLanding } from "@/components/landing/landing-page";
 import { HOME_MEMBER_VARIANTS, HOME_VISITOR_VARIANTS, type HomeMemberVariant, type HomeVisitorVariant, type Locale } from "@/db/schema";
 import { clubFigures, homeBasics, homeMemberExtras, homeViewer } from "@/lib/home";
 import { can } from "@/lib/roles";
+import { pageMetadata } from "@/lib/seo";
 import { getHomeSettings } from "@/lib/site-settings";
+import { homeStructuredData } from "@/lib/structured-data";
 import { HomeSkeleton } from "@/components/home/home-skeleton";
 import { Streamed } from "@/components/ui/streamed";
 
@@ -33,9 +36,8 @@ async function choose(searchParams: SearchParams) {
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  // The layout's title template only applies to child segments, not to this page.
-  const site = await getTranslations("Metadata");
-  return { title: { absolute: site("title") }, description: site("description") };
+  const t = await getTranslations("Metadata");
+  return pageMetadata({ path: "/", title: t("homeTitle"), description: t("description"), absoluteTitle: true });
 }
 
 async function Home({ searchParams }: { searchParams: SearchParams }) {
@@ -57,10 +59,14 @@ async function Home({ searchParams }: { searchParams: SearchParams }) {
   return <div className="mx-auto w-full max-w-5xl px-4 py-10">{content}</div>;
 }
 
-export default function HomePage({ searchParams }: PageProps<"/[locale]">) {
+export default async function HomePage({ searchParams }: PageProps<"/[locale]">) {
+  const t = await getTranslations("Metadata");
   return (
-    <Streamed fallback={<HomeSkeleton />}>
-      <Home searchParams={searchParams} />
-    </Streamed>
+    <>
+      <JsonLd data={homeStructuredData(t("description"))} />
+      <Streamed fallback={<HomeSkeleton />}>
+        <Home searchParams={searchParams} />
+      </Streamed>
+    </>
   );
 }

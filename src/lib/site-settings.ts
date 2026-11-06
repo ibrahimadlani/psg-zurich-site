@@ -10,6 +10,25 @@ export async function getHomeSettings(): Promise<{ visitor: HomeVisitorVariant; 
   return { visitor: row?.homeVisitor ?? "coming_soon", member: row?.homeMember ?? "dashboard" };
 }
 
+/** Who shows each competition in Switzerland, as the committee checked it ({} until then). */
+export async function getBroadcasters(): Promise<Record<string, string>> {
+  const [row] = await db.select({ broadcasters: siteSettings.broadcasters }).from(siteSettings).where(eq(siteSettings.id, 1));
+  return row?.broadcasters ?? {};
+}
+
+/** The channel to name for a match: its own if it has one, else its competition's, else none. */
+export async function matchBroadcaster(match: { broadcaster: string | null; competition: string }) {
+  return match.broadcaster || (await getBroadcasters())[match.competition] || null;
+}
+
+export async function saveBroadcasters(broadcasters: Record<string, string>, actor: { actorId: string; ipAddress: string | null }) {
+  await db
+    .insert(siteSettings)
+    .values({ id: 1, broadcasters, updatedById: actor.actorId })
+    .onDuplicateKeyUpdate({ set: { broadcasters, updatedById: actor.actorId } });
+  await writeAuditLog({ actorId: actor.actorId, action: "site.broadcasters", entityType: "site_settings", entityId: null, metadata: broadcasters, ipAddress: actor.ipAddress });
+}
+
 export async function saveHomeSettings(settings: { visitor: HomeVisitorVariant; member: HomeMemberVariant }, actor: { actorId: string; ipAddress: string | null }) {
   await db
     .insert(siteSettings)

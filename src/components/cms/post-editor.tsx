@@ -21,6 +21,8 @@ import { cn } from "@/lib/utils";
 export type PostDraft = {
   title: string;
   excerpt: string;
+  seoTitle: string;
+  seoDescription: string;
   slug: string;
   category: PostCategory;
   locale: Locale;
@@ -105,6 +107,8 @@ export function PostEditor({
         body: JSON.stringify({
           title: current.title,
           excerpt: current.excerpt || undefined,
+          seoTitle: current.seoTitle || undefined,
+          seoDescription: current.seoDescription || undefined,
           slug: current.slug || slugify(current.title),
           category: current.category,
           locale: current.locale,
@@ -238,6 +242,39 @@ export function PostEditor({
               </div>
             </div>
 
+            {/* How the article shows in Google: filled in only when it should differ from the title and the excerpt. */}
+            <div className={panel}>
+              <p className="text-sm font-semibold">{t("seo.title")}</p>
+              <div className="space-y-1.5">
+                <div className="flex items-baseline justify-between gap-2">
+                  <Label htmlFor="seo-title">{t("seo.titleField")}</Label>
+                  <span className={cn("text-xs tabular-nums", current.seoTitle.length > 60 ? "text-psg-red" : "text-muted-foreground")}>{current.seoTitle.length}/60</span>
+                </div>
+                <Input id="seo-title" value={current.seoTitle} maxLength={70} placeholder={current.title} onChange={(event) => set("seoTitle", event.target.value)} />
+              </div>
+              <div className="space-y-1.5">
+                <div className="flex items-baseline justify-between gap-2">
+                  <Label htmlFor="seo-description">{t("seo.descriptionField")}</Label>
+                  <span className={cn("text-xs tabular-nums", current.seoDescription.length > 155 ? "text-psg-red" : "text-muted-foreground")}>{current.seoDescription.length}/155</span>
+                </div>
+                <textarea
+                  id="seo-description"
+                  rows={3}
+                  maxLength={170}
+                  value={current.seoDescription}
+                  placeholder={current.excerpt}
+                  onChange={(event) => set("seoDescription", event.target.value)}
+                  className="w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-sm outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
+                />
+              </div>
+              <div className="space-y-1 rounded-lg bg-foreground/[0.04] p-3">
+                <p className="text-[11px] text-muted-foreground">{t("seo.preview")}</p>
+                <p className="truncate text-xs text-muted-foreground">psg-zurich.ch › {current.locale} › news › {current.slug || "…"}</p>
+                <p className="line-clamp-2 text-[15px] leading-snug font-medium">{current.seoTitle || current.title || t("untitled")} · PSG Zurich</p>
+                <p className="line-clamp-2 text-xs leading-snug text-muted-foreground">{current.seoDescription || current.excerpt}</p>
+              </div>
+            </div>
+
             <div className={panel}>
               <p className="text-sm font-semibold">{t("cover")}</p>
               {current.imageUrl ? (
@@ -344,7 +381,7 @@ export function PostEditor({
             <span className="self-start rounded-full bg-psg-red px-[9px] py-1 font-wide text-[9px] font-semibold tracking-[0.08em] text-white uppercase">
               {tNews(`categories.${current.category}`)}
             </span>
-            <h1 className="font-narrow text-[length:clamp(34px,6.4vw,68px)] leading-[0.92] font-extrabold text-balance uppercase italic">
+            <h1 className="font-narrow text-[length:clamp(34px,6.4vw,68px)] leading-none font-extrabold text-balance uppercase italic">
               {current.title || t("untitled")}
             </h1>
             {current.excerpt ? <p className="text-[length:clamp(18px,2.2vw,21px)] leading-normal text-muted-foreground">{current.excerpt}</p> : null}

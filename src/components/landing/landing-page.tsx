@@ -14,6 +14,7 @@ import { matchTitle } from "@/lib/matches";
 import { formatChf } from "@/lib/money";
 import { seasonRates } from "@/lib/payments/dues-price";
 import { cn } from "@/lib/utils";
+import { matchPath } from "@/lib/match-seo";
 
 /** The site's diagonal lines, over the blue panels. */
 const hatching = "[background-image:repeating-linear-gradient(135deg,rgb(255_255_255/0.07)_0_1px,transparent_1px_14px)]";
@@ -57,8 +58,8 @@ export async function VisitorLanding({ basics, figures }: { basics: Basics; figu
   const marquee = t.raw("marquee") as string[];
 
   const steps = [
-    { key: "watch", href: "/events", Art: WatchPartyIllustration },
-    { key: "travel", href: "/events", Art: AwayTripIllustration },
+    { key: "watch", href: "/watch-parties", Art: WatchPartyIllustration },
+    { key: "travel", href: "/guides", Art: AwayTripIllustration },
     { key: "play", href: "/matches", Art: MembersMatchIllustration },
     { key: "family", href: "/join", Art: SocialIllustration },
   ] as const;
@@ -82,16 +83,11 @@ export async function VisitorLanding({ basics, figures }: { basics: Basics; figu
                 {t("hero.eyebrow")}
               </p>
               <h1 className={cn(display, "text-[length:clamp(54px,8.2vw,104px)] leading-[0.9]")}>
-                <span className="landing-rise block" style={delay(1)}>
-                  {t("hero.title1")}
-                </span>
-                <span className="landing-rise block text-transparent [-webkit-text-stroke:2px_white]" style={delay(2)}>
-                  {t("hero.title2")}
-                </span>
+                {/* Title and lead appear at once: they are the page's main content (LCP). */}
+                <span className="block">{t("hero.title1")}</span>{" "}
+                <span className="block text-transparent [-webkit-text-stroke:2px_white]">{t("hero.title2")}</span>
               </h1>
-              <p className="landing-rise max-w-[30rem] text-[17px] leading-relaxed text-pretty text-white/80 sm:text-[18px]" style={delay(3)}>
-                {t("hero.lead")}
-              </p>
+              <p className="max-w-[30rem] text-[17px] leading-relaxed text-pretty text-white/80 sm:text-[18px]">{t("hero.lead")}</p>
               <div className="landing-rise flex flex-col gap-3 sm:flex-row sm:items-center" style={delay(4)}>
                 <Link href="/join" className={whiteButton}>
                   {t("hero.join")}
@@ -111,7 +107,7 @@ export async function VisitorLanding({ basics, figures }: { basics: Basics; figu
             <div className="relative -mx-4 sm:mx-0">
               {next ? (
                 <Link
-                  href={`/matches/${next.id}`}
+                  href={matchPath(next)}
                   className="landing-float-chip absolute top-0 left-4 z-10 flex max-w-[calc(100%-2rem)] items-center gap-3 rounded-[14px] bg-white/10 py-2 pr-4 pl-2.5 ring-1 ring-white/25 backdrop-blur-md transition-colors ring-inset hover:bg-white/15 sm:left-0 lg:top-6"
                 >
                   {/* Both crests, home team first, slightly overlapping. */}

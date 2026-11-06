@@ -1,0 +1,287 @@
+{
+  "category": "guides",
+  "translations": {
+    "fr": {
+      "slug": "ligue-des-champions-suisse-quelle-chaine",
+      "byline": "Le comité",
+      "title": "Ligue des champions en Suisse : où voir le PSG, gratuitement ou non, en 2026-2027",
+      "excerpt": "Tous les matchs sur blue Sport, un match par journée en clair sur la RTS, la SRF et la RSI. Comment voir le PSG en Ligue des champions, et ce qui change en 2027.",
+      "seoTitle": "Ligue des champions en Suisse : quelle chaîne en 2026-2027 ?",
+      "seoDescription": "Tous les matchs sur blue Sport, un par journée en clair sur la RTS et la SRF. Comment voir le PSG en Ligue des champions depuis la Suisse.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**À retirer avant publication.** À vérifier : le prix de blue Sport sur blue.ch (ici au 13 octobre 2026), les horaires des matchs, et l'état des négociations de la SSR pour 2027-2028."
+        },
+        {
+          "type": "paragraph",
+          "text": "En Suisse, **blue Sport** diffuse tous les matchs de la Ligue des champions. La **RTS, la SRF et la RSI** en montrent un par journée en clair, plus la finale, mais ce sont elles qui choisissent : le PSG n'y est pas à chaque fois. Pour être certain de voir chaque match du PSG, il faut donc blue Sport."
+        },
+        {
+          "type": "heading",
+          "text": "Qui montre quoi ?"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**blue Sport** (Swisscom) : tous les matchs en direct, sur abonnement.",
+            "**RTS, SRF et RSI** (SSR) : un match en direct par journée et la finale, gratuitement, grâce à une sous-licence de blue Sport. L'offre reste la même en 2026-2027."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Comment savoir si le PSG passe en clair ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Les chaînes publiques annoncent leur choix peu avant la journée, et elles privilégient les clubs suisses et les plus grandes affiches. Regardez le programme de la RTS ou de la SRF la veille du match. N'attendez pas la dernière minute si vous prévoyez une soirée entre amis."
+        },
+        {
+          "type": "heading",
+          "text": "Les prochains matchs du PSG en phase de ligue"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Mercredi 25 novembre 2026, 21 h** : PSG – AS Rome",
+            "**Mardi 8 décembre 2026, 21 h** : Aston Villa – PSG",
+            "**Mercredi 20 janvier 2027, 21 h** : Côme – PSG ([y aller depuis Zurich](/fr/news/come-psg-2027-deplacement-depuis-zurich))",
+            "**Mercredi 27 janvier 2027, 21 h** : PSG – Galatasaray"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Heures suisses, à confirmer dans le [calendrier du site](/fr/matches), qui indique aussi la chaîne dès que le comité l'a vérifiée."
+        },
+        {
+          "type": "heading",
+          "text": "Combien coûte blue Sport ?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Au 13 octobre 2026, selon les derniers tarifs publiés : **49,90 CHF par mois** sans engagement, ou **34,90 CHF par mois** avec l'abonnement annuel. Des offres de lancement existent en début de saison. Vérifiez sur blue.ch avant de vous abonner."
+        },
+        {
+          "type": "heading",
+          "text": "Ce qui change à partir de 2027-2028"
+        },
+        {
+          "type": "paragraph",
+          "text": "Les droits européens ont été réattribués le 30 avril 2026 pour les saisons 2027-2028 à 2030-2031 :"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Ligue des champions** : elle reste chez blue Sport, en direct et en exclusivité.",
+            "**Europa League et Conference League** : elles passent chez DAZN.",
+            "**SSR** : elle n'a remporté aucun droit dans cet appel d'offres. Elle dit négocier avec Swisscom et DAZN pour continuer à montrer des matchs en clair."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Rien n'est donc acquis pour les matchs gratuits après cette saison. Nous mettrons ce guide à jour dès qu'un accord sera annoncé."
+        },
+        {
+          "type": "heading",
+          "text": "Voir les grands soirs ensemble"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pour les grandes affiches, le club organise des [watch parties à Zurich](/fr/watch-parties) pour ses membres. La Ligue 1 suit d'autres règles : voir notre [guide de la Ligue 1 en Suisse](/fr/news/ligue-1-suisse-quelle-chaine), ou la vue d'ensemble pour [regarder le PSG en Suisse](/fr/news/regarder-psg-suisse-tv-streaming)."
+        }
+      ]
+    },
+    "de": {
+      "slug": "champions-league-schweiz-tv-sender",
+      "byline": "Der Vorstand",
+      "title": "Champions League in der Schweiz: Wo PSG läuft, auch gratis, in der Saison 2026/27",
+      "excerpt": "Alle Spiele bei blue Sport, ein Spiel pro Runde gratis bei SRF, RTS und RSI. So sehen Sie PSG in der Champions League, und das ändert sich 2027.",
+      "seoTitle": "Champions League Schweiz: Wer zeigt sie 2026/27 im TV?",
+      "seoDescription": "Alle Spiele bei blue Sport, eines pro Runde gratis bei SRF. So sehen Sie PSG in der Champions League in der Schweiz, und das ändert sich 2027.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**Vor der Veröffentlichung entfernen.** Bitte prüfen: den Preis von blue Sport auf blue.ch (hier Stand 13. Oktober 2026), die Anstosszeiten und den Stand der SRG-Verhandlungen für 2027/28."
+        },
+        {
+          "type": "paragraph",
+          "text": "In der Schweiz zeigt **blue Sport** alle Spiele der Champions League. **SRF, RTS und RSI** zeigen pro Runde eines gratis, dazu den Final, wählen dieses Spiel aber selbst aus: PSG ist nicht jedes Mal dabei. Wer sicher jedes PSG-Spiel sehen will, braucht also blue Sport."
+        },
+        {
+          "type": "heading",
+          "text": "Wer zeigt was?"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**blue Sport** (Swisscom): alle Spiele live, im Abo.",
+            "**SRF, RTS und RSI** (SRG): ein Live-Spiel pro Runde und der Final, gratis, dank einer Sublizenz von blue Sport. Das Angebot bleibt 2026/27 unverändert."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Woher weiss ich, ob PSG gratis läuft?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Die öffentlichen Sender geben ihre Wahl kurz vor dem Spieltag bekannt und bevorzugen Schweizer Klubs und die grössten Affichen. Schauen Sie am Vortag ins Programm von SRF. Planen Sie einen Abend mit Freunden, warten Sie damit nicht bis zur letzten Minute."
+        },
+        {
+          "type": "heading",
+          "text": "Die nächsten PSG-Spiele in der Ligaphase"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Mittwoch, 25. November 2026, 21 Uhr**: PSG – AS Roma",
+            "**Dienstag, 8. Dezember 2026, 21 Uhr**: Aston Villa – PSG",
+            "**Mittwoch, 20. Januar 2027, 21 Uhr**: Como – PSG ([Auswärtsfahrt ab Zürich](/de/news/como-psg-2027-auswaertsfahrt-ab-zuerich))",
+            "**Mittwoch, 27. Januar 2027, 21 Uhr**: PSG – Galatasaray"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Schweizer Zeit, bitte im [Spielplan](/de/matches) bestätigen. Dort steht auch der Sender, sobald der Vorstand ihn geprüft hat."
+        },
+        {
+          "type": "heading",
+          "text": "Was kostet blue Sport?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stand 13. Oktober 2026, nach den zuletzt veröffentlichten Preisen: **CHF 49.90 pro Monat** monatlich kündbar oder **CHF 34.90 pro Monat** im Jahresabo. Zum Saisonstart gibt es teils Einführungsangebote. Prüfen Sie vor dem Abschluss die Angaben auf blue.ch."
+        },
+        {
+          "type": "heading",
+          "text": "Das ändert sich ab 2027/28"
+        },
+        {
+          "type": "paragraph",
+          "text": "Die Europacup-Rechte wurden am 30. April 2026 für die Saisons 2027/28 bis 2030/31 neu vergeben:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Champions League**: bleibt bei blue Sport, live und exklusiv.",
+            "**Europa League und Conference League**: wechseln zu DAZN.",
+            "**SRG**: hat in dieser Ausschreibung keine Rechte erhalten. Sie verhandelt nach eigenen Angaben mit Swisscom und DAZN, um weiterhin Spiele frei empfangbar zu zeigen."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Für Gratis-Spiele nach dieser Saison ist also noch nichts gesichert. Wir aktualisieren diesen Guide, sobald eine Einigung bekannt ist."
+        },
+        {
+          "type": "heading",
+          "text": "Die grossen Abende gemeinsam"
+        },
+        {
+          "type": "paragraph",
+          "text": "Für die grossen Spiele organisiert der Club [Watch-Partys in Zürich](/de/watch-parties) für seine Mitglieder. Für die Meisterschaft gelten andere Regeln: siehe unseren [Guide zur Ligue 1 in der Schweiz](/de/news/ligue-1-schweiz-tv-streaming) oder den Gesamtüberblick [PSG schauen in der Schweiz](/de/news/psg-schauen-schweiz-tv-streaming)."
+        }
+      ]
+    },
+    "en": {
+      "slug": "champions-league-switzerland-tv",
+      "byline": "The committee",
+      "title": "Champions League in Switzerland: where to watch PSG, free or paid, in 2026-27",
+      "excerpt": "Every match on blue Sport, one per round free on SRF, RTS and RSI. How to watch PSG in the Champions League from Switzerland, and what changes in 2027.",
+      "seoTitle": "Champions League in Switzerland: who shows it in 2026-27?",
+      "seoDescription": "Every match on blue Sport, one per round free on SRF and RTS. How to watch PSG in the Champions League from Switzerland, and what changes in 2027.",
+      "blocks": [
+        {
+          "type": "callout",
+          "tone": "important",
+          "text": "**Remove before publishing.** To check: the blue Sport price on blue.ch (as of 13 October 2026 here), the kick-off times, and where the SRG talks stand for 2027-28."
+        },
+        {
+          "type": "paragraph",
+          "text": "In Switzerland, **blue Sport** shows every Champions League match. **SRF, RTS and RSI** show one per round free of charge, plus the final, but they pick the match themselves, so PSG are not always on. To be sure of seeing every PSG match, you need blue Sport."
+        },
+        {
+          "type": "heading",
+          "text": "Who shows what?"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**blue Sport** (Swisscom): every match live, by subscription.",
+            "**SRF, RTS and RSI** (SRG): one live match per round and the final, free, through a sublicence from blue Sport. The offer stays the same in 2026-27."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "How do you know if PSG are on free TV?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The public broadcasters announce their choice shortly before each round and favour Swiss clubs and the biggest ties. Check the SRF or RTS schedule the day before. If you are planning an evening with friends, do not leave it to the last minute."
+        },
+        {
+          "type": "heading",
+          "text": "PSG's next league-phase matches"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Wednesday 25 November 2026, 9 pm**: PSG v AS Roma",
+            "**Tuesday 8 December 2026, 9 pm**: Aston Villa v PSG",
+            "**Wednesday 20 January 2027, 9 pm**: Como v PSG ([away trip from Zurich](/en/news/como-psg-2027-away-trip-from-zurich))",
+            "**Wednesday 27 January 2027, 9 pm**: PSG v Galatasaray"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Swiss time, to be confirmed in the [fixture list](/en/matches), which also names the channel once the committee has checked it."
+        },
+        {
+          "type": "heading",
+          "text": "What does blue Sport cost?"
+        },
+        {
+          "type": "paragraph",
+          "text": "As of 13 October 2026, on the latest published prices: **CHF 49.90 a month** with no commitment, or **CHF 34.90 a month** on an annual plan. Introductory offers sometimes run at the start of a season. Check blue.ch before you subscribe."
+        },
+        {
+          "type": "heading",
+          "text": "What changes from 2027-28"
+        },
+        {
+          "type": "paragraph",
+          "text": "The European rights were awarded on 30 April 2026 for the seasons 2027-28 to 2030-31:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "**Champions League**: stays with blue Sport, live and exclusive.",
+            "**Europa League and Conference League**: move to DAZN.",
+            "**SRG**: won no rights in this tender. It says it is negotiating with Swisscom and DAZN to keep showing matches free to air."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "So nothing is settled yet for free matches after this season. We will update this guide as soon as a deal is announced."
+        },
+        {
+          "type": "heading",
+          "text": "The big nights, together"
+        },
+        {
+          "type": "paragraph",
+          "text": "For the biggest matches, the club holds [watch parties in Zurich](/en/watch-parties) for its members. The league works differently: see our [guide to Ligue 1 in Switzerland](/en/news/ligue-1-switzerland-tv-streaming), or the full picture on [how to watch PSG in Switzerland](/en/news/watch-psg-in-switzerland-tv-streaming)."
+        }
+      ]
+    }
+  }
+}

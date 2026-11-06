@@ -4,10 +4,13 @@ import { Fragment } from "react";
 import { LEGAL_DOCUMENTS, type LegalBlock, type LegalDocumentKey } from "@/content/legal";
 import { LEGAL } from "@/lib/legal";
 import { cn } from "@/lib/utils";
+import { pageMetadata } from "@/lib/seo";
+
+const LEGAL_PATHS: Record<LegalDocumentKey, string> = { imprint: "/legal-notice", privacy: "/privacy", statutes: "/statutes" };
 
 export async function legalMetadata(key: LegalDocumentKey): Promise<Metadata> {
   const document = LEGAL_DOCUMENTS[key][await getLocale()];
-  return { title: document.title, description: document.intro };
+  return pageMetadata({ path: LEGAL_PATHS[key], title: document.title, description: document.intro });
 }
 
 const linkClass = "text-foreground underline decoration-foreground/25 underline-offset-[3px] transition-colors hover:decoration-brand-red";

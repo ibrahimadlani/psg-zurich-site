@@ -20,10 +20,12 @@ import { closestMatch, getSeasonMatches } from "@/lib/matches";
 import { getCurrentMember } from "@/lib/members";
 import { MatchesSkeleton } from "@/components/skeletons";
 import { Streamed } from "@/components/ui/streamed";
+import { pageMetadata } from "@/lib/seo";
+import { matchPath } from "@/lib/match-seo";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Matches");
-  return { title: t("title"), description: t("description") };
+  const t = await getTranslations("Metadata.pages.matches");
+  return pageMetadata({ path: "/matches", title: t("title"), description: t("description") });
 }
 
 async function MatchesContent() {
@@ -128,7 +130,7 @@ async function MatchesContent() {
         </div>
         <LiveMatches initial={live} />
         {featured ? (
-          <Link href={`/matches/${featured.match.id}`} className="block transition-opacity hover:opacity-90">
+          <Link href={matchPath(featured.match)} className="block transition-opacity hover:opacity-90">
             <Scoreboard match={featured.match} />
           </Link>
         ) : null}

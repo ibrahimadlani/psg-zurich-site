@@ -1,12 +1,13 @@
 "use client";
 
-import { CalendarPlus, Pencil, Plus, RefreshCw, Trash2 } from "lucide-react";
+import { CalendarPlus, Globe, Pencil, Plus, RefreshCw, Trash2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState, useTransition } from "react";
 import { notify } from "@/lib/notify";
 import { emptyEvent, type MatchOption } from "@/components/admin/event-form";
 import { EventPanel } from "@/components/admin/events/event-panel";
 import { MatchForm, type MatchFormValues } from "@/components/admin/match-form";
+import { MatchPublicForm, type MatchPublicValues } from "@/components/admin/matches/match-public-form";
 import { useConfirm } from "@/components/admin/ui/confirm-dialog";
 import { ResponsivePanel } from "@/components/admin/ui/responsive-panel";
 import { adminButton } from "@/components/admin/ui/styles";
@@ -61,17 +62,20 @@ export function MatchRowActions({
   manual,
   matchId,
   defaults,
+  publicPage,
 }: {
   option: MatchOption | null;
   manual: boolean;
   matchId: string;
   defaults: MatchFormValues | null;
+  publicPage: MatchPublicValues;
 }) {
   const t = useTranslations("AdminMatches");
   const tEvents = useTranslations("Events");
   const router = useRouter();
   const ask = useConfirm();
-  const [panel, setPanel] = useState<"event" | "edit" | null>(null);
+  const tPublic = useTranslations("AdminMatches.public");
+  const [panel, setPanel] = useState<"event" | "edit" | "public" | null>(null);
   const [pending, startTransition] = useTransition();
 
   return (
@@ -82,6 +86,13 @@ export function MatchRowActions({
           {t("planEvent")}
         </button>
       ) : null}
+      <button type="button" onClick={() => setPanel("public")} className={adminButton("ghost", "sm")}>
+        <Globe aria-hidden />
+        <span className="max-sm:sr-only">{tPublic("action")}</span>
+      </button>
+      <ResponsivePanel open={panel === "public"} onOpenChange={(open) => setPanel(open ? "public" : null)} title={tPublic("title")} description={tPublic("hint")}>
+        {panel === "public" ? <MatchPublicForm matchId={matchId} defaults={publicPage} onDone={() => setPanel(null)} /> : null}
+      </ResponsivePanel>
       {manual && defaults ? (
         <>
           <button type="button" onClick={() => setPanel("edit")} className={adminButton("ghost", "sm")}>

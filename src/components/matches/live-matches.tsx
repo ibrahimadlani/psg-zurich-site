@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { MatchView } from "@/components/matches/match-utils";
 import { Scoreboard } from "@/components/matches/scoreboard";
 import { Link } from "@/i18n/navigation";
+import { matchPath } from "@/lib/match-seo";
 
 const REFRESH_MS = 30_000;
 
@@ -33,7 +34,7 @@ export function LiveMatches({ initial }: { initial: MatchView[] }) {
   return (
     <div className="space-y-4">
       {matches.map((match) => (
-        <Link key={match.id} href={`/matches/${match.id}`} className="block transition-opacity hover:opacity-90">
+        <Link key={match.id} href={matchPath(match)} className="block transition-opacity hover:opacity-90">
           <Scoreboard match={match} />
         </Link>
       ))}

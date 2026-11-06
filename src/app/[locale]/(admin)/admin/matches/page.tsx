@@ -18,6 +18,7 @@ import { lastMatchSync, listAdminMatches, toLocalInput } from "@/lib/admin/event
 import { closedSeasons, frozenBoard, seasonLabel } from "@/lib/leaderboard";
 import { matchTitle, type Match } from "@/lib/matches";
 import { Streamed } from "@/components/ui/streamed";
+import { matchPath } from "@/lib/match-seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -76,7 +77,7 @@ async function Matches() {
               </span>
               <div className="min-w-0 flex-1 space-y-1">
                 <CompetitionLabel match={match} short />
-                <Link href={`/matches/${match.id}`} prefetch={false} className="flex items-center gap-2 text-[15px] font-semibold hover:underline">
+                <Link href={matchPath(match)} prefetch={false} className="flex items-center gap-2 text-[15px] font-semibold hover:underline">
                   <TeamCrest name={home.name} logo={home.logo} className="size-5" />
                   <span className="truncate">{home.isPsg ? "PSG" : home.name}</span>
                   <span className="shrink-0 text-muted-foreground tabular-nums">{played ? `${home.score} – ${away.score}` : "–"}</span>
@@ -97,6 +98,7 @@ async function Matches() {
               matchId={match.id}
               manual={manual}
               defaults={manual ? formValues(match) : null}
+              publicPage={{ broadcaster: match.broadcaster ?? "", intro: { fr: match.intro?.fr ?? "", en: match.intro?.en ?? "", de: match.intro?.de ?? "" } }}
               option={
                 match.kickoffAt >= now && !events
                   ? {

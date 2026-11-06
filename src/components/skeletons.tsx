@@ -144,6 +144,7 @@ export function MatchesSkeleton() {
 export function MatchDetailSkeleton() {
   return (
     <SkeletonGroup className="space-y-6">
+      <Skeleton className="h-[clamp(30px,5.5vw,48px)] w-[min(24rem,75vw)] rounded-[8px]" />
       <ScoreboardSkeleton />
       <Line w="9rem" />
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_21rem]">

@@ -7,10 +7,11 @@ import { getSession } from "@/lib/permissions";
 import { paymentsEnabled } from "@/lib/payments/stripe";
 import { LEGAL } from "@/lib/legal";
 import { Streamed } from "@/components/ui/streamed";
+import { pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Support");
-  return { title: t("title"), description: t("intro") };
+  return pageMetadata({ path: "/donate", title: t("title"), description: t("intro") });
 }
 
 async function Donate() {
