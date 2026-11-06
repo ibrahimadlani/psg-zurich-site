@@ -9,6 +9,7 @@ import type { HeadToHead } from "@/lib/football/head-to-head";
 import type { StandingRow } from "@/lib/football/standings";
 import { periodScores, timelineByPeriod, timelineTallies, type PredictionSummary } from "@/lib/match-facts";
 import type { Match } from "@/lib/matches";
+import { kickoffTimeKnown } from "@/lib/match-seo";
 import { cn } from "@/lib/utils";
 
 /*
@@ -75,7 +76,9 @@ export function MatchSheet({ match }: { match: Match }) {
     { label: t("competition"), value: <CompetitionLabel match={match} short className="text-sm text-foreground" /> },
     {
       label: t("kickoff"),
-      value: format.dateTime(match.kickoffAt, { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" }),
+      value: kickoffTimeKnown(match)
+        ? format.dateTime(match.kickoffAt, { weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })
+        : `${format.dateTime(match.kickoffAt, { weekday: "long", day: "numeric", month: "long", year: "numeric" })} · ${t("timeTbc")}`,
     },
     ...(match.stadium ? [{ label: t("venue"), value: [match.stadium, match.city].filter(Boolean).join(", ") }] : []),
     { label: t("side"), value: t(`sides.${match.venue}`) },

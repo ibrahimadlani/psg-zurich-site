@@ -9,9 +9,13 @@ export type IcsEvent = {
   url?: string | null;
   updatedAt?: Date;
   cancelled?: boolean;
+  /** The day is known, not the time. */
+  allDay?: boolean;
 };
 
 const stamp = (date: Date) => date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+
+const day = (date: Date) => date.toISOString().slice(0, 10).replace(/-/g, "");
 
 const escape = (text: string) =>
   text.replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/,/g, "\\,").replace(/;/g, "\;");
@@ -52,8 +56,8 @@ export function buildCalendar({ name, events }: { name: string; events: IcsEvent
       "BEGIN:VEVENT",
       `UID:${event.uid}`,
       `DTSTAMP:${event.updatedAt ? stamp(event.updatedAt) : now}`,
-      `DTSTART:${stamp(event.start)}`,
-      `DTEND:${stamp(event.end)}`,
+      event.allDay ? `DTSTART;VALUE=DATE:${day(event.start)}` : `DTSTART:${stamp(event.start)}`,
+      event.allDay ? `DTEND;VALUE=DATE:${day(new Date(event.start.getTime() + 86_400_000))}` : `DTEND:${stamp(event.end)}`,
       `SUMMARY:${escape(event.summary)}`,
     );
     if (event.description) lines.push(`DESCRIPTION:${escape(event.description)}`);

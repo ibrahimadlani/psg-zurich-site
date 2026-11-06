@@ -9,6 +9,8 @@ import { ThemeSync } from "@/components/theme-sync";
 import { Toaster } from "@/components/ui/toaster";
 import { PendingToasts } from "@/components/pending-toasts";
 import { PageViewTracker } from "@/components/analytics/page-view-tracker";
+import { clientMessages } from "@/i18n/client-messages";
+import { SITE_NAMESPACES } from "@/i18n/client-namespaces";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/fonts";
 import { ogLocale, publicSiteUrl, shareImage } from "@/lib/seo";
@@ -46,7 +48,7 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
         <ThemeSync />
         {/* Diagonal-line backdrop behind every page. */}
         <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 bg-diagonal [transform:translateZ(0)]" />
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={await clientMessages(SITE_NAMESPACES)}>
           <SessionSync />
           <Suspense fallback={null}>
             <AnnouncementBanner />

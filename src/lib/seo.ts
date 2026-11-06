@@ -25,6 +25,10 @@ export const ogLocale = (locale: string) => `${locale}_CH`;
  * canonical address (without ?parameters), its versions in the other languages and how it looks
  * when shared. `absoluteTitle`: without the " · PSG Zurich" ending (the home page).
  */
+/** Longer than this, the site's name after the title would be cut off in search results. */
+const ROOM_FOR_SITE_NAME = 49;
+export const withSiteNameIfRoom = (title: string) => (title.length > ROOM_FOR_SITE_NAME ? { absolute: title } : title);
+
 export async function pageMetadata({ path, title, description, absoluteTitle = false }: { path: string; title: string; description: string; absoluteTitle?: boolean }): Promise<Metadata> {
   const [locale, t] = await Promise.all([getLocale(), getTranslations("Metadata")]);
   const url = `/${locale}${path === "/" ? "" : path}`;

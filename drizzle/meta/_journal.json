@@ -225,6 +225,13 @@
       "when": 1793952009845,
       "tag": "0031_seo",
       "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "5",
+      "when": 1793957195314,
+      "tag": "0032_seo_titles",
+      "breakpoints": true
     }
   ]
 }

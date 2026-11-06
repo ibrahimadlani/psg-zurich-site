@@ -6,6 +6,7 @@ import { sides, toDate, type MatchView } from "@/components/matches/match-utils"
 import { ShortName } from "@/components/matches/short-name";
 import { RivalryBadge, RivalryRibbon, ribbonClub, rivalryFrame, rivalryOf } from "@/components/matches/rivalry";
 import { TeamCrest } from "@/components/matches/team-crest";
+import { kickoffTimeKnown } from "@/lib/match-seo";
 import { cn } from "@/lib/utils";
 
 /** Big score block: crests, score (or kick-off time), live minute, penalties, goal timeline. */
@@ -25,10 +26,12 @@ export function Scoreboard({ match, className, ribbons = false }: { match: Match
       <span className="px-2 text-muted-foreground">–</span>
       {away.score ?? 0}
     </span>
-  ) : (
+  ) : kickoffTimeKnown(match) ? (
     <span className="font-narrow text-[length:clamp(32px,7vw,44px)] leading-none font-extrabold italic">
       {format.dateTime(toDate(match.kickoffAt), { hour: "2-digit", minute: "2-digit" })}
     </span>
+  ) : (
+    <span className="max-w-28 text-center font-narrow text-[length:clamp(17px,3vw,22px)] leading-tight font-extrabold text-balance uppercase italic sm:max-w-40">{t("timeTbc")}</span>
   );
 
   return (

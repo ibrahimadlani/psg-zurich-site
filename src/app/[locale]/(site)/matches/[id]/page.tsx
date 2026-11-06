@@ -21,7 +21,7 @@ import { getHeadToHead } from "@/lib/football/head-to-head";
 import { competitionCode, getStandings } from "@/lib/football/standings";
 import { summarisePredictions } from "@/lib/match-facts";
 import { getMatchBySlug, isPredictionOpen, matchScore, matchTitle, PSG_NAME, type Match } from "@/lib/matches";
-import { matchIndexable, matchPath } from "@/lib/match-seo";
+import { kickoffTimeKnown, matchIndexable, matchPath } from "@/lib/match-seo";
 import { getCurrentMember } from "@/lib/members";
 import { getSession } from "@/lib/permissions";
 import { pageMetadata, publicSiteUrl } from "@/lib/seo";
@@ -42,13 +42,14 @@ async function matchCopy(match: Match) {
     competition: match.competition,
     date: format.dateTime(match.kickoffAt, { day: "numeric", month: "short" }),
   };
-  const long = format.dateTime(match.kickoffAt, { weekday: "long", day: "numeric", month: "long" });
+  const long = format.dateTime(match.kickoffAt, { day: "numeric", month: "long" });
   const score = matchScore(match);
   if (match.status === "finished" && score) {
     return { title: t("finished", { ...values, score }), description: t("descFinished", { ...values, score, date: long }) };
   }
   if (match.status === "postponed" || match.status === "cancelled") return { title: t("other", values), description: t("descOther", values) };
-  const time = format.dateTime(match.kickoffAt, { hour: "2-digit", minute: "2-digit" });
+  if (!kickoffTimeKnown(match)) return { title: t("upcomingTbc", values), description: t("descUpcomingTbc", { ...values, date: long }) };
+  const time = format.dateTime(match.kickoffAt, { hour: "numeric", minute: "2-digit" });
   return broadcaster
     ? { title: t("upcomingTv", values), description: t("descUpcomingTv", { ...values, date: long, time, broadcaster }) }
     : { title: t("upcoming", values), description: t("descUpcoming", { ...values, date: long, time }) };
@@ -77,7 +78,8 @@ function matchStructuredData(match: Match, description: string, locale: string) 
     name: `${home} – ${away}`,
     description,
     sport: "Soccer",
-    startDate: match.kickoffAt.toISOString(),
+    // Only the day while the league has not fixed the time.
+    startDate: kickoffTimeKnown(match) ? match.kickoffAt.toISOString() : match.kickoffAt.toISOString().slice(0, 10),
     eventStatus: `https://schema.org/${EVENT_STATUS[match.status as keyof typeof EVENT_STATUS] ?? "EventScheduled"}`,
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     homeTeam: team(home),

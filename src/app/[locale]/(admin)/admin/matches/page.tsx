@@ -18,7 +18,7 @@ import { lastMatchSync, listAdminMatches, toLocalInput } from "@/lib/admin/event
 import { closedSeasons, frozenBoard, seasonLabel } from "@/lib/leaderboard";
 import { matchTitle, type Match } from "@/lib/matches";
 import { Streamed } from "@/components/ui/streamed";
-import { matchPath } from "@/lib/match-seo";
+import { kickoffTimeKnown, matchPath } from "@/lib/match-seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("AdminShell");
@@ -85,7 +85,7 @@ async function Matches() {
                   <TeamCrest name={away.name} logo={away.logo} className="size-5" />
                 </Link>
                 <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                  <span className="text-[12px] text-muted-foreground">{format.dateTime(match.kickoffAt, { hour: "2-digit", minute: "2-digit" })}</span>
+                  <span className="text-[12px] text-muted-foreground">{kickoffTimeKnown(match) ? format.dateTime(match.kickoffAt, { hour: "2-digit", minute: "2-digit" }) : t("timeTbc")}</span>
                   {match.status !== "scheduled" ? (
                     <StatusPill tone={match.status === "live" ? "ok" : match.status === "finished" ? "neutral" : "warn"}>{t(`statuses.${match.status}`)}</StatusPill>
                   ) : null}

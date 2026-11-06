@@ -13,7 +13,7 @@ export function NewsCover({ post, className, priority = false }: { post: Post; c
         // eslint-disable-next-line @next/next/no-img-element -- uploaded media, already resized
         <img
           src={post.imageUrl}
-          // The article's own picture is described; on a card the title sits right next to it.
+          // The title sits right next to the picture on a card; alone, it describes it.
           alt={priority ? post.title : ""}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : undefined}
@@ -44,12 +44,12 @@ function useMeta(post: Post) {
 const meta = "font-wide text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase";
 
 /** Grid card: 3:2 cover, category · date, title, two-line excerpt. */
-export function NewsCard({ post, withExcerpt = true }: { post: Post; withExcerpt?: boolean }) {
+export function NewsCard({ post, withExcerpt = true, priority = false }: { post: Post; withExcerpt?: boolean; priority?: boolean }) {
   const line = useMeta(post);
   return (
     <article className="min-w-0">
       <Link href={`/news/${post.slug}`} className="group flex flex-col gap-3.5">
-        <NewsCover post={post} className="aspect-[3/2] rounded-[12px]" />
+        <NewsCover post={post} priority={priority} className="aspect-[3/2] rounded-[12px]" />
         <span className="flex flex-col gap-2">
           <span className={meta}>{line}</span>
           <span className="text-[19px] leading-tight font-semibold text-balance transition-colors group-hover:text-psg-blue dark:group-hover:text-foreground/80">

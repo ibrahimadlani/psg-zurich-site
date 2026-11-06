@@ -1697,7 +1697,8 @@
         "topScores": "Most picked scores",
         "exact": "{count, plural, =0 {Nobody got the exact score} one {# member got the exact score} other {# members got the exact score}}",
         "average": "{points} pts on average"
-      }
+      },
+      "timeTbc": "Time to be confirmed"
     },
     "titles": {
       "upcoming": "Upcoming matches",
@@ -1716,10 +1717,12 @@
       "upcomingTv": "{match}, {date}: kick-off time and TV in Switzerland",
       "finished": "{match} {score}, {date}: result and match events",
       "other": "{match}, {competition}",
-      "descUpcoming": "{match} in the {competition}, {date} at {time} (Swiss time). How to see the match in Switzerland and watch it together with PSG Zurich.",
-      "descUpcomingTv": "{match} in the {competition}, {date} at {time} (Swiss time), on {broadcaster}. How to see the match in Switzerland and watch it together with PSG Zurich.",
-      "descFinished": "{match} {score} in the {competition}, {date}. The result, the goals and the match events, with PSG Zurich, the PSG supporters club in Switzerland.",
-      "descOther": "{match} in the {competition}. The match and what's on at PSG Zurich, the PSG supporters club in Switzerland."
+      "descUpcoming": "{match} ({competition}), {date} at {time} Swiss time. Where to see the match in Switzerland and how to watch it with PSG Zurich.",
+      "descUpcomingTv": "{match} ({competition}), {date} at {time} Swiss time, on {broadcaster}. How to watch it together with PSG Zurich.",
+      "descFinished": "{match} {score} ({competition}), {date}. The result, goals and match events, with PSG Zurich, the PSG supporters club in Switzerland.",
+      "descOther": "{match} in the {competition}. The match and what's on at PSG Zurich, the PSG supporters club in Switzerland.",
+      "upcomingTbc": "{match}, {date}: where to watch in Switzerland",
+      "descUpcomingTbc": "{match} ({competition}), {date}. Kick-off time not set. Where to see the match in Switzerland and watch it with PSG Zurich."
     },
     "watch": {
       "title": "Where to watch in Switzerland",
@@ -1728,8 +1731,11 @@
       "channelUnknown": "Not confirmed yet",
       "party": "Watch party in {city}",
       "parties": "Watch together: our watch parties",
-      "guide": "The guide to watching PSG in Switzerland"
-    }
+      "guide": "The guide to watching PSG in Switzerland",
+      "timeTbc": "time to be confirmed"
+    },
+    "timeTbc": "Time to be confirmed",
+    "timeTbcShort": "TBC"
   },
   "Predictions": {
     "closesIn": "Closes in {time}",
@@ -2030,7 +2036,8 @@
       "introHint": "A few sentences by the committee for the big matches: what's at stake, a memory, what the club is planning.",
       "saved": "Match page saved.",
       "error": "Could not save."
-    }
+    },
+    "timeTbc": "Time to be confirmed"
   },
   "Unsubscribe": {
     "title": "Unsubscribe",

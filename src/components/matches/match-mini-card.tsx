@@ -6,7 +6,7 @@ import { ShortName } from "@/components/matches/short-name";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { matchPath } from "@/lib/match-seo";
+import { kickoffTimeKnown, matchPath } from "@/lib/match-seo";
 
 /** Compact scoreboard: competition, crests, kick-off time (or score), calendar link (and `action` beside it). */
 export function MatchMiniCard({
@@ -43,8 +43,12 @@ export function MatchMiniCard({
           </span>
         ))}
         <span className="order-2 flex flex-col items-center gap-1">
-          <span className="font-narrow text-4xl leading-none font-extrabold tabular-nums italic">
-            {played ? `${home.score ?? 0}–${away.score ?? 0}` : format.dateTime(toDate(match.kickoffAt), { hour: "2-digit", minute: "2-digit" })}
+          <span className={cn("font-narrow leading-none font-extrabold tabular-nums italic", played || kickoffTimeKnown(match) ? "text-4xl" : "text-center text-xl uppercase")}>
+            {played
+              ? `${home.score ?? 0}–${away.score ?? 0}`
+              : kickoffTimeKnown(match)
+                ? format.dateTime(toDate(match.kickoffAt), { hour: "2-digit", minute: "2-digit" })
+                : t("timeTbcShort")}
           </span>
           <span className="font-wide text-[9px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
             {match.status === "live" ? liveLabel(match, t) : match.status === "finished" ? t("fullTime") : t("kickoff")}

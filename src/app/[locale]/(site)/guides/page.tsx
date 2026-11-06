@@ -27,12 +27,13 @@ async function GuidesContent() {
   if (!groups.length) return <p className="border-t py-10 text-center text-[15px] text-muted-foreground">{t("empty")}</p>;
   return (
     <div className="flex flex-col gap-[clamp(40px,6vw,64px)]">
-      {groups.map((group) => (
+      {groups.map((group, groupIndex) => (
         <section key={group.key} className="flex flex-col gap-5">
           <h2 className="font-narrow text-[length:clamp(28px,4vw,40px)] leading-[0.95] font-extrabold uppercase italic">{group.title}</h2>
           <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-x-6 gap-y-10">
-            {group.posts.map((post) => (
-              <NewsCard key={post.id} post={post} />
+            {group.posts.map((post, index) => (
+              // The first picture is what a visitor sees first: never loaded late.
+              <NewsCard key={post.id} post={post} priority={groupIndex === 0 && index === 0} />
             ))}
           </div>
         </section>

@@ -4,7 +4,7 @@ import { sectionTitle } from "@/components/matches/match-details";
 import type { Locale } from "@/db/schema";
 import { Link } from "@/i18n/navigation";
 import { publicEventForMatch } from "@/lib/events";
-import { TV_GUIDE } from "@/lib/match-seo";
+import { kickoffTimeKnown, TV_GUIDE } from "@/lib/match-seo";
 import type { Match } from "@/lib/matches";
 import { matchBroadcaster } from "@/lib/site-settings";
 
@@ -27,7 +27,11 @@ export async function MatchWatch({ match }: { match: Match }) {
       <dl className="mt-3.5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
         <div>
           <dt className={label}>{t("kickoff")}</dt>
-          <dd className={value}>{format.dateTime(match.kickoffAt, { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })}</dd>
+          <dd className={value}>
+            {kickoffTimeKnown(match)
+              ? format.dateTime(match.kickoffAt, { weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "2-digit" })
+              : `${format.dateTime(match.kickoffAt, { weekday: "long", day: "numeric", month: "long" })} · ${t("timeTbc")}`}
+          </dd>
         </div>
         <div>
           <dt className={label}>{t("channel")}</dt>

@@ -1697,7 +1697,8 @@
         "topScores": "Scores les plus joués",
         "exact": "{count, plural, =0 {Personne n'a trouvé le score exact} one {# membre a trouvé le score exact} other {# membres ont trouvé le score exact}}",
         "average": "{points} pts en moyenne"
-      }
+      },
+      "timeTbc": "Horaire à confirmer"
     },
     "titles": {
       "upcoming": "Matchs à venir",
@@ -1716,10 +1717,12 @@
       "upcomingTv": "{match}, {date} : heure et chaîne en Suisse",
       "finished": "{match} {score}, {date} : résultat et faits de jeu",
       "other": "{match}, {competition}",
-      "descUpcoming": "{match} en {competition}, {date} à {time} (heure suisse). Comment voir le match en Suisse et le regarder ensemble avec PSG Zurich.",
-      "descUpcomingTv": "{match} en {competition}, {date} à {time} (heure suisse), sur {broadcaster}. Comment voir le match en Suisse et le regarder ensemble avec PSG Zurich.",
+      "descUpcoming": "{match} en {competition}, {date} à {time}, heure suisse. Où voir le match en Suisse et comment le regarder avec PSG Zurich.",
+      "descUpcomingTv": "{match} en {competition}, {date} à {time}, heure suisse, sur {broadcaster}. Comment le regarder ensemble avec PSG Zurich.",
       "descFinished": "{match} {score} en {competition}, {date}. Le résultat, les buts et les faits de jeu, avec PSG Zurich, le fan club du PSG en Suisse.",
-      "descOther": "{match} en {competition}. Le match et les rendez-vous de PSG Zurich, le fan club du PSG en Suisse."
+      "descOther": "{match} en {competition}. Le match et les rendez-vous de PSG Zurich, le fan club du PSG en Suisse.",
+      "upcomingTbc": "{match}, {date} : où le voir en Suisse",
+      "descUpcomingTbc": "{match} en {competition}, {date}. L'horaire n'est pas encore fixé. Où voir le match en Suisse et comment le regarder avec PSG Zurich."
     },
     "watch": {
       "title": "Où regarder en Suisse",
@@ -1728,8 +1731,11 @@
       "channelUnknown": "Pas encore confirmé",
       "party": "Watch party à {city}",
       "parties": "Regarder ensemble : nos watch parties",
-      "guide": "Le guide pour regarder le PSG en Suisse"
-    }
+      "guide": "Le guide pour regarder le PSG en Suisse",
+      "timeTbc": "horaire à confirmer"
+    },
+    "timeTbc": "Horaire à confirmer",
+    "timeTbcShort": "À confirmer"
   },
   "Predictions": {
     "closesIn": "Clôture dans {time}",
@@ -2030,7 +2036,8 @@
       "introHint": "Quelques phrases écrites par le comité pour les grandes affiches : l'enjeu, le souvenir, ce qui se prépare au club.",
       "saved": "Page du match enregistrée.",
       "error": "Impossible d'enregistrer."
-    }
+    },
+    "timeTbc": "Horaire à confirmer"
   },
   "Unsubscribe": {
     "title": "Se désabonner",

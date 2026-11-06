@@ -2,7 +2,7 @@ import { connection } from "next/server";
 import { buildCalendar, icsResponse, type IcsEvent } from "@/lib/ics";
 import { ESTIMATED_DURATION_MS, getSeasonMatches, matchScore, matchTitle } from "@/lib/matches";
 import { publicOrigin } from "@/lib/public-origin";
-import { matchPath } from "@/lib/match-seo";
+import { kickoffTimeKnown, matchPath } from "@/lib/match-seo";
 
 /** Subscribable calendar: PSG matches of the season (club events are for members only). */
 export async function GET(request: Request) {
@@ -15,6 +15,7 @@ export async function GET(request: Request) {
       uid: `match-${match.id}@psg-zurich.ch`,
       start: match.kickoffAt,
       end: new Date(match.kickoffAt.getTime() + ESTIMATED_DURATION_MS),
+      allDay: !kickoffTimeKnown(match),
       summary: `${matchScore(match) ? `${matchTitle(match)} ${matchScore(match)}` : matchTitle(match)} · ${match.competition}`,
       location: [match.stadium, match.city].filter(Boolean).join(", "),
       url: `${origin}/fr${matchPath(match)}`,

@@ -14,7 +14,7 @@ import { matchTitle } from "@/lib/matches";
 import { formatChf } from "@/lib/money";
 import { seasonRates } from "@/lib/payments/dues-price";
 import { cn } from "@/lib/utils";
-import { matchPath } from "@/lib/match-seo";
+import { kickoffTimeKnown, matchPath } from "@/lib/match-seo";
 
 /** The site's diagonal lines, over the blue panels. */
 const hatching = "[background-image:repeating-linear-gradient(135deg,rgb(255_255_255/0.07)_0_1px,transparent_1px_14px)]";
@@ -125,7 +125,7 @@ export async function VisitorLanding({ basics, figures }: { basics: Basics; figu
                     <span className="block font-wide text-[9px] font-semibold tracking-[0.1em] text-white/70 uppercase">{t("hero.nextMatch")}</span>
                     <span className="block truncate text-[13px] font-semibold">{matchTitle(next, "PSG")}</span>
                     <span className="block text-[12px] text-white/70">
-                      {format.dateTime(next.kickoffAt, { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Zurich" })}
+                      {format.dateTime(next.kickoffAt, { weekday: "short", day: "numeric", month: "short", ...(kickoffTimeKnown(next) ? { hour: "2-digit", minute: "2-digit" } : {}), timeZone: "Europe/Zurich" })}
                     </span>
                   </span>
                 </Link>

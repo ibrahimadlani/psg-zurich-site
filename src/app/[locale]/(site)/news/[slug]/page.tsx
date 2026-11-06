@@ -22,7 +22,7 @@ import {
   relatedArticles,
   type Post,
 } from "@/lib/news";
-import { ogLocale, publicSiteUrl, shareImage } from "@/lib/seo";
+import { ogLocale, publicSiteUrl, shareImage, withSiteNameIfRoom } from "@/lib/seo";
 import { breadcrumbs, clubPublisher } from "@/lib/structured-data";
 import { ArticleSkeleton } from "@/components/skeletons";
 import { Streamed } from "@/components/ui/streamed";
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/news/[sl
   const languages = Object.fromEntries(versions.map((version) => [version.locale, `/${version.locale}/news/${version.slug}`]));
   const original = versions.find((version) => version.locale === "fr") ?? versions[0];
   return {
-    title: post.seoTitle ?? post.title,
+    title: withSiteNameIfRoom(post.seoTitle ?? post.title),
     description: post.seoDescription ?? post.excerpt ?? undefined,
     alternates: {
       canonical: `/${post.locale}/news/${post.slug}`,

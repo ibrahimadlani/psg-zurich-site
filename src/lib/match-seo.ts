@@ -42,6 +42,16 @@ export function matchKeyOf(param: string) {
   return /-([0-9a-f]{8})$/.exec(param)?.[1] ?? null;
 }
 
+/**
+ * The calendar source dates a match at exactly 00:00 UTC until the league fixes its time: that
+ * hour is a placeholder, never to be shown as a kick-off.
+ */
+export function kickoffTimeKnown(match: { status: string; kickoffAt: Date | string }) {
+  if (match.status !== "scheduled") return true;
+  const at = new Date(match.kickoffAt);
+  return at.getUTCHours() !== 0 || at.getUTCMinutes() !== 0;
+}
+
 const DAY = 86_400_000;
 /** Search engines get a big match from three weeks before it… */
 const OPEN_BEFORE = 21 * DAY;

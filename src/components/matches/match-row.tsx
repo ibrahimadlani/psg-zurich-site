@@ -8,7 +8,7 @@ import { ShortName } from "@/components/matches/short-name";
 import { TeamCrest } from "@/components/matches/team-crest";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
-import { matchPath } from "@/lib/match-seo";
+import { kickoffTimeKnown, matchPath } from "@/lib/match-seo";
 
 export type PredictionView = { psgScore: number; opponentScore: number; points: number | null };
 
@@ -88,7 +88,7 @@ export function MatchRow({
           withTime={false}
           className="font-semibold text-foreground uppercase"
         />
-        <span className="text-muted-foreground">{format.dateTime(kickoff, { hour: "2-digit", minute: "2-digit" })}</span>
+        <span className="text-muted-foreground">{kickoffTimeKnown(match) ? format.dateTime(kickoff, { hour: "2-digit", minute: "2-digit" }) : t("timeTbcShort")}</span>
       </span>
 
       <span className="flex min-w-0 flex-col gap-1.5">

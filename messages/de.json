@@ -1697,7 +1697,8 @@
         "topScores": "Häufigste Tipps",
         "exact": "{count, plural, =0 {Niemand hat das genaue Resultat getippt} one {# Mitglied hat das genaue Resultat getippt} other {# Mitglieder haben das genaue Resultat getippt}}",
         "average": "{points} Pkt. im Schnitt"
-      }
+      },
+      "timeTbc": "Anstoss noch offen"
     },
     "titles": {
       "upcoming": "Kommende Spiele",
@@ -1716,10 +1717,12 @@
       "upcomingTv": "{match}, {date}: Anstoss und TV in der Schweiz",
       "finished": "{match} {score}, {date}: Resultat und Spielverlauf",
       "other": "{match}, {competition}",
-      "descUpcoming": "{match} in der {competition}, {date} um {time} Uhr (Schweizer Zeit). So siehst du das Spiel in der Schweiz und schaust es gemeinsam mit PSG Zürich.",
-      "descUpcomingTv": "{match} in der {competition}, {date} um {time} Uhr (Schweizer Zeit), auf {broadcaster}. So siehst du das Spiel in der Schweiz und schaust es gemeinsam mit PSG Zürich.",
+      "descUpcoming": "{match} in der {competition}, {date} um {time} Uhr Schweizer Zeit. Wo du das Spiel siehst und wie du es mit PSG Zürich schaust.",
+      "descUpcomingTv": "{match} in der {competition}, {date} um {time} Uhr Schweizer Zeit, auf {broadcaster}. Wie du es gemeinsam mit PSG Zürich schaust.",
       "descFinished": "{match} {score} in der {competition}, {date}. Resultat, Tore und Spielverlauf, mit PSG Zürich, dem PSG-Fanclub in der Schweiz.",
-      "descOther": "{match} in der {competition}. Das Spiel und die Treffen von PSG Zürich, dem PSG-Fanclub in der Schweiz."
+      "descOther": "{match} in der {competition}. Das Spiel und die Treffen von PSG Zürich, dem PSG-Fanclub in der Schweiz.",
+      "upcomingTbc": "{match}, {date}: wo in der Schweiz schauen",
+      "descUpcomingTbc": "{match} in der {competition}, {date}. Anstoss noch offen. Wo du das Spiel siehst und wie du es mit PSG Zürich schaust."
     },
     "watch": {
       "title": "Wo in der Schweiz schauen",
@@ -1728,8 +1731,11 @@
       "channelUnknown": "Noch nicht bestätigt",
       "party": "Watch-Party in {city}",
       "parties": "Gemeinsam schauen: unsere Watch-Partys",
-      "guide": "Der Guide: PSG schauen in der Schweiz"
-    }
+      "guide": "Der Guide: PSG schauen in der Schweiz",
+      "timeTbc": "Anstoss noch offen"
+    },
+    "timeTbc": "Anstoss noch offen",
+    "timeTbcShort": "Offen"
   },
   "Predictions": {
     "closesIn": "Schliesst in {time}",
@@ -2030,7 +2036,8 @@
       "introHint": "Ein paar Sätze vom Komitee für die grossen Spiele: worum es geht, eine Erinnerung, was der Club plant.",
       "saved": "Spielseite gespeichert.",
       "error": "Speichern nicht möglich."
-    }
+    },
+    "timeTbc": "Anstoss noch offen"
   },
   "Unsubscribe": {
     "title": "Abmelden",
